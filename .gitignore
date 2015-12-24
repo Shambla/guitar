@@ -1,0 +1,39 @@
+# Maven
+target/
+target-eclipse/
+
+# Eclipse
+.settings/
+.classpath
+.project
+
+# Intellij
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Checkstyle
+.checkstyle
+
+# Sureassert
+.sabin/
+.sasrc/
+.sauc.obj
+
+# Infinitest
+infinitest.filters
+
+# Netbeans
+/nbproject
+fuse-web/nb-configuration.xml
+nb-configuration.xml
+nbactions.xml
+
+# Other ignores
+node_modules/
+.sass-cache/
+vendor/
+bin/
+build/
+dist/
