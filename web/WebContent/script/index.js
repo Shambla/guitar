@@ -7,8 +7,6 @@ $(document).ready(function() {
 	setTimeout(function() {$("#teacher").addClass("active");}, 2000);
 	
 	randomizeBars();
-	
-	gapi.client.setApiKey(apiKey);
 });
 
 function randomizeBars() {
@@ -19,4 +17,12 @@ function randomizeBars() {
 	});
 	
 	setTimeout(randomizeBars, 200);
+}
+
+function loadYoutube() {
+	gapi.client.setApiKey(apiKey);
+	
+	gapi.client.load('youtube', 'v3', function() {
+		console.log("loaded");
+	});
 }
