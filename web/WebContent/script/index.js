@@ -1,7 +1,11 @@
 var apiKey = "AIzaSyCNdFVx45bBA3_402O-UUREh9MmFL0vS0I";
 var channelId = "UCBirLir8z4yrq3HEV5idxaA";
+var playlistId = "PLHk58iPhFqsZSl02DYiEHnWL4IYgKekIR";
 
 var res;
+
+var thumbColumns = 4;
+var thumbRows = 3;
 
 var heights = {};
 
@@ -46,13 +50,32 @@ function loadYoutube() {
 	gapi.client.setApiKey(apiKey);
 	
 	gapi.client.load('youtube', 'v3', function() {
-		var request = gapi.client.youtube.channelSections.list({
-			channelId: channelId,
+		var request = gapi.client.youtube.playlistItems.list({
+			playlistId: playlistId,
+			maxResults: 50,
 			part: "contentDetails"
 		});
 		
 		request.execute(function(response) {
-			res = response;
+			var thumbHtml = "";
+			
+			$.each(response.items, function(i) {
+				if(i === 0) {
+					$("#featured").html("<iframe id='ytplayer' type='text/html' width='636' height='360' src='https://www.youtube.com/embed/" + this.contentDetails.videoId + "?fs=1&rel=0&showinfo=0&autohide=1&color=white' frameborder='0' allowfullscreen>");
+				} else if(i <= thumbColumns * thumbRows) {
+					if(i % thumbColumns === 1) {
+						thumbHtml += "<div class='row'>";
+					}
+					
+					thumbHtml += "<img src='http://img.youtube.com/vi/" + this.contentDetails.videoId + "/mqdefault.jpg'/>";
+					
+					if(i % thumbColumns === 0) {
+						thumbHtml += "</div>";
+					}
+				}
+			});
+			
+			$("#thumbs").html(thumbHtml);
 		});
 	});
 }
