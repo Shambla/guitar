@@ -6,19 +6,22 @@ body {
 	font-family:	Montserrat;
 }
 
+h1 {
+	font-weight:	300;
+}
+
 nav {
-	position:		absolute;
+	position:		fixed;
 	width:			100%;
 	padding:		15px 0px;
-	background:		url(../img/bg.png);
 	text-align:		center;
 	z-index:		100;
 }
 
 nav a {
-	margin:			0px 20px;
+	margin:			0px 15px;
 	color:			#ffffff;
-	letter-spacing: 1px;
+	letter-spacing: 2px;
 	text-decoration:none;
 	font-size:		18px;
 	font-weight:	400;
@@ -29,10 +32,18 @@ nav a:hover {
 	color:			#f1cfab;
 }
 
+#music {
+	display:		inline-block;
+	height:			16px;
+	margin-left:	15px;
+	cursor:			pointer;
+}
+
 #hero {
 	position:		relative;
 	width:			100%;
 	height:			999px;
+	margin-bottom:	100px;
 	background:		url(../img/hero.png);
 }
 
@@ -43,7 +54,6 @@ nav a:hover {
 	margin-left:	-750px;
 	color:			#f1cfab;
 	font-size:		64px;
-	font-weight:	300;
 }
 
 #creds {
@@ -58,10 +68,10 @@ nav a:hover {
 	padding:		0px 10px;
 	margin-top:		50px;
 	color:			rgba(255, 255, 255, 0);
-
+	border-left:	2px solid rgba(255, 255, 255, 0);
 	font-size:		34px;
 	font-weight:	300;
-	transition:		margin 0.8s, color 0.8s;
+	transition:		margin 0.8s, color 0.8s, border-color 0.8s;
 }
 
 #creds h3:first-child {
@@ -70,10 +80,51 @@ nav a:hover {
 
 #creds h3.active {
 	color:			rgba(255, 255, 255, 255);
-	border-left:	2px solid #ffffff;
+	border-left:	2px solid rgba(255, 255, 255, 255);
 	margin-top:		20px;	
 }
 
 #creds h3.active:first-child {
 	border-left:	none;
+}
+
+.content {
+	width:			1500px;
+	margin:			0 auto;
+}
+
+.content h1 {
+	width:			750px;
+	padding-bottom:	10px;
+	border-bottom:	1px solid #f1cfab;
+	font-size:		40px;
+}
+
+.bar {
+	float:			left;
+	height:			20px;
+	width:			6px;
+	margin-right:	2px;
+	background:		#ffffff;
+	transition:		height .5s, margin .5s;
+}
+
+.left-half {
+	float:			left;
+	width:			700px;
+	margin-right:	25px;
+}
+
+.right-half {
+	float:			left;
+	width:			700px;
+	margin-left:	25px;
+}
+
+.right {
+	text-align:		right;
+}
+
+.right h1 {
+	float:			right;
 }
