@@ -17,6 +17,7 @@ $(document).ready(function() {
 	randomizeBars();
 	
 	heights.bio = $("#bio").offset().top;
+	heights.performances = $("#performances").offset().top;
 	
 	window.addEventListener("scroll", scrolled);
 	
@@ -61,13 +62,13 @@ function loadYoutube() {
 			
 			$.each(response.items, function(i) {
 				if(i === 0) {
-					$("#featured").html("<iframe id='ytplayer' type='text/html' width='636' height='360' src='https://www.youtube.com/embed/" + this.contentDetails.videoId + "?fs=1&rel=0&showinfo=0&autohide=1&color=white' frameborder='0' allowfullscreen>");
+					showVideo(this.contentDetails.videoId);
 				} else if(i <= thumbColumns * thumbRows) {
 					if(i % thumbColumns === 1) {
 						thumbHtml += "<div class='row'>";
 					}
 					
-					thumbHtml += "<img src='http://img.youtube.com/vi/" + this.contentDetails.videoId + "/mqdefault.jpg'/>";
+					thumbHtml += "<a href='javascript:showVideo(\"" + this.contentDetails.videoId + "\")'><img src='http://img.youtube.com/vi/" + this.contentDetails.videoId + "/mqdefault.jpg'/></a>";
 					
 					if(i % thumbColumns === 0) {
 						thumbHtml += "</div>";
@@ -80,6 +81,10 @@ function loadYoutube() {
 	});
 }
 
+function showVideo(id) {
+	$("#featured").html("<iframe id='ytplayer' type='text/html' width='636' height='360' src='https://www.youtube.com/embed/" + id + "?fs=1&rel=0&showinfo=1&autohide=1&color=white' frameborder='0' allowfullscreen>");
+}
+
 function scrolled() {
 	var distance = window.pageYOffset || document.documentElement.scrollTop;
 	
@@ -89,7 +94,11 @@ function scrolled() {
 		$("#backing").removeClass("scrolled");
 	}
 	
-	var heroOpacity = 1 - ((distance - heights.bio / 2.2) / (heights.bio / 2.2));
+	var heroOpacity = 1 - ((distance - heights.bio / 2.75) / (heights.bio / 2.75));
 	
 	$("#hero").css("opacity", Math.max(0, Math.min(1, heroOpacity)));
+	
+	if(distance > heights.performances - 550) {
+		$("#perform").addClass("active");
+	}
 }
