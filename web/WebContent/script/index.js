@@ -9,6 +9,8 @@ var thumbRows = 3;
 
 var heights = {};
 
+var audio = ["Les Vieux Seigneurs [The Old Lords]", "Gran Vals [Nokia Tune]", "La Cancion Del Emperador"];
+
 $(document).ready(function() {
 	setTimeout(function() {$("#performer").addClass("active");}, 500);
 	setTimeout(function() {$("#composer").addClass("active");}, 1200);
@@ -76,6 +78,8 @@ function loadYoutube() {
 				}
 			});
 			
+			thumbHtml += "<a id='external' href='https://www.youtube.com/user/WoodenBoxEngineer'>View All Videos <i class='fa fa-external-link'></i></a>";
+			
 			$("#thumbs").html(thumbHtml);
 		});
 	});
@@ -100,5 +104,9 @@ function scrolled() {
 	
 	if(distance > heights.performances - 550) {
 		$("#perform").addClass("active");
+	}
+	
+	if(distance > heights.bio - 550) {
+		$("#biopic").addClass("active");
 	}
 }

@@ -4,6 +4,7 @@ body {
 	color:			#ffffff;
 	background:		url(../img/bg.png);
 	font-family:	Montserrat;
+	font-weight:	300;
 }
 
 h1 {
@@ -14,6 +15,15 @@ p {
 	font-weight:	300;
 	font-size:		18px;
 	line-height:	2em;
+}
+
+a {
+	color:			#f1cfab;
+	text-decoration: none;
+}
+
+a:visited {
+	color:			#f1cfab;
 }
 
 nav {
@@ -32,6 +42,10 @@ nav a {
 	font-size:		18px;
 	font-weight:	300;
 	transition:		color 0.3s;
+}
+
+nav a:visited {
+	color:			#ffffff;
 }
 
 nav a:hover {
@@ -119,6 +133,21 @@ nav a:hover {
 	border-left:	none;
 }
 
+#bio-right {
+	text-align:		center;
+}
+
+#biopic {
+	margin-top:		100px;
+	opacity:		0;
+	transition:		margin 1s, opacity 1s;
+}
+
+#biopic.active {
+	margin-top:		0px;
+	opacity:		1;
+}
+
 #perform {
 	margin-top:		180px;
 	opacity:		0;
@@ -163,6 +192,14 @@ nav a:hover {
 
 #thumbs .row {
 	margin-bottom:	40px;
+}
+
+#thumbs #external {
+	float:			right;
+}
+
+#contact-details h3 {
+	margin-bottom:	20px;
 }
 
 .content {
@@ -212,4 +249,10 @@ nav a:hover {
 
 .right h1 {
 	float:			right;
+}
+
+.contact .fa {
+	float:			left;
+	margin:			20px 20px 40px 0px;
+	font-size:		42px;
 }
