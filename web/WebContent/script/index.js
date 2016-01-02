@@ -9,12 +9,28 @@ var thumbRows = 3;
 
 var heights = {};
 
+var e1 = "brianstreckfus";
+var e2 = "\u0040";
+var e3 = "gma";
+var e4 = "il.com";
+
 var audio = ["Les Vieux Seigneurs [The Old Lords]", "Gran Vals [Nokia Tune]", "La Cancion Del Emperador"];
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-71877195-1', 'auto');
+ga('send', 'pageview');
+
 
 $(document).ready(function() {
 	setTimeout(function() {$("#performer").addClass("active");}, 500);
 	setTimeout(function() {$("#composer").addClass("active");}, 1200);
 	setTimeout(function() {$("#teacher").addClass("active");}, 2000);
+	
+	setTimeout(function() {$("#addy").html(e1 + e2 + e3 + e4)}, 3000);
 	
 	randomizeBars();
 	

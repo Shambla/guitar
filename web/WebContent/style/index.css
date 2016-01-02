@@ -202,6 +202,10 @@ nav a:hover {
 	margin-bottom:	20px;
 }
 
+#addy {
+	color:			#f1cfab;
+}
+
 .content {
 	width:			1500px;
 	margin:			0 auto;
@@ -253,6 +257,6 @@ nav a:hover {
 
 .contact .fa {
 	float:			left;
-	margin:			20px 20px 40px 0px;
+	margin:			12px 30px 40px 0px;
 	font-size:		42px;
 }
