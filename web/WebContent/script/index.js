@@ -37,7 +37,7 @@ $(document).ready(function() {
 	heights.bio = $("#bio").offset().top;
 	heights.performances = $("#performances").offset().top;
 	
-	window.addEventListener("scroll", scrolled);
+	window.addEventListener("scroll", scrolled); 
 	
 	$(function() {
 		  $('a[href*=#]:not([href=#])').click(function() {
