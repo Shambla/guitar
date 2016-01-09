@@ -36,8 +36,9 @@ $(document).ready(function() {
 	
 	heights.bio = $("#bio").offset().top;
 	heights.performances = $("#performances").offset().top;
+	heights.contact = $("#contact").offset().top;
 	
-	window.addEventListener("scroll", scrolled); 
+	window.addEventListener("scroll", scrolled);
 	
 	$(function() {
 		  $('a[href*=#]:not([href=#])').click(function() {
@@ -123,6 +124,10 @@ function scrolled() {
 	}
 	
 	if(distance > heights.bio - 550) {
-		$("#biopic").addClass("active");
+		$("#bio-pic").addClass("active");
+	}
+	
+	if(distance > heights.contact - 550) {
+		$("#contact-pic").addClass("active");
 	}
 }

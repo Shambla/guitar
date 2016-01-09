@@ -137,13 +137,13 @@ nav a:hover {
 	text-align:		center;
 }
 
-#biopic {
+#bio-pic {
 	margin-top:		100px;
 	opacity:		0;
 	transition:		margin 1s, opacity 1s;
 }
 
-#biopic.active {
+#bio-pic.active {
 	margin-top:		0px;
 	opacity:		1;
 }
@@ -196,6 +196,17 @@ nav a:hover {
 
 #thumbs #external {
 	float:			right;
+}
+
+#contact-pic {
+	margin:			300px 0px 150px 0px;
+	opacity:		0;
+	transition:		margin 1s, opacity 1s;
+}
+
+#contact-pic.active {
+	margin-top:		200px;
+	opacity:		1;
 }
 
 #contact-details h3 {
