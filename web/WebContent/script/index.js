@@ -4,6 +4,9 @@ var playlistId = "PLHk58iPhFqsZSl02DYiEHnWL4IYgKekIR";
 
 var res;
 
+var barTimeout;
+var playing = true;
+
 var thumbColumns = 4;
 var thumbRows = 3;
 
@@ -13,8 +16,6 @@ var e1 = "brianstreckfus";
 var e2 = "\u0040";
 var e3 = "gma";
 var e4 = "il.com";
-
-var audio = ["Les Vieux Seigneurs [The Old Lords]", "Gran Vals [Nokia Tune]", "La Cancion Del Emperador"];
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -40,6 +41,18 @@ $(document).ready(function() {
 	
 	window.addEventListener("scroll", scrolled);
 	
+	$("#music").on("click", function() {
+		if(playing) {
+			pause();
+		} else {
+			play();
+		}
+	});
+	
+	$("#featured").on("click", function() {
+		pause();
+	});
+	
 	$(function() {
 		  $('a[href*=#]:not([href=#])').click(function() {
 		    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -63,7 +76,28 @@ function randomizeBars() {
 		$(this).css("height", height + "px").css("margin-top", 20 - height + "px");
 	});
 	
-	setTimeout(randomizeBars, 200);
+	barTimeout = setTimeout(randomizeBars, 200);
+}
+
+function pause() {
+	$("audio")[0].pause();
+	$("#paused").show();
+	clearTimeout(barTimeout);
+		
+	$(".bar").each(function(i) {
+		$(this).css("height", "0px").css("margin-top", "20px");
+	});
+	
+	playing = false;
+}
+
+function play() {
+	$("audio")[0].play();
+	$("#paused").hide();
+	
+	randomizeBars();
+	
+	playing = true;
 }
 
 function loadYoutube() {
@@ -104,6 +138,11 @@ function loadYoutube() {
 
 function showVideo(id) {
 	$("#featured").html("<iframe id='ytplayer' type='text/html' width='636' height='360' src='https://www.youtube.com/embed/" + id + "?fs=1&rel=0&showinfo=1&autohide=1&color=white' frameborder='0' allowfullscreen>");
+	$("#ytplayer").iframeTracker({
+		blurCallback: function() {
+			pause();
+		}
+	})
 }
 
 function scrolled() {

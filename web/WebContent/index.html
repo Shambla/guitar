@@ -7,6 +7,7 @@
 		<link type="text/css" rel="stylesheet" href="style/index.css">
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="script/index.js"></script>
+		<script type="text/javascript" src="script/iframetracker.js"></script>
 		<script type="text/javascript" src="https://apis.google.com/js/client.js?onload=loadYoutube"></script>
 		<title>Brian Streckfus</title>
 	</head>
@@ -24,8 +25,9 @@
 					<div class="bar"></div>
 					<div class="bar"></div>
 					<div class="bar"></div>
+					<div id="paused">[paused]</div>
 				</div>
-				<span id="track">Matteo Carcassi Etude 9 op 60</span>
+				<span id="track">Gran Vals [Nokia Tune]</span>
 			</div>
 		</nav>
 		<div id="hero">
@@ -128,7 +130,7 @@
 				</div>
 			</div>
 		</div>
-		<audio autoplay>
+		<audio autoplay loop>
 			<source src="audio/audio2.mp3" type="audio/mpeg"/>
 		</audio>
 	</body>

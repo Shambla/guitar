@@ -70,9 +70,18 @@ nav a:hover {
 
 #music {
 	float:			right;
+	position:		relative;
 	height:			16px;
 	margin-left:	15px;
 	cursor:			pointer;
+}
+
+#paused {
+	display:		none;
+	position:		absolute;
+	top:			5px;
+	left:			-5px;
+	font-size:		13px;
 }
 
 #track {
