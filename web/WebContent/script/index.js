@@ -137,7 +137,17 @@ function loadYoutube() {
 }
 
 function showVideo(id) {
-	$("#featured").html("<iframe id='ytplayer' type='text/html' width='636' height='360' src='https://www.youtube.com/embed/" + id + "?fs=1&rel=0&showinfo=1&autohide=1&color=white' frameborder='0' allowfullscreen>");
+	var videoHeight;
+	
+	if($(window).width() >= 1570) {
+		videoHeight = 40 * (thumbRows - 1) + 90 * thumbRows; 
+	} else if($(window).width() >= 1250) {
+		videoHeight = 20 * (thumbRows - 1) + 73 * thumbRows;
+	} else {
+		videoHeight = 20 * (thumbRows - 1) + 54 * thumbRows;
+	}
+	
+	$("#featured").html("<iframe id='ytplayer' type='text/html' width='" + (1.7666 * videoHeight) + "' height='" + videoHeight + "' src='https://www.youtube.com/embed/" + id + "?fs=1&rel=0&showinfo=1&autohide=1&color=white' frameborder='0' allowfullscreen>");
 	$("#ytplayer").iframeTracker({
 		blurCallback: function() {
 			pause();
