@@ -30,6 +30,7 @@ $(document).ready(function() {
 	setTimeout(function() {$("#performer").addClass("active");}, 500);
 	setTimeout(function() {$("#composer").addClass("active");}, 1200);
 	setTimeout(function() {$("#teacher").addClass("active");}, 2000);
+	setTimeout(function() {$("#producer").addClass("active");}, 2800);
 	
 	setTimeout(function() {$("#addy").html(e1 + e2 + e3 + e4)}, 3000);
 	
