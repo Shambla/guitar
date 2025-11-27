@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<link type="text/css" rel="stylesheet" href="style/montserrat.css">
+		<link type="text/css" rel="stylesheet" href="style/font-awesome.css">
+		<link type="text/css" rel="stylesheet" href="style/index.css">
+		<link type="text/css" rel="stylesheet" href="style/catalog.css">
+		<link rel="shortcut icon" href="img/favico.ico" type="image/x-icon">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="script/catalog.js"></script>
+		<title>Sheet Music Catalog - Brian Streckfus</title>
+	</head>
+	<body>
+		<nav>
+			<div id="backing"></div>
+			<div class="content">
+				<a href="Website_HTML_3_Merchant.html#bio">BIO</a>
+				<a href="Website_HTML_3_Merchant.html#performances">PERFORMANCES</a>
+				<a href="Website_HTML_3_Merchant.html#media">MEDIA</a>
+				<a href="Website_HTML_3_Merchant.html#contact">CONTACT</a>
+				<a href="catalog.html" style="font-weight: bold;">CATALOG</a>
+			</div>
+		</nav>
+		
+		<div class="content" style="margin-top: 100px;">
+			<h1>Sheet Music Catalog</h1>
+			<p>Browse my complete collection of classical guitar arrangements. Each tile pulls a fresh snapshot directly from the live listing, so you can confirm the piece before jumping to Sheet Music Direct.</p>
+			
+			<!-- Filter/Sort Options -->
+			<div class="filters">
+				<button class="filter-btn active" onclick="filterBy('all')">All Pieces</button>
+				<button class="filter-btn" onclick="filterBy('classical')">Classical</button>
+				<button class="filter-btn" onclick="filterBy('jazz')">Jazz/Standards</button>
+				<button class="filter-btn" onclick="filterBy('popular')">Popular</button>
+				<button class="filter-btn" onclick="filterBy('beginner')">Beginner</button>
+				<button class="filter-btn" onclick="filterBy('intermediate')">Intermediate</button>
+				<button class="filter-btn" onclick="filterBy('advanced')">Advanced</button>
+			</div>
+			
+			<!-- Search Bar -->
+			<div style="margin: 20px 0;">
+				<input type="text" id="search-bar" placeholder="Search by title, composer, or keyword..." onkeyup="searchCatalog()">
+			</div>
+			
+			<!-- Catalog Grid (populated by JavaScript from catalog-data.json) -->
+			<div class="catalog-grid" id="catalog-grid">
+				<!-- Items will be dynamically loaded here -->
+				<p style="text-align: center; grid-column: 1 / -1;">Loading catalog...</p>
+			</div>
+		</div>
+		
+		<!-- Footer -->
+		<div style="text-align: center; padding: 40px 20px; margin-top: 60px; background: #f5f5f5;">
+			<p>&copy; 2025 Brian Streckfus. All sheet music available on <a href="https://www.sheetmusicdirect.com/en-US/Search.aspx?query=Brian%2BStreckfus" target="_blank">Sheet Music Direct</a>.</p>
+			<a href="Website_HTML_3_Merchant.html">Back to Home</a>
+		</div>
+	</body>
+</html>
+
