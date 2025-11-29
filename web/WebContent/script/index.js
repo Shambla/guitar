@@ -27,9 +27,10 @@ ga('send', 'pageview');
 
 
 $(document).ready(function() {
-	setTimeout(function() {$("#performer").addClass("active");}, 500);
-	setTimeout(function() {$("#composer").addClass("active");}, 1200);
-	setTimeout(function() {$("#teacher").addClass("active");}, 2000);
+	setTimeout(function() {$("#teacher").addClass("active");}, 500);
+	setTimeout(function() {$("#arranger").addClass("active");}, 1200);
+	setTimeout(function() {$("#performer").addClass("active");}, 2000);
+	setTimeout(function() {$("#content-creator").addClass("active");}, 2800);
 	setTimeout(function() {$("#producer").addClass("active");}, 2800);
 	
 	setTimeout(function() {$("#addy").html(e1 + e2 + e3 + e4)}, 3000);
@@ -61,13 +62,19 @@ $(document).ready(function() {
 		      target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
 		      if (target.length) {
 		        $('html,body').animate({
-		          scrollTop: target.offset().top
-		        }, 1000);
+		          scrollTop: target.offset().top - 80 // Account for fixed nav
+		        }, 600); // Faster scroll animation
 		        return false;
 		      }
 		    }
 		  });
 		});
+	
+	// Initialize modern scroll animations
+	initScrollAnimations();
+	
+	// Add animation classes to elements
+	setupAnimationClasses();
 });
 
 function randomizeBars() {
@@ -161,13 +168,20 @@ function scrolled() {
 	
 	if(distance > 20) {
 		$("#backing").addClass("scrolled");
+		$("nav").addClass("scrolled");
 	} else {
 		$("#backing").removeClass("scrolled");
+		$("nav").removeClass("scrolled");
 	}
 	
 	var heroOpacity = 1 - ((distance - heights.bio / 2.75) / (heights.bio / 2.75));
 	
 	$("#hero").css("opacity", Math.max(0, Math.min(1, heroOpacity)));
+	
+	// Subtle parallax effect for hero
+	if(distance < heights.bio) {
+		$("#hero").css("transform", "translateY(" + (distance * 0.2) + "px)");
+	}
 	
 	if(distance > heights.performances - 550) {
 		$("#perform").addClass("active");
@@ -175,9 +189,110 @@ function scrolled() {
 	
 	if(distance > heights.bio - 550) {
 		$("#bio-pic").addClass("active");
+		$("#desk-pic").addClass("active");
 	}
 	
 	if(distance > heights.contact - 550) {
 		$("#contact-pic").addClass("active");
 	}
+}
+
+// Modern Intersection Observer for scroll animations
+function initScrollAnimations() {
+	// Helper function to check if element is in viewport
+	function isInViewport(el) {
+		const rect = el.getBoundingClientRect();
+		return (
+			rect.top >= 0 &&
+			rect.left >= 0 &&
+			rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+			rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+		);
+	}
+	
+	// Animate elements already in viewport immediately
+	function animateVisibleElements() {
+		document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .fade-in, .scale-in').forEach(function(el) {
+			if (isInViewport(el)) {
+				el.classList.add('animate');
+			}
+		});
+	}
+	
+	// Animate visible elements on page load
+	setTimeout(animateVisibleElements, 100);
+	
+	// Check if Intersection Observer is supported
+	if ('IntersectionObserver' in window) {
+		const observerOptions = {
+			root: null,
+			rootMargin: '0px 0px -50px 0px',
+			threshold: 0.15
+		};
+		
+		const observer = new IntersectionObserver(function(entries) {
+			entries.forEach(function(entry) {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('animate');
+				}
+			});
+		}, observerOptions);
+		
+		// Observe all elements with animation classes
+		document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .fade-in, .scale-in').forEach(function(el) {
+			// Only observe if not already animated
+			if (!el.classList.contains('animate')) {
+				observer.observe(el);
+			}
+		});
+		
+		// Observe sections (but exclude left/right halves and contact details)
+		document.querySelectorAll('.content > div:not(.left-half):not(.right-half):not(#bio-right):not(#performance-details):not(#contact-details)').forEach(function(el) {
+			if (!el.classList.contains('animate')) {
+				observer.observe(el);
+			}
+		});
+		
+		// Observe list items with staggered delays (only those with fade-in-up class)
+		document.querySelectorAll('ol li.fade-in-up, ul li.fade-in-up').forEach(function(el, index) {
+			el.style.transitionDelay = (index * 0.1) + 's';
+			if (!el.classList.contains('animate')) {
+				observer.observe(el);
+			}
+		});
+		
+		// Observe footer
+		const footer = document.querySelector('footer');
+		if (footer && !footer.classList.contains('animate')) {
+			observer.observe(footer);
+		}
+	} else {
+		// Fallback for older browsers - animate immediately
+		document.querySelectorAll('.fade-in-up, .fade-in-left, .fade-in-right, .fade-in, .scale-in').forEach(function(el) {
+			el.classList.add('animate');
+		});
+	}
+}
+
+// Add animation classes to elements
+function setupAnimationClasses() {
+	// Ensure contact items animate properly
+	$('.contact.fade-in-up').each(function(index) {
+		$(this).addClass('animate-delay-' + Math.min(index + 1, 5));
+	});
+	
+	// Make sure contact section is visible immediately
+	$('#contact-details').css('opacity', '1');
+	$('.contacts').css('opacity', '1');
+	
+	// Animate contact items that are already visible
+	setTimeout(function() {
+		$('.contact.fade-in-up').each(function() {
+			const el = this;
+			const rect = el.getBoundingClientRect();
+			if (rect.top < window.innerHeight && rect.bottom > 0) {
+				$(el).addClass('animate');
+			}
+		});
+	}, 200);
 }

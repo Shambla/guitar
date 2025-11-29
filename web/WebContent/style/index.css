@@ -1,3 +1,161 @@
+/* ============================================
+   MODERN ANIMATIONS & CSS VARIABLES
+   ============================================ */
+:root {
+	--primary-color: #f1cfab;
+	--bg-color: #151a20;
+	--text-color: #ffffff;
+	--transition-fast: 0.3s;
+	--transition-medium: 0.5s;
+	--transition-slow: 0.8s;
+	--ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	--ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+	--shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+	--shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
+	--shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Smooth scrolling */
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 80px; /* Account for fixed nav */
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeInLeft {
+	from {
+		opacity: 0;
+		transform: translateX(-30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes fadeInRight {
+	from {
+		opacity: 0;
+		transform: translateX(30px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes scaleIn {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes slideInFromBottom {
+	from {
+		opacity: 0;
+		transform: translateY(50px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: -1000px 0;
+	}
+	100% {
+		background-position: 1000px 0;
+	}
+}
+
+/* Scroll-triggered animation classes */
+.fade-in-up {
+	opacity: 0;
+	transform: translateY(15px);
+	transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.fade-in-up.animate {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.fade-in-left {
+	opacity: 0;
+	transform: translateX(-15px);
+	transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.fade-in-left.animate {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.fade-in-right {
+	opacity: 0;
+	transform: translateX(15px);
+	transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.fade-in-right.animate {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.fade-in {
+	opacity: 0;
+	transition: opacity 0.8s var(--ease-out);
+}
+
+.fade-in.animate {
+	opacity: 1;
+}
+
+.scale-in {
+	opacity: 0;
+	transform: scale(0.95);
+	transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.scale-in.animate {
+	opacity: 1;
+	transform: scale(1);
+}
+
+/* Staggered animation delays */
+.animate-delay-1 { transition-delay: 0.1s; }
+.animate-delay-2 { transition-delay: 0.2s; }
+.animate-delay-3 { transition-delay: 0.3s; }
+.animate-delay-4 { transition-delay: 0.4s; }
+.animate-delay-5 { transition-delay: 0.5s; }
+
 @media all and (min-width: 1600px) {
 	body {
 		font-size:	16px;
@@ -224,6 +382,17 @@ nav {
 	z-index:		100;
 }
 
+nav {
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	transition: background-color var(--transition-medium), box-shadow var(--transition-medium);
+}
+
+nav.scrolled {
+	background-color: rgba(21, 26, 32, 0.95);
+	box-shadow: var(--shadow-md);
+}
+
 nav a {
 	margin:			0px 15px;
 	color:			#ffffff;
@@ -231,15 +400,41 @@ nav a {
 	text-decoration:none;
 	font-size:		1.125em;
 	font-weight:	300;
-	transition:		color 0.3s;
+	position:		relative;
+	transition:		color var(--transition-fast), transform var(--transition-fast);
+	display:		inline-block;
 }
 
 nav a:visited {
 	color:			#ffffff;
 }
 
+nav a::after {
+	content:		'';
+	position:		absolute;
+	width:			0;
+	height:			2px;
+	bottom:			-5px;
+	left:			50%;
+	background-color: var(--primary-color);
+	transition:		width var(--transition-fast), left var(--transition-fast);
+	transform:		translateX(-50%);
+}
+
 nav a:hover {
 	color:			#f1cfab;
+	transform:		translateY(-2px);
+}
+
+nav a:hover::after {
+	width:			100%;
+	left:			0;
+	transform:		translateX(0);
+}
+
+.catalog-nav-link {
+	line-height:		1.4;
+	text-align:		center;
 }
 
 #backing {
@@ -286,7 +481,26 @@ nav a:hover {
 #hero {
 	width:			100%;
 	background-position: center top;
-	transition:		opacity 1s;
+	background-attachment: fixed;
+	transition:		opacity 1s, transform 0.3s;
+	position:		relative;
+	overflow:		hidden;
+}
+
+#hero::before {
+	content:		'';
+	position:		absolute;
+	top:			0;
+	left:			0;
+	right:			0;
+	bottom:			0;
+	background:		linear-gradient(135deg, rgba(21, 26, 32, 0.3) 0%, rgba(241, 207, 171, 0.1) 100%);
+	z-index:		1;
+}
+
+#hero .content {
+	position:		relative;
+	z-index:		2;
 }
 
 #hero h1 {
@@ -294,6 +508,8 @@ nav a:hover {
 	padding-bottom:	0px;
 	color:			#f1cfab;
 	border:			none;
+	animation:		fadeInUp 1s var(--ease-out) 0.3s both;
+	text-shadow:	0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 #creds h3 {
@@ -322,28 +538,67 @@ nav a:hover {
 
 #bio-right {
 	text-align:		center;
+	display:			flex;
+	flex-direction:		row;
+	gap:				15px;
+	align-items:		flex-start;
+	justify-content:	center;
+	flex-wrap:			wrap;
 }
 
 #bio-pic {
 	margin-top:		100px;
 	opacity:		0;
-	transition:		margin 1s, opacity 1s;
+	transition:		margin 1s var(--ease-out), opacity 1s var(--ease-out), transform 0.3s var(--ease-out);
+	transform:		scale(0.95);
+	flex:			0 1 auto;
+	max-width:		48%;
+	height:			auto;
 }
 
 #bio-pic.active {
 	margin-top:		0px;
 	opacity:		1;
+	transform:		scale(1);
+}
+
+#bio-pic:hover {
+	transform:		scale(1.02);
+}
+
+#desk-pic {
+	transition:		transform 0.3s var(--ease-out), opacity 0.3s;
+	margin-top:		100px;
+	flex:			0 1 auto;
+	max-width:		48%;
+	height:			auto;
+	opacity:		0;
+}
+
+#desk-pic.active {
+	margin-top:		0px;
+	opacity:		1;
+}
+
+#desk-pic:hover {
+	transform:		scale(1.02);
 }
 
 #perform {
 	margin-top:		180px;
 	opacity:		0;
-	transition:		margin 1s, opacity 1s;
+	transition:		margin 1s var(--ease-out), opacity 1s var(--ease-out), transform 0.3s var(--ease-out);
+	transform:		scale(0.95);
 }
 
 #perform.active {
 	margin-top:		80px;
 	opacity:		1;
+	transform:		scale(1);
+}
+
+#perform:hover {
+	transform:		scale(1.02);
 }
 
 #performance-details h3 {
@@ -377,14 +632,29 @@ nav a:hover {
 }
 
 #contact-pic {
-	margin:			300px 0px 150px 0px;
-	opacity:		0;
-	transition:		margin 1s, opacity 1s;
+	position:		absolute;
+	top:			50%;
+	left:			50%;
+	transform:		translate(-50%, -50%) scale(1);
+	width:			80%;
+	max-width:		800px;
+	height:			auto;
+	opacity:		0.25;
+	z-index:		1;
+	margin:			0 !important;
+	transition:		opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+	pointer-events:	none;
 }
 
 #contact-pic.active {
-	margin-top:		200px;
-	opacity:		1;
+	opacity:		0.25;
+	margin-top:		0 !important;
+	transform:		translate(-50%, -50%) scale(1);
+}
+
+#contact-pic:hover {
+	opacity:		0.3;
+	transform:		translate(-50%, -50%) scale(1.02);
 }
 
 #contact-details a, #contact-details span {
@@ -403,12 +673,43 @@ nav a:hover {
 .link-button, .link-button:visited {
 	display: 		inline-block;
 	margin-top:		30px;
-	padding:		8px 16px;
+	padding:		12px 24px;
 	background:		#f1cfab;
 	color:			#151a20;
-	border-radius:  4px;
+	border-radius:  6px;
 	font-size:		1.15em;
 	font-weight:	400;
+	position:		relative;
+	overflow:		hidden;
+	transition:		all var(--transition-fast) var(--ease-out);
+	box-shadow:		var(--shadow-sm);
+	cursor:			pointer;
+	text-align:		center;
+}
+
+.link-button::before {
+	content:		'';
+	position:		absolute;
+	top:			0;
+	left:			-100%;
+	width:			100%;
+	height:			100%;
+	background:		linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+	transition:		left 0.5s;
+}
+
+.link-button:hover {
+	transform:		translateY(-3px) scale(1.05);
+	box-shadow:		var(--shadow-lg);
+	background:		#e8c099;
+}
+
+.link-button:hover::before {
+	left:			100%;
+}
+
+.link-button:active {
+	transform:		translateY(-1px) scale(1.02);
 }
 
 .content {
@@ -420,10 +721,30 @@ nav a:hover {
 	padding:		50px 0px 10px 0px;
 	border-bottom:	1px solid #f1cfab;
 	font-size:		2.5em;
+	position:		relative;
+	overflow:		hidden;
+}
+
+.content h1::after {
+	content:		'';
+	position:		absolute;
+	bottom:			0;
+	left:			-100%;
+	width:			100%;
+	height:			2px;
+	background:		linear-gradient(90deg, transparent, var(--primary-color), transparent);
+	animation:		slideIn 1s var(--ease-out) 0.5s forwards;
+}
+
+@keyframes slideIn {
+	to {
+		left:			100%;
+	}
 }
 
 .content h3 {
 	margin-bottom:	40px;
+	text-align:		center;
 }
 
 .bar {
@@ -439,13 +760,33 @@ nav a:hover {
 	float:			left;
 	min-height:		300px;
 	margin-right:	25px;
-	text-align:		left;
+	text-align:		center;
+	opacity:		1; /* Visible by default */
+}
+
+.left-half.fade-in-left {
+	opacity:		0; /* Only hide if animation class is present */
+}
+
+.left-half.fade-in-left.animate {
+	opacity:		1;
+	transform:		translateX(0);
 }
 
 .right-half {
 	float:			left;
 	margin-left:	25px;
-	text-align:		left;
+	text-align:		center;
+	opacity:		1; /* Visible by default */
+}
+
+.right-half.fade-in-right {
+	opacity:		0; /* Only hide if animation class is present */
+}
+
+.right-half.fade-in-right.animate {
+	opacity:		1;
+	transform:		translateX(0);
 }
 
 .right {
@@ -470,4 +811,105 @@ nav a:hover {
 	float:			left;
 	margin:			6px 30px 40px 0px;
 	font-size:		2em;
+	transition:		transform var(--transition-fast), color var(--transition-fast);
+}
+
+.contact:hover .fa {
+	transform:		scale(1.2) rotate(5deg);
+	color:			var(--primary-color);
+}
+
+.contact {
+	transition:		transform var(--transition-fast);
+	opacity:		1; /* Ensure contact items are visible by default */
+}
+
+.contact.fade-in-up {
+	opacity:		0; /* Only hide if they have the animation class */
+}
+
+.contact.fade-in-up.animate {
+	opacity:		1;
+}
+
+.contact:hover {
+	transform:		translateX(5px);
+}
+
+/* Ensure contacts container and contact details are visible */
+.contacts {
+	opacity:		1 !important;
+}
+
+#contact-details {
+	opacity:		1 !important;
+	position:		relative;
+	z-index:		2;
+	background:		rgba(21, 26, 32, 0.4);
+	padding:		30px;
+	border-radius:	8px;
+	backdrop-filter: blur(2px);
+	-webkit-backdrop-filter: blur(2px);
+}
+
+#contact-details.fade-in-right {
+	opacity:		1 !important; /* Override fade-in-right for contact section */
+	transform:		translateX(0) !important;
+}
+
+/* Image hover effects */
+img {
+	transition:		transform var(--transition-medium) var(--ease-out), filter var(--transition-medium);
+}
+
+img:hover {
+	filter:			brightness(1.1);
+}
+
+/* Section animations - Only apply to specific sections, not all divs */
+.content > div:not(.left-half):not(.right-half):not(#bio-right):not(#performance-details):not(#contact-details) {
+	opacity:		0;
+	transform:		translateY(15px);
+	transition:		opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}
+
+.content > div:not(.left-half):not(.right-half):not(#bio-right):not(#performance-details):not(#contact-details).animate {
+	opacity:		1;
+	transform:		translateY(0);
+}
+
+/* List item animations - Make subtle, only if they have the class */
+ol li.fade-in-up, ul li.fade-in-up {
+	opacity:		0;
+	transform:		translateY(10px);
+	transition:		opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+}
+
+ol li.fade-in-up.animate, ul li.fade-in-up.animate {
+	opacity:		1;
+	transform:		translateY(0);
+}
+
+/* YouTube iframe animations */
+iframe {
+	transition:		transform var(--transition-medium), box-shadow var(--transition-medium);
+	border-radius:	8px;
+	box-shadow:		var(--shadow-sm);
+}
+
+iframe:hover {
+	transform:		scale(1.02);
+	box-shadow:		var(--shadow-md);
+}
+
+/* Footer animation */
+footer {
+	opacity:		0;
+	transform:		translateY(20px);
+	transition:		opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+}
+
+footer.animate {
+	opacity:		1;
+	transform:		translateY(0);
 }
