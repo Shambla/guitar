@@ -10,14 +10,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Load catalog from JSON file
 function loadCatalog() {
+    console.log('Loading catalog...');
+    // Use simple relative path - catalog-data.json is in same directory as catalog.html
     fetch('catalog-data.json')
         .then(response => {
+            console.log('Fetch response:', response.status, response.statusText);
             if (!response.ok) {
-                throw new Error('Catalog data not found');
+                throw new Error(`Catalog data not found: ${response.status} ${response.statusText}`);
             }
             return response.json();
         })
         .then(data => {
+            console.log('Catalog data loaded:', data.length, 'items');
             catalogData = data;
             displayCatalog(catalogData);
         })
@@ -30,7 +34,13 @@ function loadCatalog() {
 
 // Display catalog items
 function displayCatalog(items) {
+    console.log('Displaying catalog:', items.length, 'items');
     const grid = document.getElementById('catalog-grid');
+    
+    if (!grid) {
+        console.error('Catalog grid element not found!');
+        return;
+    }
     
     if (items.length === 0) {
         grid.innerHTML = '<p class="no-results">No pieces match your search. Try a different filter or search term.</p>';
@@ -38,48 +48,58 @@ function displayCatalog(items) {
     }
     
     grid.innerHTML = '';
+    console.log('Grid cleared, creating', items.length, 'items...');
     
-    items.forEach(item => {
-        const itemDiv = document.createElement('div');
-        itemDiv.className = 'catalog-item';
-        itemDiv.setAttribute('data-category', `${item.category} ${item.difficulty.toLowerCase()}`);
-        itemDiv.setAttribute('data-search', `${item.title} ${item.composer} ${item.category} ${item.difficulty}`.toLowerCase());
-        
-        // Difficulty class for color coding
-        const difficultyClass = item.difficulty.toLowerCase();
-        
-        const previewTarget = item.preview_url || item.sheet_music_direct_url;
-        const encodedPreview = encodeURIComponent(previewTarget);
-        let previewImageSrc = `https://image.thum.io/get/width/600/crop/600/${encodedPreview}`;
-        let captionText = 'Snapshot of the live listing (auto-refreshes periodically)';
+    let itemsCreated = 0;
+    items.forEach((item, index) => {
+        try {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'catalog-item';
+            itemDiv.setAttribute('data-category', `${item.category} ${item.difficulty.toLowerCase()}`);
+            itemDiv.setAttribute('data-search', `${item.title} ${item.composer} ${item.category} ${item.difficulty}`.toLowerCase());
+            
+            // Difficulty class for color coding
+            const difficultyClass = item.difficulty.toLowerCase();
+            
+            // Use manual preview images only (no thum.io)
+            let previewImageSrc = item.preview_image || 'img/sheet.png';
+            let captionText = 'Preview image';
 
-        if (item.preview_image) {
-            previewImageSrc = item.preview_image;
-            captionText = 'Preview image (replace with your own screenshot)';
-        } else if (previewImageSrc.startsWith('https://image.thum.io')) {
-            captionText = 'Snapshot of the live listing (auto-refreshes periodically)';
+            itemDiv.innerHTML = `
+                <div class="preview-screen">
+                    <img class="live-preview" src="${previewImageSrc}" alt="Preview of ${item.title}">
+                    <span class="preview-caption">${captionText}</span>
+                </div>
+                <div class="composer">${item.composer}</div>
+                <h3>${item.title}</h3>
+                <span class="category-tag">${item.category}</span>
+                <p class="difficulty ${difficultyClass}">${item.difficulty}</p>
+                <p class="price">${item.price}</p>
+                <a class="link-button" href="${item.sheet_music_direct_url}" target="_blank" rel="noopener">Open Listing</a>
+            `;
+            
+            grid.appendChild(itemDiv);
+            itemsCreated++;
+            if (index === 0) {
+                console.log('First item created and appended:', item.title);
+            }
+        } catch (error) {
+            console.error('Error creating item', index, ':', error);
         }
-
-        if (!previewImageSrc) {
-            previewImageSrc = 'img/sheet.png';
-            captionText = 'Preview image (replace with your own screenshot)';
-        }
-
-        itemDiv.innerHTML = `
-            <div class="preview-screen">
-                <img class="live-preview" src="${previewImageSrc}" alt="Preview of ${item.title}" data-source="${previewTarget}">
-                <span class="preview-caption">${captionText}</span>
-            </div>
-            <div class="composer">${item.composer}</div>
-            <h3>${item.title}</h3>
-            <span class="category-tag">${item.category}</span>
-            <p class="difficulty ${difficultyClass}">${item.difficulty}</p>
-            <p class="price">${item.price}</p>
-            <a class="link-button" href="${item.sheet_music_direct_url}" target="_blank" rel="noopener">Open Listing</a>
-        `;
-        
-        grid.appendChild(itemDiv);
     });
+    
+    console.log('Items created:', itemsCreated, 'of', items.length);
+    console.log('Grid children count:', grid.children.length);
+    console.log('Grid computed style display:', window.getComputedStyle(grid).display);
+    
+    // Force a visual test - add a red border to verify grid is visible
+    if (grid.children.length > 0) {
+        grid.style.border = '3px solid red';
+        grid.style.minHeight = '200px';
+        console.log('✅ Grid has', grid.children.length, 'children. If you see a red border, items are there but may be hidden by CSS.');
+    } else {
+        console.error('❌ Grid has NO children! Items were not appended.');
+    }
 }
 
 // Filter catalog by category
