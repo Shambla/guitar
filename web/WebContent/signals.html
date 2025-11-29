@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="style/montserrat.css">
+		<link type="text/css" rel="stylesheet" href="style/font-awesome.css">
+		<link type="text/css" rel="stylesheet" href="style/index.css">
+		<link rel="shortcut icon" href="img/favico.ico" type="image/x-icon">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<title>Trading Signals - Live Feed</title>
+		<style>
+			.signals-container {
+				margin-top: 100px;
+				padding: 20px;
+			}
+			.signals-header {
+				text-align: center;
+				margin-bottom: 30px;
+			}
+			.status-indicator {
+				display: inline-block;
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+				margin-right: 8px;
+				animation: pulse 2s infinite;
+			}
+			.status-indicator.active {
+				background-color: #4caf50;
+			}
+			.status-indicator.inactive {
+				background-color: #f44336;
+			}
+			@keyframes pulse {
+				0%, 100% { opacity: 1; }
+				50% { opacity: 0.5; }
+			}
+			.signals-grid {
+				display: grid !important;
+				grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+				gap: 20px;
+				margin-top: 20px;
+				visibility: visible !important;
+				opacity: 1 !important;
+				min-height: 200px;
+			}
+			.signal-card {
+				background: rgba(255, 255, 255, 0.05) !important;
+				border: 1px solid rgba(255, 255, 255, 0.1) !important;
+				border-radius: 8px;
+				padding: 20px;
+				transition: all 0.3s ease;
+				animation: fadeInUp 0.5s ease;
+				display: block !important;
+				visibility: visible !important;
+				opacity: 1 !important;
+				color: #ffffff !important;
+				margin: 10px;
+			}
+			.signal-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+				border-color: rgba(255, 255, 255, 0.3);
+			}
+			.signal-card.buy {
+				border-left: 4px solid #4caf50;
+			}
+			.signal-card.sell {
+				border-left: 4px solid #f44336;
+			}
+			.confluence-badge {
+				display: inline-block;
+				padding: 4px 8px;
+				border-radius: 4px;
+				font-size: 11px;
+				font-weight: bold;
+				margin-left: 8px;
+				text-transform: uppercase;
+			}
+			.confluence-pure {
+				background-color: rgba(76, 175, 80, 0.3);
+				color: #4caf50;
+			}
+			.confluence-ema {
+				background-color: rgba(255, 152, 0, 0.3);
+				color: #ff9800;
+			}
+			.confluence-hmm {
+				background-color: rgba(255, 235, 59, 0.3);
+				color: #fbc02d;
+			}
+			.confluence-extreme {
+				background-color: rgba(244, 67, 54, 0.3);
+				color: #f44336;
+			}
+			.confluence-raw {
+				background-color: rgba(158, 158, 158, 0.3);
+				color: #9e9e9e;
+			}
+			.note-highlight {
+				font-weight: 600;
+				color: var(--primary-color);
+				margin-top: 10px;
+				padding: 8px;
+				background: rgba(241, 207, 171, 0.1);
+				border-radius: 4px;
+				border-left: 3px solid var(--primary-color);
+			}
+			.signal-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 15px;
+			}
+			.signal-header > div {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+			}
+			.signal-action {
+				font-size: 18px;
+				font-weight: bold;
+				text-transform: uppercase;
+				padding: 5px 15px;
+				border-radius: 4px;
+			}
+			.signal-action.buy {
+				background-color: rgba(76, 175, 80, 0.2);
+				color: #4caf50;
+			}
+			.signal-action.sell {
+				background-color: rgba(244, 67, 54, 0.2);
+				color: #f44336;
+			}
+			.signal-symbol {
+				font-size: 24px;
+				font-weight: bold;
+				color: var(--primary-color);
+			}
+			.signal-details {
+				margin-top: 15px;
+			}
+			.signal-detail-row {
+				display: flex;
+				justify-content: space-between;
+				padding: 8px 0;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+			}
+			.signal-detail-row:last-child {
+				border-bottom: none;
+			}
+			.signal-detail-label {
+				color: rgba(255, 255, 255, 0.7);
+				font-size: 14px;
+			}
+			.signal-detail-value {
+				color: #ffffff;
+				font-weight: 500;
+			}
+			.signal-timestamp {
+				font-size: 12px;
+				color: rgba(255, 255, 255, 0.5);
+				margin-top: 10px;
+			}
+			.empty-state {
+				text-align: center;
+				padding: 60px 20px;
+				color: rgba(255, 255, 255, 0.6);
+			}
+			.refresh-info {
+				text-align: center;
+				margin-top: 20px;
+				color: rgba(255, 255, 255, 0.5);
+				font-size: 14px;
+			}
+			.loading {
+				text-align: center;
+				padding: 40px;
+				color: rgba(255, 255, 255, 0.6) !important;
+				visibility: visible !important;
+				display: block !important;
+			}
+			.empty-state {
+				text-align: center;
+				padding: 60px 20px;
+				color: rgba(255, 255, 255, 0.6) !important;
+				visibility: visible !important;
+				display: block !important;
+			}
+			.disclaimer-overlay {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.95);
+				z-index: 10000;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				padding: 20px;
+			}
+			.disclaimer-modal {
+				background: var(--bg-color);
+				border: 2px solid var(--primary-color);
+				border-radius: 12px;
+				padding: 30px;
+				max-width: 700px;
+				max-height: 80vh;
+				overflow-y: auto;
+				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+			}
+			.disclaimer-modal h2 {
+				color: var(--primary-color);
+				margin-top: 0;
+				margin-bottom: 20px;
+				text-align: center;
+				font-size: 24px;
+			}
+			.disclaimer-content {
+				color: rgba(255, 255, 255, 0.9);
+				line-height: 1.8;
+				margin-bottom: 25px;
+			}
+			.disclaimer-content p {
+				margin-bottom: 15px;
+			}
+			.disclaimer-content strong {
+				color: var(--primary-color);
+				font-weight: bold;
+			}
+			.disclaimer-content ul {
+				margin-left: 20px;
+				margin-bottom: 15px;
+			}
+			.disclaimer-content li {
+				margin-bottom: 10px;
+			}
+			.disclaimer-warning {
+				background: rgba(244, 67, 54, 0.2);
+				border-left: 4px solid #f44336;
+				padding: 15px;
+				margin: 20px 0;
+				border-radius: 4px;
+			}
+			.disclaimer-accept {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				gap: 12px;
+				margin: 25px 0;
+			}
+			.disclaimer-checkbox {
+				width: 20px;
+				height: 20px;
+				cursor: pointer;
+			}
+			.disclaimer-checkbox-label {
+				color: rgba(255, 255, 255, 0.9);
+				cursor: pointer;
+				user-select: none;
+			}
+			.disclaimer-button {
+				width: 100%;
+				padding: 15px;
+				background: var(--primary-color);
+				color: var(--bg-color);
+				border: none;
+				border-radius: 6px;
+				font-size: 16px;
+				font-weight: bold;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				opacity: 0.5;
+				pointer-events: none;
+			}
+			.disclaimer-button:enabled {
+				opacity: 1;
+				pointer-events: auto;
+			}
+			.disclaimer-button:enabled:hover {
+				background: #d4b896;
+				transform: translateY(-2px);
+				box-shadow: 0 4px 12px rgba(241, 207, 171, 0.4);
+			}
+			.disclaimer-hidden {
+				display: none !important;
+			}
+			.indicators-section {
+				margin-top: 60px;
+				padding: 40px 20px;
+				background: rgba(0, 0, 0, 0.3);
+				border-radius: 12px;
+				border: 1px solid rgba(255, 255, 255, 0.1);
+			}
+			.indicators-header {
+				text-align: center;
+				margin-bottom: 40px;
+			}
+			.indicators-header h2 {
+				color: var(--primary-color);
+				font-size: 32px;
+				margin-bottom: 10px;
+			}
+			.indicators-header p {
+				color: rgba(255, 255, 255, 0.7);
+				font-size: 16px;
+				max-width: 800px;
+				margin: 0 auto;
+			}
+			.indicators-content {
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+			.indicator-category {
+				margin-bottom: 40px;
+				background: rgba(255, 255, 255, 0.03);
+				border-radius: 8px;
+				padding: 25px;
+				border-left: 4px solid var(--primary-color);
+			}
+			.indicator-category h3 {
+				color: var(--primary-color);
+				font-size: 24px;
+				margin-bottom: 20px;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				padding-bottom: 10px;
+			}
+			.indicator-category h4 {
+				color: rgba(255, 255, 255, 0.9);
+				font-size: 18px;
+				margin-top: 20px;
+				margin-bottom: 12px;
+			}
+			.indicator-category ul {
+				list-style: none;
+				padding-left: 0;
+				margin: 0;
+			}
+			.indicator-category li {
+				color: rgba(255, 255, 255, 0.8);
+				padding: 8px 0;
+				padding-left: 20px;
+				position: relative;
+				line-height: 1.6;
+			}
+			.indicator-category li:before {
+				content: "▸";
+				position: absolute;
+				left: 0;
+				color: var(--primary-color);
+			}
+			.indicator-category strong {
+				color: var(--primary-color);
+				font-weight: bold;
+			}
+			.summary-stats {
+				background: rgba(241, 207, 171, 0.1);
+				border: 2px solid var(--primary-color);
+				border-radius: 8px;
+				padding: 30px;
+				margin-top: 40px;
+				text-align: center;
+			}
+			.summary-stats h3 {
+				color: var(--primary-color);
+				font-size: 28px;
+				margin-bottom: 20px;
+			}
+			.summary-stats ul {
+				list-style: none;
+				padding: 0;
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				gap: 15px;
+				margin: 20px 0;
+			}
+			.summary-stats li {
+				color: rgba(255, 255, 255, 0.9);
+				font-size: 16px;
+				padding: 10px;
+				background: rgba(0, 0, 0, 0.2);
+				border-radius: 4px;
+			}
+			.philosophy-box {
+				background: rgba(76, 175, 80, 0.1);
+				border-left: 4px solid #4caf50;
+				padding: 25px;
+				margin-top: 30px;
+				border-radius: 4px;
+			}
+			.philosophy-box h4 {
+				color: #4caf50;
+				margin-top: 0;
+				margin-bottom: 15px;
+			}
+			.philosophy-box ol {
+				margin-left: 20px;
+				color: rgba(255, 255, 255, 0.9);
+			}
+			.philosophy-box li {
+				margin-bottom: 10px;
+				line-height: 1.6;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Disclaimer Modal -->
+		<div id="disclaimer-overlay" class="disclaimer-overlay">
+			<div class="disclaimer-modal">
+				<h2>⚠️ Important Disclaimer</h2>
+				<div class="disclaimer-content">
+					<div class="disclaimer-warning">
+						<strong>NOT FINANCIAL ADVICE:</strong> I am not a certified financial advisor, registered investment advisor, or licensed financial professional. The trading signals displayed on this website are for informational and educational purposes only.
+					</div>
+					
+					<p><strong>Seek Professional Advice:</strong> Before making any investment decisions, you should consult with a qualified financial advisor, accountant, or other professional who can provide advice tailored to your individual circumstances.</p>
+					
+					<p><strong>Cryptocurrency Volatility:</strong> Cryptocurrencies are among the most volatile assets in the world. Prices can experience extreme fluctuations and may decline by 99% or more. You could lose your entire investment.</p>
+					
+					<p><strong>SEC & CFTC Disclaimers:</strong></p>
+					<ul>
+						<li>Past performance does not guarantee future results.</li>
+						<li>All investments carry risk of loss, including the potential loss of principal.</li>
+						<li>Cryptocurrency markets are largely unregulated and may be subject to manipulation.</li>
+						<li>Trading cryptocurrencies involves substantial risk of loss and is not suitable for all investors.</li>
+						<li>You should only invest money you can afford to lose.</li>
+					</ul>
+					
+					<p><strong>Risk Management:</strong> Manage your risk accordingly. Never invest more than you can afford to lose. Use proper position sizing, stop-loss orders, and risk management techniques.</p>
+					
+					<div class="disclaimer-warning">
+						<strong>Security Warnings:</strong>
+						<ul>
+							<li><strong>Hold Your Own Keys:</strong> Always maintain control of your private keys and seed phrases. Never share them with anyone, including this website or any service.</li>
+							<li><strong>Website Permissions:</strong> Be extremely careful when granting websites or applications permission to access your cryptocurrency wallets or funds. Only connect to trusted, verified services.</li>
+							<li><strong>Phishing Scams:</strong> Be vigilant against phishing scams. Always verify website URLs, never click suspicious links, and never enter your private keys or seed phrases on any website.</li>
+							<li><strong>No Liability:</strong> This website and its operators are not responsible for any losses, damages, or security breaches that may occur from using the information displayed here.</li>
+						</ul>
+					</div>
+					
+					<p><strong>No Guarantees:</strong> Trading signals are not guarantees of profit. Market conditions can change rapidly, and past signals do not predict future performance.</p>
+				</div>
+				
+				<div class="disclaimer-accept">
+					<input type="checkbox" id="disclaimer-checkbox" class="disclaimer-checkbox">
+					<label for="disclaimer-checkbox" class="disclaimer-checkbox-label">
+						I have read and understand the risks. I agree that I am solely responsible for my investment decisions and will not hold this website or its operators liable for any losses.
+					</label>
+				</div>
+				
+				<button id="disclaimer-accept-btn" class="disclaimer-button" disabled>
+					Accept & Continue
+				</button>
+			</div>
+		</div>
+		
+		<nav>
+			<div id="backing"></div>
+			<div class="content">
+				<a href="index.html">HOME</a>
+				<a href="catalog.html">CATALOG</a>
+				<a href="signals.html" style="font-weight: bold;">SIGNALS</a>
+			</div>
+		</nav>
+		
+		<div class="content signals-container" id="signals-content">
+			<div class="signals-header">
+				<h1>Trading Signals</h1>
+				<p>Live feed of buy and sell signals from trading strategies</p>
+				<div style="margin-top: 15px;">
+					<span class="status-indicator active" id="status-indicator"></span>
+					<span id="status-text">Connected</span>
+					<span style="margin-left: 20px;" id="last-update"></span>
+				</div>
+			</div>
+			
+			<div id="signals-grid" class="signals-grid" style="background: rgba(255,0,0,0.1); border: 2px dashed rgba(255,255,255,0.3); padding: 20px; min-height: 300px;">
+				<div class="loading">⏳ Waiting for signals...</div>
+			</div>
+			
+			<div class="refresh-info">
+				Auto-refreshing every 30 seconds
+			</div>
+			
+			<!-- Indicator Inventory Section -->
+			<div class="indicators-section">
+				<div class="indicators-header">
+					<h2>📊 Comprehensive Indicator Analysis</h2>
+					<p>Our trading signals are generated using a sophisticated multi-indicator confluence approach. Below is a complete inventory of all technical indicators, filters, and analysis methods used across our trading systems.</p>
+				</div>
+				
+				<div class="indicators-content">
+					<div class="indicator-category">
+						<h3>TREND INDICATORS</h3>
+						<h4>Moving Averages</h4>
+						<ul>
+							<li><strong>EMA (Exponential Moving Average)</strong>
+								<ul>
+									<li>Fast EMA (12-period) - short-term trend</li>
+									<li>Slow EMA (26-period) - medium-term trend</li>
+									<li>EMA 13 - megabot trend direction</li>
+									<li>EMA 21 - megabot secondary trend</li>
+									<li>EMA 195 - long-term trend filter</li>
+								</ul>
+							</li>
+							<li><strong>SMA (Simple Moving Average)</strong>
+								<ul>
+									<li>SMA 18 - short-term average</li>
+									<li>SMA 20 - standard trend line</li>
+									<li>SMA 50 - medium-term trend (BTC halving analysis)</li>
+									<li>SMA 200 - long-term trend (BTC halving analysis)</li>
+								</ul>
+							</li>
+							<li><strong>Hull Moving Average (HMA)</strong> - Base length 8, scalar 5 - smoothed trend following</li>
+							<li><strong>Guppy GMMA (Multiple Moving Averages)</strong> - Multiple EMA layers for trend confirmation</li>
+						</ul>
+						<h4>Trend Strength & Direction</h4>
+						<ul>
+							<li><strong>ADX (Average Directional Index)</strong> - 14-period ADX for trend strength measurement, ADX thresholds: 7-8 for shorts, 8+ for longs, ADX Divergence - price vs trend strength divergence</li>
+							<li><strong>Parabolic SAR</strong> - Acceleration 0.02, maximum 0.2 - dynamic stop and reverse</li>
+							<li><strong>Ichimoku Cloud</strong> - Tenkan (9-period), Kijun (26-period), Senkou A/B (52-period), Chikou span, cloud thickness analysis, comprehensive trend system with support/resistance</li>
+							<li><strong>SuperTrend</strong> - ATR-based trend following with dynamic stop levels, Factor 3.0, ATR period 10, SuperTrend Slope Divergence - price vs trend slope divergence</li>
+							<li><strong>Directional Movement</strong> - +DI and -DI components for trend direction, DX (Directional Index) calculation</li>
+						</ul>
+						<h4>Advanced Trend Detection</h4>
+						<ul>
+							<li><strong>Parabola Detection</strong> - Mathematical curve fitting (quadratic regression), R² confidence threshold (0.70 default), Deviation threshold (2% default), ATR and ADX filtered parabola detection, Persistent parabola signals with duration tracking</li>
+							<li><strong>MegaBot Crossover System</strong> - Higher timeframe close vs open crossover (720-minute default), 34-period SMA on higher timeframe, Multi-timeframe trend confirmation</li>
+						</ul>
+					</div>
+					
+					<div class="indicator-category">
+						<h3>MOMENTUM INDICATORS</h3>
+						<h4>Oscillators</h4>
+						<ul>
+							<li><strong>RSI (Relative Strength Index)</strong> - 14-period standard RSI, 7-period fast RSI (SuperTrend variant), 21-period slow RSI (SuperTrend variant), RSI Divergence (regular and hidden bullish/bearish), RSI momentum filter for regime detection</li>
+							<li><strong>Stochastic RSI</strong> - 14-period RSI, 14-period stochastic, 3-period smoothing, Stochastic RSI Divergence (regular and hidden)</li>
+							<li><strong>MACD (Moving Average Convergence Divergence)</strong> - MACD1: Fast 12, Slow 26, Signal 9 (standard), MACD2 (Impulse MACD / LazyBear): 34-period SMMA-based, MACD Histogram analysis, MACD Divergence (regular and hidden), MACD crossover signals (up/down, above/below zero)</li>
+							<li><strong>Williams %R</strong> - 14-period momentum oscillator (-100 to 0 scale), Williams %R Divergence</li>
+							<li><strong>CCI (Commodity Channel Index)</strong> - 20-period CCI (-200 to +200 scale), CCI Divergence</li>
+							<li><strong>MFI (Money Flow Index)</strong> - 14-period volume-weighted momentum (0-100 scale), MFI Divergence</li>
+							<li><strong>ROC (Rate of Change)</strong> - 12-period percentage price change, ROC Divergence</li>
+						</ul>
+						<h4>Momentum Filters</h4>
+						<ul>
+							<li><strong>Divergence Analysis</strong> - Price vs indicator divergence detection, Regular and hidden divergences (bullish/bearish), Lookback: 20 periods, min swings: 2, persistence: 3 bars, Applied to: RSI, Stochastic RSI, MACD, CCI, MFI, Williams %R, ROC, OBV, SuperTrend, Bollinger Bands, VROC, ATR</li>
+						</ul>
+					</div>
+					
+					<div class="indicator-category">
+						<h3>VOLATILITY INDICATORS</h3>
+						<h4>Volatility Measurement</h4>
+						<ul>
+							<li><strong>ATR (Average True Range)</strong> - 14-period ATR for volatility measurement, ATR-SMA(20) for volatility trend, ATR Channels - dynamic support/resistance with squeeze/bounce/breakout, ATR Divergence, ATR Filter - consolidation detection (1111-period, 2.5 threshold)</li>
+							<li><strong>Bollinger Bands</strong> - 20-period, 2.0 standard deviations, Band width analysis, Bollinger Band Width Divergence, Squeeze detection (threshold 0.1), Bounce detection (threshold 0.2)</li>
+							<li><strong>Keltner Channels</strong> - 20-period EMA, 2.0 ATR multiplier, Squeeze detection (threshold 0.1), Bounce detection (threshold 0.2)</li>
+							<li><strong>RVOL (Relative Volatility)</strong> - Short-term ATR (5) vs Long-term ATR (14), Threshold 0.78 for volatility alerts</li>
+						</ul>
+						<h4>Advanced Volatility Analysis</h4>
+						<ul>
+							<li><strong>GAPO (Gopalakrishnan Range Index)</strong> - Real vs noisy trend detection, Base length 5, Min-Max normalization [-1,1], Z-score normalization with tanh clamping</li>
+							<li><strong>Hurst Exponent</strong> (referenced for future implementation)</li>
+							<li><strong>Detrended Price Oscillator</strong> (referenced for future implementation)</li>
+						</ul>
+					</div>
+					
+					<div class="indicator-category">
+						<h3>VOLUME INDICATORS</h3>
+						<h4>Volume Analysis</h4>
+						<ul>
+							<li><strong>Volume SMA Ratio</strong> - 20-period volume vs 20-period SMA, Volume confirmation threshold (1.1x default)</li>
+							<li><strong>VWAP (Volume Weighted Average Price)</strong> - Daily session VWAP, VWAP deviation analysis</li>
+							<li><strong>OBV (On-Balance Volume)</strong> - 14-period cumulative volume flow, OBV Divergence (regular and hidden)</li>
+							<li><strong>Volume Profile</strong> - High Volume Nodes (HVN) - strong support/resistance, Low Volume Nodes (LVN) - breakout zones, Volume trend analysis</li>
+							<li><strong>VROC (Volume Rate of Change)</strong> - 10-period volume momentum, VROC SMA and momentum analysis, VROC Divergence</li>
+						</ul>
+					</div>
+					
+					<div class="indicator-category">
+						<h3>SUPPORT & RESISTANCE INDICATORS</h3>
+						<h4>Dynamic Levels</h4>
+						<ul>
+							<li><strong>Donchian Channels</strong> - 20-period high/low breakout system</li>
+							<li><strong>Support/Resistance Detection</strong> - Pivot-based S/R levels (4-period pivots, max 5 levels), Channel width analysis (10% max), Strength-based ranking (min strength 2), Most recent resistance tracking, Underneath resistance detection (0.1-2% band)</li>
+							<li><strong>Fibonacci Retracements</strong> - 0.382, 0.500, 0.618, 0.764, 0.854 levels, 150-bar lookback for high/low, Fib 0.382 avoid-long band (1% underneath)</li>
+							<li><strong>Round Number Detection</strong> - Multiples of 50, 100, 1000, 10000, Proximity range (3 points default), Avoid trading near round numbers</li>
+						</ul>
+					</div>
+					
+					<div class="indicator-category">
+						<h3>CANDLESTICK PATTERNS</h3>
+						<h4>Pattern Recognition</h4>
+						<ul>
+							<li><strong>Bullish Patterns</strong> - Bullish Engulfing, Bullish Marubozu, Bullish Hammer, Three Bull Soldiers</li>
+							<li><strong>Bearish Patterns</strong> - Bearish Engulfing, Bearish Marubozu, Shooting Star, Three Bear Soldiers</li>
+							<li><strong>Pattern Filters</strong> - Body size threshold (10% of range), Lower lows confirmation, Star pattern detection (78.6% threshold)</li>
+						</ul>
+					</div>
+					
+					<div class="indicator-category">
+						<h3>ELLIOTT WAVE ANALYSIS</h3>
+						<h4>Wave Patterns</h4>
+						<ul>
+							<li><strong>Motive Waves (1-2-3-4-5)</strong> - Bullish and bearish impulse patterns, Wave validation (W3 != min of W1, W3, W5), Wave structure confirmation</li>
+							<li><strong>Corrective Waves (A-B-C)</strong> - Bullish and bearish corrective patterns, Fibonacci-based validation (0.854 threshold), Box pattern for corrective waves</li>
+							<li><strong>Wave Invalidation</strong> - Dot pattern for invalidated waves, Break detection (box breakouts)</li>
+							<li><strong>Fibonacci Extensions</strong> - 0.500, 0.618, 0.764, 0.854 levels, Wave-based Fibonacci projections</li>
+						</ul>
+					</div>
+					
+					<div class="indicator-category">
+						<h3>ADVANCED FILTERS & SIGNALS</h3>
+						<h4>Cycle & Frequency Analysis</h4>
+						<ul>
+							<li><strong>Hilbert Transform</strong> - Cycle length detection, Real and imaginary components, Phase analysis (teal/maroon/silver fills)</li>
+							<li><strong>Ehler's Roofing Filter</strong> - High-pass filter (48-period default), Super Smoother Filter (10-period, 2-3 poles), Noise reduction for trend clarity</li>
+						</ul>
+						<h4>Market Regime Detection</h4>
+						<ul>
+							<li><strong>HMM (Hidden Markov Model)</strong> - 9-state Gaussian HMM, Features: Log Returns, Volatility, RSI, MFI, Regime labels: Extreme Bearish → Extreme Bullish, Regime persistence tracking, Transition probability analysis</li>
+							<li><strong>Regime Filter (BTC Halving)</strong> - Weekly timeframe EMA(20), Market price vs EMA + 0.25 ATR, RSI momentum filter (70 threshold, optional), Bullish/bearish/caution counters</li>
+						</ul>
+						<h4>Market Structure</h4>
+						<ul>
+							<li><strong>BTC Halving Cycles</strong> - Halving dates: 2012, 2016, 2020, 2024, Bull run length: 552 bars (4H) / 2208 bars (1H), Pre-halving length: 1100 bars (4H) / 4400 bars (1H), Max bull length: 3312 bars (4H) / 13248 bars (1H), Macro cycle timing filters</li>
+						</ul>
+					</div>
+					
+					<div class="indicator-category">
+						<h3>STATISTICAL & ML INDICATORS</h3>
+						<h4>Statistical Analysis</h4>
+						<ul>
+							<li><strong>Z-Score</strong> - 20-period Z-score of close price, Standard deviation measurement, Threshold: ±2.0 default</li>
+							<li><strong>Technical Rating (TradingView)</strong> - Combined MA + Indicators rating, Separate MA rating and Indicators rating, Unified 0-100 scale</li>
+							<li><strong>Sharpe Ratio</strong> - Risk-adjusted return measurement, Benchmark comparison (SPX default)</li>
+							<li><strong>Sortino Ratio</strong> - Downside risk-adjusted return, Risk-free rate consideration (2% default)</li>
+						</ul>
+						<h4>Machine Learning</h4>
+						<ul>
+							<li><strong>Hidden Markov Model (HMM)</strong> - 9-state regime detection, Gaussian emission probabilities, Bayesian Information Criterion (BIC) for model selection, K-Means clustering for regime labeling, Feature standardization (StandardScaler)</li>
+						</ul>
+					</div>
+					
+					<div class="indicator-category">
+						<h3>TIMING & FILTERS</h3>
+						<h4>Time-Based Filters</h4>
+						<ul>
+							<li><strong>Day-of-Week Filter</strong> - Friday block for buy entries, Sunday night avoidance for shorts</li>
+							<li><strong>Bar Confirmation</strong> - 1-bar delay for signal confirmation, Barstate.isconfirmed requirement</li>
+							<li><strong>Cooldown Periods</strong> - EMA+JSON cooldown: 360 minutes, Per-symbol execution tracking</li>
+						</ul>
+						<h4>Risk Management Filters</h4>
+						<ul>
+							<li><strong>Monte Carlo Skip</strong> - Probabilistic trade skipping (0-100%), Random spread application</li>
+							<li><strong>Position Filters</strong> - Flat position requirement for new entries, Bars in position tracking, Bars since no position tracking</li>
+							<li><strong>Profit/Loss Filters</strong> - Trade profit percentage tracking, Minimum profit threshold (0.50%), Maximum loss threshold (-1.0%), Average take profit (6.59% in bear markets)</li>
+						</ul>
+					</div>
+					
+					<div class="indicator-category">
+						<h3>MULTI-TIMEFRAME ANALYSIS</h3>
+						<h4>Timeframe Confirmation</h4>
+						<ul>
+							<li><strong>Multi-Timeframe (MTF) Confirmation</strong> - Daily → Weekly → Monthly resampling, Strength boost: +50% (weekly), +100% (monthly), MTF alignment indicators</li>
+							<li><strong>Higher Timeframe Requests</strong> - 720-minute (12-hour) megabot timeframe, Weekly and monthly confirmations, Lookahead bias prevention</li>
+						</ul>
+					</div>
+					
+					<div class="indicator-category">
+						<h3>SIGNAL CONFLUENCE SYSTEM</h3>
+						<h4>Voting & Scoring</h4>
+						<ul>
+							<li><strong>Component-Based Voting</strong> - Buy threshold: 16-22 components (58%+ agreement), Sell threshold: 13-18 components (47%+ agreement), Minimum strength: 4/10 required, Market breadth filter: 30%+ symbol agreement</li>
+							<li><strong>Signal Types</strong> - Pure JSON signals (standalone), EMA + JSON confluence, HMM + JSON confluence, HMM Extreme Bullish/Bearish, Raw JSON signal reception</li>
+						</ul>
+					</div>
+					
+					<div class="summary-stats">
+						<h3>📈 Summary Statistics</h3>
+						<ul>
+							<li><strong>Trend Indicators</strong>: 15+</li>
+							<li><strong>Momentum Indicators</strong>: 20+ (including divergences)</li>
+							<li><strong>Volatility Indicators</strong>: 10+</li>
+							<li><strong>Volume Indicators</strong>: 8+</li>
+							<li><strong>Support/Resistance</strong>: 6+</li>
+							<li><strong>Candlestick Patterns</strong>: 8+</li>
+							<li><strong>Elliott Wave</strong>: Complete 5-wave + ABC system</li>
+							<li><strong>Advanced Filters</strong>: 10+</li>
+							<li><strong>Statistical/ML</strong>: 5+</li>
+							<li><strong>Timing Filters</strong>: 5+</li>
+							<li style="grid-column: 1 / -1; font-size: 20px; font-weight: bold; color: var(--primary-color); margin-top: 10px;"><strong>Total Unique Indicators: 100+</strong></li>
+						</ul>
+						
+						<div class="philosophy-box">
+							<h4>Signal Generation Philosophy</h4>
+							<p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 15px;">Our trading systems employ a <strong>multi-indicator confluence approach</strong> where signals require:</p>
+							<ol>
+								<li><strong>Multiple confirmations</strong> across different indicator categories</li>
+								<li><strong>Timeframe alignment</strong> (daily, weekly, monthly)</li>
+								<li><strong>Regime awareness</strong> (HMM, halving cycles, market structure)</li>
+								<li><strong>Risk filters</strong> (volatility, volume, timing)</li>
+								<li><strong>Pattern recognition</strong> (Elliott Wave, candlesticks, parabola)</li>
+								<li><strong>Statistical validation</strong> (Z-scores, Sharpe/Sortino, technical ratings)</li>
+							</ol>
+							<p style="color: rgba(255, 255, 255, 0.9); margin-top: 15px; font-style: italic;">This comprehensive approach ensures that only <strong>high-conviction signals</strong> with multiple layers of confirmation are generated, reducing false signals and improving trade quality.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			let refreshInterval;
+			
+			// Disclaimer handling
+			function initDisclaimer() {
+				const overlay = document.getElementById('disclaimer-overlay');
+				const checkbox = document.getElementById('disclaimer-checkbox');
+				const acceptBtn = document.getElementById('disclaimer-accept-btn');
+				const signalsContent = document.getElementById('signals-content');
+				
+				// Check if user has already accepted
+				const accepted = localStorage.getItem('disclaimer-accepted');
+				if (accepted === 'true') {
+					overlay.classList.add('disclaimer-hidden');
+					return;
+				}
+				
+				// Hide signals content until accepted
+				signalsContent.style.display = 'none';
+				
+				// Enable/disable accept button based on checkbox
+				checkbox.addEventListener('change', function() {
+					acceptBtn.disabled = !checkbox.checked;
+				});
+				
+				// Handle accept button
+				acceptBtn.addEventListener('click', function() {
+					if (checkbox.checked) {
+						localStorage.setItem('disclaimer-accepted', 'true');
+						overlay.classList.add('disclaimer-hidden');
+						signalsContent.style.display = 'block';
+					}
+				});
+			}
+			
+			// Initialize disclaimer on page load
+			initDisclaimer();
+			
+			function formatTimestamp(timestamp) {
+				if (!timestamp) return 'N/A';
+				try {
+					const date = new Date(timestamp);
+					return date.toLocaleString('en-US', {
+						month: 'short',
+						day: 'numeric',
+						year: 'numeric',
+						hour: '2-digit',
+						minute: '2-digit',
+						second: '2-digit'
+					});
+				} catch (e) {
+					return timestamp;
+				}
+			}
+			
+			function formatPrice(price) {
+				if (price === null || price === undefined) return 'N/A';
+				return '$' + parseFloat(price).toFixed(4);
+			}
+			
+			function formatQuantity(quantity, symbol) {
+				if (quantity === null || quantity === undefined) return 'N/A';
+				const qty = parseFloat(quantity);
+				const formattedQty = qty.toLocaleString('en-US', {
+					minimumFractionDigits: 2,
+					maximumFractionDigits: 2
+				});
+				
+				// If quantity is exactly 100, it's likely USD
+				if (qty === 100) {
+					return formattedQty + ' USD';
+				}
+				
+				// Otherwise, extract asset symbol and show both quantity and asset
+				if (symbol) {
+					const asset = symbol.split('/')[0]; // Extract "CRV" from "CRV/USD"
+					return formattedQty + ' ' + asset;
+				}
+				
+				return formattedQty;
+			}
+			
+			function renderSignals(signals) {
+				const grid = document.getElementById('signals-grid');
+				console.log('renderSignals called with', signals.length, 'signals');
+				console.log('Grid element:', grid);
+				
+				if (!signals || signals.length === 0) {
+					grid.innerHTML = '<div class="empty-state"><h3>⏳ Waiting for signals...</h3><p>Signals will appear here automatically when your trading bots generate them</p></div>';
+					return;
+				}
+				
+				try {
+					const html = signals.map((signal, index) => {
+						console.log('Processing signal', index, signal);
+						const action = signal.action || 'unknown';
+						const isBuy = action.toLowerCase() === 'buy';
+						const actionClass = isBuy ? 'buy' : 'sell';
+						
+						// Determine confluence type from note
+						let confluenceBadge = '';
+						let confluenceClass = '';
+						const note = signal.note || '';
+						if (note.includes('Pure JSON Trade')) {
+							confluenceBadge = '🟢 Pure JSON';
+							confluenceClass = 'confluence-pure';
+						} else if (note.includes('EMA + JSON')) {
+							confluenceBadge = '🟠 EMA + JSON';
+							confluenceClass = 'confluence-ema';
+						} else if (note.includes('HMM + JSON')) {
+							confluenceBadge = '🟡 HMM + JSON';
+							confluenceClass = 'confluence-hmm';
+						} else if (note.includes('HMM Extreme')) {
+							confluenceBadge = '🔴 HMM Extreme';
+							confluenceClass = 'confluence-extreme';
+						} else if (note.includes('Raw JSON signal')) {
+							confluenceBadge = '📩 Raw Signal';
+							confluenceClass = 'confluence-raw';
+						}
+						
+						const cardHtml = `
+							<div class="signal-card ${actionClass}">
+								<div class="signal-header">
+									<span class="signal-symbol">${signal.symbol || 'N/A'}</span>
+									<div>
+										<span class="signal-action ${actionClass}">${action.toUpperCase()}</span>
+										${confluenceBadge ? `<span class="confluence-badge ${confluenceClass}">${confluenceBadge}</span>` : ''}
+									</div>
+								</div>
+								<div class="signal-details">
+									${signal.price !== null && signal.price !== undefined ? `
+										<div class="signal-detail-row">
+											<span class="signal-detail-label">Price:</span>
+											<span class="signal-detail-value">${formatPrice(signal.price)}</span>
+										</div>
+									` : ''}
+									${signal.quantity !== null && signal.quantity !== undefined ? `
+										<div class="signal-detail-row">
+											<span class="signal-detail-label">Quantity:</span>
+											<span class="signal-detail-value">${formatQuantity(signal.quantity, signal.symbol)}</span>
+										</div>
+									` : ''}
+									${signal.source ? `
+										<div class="signal-detail-row">
+											<span class="signal-detail-label">Source:</span>
+											<span class="signal-detail-value">${signal.source}</span>
+										</div>
+									` : ''}
+									${signal.note ? `
+										<div class="note-highlight">
+											${signal.note}
+										</div>
+									` : ''}
+								</div>
+								<div class="signal-timestamp">
+									${formatTimestamp(signal.timestamp || signal.received_at)}
+								</div>
+							</div>
+						`;
+						return cardHtml;
+					}).join('');
+					
+					console.log('Generated HTML length:', html.length);
+					console.log('First 200 chars of HTML:', html.substring(0, 200));
+					console.log('Setting innerHTML...');
+					grid.innerHTML = html;
+					console.log('innerHTML set. Grid children:', grid.children.length);
+					console.log('Grid innerHTML length after set:', grid.innerHTML.length);
+					
+					// Force a visual test
+					if (grid.children.length > 0) {
+						console.log('First child element:', grid.children[0]);
+						console.log('First child visible?', window.getComputedStyle(grid.children[0]).display);
+					}
+				} catch (error) {
+					console.error('Error in renderSignals:', error);
+					grid.innerHTML = '<div class="empty-state"><h3>Error rendering signals</h3><p>' + error.message + '</p></div>';
+				}
+			}
+			
+			function loadSignals() {
+				console.log('Loading signals...');
+				// Try to load signals.json (list of all signals)
+				fetch('signals/signals.json')
+					.then(response => {
+						console.log('Response status:', response.status);
+						if (!response.ok) {
+							// If signals.json doesn't exist, try latest.json
+							return fetch('signals/latest.json')
+								.then(res => {
+									if (!res.ok) throw new Error('No signals file found');
+									return res.json();
+								})
+								.then(data => [data]); // Wrap single signal in array
+						}
+						return response.json();
+					})
+					.then(data => {
+						console.log('Received data:', data);
+						// Ensure data is an array
+						const signals = Array.isArray(data) ? data : [data];
+						console.log('Rendering', signals.length, 'signals');
+						renderSignals(signals);
+						document.getElementById('status-indicator').className = 'status-indicator active';
+						document.getElementById('status-text').textContent = 'Connected';
+						document.getElementById('last-update').textContent = 'Last updated: ' + new Date().toLocaleTimeString();
+					})
+					.catch(error => {
+						console.error('Error loading signals:', error);
+						document.getElementById('signals-grid').innerHTML = 
+							'<div class="empty-state"><h3>⏳ Waiting for signals...</h3><p>Unable to load signals: ' + error.message + '</p><p>Make sure the signals receiver is running. Signals will appear here automatically when received.</p></div>';
+						document.getElementById('status-indicator').className = 'status-indicator inactive';
+						document.getElementById('status-text').textContent = 'Disconnected';
+					});
+			}
+			
+			// Load signals immediately
+			loadSignals();
+			
+			// Auto-refresh every 30 seconds
+			refreshInterval = setInterval(loadSignals, 30000);
+		</script>
+	</body>
+</html>
+

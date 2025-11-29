@@ -1,0 +1,11 @@
+{
+  "action": "buy",
+  "symbol": "CRV/USD",
+  "quantity": 232.50406882120438,
+  "price": 0.4297,
+  "source": "MASTER_BOT_162",
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2025-11-29T22:00:36.671830Z",
+  "received_at": "2025-11-29T22:00:36.671848Z",
+  "id": "2025-11-29T22:00:36.671848Z-CRV/USD-buy"
+}
