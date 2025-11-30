@@ -3,6 +3,25 @@
 let catalogData = [];
 let currentFilter = 'all';
 
+// Handle image loading errors - try fallback paths
+function handleImageError(img, originalSrc, basePath) {
+    img.onerror = null; // Prevent infinite loop
+    
+    // If we tried previews/, try img/previews/ instead
+    if (originalSrc.includes('previews/') && !originalSrc.includes('img/previews/')) {
+        const filename = originalSrc.split('/').pop();
+        img.src = basePath + 'img/previews/' + filename;
+        console.log('Trying fallback path:', img.src);
+    } else {
+        // Final fallback
+        img.src = basePath + 'img/sheet.png';
+        if (img.nextElementSibling) {
+            img.nextElementSibling.textContent = 'Preview image not found';
+        }
+        console.error('Failed to load image:', originalSrc);
+    }
+}
+
 // Load catalog when page loads
 document.addEventListener('DOMContentLoaded', function() {
     loadCatalog();
@@ -50,6 +69,12 @@ function displayCatalog(items) {
     grid.innerHTML = '';
     console.log('Grid cleared, creating', items.length, 'items...');
     
+    // TEST: Add a simple test div first to verify grid is visible
+    const testDiv = document.createElement('div');
+    testDiv.style.cssText = 'background: lime; color: black; padding: 20px; border: 5px solid red; font-size: 24px; font-weight: bold; grid-column: 1 / -1;';
+    testDiv.textContent = '🧪 TEST: If you see this, the grid is visible!';
+    grid.appendChild(testDiv);
+    
     let itemsCreated = 0;
     items.forEach((item, index) => {
         try {
@@ -62,12 +87,31 @@ function displayCatalog(items) {
             const difficultyClass = item.difficulty.toLowerCase();
             
             // Use manual preview images only (no thum.io)
+            // Get base path from current page location to ensure images load correctly
+            const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
             let previewImageSrc = item.preview_image || 'img/sheet.png';
+            
+            // Try previews/ folder first, then img/previews/, then fallback
+            if (previewImageSrc.startsWith('img/previews/')) {
+                // Try previews/ version first
+                const filename = previewImageSrc.replace('img/previews/', '');
+                previewImageSrc = 'previews/' + filename;
+            }
+            
+            // Ensure path is relative to current page location
+            if (!previewImageSrc.startsWith('/') && !previewImageSrc.startsWith('http')) {
+                previewImageSrc = basePath + previewImageSrc;
+            }
             let captionText = 'Preview image';
 
+            // TEST: Add a simple colored div to verify items are visible
+            const testDiv = index === 0 ? '<div style="background: red; color: white; padding: 10px; margin: 10px 0;">TEST: Item is visible!</div>' : '';
+            
             itemDiv.innerHTML = `
+                ${testDiv}
                 <div class="preview-screen">
-                    <img class="live-preview" src="${previewImageSrc}" alt="Preview of ${item.title}">
+                    <img class="live-preview" src="${previewImageSrc}" alt="Preview of ${item.title}" 
+                         onerror="handleImageError(this, '${previewImageSrc}', '${basePath}');">
                     <span class="preview-caption">${captionText}</span>
                 </div>
                 <div class="composer">${item.composer}</div>
@@ -77,6 +121,11 @@ function displayCatalog(items) {
                 <p class="price">${item.price}</p>
                 <a class="link-button" href="${item.sheet_music_direct_url}" target="_blank" rel="noopener">Open Listing</a>
             `;
+            
+            // TEST: Force visibility
+            itemDiv.style.display = 'block';
+            itemDiv.style.visibility = 'visible';
+            itemDiv.style.opacity = '1';
             
             grid.appendChild(itemDiv);
             itemsCreated++;
@@ -92,11 +141,25 @@ function displayCatalog(items) {
     console.log('Grid children count:', grid.children.length);
     console.log('Grid computed style display:', window.getComputedStyle(grid).display);
     
-    // Force a visual test - add a red border to verify grid is visible
+    // Force a visual test - add a red border and background to verify grid is visible
     if (grid.children.length > 0) {
-        grid.style.border = '3px solid red';
+        grid.style.border = '5px solid red';
         grid.style.minHeight = '200px';
-        console.log('✅ Grid has', grid.children.length, 'children. If you see a red border, items are there but may be hidden by CSS.');
+        grid.style.backgroundColor = 'yellow';
+        grid.style.padding = '20px';
+        console.log('✅ Grid has', grid.children.length, 'children. RED BORDER + YELLOW BACKGROUND should be visible!');
+        
+        // Also check first item visibility
+        const firstItem = grid.children[0];
+        if (firstItem) {
+            const firstItemStyle = window.getComputedStyle(firstItem);
+            console.log('First item computed styles:');
+            console.log('  display:', firstItemStyle.display);
+            console.log('  visibility:', firstItemStyle.visibility);
+            console.log('  opacity:', firstItemStyle.opacity);
+            console.log('  width:', firstItemStyle.width);
+            console.log('  height:', firstItemStyle.height);
+        }
     } else {
         console.error('❌ Grid has NO children! Items were not appended.');
     }
