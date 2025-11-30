@@ -453,12 +453,19 @@ nav a:hover::after {
 	opacity:		1;
 }
 
-#music {
+#music-container {
 	float:			right;
 	position:		relative;
-	height:			16px;
 	margin-left:	15px;
+	text-align:		right;
+}
+
+#music {
+	position:		relative;
+	height:			16px;
+	margin-bottom:	5px;
 	cursor:			pointer;
+	display:		inline-block;
 }
 
 #paused {
@@ -470,12 +477,14 @@ nav a:hover::after {
 }
 
 #track {
-	float:			right;
-	width:			300px;
-	margin:			0px 20px 0px -350px;
-	padding-top:	5px;
+	display:		block;
+	width:			100%;
+	margin-top:		5px;
+	padding-top:	0;
 	font-size:		.875em;
 	text-align:		right;
+	white-space:	nowrap;
+	clear:			both;
 }
 
 #hero {
