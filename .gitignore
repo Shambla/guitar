@@ -38,3 +38,20 @@ bin/
 build/
 dist/
 .DS_Store
+
+# Environment variables and secrets
+.env
+.env.*
+*.env
+*.env.local
+*secret*
+*password*
+*credential*
+*.key
+*.pem
+*.p12
+config.json
+secrets.json
+credentials.json
+*api_key*
+*apikey*

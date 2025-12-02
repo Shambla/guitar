@@ -75,6 +75,9 @@ $(document).ready(function() {
 	
 	// Add animation classes to elements
 	setupAnimationClasses();
+	
+	// Interactive hover effects for bio section
+	setupBioHoverEffects();
 });
 
 function randomizeBars() {
@@ -295,4 +298,40 @@ function setupAnimationClasses() {
 			}
 		});
 	}, 200);
+}
+
+// Interactive hover effects for bio section
+function setupBioHoverEffects() {
+	const $container = $('#studio-comp-container');
+	const $image = $('#desk-pic');
+	const $overlay = $('#image-dark-overlay');
+	const $textOverlay = $('#bio-text-overlay');
+	const $textParagraphs = $('.bio-text-paragraph');
+	const $linkButton = $('#bio-text-overlay .link-button');
+	
+	// When hovering over text: text becomes more visible, image darkens
+	$textOverlay.on('mouseenter', function() {
+		$textParagraphs.css('opacity', '1');
+		$overlay.css('background', 'rgba(0, 0, 0, 0.5)');
+		$linkButton.css('opacity', '1');
+	});
+	
+	$textOverlay.on('mouseleave', function() {
+		$textParagraphs.css('opacity', '0.7');
+		$overlay.css('background', 'rgba(0, 0, 0, 0)');
+		$linkButton.css('opacity', '1');
+	});
+	
+	// When hovering over image: text becomes more transparent
+	$image.on('mouseenter', function() {
+		$textParagraphs.css('opacity', '0.3');
+		$overlay.css('background', 'rgba(0, 0, 0, 0)');
+		$linkButton.css('opacity', '0.5');
+	});
+	
+	$image.on('mouseleave', function() {
+		$textParagraphs.css('opacity', '0.7');
+		$overlay.css('background', 'rgba(0, 0, 0, 0)');
+		$linkButton.css('opacity', '1');
+	});
 }

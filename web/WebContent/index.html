@@ -108,34 +108,65 @@
 			
 			</div>
 			<h1 id="bio" class="fade-in-up">Bio</h1>
-			<div class="left-half fade-in-left">
-					<p class="fade-in-up animate-delay-1">
-						Brian Streckfus holds a Bachelor's degree from Peabody Conservatory and a Master's from Towson University, 
-						where he received assistantship and scholarship awards. He has taught guitar for over a decade at 
-						Bel Air Music Studios and has over 150 publications with Hal Leonard. His former teachers include 
-						Ray Chester, the former chair of guitar at Peabody Conservatory, and other notable Maryland guitarists 
-						including James Hontz, Ph.D., Troy King, Brian Kooken, and Vincent Corson.
-					</p>
-					<p class="fade-in-up animate-delay-2">
-						Brian has performed jazz, classical, and popular music at venues throughout Maryland, including 
-						PRISM: A Musical Collage at Kaplan Concert Hall—a fast-paced, continuous performance featuring 
-						dramatic lighting and multiple ensembles. He has participated in masterclasses with world-renowned 
-						guitarists Meng Su and Irina Kulikova, and has been a guitarist in the band Intuitive Minds United 
-						for over a decade.
-					</p>
-					<p class="fade-in-up animate-delay-3">
-						Brian operates a home recording studio and has produced over a hundred videos with hundreds of thousands 
-						of views. His extensive formal training, combined with an undogmatic jazz-classical approach, diverse 
-						repertoire, and expertise in audio/video production make him an exceptional instructor and performer.
-					</p>
-				<a class="link-button fade-in-up animate-delay-4" href="Brian Streckfus-Resume.pdf">&#128220; View Resume</a>
+			<div id="bio-section-wrapper" style="position: relative; width: 100%; display: flex; gap: 30px; align-items: flex-start; margin-bottom: 40px;">
+				<!-- Studio Comp on the left - larger, with potential text overlay -->
+				<div id="studio-comp-container" class="fade-in-left" style="position: relative; flex: 1; min-width: 0;">
+					<img id="desk-pic" src="img/Studio_Comp.png" class="scale-in" style="width: 100%; max-width: 1000px; height: auto; display: block;"/>
+					<!-- Dark overlay that can be controlled by hover -->
+					<div id="image-dark-overlay"></div>
+					<!-- Text overlay area - can be positioned over image if needed -->
+					<div id="bio-text-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: auto; z-index: 1; overflow: visible;">
+						<div style="position: relative; height: 100%; padding: 20px; padding-bottom: 80px; display: flex; flex-direction: column; justify-content: flex-start;">
+							<p class="bio-text-paragraph fade-in-up animate-delay-1">
+								Brian Streckfus holds a Bachelor's degree from Peabody Conservatory and a Master's from Towson University, 
+								where he received assistantship and scholarship awards. He has taught guitar for over a decade at 
+								Bel Air Music Studios and has over 150 publications with Hal Leonard. His former teachers include 
+								Ray Chester, the former chair of guitar at Peabody Conservatory, and other notable Maryland guitarists 
+								including James Hontz, Ph.D., Troy King, Brian Kooken, and Vincent Corson.
+							</p>
+							<p class="bio-text-paragraph fade-in-up animate-delay-2">
+								Brian has performed jazz, classical, and popular music at venues throughout Maryland, including 
+								PRISM: A Musical Collage at Kaplan Concert Hall—a fast-paced, continuous performance featuring 
+								dramatic lighting and multiple ensembles. He has participated in masterclasses with world-renowned 
+								guitarists Meng Su and Irina Kulikova, and has been a guitarist in the band Intuitive Minds United 
+								for over a decade.
+							</p>
+							<p class="bio-text-paragraph fade-in-up animate-delay-3">
+								Brian operates a home recording studio and has produced over a hundred videos with hundreds of thousands 
+								of views. His extensive formal training, combined with an undogmatic jazz-classical approach, diverse 
+								repertoire, and expertise in audio/video production make him an exceptional instructor and performer.
+							</p>
+							<a class="link-button fade-in-up animate-delay-4" href="Brian Streckfus-Resume.pdf">&#128220; View Resume</a>
+						</div>
+					</div>
+				</div>
+				<!-- Bio pic on the right -->
+				<div id="bio-pic-container" class="fade-in-right" style="flex: 0 0 auto; min-width: 0;">
+					<img id="bio-pic" src="img/bio.png" class="scale-in" style="width: 100%; max-width: 600px; height: auto; display: block;"/>
+				</div>
 			</div>
-			<div id="bio-right" class="right-half fade-in-right">
-				<!-- <img id="bio-pic" src="img/bio.png" style="width: 600px; height: auto;"/> -->
-				<img id="bio-pic" src="img/bio.png" class="scale-in"/>
-
-    			<!-- New image -->
-    			<img id="desk-pic" src="img/Studio_Comp.png" style="width: 600px; height: auto;" class="scale-in animate-delay-2"/>
+			<!-- Alternative: Text below images if overlay doesn't work well -->
+			<div id="bio-text-below" class="left-half fade-in-left" style="display: none;">
+				<p class="fade-in-up animate-delay-1">
+					Brian Streckfus holds a Bachelor's degree from Peabody Conservatory and a Master's from Towson University, 
+					where he received assistantship and scholarship awards. He has taught guitar for over a decade at 
+					Bel Air Music Studios and has over 150 publications with Hal Leonard. His former teachers include 
+					Ray Chester, the former chair of guitar at Peabody Conservatory, and other notable Maryland guitarists 
+					including James Hontz, Ph.D., Troy King, Brian Kooken, and Vincent Corson.
+				</p>
+				<p class="fade-in-up animate-delay-2">
+					Brian has performed jazz, classical, and popular music at venues throughout Maryland, including 
+					PRISM: A Musical Collage at Kaplan Concert Hall—a fast-paced, continuous performance featuring 
+					dramatic lighting and multiple ensembles. He has participated in masterclasses with world-renowned 
+					guitarists Meng Su and Irina Kulikova, and has been a guitarist in the band Intuitive Minds United 
+					for over a decade.
+				</p>
+				<p class="fade-in-up animate-delay-3">
+					Brian operates a home recording studio and has produced over a hundred videos with hundreds of thousands 
+					of views. His extensive formal training, combined with an undogmatic jazz-classical approach, diverse 
+					repertoire, and expertise in audio/video production make him an exceptional instructor and performer.
+				</p>
+				<a class="link-button fade-in-up animate-delay-4" href="Brian Streckfus-Resume.pdf">&#128220; View Resume</a>
 			</div>
 			<div style="clear: both"></div>
 			<div class="right">
