@@ -71,32 +71,31 @@
 			}
 			.confluence-badge {
 				display: inline-block;
-				padding: 4px 8px;
-				border-radius: 4px;
+				padding: 5px 10px;
+				border-radius: 6px;
 				font-size: 11px;
 				font-weight: bold;
 				margin-left: 8px;
-				text-transform: uppercase;
 			}
 			.confluence-pure {
-				background-color: rgba(76, 175, 80, 0.3);
-				color: #4caf50;
+				background-color: rgba(33, 150, 243, 0.25);
+				color: #42a5f5;
+				border: 1px solid rgba(33, 150, 243, 0.4);
 			}
 			.confluence-ema {
-				background-color: rgba(255, 152, 0, 0.3);
-				color: #ff9800;
+				background-color: rgba(255, 152, 0, 0.25);
+				color: #ffa726;
+				border: 1px solid rgba(255, 152, 0, 0.4);
 			}
 			.confluence-hmm {
-				background-color: rgba(255, 235, 59, 0.3);
-				color: #fbc02d;
+				background-color: rgba(156, 39, 176, 0.25);
+				color: #ab47bc;
+				border: 1px solid rgba(156, 39, 176, 0.4);
 			}
 			.confluence-extreme {
-				background-color: rgba(244, 67, 54, 0.3);
-				color: #f44336;
-			}
-			.confluence-raw {
-				background-color: rgba(158, 158, 158, 0.3);
-				color: #9e9e9e;
+				background-color: rgba(244, 67, 54, 0.25);
+				color: #ef5350;
+				border: 1px solid rgba(244, 67, 54, 0.4);
 			}
 			.note-highlight {
 				font-weight: 600;
@@ -565,6 +564,53 @@
 			</div>
 			SUBSCRIPTION SECTION END -->
 			
+			<!-- Backtest Results Section -->
+			<div style="margin: 60px 0; padding: 40px 20px; background: rgba(76, 175, 80, 0.05); border-radius: 12px; border: 2px solid rgba(76, 175, 80, 0.3);">
+				<h2 style="color: var(--primary-color); font-size: 32px; margin-bottom: 15px; text-align: center;">
+					📊 Backtest Performance
+				</h2>
+				
+				<div style="margin: 30px auto; max-width: 1200px;">
+					<img src="img/Best backtest 30m.png" 
+					     alt="Best Backtest Results - 30 Minute Timeframe" 
+					     style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1);">
+				</div>
+				
+				<!-- Detailed Explanation -->
+				<div style="margin-top: 30px; text-align: left; max-width: 1000px; margin-left: auto; margin-right: auto; background: rgba(0, 0, 0, 0.3); padding: 30px; border-radius: 8px; border-left: 4px solid var(--primary-color);">
+					<p style="color: rgba(255, 255, 255, 0.9); font-size: 16px; line-height: 1.8; margin-bottom: 15px;">
+						Now I could <strong>lie to you</strong> and tell you that this is real. Unfortunately this is overly optimistic because of repainting. 
+						<strong>HOWEVER</strong>, I started to ponder how I could solve the problem.
+					</p>
+					
+					<p style="color: rgba(255, 255, 255, 0.9); font-size: 16px; line-height: 1.8; margin-bottom: 15px;">
+						<strong style="color: #4caf50;">The solution:</strong> Delay the bot intentionally to have it look back in time to see if the signal was <strong>REAL</strong> and to crunch the numbers on historical data that can <strong>NO LONGER BE CHANGED</strong>. On the backend, I have preliminary signals that fire, but they will only be shown on this website once enough time has passed by, and once enough signal confluence becomes true. 
+					</p>
+					
+					<p style="color: rgba(255, 255, 255, 0.9); font-size: 16px; line-height: 1.8; margin-bottom: 15px;">
+						This is a big reason that led to the <strong style="color: var(--primary-color);">double filtering strategy</strong>—first TradingView, then have Python code to help watch the trade to make sure everything is going to plan and it is not a repainting volatile fake-out. The other big reason for Python code? <strong style="color: #ab47bc;">Sophisticated AI algorithms that are not possible in TradingView.</strong>
+					</p>
+					
+					<div style="background: rgba(244, 67, 54, 0.15); border: 2px solid #ef5350; padding: 25px; border-radius: 8px; margin: 20px 0;">
+						<p style="color: rgba(255, 255, 255, 0.95); font-size: 18px; line-height: 1.8; margin: 0; font-weight: bold;">
+							That being said, <span style="color: #ef5350; font-size: 24px;">447,623,973,008% ROI</span> with 
+							<span style="color: #4caf50;">83.87% accuracy</span>, 
+							<span style="color: #ffa726;">14.362 Profit Factor</span> is <strong>INSANE</strong>, and I am <strong>INSANE</strong> for giving this away for FREE. 
+							When Blackrock finds out about this, they'll certainly make me "sleep with the fishes." 🐟💀
+						</p>
+					</div>
+					
+					<p style="color: rgba(255, 255, 255, 0.9); font-size: 16px; line-height: 1.8; margin-bottom: 15px;">
+						<strong>Still need more proof?</strong> I ran <strong style="color: #42a5f5;">Monte Carlo tests</strong>. That means I even ran the bot through <em>alternate versions of history</em>. What if Bitcoin was at $2 right now, would the bot still have made money? <strong style="color: #4caf50;">Yes</strong>, the bot is still successful in alternate versions of history, so I didn't shoot the arrow first and then draw a bullseye around it. This helps to avoid future knowledge or over-fitting hard-coded bias.
+					</p>
+				</div>
+				
+				<p style="color: rgba(255, 255, 255, 0.6); font-size: 14px; margin-top: 30px; font-style: italic; text-align: center;">
+					Past performance does not guarantee future results. All trading involves risk. 
+					See full disclaimer for important risk information.
+				</p>
+			</div>
+			
 			<!-- Signal Timing & Repainting Explanation -->
 			<div class="indicators-section" style="margin-top: 60px; background: rgba(76, 175, 80, 0.1); border: 2px solid #4caf50;">
 				<div class="indicators-header">
@@ -580,7 +626,11 @@
 						
 						<h4>Wait for Confirmation (Recommended)</h4>
 						<ul>
-							<li><strong>Don't rush the entry</strong> - Give signals a few hours to confirm the move is real. Consider starting with a smaller position (25-50% of your intended size) and adding to it as the move confirms through price action, additional indicators, or time. This scaling approach lets you participate while managing risk.</li>
+							<li><strong>Don't rush the entry</strong> - Give signals a few hours to confirm the move is real. Consider starting with a smaller position (25-50% of your intended size) and adding to it as the move confirms through price action, additional indicators, or time. This scaling approach lets you participate while managing risk.
+							<br><br>
+							<strong>Understanding "Repainting":</strong> There's a phenomenon called repainting, which is when live prices are moving so fast that the signal "changes its mind." In order to mitigate repainting, consider slowly scaling in as you feel the move gets more and more confirmed. Of course, the market is filled with manipulation and "short squeezes," so this thinking helps mitigate that risk. 
+							<br><br>
+							<strong>Reality check:</strong> It's next to impossible to completely eliminate this—it's just the nature of trading. An asset can have a +50% move and then take it all back in the SAME candle. That's part of the game. This is why we emphasize position sizing and scaling, not all-or-nothing entries.</li>
 							<li><strong>Avoid fake-outs</strong> - Extreme volatility can create false signals that reverse quickly</li>
 							<li><strong>Let the move develop</strong> - The best traders don't try to catch the perfect bottom or top</li>
 							<li><strong>Patience pays</strong> - A confirmed trend is worth more than catching the first tick</li>
@@ -845,9 +895,9 @@
 							<li><strong>Hilbert Transform</strong> - Cycle length detection, Real and imaginary components, Phase analysis (teal/maroon/silver fills)</li>
 							<li><strong>Ehler's Roofing Filter</strong> - High-pass filter (48-period default), Super Smoother Filter (10-period, 2-3 poles), Noise reduction for trend clarity</li>
 						</ul>
-						<h4>Market Regime Detection</h4>
+						<h4>AI-Powered Market Regime Detection</h4>
 						<ul>
-							<li><strong>HMM (Hidden Markov Model)</strong> - 9-state Gaussian HMM, Features: Log Returns, Volatility, RSI, MFI, Regime labels: Extreme Bearish → Extreme Bullish, Regime persistence tracking, Transition probability analysis</li>
+							<li><strong>Hidden Markov Model (AI System)</strong> - 9-state Gaussian AI model, Features: Log Returns, Volatility, RSI, MFI, Regime labels: Extreme Bearish → Extreme Bullish, Regime persistence tracking, Transition probability analysis</li>
 							<li><strong>Regime Filter (BTC Halving)</strong> - Weekly timeframe EMA(20), Market price vs EMA + 0.25 ATR, RSI momentum filter (70 threshold, optional), Bullish/bearish/caution counters</li>
 						</ul>
 						<h4>Market Structure</h4>
@@ -857,7 +907,7 @@
 					</div>
 					
 					<div class="indicator-category">
-						<h3>STATISTICAL & ML INDICATORS</h3>
+						<h3>STATISTICAL & AI INDICATORS</h3>
 						<h4>Statistical Analysis</h4>
 						<ul>
 							<li><strong>Z-Score</strong> - 20-period Z-score of close price, Standard deviation measurement, Threshold: ±2.0 default</li>
@@ -865,9 +915,9 @@
 							<li><strong>Sharpe Ratio</strong> - Risk-adjusted return measurement, Benchmark comparison (SPX default)</li>
 							<li><strong>Sortino Ratio</strong> - Downside risk-adjusted return, Risk-free rate consideration (2% default)</li>
 						</ul>
-						<h4>Machine Learning</h4>
+						<h4>Artificial Intelligence</h4>
 						<ul>
-							<li><strong>Hidden Markov Model (HMM)</strong> - 9-state regime detection, Gaussian emission probabilities, Bayesian Information Criterion (BIC) for model selection, K-Means clustering for regime labeling, Feature standardization (StandardScaler)</li>
+							<li><strong>Hidden Markov Model (AI Regime Detection)</strong> - 9-state regime detection, Gaussian emission probabilities, Bayesian Information Criterion (BIC) for model selection, K-Means clustering for regime labeling, Feature standardization (StandardScaler)</li>
 						</ul>
 					</div>
 					
@@ -897,12 +947,71 @@
 					</div>
 					
 					<div class="indicator-category">
-						<h3>SIGNAL CONFLUENCE SYSTEM</h3>
-						<h4>Voting & Scoring</h4>
-						<ul>
-							<li><strong>Component-Based Voting</strong> - Buy threshold: 16-22 components (58%+ agreement), Sell threshold: 13-18 components (47%+ agreement), Minimum strength: 4/10 required, Market breadth filter: 30%+ symbol agreement</li>
-							<li><strong>Signal Types</strong> - Pure JSON signals (standalone), EMA + JSON confluence, HMM + JSON confluence, HMM Extreme Bullish/Bearish, Raw JSON signal reception</li>
-						</ul>
+						<h3>CONVICTION RANKING SYSTEM</h3>
+						<p style="color: rgba(255, 255, 255, 0.9); font-size: 16px; margin-bottom: 25px; font-weight: bold;">
+							Every signal is ranked by conviction level based on how many layers of analysis confirmed it. 
+							More stars = More filters passed = Higher reliability.
+						</p>
+						
+						<div style="background: rgba(33, 150, 243, 0.15); border-left: 4px solid #42a5f5; padding: 20px; margin-bottom: 20px; border-radius: 4px;">
+							<h4 style="color: #42a5f5; margin-top: 0;">⭐ STANDARD CONVICTION</h4>
+							<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 10px;">
+								<strong>Source:</strong> TradingView chart analysis<br>
+								<strong>Filters passed:</strong> 100+ technical indicators working together
+							</p>
+							<p style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin: 0;">
+								These signals have already passed strict confluence requirements on the TradingView platform. 
+								Multiple indicators must agree before the signal fires.
+							</p>
+						</div>
+						
+						<div style="background: rgba(255, 152, 0, 0.15); border-left: 4px solid #ffa726; padding: 20px; margin-bottom: 20px; border-radius: 4px;">
+							<h4 style="color: #ffa726; margin-top: 0;">⭐⭐ HIGH CONVICTION</h4>
+							<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 10px;">
+								<strong>Source:</strong> TradingView + Python double-filter<br>
+								<strong>Additional filters:</strong> EMA trends, volatility checks, risk management
+							</p>
+							<p style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin: 0;">
+								TradingView signal that passed a second round of filtering in our Python algorithms. 
+								Additional confirmation from moving averages, volatility analysis, and risk parameters must all align.
+							</p>
+						</div>
+						
+						<div style="background: rgba(156, 39, 176, 0.15); border-left: 4px solid #ab47bc; padding: 20px; margin-bottom: 20px; border-radius: 4px;">
+							<h4 style="color: #ab47bc; margin-top: 0;">⭐⭐⭐ ULTRA HIGH CONVICTION</h4>
+							<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 10px;">
+								<strong>Source:</strong> TradingView + AI confirmation<br>
+								<strong>AI layer:</strong> 9-state Hidden Markov Model analyzing market regime
+							</p>
+							<p style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin: 0;">
+								Both TradingView indicators AND our AI system agree on the signal direction. 
+								The AI analyzes market structure, volatility patterns, and regime shifts to confirm the setup is legitimate.
+							</p>
+						</div>
+						
+						<div style="background: rgba(244, 67, 54, 0.15); border-left: 4px solid #ef5350; padding: 20px; margin-bottom: 20px; border-radius: 4px;">
+							<h4 style="color: #ef5350; margin-top: 0;">⭐⭐⭐⭐ BEST CONVICTION</h4>
+							<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 10px;">
+								<strong>Source:</strong> AI-detected extreme regime (standalone)<br>
+								<strong>Rarity:</strong> Only triggered in the strongest market conditions
+							</p>
+							<p style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin: 0;">
+								<strong>The rarest and most reliable signals.</strong> Our AI system detects extreme bullish or bearish market regimes 
+								with such high confidence that it publishes the signal even without TradingView confirmation. 
+								These represent the clearest, highest-probability setups.
+							</p>
+						</div>
+						
+						<div style="background: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107; padding: 20px; margin-top: 30px; border-radius: 4px;">
+							<h4 style="color: #ffc107; margin-top: 0;">💡 How to Use the Conviction System</h4>
+							<ul style="margin-bottom: 0;">
+								<li><strong>Position Sizing</strong> - Consider larger positions on higher conviction signals (still maintain proper risk management)</li>
+								<li><strong>Entry Timing</strong> - Standard signals may benefit from additional confirmation time; Best signals are often immediate opportunities</li>
+								<li><strong>Risk Tolerance</strong> - Conservative traders focus on Ultra High and Best; aggressive traders can trade all levels</li>
+								<li><strong>Track Performance</strong> - Monitor which conviction levels work best for your trading style and market conditions</li>
+								<li><strong>Not Guarantees</strong> - Higher conviction = higher probability, but no signal is perfect. Always use stop-losses.</li>
+							</ul>
+						</div>
 					</div>
 					
 					<div class="summary-stats">
@@ -1090,26 +1199,24 @@
 						const isBuy = action.toLowerCase() === 'buy';
 						const actionClass = isBuy ? 'buy' : 'sell';
 						
-						// Determine confluence type from note
-						let confluenceBadge = '';
-						let confluenceClass = '';
+						// Determine signal conviction level from note
+						let signalBadge = '';
+						let signalClass = '';
 						const note = signal.note || '';
 						if (note.includes('Pure JSON Trade')) {
-							confluenceBadge = '🟢 Pure JSON';
-							confluenceClass = 'confluence-pure';
+							signalBadge = '⭐ STANDARD CONVICTION';
+							signalClass = 'confluence-pure';
 						} else if (note.includes('EMA + JSON')) {
-							confluenceBadge = '🟠 EMA + JSON';
-							confluenceClass = 'confluence-ema';
+							signalBadge = '⭐⭐ HIGH CONVICTION';
+							signalClass = 'confluence-ema';
 						} else if (note.includes('HMM + JSON')) {
-							confluenceBadge = '🟡 HMM + JSON';
-							confluenceClass = 'confluence-hmm';
+							signalBadge = '⭐⭐⭐ ULTRA HIGH CONVICTION';
+							signalClass = 'confluence-hmm';
 						} else if (note.includes('HMM Extreme')) {
-							confluenceBadge = '🔴 HMM Extreme';
-							confluenceClass = 'confluence-extreme';
-						} else if (note.includes('Raw JSON signal')) {
-							confluenceBadge = '📩 Raw Signal';
-							confluenceClass = 'confluence-raw';
+							signalBadge = '⭐⭐⭐⭐ BEST CONVICTION';
+							signalClass = 'confluence-extreme';
 						}
+						// Skip "Raw JSON signal" - internal only, not shown to users
 						
 						const cardHtml = `
 							<div class="signal-card ${actionClass}">
@@ -1117,7 +1224,7 @@
 									<span class="signal-symbol">${signal.symbol || 'N/A'}</span>
 									<div>
 										<span class="signal-action ${actionClass}">${isBuy ? '🟢 📈' : '🔴 📉'} ${action.toUpperCase()}</span>
-										${confluenceBadge ? `<span class="confluence-badge ${confluenceClass}">${confluenceBadge}</span>` : ''}
+										${signalBadge ? `<span class="confluence-badge ${signalClass}">${signalBadge}</span>` : ''}
 									</div>
 								</div>
 								<div class="signal-details">
@@ -1125,12 +1232,6 @@
 										<div class="signal-detail-row">
 											<span class="signal-detail-label">Price:</span>
 											<span class="signal-detail-value">${formatPrice(signal.price)}</span>
-										</div>
-									` : ''}
-									${signal.quantity !== null && signal.quantity !== undefined ? `
-										<div class="signal-detail-row">
-											<span class="signal-detail-label">Quantity:</span>
-											<span class="signal-detail-value">${formatQuantity(signal.quantity, signal.symbol)}</span>
 										</div>
 									` : ''}
 									${signal.source ? `
