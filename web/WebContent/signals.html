@@ -487,6 +487,147 @@
 				Auto-refreshing every 30 seconds
 			</div>
 			
+			<!-- Old Signals Section (4+ days old) -->
+			<div id="old-signals-container" style="margin-top: 40px; display: none;">
+				<div style="text-align: center; margin-bottom: 20px;">
+					<button id="toggle-old-signals" onclick="toggleOldSignals()" style="background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.8); border: 2px solid rgba(255, 255, 255, 0.3); padding: 15px 40px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255, 255, 255, 0.15)'; this.style.borderColor='rgba(255, 255, 255, 0.5)'" onmouseout="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.borderColor='rgba(255, 255, 255, 0.3)'">
+						📜 Show Old Signals (<span id="old-signals-count">0</span> archived)
+					</button>
+					<p style="color: rgba(255, 255, 255, 0.5); font-size: 14px; margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
+						Signals older than 4 days are archived here for transparency and backtesting.<br>
+						The longer a signal has aged without being edited, the more proof it provides against repainting.
+					</p>
+				</div>
+				
+				<div id="old-signals-grid" class="signals-grid" style="display: none; background: rgba(0, 0, 0, 0.3); border: 2px solid rgba(255, 255, 255, 0.2); padding: 20px; opacity: 0.7;">
+					<!-- Old signals will be rendered here -->
+				</div>
+			</div>
+			
+			<!-- TODO: Uncomment when Stripe is set up -->
+			<!-- SUBSCRIPTION SECTION START
+			<div class="subscription-section" style="margin: 60px 0; padding: 40px; background: linear-gradient(135deg, rgba(241, 207, 171, 0.1) 0%, rgba(76, 175, 80, 0.1) 100%); border-radius: 16px; border: 2px solid rgba(241, 207, 171, 0.3); text-align: center;">
+				<div style="display: inline-block; background: #4caf50; color: white; padding: 8px 20px; border-radius: 20px; font-size: 14px; font-weight: bold; margin-bottom: 20px;">
+					🎉 LIMITED TIME: 7-DAY FREE TRIAL
+				</div>
+				
+				<h2 style="color: var(--primary-color); font-size: 36px; margin-bottom: 15px;">Upgrade to Premium Signals</h2>
+				
+				<p style="color: rgba(255, 255, 255, 0.8); font-size: 18px; max-width: 700px; margin: 0 auto 30px; line-height: 1.6;">
+					Get full access to our algorithmic trading signals with real-time alerts, advanced indicators, and exclusive analysis.
+				</p>
+				
+				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 900px; margin: 30px auto;">
+					<div style="padding: 20px; background: rgba(0, 0, 0, 0.3); border-radius: 8px;">
+						<div style="font-size: 32px; margin-bottom: 10px;">📊</div>
+						<div style="color: rgba(255, 255, 255, 0.9); font-weight: bold;">100+ Indicators</div>
+						<div style="color: rgba(255, 255, 255, 0.6); font-size: 14px;">Comprehensive analysis</div>
+					</div>
+					<div style="padding: 20px; background: rgba(0, 0, 0, 0.3); border-radius: 8px;">
+						<div style="font-size: 32px; margin-bottom: 10px;">🔔</div>
+						<div style="color: rgba(255, 255, 255, 0.9); font-weight: bold;">Real-Time Alerts</div>
+						<div style="color: rgba(255, 255, 255, 0.6); font-size: 14px;">Never miss a signal</div>
+					</div>
+					<div style="padding: 20px; background: rgba(0, 0, 0, 0.3); border-radius: 8px;">
+						<div style="font-size: 32px; margin-bottom: 10px;">📈</div>
+						<div style="color: rgba(255, 255, 255, 0.9); font-weight: bold;">Crypto & Stocks</div>
+						<div style="color: rgba(255, 255, 255, 0.6); font-size: 14px;">Multiple markets</div>
+					</div>
+					<div style="padding: 20px; background: rgba(0, 0, 0, 0.3); border-radius: 8px;">
+						<div style="font-size: 32px; margin-bottom: 10px;">✅</div>
+						<div style="color: rgba(255, 255, 255, 0.9); font-weight: bold;">Cancel Anytime</div>
+						<div style="color: rgba(255, 255, 255, 0.6); font-size: 14px;">No commitment</div>
+					</div>
+				</div>
+				
+				<div style="margin: 40px 0;">
+					<div style="font-size: 48px; font-weight: bold; color: var(--primary-color); margin-bottom: 10px;">
+						$19.99<span style="font-size: 24px; color: rgba(255, 255, 255, 0.6);">/month</span>
+					</div>
+					<div style="color: rgba(255, 255, 255, 0.7); font-size: 16px; margin-bottom: 30px;">
+						7 days FREE • No card required • Then $19.99/month
+					</div>
+					
+					<button onclick="startFreeTrial()" style="background: linear-gradient(135deg, #4caf50 0%, #45a049 100%); color: white; border: none; padding: 20px 50px; border-radius: 50px; font-size: 20px; font-weight: bold; cursor: pointer; box-shadow: 0 8px 24px rgba(76, 175, 80, 0.4); transition: all 0.3s ease; margin-bottom: 15px;" onmouseover="this.style.transform='translateY(-2px) scale(1.05)'; this.style.boxShadow='0 12px 32px rgba(76, 175, 80, 0.5)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 24px rgba(76, 175, 80, 0.4)'">
+						🚀 Start Free Trial - No Card Needed
+					</button>
+					
+					<div style="color: rgba(255, 255, 255, 0.5); font-size: 14px;">
+						✓ No credit card required • ✓ Full access for 7 days • ✓ Cancel anytime
+					</div>
+				</div>
+				
+				<div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+					<div style="color: rgba(255, 255, 255, 0.6); font-size: 14px; margin-bottom: 10px;">
+						💳 Secure payments powered by Stripe • 🔒 Your data is encrypted
+					</div>
+				</div>
+			</div>
+			SUBSCRIPTION SECTION END -->
+			
+			<!-- Signal Timing & Repainting Explanation -->
+			<div class="indicators-section" style="margin-top: 60px; background: rgba(76, 175, 80, 0.1); border: 2px solid #4caf50;">
+				<div class="indicators-header">
+					<h2>⏰ How to Use These Signals</h2>
+					<p style="color: rgba(255, 255, 255, 0.9); font-size: 18px; max-width: 900px; margin: 0 auto 30px; line-height: 1.8;">
+						<strong>Important: There is NO race to act on signals immediately.</strong> In fact, waiting for confirmation is often the smarter approach.
+					</p>
+				</div>
+				
+				<div class="indicators-content">
+					<div class="indicator-category" style="background: rgba(76, 175, 80, 0.05);">
+						<h3 style="color: #4caf50;">🎯 Signal Timing Philosophy</h3>
+						
+						<h4>Wait for Confirmation (Recommended)</h4>
+						<ul>
+							<li><strong>Don't rush the entry</strong> - Give signals a few hours to confirm the move is real. Consider starting with a smaller position (25-50% of your intended size) and adding to it as the move confirms through price action, additional indicators, or time. This scaling approach lets you participate while managing risk.</li>
+							<li><strong>Avoid fake-outs</strong> - Extreme volatility can create false signals that reverse quickly</li>
+							<li><strong>Let the move develop</strong> - The best traders don't try to catch the perfect bottom or top</li>
+							<li><strong>Patience pays</strong> - A confirmed trend is worth more than catching the first tick</li>
+						</ul>
+						
+						<h4>Understanding "Disappearing" Signals</h4>
+						<p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 15px;">
+							You may notice that some signals appear on this website but later disappear from our backend charts. 
+							<strong>This is a feature, not a bug.</strong>
+						</p>
+						<ul>
+							<li><strong>Backend behavior</strong> - During extreme volatility, our algorithms may invalidate a signal if conditions change rapidly</li>
+							<li><strong>Frontend behavior</strong> - Once a signal appears here, it stays permanently (with timestamp proof)</li>
+							<li><strong>Why this matters</strong> - This creates a transparent, auditable record of ALL signals generated, even ones that don't fully develop</li>
+							<li><strong>Real trading</strong> - This mirrors actual market conditions where some setups fail and that's perfectly normal</li>
+						</ul>
+						
+						<h4>Anti-Repainting Proof</h4>
+						<p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 15px;">
+							<strong>Repainting</strong> is when trading systems retroactively change or delete past signals to make their performance look better. 
+							We explicitly prevent this through transparency:
+						</p>
+						<ul>
+							<li><strong>Permanent timestamps</strong> - Every signal gets an immutable ISO 8601 timestamp the moment it's generated</li>
+							<li><strong>Never deleted</strong> - Signals are archived (not removed) after 4 days, providing long-term proof</li>
+							<li><strong>The longer signals age</strong> - The more proof they provide that we haven't edited or manipulated them</li>
+							<li><strong>GitHub commit history</strong> - Every update to signals.json is version-controlled with commit timestamps</li>
+							<li><strong>What you see is what was generated</strong> - No cherry-picking, no editing, no hiding bad calls</li>
+						</ul>
+						
+						<div style="background: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107; padding: 20px; margin-top: 20px; border-radius: 4px;">
+							<h4 style="color: #ffc107; margin-top: 0;">💡 Professional Trader Mindset</h4>
+							<p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 10px;">
+								The best traders understand that:
+							</p>
+							<ul style="margin-bottom: 0;">
+								<li><strong>Not every signal will be profitable</strong> - That's trading. Even 55-60% win rate with proper risk management is excellent</li>
+								<li><strong>Confirmation > Speed</strong> - Missing the first 2% of a move to gain 80% confidence is a good trade-off</li>
+								<li><strong>Risk management matters most</strong> - Use stop-losses, position sizing, and never risk more than 1-2% per trade</li>
+								<li><strong>The trend is your friend</strong> - Signals work best when aligned with higher timeframe trends</li>
+								<li><strong>Patience wins</strong> - Let high-probability setups come to you rather than forcing trades</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
 			<!-- Ticker Symbols Section -->
 			<div class="indicators-section" style="margin-top: 40px;">
 				<div class="indicators-header">
@@ -880,16 +1021,68 @@
 				return formattedQty;
 			}
 			
+			function toggleOldSignals() {
+				const oldGrid = document.getElementById('old-signals-grid');
+				const button = document.getElementById('toggle-old-signals');
+				
+				if (oldGrid.style.display === 'none') {
+					oldGrid.style.display = 'grid';
+					button.textContent = '📜 Hide Old Signals (' + document.getElementById('old-signals-count').textContent + ' archived)';
+				} else {
+					oldGrid.style.display = 'none';
+					button.innerHTML = '📜 Show Old Signals (<span id="old-signals-count">' + 
+						document.getElementById('old-signals-count').textContent + '</span> archived)';
+				}
+			}
+			
 			function renderSignals(signals) {
 				const grid = document.getElementById('signals-grid');
+				const oldGrid = document.getElementById('old-signals-grid');
+				const oldContainer = document.getElementById('old-signals-container');
+				
 				console.log('renderSignals called with', signals.length, 'signals');
 				console.log('Grid element:', grid);
 				
 				if (!signals || signals.length === 0) {
 					grid.innerHTML = '<div class="empty-state"><h3>⏳ Waiting for signals...</h3><p>Signals will appear here automatically when your trading bots generate them</p></div>';
+					oldContainer.style.display = 'none';
 					return;
 				}
 				
+				// Split signals into recent (last 4 days) and old (4+ days)
+				const fourDaysAgo = Date.now() - (4 * 24 * 60 * 60 * 1000);
+				const recentSignals = [];
+				const oldSignals = [];
+				
+				signals.forEach(signal => {
+					const timestamp = new Date(signal.timestamp || signal.received_at);
+					if (timestamp.getTime() > fourDaysAgo) {
+						recentSignals.push(signal);
+					} else {
+						oldSignals.push(signal);
+					}
+				});
+				
+				console.log('Recent signals:', recentSignals.length, 'Old signals:', oldSignals.length);
+				
+				// Render recent signals
+				if (recentSignals.length === 0) {
+					grid.innerHTML = '<div class="empty-state"><h3>⏳ No recent signals</h3><p>Check "Old Signals" below or wait for new signals</p></div>';
+				} else {
+					renderSignalCards(recentSignals, grid);
+				}
+				
+				// Render old signals
+				if (oldSignals.length > 0) {
+					oldContainer.style.display = 'block';
+					document.getElementById('old-signals-count').textContent = oldSignals.length;
+					renderSignalCards(oldSignals, oldGrid);
+				} else {
+					oldContainer.style.display = 'none';
+				}
+			}
+			
+			function renderSignalCards(signals, targetGrid) {
 				try {
 					const html = signals.map((signal, index) => {
 						console.log('Processing signal', index, signal);
@@ -963,18 +1156,18 @@
 					console.log('Generated HTML length:', html.length);
 					console.log('First 200 chars of HTML:', html.substring(0, 200));
 					console.log('Setting innerHTML...');
-					grid.innerHTML = html;
-					console.log('innerHTML set. Grid children:', grid.children.length);
-					console.log('Grid innerHTML length after set:', grid.innerHTML.length);
+					targetGrid.innerHTML = html;
+					console.log('innerHTML set. Grid children:', targetGrid.children.length);
+					console.log('Grid innerHTML length after set:', targetGrid.innerHTML.length);
 					
 					// Force a visual test
-					if (grid.children.length > 0) {
-						console.log('First child element:', grid.children[0]);
-						console.log('First child visible?', window.getComputedStyle(grid.children[0]).display);
+					if (targetGrid.children.length > 0) {
+						console.log('First child element:', targetGrid.children[0]);
+						console.log('First child visible?', window.getComputedStyle(targetGrid.children[0]).display);
 					}
 				} catch (error) {
-					console.error('Error in renderSignals:', error);
-					grid.innerHTML = '<div class="empty-state"><h3>Error rendering signals</h3><p>' + error.message + '</p></div>';
+					console.error('Error in renderSignalCards:', error);
+					targetGrid.innerHTML = '<div class="empty-state"><h3>Error rendering signals</h3><p>' + error.message + '</p></div>';
 				}
 			}
 			
@@ -1019,6 +1212,51 @@
 			
 			// Auto-refresh every 30 seconds
 			refreshInterval = setInterval(loadSignals, 30000);
+			
+			// TODO: Uncomment when Stripe is set up
+			/*
+			// ========================================
+			// SUBSCRIPTION / FREE TRIAL FUNCTIONALITY
+			// ========================================
+			
+			// Initialize Stripe (replace with your publishable key)
+			const stripe = Stripe('pk_test_YOUR_PUBLISHABLE_KEY_HERE');
+			
+			async function startFreeTrial() {
+				try {
+					// Call your backend to create Stripe Checkout Session with free trial
+					const response = await fetch('/api/create-checkout-session', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({
+							productType: 'subscription',
+							priceId: 'price_YOUR_SUBSCRIPTION_PRICE_ID', // Create in Stripe Dashboard
+							trial_days: 7  // 7-day free trial
+						})
+					});
+					
+					if (!response.ok) {
+						throw new Error('Failed to create checkout session');
+					}
+					
+					const session = await response.json();
+					
+					// Redirect to Stripe Checkout
+					const result = await stripe.redirectToCheckout({
+						sessionId: session.id
+					});
+					
+					if (result.error) {
+						alert(result.error.message);
+					}
+				} catch (error) {
+					console.error('Error:', error);
+					alert('Unable to start free trial. Please try again or contact support.');
+				}
+			}
+			*/
 		</script>
 	</body>
 </html>

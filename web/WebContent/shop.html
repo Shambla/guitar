@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="style/montserrat.css">
+		<link type="text/css" rel="stylesheet" href="style/font-awesome.css">
+		<link type="text/css" rel="stylesheet" href="style/index.css">
+		<link rel="shortcut icon" href="img/favico.ico" type="image/x-icon">
+		<script src="https://js.stripe.com/v3/"></script>
+		<title>Shop - Brian Streckfus</title>
+		<style>
+			.shop-container {
+				margin-top: 100px;
+				padding: 40px 20px;
+				max-width: 1200px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+			
+			.shop-header {
+				text-align: center;
+				margin-bottom: 50px;
+			}
+			
+			.shop-header h1 {
+				color: var(--primary-color);
+				font-size: 42px;
+				margin-bottom: 15px;
+			}
+			
+			.shop-categories {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 30px;
+				margin-bottom: 60px;
+			}
+			
+			.category-card {
+				background: rgba(255, 255, 255, 0.05);
+				border: 2px solid rgba(241, 207, 171, 0.3);
+				border-radius: 12px;
+				padding: 30px;
+				transition: all 0.3s ease;
+			}
+			
+			.category-card:hover {
+				transform: translateY(-5px);
+				border-color: var(--primary-color);
+				box-shadow: 0 8px 24px rgba(241, 207, 171, 0.2);
+			}
+			
+			.category-card h2 {
+				color: var(--primary-color);
+				font-size: 28px;
+				margin-bottom: 15px;
+			}
+			
+			.category-card p {
+				color: rgba(255, 255, 255, 0.8);
+				line-height: 1.6;
+				margin-bottom: 20px;
+			}
+			
+			.price {
+				font-size: 24px;
+				font-weight: bold;
+				color: var(--primary-color);
+				margin: 15px 0;
+			}
+			
+			.buy-button {
+				background: var(--primary-color);
+				color: var(--bg-color);
+				border: none;
+				padding: 15px 30px;
+				border-radius: 6px;
+				font-size: 16px;
+				font-weight: bold;
+				cursor: pointer;
+				width: 100%;
+				transition: all 0.3s ease;
+			}
+			
+			.buy-button:hover {
+				background: #d4b896;
+				transform: translateY(-2px);
+				box-shadow: 0 4px 12px rgba(241, 207, 171, 0.4);
+			}
+			
+			.buy-button:disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+			}
+			
+			.features-list {
+				list-style: none;
+				padding: 0;
+				margin: 20px 0;
+			}
+			
+			.features-list li {
+				color: rgba(255, 255, 255, 0.8);
+				padding: 8px 0;
+				padding-left: 25px;
+				position: relative;
+			}
+			
+			.features-list li:before {
+				content: "✓";
+				position: absolute;
+				left: 0;
+				color: #4caf50;
+				font-weight: bold;
+			}
+			
+			.popular-badge {
+				background: #4caf50;
+				color: white;
+				padding: 5px 15px;
+				border-radius: 20px;
+				font-size: 12px;
+				font-weight: bold;
+				display: inline-block;
+				margin-bottom: 10px;
+			}
+			
+			.crypto-option {
+				margin-top: 15px;
+				padding: 15px;
+				background: rgba(255, 152, 0, 0.1);
+				border: 1px solid rgba(255, 152, 0, 0.3);
+				border-radius: 6px;
+				text-align: center;
+			}
+			
+			.crypto-option p {
+				margin: 0;
+				font-size: 14px;
+				color: rgba(255, 255, 255, 0.7);
+			}
+			
+			.payment-methods {
+				text-align: center;
+				margin-top: 60px;
+				padding: 30px;
+				background: rgba(0, 0, 0, 0.2);
+				border-radius: 12px;
+			}
+			
+			.payment-methods h3 {
+				color: var(--primary-color);
+				margin-bottom: 20px;
+			}
+			
+			.payment-icons {
+				display: flex;
+				justify-content: center;
+				gap: 20px;
+				flex-wrap: wrap;
+			}
+			
+			.payment-icon {
+				background: white;
+				padding: 10px 20px;
+				border-radius: 6px;
+				font-weight: bold;
+				color: #333;
+			}
+		</style>
+	</head>
+	<body>
+		<nav>
+			<div id="backing"></div>
+			<div class="content">
+				<a href="index.html">HOME</a>
+				<a href="catalog.html">CATALOG</a>
+				<a href="shop.html" style="font-weight: bold;">SHOP</a>
+				<a href="signals.html">SIGNALS</a>
+			</div>
+		</nav>
+		
+		<div class="shop-container">
+			<div class="shop-header">
+				<h1>🛒 Shop</h1>
+				<p style="color: rgba(255, 255, 255, 0.7); font-size: 18px;">Purchase sheet music, MP3s, and trading signals subscriptions</p>
+			</div>
+			
+			<div class="shop-categories">
+				<!-- Sheet Music -->
+				<div class="category-card">
+					<h2>📄 Sheet Music</h2>
+					<p>High-quality guitar arrangements with tablature, chord diagrams, and fingerings. Instant PDF download.</p>
+					<ul class="features-list">
+						<li>Professional notation & TAB</li>
+						<li>Chord diagrams included</li>
+						<li>Letter names in noteheads</li>
+						<li>Instant PDF download</li>
+						<li>Print unlimited copies</li>
+					</ul>
+					<div class="price">$2.99 - $9.99</div>
+					<button class="buy-button" onclick="buySheetMusic()">
+						Browse Sheet Music
+					</button>
+				</div>
+				
+				<!-- MP3s -->
+				<div class="category-card">
+					<h2>🎵 MP3 Backing Tracks</h2>
+					<p>High-quality backing tracks and performances. Perfect for practice or study.</p>
+					<ul class="features-list">
+						<li>320kbps high-quality audio</li>
+						<li>Instant download</li>
+						<li>Play-along backing tracks</li>
+						<li>Original performances</li>
+						<li>No DRM restrictions</li>
+					</ul>
+					<div class="price">$0.99 - $4.99</div>
+					<button class="buy-button" onclick="buyMP3()">
+						Browse MP3s
+					</button>
+				</div>
+				
+				<!-- Trading Signals Subscription -->
+				<div class="category-card">
+					<span class="popular-badge">MOST POPULAR</span>
+					<h2>📈 Trading Signals PRO</h2>
+					<p>Premium subscription to our algorithmic trading signals with real-time alerts and analysis.</p>
+					<ul class="features-list">
+						<li>Real-time signal alerts</li>
+						<li>Crypto & Stock strategies</li>
+						<li>100+ technical indicators</li>
+						<li>Multi-timeframe analysis</li>
+						<li>Cancel anytime</li>
+					</ul>
+					<div class="price">$19.99/month</div>
+					<button class="buy-button" onclick="subscribeSignals()">
+						Start Subscription
+					</button>
+					<div class="crypto-option">
+						<p>💰 <strong>Save 20% with crypto payment</strong><br>
+						Pay with BTC, ETH, or USDT</p>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Donations -->
+			<div class="category-card" style="max-width: 600px; margin: 0 auto 60px;">
+				<h2>💝 Support My Work</h2>
+				<p>Enjoy the free content? Consider supporting with a one-time donation or crypto tip!</p>
+				<div style="display: flex; gap: 15px; margin-top: 20px;">
+					<button class="buy-button" onclick="donate()" style="flex: 1;">
+						💳 Donate via Card
+					</button>
+					<button class="buy-button" onclick="donateCrypto()" style="flex: 1; background: #ff9800;">
+						₿ Crypto Tip
+					</button>
+				</div>
+			</div>
+			
+			<!-- Payment Methods -->
+			<div class="payment-methods">
+				<h3>Secure Payments Powered By</h3>
+				<div class="payment-icons">
+					<div class="payment-icon">💳 Visa</div>
+					<div class="payment-icon">💳 Mastercard</div>
+					<div class="payment-icon">💳 Amex</div>
+					<div class="payment-icon">🍎 Apple Pay</div>
+					<div class="payment-icon">G Google Pay</div>
+					<div class="payment-icon">₿ Bitcoin</div>
+					<div class="payment-icon">Ξ Ethereum</div>
+				</div>
+				<p style="color: rgba(255, 255, 255, 0.5); margin-top: 20px; font-size: 14px;">
+					All transactions are encrypted and secure. We never store your payment information.
+				</p>
+			</div>
+		</div>
+		
+		<footer class="fade-in" style="text-align: center; padding: 40px 20px; margin-top: 60px; background: #f5f5f5; border-top: 1px solid #ddd;">
+			<p>&copy; 2024 Brian Streckfus</p>
+		</footer>
+		
+		<script>
+			// Initialize Stripe (replace with your publishable key)
+			// Get this from: https://dashboard.stripe.com/apikeys
+			const stripe = Stripe('pk_test_YOUR_PUBLISHABLE_KEY_HERE');
+			
+			// Sheet Music Purchase
+			async function buySheetMusic() {
+				// For now, redirect to catalog
+				// Later: implement Stripe Checkout
+				window.location.href = 'catalog.html';
+			}
+			
+			// MP3 Purchase
+			async function buyMP3() {
+				alert('MP3 store coming soon! Check back soon.');
+				// TODO: Implement Stripe Checkout for MP3s
+			}
+			
+			// Trading Signals Subscription
+			async function subscribeSignals() {
+				try {
+					// Call your backend to create Stripe Checkout Session
+					const response = await fetch('/api/create-checkout-session', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({
+							priceId: 'price_SIGNALS_SUBSCRIPTION_ID', // Get from Stripe Dashboard
+							productType: 'subscription'
+						})
+					});
+					
+					const session = await response.json();
+					
+					// Redirect to Stripe Checkout
+					const result = await stripe.redirectToCheckout({
+						sessionId: session.id
+					});
+					
+					if (result.error) {
+						alert(result.error.message);
+					}
+				} catch (error) {
+					console.error('Error:', error);
+					alert('Payment system not yet configured. Please contact support.');
+				}
+			}
+			
+			// One-time Donation
+			async function donate() {
+				const amount = prompt('Enter donation amount (USD):', '10');
+				if (!amount || isNaN(amount) || parseFloat(amount) < 1) {
+					return;
+				}
+				
+				try {
+					const response = await fetch('/api/create-checkout-session', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({
+							amount: Math.round(parseFloat(amount) * 100), // Convert to cents
+							productType: 'donation'
+						})
+					});
+					
+					const session = await response.json();
+					
+					const result = await stripe.redirectToCheckout({
+						sessionId: session.id
+					});
+					
+					if (result.error) {
+						alert(result.error.message);
+					}
+				} catch (error) {
+					console.error('Error:', error);
+					alert('Payment system not yet configured. Please contact support.');
+				}
+			}
+			
+			// Crypto Donation
+			function donateCrypto() {
+				// Show crypto addresses modal
+				const addresses = `
+🪙 CRYPTO DONATION ADDRESSES
+
+₿ Bitcoin (BTC):
+bc1q_your_bitcoin_address_here
+
+Ξ Ethereum (ETH):
+0x_your_ethereum_address_here
+
+💵 USDT (ERC-20):
+0x_your_ethereum_address_here
+
+Thank you for your support! 🙏
+				`;
+				alert(addresses);
+			}
+		</script>
+	</body>
+</html>
+

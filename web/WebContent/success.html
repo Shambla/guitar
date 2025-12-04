@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="style/montserrat.css">
+		<link type="text/css" rel="stylesheet" href="style/font-awesome.css">
+		<link type="text/css" rel="stylesheet" href="style/index.css">
+		<link rel="shortcut icon" href="img/favico.ico" type="image/x-icon">
+		<title>Payment Successful - Brian Streckfus</title>
+		<style>
+			.success-container {
+				margin-top: 100px;
+				padding: 60px 20px;
+				max-width: 800px;
+				margin-left: auto;
+				margin-right: auto;
+				text-align: center;
+			}
+			
+			.success-icon {
+				font-size: 80px;
+				color: #4caf50;
+				margin-bottom: 30px;
+				animation: scaleIn 0.5s ease;
+			}
+			
+			@keyframes scaleIn {
+				0% { transform: scale(0); }
+				50% { transform: scale(1.2); }
+				100% { transform: scale(1); }
+			}
+			
+			.success-container h1 {
+				color: var(--primary-color);
+				font-size: 42px;
+				margin-bottom: 20px;
+			}
+			
+			.success-container p {
+				color: rgba(255, 255, 255, 0.8);
+				font-size: 18px;
+				line-height: 1.6;
+				margin-bottom: 30px;
+			}
+			
+			.info-box {
+				background: rgba(76, 175, 80, 0.1);
+				border: 2px solid rgba(76, 175, 80, 0.3);
+				border-radius: 12px;
+				padding: 30px;
+				margin: 30px 0;
+				text-align: left;
+			}
+			
+			.info-box h3 {
+				color: #4caf50;
+				margin-bottom: 15px;
+			}
+			
+			.info-box ul {
+				list-style: none;
+				padding: 0;
+			}
+			
+			.info-box li {
+				color: rgba(255, 255, 255, 0.8);
+				padding: 8px 0;
+				padding-left: 25px;
+				position: relative;
+			}
+			
+			.info-box li:before {
+				content: "✓";
+				position: absolute;
+				left: 0;
+				color: #4caf50;
+				font-weight: bold;
+			}
+			
+			.button-group {
+				display: flex;
+				gap: 15px;
+				justify-content: center;
+				flex-wrap: wrap;
+				margin-top: 40px;
+			}
+			
+			.success-button {
+				background: var(--primary-color);
+				color: var(--bg-color);
+				border: none;
+				padding: 15px 30px;
+				border-radius: 6px;
+				font-size: 16px;
+				font-weight: bold;
+				cursor: pointer;
+				text-decoration: none;
+				display: inline-block;
+				transition: all 0.3s ease;
+			}
+			
+			.success-button:hover {
+				background: #d4b896;
+				transform: translateY(-2px);
+				box-shadow: 0 4px 12px rgba(241, 207, 171, 0.4);
+			}
+			
+			.success-button.secondary {
+				background: rgba(255, 255, 255, 0.1);
+				color: rgba(255, 255, 255, 0.9);
+				border: 2px solid rgba(255, 255, 255, 0.3);
+			}
+			
+			.session-id {
+				font-family: monospace;
+				background: rgba(0, 0, 0, 0.3);
+				padding: 10px;
+				border-radius: 4px;
+				font-size: 12px;
+				color: rgba(255, 255, 255, 0.6);
+				margin-top: 20px;
+				word-break: break-all;
+			}
+		</style>
+	</head>
+	<body>
+		<nav>
+			<div id="backing"></div>
+			<div class="content">
+				<a href="index.html">HOME</a>
+				<a href="catalog.html">CATALOG</a>
+				<a href="shop.html">SHOP</a>
+				<a href="signals.html">SIGNALS</a>
+			</div>
+		</nav>
+		
+		<div class="success-container">
+			<div class="success-icon">✅</div>
+			
+			<h1>Payment Successful!</h1>
+			
+			<p>Thank you for your purchase! Your payment has been processed successfully.</p>
+			
+			<div class="info-box" id="subscription-info" style="display: none;">
+				<h3>🎉 Welcome to Trading Signals PRO!</h3>
+				<ul>
+					<li>Your subscription is now active</li>
+					<li>Access premium trading signals 24/7</li>
+					<li>Real-time alerts for crypto & stocks</li>
+					<li>100+ technical indicators</li>
+					<li>Cancel anytime from your account</li>
+				</ul>
+			</div>
+			
+			<div class="info-box" id="purchase-info" style="display: none;">
+				<h3>📧 What's Next?</h3>
+				<ul>
+					<li>Check your email for a receipt</li>
+					<li>Your download link will be sent shortly</li>
+					<li>Purchased content is available immediately</li>
+					<li>Save your receipt for your records</li>
+				</ul>
+			</div>
+			
+			<div class="info-box" id="donation-info" style="display: none;">
+				<h3>💝 Thank You for Your Support!</h3>
+				<ul>
+					<li>Your donation helps create more content</li>
+					<li>You'll receive a receipt via email</li>
+					<li>100% tax-deductible (consult your tax advisor)</li>
+					<li>Your generosity is deeply appreciated!</li>
+				</ul>
+			</div>
+			
+			<div class="button-group">
+				<a href="signals.html" class="success-button" id="signals-button" style="display: none;">
+					📈 View Trading Signals
+				</a>
+				<a href="shop.html" class="success-button">
+					🛒 Continue Shopping
+				</a>
+				<a href="index.html" class="success-button secondary">
+					🏠 Return Home
+				</a>
+			</div>
+			
+			<div class="session-id" id="session-id"></div>
+		</div>
+		
+		<footer class="fade-in" style="text-align: center; padding: 40px 20px; margin-top: 60px; background: #f5f5f5; border-top: 1px solid #ddd;">
+			<p>&copy; 2024 Brian Streckfus</p>
+		</footer>
+		
+		<script>
+			// Get session ID from URL parameter
+			const urlParams = new URLSearchParams(window.location.search);
+			const sessionId = urlParams.get('session_id');
+			
+			if (sessionId) {
+				document.getElementById('session-id').textContent = `Session ID: ${sessionId}`;
+				
+				// Fetch session details from your backend (optional)
+				// This would tell you what was purchased
+				// For now, we'll show generic success message
+				
+				// You could call your backend here:
+				// fetch(`/api/session/${sessionId}`)
+				//   .then(res => res.json())
+				//   .then(data => {
+				//     // Show specific message based on what was purchased
+				//   });
+			}
+			
+			// For now, show purchase info by default
+			// In production, determine this from session data
+			const purchaseType = urlParams.get('type') || 'purchase';
+			
+			if (purchaseType === 'subscription') {
+				document.getElementById('subscription-info').style.display = 'block';
+				document.getElementById('signals-button').style.display = 'inline-block';
+			} else if (purchaseType === 'donation') {
+				document.getElementById('donation-info').style.display = 'block';
+			} else {
+				document.getElementById('purchase-info').style.display = 'block';
+			}
+		</script>
+	</body>
+</html>
+
