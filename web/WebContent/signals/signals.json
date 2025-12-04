@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "SPY",
+    "quantity": 100.0,
+    "price": 675.02,
+    "source": "MAIN_stock_strat11",
+    "note": "Test signal - BUY SPY with score 13/38",
+    "timestamp": "2025-12-04T06:00:52.665739Z",
+    "received_at": "2025-12-04T06:00:52.665783Z",
+    "id": "2025-12-04T06:00:52.665783Z-SPY-buy"
+  },
+  {
     "action": "sell",
     "symbol": "AAVE/USD",
     "quantity": 0.0,

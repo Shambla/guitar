@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "AAVE/USD",
-  "quantity": 0.0,
-  "price": 196.68,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2025-12-04T02:00:13.678470Z",
-  "received_at": "2025-12-04T02:00:13.678484Z",
-  "id": "2025-12-04T02:00:13.678484Z-AAVE/USD-sell"
+  "action": "buy",
+  "symbol": "SPY",
+  "quantity": 100.0,
+  "price": 675.02,
+  "source": "MAIN_stock_strat11",
+  "note": "Test signal - BUY SPY with score 13/38",
+  "timestamp": "2025-12-04T06:00:52.665739Z",
+  "received_at": "2025-12-04T06:00:52.665783Z",
+  "id": "2025-12-04T06:00:52.665783Z-SPY-buy"
 }
