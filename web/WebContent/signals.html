@@ -571,9 +571,10 @@
 				</h2>
 				
 				<div style="margin: 30px auto; max-width: 1200px;">
-					<img src="img/Best backtest 30m.png" 
+					<img src="img/Best%20backtest%2030m.png" 
 					     alt="Best Backtest Results - 30 Minute Timeframe" 
-					     style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1);">
+					     style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1);"
+					     onerror="console.error('Image failed to load:', this.src); this.style.border='2px solid red';">
 				</div>
 				
 				<!-- Detailed Explanation -->
@@ -602,6 +603,12 @@
 					
 					<p style="color: rgba(255, 255, 255, 0.9); font-size: 16px; line-height: 1.8; margin-bottom: 15px;">
 						<strong>Still need more proof?</strong> I ran <strong style="color: #42a5f5;">Monte Carlo tests</strong>. That means I even ran the bot through <em>alternate versions of history</em>. What if Bitcoin was at $2 right now, would the bot still have made money? <strong style="color: #4caf50;">Yes</strong>, the bot is still successful in alternate versions of history, so I didn't shoot the arrow first and then draw a bullseye around it. This helps to avoid future knowledge or over-fitting hard-coded bias.
+					</p>
+					
+					<p style="color: rgba(255, 255, 255, 0.9); font-size: 16px; line-height: 1.8; margin-bottom: 0;">
+						<strong>In fact, the backtests were so good that I caused TradingView to have errors</strong> and I had to start putting the starting capital at <strong style="color: var(--primary-color);">$1.00</strong>. 
+						If I put $1,000 starting capital, <span style="color: #f44336; font-weight: bold;">TradingView's UI would break!</span> 
+						<span style="background: rgba(255, 193, 7, 0.2); padding: 2px 8px; border-radius: 4px; font-weight: bold;">Also, that backtest image is from 3 years ago before 100,000 additional lines of code—imagine what it can do now!</span> 🚀
 					</p>
 				</div>
 				
