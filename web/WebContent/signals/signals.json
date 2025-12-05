@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.0418608,
+    "price": 3111.69,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed, position sized by JSON count)",
+    "timestamp": "2025-12-05T14:23:57.335357Z",
+    "received_at": "2025-12-05T14:23:57.335383Z",
+    "id": "2025-12-05T14:23:57.335383Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "SUI/USD",
     "quantity": 62.25874735400324,
     "price": 1.6046,
