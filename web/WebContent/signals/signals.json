@@ -1,5 +1,27 @@
 [
   {
+    "action": "buy",
+    "symbol": "AERO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-06T11:00:07.138314Z",
+    "received_at": "2025-12-06T11:00:07.138411Z",
+    "id": "2025-12-06T11:00:07.138411Z-AERO/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "AAVE/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-06T11:00:06.894723Z",
+    "received_at": "2025-12-06T11:00:06.894783Z",
+    "id": "2025-12-06T11:00:06.894783Z-AAVE/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
