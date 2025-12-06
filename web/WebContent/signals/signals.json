@@ -2,6 +2,39 @@
   {
     "action": "buy",
     "symbol": "ETH/USD",
+    "quantity": 0.03302629,
+    "price": 3021.8342199999997,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2025-12-06T02:45:14.682658Z",
+    "received_at": "2025-12-06T02:45:14.682754Z",
+    "id": "2025-12-06T02:45:14.682754Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 62.65664160401003,
+    "price": 1.594,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-06T02:00:49.513377Z",
+    "received_at": "2025-12-06T02:00:49.513408Z",
+    "id": "2025-12-06T02:00:49.513408Z-RENDER/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "SUI/USD",
+    "quantity": 64.49116471043467,
+    "price": 1.549,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-06T02:00:35.157821Z",
+    "received_at": "2025-12-06T02:00:35.157848Z",
+    "id": "2025-12-06T02:00:35.157848Z-SUI/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
     "quantity": 0.033038192150125545,
     "price": 3023.77,
     "source": "MASTER_BOT_162",
