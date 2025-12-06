@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "FET/USD",
-  "quantity": 427.89901583226356,
-  "price": 0.2335,
+  "symbol": "ETH/USD",
+  "quantity": 0.03293916,
+  "price": 3029.8282,
   "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2025-12-06T23:00:04.574810Z",
-  "received_at": "2025-12-06T23:00:04.574826Z",
-  "id": "2025-12-06T23:00:04.574826Z-FET/USD-buy"
+  "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+  "timestamp": "2025-12-06T23:38:49.142253Z",
+  "received_at": "2025-12-06T23:38:49.142265Z",
+  "id": "2025-12-06T23:38:49.142265Z-ETH/USD-buy"
 }
