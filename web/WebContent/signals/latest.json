@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "AAVE/USD",
+  "symbol": "ETH/USD",
   "quantity": 0.0,
-  "price": 185.4,
+  "price": 3036.08,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2025-12-06T14:00:09.197241Z",
-  "received_at": "2025-12-06T14:00:09.197257Z",
-  "id": "2025-12-06T14:00:09.197257Z-AAVE/USD-sell"
+  "timestamp": "2025-12-06T14:00:28.103218Z",
+  "received_at": "2025-12-06T14:00:28.103252Z",
+  "id": "2025-12-06T14:00:28.103252Z-ETH/USD-sell"
 }
