@@ -1,6 +1,50 @@
 [
   {
     "action": "sell",
+    "symbol": "AAVE/USD",
+    "quantity": 0.0,
+    "price": 185.4,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-06T14:00:09.197241Z",
+    "received_at": "2025-12-06T14:00:09.197257Z",
+    "id": "2025-12-06T14:00:09.197257Z-AAVE/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "AAVE/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-06T14:00:08.853391Z",
+    "received_at": "2025-12-06T14:00:08.854082Z",
+    "id": "2025-12-06T14:00:08.854082Z-AAVE/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "AERO/USD",
+    "quantity": 0.00713397,
+    "price": 0.67479,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-06T14:00:07.479198Z",
+    "received_at": "2025-12-06T14:00:07.479240Z",
+    "id": "2025-12-06T14:00:07.479240Z-AERO/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "AERO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-06T14:00:07.025671Z",
+    "received_at": "2025-12-06T14:00:07.025876Z",
+    "id": "2025-12-06T14:00:07.025876Z-AERO/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.03290653,
     "price": 3034.47,
