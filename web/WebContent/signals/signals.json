@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "AERO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-07T14:00:07.339134Z",
+    "received_at": "2025-12-07T14:00:07.339151Z",
+    "id": "2025-12-07T14:00:07.339151Z-AERO/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "ETH/USD",
     "quantity": 100.0,
     "price": null,
