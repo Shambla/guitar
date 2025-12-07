@@ -1,11 +1,11 @@
 {
-  "action": "sell",
+  "action": "buy",
   "symbol": "ETH/USD",
-  "quantity": 0.0,
-  "price": 3036.46,
-  "source": "MASTER_BOT_162",
-  "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-  "timestamp": "2025-12-07T11:36:30.584157Z",
-  "received_at": "2025-12-07T11:36:30.584174Z",
-  "id": "2025-12-07T11:36:30.584174Z-ETH/USD-sell"
+  "quantity": 100.0,
+  "price": null,
+  "source": "TradingView JSON",
+  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+  "timestamp": "2025-12-07T14:00:03.987860Z",
+  "received_at": "2025-12-07T14:00:03.987884Z",
+  "id": "2025-12-07T14:00:03.987884Z-ETH/USD-buy"
 }
