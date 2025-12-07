@@ -2,6 +2,17 @@
   {
     "action": "sell",
     "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 3015.78,
+    "source": "MASTER_BOT_162",
+    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+    "timestamp": "2025-12-07T16:55:31.494464Z",
+    "received_at": "2025-12-07T16:55:31.494478Z",
+    "id": "2025-12-07T16:55:31.494478Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
     "quantity": 0.03298533,
     "price": 2977.96,
     "source": "MASTER_BOT_162",
@@ -1483,27 +1494,5 @@
     "timestamp": "2025-11-30T18:00:03.325293Z",
     "received_at": "2025-11-30T18:00:03.325311Z",
     "id": "2025-11-30T18:00:03.325311Z-AERO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.03958057,
-    "price": 3029.71,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed, position sized by JSON count)",
-    "timestamp": "2025-11-30T16:08:40.452632Z",
-    "received_at": "2025-11-30T16:08:40.453738Z",
-    "id": "2025-11-30T16:08:40.453738Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.03301158,
-    "price": 3020.62087,
-    "source": "MASTER_BOT_162",
-    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
-    "timestamp": "2025-11-30T16:01:23.371306Z",
-    "received_at": "2025-11-30T16:01:23.372388Z",
-    "id": "2025-11-30T16:01:23.372388Z-ETH/USD-buy"
   }
 ]
