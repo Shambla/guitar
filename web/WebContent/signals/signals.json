@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 3119.08,
+    "source": "MASTER_BOT_162",
+    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+    "timestamp": "2025-12-07T18:01:08.681306Z",
+    "received_at": "2025-12-07T18:01:08.681320Z",
+    "id": "2025-12-07T18:01:08.681320Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "AERO/USD",
     "quantity": 100.0,
     "price": null,
@@ -1461,38 +1472,5 @@
     "timestamp": "2025-11-30T20:12:39.859293Z",
     "received_at": "2025-11-30T20:12:39.859439Z",
     "id": "2025-11-30T20:12:39.859439Z-ETH/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "CRV/USD",
-    "quantity": 234.46658851113716,
-    "price": 0.4261,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-11-30T18:00:24.360235Z",
-    "received_at": "2025-11-30T18:00:24.360255Z",
-    "id": "2025-11-30T18:00:24.360255Z-CRV/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-11-30T18:00:22.364585Z",
-    "received_at": "2025-11-30T18:00:22.364603Z",
-    "id": "2025-11-30T18:00:22.364603Z-CRV/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "AERO/USD",
-    "quantity": 146.2693989790396,
-    "price": 0.68299,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-11-30T18:00:19.085699Z",
-    "received_at": "2025-11-30T18:00:19.085714Z",
-    "id": "2025-11-30T18:00:19.085714Z-AERO/USD-buy"
   }
 ]
