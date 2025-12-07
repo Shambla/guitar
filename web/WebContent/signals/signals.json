@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-07T15:02:06.344832Z",
+    "received_at": "2025-12-07T15:02:06.344847Z",
+    "id": "2025-12-07T15:02:06.344847Z-RENDER/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "AAVE/USD",
     "quantity": 0.546,
     "price": 182.08,
