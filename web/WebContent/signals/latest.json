@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "ETH/USD",
-  "quantity": 0.0,
-  "price": 3119.08,
+  "symbol": "AERO/USD",
+  "quantity": 305.50713397,
+  "price": 0.68544,
   "source": "MASTER_BOT_162",
-  "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
-  "timestamp": "2025-12-07T18:01:08.681306Z",
-  "received_at": "2025-12-07T18:01:08.681320Z",
-  "id": "2025-12-07T18:01:08.681320Z-ETH/USD-sell"
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2025-12-07T18:02:53.304037Z",
+  "received_at": "2025-12-07T18:02:53.304051Z",
+  "id": "2025-12-07T18:02:53.304051Z-AERO/USD-sell"
 }
