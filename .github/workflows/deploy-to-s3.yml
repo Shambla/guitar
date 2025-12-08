@@ -23,3 +23,9 @@ jobs:
       - name: Sync Files to S3
         run: |
           aws s3 sync ./web/WebContent s3://${{ secrets.S3_BUCKET }} --delete
+
+      - name: Invalidate CloudFront Cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CF_DISTRIBUTION_ID }} \
+            --paths "/*"
