@@ -169,7 +169,8 @@
 			}
 			.refresh-info {
 				text-align: center;
-				margin-top: 20px;
+				margin-top: 5px;
+				margin-bottom: 5px;
 				color: rgba(255, 255, 255, 0.5);
 				font-size: 14px;
 			}
@@ -285,6 +286,17 @@
 			}
 			.disclaimer-hidden {
 				display: none !important;
+			}
+			#page-navigation {
+				display: flex !important;
+				visibility: visible !important;
+				opacity: 1 !important;
+			}
+			#page-navigation a {
+				display: inline-block !important;
+				visibility: visible !important;
+				opacity: 1 !important;
+				color: #fff !important;
 			}
 			.indicators-section {
 				margin-top: 60px;
@@ -464,6 +476,8 @@
 				<a href="index.html">HOME</a>
 				<a href="catalog.html">CATALOG</a>
 				<a href="signals.html" style="font-weight: bold;">SIGNALS</a>
+				<a href="#" onclick="event.preventDefault(); showStockSignals(); return false;">📈 STOCKS</a>
+				<a href="#" onclick="event.preventDefault(); showHistoricalSignals(); return false;">📜 HISTORICAL</a>
 			</div>
 		</nav>
 		
@@ -478,108 +492,58 @@
 				</div>
 			</div>
 			
-			<div id="signals-grid" class="signals-grid" style="background: rgba(255,0,0,0.1); border: 2px dashed rgba(255,255,255,0.3); padding: 20px; min-height: 300px;">
+			<!-- Page Navigation -->
+			<div id="page-navigation" style="display: flex !important; visibility: visible !important; opacity: 1 !important; justify-content: center; gap: 15px; margin: 30px 0 20px; padding: 20px; background: rgba(0, 0, 0, 0.7); border-radius: 8px; flex-wrap: wrap; z-index: 100;">
+				<a href="#live-signals" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(33, 150, 243, 0.8) !important; border: 2px solid #42a5f5; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(33, 150, 243, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(33, 150, 243, 0.8)'; this.style.transform='translateY(0)'">
+					📊 Live Signals
+				</a>
+				<a href="#backtest" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(76, 175, 80, 0.8) !important; border: 2px solid #4caf50; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(76, 175, 80, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(76, 175, 80, 0.8)'; this.style.transform='translateY(0)'">
+					📈 Backtesting
+				</a>
+				<a href="#trading-advice" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(255, 152, 0, 0.8) !important; border: 2px solid #ffa726; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255, 152, 0, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255, 152, 0, 0.8)'; this.style.transform='translateY(0)'">
+					💡 Trading Advice
+				</a>
+				<a href="#code-explanation" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(156, 39, 176, 0.8) !important; border: 2px solid #ab47bc; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(156, 39, 176, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(156, 39, 176, 0.8)'; this.style.transform='translateY(0)'">
+					🔧 Code Explanation
+				</a>
+			</div>
+			
+			<div id="live-signals"></div>
+			
+			<!-- Crypto Signals (Recent - Last 1 Day) -->
+			<h2 style="color: var(--primary-color); font-size: 28px; margin: 40px 0 20px; text-align: center;">💎 Cryptocurrency Signals (Last 24 Hours)</h2>
+			<div id="signals-grid" class="signals-grid" style="background: rgba(255,0,0,0.1); border: 2px dashed rgba(255,255,255,0.3); padding: 20px; min-height: 50px; margin-bottom: 0 !important;">
 				<div class="loading">⏳ Waiting for signals...</div>
 			</div>
 			
-			<div class="refresh-info">
-				Auto-refreshing every 30 seconds
-			</div>
-			
-			<!-- Old Signals Section (4+ days old) -->
-			<div id="old-signals-container" style="margin-top: 40px; display: none;">
-				<div style="text-align: center; margin-bottom: 20px;">
-					<button id="toggle-old-signals" onclick="toggleOldSignals()" style="background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.8); border: 2px solid rgba(255, 255, 255, 0.3); padding: 15px 40px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255, 255, 255, 0.15)'; this.style.borderColor='rgba(255, 255, 255, 0.5)'" onmouseout="this.style.background='rgba(255, 255, 255, 0.1)'; this.style.borderColor='rgba(255, 255, 255, 0.3)'">
-						📜 Show Old Signals (<span id="old-signals-count">0</span> archived)
-					</button>
-					<p style="color: rgba(255, 255, 255, 0.5); font-size: 14px; margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
-						Signals older than 4 days are archived here for transparency and backtesting.<br>
-						The longer a signal has aged without being edited, the more proof it provides against repainting.
-					</p>
-				</div>
-				
-				<div id="old-signals-grid" class="signals-grid" style="display: none; background: rgba(0, 0, 0, 0.3); border: 2px solid rgba(255, 255, 255, 0.2); padding: 20px; opacity: 0.7;">
-					<!-- Old signals will be rendered here -->
-				</div>
-			</div>
-			
-			<!-- TODO: Uncomment when Stripe is set up -->
-			<!-- SUBSCRIPTION SECTION START
-			<div class="subscription-section" style="margin: 60px 0; padding: 40px; background: linear-gradient(135deg, rgba(241, 207, 171, 0.1) 0%, rgba(76, 175, 80, 0.1) 100%); border-radius: 16px; border: 2px solid rgba(241, 207, 171, 0.3); text-align: center;">
-				<div style="display: inline-block; background: #4caf50; color: white; padding: 8px 20px; border-radius: 20px; font-size: 14px; font-weight: bold; margin-bottom: 20px;">
-					🎉 LIMITED TIME: 7-DAY FREE TRIAL
-				</div>
-				
-				<h2 style="color: var(--primary-color); font-size: 36px; margin-bottom: 15px;">Upgrade to Premium Signals</h2>
-				
-				<p style="color: rgba(255, 255, 255, 0.8); font-size: 18px; max-width: 700px; margin: 0 auto 30px; line-height: 1.6;">
-					Get full access to our algorithmic trading signals with real-time alerts, advanced indicators, and exclusive analysis.
+			<!-- Stock Signals (Recent - Last 7 Days) - Hidden by default -->
+			<div id="stock-signals-container" style="margin: 40px 0; padding: 0; display: none;">
+				<h2 style="color: var(--primary-color); font-size: 28px; margin: 40px 0 20px; text-align: center;">📈 Stock & ETF Signals (Last 7 Days)</h2>
+				<p style="color: rgba(255, 255, 255, 0.6); font-size: 14px; text-align: center; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">
+					Stocks and ETFs are long-term plays, so signals remain valid for extended periods. Recent stock signals from the past week are shown below.
 				</p>
-				
-				<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 900px; margin: 30px auto;">
-					<div style="padding: 20px; background: rgba(0, 0, 0, 0.3); border-radius: 8px;">
-						<div style="font-size: 32px; margin-bottom: 10px;">📊</div>
-						<div style="color: rgba(255, 255, 255, 0.9); font-weight: bold;">100+ Indicators</div>
-						<div style="color: rgba(255, 255, 255, 0.6); font-size: 14px;">Comprehensive analysis</div>
-					</div>
-					<div style="padding: 20px; background: rgba(0, 0, 0, 0.3); border-radius: 8px;">
-						<div style="font-size: 32px; margin-bottom: 10px;">🔔</div>
-						<div style="color: rgba(255, 255, 255, 0.9); font-weight: bold;">Real-Time Alerts</div>
-						<div style="color: rgba(255, 255, 255, 0.6); font-size: 14px;">Never miss a signal</div>
-					</div>
-					<div style="padding: 20px; background: rgba(0, 0, 0, 0.3); border-radius: 8px;">
-						<div style="font-size: 32px; margin-bottom: 10px;">📈</div>
-						<div style="color: rgba(255, 255, 255, 0.9); font-weight: bold;">Crypto & Stocks</div>
-						<div style="color: rgba(255, 255, 255, 0.6); font-size: 14px;">Multiple markets</div>
-					</div>
-					<div style="padding: 20px; background: rgba(0, 0, 0, 0.3); border-radius: 8px;">
-						<div style="font-size: 32px; margin-bottom: 10px;">✅</div>
-						<div style="color: rgba(255, 255, 255, 0.9); font-weight: bold;">Cancel Anytime</div>
-						<div style="color: rgba(255, 255, 255, 0.6); font-size: 14px;">No commitment</div>
-					</div>
-				</div>
-				
-				<div style="margin: 40px 0;">
-					<div style="font-size: 48px; font-weight: bold; color: var(--primary-color); margin-bottom: 10px;">
-						$19.99<span style="font-size: 24px; color: rgba(255, 255, 255, 0.6);">/month</span>
-					</div>
-					<div style="color: rgba(255, 255, 255, 0.7); font-size: 16px; margin-bottom: 30px;">
-						7 days FREE • No card required • Then $19.99/month
-					</div>
-					
-					<button onclick="startFreeTrial()" style="background: linear-gradient(135deg, #4caf50 0%, #45a049 100%); color: white; border: none; padding: 20px 50px; border-radius: 50px; font-size: 20px; font-weight: bold; cursor: pointer; box-shadow: 0 8px 24px rgba(76, 175, 80, 0.4); transition: all 0.3s ease; margin-bottom: 15px;" onmouseover="this.style.transform='translateY(-2px) scale(1.05)'; this.style.boxShadow='0 12px 32px rgba(76, 175, 80, 0.5)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 24px rgba(76, 175, 80, 0.4)'">
-						🚀 Start Free Trial - No Card Needed
-					</button>
-					
-					<div style="color: rgba(255, 255, 255, 0.5); font-size: 14px;">
-						✓ No credit card required • ✓ Full access for 7 days • ✓ Cancel anytime
-					</div>
-				</div>
-				
-				<div style="margin-top: 30px; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-					<div style="color: rgba(255, 255, 255, 0.6); font-size: 14px; margin-bottom: 10px;">
-						💳 Secure payments powered by Stripe • 🔒 Your data is encrypted
-					</div>
+				<div id="stock-signals-grid" class="signals-grid" style="background: rgba(76, 175, 80, 0.1); border: 2px solid rgba(76, 175, 80, 0.3); padding: 20px; min-height: 50px;">
+					<div class="loading">⏳ Loading stock signals...</div>
 				</div>
 			</div>
-			SUBSCRIPTION SECTION END -->
 			
 			<!-- Backtest Results Section -->
-			<div style="margin: 60px 0; padding: 40px 20px; background: rgba(76, 175, 80, 0.05); border-radius: 12px; border: 2px solid rgba(76, 175, 80, 0.3);">
-				<h2 style="color: var(--primary-color); font-size: 32px; margin-bottom: 15px; text-align: center;">
-					📊 Backtest Performance
+			<div id="backtest"></div>
+			<div class="backtest-section" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 10px 0 0px 0 !important; padding: 40px 20px; background: rgba(76, 175, 80, 0.15); border-radius: 12px; border: 3px solid #4caf50;">
+				<h2 style="color: #f1cfab; font-size: 32px; margin-bottom: 15px; text-align: center; display: block !important; visibility: visible !important;">
+					📈 Backtest Performance
 				</h2>
 				
-				<div style="margin: 30px auto; max-width: 1200px;">
+				<div style="display: block !important; visibility: visible !important; margin: 30px auto; max-width: 1200px; background: rgba(255, 0, 0, 0.1); padding: 20px;">
 					<img src="img/Best%20backtest%2030m.png" 
 					     alt="Best Backtest Results - 30 Minute Timeframe" 
-					     style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1);"
-					     onerror="console.error('Image failed to load:', this.src); this.style.border='2px solid red';">
+					     style="display: block !important; visibility: visible !important; opacity: 1 !important; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4); border: 3px solid #4caf50;"
+					     onerror="console.error('Image failed to load:', this.src); this.style.border='5px solid red'; this.style.background='yellow'; alert('IMAGE LOAD ERROR: ' + this.src);">
 				</div>
 				
 				<!-- Detailed Explanation -->
-				<div style="margin-top: 30px; text-align: left; max-width: 1000px; margin-left: auto; margin-right: auto; background: rgba(0, 0, 0, 0.3); padding: 30px; border-radius: 8px; border-left: 4px solid var(--primary-color);">
-					<p style="color: rgba(255, 255, 255, 0.9); font-size: 16px; line-height: 1.8; margin-bottom: 15px;">
+				<div style="display: block !important; visibility: visible !important; opacity: 1 !important; margin-top: 30px; text-align: left; max-width: 1000px; margin-left: auto; margin-right: auto; background: rgba(0, 0, 0, 0.5); padding: 30px; border-radius: 8px; border-left: 4px solid #f1cfab;">
+					<p style="display: block !important; visibility: visible !important; color: rgba(255, 255, 255, 0.95); font-size: 16px; line-height: 1.8; margin-bottom: 15px;">
 						Now I could <strong>lie to you</strong> and tell you that this is real. Unfortunately this is overly optimistic because of repainting. 
 						<strong>HOWEVER</strong>, I started to ponder how I could solve the problem.
 					</p>
@@ -619,9 +583,10 @@
 			</div>
 			
 			<!-- Signal Timing & Repainting Explanation -->
-			<div class="indicators-section" style="margin-top: 60px; background: rgba(76, 175, 80, 0.1); border: 2px solid #4caf50;">
+			<div id="trading-advice"></div>
+			<div class="indicators-section" style="margin-top: 0px !important; background: rgba(76, 175, 80, 0.1); border: 2px solid #4caf50;">
 				<div class="indicators-header">
-					<h2>⏰ How to Use These Signals</h2>
+					<h2>💡 How to Use These Signals</h2>
 					<p style="color: rgba(255, 255, 255, 0.9); font-size: 18px; max-width: 900px; margin: 0 auto 30px; line-height: 1.8;">
 						<strong>Important: There is NO race to act on signals immediately.</strong> In fact, waiting for confirmation is often the smarter approach.
 					</p>
@@ -686,9 +651,10 @@
 			</div>
 			
 			<!-- Ticker Symbols Section -->
+			<div id="code-explanation"></div>
 			<div class="indicators-section" style="margin-top: 40px;">
 				<div class="indicators-header">
-					<h2>📋 Traded Ticker Symbols</h2>
+					<h2>🔧 System Overview</h2>
 					<p>We focus on a curated selection of assets to ensure quality analysis and signal generation. Below are the specific ticker symbols we actively monitor and trade.</p>
 				</div>
 				
@@ -1017,7 +983,7 @@
 								<li><strong>Risk Tolerance</strong> - Conservative traders focus on Ultra High and Best; aggressive traders can trade all levels</li>
 								<li><strong>Track Performance</strong> - Monitor which conviction levels work best for your trading style and market conditions</li>
 								<li><strong>Not Guarantees</strong> - Higher conviction = higher probability, but no signal is perfect. Always use stop-losses.</li>
-							</ul>
+						</ul>
 						</div>
 					</div>
 					
@@ -1052,6 +1018,41 @@
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+		
+		<!-- Stock Historical Signals Section (7+ days old) - Hidden by default -->
+		<div id="stock-historical-container" style="margin: 40px 0 !important; padding: 0; display: none;">
+			<div style="text-align: center; margin-bottom: 20px;">
+				<h2 style="color: var(--primary-color); margin-bottom: 15px;">📈 Historical Stock & ETF Signals (7+ Days Old)</h2>
+				<p style="color: rgba(255, 255, 255, 0.5); font-size: 14px; margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
+					Stock signals older than 7 days are archived here. Stocks are long-term plays, so these signals remain relevant for extended periods.<br>
+					<span id="stock-historical-count-display" style="display: block; margin-top: 10px; color: rgba(255, 255, 255, 0.7); font-weight: bold;">(<span id="stock-historical-count">0</span> archived stock signals)</span>
+				</p>
+			</div>
+			
+			<div id="stock-historical-grid" class="signals-grid" style="display: grid; background: rgba(76, 175, 80, 0.1); border: 2px solid rgba(76, 175, 80, 0.3); padding: 20px; opacity: 0.8;">
+				<!-- Historical stock signals will be rendered here -->
+			</div>
+		</div>
+		
+		<!-- Old Signals Section (Crypto 1+ days old) - Hidden by default -->
+		<div class="refresh-info" style="display: none;">
+			Auto-refreshing every 30 seconds
+		</div>
+		
+		<div id="old-signals-container" style="margin: 20px 0 !important; padding: 0; display: none;">
+			<div style="text-align: center; margin-bottom: 20px;">
+				<h2 style="color: var(--primary-color); margin-bottom: 15px;">📜 Historical Crypto Signals (1+ Days Old)</h2>
+				<p style="color: rgba(255, 255, 255, 0.5); font-size: 14px; margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
+					Crypto signals older than 1 day are archived here for transparency and backtesting.<br>
+					The longer a signal has aged without being edited, the more proof it provides against repainting.
+					<span id="old-signals-count-display" style="display: block; margin-top: 10px; color: rgba(255, 255, 255, 0.7); font-weight: bold;">(<span id="old-signals-count">0</span> archived crypto signals)</span>
+				</p>
+			</div>
+			
+			<div id="old-signals-grid" class="signals-grid" style="display: grid; background: rgba(0, 0, 0, 0.3); border: 2px solid rgba(255, 255, 255, 0.2); padding: 20px; opacity: 0.7;">
+				<!-- Old crypto signals will be rendered here -->
 			</div>
 		</div>
 		
@@ -1137,64 +1138,178 @@
 				return formattedQty;
 			}
 			
-			function toggleOldSignals() {
-				const oldGrid = document.getElementById('old-signals-grid');
-				const button = document.getElementById('toggle-old-signals');
+			// Function to identify if a signal is a stock/ETF (not crypto)
+			function isStockSignal(signal) {
+				const symbol = (signal.symbol || '').toUpperCase();
+				// Crypto symbols typically have "/USD" or "/USDT" etc.
+				if (symbol.includes('/')) {
+					return false;
+				}
+				// Common stock/ETF patterns (letters only, typically 2-5 characters)
+				// This will catch SPY, XLK, NVDA, GLD, etc.
+				return /^[A-Z]{1,5}$/.test(symbol);
+			}
+			
+			function showStockSignals() {
+				const stockContainer = document.getElementById('stock-signals-container');
+				const stockGrid = document.getElementById('stock-signals-grid');
+				const stockHistoricalContainer = document.getElementById('stock-historical-container');
 				
-				if (oldGrid.style.display === 'none') {
-					oldGrid.style.display = 'grid';
-					button.textContent = '📜 Hide Old Signals (' + document.getElementById('old-signals-count').textContent + ' archived)';
+				if (!stockContainer) return;
+				
+				// Toggle visibility
+				if (stockContainer.style.display === 'none' || stockContainer.style.display === '') {
+					// Show stock signals
+					stockContainer.style.display = 'block';
+					if (stockHistoricalContainer) {
+						stockHistoricalContainer.style.display = 'block';
+					}
+					// Scroll to the stock signals section
+					setTimeout(() => {
+						stockContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}, 100);
 				} else {
-					oldGrid.style.display = 'none';
-					button.innerHTML = '📜 Show Old Signals (<span id="old-signals-count">' + 
-						document.getElementById('old-signals-count').textContent + '</span> archived)';
+					// Hide stock signals
+					stockContainer.style.display = 'none';
+					if (stockHistoricalContainer) {
+						stockHistoricalContainer.style.display = 'none';
+					}
+					// Scroll back to top
+					window.scrollTo({ top: 0, behavior: 'smooth' });
+				}
+			}
+			
+			function showHistoricalSignals() {
+				const oldContainer = document.getElementById('old-signals-container');
+				const oldGrid = document.getElementById('old-signals-grid');
+				
+				if (!oldContainer) return;
+				
+				// Toggle visibility
+				if (oldContainer.style.display === 'none' || oldContainer.style.display === '') {
+					// Show historical crypto signals
+					oldContainer.style.display = 'block';
+					if (oldGrid) {
+						oldGrid.style.display = 'grid';
+					}
+					// Scroll to the historical signals section
+					setTimeout(() => {
+						oldContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}, 100);
+				} else {
+					// Hide historical signals
+					oldContainer.style.display = 'none';
+					if (oldGrid) {
+						oldGrid.style.display = 'none';
+					}
+					// Scroll back to top
+					window.scrollTo({ top: 0, behavior: 'smooth' });
 				}
 			}
 			
 			function renderSignals(signals) {
-				const grid = document.getElementById('signals-grid');
-				const oldGrid = document.getElementById('old-signals-grid');
-				const oldContainer = document.getElementById('old-signals-container');
+				const grid = document.getElementById('signals-grid'); // Crypto recent
+				const oldGrid = document.getElementById('old-signals-grid'); // Crypto historical
+				const oldContainer = document.getElementById('old-signals-container'); // Crypto historical container
+				const stockGrid = document.getElementById('stock-signals-grid'); // Stock recent
+				const stockContainer = document.getElementById('stock-signals-container'); // Stock recent container
+				const stockHistoricalGrid = document.getElementById('stock-historical-grid'); // Stock historical
+				const stockHistoricalContainer = document.getElementById('stock-historical-container'); // Stock historical container
 				
 				console.log('renderSignals called with', signals.length, 'signals');
-				console.log('Grid element:', grid);
 				
 				if (!signals || signals.length === 0) {
 					grid.innerHTML = '<div class="empty-state"><h3>⏳ Waiting for signals...</h3><p>Signals will appear here automatically when your trading bots generate them</p></div>';
 					oldContainer.style.display = 'none';
+					stockContainer.style.display = 'none';
+					stockHistoricalContainer.style.display = 'none';
 					return;
 				}
 				
-				// Split signals into recent (last 4 days) and old (4+ days)
-				const fourDaysAgo = Date.now() - (4 * 24 * 60 * 60 * 1000);
-				const recentSignals = [];
-				const oldSignals = [];
+				// Separate stocks from crypto
+				const stockSignals = [];
+				const cryptoSignals = [];
 				
 				signals.forEach(signal => {
-					const timestamp = new Date(signal.timestamp || signal.received_at);
-					if (timestamp.getTime() > fourDaysAgo) {
-						recentSignals.push(signal);
+					if (isStockSignal(signal)) {
+						stockSignals.push(signal);
 					} else {
-						oldSignals.push(signal);
+						cryptoSignals.push(signal);
 					}
 				});
 				
-				console.log('Recent signals:', recentSignals.length, 'Old signals:', oldSignals.length);
+				// Process CRYPTO signals: recent (1 day) vs historical (1+ days)
+				const oneDayAgo = Date.now() - (1 * 24 * 60 * 60 * 1000);
+				const recentCrypto = [];
+				const oldCrypto = [];
 				
-				// Render recent signals
-				if (recentSignals.length === 0) {
-					grid.innerHTML = '<div class="empty-state"><h3>⏳ No recent signals</h3><p>Check "Old Signals" below or wait for new signals</p></div>';
+				cryptoSignals.forEach(signal => {
+					const timestamp = new Date(signal.timestamp || signal.received_at);
+					if (timestamp.getTime() > oneDayAgo) {
+						recentCrypto.push(signal);
+					} else {
+						oldCrypto.push(signal);
+					}
+				});
+				
+				// Process STOCK signals: recent (7 days, since stocks are long-term) vs historical (7+ days)
+				const sevenDaysAgo = Date.now() - (7 * 24 * 60 * 60 * 1000);
+				const recentStocks = [];
+				const oldStocks = [];
+				
+				stockSignals.forEach(signal => {
+					const timestamp = new Date(signal.timestamp || signal.received_at);
+					if (timestamp.getTime() > sevenDaysAgo) {
+						// Stocks from last 7 days are considered recent (long-term plays)
+						recentStocks.push(signal);
+					} else {
+						// Stocks older than 7 days go to historical
+						oldStocks.push(signal);
+					}
+				});
+				
+				console.log('Crypto - Recent:', recentCrypto.length, 'Old:', oldCrypto.length);
+				console.log('Stocks - Recent:', recentStocks.length, 'Historical (7+ days):', oldStocks.length);
+				
+				// Render CRYPTO signals
+				if (recentCrypto.length === 0) {
+					grid.innerHTML = '<div class="empty-state"><h3>⏳ No recent crypto signals</h3><p>Check historical signals or wait for new signals</p></div>';
 				} else {
-					renderSignalCards(recentSignals, grid);
+					renderSignalCards(recentCrypto, grid);
 				}
 				
-				// Render old signals
-				if (oldSignals.length > 0) {
-					oldContainer.style.display = 'block';
-					document.getElementById('old-signals-count').textContent = oldSignals.length;
-					renderSignalCards(oldSignals, oldGrid);
+				// Render crypto historical (hidden by default)
+				if (oldCrypto.length > 0) {
+					oldContainer.style.display = 'none';
+					document.getElementById('old-signals-count').textContent = oldCrypto.length;
+					if (document.getElementById('old-signals-count-display')) {
+						document.getElementById('old-signals-count-display').style.display = 'block';
+					}
+					renderSignalCards(oldCrypto, oldGrid);
 				} else {
 					oldContainer.style.display = 'none';
+				}
+				
+				// Render STOCK signals
+				if (recentStocks.length > 0) {
+					renderSignalCards(recentStocks, stockGrid);
+					// Stock container hidden by default, shown via nav button
+					stockContainer.style.display = 'none';
+				} else {
+					stockGrid.innerHTML = '<div class="empty-state"><h3>⏳ No recent stock signals</h3><p>Check historical stock signals or wait for new signals</p></div>';
+					stockContainer.style.display = 'none';
+				}
+				
+				// Render stock historical (hidden by default)
+				if (oldStocks.length > 0) {
+					stockHistoricalContainer.style.display = 'none';
+					document.getElementById('stock-historical-count').textContent = oldStocks.length;
+					if (document.getElementById('stock-historical-count-display')) {
+						document.getElementById('stock-historical-count-display').style.display = 'block';
+					}
+					renderSignalCards(oldStocks, stockHistoricalGrid);
+				} else {
+					stockHistoricalContainer.style.display = 'none';
 				}
 			}
 			
@@ -1321,50 +1436,7 @@
 			// Auto-refresh every 30 seconds
 			refreshInterval = setInterval(loadSignals, 30000);
 			
-			// TODO: Uncomment when Stripe is set up
-			/*
-			// ========================================
-			// SUBSCRIPTION / FREE TRIAL FUNCTIONALITY
-			// ========================================
-			
-			// Initialize Stripe (replace with your publishable key)
-			const stripe = Stripe('pk_test_YOUR_PUBLISHABLE_KEY_HERE');
-			
-			async function startFreeTrial() {
-				try {
-					// Call your backend to create Stripe Checkout Session with free trial
-					const response = await fetch('/api/create-checkout-session', {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json',
-						},
-						body: JSON.stringify({
-							productType: 'subscription',
-							priceId: 'price_YOUR_SUBSCRIPTION_PRICE_ID', // Create in Stripe Dashboard
-							trial_days: 7  // 7-day free trial
-						})
-					});
-					
-					if (!response.ok) {
-						throw new Error('Failed to create checkout session');
-					}
-					
-					const session = await response.json();
-					
-					// Redirect to Stripe Checkout
-					const result = await stripe.redirectToCheckout({
-						sessionId: session.id
-					});
-					
-					if (result.error) {
-						alert(result.error.message);
-					}
-				} catch (error) {
-					console.error('Error:', error);
-					alert('Unable to start free trial. Please try again or contact support.');
-				}
-			}
-			*/
+			// TODO: Subscription JavaScript code in website_todo.md - add when Stripe is ready
 		</script>
 	</body>
 </html>

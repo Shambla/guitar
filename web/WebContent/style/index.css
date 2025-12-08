@@ -581,6 +581,7 @@ nav a:hover::after {
 	position:		relative;
 	flex:			1.2;
 	min-width:		0;
+	overflow:		visible;
 }
 
 /* Bio pic container on the right */
@@ -653,7 +654,7 @@ nav a:hover::after {
 
 #bio-text-overlay > div {
 	position:		relative;
-	height:			100%;
+	min-height:		100%;
 	padding:		20px;
 	padding-bottom:	80px;
 	display:		flex;
@@ -973,13 +974,13 @@ img:hover {
 }
 
 /* Section animations - Only apply to specific sections, not all divs */
-.content > div:not(.left-half):not(.right-half):not(#bio-right):not(#performance-details):not(#contact-details) {
+.content > div:not(.left-half):not(.right-half):not(#bio-right):not(#performance-details):not(#contact-details):not(#page-navigation) {
 	opacity:		0;
 	transform:		translateY(15px);
 	transition:		opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
 }
 
-.content > div:not(.left-half):not(.right-half):not(#bio-right):not(#performance-details):not(#contact-details).animate {
+.content > div:not(.left-half):not(.right-half):not(#bio-right):not(#performance-details):not(#contact-details):not(#page-navigation).animate {
 	opacity:		1;
 	transform:		translateY(0);
 }
