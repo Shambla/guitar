@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "SUI/USD",
-  "quantity": 100.0,
-  "price": null,
-  "source": "TradingView JSON",
-  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2025-12-10T14:00:15.420751Z",
-  "received_at": "2025-12-10T14:00:15.420796Z",
-  "id": "2025-12-10T14:00:15.420796Z-SUI/USD-buy"
+  "symbol": "ETH/USD",
+  "quantity": 0.03015308,
+  "price": 3309.77718,
+  "source": "MASTER_BOT_162",
+  "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+  "timestamp": "2025-12-10T14:40:17.001709Z",
+  "received_at": "2025-12-10T14:40:17.001724Z",
+  "id": "2025-12-10T14:40:17.001724Z-ETH/USD-buy"
 }
