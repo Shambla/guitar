@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "FET/USD",
-  "quantity": 381.0975609756098,
-  "price": 0.2621,
+  "symbol": "AERO/USD",
+  "quantity": 150.70454374199383,
+  "price": 0.66289,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2025-12-10T09:01:06.495794Z",
-  "received_at": "2025-12-10T09:01:06.495810Z",
-  "id": "2025-12-10T09:01:06.495810Z-FET/USD-buy"
+  "timestamp": "2025-12-10T09:01:49.225672Z",
+  "received_at": "2025-12-10T09:01:49.225692Z",
+  "id": "2025-12-10T09:01:49.225692Z-AERO/USD-buy"
 }
