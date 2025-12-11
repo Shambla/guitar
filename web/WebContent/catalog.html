@@ -10,6 +10,19 @@
 		<link rel="shortcut icon" href="img/favico.ico" type="image/x-icon">
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="script/catalog.js"></script>
+		<script type="text/javascript">
+			// Add scroll detection for mobile nav shrinking
+			window.addEventListener("scroll", function() {
+				var distance = window.pageYOffset || document.documentElement.scrollTop;
+				if(distance > 20) {
+					document.querySelector("nav").classList.add("scrolled");
+					document.getElementById("backing").classList.add("scrolled");
+				} else {
+					document.querySelector("nav").classList.remove("scrolled");
+					document.getElementById("backing").classList.remove("scrolled");
+				}
+			});
+		</script>
 		<title>Sheet Music Catalog - Brian Streckfus</title>
 	</head>
 	<body>
