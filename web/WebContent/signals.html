@@ -8,6 +8,7 @@
 		<link type="text/css" rel="stylesheet" href="style/index.css">
 		<link rel="shortcut icon" href="img/favico.ico" type="image/x-icon">
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="https://js.stripe.com/v3/"></script>
 		<title>Trading Signals - Live Feed</title>
 		<style>
 			.signals-container {
@@ -121,6 +122,20 @@
 					padding: 4px 10px !important;
 				}
 				
+				/* Live signals navigation - stack vertically */
+				#live-signals-nav {
+					flex-direction: column !important;
+					gap: 15px !important;
+					padding: 15px !important;
+				}
+				
+				#live-signals-nav button {
+					width: 100% !important;
+					padding: 12px !important;
+					text-align: center !important;
+					font-size: 14px !important;
+				}
+				
 				/* Page navigation buttons - stack vertically */
 				#page-navigation {
 					flex-direction: column !important;
@@ -179,6 +194,24 @@
 				/* Summary stats grid - single column */
 				.summary-stats ul {
 					grid-template-columns: 1fr !important;
+				}
+				
+				/* Asset list grid - single column on mobile */
+				.asset-list-grid {
+					grid-template-columns: 1fr !important;
+					gap: 12px !important;
+				}
+				
+				.asset-list-item {
+					padding: 15px !important;
+					flex-direction: column !important;
+					align-items: flex-start !important;
+					gap: 10px !important;
+				}
+				
+				.asset-signal {
+					align-items: flex-start !important;
+					width: 100%;
 				}
 				
 				/* Backtest image - responsive */
@@ -574,6 +607,170 @@
 				margin-bottom: 10px;
 				line-height: 1.6;
 			}
+			.asset-list-item {
+				background: rgba(255, 255, 255, 0.05);
+				border: 1px solid rgba(255, 255, 255, 0.1);
+				border-radius: 8px;
+				padding: 20px;
+				transition: all 0.3s ease;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.asset-list-item:hover {
+				transform: translateY(-3px);
+				box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+				border-color: rgba(255, 255, 255, 0.3);
+			}
+			.asset-list-item.buy {
+				border-left: 4px solid #4caf50;
+			}
+			.asset-list-item.sell {
+				border-left: 4px solid #f44336;
+			}
+			.asset-name {
+				font-size: 20px;
+				font-weight: bold;
+				color: var(--primary-color);
+			}
+			.asset-signal {
+				display: flex;
+				flex-direction: column;
+				align-items: flex-end;
+				gap: 5px;
+			}
+			.asset-signal-action {
+				font-size: 16px;
+				font-weight: bold;
+				text-transform: uppercase;
+				padding: 6px 12px;
+				border-radius: 4px;
+			}
+			.asset-signal-action.buy {
+				background-color: rgba(76, 175, 80, 0.2);
+				color: #4caf50;
+			}
+			.asset-signal-action.sell {
+				background-color: rgba(244, 67, 54, 0.2);
+				color: #f44336;
+			}
+			.asset-signal-time {
+				font-size: 12px;
+				color: rgba(255, 255, 255, 0.5);
+			}
+			.asset-signal-price {
+				font-size: 14px;
+				color: rgba(255, 255, 255, 0.7);
+			}
+			.subscribe-button {
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: #fff;
+				border: none;
+				padding: 12px 24px;
+				border-radius: 6px;
+				font-weight: bold;
+				font-size: 16px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+			}
+			.subscribe-button:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 16px rgba(102, 126, 234, 0.6);
+			}
+			.subscribe-button:disabled {
+				opacity: 0.6;
+				cursor: not-allowed;
+				transform: none;
+			}
+			.subscription-badge {
+				display: inline-block;
+				padding: 4px 12px;
+				background: rgba(76, 175, 80, 0.2);
+				color: #4caf50;
+				border: 1px solid #4caf50;
+				border-radius: 12px;
+				font-size: 12px;
+				font-weight: bold;
+				margin-left: 10px;
+			}
+			.subscription-modal {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background: rgba(0, 0, 0, 0.95);
+				z-index: 10001;
+				display: none;
+				justify-content: center;
+				align-items: center;
+				padding: 20px;
+			}
+			.subscription-modal-content {
+				background: var(--bg-color);
+				border: 2px solid var(--primary-color);
+				border-radius: 12px;
+				padding: 40px;
+				max-width: 500px;
+				text-align: center;
+				box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+			}
+			.subscription-modal-content h2 {
+				color: var(--primary-color);
+				margin-top: 0;
+				margin-bottom: 20px;
+				font-size: 28px;
+			}
+			.subscription-modal-content p {
+				color: rgba(255, 255, 255, 0.9);
+				line-height: 1.8;
+				margin-bottom: 15px;
+			}
+			.subscription-features {
+				text-align: left;
+				margin: 25px 0;
+				padding: 20px;
+				background: rgba(255, 255, 255, 0.05);
+				border-radius: 8px;
+			}
+			.subscription-features ul {
+				list-style: none;
+				padding: 0;
+				margin: 0;
+			}
+			.subscription-features li {
+				color: rgba(255, 255, 255, 0.9);
+				padding: 8px 0;
+				padding-left: 25px;
+				position: relative;
+			}
+			.subscription-features li:before {
+				content: "✓";
+				position: absolute;
+				left: 0;
+				color: #4caf50;
+				font-weight: bold;
+				font-size: 18px;
+			}
+			.subscription-pricing {
+				background: rgba(76, 175, 80, 0.1);
+				border: 2px solid #4caf50;
+				border-radius: 8px;
+				padding: 20px;
+				margin: 25px 0;
+			}
+			.subscription-pricing .price {
+				font-size: 36px;
+				font-weight: bold;
+				color: #4caf50;
+				margin: 10px 0;
+			}
+			.subscription-pricing .trial {
+				color: rgba(255, 255, 255, 0.8);
+				font-size: 14px;
+				margin-top: 10px;
+			}
 		</style>
 	</head>
 	<body>
@@ -627,6 +824,37 @@
 			</div>
 		</div>
 		
+		<!-- Subscription Modal -->
+		<div id="subscription-modal" class="subscription-modal">
+			<div class="subscription-modal-content">
+				<h2>🚀 Premium Trading Signals</h2>
+				<p>Get unlimited access to all trading signals with our premium subscription.</p>
+				
+				<div class="subscription-pricing">
+					<div class="price">$9.99<span style="font-size: 18px; color: rgba(255, 255, 255, 0.7);">/month</span></div>
+					<div class="trial">✨ 7-Day Free Trial • No Credit Card Required</div>
+				</div>
+				
+				<div class="subscription-features">
+					<ul>
+						<li>Unlimited access to all trading signals</li>
+						<li>Real-time crypto and stock signals</li>
+						<li>Historical signal analysis</li>
+						<li>Asset list with latest signals</li>
+						<li>Priority support</li>
+					</ul>
+				</div>
+				
+				<button id="start-subscription-btn" class="subscribe-button" onclick="startSubscription()">
+					Start 7-Day Free Trial
+				</button>
+				<button onclick="closeSubscriptionModal()" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.3); color: rgba(255, 255, 255, 0.7); padding: 10px 20px; border-radius: 6px; margin-top: 15px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(255, 255, 255, 0.5)'; this.style.color='#fff';" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.3)'; this.style.color='rgba(255, 255, 255, 0.7)';">
+					Maybe Later
+				</button>
+				<div id="subscription-error" style="color: #f44336; margin-top: 15px; display: none;"></div>
+			</div>
+		</div>
+		
 		<nav>
 			<div id="backing"></div>
 			<div class="content">
@@ -635,6 +863,9 @@
 				<a href="signals.html" style="font-weight: bold;">SIGNALS</a>
 				<a href="#" onclick="event.preventDefault(); showStockSignals(); return false;">📈 STOCKS</a>
 				<a href="#" onclick="event.preventDefault(); showHistoricalSignals(); return false;">📜 HISTORICAL</a>
+				<a href="#" onclick="event.preventDefault(); showSubscriptionModal(); return false;" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 6px; padding: 8px 16px; margin-left: 10px;">
+					💳 Subscribe
+				</a>
 			</div>
 		</nav>
 		
@@ -649,10 +880,20 @@
 				</div>
 			</div>
 			
+			<!-- Live Signals Navigation Bar (Crypto vs Stocks) -->
+			<div id="live-signals-nav" style="display: flex !important; visibility: visible !important; opacity: 1 !important; justify-content: center; gap: 20px; margin: 30px 0 20px; padding: 20px; background: rgba(0, 0, 0, 0.8); border-radius: 8px; border: 2px solid rgba(255, 255, 255, 0.2); z-index: 100;">
+				<button id="nav-crypto-btn" onclick="switchToCrypto()" onmouseover="if(this.style.background.includes('1)')) { this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(33, 150, 243, 0.6)'; }" onmouseout="if(this.style.background.includes('1)')) { this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(33, 150, 243, 0.4)'; }" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 15px 30px; background: rgba(33, 150, 243, 1) !important; border: 3px solid #42a5f5; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);">
+					💎 Live Signals - Crypto
+				</button>
+				<button id="nav-stocks-btn" onclick="switchToStocks()" onmouseover="if(this.style.background.includes('1)')) { this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(76, 175, 80, 0.6)'; }" onmouseout="if(this.style.background.includes('1)')) { this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(76, 175, 80, 0.4)'; }" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 15px 30px; background: rgba(76, 175, 80, 0.5) !important; border: 3px solid rgba(76, 175, 80, 0.5); border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; transition: all 0.3s ease;">
+					📈 Live Signals - Stocks
+				</button>
+			</div>
+			
 			<!-- Page Navigation -->
 			<div id="page-navigation" style="display: flex !important; visibility: visible !important; opacity: 1 !important; justify-content: center; gap: 15px; margin: 30px 0 20px; padding: 20px; background: rgba(0, 0, 0, 0.7); border-radius: 8px; flex-wrap: wrap; z-index: 100;">
-				<a href="#live-signals" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(33, 150, 243, 0.8) !important; border: 2px solid #42a5f5; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(33, 150, 243, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(33, 150, 243, 0.8)'; this.style.transform='translateY(0)'">
-					📊 Live Signals
+				<a href="#asset-list" onclick="event.preventDefault(); showAssetList(); return false;" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(255, 193, 7, 0.8) !important; border: 2px solid #ffc107; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255, 193, 7, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255, 193, 7, 0.8)'; this.style.transform='translateY(0)'">
+					📋 List of Assets
 				</a>
 				<a href="#backtest" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(76, 175, 80, 0.8) !important; border: 2px solid #4caf50; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(76, 175, 80, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(76, 175, 80, 0.8)'; this.style.transform='translateY(0)'">
 					📈 Backtesting
@@ -668,9 +909,11 @@
 			<div id="live-signals"></div>
 			
 			<!-- Crypto Signals (Recent - Last 1 Day) -->
-			<h2 style="color: var(--primary-color); font-size: 28px; margin: 40px 0 20px; text-align: center;">💎 Cryptocurrency Signals (Last 24 Hours)</h2>
-			<div id="signals-grid" class="signals-grid" style="background: rgba(255,0,0,0.1); border: 2px dashed rgba(255,255,255,0.3); padding: 20px; min-height: 50px; margin-bottom: 0 !important;">
-				<div class="loading">⏳ Waiting for signals...</div>
+			<div id="crypto-signals-container" style="display: block;">
+				<h2 style="color: var(--primary-color); font-size: 28px; margin: 40px 0 20px; text-align: center;">💎 Cryptocurrency Signals (Last 24 Hours)</h2>
+				<div id="signals-grid" class="signals-grid" style="background: rgba(255,0,0,0.1); border: 2px dashed rgba(255,255,255,0.3); padding: 20px; min-height: 50px; margin-bottom: 0 !important;">
+					<div class="loading">⏳ Waiting for signals...</div>
+				</div>
 			</div>
 			
 			<!-- Stock Signals (Recent - Last 7 Days) - Hidden by default -->
@@ -681,6 +924,31 @@
 				</p>
 				<div id="stock-signals-grid" class="signals-grid" style="background: rgba(76, 175, 80, 0.1); border: 2px solid rgba(76, 175, 80, 0.3); padding: 20px; min-height: 50px;">
 					<div class="loading">⏳ Loading stock signals...</div>
+				</div>
+			</div>
+			
+			<!-- Asset List Section - Hidden by default -->
+			<div id="asset-list"></div>
+			<div id="asset-list-container" style="margin: 40px 0; padding: 0; display: none;">
+				<h2 style="color: var(--primary-color); font-size: 28px; margin: 40px 0 20px; text-align: center;">📋 Asset List - Latest Signals</h2>
+				<p style="color: rgba(255, 255, 255, 0.6); font-size: 14px; text-align: center; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+					Find your favorite asset below to see its most recent trading signal. This view shows the latest signal for each asset, making it easy to check the current status of any asset you're tracking.
+				</p>
+				
+				<!-- Crypto Assets List -->
+				<div style="margin-bottom: 40px;">
+					<h3 style="color: var(--primary-color); font-size: 24px; margin-bottom: 20px; text-align: center;">💎 Cryptocurrencies</h3>
+					<div id="crypto-asset-list" class="asset-list-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; margin-bottom: 30px;">
+						<div class="loading">⏳ Loading crypto assets...</div>
+					</div>
+				</div>
+				
+				<!-- Stock Assets List -->
+				<div>
+					<h3 style="color: var(--primary-color); font-size: 24px; margin-bottom: 20px; text-align: center;">📈 Stocks & ETFs</h3>
+					<div id="stock-asset-list" class="asset-list-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px;">
+						<div class="loading">⏳ Loading stock assets...</div>
+					</div>
 				</div>
 			</div>
 			
@@ -1307,33 +1575,77 @@
 				return /^[A-Z]{1,5}$/.test(symbol);
 			}
 			
-			function showStockSignals() {
+			function switchToCrypto() {
+				const cryptoContainer = document.getElementById('crypto-signals-container');
 				const stockContainer = document.getElementById('stock-signals-container');
-				const stockGrid = document.getElementById('stock-signals-grid');
-				const stockHistoricalContainer = document.getElementById('stock-historical-container');
+				const assetListContainer = document.getElementById('asset-list-container');
+				const cryptoBtn = document.getElementById('nav-crypto-btn');
+				const stocksBtn = document.getElementById('nav-stocks-btn');
 				
-				if (!stockContainer) return;
+				// Show crypto, hide stocks and asset list
+				if (cryptoContainer) cryptoContainer.style.display = 'block';
+				if (stockContainer) stockContainer.style.display = 'none';
+				if (assetListContainer) assetListContainer.style.display = 'none';
 				
-				// Toggle visibility
-				if (stockContainer.style.display === 'none' || stockContainer.style.display === '') {
-					// Show stock signals
-					stockContainer.style.display = 'block';
-					if (stockHistoricalContainer) {
-						stockHistoricalContainer.style.display = 'block';
-					}
-					// Scroll to the stock signals section
-					setTimeout(() => {
-						stockContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-					}, 100);
-				} else {
-					// Hide stock signals
-					stockContainer.style.display = 'none';
-					if (stockHistoricalContainer) {
-						stockHistoricalContainer.style.display = 'none';
-					}
-					// Scroll back to top
-					window.scrollTo({ top: 0, behavior: 'smooth' });
+				// Update button styles
+				if (cryptoBtn) {
+					cryptoBtn.style.background = 'rgba(33, 150, 243, 1)';
+					cryptoBtn.style.border = '3px solid #42a5f5';
+					cryptoBtn.style.boxShadow = '0 4px 12px rgba(33, 150, 243, 0.4)';
 				}
+				if (stocksBtn) {
+					stocksBtn.style.background = 'rgba(76, 175, 80, 0.5)';
+					stocksBtn.style.border = '3px solid rgba(76, 175, 80, 0.5)';
+					stocksBtn.style.boxShadow = 'none';
+					stocksBtn.style.transform = 'translateY(0)';
+				}
+				
+				// Scroll to crypto section
+				setTimeout(() => {
+					if (cryptoContainer) {
+						cryptoContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}
+				}, 100);
+			}
+			
+			function switchToStocks() {
+				const cryptoContainer = document.getElementById('crypto-signals-container');
+				const stockContainer = document.getElementById('stock-signals-container');
+				const stockHistoricalContainer = document.getElementById('stock-historical-container');
+				const assetListContainer = document.getElementById('asset-list-container');
+				const cryptoBtn = document.getElementById('nav-crypto-btn');
+				const stocksBtn = document.getElementById('nav-stocks-btn');
+				
+				// Hide crypto and asset list, show stocks
+				if (cryptoContainer) cryptoContainer.style.display = 'none';
+				if (stockContainer) stockContainer.style.display = 'block';
+				if (stockHistoricalContainer) stockHistoricalContainer.style.display = 'block';
+				if (assetListContainer) assetListContainer.style.display = 'none';
+				
+				// Update button styles
+				if (cryptoBtn) {
+					cryptoBtn.style.background = 'rgba(33, 150, 243, 0.5)';
+					cryptoBtn.style.border = '3px solid rgba(33, 150, 243, 0.5)';
+					cryptoBtn.style.boxShadow = 'none';
+					cryptoBtn.style.transform = 'translateY(0)';
+				}
+				if (stocksBtn) {
+					stocksBtn.style.background = 'rgba(76, 175, 80, 1)';
+					stocksBtn.style.border = '3px solid #4caf50';
+					stocksBtn.style.boxShadow = '0 4px 12px rgba(76, 175, 80, 0.4)';
+				}
+				
+				// Scroll to stock signals section
+				setTimeout(() => {
+					if (stockContainer) {
+						stockContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}
+				}, 100);
+			}
+			
+			function showStockSignals() {
+				// Redirect to the new navigation system
+				switchToStocks();
 			}
 			
 			function showHistoricalSignals() {
@@ -1364,7 +1676,138 @@
 				}
 			}
 			
+			function showAssetList() {
+				const assetListContainer = document.getElementById('asset-list-container');
+				const cryptoContainer = document.getElementById('crypto-signals-container');
+				const stockContainer = document.getElementById('stock-signals-container');
+				
+				if (!assetListContainer) return;
+				
+				// Hide other sections
+				if (cryptoContainer) cryptoContainer.style.display = 'none';
+				if (stockContainer) stockContainer.style.display = 'none';
+				
+				// Show asset list
+				assetListContainer.style.display = 'block';
+				
+				// Scroll to asset list
+				setTimeout(() => {
+					assetListContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				}, 100);
+				
+				// Render the asset list if we have signals
+				if (window.allSignals && window.allSignals.length > 0) {
+					renderAssetList(window.allSignals);
+				}
+			}
+			
+			function renderAssetList(signals) {
+				if (!signals || signals.length === 0) {
+					document.getElementById('crypto-asset-list').innerHTML = '<div class="empty-state"><p>No signals available</p></div>';
+					document.getElementById('stock-asset-list').innerHTML = '<div class="empty-state"><p>No signals available</p></div>';
+					return;
+				}
+				
+				// Create a map to store the most recent signal per asset
+				const assetMap = new Map();
+				
+				// Process all signals to find the most recent one per asset
+				signals.forEach(signal => {
+					const symbol = signal.symbol || '';
+					const timestamp = new Date(signal.timestamp || signal.received_at).getTime();
+					
+					// Check if we already have a signal for this asset
+					if (!assetMap.has(symbol) || timestamp > assetMap.get(symbol).timestamp) {
+						assetMap.set(symbol, {
+							symbol: symbol,
+							action: signal.action || 'unknown',
+							price: signal.price,
+							timestamp: timestamp,
+							note: signal.note || '',
+							source: signal.source || ''
+						});
+					}
+				});
+				
+				// Separate crypto and stocks
+				const cryptoAssets = [];
+				const stockAssets = [];
+				
+				assetMap.forEach((assetData, symbol) => {
+					if (isStockSignal({ symbol: symbol })) {
+						stockAssets.push(assetData);
+					} else {
+						cryptoAssets.push(assetData);
+					}
+				});
+				
+				// Sort alphabetically
+				cryptoAssets.sort((a, b) => a.symbol.localeCompare(b.symbol));
+				stockAssets.sort((a, b) => a.symbol.localeCompare(b.symbol));
+				
+				// Render crypto assets
+				const cryptoList = document.getElementById('crypto-asset-list');
+				if (cryptoAssets.length === 0) {
+					cryptoList.innerHTML = '<div class="empty-state"><p>No cryptocurrency signals available</p></div>';
+				} else {
+					cryptoList.innerHTML = cryptoAssets.map(asset => renderAssetItem(asset)).join('');
+				}
+				
+				// Render stock assets
+				const stockList = document.getElementById('stock-asset-list');
+				if (stockAssets.length === 0) {
+					stockList.innerHTML = '<div class="empty-state"><p>No stock signals available</p></div>';
+				} else {
+					stockList.innerHTML = stockAssets.map(asset => renderAssetItem(asset)).join('');
+				}
+			}
+			
+			function renderAssetItem(asset) {
+				const isBuy = asset.action.toLowerCase() === 'buy';
+				const actionClass = isBuy ? 'buy' : 'sell';
+				const actionEmoji = isBuy ? '🟢 📈' : '🔴 📉';
+				
+				// Determine conviction badge
+				let signalBadge = '';
+				let signalClass = '';
+				const note = asset.note || '';
+				if (note.includes('Pure JSON Trade')) {
+					signalBadge = '⭐';
+					signalClass = 'confluence-pure';
+				} else if (note.includes('EMA + JSON')) {
+					signalBadge = '⭐⭐';
+					signalClass = 'confluence-ema';
+				} else if (note.includes('HMM + JSON')) {
+					signalBadge = '⭐⭐⭐';
+					signalClass = 'confluence-hmm';
+				} else if (note.includes('HMM Extreme')) {
+					signalBadge = '⭐⭐⭐⭐';
+					signalClass = 'confluence-extreme';
+				}
+				
+				return `
+					<div class="asset-list-item ${actionClass}">
+						<div>
+							<div class="asset-name">${asset.symbol}</div>
+							${asset.price !== null && asset.price !== undefined ? `
+								<div class="asset-signal-price">${formatPrice(asset.price)}</div>
+							` : ''}
+						</div>
+						<div class="asset-signal">
+							<div style="display: flex; align-items: center; gap: 8px;">
+								<span class="asset-signal-action ${actionClass}">${actionEmoji} ${asset.action.toUpperCase()}</span>
+								${signalBadge ? `<span class="confluence-badge ${signalClass}" style="font-size: 12px;">${signalBadge}</span>` : ''}
+							</div>
+							<div class="asset-signal-time">${formatTimestamp(new Date(asset.timestamp))}</div>
+						</div>
+					</div>
+				`;
+			}
+			
 			function renderSignals(signals) {
+				// Store signals globally so asset list can access them
+				window.allSignals = signals;
+				
 				const grid = document.getElementById('signals-grid'); // Crypto recent
 				const oldGrid = document.getElementById('old-signals-grid'); // Crypto historical
 				const oldContainer = document.getElementById('old-signals-container'); // Crypto historical container
@@ -1450,11 +1893,10 @@
 				// Render STOCK signals
 				if (recentStocks.length > 0) {
 					renderSignalCards(recentStocks, stockGrid);
-					// Stock container hidden by default, shown via nav button
-					stockContainer.style.display = 'none';
+					// Stock container visibility controlled by navigation buttons, don't override here
 				} else {
 					stockGrid.innerHTML = '<div class="empty-state"><h3>⏳ No recent stock signals</h3><p>Check historical stock signals or wait for new signals</p></div>';
-					stockContainer.style.display = 'none';
+					// Stock container visibility controlled by navigation buttons, don't override here
 				}
 				
 				// Render stock historical (hidden by default)
@@ -1574,6 +2016,13 @@
 						const signals = Array.isArray(data) ? data : [data];
 						console.log('Rendering', signals.length, 'signals');
 						renderSignals(signals);
+						
+						// Update asset list if it's currently visible
+						const assetListContainer = document.getElementById('asset-list-container');
+						if (assetListContainer && assetListContainer.style.display !== 'none') {
+							renderAssetList(signals);
+						}
+						
 						document.getElementById('status-indicator').className = 'status-indicator active';
 						document.getElementById('status-text').textContent = 'Connected';
 						document.getElementById('last-update').textContent = 'Last updated: ' + new Date().toLocaleTimeString();
@@ -1586,6 +2035,11 @@
 						document.getElementById('status-text').textContent = 'Disconnected';
 					});
 			}
+			
+			// Initialize: Show crypto by default on page load
+			window.addEventListener('DOMContentLoaded', function() {
+				switchToCrypto();
+			});
 			
 			// Load signals immediately
 			loadSignals();
@@ -1605,7 +2059,147 @@
 				}
 			});
 			
-			// TODO: Subscription JavaScript code in website_todo.md - add when Stripe is ready
+			// Stripe Subscription Code
+			let stripe = null;
+			let stripePublicKey = null;
+			
+			// Load Stripe public key from backend
+			async function loadStripeKey() {
+				try {
+					const response = await fetch('/api/stripe-public-key');
+					if (response.ok) {
+						const data = await response.json();
+						stripePublicKey = data.publicKey;
+					} else {
+						// Fallback: try to get from .env via a simple endpoint
+						// If that fails, you'll need to set it manually below
+						console.warn('Could not load Stripe key from API, using fallback');
+						// You can set this manually if needed:
+						// stripePublicKey = 'pk_test_...'; // Replace with your actual public key
+					}
+				} catch (error) {
+					console.error('Error loading Stripe key:', error);
+					// Fallback: You can set the public key directly here if needed
+					// stripePublicKey = 'pk_test_...'; // Replace with your actual public key
+				}
+				
+				if (stripePublicKey) {
+					stripe = Stripe(stripePublicKey);
+				}
+			}
+			
+			// Initialize Stripe on page load
+			loadStripeKey();
+			
+			function showSubscriptionModal() {
+				const modal = document.getElementById('subscription-modal');
+				if (modal) {
+					modal.style.display = 'flex';
+				}
+			}
+			
+			function closeSubscriptionModal() {
+				const modal = document.getElementById('subscription-modal');
+				if (modal) {
+					modal.style.display = 'none';
+				}
+				const errorDiv = document.getElementById('subscription-error');
+				if (errorDiv) {
+					errorDiv.style.display = 'none';
+					errorDiv.textContent = '';
+				}
+			}
+			
+			// Close modal when clicking outside
+			document.addEventListener('click', function(event) {
+				const modal = document.getElementById('subscription-modal');
+				if (modal && event.target === modal) {
+					closeSubscriptionModal();
+				}
+			});
+			
+			async function startSubscription() {
+				const button = document.getElementById('start-subscription-btn');
+				const errorDiv = document.getElementById('subscription-error');
+				
+				if (!stripe) {
+					// Try to load key again
+					await loadStripeKey();
+					if (!stripe) {
+						if (errorDiv) {
+							errorDiv.style.display = 'block';
+							errorDiv.textContent = 'Stripe is not initialized. Please refresh the page.';
+						}
+						return;
+					}
+				}
+				
+				// Disable button during processing
+				if (button) {
+					button.disabled = true;
+					button.textContent = 'Processing...';
+				}
+				
+				if (errorDiv) {
+					errorDiv.style.display = 'none';
+					errorDiv.textContent = '';
+				}
+				
+				try {
+					// Call backend to create checkout session
+					const response = await fetch('/api/create-checkout-session', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify({
+							productType: 'subscription',
+							trial_days: 7,  // 7-day free trial
+							// priceId is optional - backend will create one if not provided
+						}),
+					});
+					
+					const session = await response.json();
+					
+					if (session.error) {
+						throw new Error(session.error);
+					}
+					
+					// Redirect to Stripe Checkout
+					if (session.sessionId) {
+						const result = await stripe.redirectToCheckout({
+							sessionId: session.sessionId,
+						});
+						
+						if (result.error) {
+							throw new Error(result.error.message);
+						}
+					} else {
+						throw new Error('No session ID received from server');
+					}
+				} catch (error) {
+					console.error('Subscription error:', error);
+					if (errorDiv) {
+						errorDiv.style.display = 'block';
+						errorDiv.textContent = 'Error: ' + (error.message || 'Failed to start subscription. Please try again.');
+					}
+					if (button) {
+						button.disabled = false;
+						button.textContent = 'Start 7-Day Free Trial';
+					}
+				}
+			}
+			
+			// Check if user is returning from successful payment
+			const urlParams = new URLSearchParams(window.location.search);
+			if (urlParams.get('session_id')) {
+				// Show success message
+				setTimeout(() => {
+					alert('🎉 Subscription activated! Thank you for subscribing.');
+					// Clean up URL
+					window.history.replaceState({}, document.title, window.location.pathname);
+				}, 500);
+			}
 		</script>
 	</body>
 </html>

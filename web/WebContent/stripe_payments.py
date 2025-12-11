@@ -33,9 +33,18 @@ from datetime import datetime
 from pathlib import Path
 from typing import Dict, Any
 
-# Configuration
-STRIPE_SECRET_KEY = os.getenv("STRIPE_SECRET_KEY", "sk_test_YOUR_SECRET_KEY")
-STRIPE_PUBLISHABLE_KEY = os.getenv("STRIPE_PUBLISHABLE_KEY", "pk_test_YOUR_PUBLISHABLE_KEY")
+# Try to load .env file if python-dotenv is available
+try:
+    from dotenv import load_dotenv
+    env_path = Path(__file__).parent / '.env'
+    load_dotenv(env_path)
+except ImportError:
+    print("⚠️  python-dotenv not installed. Install with: pip install python-dotenv")
+    print("   Environment variables will be loaded from system environment only.")
+
+# Configuration - Load from .env file (stripe_public_key and stripe_private_key)
+STRIPE_SECRET_KEY = os.getenv("stripe_private_key") or os.getenv("STRIPE_SECRET_KEY", "sk_test_YOUR_SECRET_KEY")
+STRIPE_PUBLISHABLE_KEY = os.getenv("stripe_public_key") or os.getenv("STRIPE_PUBLISHABLE_KEY", "pk_test_YOUR_PUBLISHABLE_KEY")
 STRIPE_WEBHOOK_SECRET = os.getenv("STRIPE_WEBHOOK_SECRET", "whsec_YOUR_WEBHOOK_SECRET")
 DOMAIN = os.getenv("DOMAIN", "https://brianstreckfus.com")
 
@@ -46,7 +55,7 @@ stripe.api_key = STRIPE_SECRET_KEY
 PRODUCTS = {
     "signals_subscription": {
         "name": "Trading Signals PRO",
-        "amount": 1999,  # $19.99
+        "amount": 999,  # $9.99
         "currency": "usd",
         "interval": "month",
         "description": "Premium algorithmic trading signals with real-time alerts"
@@ -76,6 +85,12 @@ def health():
     return jsonify({"ok": True, "service": "stripe_payments"}), 200
 
 
+@app.route('/api/stripe-public-key', methods=['GET'])
+def get_stripe_public_key():
+    """Return the Stripe public key for client-side use"""
+    return jsonify({"publicKey": STRIPE_PUBLISHABLE_KEY}), 200
+
+
 @app.route('/api/create-checkout-session', methods=['POST'])
 def create_checkout_session():
     """
@@ -97,8 +112,8 @@ def create_checkout_session():
         session_params = {
             'payment_method_types': ['card'],
             'mode': 'payment',  # or 'subscription'
-            'success_url': f'{DOMAIN}/success.html?session_id={{CHECKOUT_SESSION_ID}}',
-            'cancel_url': f'{DOMAIN}/shop.html',
+            'success_url': f'{DOMAIN}/signals.html?session_id={{CHECKOUT_SESSION_ID}}',
+            'cancel_url': f'{DOMAIN}/signals.html',
         }
         
         # Handle different product types
@@ -128,12 +143,14 @@ def create_checkout_session():
                 'quantity': 1
             }]
             
-            # Add free trial
+            # Add free trial (7 days, no card required)
             if trial_days and trial_days > 0:
                 session_params['subscription_data'] = {
                     'trial_period_days': trial_days
                 }
-                print(f"✅ Adding {trial_days}-day free trial to subscription")
+                # Allow subscription without payment method for trial
+                session_params['payment_method_collection'] = 'if_required'
+                print(f"✅ Adding {trial_days}-day free trial to subscription (no card required)")
             
         elif product_type == 'donation':
             # One-time donation
@@ -182,7 +199,8 @@ def create_checkout_session():
         session = stripe.checkout.Session.create(**session_params)
         
         return jsonify({
-            "id": session.id,
+            "sessionId": session.id,
+            "id": session.id,  # For backwards compatibility
             "url": session.url
         }), 200
         
