@@ -2,6 +2,17 @@
   {
     "action": "sell",
     "symbol": "SUI/USD",
+    "quantity": 61.79999999,
+    "price": 1.5555,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-11T02:06:49.234695Z",
+    "received_at": "2025-12-11T02:06:49.234714Z",
+    "id": "2025-12-11T02:06:49.234714Z-SUI/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "SUI/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2187,16 +2198,5 @@
     "timestamp": "2025-12-05T02:00:29.122878Z",
     "received_at": "2025-12-05T02:00:29.122900Z",
     "id": "2025-12-05T02:00:29.122900Z-AAVE/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "SUI/USD",
-    "quantity": 59.96641880546894,
-    "price": 1.6659,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-05T02:00:25.749152Z",
-    "received_at": "2025-12-05T02:00:25.749192Z",
-    "id": "2025-12-05T02:00:25.749192Z-SUI/USD-buy"
   }
 ]
