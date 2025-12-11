@@ -228,19 +228,63 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .catalog-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 20px;
+    /* Navigation - stack vertically on mobile */
+    nav .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 0;
+    }
+    
+    nav a {
+        margin: 5px 0 !important;
+        font-size: 0.9em !important;
+        padding: 8px;
+    }
+    
+    /* Content adjustments */
+    .content {
+        width: 100% !important;
+        padding: 0 15px !important;
+    }
+    
+    /* Filter buttons - wrap and smaller */
+    .filters {
+        padding: 15px 10px;
+        margin: 20px 0;
     }
     
     .filter-btn {
-        padding: 8px 15px;
-        font-size: 0.9em;
+        padding: 8px 12px;
+        font-size: 0.85em;
+        margin: 4px 3px;
+        display: inline-block;
+    }
+    
+    /* Search bar - full width */
+    #search-bar {
+        width: 100%;
+        max-width: 100%;
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+    
+    /* Catalog grid - single column on very small screens */
+    .catalog-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+        margin-top: 20px;
+    }
+    
+    .catalog-item {
+        padding: 15px;
     }
     
     .catalog-item h3 {
         font-size: 1em;
         min-height: auto;
+        line-height: 1.3;
     }
     
     .preview-screen {
@@ -258,12 +302,42 @@
     .modal-content {
         width: 95%;
         padding: 10px;
+        margin: 5% auto;
     }
     
     .close {
         right: 15px;
         top: 10px;
         font-size: 40px;
+    }
+    
+    /* Headings */
+    h1 {
+        font-size: 1.8em !important;
+        padding: 20px 0 10px 0 !important;
+    }
+    
+    /* Text */
+    body {
+        font-size: 14px !important;
+    }
+    
+    p {
+        font-size: 0.95em !important;
+        line-height: 1.5 !important;
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .catalog-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 25px;
+    }
+    
+    .filter-btn {
+        padding: 9px 18px;
+        font-size: 0.95em;
     }
 }
 

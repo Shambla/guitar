@@ -1020,3 +1020,212 @@ footer.animate {
 	opacity:		1;
 	transform:		translateY(0);
 }
+
+/* ============================================
+   MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+/* Mobile devices (phones, up to 768px) */
+@media (max-width: 768px) {
+	/* Navigation - make it stack vertically or use hamburger menu */
+	nav .content {
+		display:		flex;
+		flex-direction: column;
+		align-items:	center;
+		gap:			10px;
+		padding:		10px 0;
+	}
+	
+	nav a {
+		margin:			5px 0 !important;
+		font-size:		0.9em !important;
+		padding:		8px;
+		display:		block;
+	}
+	
+	.catalog-nav-link {
+		font-size:		0.85em !important;
+		line-height:	1.3;
+	}
+	
+	/* Content width - make it full width on mobile */
+	.content {
+		width:			100% !important;
+		padding:		0 15px;
+	}
+	
+	/* Stack left-half and right-half vertically on mobile */
+	.left-half,
+	.right-half {
+		float:			none !important;
+		width:			100% !important;
+		margin:			20px 0 !important;
+	}
+	
+	/* Images - make responsive */
+	#sheet {
+		width:			100% !important;
+		max-width:		100% !important;
+		height:			auto !important;
+		margin:			0 !important;
+	}
+	
+	#perform {
+		width:			100% !important;
+		max-width:		100% !important;
+		height:			auto !important;
+		margin:			0 !important;
+	}
+	
+	/* YouTube iframes - make responsive */
+	iframe {
+		width:			100% !important;
+		max-width:		100% !important;
+		height:			auto !important;
+		aspect-ratio:	16 / 9;
+		min-height:		200px;
+	}
+	
+	/* Bio section - stack vertically on mobile */
+	#bio-section-wrapper {
+		flex-direction: column !important;
+		gap:			20px !important;
+	}
+	
+	#studio-comp-container,
+	#bio-pic-container {
+		flex:			1 1 100% !important;
+		width:			100% !important;
+	}
+	
+	/* Contact section - stack contacts */
+	.contacts {
+		flex-direction: column !important;
+		gap:			15px !important;
+	}
+	
+	/* Hero section adjustments */
+	#hero {
+		height:			auto !important;
+		padding:		100px 20px 40px 20px !important;
+	}
+	
+	#hero h1 {
+		font-size:		2em !important;
+	}
+	
+	#creds {
+		display:		flex;
+		flex-direction: column;
+		align-items:	center;
+		gap:			10px;
+	}
+	
+	#creds h3 {
+		font-size:		1.2em !important;
+		padding:		5px !important;
+		float:			none !important;
+	}
+	
+	/* Headings */
+	.content h1 {
+		font-size:		1.8em !important;
+		padding:		30px 0 10px 0 !important;
+		width:			100% !important;
+	}
+	
+	/* Text sizing */
+	body {
+		font-size:		14px !important;
+	}
+	
+	p, li {
+		font-size:		1em !important;
+		line-height:	1.6em !important;
+	}
+	
+	/* Link buttons - full width on mobile */
+	.link-button {
+		display:		block !important;
+		width:			100%;
+		margin:			15px 0 !important;
+		text-align:		center;
+		box-sizing:		border-box;
+	}
+	
+	/* Music player - adjust for mobile */
+	#music-container {
+		float:			none !important;
+		margin:			10px 0 !important;
+		text-align:		center !important;
+		width:			100%;
+	}
+	
+	#track {
+		text-align:		center !important;
+		font-size:		0.75em !important;
+		white-space:	normal;
+	}
+	
+	/* Performance section adjustments */
+	#performance-details {
+		width:			100% !important;
+		margin:			20px 0 !important;
+	}
+	
+	/* Contact pic adjustments */
+	#contact-pic {
+		width:			100% !important;
+		max-width:		100% !important;
+		opacity:		0.15 !important;
+	}
+	
+	/* Right-aligned sections */
+	.right {
+		text-align:		left !important;
+	}
+	
+	.right h1 {
+		float:			none !important;
+		text-align:		left !important;
+	}
+}
+
+/* Tablet devices (768px to 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+	.content {
+		width:			95% !important;
+		padding:		0 20px;
+	}
+	
+	.left-half,
+	.right-half {
+		width:			48% !important;
+		margin:			1% !important;
+	}
+	
+	iframe {
+		width:			100% !important;
+		max-width:		100% !important;
+		height:			auto !important;
+		aspect-ratio:	16 / 9;
+		min-height:		250px;
+	}
+	
+	#sheet,
+	#perform {
+		width:			100% !important;
+		max-width:		100% !important;
+		height:			auto !important;
+		margin:			0 !important;
+	}
+	
+	nav a {
+		margin:			0px 8px;
+		font-size:		1em;
+	}
+	
+	#hero h1 {
+		font-size:		3em !important;
+	}
+}
