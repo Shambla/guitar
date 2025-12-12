@@ -876,6 +876,16 @@
 					<!-- Will be populated by JavaScript -->
 				</div>
 			</div>
+			<!-- Email capture (non-blocking, freemium) -->
+			<div id="email-capture-banner" style="display: none; background: linear-gradient(135deg, rgba(255, 193, 7, 0.2) 0%, rgba(255, 152, 0, 0.2) 100%); border: 2px solid rgba(255, 193, 7, 0.6); border-radius: 12px; padding: 16px; margin-bottom: 20px;">
+				<div style="color: #fff; font-weight: bold; margin-bottom: 8px;">Stay in the loop</div>
+				<div style="color: rgba(255,255,255,0.85); font-size: 14px; margin-bottom: 8px;">Enter your email so we can keep your trial consistent across devices.</div>
+				<div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+					<input id="email-capture-input" type="email" placeholder="you@example.com" style="flex: 1 1 240px; min-width: 180px; padding: 10px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.3); background: rgba(0,0,0,0.4); color: #fff;" />
+					<button id="email-capture-btn" class="subscribe-button" style="padding: 10px 18px;">Save Email</button>
+				</div>
+				<div id="email-capture-status" style="color: #4caf50; font-size: 13px; margin-top: 6px; display: none;"></div>
+			</div>
 			
 			<div class="signals-header">
 				<h1>Trading Signals</h1>
@@ -2019,11 +2029,12 @@
 					})
 					.then(data => {
 						console.log('Received data:', data);
-						// Only render if signals are visible (trial active or subscribed)
-						if (!signalsVisible) {
-							console.log('Signals hidden - trial expired');
-							return;
-						}
+				// Only block if trial truly expired
+				if (!signalsVisible) {
+					console.log('Trial expired: hiding signals');
+					hideAllSignals();
+					return;
+				}
 						// Ensure data is an array
 						const signals = Array.isArray(data) ? data : [data];
 						console.log('Rendering', signals.length, 'signals');
@@ -2056,9 +2067,13 @@
 			const TRIAL_DAYS = 7;
 			const STORAGE_KEY_TRIAL_START = 'trial_start_date';
 			const STORAGE_KEY_SUBSCRIBED = 'is_subscribed';
+			const STORAGE_KEY_EMAIL = 'user_email';
 			
 			// Initialize trial tracking
 			function initializeTrial() {
+				// Initialize non-blocking email capture
+				initEmailCapture();
+
 				// Check if user is marked as subscribed
 				const isSubscribed = localStorage.getItem(STORAGE_KEY_SUBSCRIBED) === 'true';
 				if (isSubscribed) {
@@ -2145,19 +2160,12 @@
 				// Check trial status first
 				signalsVisible = initializeTrial();
 				
-				// If trial expired, hide signals
-				if (!signalsVisible) {
-					hideAllSignals();
-				}
-				
 				switchToCrypto();
 				
-				// Load signals immediately (but respect visibility)
-				if (signalsVisible) {
-					loadSignals();
-					// Auto-refresh every 30 seconds (only if signals visible)
-			refreshInterval = setInterval(loadSignals, 30000);
-				}
+				// Load signals immediately regardless; loadSignals will hide if expired
+				loadSignals();
+				// Auto-refresh every 30 seconds
+				refreshInterval = setInterval(loadSignals, 30000);
 			});
 			
 			// Add scroll detection for mobile nav shrinking
@@ -2254,6 +2262,41 @@
 				if (banner) {
 					banner.style.display = 'none';
 				}
+			}
+
+			// Non-blocking email capture (freemium)
+			function initEmailCapture() {
+				const savedEmail = localStorage.getItem(STORAGE_KEY_EMAIL);
+				const banner = document.getElementById('email-capture-banner');
+				const input = document.getElementById('email-capture-input');
+				const btn = document.getElementById('email-capture-btn');
+				const status = document.getElementById('email-capture-status');
+
+				if (!banner || !input || !btn || !status) return;
+
+				if (savedEmail) {
+					banner.style.display = 'none';
+					return;
+				}
+
+				banner.style.display = 'block';
+
+				btn.addEventListener('click', function() {
+					const email = (input.value || '').trim();
+					if (!email || !email.includes('@')) {
+						status.style.display = 'block';
+						status.style.color = '#f44336';
+						status.textContent = 'Please enter a valid email.';
+						return;
+					}
+					localStorage.setItem(STORAGE_KEY_EMAIL, email);
+					status.style.display = 'block';
+					status.style.color = '#4caf50';
+					status.textContent = 'Saved! Thank you.';
+					setTimeout(() => {
+						banner.style.display = 'none';
+					}, 1200);
+				});
 			}
 			
 			function showSubscriptionModal() {
