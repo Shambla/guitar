@@ -2277,10 +2277,28 @@
 			const STORAGE_KEY_SUBSCRIBED = 'is_subscribed';
 			const STORAGE_KEY_EMAIL = 'user_email';
 			
+			// Stripe Payment Link - Replace with your actual Payment Link URL from Stripe Dashboard
+			// To get your Payment Link:
+			// 1. Go to https://dashboard.stripe.com/payment-links
+			// 2. Create a new payment link for $9.99/month subscription with 7-day free trial
+			// 3. Set success URL to: https://brianstreckfus.com/signals.html?paid=true
+			// 4. Copy the Payment Link URL and paste it below
+			const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE'; // TODO: Replace with your actual Payment Link
+			
 			// Initialize trial tracking
 			function initializeTrial() {
 				// Initialize non-blocking email capture
 				initEmailCapture();
+				
+				// Check if user is returning from successful payment (Payment Link redirect)
+				const urlParams = new URLSearchParams(window.location.search);
+				if (urlParams.get('paid') === 'true') {
+					// Mark as subscribed and grant permanent access
+					localStorage.setItem(STORAGE_KEY_SUBSCRIBED, 'true');
+					// Clean up URL
+					window.history.replaceState({}, document.title, window.location.pathname);
+					console.log('✅ Payment confirmed - granting permanent access');
+				}
 
 				// Check if user is marked as subscribed
 				const isSubscribed = localStorage.getItem(STORAGE_KEY_SUBSCRIBED) === 'true';
@@ -2356,9 +2374,24 @@
 					document.getElementById('stock-asset-list')
 				];
 				
+				// Check if Payment Link is configured
+				const paymentLinkConfigured = STRIPE_PAYMENT_LINK && STRIPE_PAYMENT_LINK !== 'https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE';
+				
 				grids.forEach(grid => {
 					if (grid) {
-						grid.innerHTML = '<div class="empty-state" style="text-align: center; padding: 60px 40px; background: rgba(244, 67, 54, 0.15); border: 3px solid rgba(244, 67, 54, 0.7); border-radius: 12px; margin: 20px 0;"><h2 style="color: #fff; font-size: 32px; margin-bottom: 20px; font-weight: bold;">⏰ Your Trial Has Expired</h2><p style="color: #fff; font-size: 20px; margin: 20px 0; font-weight: 500;">Your 7-day free trial has ended.</p><p style="color: rgba(255, 255, 255, 0.9); font-size: 18px; margin-bottom: 30px;">Please subscribe to continue viewing all trading signals.</p><button onclick="showSubscriptionModal()" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 18px 40px; border-radius: 8px; font-size: 20px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);" onmouseover="this.style.transform=\'translateY(-3px)\'; this.style.boxShadow=\'0 6px 25px rgba(102, 126, 234, 0.7)\';" onmouseout="this.style.transform=\'translateY(0)\'; this.style.boxShadow=\'0 4px 15px rgba(102, 126, 234, 0.5)\';">💳 Subscribe Now - $9.99/month</button></div>';
+						if (paymentLinkConfigured) {
+							// Use Stripe Payment Link (no backend needed)
+							grid.innerHTML = `<div class="empty-state" style="text-align: center; padding: 60px 40px; background: rgba(244, 67, 54, 0.15); border: 3px solid rgba(244, 67, 54, 0.7); border-radius: 12px; margin: 20px 0;">
+								<h2 style="color: #fff; font-size: 32px; margin-bottom: 20px; font-weight: bold;">⏰ Your Trial Has Expired</h2>
+								<p style="color: #fff; font-size: 20px; margin: 20px 0; font-weight: 500;">Your 7-day free trial has ended.</p>
+								<p style="color: rgba(255, 255, 255, 0.9); font-size: 18px; margin-bottom: 30px;">Subscribe now to get <strong>permanent access</strong> to all trading signals.</p>
+								<a href="${STRIPE_PAYMENT_LINK}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 18px 40px; border-radius: 8px; font-size: 20px; font-weight: bold; cursor: pointer; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 25px rgba(102, 126, 234, 0.7)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.5)';">💳 Subscribe Now - $9.99/month</a>
+								<p style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin-top: 20px;">After payment, you'll be redirected back and granted permanent access.</p>
+							</div>`;
+						} else {
+							// Fallback if Payment Link not configured yet
+							grid.innerHTML = '<div class="empty-state" style="text-align: center; padding: 60px 40px; background: rgba(244, 67, 54, 0.15); border: 3px solid rgba(244, 67, 54, 0.7); border-radius: 12px; margin: 20px 0;"><h2 style="color: #fff; font-size: 32px; margin-bottom: 20px; font-weight: bold;">⏰ Your Trial Has Expired</h2><p style="color: #fff; font-size: 20px; margin: 20px 0; font-weight: 500;">Your 7-day free trial has ended.</p><p style="color: rgba(255, 255, 255, 0.9); font-size: 18px; margin-bottom: 30px;">Please subscribe to continue viewing all trading signals.</p><p style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin-top: 20px;">⚠️ Payment link not configured. Please contact support.</p></div>';
+						}
 						grid.style.opacity = '1';
 						grid.style.visibility = 'visible';
 						grid.style.display = 'grid';
@@ -2400,7 +2433,7 @@
 			
 			// Backend API URL - adjust if your backend is on a different port/domain
 			// For local development: backend runs on port 5006
-			// For production: backend should be deployed (AWS, Heroku, etc.) or use ngrok for testing
+			// For production: backend should be deployed (AWS, Heroku, Railway, etc.)
 			function getStripeApiBase() {
 				const hostname = window.location.hostname;
 				
@@ -2409,15 +2442,8 @@
 					return 'http://localhost:5006';
 				}
 				
-				// Production - check for custom backend URL in localStorage (for testing with ngrok, etc.)
-				const customBackend = localStorage.getItem('stripe_backend_url');
-				if (customBackend) {
-					console.log(`Using custom backend URL: ${customBackend}`);
-					return customBackend;
-				}
-				
 				// Production - try same origin first (if backend is proxied)
-				// If this doesn't work, you'll need to deploy the backend or use ngrok
+				// For production, deploy the backend to AWS, Heroku, Railway, etc.
 				return window.location.origin;
 			}
 			const STRIPE_API_BASE = getStripeApiBase();
@@ -2429,13 +2455,10 @@
 				
 				try {
 					// Try the backend API endpoint
-					// Note: ngrok free tier may require visiting the URL in browser first to accept warning
 					const response = await fetch(apiUrl, {
 						method: 'GET',
 						headers: {
 							'Content-Type': 'application/json',
-							'ngrok-skip-browser-warning': 'true', // Bypass ngrok free tier warning page
-							'User-Agent': 'Mozilla/5.0', // Some ngrok configurations require this
 						},
 						mode: 'cors', // Explicitly enable CORS
 						credentials: 'omit', // Don't send cookies
@@ -2447,12 +2470,6 @@
 							stripePublicKey = data.publicKey;
 							console.log('✅ Stripe public key loaded from backend');
 						}
-				} else if (response.status === 403) {
-					// ngrok free tier blocking - user may need to visit URL in browser first
-					console.warn('⚠️ ngrok returned 403. If using ngrok free tier, visit the URL in a browser first to accept the warning:');
-					console.warn(`   ${apiUrl}`);
-					console.warn('   Then refresh this page.');
-					showServerRestartBanner();
 				} else {
 					console.warn('⚠️ Could not load Stripe key from backend API. Servers may be restarting.');
 					console.warn(`   Status: ${response.status}`);
@@ -2460,11 +2477,7 @@
 				}
 			} catch (error) {
 				console.error('❌ Error loading Stripe key from backend:', error);
-				if (error.message && error.message.includes('403')) {
-					console.warn('⚠️ ngrok is blocking the request. Visit the ngrok URL in a browser first to accept the warning.');
-				} else {
-					console.warn('⚠️ Servers are restarting. Please check back in a few minutes.');
-				}
+				console.warn('⚠️ Servers are restarting. Please check back in a few minutes.');
 				showServerRestartBanner();
 			}
 			
@@ -2556,7 +2569,7 @@
 						if (hostname === 'brianstreckfus.com' || hostname.includes('brianstreckfus.com')) {
 							errorDiv.innerHTML = '⚠️ <strong>Backend not available.</strong><br><br>' +
 								'The Stripe payment server needs to be deployed to production.<br>' +
-								'<small style="color: rgba(255,255,255,0.7);">For testing, you can use ngrok to expose your local backend, or deploy to AWS/Heroku.</small>';
+								'<small style="color: rgba(255,255,255,0.7);">Deploy to AWS, Heroku, Railway, or another cloud service.</small>';
 						} else {
 							errorDiv.innerHTML = '⚠️ <strong>Our servers are restarting.</strong><br>' +
 								'Subscription service will be available shortly. Please check back in a few minutes.';
@@ -2636,7 +2649,6 @@
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
-							'ngrok-skip-browser-warning': 'true', // Bypass ngrok free tier warning page
 						},
 						body: JSON.stringify({
 							productType: 'subscription',
@@ -2701,12 +2713,13 @@
 			}
 			
 			// Check if user is returning from successful payment
+			// This handles both Stripe Checkout (session_id) and Payment Links (paid=true)
 			const urlParams = new URLSearchParams(window.location.search);
-			if (urlParams.get('session_id')) {
+			if (urlParams.get('session_id') || urlParams.get('paid') === 'true') {
 				// Mark as subscribed and show success message
 				markAsSubscribed();
 				setTimeout(() => {
-					alert('🎉 Subscription activated! Thank you for subscribing. You now have full access to all signals.');
+					alert('🎉 Payment successful! Thank you for subscribing. You now have permanent access to all signals.');
 					// Clean up URL
 					window.history.replaceState({}, document.title, window.location.pathname);
 				}, 500);

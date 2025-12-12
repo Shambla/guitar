@@ -10,34 +10,7 @@ Your production site (`brianstreckfus.com`) can't reach the Stripe backend becau
 
 ---
 
-## Option 1: Use ngrok (Quick Testing - NOT for Production)
-
-For temporary testing, you can expose your local backend using ngrok:
-
-### Setup:
-```bash
-# Install ngrok (if not already installed)
-# Download from: https://ngrok.com/download
-
-# Start your local Stripe backend (via MASTERMASTER_control_bot5.py or manually)
-# Then in a separate terminal:
-ngrok http 5006
-```
-
-### Configure Frontend:
-1. Copy the ngrok URL (e.g., `https://abc123.ngrok.io`)
-2. Open browser console on your production site
-3. Run:
-```javascript
-localStorage.setItem('stripe_backend_url', 'https://abc123.ngrok.io');
-location.reload();
-```
-
-**⚠️ Note**: ngrok URLs change each time you restart, and free tier has limitations. This is only for testing!
-
----
-
-## Option 2: Deploy to Simple Cloud Service (Easiest Production)
+## Option 1: Deploy to Simple Cloud Service (Easiest Production)
 
 ### Heroku (Free Tier Available)
 ```bash
@@ -71,13 +44,13 @@ git push heroku main
 
 ---
 
-## Option 3: Deploy to AWS (As Documented)
+## Option 2: Deploy to AWS (As Documented)
 
 See `AWS_STRIPE_SETUP.md` for full AWS Lambda/Elastic Beanstalk setup.
 
 ---
 
-## Option 4: Run on Your Own Server
+## Option 3: Run on Your Own Server
 
 If you have a VPS or server:
 
@@ -112,9 +85,9 @@ If you have a VPS or server:
 
 ## Recommended Next Steps
 
-1. **For immediate testing**: Use ngrok (Option 1)
-2. **For production**: Deploy to Heroku/Railway (Option 2) - easiest
-3. **For long-term**: Deploy to AWS (Option 3) - most robust
+1. **For production**: Deploy to Heroku/Railway (Option 1) - easiest
+2. **For long-term**: Deploy to AWS (Option 2) - most robust
+3. **If you have a server**: Run on your own VPS (Option 3)
 
 ---
 
@@ -134,7 +107,7 @@ Once your backend is deployed:
 The control bot runs the Stripe server locally on port 5006. This is perfect for:
 - ✅ Local development
 - ✅ Testing
-- ❌ Production (unless you use ngrok or have a public IP)
+- ❌ Production (needs deployment to a cloud service)
 
 For production, you'll need to deploy the backend separately, or modify the control bot to deploy it automatically (future enhancement).
 
