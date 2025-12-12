@@ -980,6 +980,43 @@
 				<p style="color: rgba(255, 255, 255, 0.6); font-size: 14px; text-align: center; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">
 					Stocks and ETFs are long-term plays, so signals remain valid for extended periods. Recent stock signals from the past week are shown below.
 				</p>
+				
+				<!-- Top 3 Signals Section with Thresholds -->
+				<div id="top-signals-section" style="margin: 30px 0; padding: 25px; background: rgba(33, 150, 243, 0.1); border: 2px solid rgba(33, 150, 243, 0.5); border-radius: 12px;">
+					<div style="text-align: center; margin-bottom: 20px;">
+						<h3 style="color: var(--primary-color); font-size: 24px; margin-bottom: 15px;">🏆 Top 3 Stock Signals (Best of the Day)</h3>
+						<div style="background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #ffc107;">
+							<div style="color: #ffc107; font-weight: bold; font-size: 16px; margin-bottom: 8px;">📊 Signal Thresholds Explained</div>
+							<div style="color: rgba(255, 255, 255, 0.9); font-size: 14px; line-height: 1.6;">
+								<strong>BUY Threshold:</strong> ≥16/38 indicators (≈42%) must agree<br>
+								<strong>SELL Threshold:</strong> ≥13/37 indicators (≈35%) must agree<br>
+								<span style="color: rgba(255, 255, 255, 0.7); font-size: 13px; display: block; margin-top: 8px;">
+									💡 These are the <strong>best signals</strong> from today's scan, even if they don't meet the full threshold. 
+									On quiet market days, these represent the strongest setups available.
+								</span>
+							</div>
+						</div>
+					</div>
+					
+					<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+						<!-- Top 3 BUY Signals -->
+						<div style="background: rgba(76, 175, 80, 0.15); border: 2px solid rgba(76, 175, 80, 0.5); border-radius: 8px; padding: 20px;">
+							<h4 style="color: #4caf50; font-size: 20px; margin-bottom: 15px; text-align: center;">🟢 Top 3 BUY Signals</h4>
+							<div id="top-buy-signals" style="min-height: 100px;">
+								<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">Loading...</div>
+							</div>
+						</div>
+						
+						<!-- Top 3 SELL Signals -->
+						<div style="background: rgba(244, 67, 54, 0.15); border: 2px solid rgba(244, 67, 54, 0.5); border-radius: 8px; padding: 20px;">
+							<h4 style="color: #f44336; font-size: 20px; margin-bottom: 15px; text-align: center;">🔴 Top 3 SELL Signals</h4>
+							<div id="top-sell-signals" style="min-height: 100px;">
+								<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">Loading...</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
 				<div id="stock-signals-grid" class="signals-grid" style="background: rgba(76, 175, 80, 0.1); border: 2px solid rgba(76, 175, 80, 0.3); padding: 20px; min-height: 50px;">
 					<div class="loading">⏳ Loading stock signals...</div>
 				</div>
@@ -1862,6 +1899,132 @@
 				`;
 			}
 			
+			function renderTop3Signals(signals) {
+				// Extract stock signals only
+				const stockSignals = signals.filter(s => isStockSignal(s));
+				
+				if (stockSignals.length === 0) {
+					document.getElementById('top-buy-signals').innerHTML = '<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">No stock signals available</div>';
+					document.getElementById('top-sell-signals').innerHTML = '<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">No stock signals available</div>';
+					return;
+				}
+				
+				// Constants for thresholds
+				const BUY_THRESHOLD = 16;  // ≥16/38 (≈42%)
+				const SELL_THRESHOLD = 13; // ≥13/37 (≈35%)
+				
+				// Extract scores from signals (if available in metadata)
+				// Signals might have buy_score, sell_score, total_buy, total_sell in note or metadata
+				const signalsWithScores = stockSignals.map(signal => {
+					// Try to extract scores from note or metadata
+					let buyScore = 0, sellScore = 0, totalBuy = 38, totalSell = 37;
+					
+					// Check if signal has score metadata
+					if (signal.buy_score !== undefined) {
+						buyScore = signal.buy_score;
+						totalBuy = signal.total_buy_components || 38;
+					}
+					if (signal.sell_score !== undefined) {
+						sellScore = signal.sell_score;
+						totalSell = signal.total_sell_components || 37;
+					}
+					
+					// Try parsing from note if available
+					const note = signal.note || '';
+					const buyMatch = note.match(/buy\s+(\d+)\/(\d+)/i);
+					const sellMatch = note.match(/sell\s+(\d+)\/(\d+)/i);
+					
+					if (buyMatch) {
+						buyScore = parseInt(buyMatch[1]);
+						totalBuy = parseInt(buyMatch[2]);
+					}
+					if (sellMatch) {
+						sellScore = parseInt(sellMatch[1]);
+						totalSell = parseInt(sellMatch[2]);
+					}
+					
+					return {
+						symbol: signal.symbol || 'N/A',
+						price: signal.price,
+						buyScore: buyScore,
+						sellScore: sellScore,
+						totalBuy: totalBuy,
+						totalSell: totalSell,
+						action: signal.action,
+						timestamp: signal.timestamp || signal.received_at,
+						sector: signal.sector || 'N/A'
+					};
+				});
+				
+				// Sort by buy_score descending
+				const topBuy = signalsWithScores
+					.filter(s => s.action && s.action.toLowerCase() === 'buy')
+					.sort((a, b) => b.buyScore - a.buyScore)
+					.slice(0, 3);
+				
+				// Sort by sell_score descending
+				const topSell = signalsWithScores
+					.filter(s => s.action && s.action.toLowerCase() === 'sell')
+					.sort((a, b) => b.sellScore - a.sellScore)
+					.slice(0, 3);
+				
+				// Render Top 3 BUY
+				const buyContainer = document.getElementById('top-buy-signals');
+				if (topBuy.length === 0) {
+					buyContainer.innerHTML = '<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">No BUY signals today</div>';
+				} else {
+					buyContainer.innerHTML = topBuy.map((signal, idx) => {
+						const metThreshold = signal.buyScore >= BUY_THRESHOLD;
+						const thresholdStatus = metThreshold 
+							? `<span style="color: #4caf50; font-weight: bold;">✅ Met (≥${BUY_THRESHOLD})</span>`
+							: `<span style="color: #ffc107; font-weight: bold;">⚠️ Need ${BUY_THRESHOLD - signal.buyScore} more (threshold: ≥${BUY_THRESHOLD})</span>`;
+						
+						return `
+							<div style="background: rgba(0, 0, 0, 0.3); padding: 15px; margin-bottom: 12px; border-radius: 6px; border-left: 3px solid #4caf50;">
+								<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+									<span style="color: #4caf50; font-weight: bold; font-size: 18px;">#${idx + 1} ${signal.symbol}</span>
+									${signal.price ? `<span style="color: #fff; font-weight: bold;">$${parseFloat(signal.price).toFixed(2)}</span>` : ''}
+								</div>
+								<div style="color: rgba(255, 255, 255, 0.9); font-size: 14px; margin-bottom: 6px;">
+									<strong>BUY Score:</strong> ${signal.buyScore}/${signal.totalBuy} ${thresholdStatus}
+								</div>
+								<div style="color: rgba(255, 255, 255, 0.7); font-size: 13px;">
+									SELL: ${signal.sellScore}/${signal.totalSell} | Sector: ${signal.sector}
+								</div>
+							</div>
+						`;
+					}).join('');
+				}
+				
+				// Render Top 3 SELL
+				const sellContainer = document.getElementById('top-sell-signals');
+				if (topSell.length === 0) {
+					sellContainer.innerHTML = '<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">No SELL signals today</div>';
+				} else {
+					sellContainer.innerHTML = topSell.map((signal, idx) => {
+						const metThreshold = signal.sellScore >= SELL_THRESHOLD;
+						const thresholdStatus = metThreshold 
+							? `<span style="color: #4caf50; font-weight: bold;">✅ Met (≥${SELL_THRESHOLD})</span>`
+							: `<span style="color: #ffc107; font-weight: bold;">⚠️ Need ${SELL_THRESHOLD - signal.sellScore} more (threshold: ≥${SELL_THRESHOLD})</span>`;
+						
+						return `
+							<div style="background: rgba(0, 0, 0, 0.3); padding: 15px; margin-bottom: 12px; border-radius: 6px; border-left: 3px solid #f44336;">
+								<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+									<span style="color: #f44336; font-weight: bold; font-size: 18px;">#${idx + 1} ${signal.symbol}</span>
+									${signal.price ? `<span style="color: #fff; font-weight: bold;">$${parseFloat(signal.price).toFixed(2)}</span>` : ''}
+								</div>
+								<div style="color: rgba(255, 255, 255, 0.9); font-size: 14px; margin-bottom: 6px;">
+									<strong>SELL Score:</strong> ${signal.sellScore}/${signal.totalSell} ${thresholdStatus}
+								</div>
+								<div style="color: rgba(255, 255, 255, 0.7); font-size: 13px;">
+									BUY: ${signal.buyScore}/${signal.totalBuy} | Sector: ${signal.sector}
+								</div>
+							</div>
+						`;
+					}).join('');
+				}
+			}
+			
 			function renderSignals(signals) {
 				// Store signals globally so asset list can access them
 				window.allSignals = signals;
@@ -1951,9 +2114,13 @@
 				// Render STOCK signals
 				if (recentStocks.length > 0) {
 					renderSignalCards(recentStocks, stockGrid);
+					// Render Top 3 signals section
+					renderTop3Signals(signals);
 					// Stock container visibility controlled by navigation buttons, don't override here
 				} else {
 					stockGrid.innerHTML = '<div class="empty-state"><h3>⏳ No recent stock signals</h3><p>Check historical stock signals or wait for new signals</p></div>';
+					// Still try to render Top 3 from all signals
+					renderTop3Signals(signals);
 					// Stock container visibility controlled by navigation buttons, don't override here
 				}
 				
@@ -2168,9 +2335,13 @@
 						message.innerHTML = '🎉 <strong>7-Day Free Trial Started</strong> - Signals are now visible!';
 					}
 				} else if (status === 'expired') {
-					banner.style.background = 'linear-gradient(135deg, rgba(244, 67, 54, 0.3) 0%, rgba(255, 152, 0, 0.2) 100%)';
-					banner.style.borderColor = 'rgba(244, 67, 54, 0.7)';
-					message.innerHTML = '⏰ <strong>Trial Expired</strong> - Please subscribe to continue viewing signals. <a href="#" onclick="event.preventDefault(); showSubscriptionModal(); return false;" style="color: #fff; text-decoration: underline; font-weight: bold;">Subscribe Now</a>';
+					banner.style.background = 'linear-gradient(135deg, rgba(244, 67, 54, 0.4) 0%, rgba(255, 152, 0, 0.3) 100%)';
+					banner.style.borderColor = 'rgba(244, 67, 54, 1)';
+					banner.style.borderWidth = '3px';
+					banner.style.boxShadow = '0 4px 20px rgba(244, 67, 54, 0.5)';
+					message.style.fontSize = '20px';
+					message.style.fontWeight = 'bold';
+					message.innerHTML = '⏰ <strong style="font-size: 24px;">Your Trial Has Expired</strong><br><span style="font-size: 18px; font-weight: normal; margin-top: 10px; display: block;">Please subscribe to continue viewing signals.</span><br><a href="#" onclick="event.preventDefault(); showSubscriptionModal(); return false;" style="color: #fff; text-decoration: underline; font-weight: bold; font-size: 18px; margin-top: 10px; display: inline-block; background: rgba(255, 255, 255, 0.2); padding: 8px 16px; border-radius: 6px;">Subscribe Now →</a>';
 				}
 			}
 			
@@ -2187,8 +2358,10 @@
 				
 				grids.forEach(grid => {
 					if (grid) {
-						grid.innerHTML = '<div class="empty-state" style="text-align: center; padding: 40px;"><h3>🔒 Signals Locked</h3><p style="color: rgba(255, 255, 255, 0.7); margin: 20px 0;">Your 7-day free trial has ended.</p><p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">Subscribe to continue viewing all trading signals.</p><button onclick="showSubscriptionModal()" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform=\'translateY(-2px)\'; this.style.boxShadow=\'0 6px 20px rgba(102, 126, 234, 0.4)\';" onmouseout="this.style.transform=\'translateY(0)\'; this.style.boxShadow=\'none\';">💳 Subscribe Now</button></div>';
-						grid.style.opacity = '0.5';
+						grid.innerHTML = '<div class="empty-state" style="text-align: center; padding: 60px 40px; background: rgba(244, 67, 54, 0.15); border: 3px solid rgba(244, 67, 54, 0.7); border-radius: 12px; margin: 20px 0;"><h2 style="color: #fff; font-size: 32px; margin-bottom: 20px; font-weight: bold;">⏰ Your Trial Has Expired</h2><p style="color: #fff; font-size: 20px; margin: 20px 0; font-weight: 500;">Your 7-day free trial has ended.</p><p style="color: rgba(255, 255, 255, 0.9); font-size: 18px; margin-bottom: 30px;">Please subscribe to continue viewing all trading signals.</p><button onclick="showSubscriptionModal()" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 18px 40px; border-radius: 8px; font-size: 20px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);" onmouseover="this.style.transform=\'translateY(-3px)\'; this.style.boxShadow=\'0 6px 25px rgba(102, 126, 234, 0.7)\';" onmouseout="this.style.transform=\'translateY(0)\'; this.style.boxShadow=\'0 4px 15px rgba(102, 126, 234, 0.5)\';">💳 Subscribe Now - $9.99/month</button></div>';
+						grid.style.opacity = '1';
+						grid.style.visibility = 'visible';
+						grid.style.display = 'grid';
 					}
 				});
 			}
@@ -2205,8 +2378,8 @@
 				
 				// Load signals immediately regardless; loadSignals will hide if expired
 				loadSignals();
-				// Auto-refresh every 30 seconds
-				refreshInterval = setInterval(loadSignals, 30000);
+			// Auto-refresh every 30 seconds
+			refreshInterval = setInterval(loadSignals, 30000);
 			});
 			
 			// Add scroll detection for mobile nav shrinking
@@ -2227,14 +2400,24 @@
 			
 			// Backend API URL - adjust if your backend is on a different port/domain
 			// For local development: backend runs on port 5006
-			// For production: backend should be proxied to /api/ or same origin
+			// For production: backend should be deployed (AWS, Heroku, etc.) or use ngrok for testing
 			function getStripeApiBase() {
 				const hostname = window.location.hostname;
+				
 				// Local development
 				if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '') {
 					return 'http://localhost:5006';
 				}
-				// Production - assume backend is on same origin or proxied
+				
+				// Production - check for custom backend URL in localStorage (for testing with ngrok, etc.)
+				const customBackend = localStorage.getItem('stripe_backend_url');
+				if (customBackend) {
+					console.log(`Using custom backend URL: ${customBackend}`);
+					return customBackend;
+				}
+				
+				// Production - try same origin first (if backend is proxied)
+				// If this doesn't work, you'll need to deploy the backend or use ngrok
 				return window.location.origin;
 			}
 			const STRIPE_API_BASE = getStripeApiBase();
@@ -2353,12 +2536,19 @@
 				if (!stripe) {
 					if (errorDiv) {
 						errorDiv.style.display = 'block';
-						errorDiv.innerHTML = '⚠️ <strong>Our servers are restarting.</strong><br>' +
-							'Subscription service will be available shortly. Please check back in a few minutes.';
+						const hostname = window.location.hostname;
+						if (hostname === 'brianstreckfus.com' || hostname.includes('brianstreckfus.com')) {
+							errorDiv.innerHTML = '⚠️ <strong>Backend not available.</strong><br><br>' +
+								'The Stripe payment server needs to be deployed to production.<br>' +
+								'<small style="color: rgba(255,255,255,0.7);">For testing, you can use ngrok to expose your local backend, or deploy to AWS/Heroku.</small>';
+						} else {
+							errorDiv.innerHTML = '⚠️ <strong>Our servers are restarting.</strong><br>' +
+								'Subscription service will be available shortly. Please check back in a few minutes.';
+						}
 					}
 					if (button) {
 						button.disabled = true;
-						button.textContent = 'Servers Restarting';
+						button.textContent = 'Backend Not Available';
 					}
 				} else {
 					if (errorDiv) {
@@ -2460,8 +2650,16 @@
 					console.error('Subscription error:', error);
 					if (errorDiv) {
 						errorDiv.style.display = 'block';
-						if (error.message && error.message.includes('fetch')) {
-							errorDiv.innerHTML = '⚠️ <strong>Our servers are restarting.</strong><br>Please check back in a few minutes.';
+						if (error.message && (error.message.includes('fetch') || error.message.includes('Failed to fetch'))) {
+							// Network error - backend not reachable
+							const hostname = window.location.hostname;
+							if (hostname === 'brianstreckfus.com' || hostname.includes('brianstreckfus.com')) {
+								errorDiv.innerHTML = '⚠️ <strong>Backend not available.</strong><br><br>' +
+									'The Stripe payment server needs to be deployed to production.<br>' +
+									'<small style="color: rgba(255,255,255,0.7);">For now, the subscription feature is only available when the backend is running locally or deployed.</small>';
+							} else {
+								errorDiv.innerHTML = '⚠️ <strong>Our servers are restarting.</strong><br>Please check back in a few minutes.';
+							}
 						} else {
 							errorDiv.textContent = 'Error: ' + (error.message || 'Failed to start subscription. Our servers may be restarting. Please try again in a few minutes.');
 						}
