@@ -2277,13 +2277,9 @@
 			const STORAGE_KEY_SUBSCRIBED = 'is_subscribed';
 			const STORAGE_KEY_EMAIL = 'user_email';
 			
-			// Stripe Payment Link - Replace with your actual Payment Link URL from Stripe Dashboard
-			// To get your Payment Link:
-			// 1. Go to https://dashboard.stripe.com/payment-links
-			// 2. Create a new payment link for $9.99/month subscription with 7-day free trial
-			// 3. Set success URL to: https://brianstreckfus.com/signals.html?paid=true
-			// 4. Copy the Payment Link URL and paste it below
-			const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE'; // TODO: Replace with your actual Payment Link
+			// Stripe Payment Link - Configured for Trading Signals PRO $9.99/month with 7-day free trial
+			// Success URL should be set to: https://brianstreckfus.com/signals.html?paid=true
+			const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/00w00legUbde5wT5UB8og00';
 			
 			// Initialize trial tracking
 			function initializeTrial() {
@@ -2427,95 +2423,7 @@
 				}
 			});
 			
-			// Stripe Subscription Code
-			let stripe = null;
-			let stripePublicKey = null;
-			
-			// Backend API URL - adjust if your backend is on a different port/domain
-			// For local development: backend runs on port 5006
-			// For production: backend should be deployed (AWS, Heroku, Railway, etc.)
-			function getStripeApiBase() {
-				const hostname = window.location.hostname;
-				
-				// Local development
-				if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '') {
-					return 'http://localhost:5006';
-				}
-				
-				// Production - try same origin first (if backend is proxied)
-				// For production, deploy the backend to AWS, Heroku, Railway, etc.
-				return window.location.origin;
-			}
-			const STRIPE_API_BASE = getStripeApiBase();
-			
-			// Load Stripe public key from backend
-			async function loadStripeKey() {
-				const apiUrl = `${STRIPE_API_BASE}/api/stripe-public-key`;
-				console.log(`🔗 Attempting to load Stripe key from: ${apiUrl}`);
-				
-				try {
-					// Try the backend API endpoint
-					const response = await fetch(apiUrl, {
-						method: 'GET',
-						headers: {
-							'Content-Type': 'application/json',
-						},
-						mode: 'cors', // Explicitly enable CORS
-						credentials: 'omit', // Don't send cookies
-					});
-					
-					if (response.ok) {
-						const data = await response.json();
-						if (data.publicKey) {
-							stripePublicKey = data.publicKey;
-							console.log('✅ Stripe public key loaded from backend');
-						}
-				} else {
-					console.warn('⚠️ Could not load Stripe key from backend API. Servers may be restarting.');
-					console.warn(`   Status: ${response.status}`);
-					showServerRestartBanner();
-				}
-			} catch (error) {
-				console.error('❌ Error loading Stripe key from backend:', error);
-				console.warn('⚠️ Servers are restarting. Please check back in a few minutes.');
-				showServerRestartBanner();
-			}
-			
-			// If we still don't have a key, try to initialize with a placeholder
-			// This will allow the UI to work but subscription won't function
-			if (!stripePublicKey) {
-				console.warn('⚠️ Servers are restarting. Subscription feature will be available shortly.');
-				showServerRestartBanner();
-				return;
-			}
-				
-				try {
-					stripe = Stripe(stripePublicKey);
-					console.log('✅ Stripe initialized successfully');
-					hideServerRestartBanner(); // Hide banner when Stripe is ready
-				} catch (error) {
-					console.error('❌ Error initializing Stripe:', error);
-					showServerRestartBanner();
-				}
-			}
-			
-			// Initialize Stripe on page load
-			loadStripeKey();
-			
-			// Show/hide server restart banner
-			function showServerRestartBanner() {
-				const banner = document.getElementById('server-restart-banner');
-				if (banner) {
-					banner.style.display = 'block';
-				}
-			}
-			
-			function hideServerRestartBanner() {
-				const banner = document.getElementById('server-restart-banner');
-				if (banner) {
-					banner.style.display = 'none';
-				}
-			}
+			// Stripe Payment Links - no backend or Stripe.js required
 
 			// Non-blocking email capture (freemium)
 			function initEmailCapture() {
@@ -2561,33 +2469,14 @@
 					modal.style.display = 'flex';
 				}
 				
-				// Check if Stripe is initialized and show warning if not
-				if (!stripe) {
-					if (errorDiv) {
-						errorDiv.style.display = 'block';
-						const hostname = window.location.hostname;
-						if (hostname === 'brianstreckfus.com' || hostname.includes('brianstreckfus.com')) {
-							errorDiv.innerHTML = '⚠️ <strong>Backend not available.</strong><br><br>' +
-								'The Stripe payment server needs to be deployed to production.<br>' +
-								'<small style="color: rgba(255,255,255,0.7);">Deploy to AWS, Heroku, Railway, or another cloud service.</small>';
-						} else {
-							errorDiv.innerHTML = '⚠️ <strong>Our servers are restarting.</strong><br>' +
-								'Subscription service will be available shortly. Please check back in a few minutes.';
-						}
-					}
-					if (button) {
-						button.disabled = true;
-						button.textContent = 'Backend Not Available';
-					}
-				} else {
-					if (errorDiv) {
-						errorDiv.style.display = 'none';
-						errorDiv.textContent = '';
-					}
-					if (button) {
-						button.disabled = false;
-						button.textContent = 'Start 7-Day Free Trial';
-					}
+				// Payment Links work without backend - always enable button
+				if (errorDiv) {
+					errorDiv.style.display = 'none';
+					errorDiv.textContent = '';
+				}
+				if (button) {
+					button.disabled = false;
+					button.textContent = 'Start 7-Day Free Trial';
 				}
 			}
 			
@@ -2611,91 +2500,20 @@
 				}
 			});
 			
-			async function startSubscription() {
-				const button = document.getElementById('start-subscription-btn');
-				const errorDiv = document.getElementById('subscription-error');
+			function startSubscription() {
+				// Redirect directly to Stripe Payment Link (no backend needed)
+				const paymentLinkConfigured = STRIPE_PAYMENT_LINK && STRIPE_PAYMENT_LINK !== 'https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE';
 				
-				if (!stripe) {
-					// Try to load key again
-					await loadStripeKey();
-					if (!stripe) {
-						if (errorDiv) {
-							errorDiv.style.display = 'block';
-							errorDiv.innerHTML = '⚠️ <strong>Our servers are restarting.</strong><br><br>' +
-								'Subscription service will be available shortly. Please check back in a few minutes.';
-						}
-						if (button) {
-							button.disabled = false;
-							button.textContent = 'Start 7-Day Free Trial';
-						}
-						return;
-					}
-				}
-				
-				// Disable button during processing
-				if (button) {
-					button.disabled = true;
-					button.textContent = 'Processing...';
-				}
-				
-				if (errorDiv) {
-					errorDiv.style.display = 'none';
-					errorDiv.textContent = '';
-				}
-				
-				try {
-					// Call backend to create checkout session
-					const response = await fetch(`${STRIPE_API_BASE}/api/create-checkout-session`, {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json',
-						},
-						body: JSON.stringify({
-							productType: 'subscription',
-							trial_days: 7,  // 7-day free trial
-							// priceId is optional - backend will create one if not provided
-						}),
-					});
-					
-					const session = await response.json();
-					
-					if (session.error) {
-						throw new Error(session.error);
-					}
-					
-					// Redirect to Stripe Checkout
-					if (session.sessionId) {
-						const result = await stripe.redirectToCheckout({
-							sessionId: session.sessionId,
-						});
-						
-						if (result.error) {
-							throw new Error(result.error.message);
-						}
-					} else {
-						throw new Error('No session ID received from server');
-					}
-				} catch (error) {
-					console.error('Subscription error:', error);
+				if (paymentLinkConfigured) {
+					// Close modal and redirect to Payment Link
+					closeSubscriptionModal();
+					window.location.href = STRIPE_PAYMENT_LINK;
+				} else {
+					// Fallback error (shouldn't happen if Payment Link is configured)
+					const errorDiv = document.getElementById('subscription-error');
 					if (errorDiv) {
 						errorDiv.style.display = 'block';
-						if (error.message && (error.message.includes('fetch') || error.message.includes('Failed to fetch'))) {
-							// Network error - backend not reachable
-							const hostname = window.location.hostname;
-							if (hostname === 'brianstreckfus.com' || hostname.includes('brianstreckfus.com')) {
-								errorDiv.innerHTML = '⚠️ <strong>Backend not available.</strong><br><br>' +
-									'The Stripe payment server needs to be deployed to production.<br>' +
-									'<small style="color: rgba(255,255,255,0.7);">For now, the subscription feature is only available when the backend is running locally or deployed.</small>';
-							} else {
-								errorDiv.innerHTML = '⚠️ <strong>Our servers are restarting.</strong><br>Please check back in a few minutes.';
-							}
-						} else {
-							errorDiv.textContent = 'Error: ' + (error.message || 'Failed to start subscription. Our servers may be restarting. Please try again in a few minutes.');
-						}
-					}
-					if (button) {
-						button.disabled = false;
-						button.textContent = 'Start 7-Day Free Trial';
+						errorDiv.textContent = '⚠️ Payment Link not configured. Please contact support.';
 					}
 				}
 			}
