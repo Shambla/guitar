@@ -780,6 +780,38 @@
 				font-size: 14px;
 				margin-top: 10px;
 			}
+
+			/* --- Hard overrides to ensure signals are visible --- */
+			.signals-container,
+			#crypto-signals-container,
+			#stock-signals-container,
+			#signals-grid,
+			#stock-signals-grid,
+			#old-signals-grid,
+			#stock-historical-grid,
+			.asset-list-grid {
+				visibility: visible !important;
+				opacity: 1 !important;
+				display: grid !important;
+				pointer-events: auto !important;
+				z-index: 1;
+			}
+
+			/* If a grid is meant to be hidden by JS, JS will set display:none explicitly */
+			.signal-card,
+			.signal-card * {
+				color: #ffffff !important;
+				opacity: 1 !important;
+				mix-blend-mode: normal !important;
+				text-shadow: 0 0 1px rgba(0,0,0,0.4);
+			}
+
+			.signal-card {
+				background-color: rgba(20, 20, 20, 0.8) !important;
+				backdrop-filter: blur(2px);
+				position: relative;
+				z-index: 2;
+			}
 		</style>
 	</head>
 	<body>
