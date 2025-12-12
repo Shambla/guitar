@@ -2433,6 +2433,7 @@
 						method: 'GET',
 						headers: {
 							'Content-Type': 'application/json',
+							'ngrok-skip-browser-warning': 'true', // Bypass ngrok free tier warning page
 						},
 					});
 					
@@ -2620,6 +2621,7 @@
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
+							'ngrok-skip-browser-warning': 'true', // Bypass ngrok free tier warning page
 						},
 						body: JSON.stringify({
 							productType: 'subscription',
