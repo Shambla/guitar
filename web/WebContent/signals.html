@@ -870,6 +870,13 @@
 		</nav>
 		
 		<div class="content signals-container" id="signals-content">
+			<!-- Trial Status Banner -->
+			<div id="trial-status-banner" style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.2) 0%, rgba(33, 150, 243, 0.2) 100%); border: 2px solid rgba(76, 175, 80, 0.5); border-radius: 12px; padding: 20px; margin-bottom: 30px; text-align: center;">
+				<div id="trial-status-message" style="color: #fff; font-size: 16px; font-weight: bold; line-height: 1.6;">
+					<!-- Will be populated by JavaScript -->
+				</div>
+			</div>
+			
 			<div class="signals-header">
 				<h1>Trading Signals</h1>
 				<p>Live feed of buy and sell signals from trading strategies</p>
@@ -910,9 +917,9 @@
 			
 			<!-- Crypto Signals (Recent - Last 1 Day) -->
 			<div id="crypto-signals-container" style="display: block;">
-				<h2 style="color: var(--primary-color); font-size: 28px; margin: 40px 0 20px; text-align: center;">💎 Cryptocurrency Signals (Last 24 Hours)</h2>
-				<div id="signals-grid" class="signals-grid" style="background: rgba(255,0,0,0.1); border: 2px dashed rgba(255,255,255,0.3); padding: 20px; min-height: 50px; margin-bottom: 0 !important;">
-					<div class="loading">⏳ Waiting for signals...</div>
+			<h2 style="color: var(--primary-color); font-size: 28px; margin: 40px 0 20px; text-align: center;">💎 Cryptocurrency Signals (Last 24 Hours)</h2>
+			<div id="signals-grid" class="signals-grid" style="background: rgba(255,0,0,0.1); border: 2px dashed rgba(255,255,255,0.3); padding: 20px; min-height: 50px; margin-bottom: 0 !important;">
+				<div class="loading">⏳ Waiting for signals...</div>
 				</div>
 			</div>
 			
@@ -1636,11 +1643,11 @@
 				}
 				
 				// Scroll to stock signals section
-				setTimeout(() => {
+					setTimeout(() => {
 					if (stockContainer) {
 						stockContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
 					}
-				}, 100);
+					}, 100);
 			}
 			
 			function showStockSignals() {
@@ -2012,6 +2019,11 @@
 					})
 					.then(data => {
 						console.log('Received data:', data);
+						// Only render if signals are visible (trial active or subscribed)
+						if (!signalsVisible) {
+							console.log('Signals hidden - trial expired');
+							return;
+						}
 						// Ensure data is an array
 						const signals = Array.isArray(data) ? data : [data];
 						console.log('Rendering', signals.length, 'signals');
@@ -2030,22 +2042,123 @@
 					.catch(error => {
 						console.error('Error loading signals:', error);
 						document.getElementById('signals-grid').innerHTML = 
-							'<div class="empty-state"><h3>⏳ Waiting for signals...</h3><p>Unable to load signals: ' + error.message + '</p><p>Make sure the signals receiver is running. Signals will appear here automatically when received.</p></div>';
+							'<div class="empty-state"><h3>⏳ Waiting for signals...</h3><p>Our servers are restarting. Signals are stale. Please check back in a few minutes.</p></div>';
 						document.getElementById('status-indicator').className = 'status-indicator inactive';
-						document.getElementById('status-text').textContent = 'Disconnected';
+						document.getElementById('status-text').textContent = 'Servers Restarting';
+						showServerRestartBanner();
 					});
 			}
 			
+			// ========================================
+			// TRIAL TRACKING & ACCESS CONTROL
+			// ========================================
+			
+			const TRIAL_DAYS = 7;
+			const STORAGE_KEY_TRIAL_START = 'trial_start_date';
+			const STORAGE_KEY_SUBSCRIBED = 'is_subscribed';
+			
+			// Initialize trial tracking
+			function initializeTrial() {
+				// Check if user is marked as subscribed
+				const isSubscribed = localStorage.getItem(STORAGE_KEY_SUBSCRIBED) === 'true';
+				if (isSubscribed) {
+					updateTrialStatus('subscribed');
+					return true; // Full access
+				}
+				
+				// Check if trial has started
+				let trialStartDate = localStorage.getItem(STORAGE_KEY_TRIAL_START);
+				
+				if (!trialStartDate) {
+					// First visit - start trial now
+					trialStartDate = new Date().toISOString();
+					localStorage.setItem(STORAGE_KEY_TRIAL_START, trialStartDate);
+					updateTrialStatus('active');
+					return true; // Show signals during trial
+				}
+				
+				// Check if trial has expired
+				const startDate = new Date(trialStartDate);
+				const now = new Date();
+				const daysElapsed = (now - startDate) / (1000 * 60 * 60 * 24);
+				
+				if (daysElapsed >= TRIAL_DAYS) {
+					updateTrialStatus('expired');
+					return false; // Hide signals after trial
+				} else {
+					const daysRemaining = Math.ceil(TRIAL_DAYS - daysElapsed);
+					updateTrialStatus('active', daysRemaining);
+					return true; // Show signals during trial
+				}
+			}
+			
+			// Update trial status banner
+			function updateTrialStatus(status, daysRemaining = null) {
+				const banner = document.getElementById('trial-status-banner');
+				const message = document.getElementById('trial-status-message');
+				
+				if (!banner || !message) return;
+				
+				if (status === 'subscribed') {
+					banner.style.background = 'linear-gradient(135deg, rgba(76, 175, 80, 0.3) 0%, rgba(76, 175, 80, 0.2) 100%)';
+					banner.style.borderColor = 'rgba(76, 175, 80, 0.7)';
+					message.innerHTML = '✅ <strong>Premium Subscriber</strong> - Full access to all trading signals';
+				} else if (status === 'active') {
+					banner.style.background = 'linear-gradient(135deg, rgba(33, 150, 243, 0.3) 0%, rgba(76, 175, 80, 0.2) 100%)';
+					banner.style.borderColor = 'rgba(33, 150, 243, 0.7)';
+					if (daysRemaining !== null) {
+						message.innerHTML = `🎉 <strong>7-Day Free Trial Active</strong> - ${daysRemaining} day${daysRemaining !== 1 ? 's' : ''} remaining. Signals are visible!`;
+					} else {
+						message.innerHTML = '🎉 <strong>7-Day Free Trial Started</strong> - Signals are now visible!';
+					}
+				} else if (status === 'expired') {
+					banner.style.background = 'linear-gradient(135deg, rgba(244, 67, 54, 0.3) 0%, rgba(255, 152, 0, 0.2) 100%)';
+					banner.style.borderColor = 'rgba(244, 67, 54, 0.7)';
+					message.innerHTML = '⏰ <strong>Trial Expired</strong> - Please subscribe to continue viewing signals. <a href="#" onclick="event.preventDefault(); showSubscriptionModal(); return false;" style="color: #fff; text-decoration: underline; font-weight: bold;">Subscribe Now</a>';
+				}
+			}
+			
+			// Hide all signal grids when trial expires
+			function hideAllSignals() {
+				const grids = [
+					document.getElementById('signals-grid'),
+					document.getElementById('stock-signals-grid'),
+					document.getElementById('old-signals-grid'),
+					document.getElementById('stock-historical-grid'),
+					document.getElementById('crypto-asset-list'),
+					document.getElementById('stock-asset-list')
+				];
+				
+				grids.forEach(grid => {
+					if (grid) {
+						grid.innerHTML = '<div class="empty-state" style="text-align: center; padding: 40px;"><h3>🔒 Signals Locked</h3><p style="color: rgba(255, 255, 255, 0.7); margin: 20px 0;">Your 7-day free trial has ended.</p><p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 20px;">Subscribe to continue viewing all trading signals.</p><button onclick="showSubscriptionModal()" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.transform=\'translateY(-2px)\'; this.style.boxShadow=\'0 6px 20px rgba(102, 126, 234, 0.4)\';" onmouseout="this.style.transform=\'translateY(0)\'; this.style.boxShadow=\'none\';">💳 Subscribe Now</button></div>';
+						grid.style.opacity = '0.5';
+					}
+				});
+			}
+			
+			// Check if signals should be visible
+			let signalsVisible = true; // Default to visible
+			
 			// Initialize: Show crypto by default on page load
 			window.addEventListener('DOMContentLoaded', function() {
+				// Check trial status first
+				signalsVisible = initializeTrial();
+				
+				// If trial expired, hide signals
+				if (!signalsVisible) {
+					hideAllSignals();
+				}
+				
 				switchToCrypto();
-			});
-			
-			// Load signals immediately
-			loadSignals();
-			
-			// Auto-refresh every 30 seconds
+				
+				// Load signals immediately (but respect visibility)
+				if (signalsVisible) {
+					loadSignals();
+					// Auto-refresh every 30 seconds (only if signals visible)
 			refreshInterval = setInterval(loadSignals, 30000);
+				}
+			});
 			
 			// Add scroll detection for mobile nav shrinking
 			window.addEventListener("scroll", function() {
@@ -2063,38 +2176,115 @@
 			let stripe = null;
 			let stripePublicKey = null;
 			
+			// Backend API URL - adjust if your backend is on a different port/domain
+			// For local development: backend runs on port 5006
+			// For production: backend should be proxied to /api/ or same origin
+			function getStripeApiBase() {
+				const hostname = window.location.hostname;
+				// Local development
+				if (hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '') {
+					return 'http://localhost:5006';
+				}
+				// Production - assume backend is on same origin or proxied
+				return window.location.origin;
+			}
+			const STRIPE_API_BASE = getStripeApiBase();
+			
 			// Load Stripe public key from backend
 			async function loadStripeKey() {
+				const apiUrl = `${STRIPE_API_BASE}/api/stripe-public-key`;
+				console.log(`🔗 Attempting to load Stripe key from: ${apiUrl}`);
+				
 				try {
-					const response = await fetch('/api/stripe-public-key');
+					// Try the backend API endpoint
+					const response = await fetch(apiUrl, {
+						method: 'GET',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+					});
+					
 					if (response.ok) {
 						const data = await response.json();
-						stripePublicKey = data.publicKey;
-					} else {
-						// Fallback: try to get from .env via a simple endpoint
-						// If that fails, you'll need to set it manually below
-						console.warn('Could not load Stripe key from API, using fallback');
-						// You can set this manually if needed:
-						// stripePublicKey = 'pk_test_...'; // Replace with your actual public key
-					}
-				} catch (error) {
-					console.error('Error loading Stripe key:', error);
-					// Fallback: You can set the public key directly here if needed
-					// stripePublicKey = 'pk_test_...'; // Replace with your actual public key
+						if (data.publicKey) {
+							stripePublicKey = data.publicKey;
+							console.log('✅ Stripe public key loaded from backend');
+						}
+				} else {
+					console.warn('⚠️ Could not load Stripe key from backend API. Servers may be restarting.');
+					showServerRestartBanner();
 				}
+			} catch (error) {
+				console.error('❌ Error loading Stripe key from backend:', error);
+				console.warn('⚠️ Servers are restarting. Please check back in a few minutes.');
+				showServerRestartBanner();
+			}
+			
+			// If we still don't have a key, try to initialize with a placeholder
+			// This will allow the UI to work but subscription won't function
+			if (!stripePublicKey) {
+				console.warn('⚠️ Servers are restarting. Subscription feature will be available shortly.');
+				showServerRestartBanner();
+				return;
+			}
 				
-				if (stripePublicKey) {
+				try {
 					stripe = Stripe(stripePublicKey);
+					console.log('✅ Stripe initialized successfully');
+					hideServerRestartBanner(); // Hide banner when Stripe is ready
+				} catch (error) {
+					console.error('❌ Error initializing Stripe:', error);
+					showServerRestartBanner();
 				}
 			}
 			
 			// Initialize Stripe on page load
 			loadStripeKey();
 			
+			// Show/hide server restart banner
+			function showServerRestartBanner() {
+				const banner = document.getElementById('server-restart-banner');
+				if (banner) {
+					banner.style.display = 'block';
+				}
+			}
+			
+			function hideServerRestartBanner() {
+				const banner = document.getElementById('server-restart-banner');
+				if (banner) {
+					banner.style.display = 'none';
+				}
+			}
+			
 			function showSubscriptionModal() {
 				const modal = document.getElementById('subscription-modal');
+				const errorDiv = document.getElementById('subscription-error');
+				const button = document.getElementById('start-subscription-btn');
+				
 				if (modal) {
 					modal.style.display = 'flex';
+				}
+				
+				// Check if Stripe is initialized and show warning if not
+				if (!stripe) {
+					if (errorDiv) {
+						errorDiv.style.display = 'block';
+						errorDiv.innerHTML = '⚠️ <strong>Our servers are restarting.</strong><br>' +
+							'Subscription service will be available shortly. Please check back in a few minutes.';
+					}
+					if (button) {
+						button.disabled = true;
+						button.textContent = 'Servers Restarting';
+					}
+				} else {
+					if (errorDiv) {
+						errorDiv.style.display = 'none';
+						errorDiv.textContent = '';
+					}
+					if (button) {
+						button.disabled = false;
+						button.textContent = 'Start 7-Day Free Trial';
+					}
 				}
 			}
 			
@@ -2128,7 +2318,12 @@
 					if (!stripe) {
 						if (errorDiv) {
 							errorDiv.style.display = 'block';
-							errorDiv.textContent = 'Stripe is not initialized. Please refresh the page.';
+							errorDiv.innerHTML = '⚠️ <strong>Our servers are restarting.</strong><br><br>' +
+								'Subscription service will be available shortly. Please check back in a few minutes.';
+						}
+						if (button) {
+							button.disabled = false;
+							button.textContent = 'Start 7-Day Free Trial';
 						}
 						return;
 					}
@@ -2147,7 +2342,7 @@
 				
 				try {
 					// Call backend to create checkout session
-					const response = await fetch('/api/create-checkout-session', {
+					const response = await fetch(`${STRIPE_API_BASE}/api/create-checkout-session`, {
 						method: 'POST',
 						headers: {
 							'Content-Type': 'application/json',
@@ -2181,7 +2376,11 @@
 					console.error('Subscription error:', error);
 					if (errorDiv) {
 						errorDiv.style.display = 'block';
-						errorDiv.textContent = 'Error: ' + (error.message || 'Failed to start subscription. Please try again.');
+						if (error.message && error.message.includes('fetch')) {
+							errorDiv.innerHTML = '⚠️ <strong>Our servers are restarting.</strong><br>Please check back in a few minutes.';
+						} else {
+							errorDiv.textContent = 'Error: ' + (error.message || 'Failed to start subscription. Our servers may be restarting. Please try again in a few minutes.');
+						}
 					}
 					if (button) {
 						button.disabled = false;
@@ -2190,12 +2389,25 @@
 				}
 			}
 			
+			// Mark user as subscribed (called after successful payment)
+			function markAsSubscribed() {
+				localStorage.setItem(STORAGE_KEY_SUBSCRIBED, 'true');
+				signalsVisible = true;
+				updateTrialStatus('subscribed');
+				// Reload signals if they were hidden
+				loadSignals();
+				if (!refreshInterval) {
+					refreshInterval = setInterval(loadSignals, 30000);
+				}
+			}
+			
 			// Check if user is returning from successful payment
 			const urlParams = new URLSearchParams(window.location.search);
 			if (urlParams.get('session_id')) {
-				// Show success message
+				// Mark as subscribed and show success message
+				markAsSubscribed();
 				setTimeout(() => {
-					alert('🎉 Subscription activated! Thank you for subscribing.');
+					alert('🎉 Subscription activated! Thank you for subscribing. You now have full access to all signals.');
 					// Clean up URL
 					window.history.replaceState({}, document.title, window.location.pathname);
 				}, 500);
