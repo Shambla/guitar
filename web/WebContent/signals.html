@@ -2429,12 +2429,16 @@
 				
 				try {
 					// Try the backend API endpoint
+					// Note: ngrok free tier may require visiting the URL in browser first to accept warning
 					const response = await fetch(apiUrl, {
 						method: 'GET',
 						headers: {
 							'Content-Type': 'application/json',
 							'ngrok-skip-browser-warning': 'true', // Bypass ngrok free tier warning page
+							'User-Agent': 'Mozilla/5.0', // Some ngrok configurations require this
 						},
+						mode: 'cors', // Explicitly enable CORS
+						credentials: 'omit', // Don't send cookies
 					});
 					
 					if (response.ok) {
@@ -2443,13 +2447,24 @@
 							stripePublicKey = data.publicKey;
 							console.log('✅ Stripe public key loaded from backend');
 						}
+				} else if (response.status === 403) {
+					// ngrok free tier blocking - user may need to visit URL in browser first
+					console.warn('⚠️ ngrok returned 403. If using ngrok free tier, visit the URL in a browser first to accept the warning:');
+					console.warn(`   ${apiUrl}`);
+					console.warn('   Then refresh this page.');
+					showServerRestartBanner();
 				} else {
 					console.warn('⚠️ Could not load Stripe key from backend API. Servers may be restarting.');
+					console.warn(`   Status: ${response.status}`);
 					showServerRestartBanner();
 				}
 			} catch (error) {
 				console.error('❌ Error loading Stripe key from backend:', error);
-				console.warn('⚠️ Servers are restarting. Please check back in a few minutes.');
+				if (error.message && error.message.includes('403')) {
+					console.warn('⚠️ ngrok is blocking the request. Visit the ngrok URL in a browser first to accept the warning.');
+				} else {
+					console.warn('⚠️ Servers are restarting. Please check back in a few minutes.');
+				}
 				showServerRestartBanner();
 			}
 			
