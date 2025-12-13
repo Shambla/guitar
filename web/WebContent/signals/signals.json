@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 3128.39,
+    "source": "MASTER_BOT_162",
+    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+    "timestamp": "2025-12-13T10:38:29.564540Z",
+    "received_at": "2025-12-13T10:38:29.564874Z",
+    "id": "2025-12-13T10:38:29.564874Z-ETH/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "RENDER/USD",
     "quantity": 64.39150032195751,
@@ -2055,16 +2066,5 @@
     "timestamp": "2025-12-06T11:00:06.894723Z",
     "received_at": "2025-12-06T11:00:06.894783Z",
     "id": "2025-12-06T11:00:06.894783Z-AAVE/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 3030.69,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2025-12-06T10:37:59.902118Z",
-    "received_at": "2025-12-06T10:37:59.902141Z",
-    "id": "2025-12-06T10:37:59.902141Z-ETH/USD-sell"
   }
 ]
