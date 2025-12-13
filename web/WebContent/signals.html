@@ -1397,6 +1397,7 @@
 							<span style="color: #4caf50;">83.87% accuracy</span>, 
 							<span style="color: #ffa726;">14.362 Profit Factor</span> is <strong>INSANE</strong>, and I am <strong>INSANE</strong> for giving this away for FREE. 
 							When Blackrock finds out about this, they'll certainly make me "sleep with the fishes." 🐟💀
+							Even if I am an idiot that's bad at math: the bot performing 10x WORSE than this IS STILL turning ONE DOLLAR into $44,700,000 🤯. Broker commissions INCLUDED at 0.07%.
 						</p>
 					</div>
 					
@@ -1407,7 +1408,7 @@
 					<p style="color: rgba(255, 255, 255, 0.9); font-size: 16px; line-height: 1.8; margin-bottom: 0;">
 						<strong>In fact, the backtests were so good that I caused TradingView to have errors</strong> and I had to start putting the starting capital at <strong style="color: var(--primary-color);">$1.00</strong>. 
 						If I put $1,000 starting capital, <span style="color: #f44336; font-weight: bold;">TradingView's UI would break!</span> 
-						<span style="background: rgba(255, 193, 7, 0.2); padding: 2px 8px; border-radius: 4px; font-weight: bold;">Also, that backtest image is from 3 years ago before 100,000 additional lines of code—imagine what it can do now!</span> 🚀
+						<span style="background: rgba(255, 193, 7, 0.2); padding: 2px 8px; border-radius: 4px; font-weight: bold;">Also, that backtest image is from 3 years ago, we are now up to 350,000+ lines of code and we have created a monster. Imagine what I can do now!</span> 🚀
 					</p>
 				</div>
 				
@@ -1656,6 +1657,16 @@
 					<div class="indicator-category">
 						<h3>MOMENTUM INDICATORS</h3>
 						<h4>Oscillators</h4>
+						<div style="background: rgba(33, 150, 243, 0.1); border-left: 4px solid #2196f3; padding: 15px; margin-bottom: 20px; border-radius: 4px;">
+							<h4 style="color: #2196f3; margin-top: 0; font-size: 16px;">🔍 Understanding Divergences (Simple Explanation)</h4>
+							<p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 10px; line-height: 1.6;">
+								<strong>What is a divergence?</strong> A divergence occurs when the price moves in one direction, but the underlying buying or selling pressure moves in the opposite direction. 
+							</p>
+							<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 0; line-height: 1.6;">
+								<strong>In simple terms:</strong> We're finding moments where there are fewer buyers (or less buying pressure), yet the price still went up. This is a warning sign that the price move might be weak or unsustainable. 
+								Conversely, if prices are falling but buying pressure is increasing, it could signal a potential reversal. Divergences help us spot when price movements might be running out of steam before the average trader notices.
+							</p>
+						</div>
 						<ul>
 							<li><strong>RSI (Relative Strength Index)</strong> - 14-period standard RSI, 7-period fast RSI (SuperTrend variant), 21-period slow RSI (SuperTrend variant), RSI Divergence (regular and hidden bullish/bearish), RSI momentum filter for regime detection</li>
 							<li><strong>Stochastic RSI</strong> - 14-period RSI, 14-period stochastic, 3-period smoothing, Stochastic RSI Divergence (regular and hidden)</li>
@@ -1707,17 +1718,37 @@
 							<li><strong>Donchian Channels</strong> - 20-period high/low breakout system</li>
 							<li><strong>Support/Resistance Detection</strong> - Pivot-based S/R levels (4-period pivots, max 5 levels), Channel width analysis (10% max), Strength-based ranking (min strength 2), Most recent resistance tracking, Underneath resistance detection (0.1-2% band)</li>
 							<li><strong>Fibonacci Retracements</strong> - 0.382, 0.500, 0.618, 0.764, 0.854 levels, 150-bar lookback for high/low, Fib 0.382 avoid-long band (1% underneath)</li>
-							<li><strong>Round Number Detection</strong> - Multiples of 50, 100, 1000, 10000, Proximity range (3 points default), Avoid trading near round numbers</li>
+							<li><strong>Round Number Avoidance</strong> - Unique indicator that identifies psychologically significant price levels. For example, BTC crossing $20,000 or $100,000 is a HUGE event and many traders pile in limit sell orders around those zones. Even God likes the number 10 in the 10 commandments. Only trades once price is convincingly above or below the round number by 1%. Multiples of 50, 100, 1000, 10000 are monitored with proximity range (3 points default).</li>
 						</ul>
 					</div>
 					
 					<div class="indicator-category">
-						<h3>CANDLESTICK PATTERNS</h3>
-						<h4>Pattern Recognition</h4>
+						<h3>CANDLESTICK PATTERNS 📊</h3>
+						<h4>Pattern Recognition Suite</h4>
 						<ul>
-							<li><strong>Bullish Patterns</strong> - Bullish Engulfing, Bullish Marubozu, Bullish Hammer, Three Bull Soldiers</li>
-							<li><strong>Bearish Patterns</strong> - Bearish Engulfing, Bearish Marubozu, Shooting Star, Three Bear Soldiers</li>
-							<li><strong>Pattern Filters</strong> - Body size threshold (10% of range), Lower lows confirmation, Star pattern detection (78.6% threshold)</li>
+							<li><strong>Shooting Star</strong> 🐻 📉 - Long top wick (Bearish)</li>
+							<li><strong>Bull Hammer</strong> 🐂 📈 - Long bottom wick (Bullish)</li>
+							<li><strong>Marubozu</strong> - Full bodied candle (strong directional signal)</li>
+							<li><strong>Doji</strong> - Flat candle (indecision)</li>
+							<li><strong>Engulfing</strong> - Next candle overtakes the previous (strong reversal signal)</li>
+							<li><strong>3 Bull Soldiers</strong> 🐂 📈 - 3 green candles in a row (strong bullish momentum)</li>
+							<li><strong>3 Bear Soldiers</strong> 🐻 📉 - 3 red candles in a row (strong bearish momentum)</li>
+						</ul>
+						<div style="background: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107; padding: 15px; margin-top: 15px; border-radius: 4px;">
+							<h4 style="color: #ffc107; margin-top: 0; font-size: 16px;">💡 Unique Anti-Trade Approach</h4>
+							<p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 10px; line-height: 1.6;">
+								<strong>The clever twist:</strong> Candlestick patterns are sometimes used as <strong>anti-trades</strong> rather than direct signals. 
+							</p>
+							<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 0; line-height: 1.6;">
+								For example, if a bearish shooting star appears, we do <strong>NOT</strong> take a long trade. This approach recognizes that candlestick patterns can be mediocre signals on their own because they can just be noise on low timeframes. 
+								Instead, we use them to filter out bad trades - if a bearish pattern forms, we avoid bullish entries, and vice versa. This helps prevent entering trades when the market structure suggests weakness.
+							</p>
+						</div>
+						<h4>Pattern Filters</h4>
+						<ul>
+							<li><strong>Body size threshold</strong> - 10% of range minimum</li>
+							<li><strong>Lower lows confirmation</strong> - Pattern validation</li>
+							<li><strong>Star pattern detection</strong> - 78.6% threshold for wick-to-body ratio</li>
 						</ul>
 					</div>
 					
