@@ -11,6 +11,158 @@
 		<script src="https://js.stripe.com/v3/"></script>
 		<title>Trading Signals - Live Feed</title>
 		<style>
+			/* ============================================
+			   SYNTHWAVE THEME - Background & Base Styles
+			   ============================================ */
+			
+			/* Synthwave gradient background */
+			html, body {
+				background: linear-gradient(135deg, #0a0e27 0%, #1a0d2e 25%, #16213e 50%, #0f3460 75%, #0a0e27 100%) !important;
+				background-attachment: fixed !important;
+				background-size: 400% 400% !important;
+				animation: synthwaveGradient 15s ease infinite !important;
+				min-height: 100vh !important;
+				position: relative !important;
+			}
+			
+			/* Animated gradient background */
+			@keyframes synthwaveGradient {
+				0% { background-position: 0% 50%; }
+				50% { background-position: 100% 50%; }
+				100% { background-position: 0% 50%; }
+			}
+			
+			/* Grid overlay pattern (synthwave aesthetic) */
+			body::before {
+				content: '';
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-image: 
+					linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+					linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+				background-size: 50px 50px;
+				pointer-events: none;
+				z-index: 0;
+			}
+			
+			/* Horizon line effect (classic synthwave) */
+			body::after {
+				content: '';
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				width: 100%;
+				height: 200px;
+				background: linear-gradient(to top, 
+					rgba(255, 0, 255, 0.15) 0%,
+					rgba(0, 255, 255, 0.1) 50%,
+					transparent 100%);
+				pointer-events: none;
+				z-index: 0;
+			}
+			
+			/* Ensure content is above background layers */
+			body > * {
+				position: relative;
+				z-index: 1;
+			}
+			
+			/* Neon glow text effect */
+			@keyframes neonGlow {
+				0%, 100% {
+					text-shadow: 
+						0 0 5px currentColor,
+						0 0 10px currentColor,
+						0 0 15px currentColor,
+						0 0 20px currentColor;
+				}
+				50% {
+					text-shadow: 
+						0 0 2px currentColor,
+						0 0 5px currentColor,
+						0 0 8px currentColor,
+						0 0 12px currentColor;
+				}
+			}
+			
+			/* Animated ROI colors - cycling through vibrant colors */
+			@keyframes roiColorCycle {
+				0% { color: #ff0080; }
+				16.66% { color: #ff4000; }
+				33.33% { color: #ffaa00; }
+				50% { color: #ffff00; }
+				66.66% { color: #00ff00; }
+				83.33% { color: #00ffff; }
+				100% { color: #ff0080; }
+			}
+			
+			/* Pulsing glow effect for ROI */
+			@keyframes roiPulse {
+				0%, 100% {
+					filter: drop-shadow(0 0 10px rgba(255, 0, 128, 0.8)) 
+					        drop-shadow(0 0 20px rgba(255, 64, 0, 0.6)) 
+					        drop-shadow(0 0 30px rgba(255, 170, 0, 0.4));
+					transform: scale(1);
+				}
+				50% {
+					filter: drop-shadow(0 0 20px rgba(255, 0, 128, 1)) 
+					        drop-shadow(0 0 40px rgba(255, 64, 0, 0.8)) 
+					        drop-shadow(0 0 60px rgba(255, 170, 0, 0.6))
+					        drop-shadow(0 0 80px rgba(0, 255, 0, 0.4));
+					transform: scale(1.05);
+				}
+			}
+			
+			/* ROI styling - animated and eye-catching */
+			.roi-animated {
+				display: inline-block;
+				font-size: 28px !important;
+				font-weight: 900 !important;
+				letter-spacing: 1px;
+				background: linear-gradient(135deg, #ff0080, #ff4000, #ffaa00, #ffff00, #00ff00, #00ffff, #ff0080);
+				background-size: 300% 300%;
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+				animation: 
+					roiGradientShift 3s ease infinite,
+					roiPulse 2s ease-in-out infinite;
+				position: relative;
+			}
+			
+			/* Gradient shift animation for background */
+			@keyframes roiGradientShift {
+				0% { background-position: 0% 50%; }
+				50% { background-position: 100% 50%; }
+				100% { background-position: 0% 50%; }
+			}
+			
+			/* Money emoji animation */
+			.roi-money-emoji {
+				display: inline-block;
+				font-size: 32px;
+				animation: moneyBounce 1.5s ease-in-out infinite;
+				filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+			}
+			
+			@keyframes moneyBounce {
+				0%, 100% {
+					transform: translateY(0) rotate(0deg) scale(1);
+				}
+				25% {
+					transform: translateY(-5px) rotate(-10deg) scale(1.1);
+				}
+				50% {
+					transform: translateY(-8px) rotate(0deg) scale(1.15);
+				}
+				75% {
+					transform: translateY(-5px) rotate(10deg) scale(1.1);
+				}
+			}
+			
 			.signals-container {
 				margin-top: 100px;
 				padding: 20px;
@@ -18,6 +170,93 @@
 			.signals-header {
 				text-align: center;
 				margin-bottom: 30px;
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				background: rgba(10, 14, 39, 0.95);
+				backdrop-filter: blur(10px);
+				padding: 20px;
+				z-index: 1000;
+				box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+			}
+			.signals-header h1 {
+				color: var(--primary-color);
+				font-size: 28px;
+				text-align: center;
+				font-weight: bold;
+			}
+			.signals-header p {
+				color: rgba(255, 255, 255, 0.9);
+				text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+			}
+			
+			/* Floating Right-Side Navigation */
+			.floating-nav {
+				position: fixed !important;
+				right: 20px !important;
+				top: 50% !important;
+				transform: translateY(-50%) !important;
+				z-index: 10000 !important;
+				display: flex !important;
+				flex-direction: column;
+				gap: 12px;
+				background: rgba(10, 14, 39, 0.3) !important;
+				backdrop-filter: blur(5px);
+				padding: 20px 15px;
+				border-radius: 12px;
+				box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 255, 255, 0.1);
+				border: 2px solid rgba(0, 255, 255, 0.2);
+				visibility: visible !important;
+				opacity: 1 !important;
+				transition: all 0.3s ease;
+			}
+			
+			.floating-nav:hover {
+				background: rgba(10, 14, 39, 0.95) !important;
+				backdrop-filter: blur(10px);
+				box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 255, 255, 0.3);
+				border: 2px solid rgba(0, 255, 255, 0.5);
+			}
+			
+			.floating-nav a {
+				display: block;
+				color: rgba(255, 255, 255, 0.6) !important;
+				text-decoration: none;
+				padding: 12px 20px;
+				background: rgba(0, 255, 255, 0.1);
+				border: 1px solid rgba(0, 255, 255, 0.2);
+				border-radius: 8px;
+				font-weight: bold;
+				font-size: 14px;
+				text-align: center;
+				transition: all 0.3s ease;
+				white-space: nowrap;
+			}
+			
+			.floating-nav:hover a {
+				color: #fff !important;
+				background: rgba(0, 255, 255, 0.2);
+				border-color: rgba(0, 255, 255, 0.4);
+			}
+			
+			.floating-nav a:hover {
+				background: rgba(0, 255, 255, 0.4) !important;
+				border-color: rgba(0, 255, 255, 0.8) !important;
+				transform: translateX(-5px);
+				box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+				color: #fff !important;
+			}
+			
+			@media (max-width: 768px) {
+				.floating-nav {
+					right: 10px;
+					padding: 15px 10px;
+				}
+				.floating-nav a {
+					padding: 10px 15px;
+					font-size: 12px;
+				}
 			}
 			.status-indicator {
 				display: inline-block;
@@ -28,10 +267,12 @@
 				animation: pulse 2s infinite;
 			}
 			.status-indicator.active {
-				background-color: #4caf50;
+				background-color: #00ff88;
+				box-shadow: 0 0 10px rgba(0, 255, 136, 0.8), 0 0 20px rgba(0, 255, 136, 0.4);
 			}
 			.status-indicator.inactive {
-				background-color: #f44336;
+				background-color: #ff0080;
+				box-shadow: 0 0 10px rgba(255, 0, 128, 0.8), 0 0 20px rgba(255, 0, 128, 0.4);
 			}
 			@keyframes pulse {
 				0%, 100% { opacity: 1; }
@@ -236,8 +477,8 @@
 				}
 			}
 			.signal-card {
-				background: rgba(255, 255, 255, 0.05) !important;
-				border: 1px solid rgba(255, 255, 255, 0.1) !important;
+				background: rgba(10, 14, 39, 0.6) !important;
+				border: 2px solid rgba(0, 255, 255, 0.3) !important;
 				border-radius: 8px;
 				padding: 20px;
 				transition: all 0.3s ease;
@@ -247,9 +488,13 @@
 				opacity: 1 !important;
 				color: #ffffff !important;
 				margin: 10px;
-				/* Ensure visibility on dark background */
-				background-color: rgba(20, 20, 20, 0.7) !important;
-				backdrop-filter: blur(2px);
+				/* Synthwave glass effect */
+				background-color: rgba(10, 14, 39, 0.7) !important;
+				backdrop-filter: blur(8px);
+				box-shadow: 
+					0 0 10px rgba(0, 255, 255, 0.2),
+					0 0 20px rgba(255, 0, 255, 0.1),
+					inset 0 0 20px rgba(0, 255, 255, 0.05);
 				/* Elevate above any overlays */
 				position: relative;
 				z-index: 1;
@@ -259,14 +504,39 @@
 			}
 			.signal-card:hover {
 				transform: translateY(-5px);
-				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-				border-color: rgba(255, 255, 255, 0.3);
+				box-shadow: 
+					0 0 20px rgba(0, 255, 255, 0.4),
+					0 0 40px rgba(255, 0, 255, 0.3),
+					0 8px 32px rgba(0, 0, 0, 0.5);
+				border-color: rgba(0, 255, 255, 0.6);
 			}
 			.signal-card.buy {
-				border-left: 4px solid #4caf50;
+				border-left: 4px solid #00ff88;
+				box-shadow: 
+					0 0 10px rgba(0, 255, 136, 0.3),
+					0 0 20px rgba(0, 255, 136, 0.2),
+					inset 0 0 20px rgba(0, 255, 136, 0.05);
+			}
+			.signal-card.buy:hover {
+				border-left-color: #00ff88;
+				box-shadow: 
+					0 0 20px rgba(0, 255, 136, 0.5),
+					0 0 40px rgba(0, 255, 136, 0.3),
+					0 8px 32px rgba(0, 0, 0, 0.5);
 			}
 			.signal-card.sell {
-				border-left: 4px solid #f44336;
+				border-left: 4px solid #ff0080;
+				box-shadow: 
+					0 0 10px rgba(255, 0, 128, 0.3),
+					0 0 20px rgba(255, 0, 128, 0.2),
+					inset 0 0 20px rgba(255, 0, 128, 0.05);
+			}
+			.signal-card.sell:hover {
+				border-left-color: #ff0080;
+				box-shadow: 
+					0 0 20px rgba(255, 0, 128, 0.5),
+					0 0 40px rgba(255, 0, 128, 0.3),
+					0 8px 32px rgba(0, 0, 0, 0.5);
 			}
 			.confluence-badge {
 				display: inline-block;
@@ -277,24 +547,32 @@
 				margin-left: 8px;
 			}
 			.confluence-pure {
-				background-color: rgba(33, 150, 243, 0.25);
-				color: #42a5f5;
-				border: 1px solid rgba(33, 150, 243, 0.4);
+				background-color: rgba(0, 255, 255, 0.25);
+				color: #00ffff;
+				border: 1px solid rgba(0, 255, 255, 0.5);
+				text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+				box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
 			}
 			.confluence-ema {
-				background-color: rgba(255, 152, 0, 0.25);
-				color: #ffa726;
-				border: 1px solid rgba(255, 152, 0, 0.4);
+				background-color: rgba(255, 165, 0, 0.25);
+				color: #ffa500;
+				border: 1px solid rgba(255, 165, 0, 0.5);
+				text-shadow: 0 0 8px rgba(255, 165, 0, 0.8);
+				box-shadow: 0 0 10px rgba(255, 165, 0, 0.3);
 			}
 			.confluence-hmm {
-				background-color: rgba(156, 39, 176, 0.25);
-				color: #ab47bc;
-				border: 1px solid rgba(156, 39, 176, 0.4);
+				background-color: rgba(255, 0, 255, 0.25);
+				color: #ff00ff;
+				border: 1px solid rgba(255, 0, 255, 0.5);
+				text-shadow: 0 0 8px rgba(255, 0, 255, 0.8);
+				box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
 			}
 			.confluence-extreme {
-				background-color: rgba(244, 67, 54, 0.25);
-				color: #ef5350;
-				border: 1px solid rgba(244, 67, 54, 0.4);
+				background-color: rgba(255, 0, 128, 0.35);
+				color: #ff0080;
+				border: 1px solid rgba(255, 0, 128, 0.6);
+				text-shadow: 0 0 10px rgba(255, 0, 128, 1), 0 0 20px rgba(255, 0, 128, 0.6);
+				box-shadow: 0 0 15px rgba(255, 0, 128, 0.5);
 			}
 			.note-highlight {
 				font-weight: 600;
@@ -324,12 +602,16 @@
 				border-radius: 4px;
 			}
 			.signal-action.buy {
-				background-color: rgba(76, 175, 80, 0.2);
-				color: #4caf50;
+				background-color: rgba(0, 255, 136, 0.2);
+				color: #00ff88;
+				text-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
+				border: 1px solid rgba(0, 255, 136, 0.4);
 			}
 			.signal-action.sell {
-				background-color: rgba(244, 67, 54, 0.2);
-				color: #f44336;
+				background-color: rgba(255, 0, 128, 0.2);
+				color: #ff0080;
+				text-shadow: 0 0 10px rgba(255, 0, 128, 0.8);
+				border: 1px solid rgba(255, 0, 128, 0.4);
 			}
 			.signal-symbol {
 				font-size: 24px;
@@ -512,9 +794,13 @@
 				margin-bottom: 40px;
 			}
 			.indicators-header h2 {
-				color: var(--primary-color);
+				color: #00ffff;
 				font-size: 32px;
 				margin-bottom: 10px;
+				text-shadow: 
+					0 0 10px rgba(0, 255, 255, 0.8),
+					0 0 20px rgba(0, 255, 255, 0.6),
+					0 0 30px rgba(0, 255, 255, 0.4);
 			}
 			.indicators-header p {
 				color: rgba(255, 255, 255, 0.7);
@@ -534,11 +820,12 @@
 				border-left: 4px solid var(--primary-color);
 			}
 			.indicator-category h3 {
-				color: var(--primary-color);
+				color: #00ffff;
 				font-size: 24px;
 				margin-bottom: 20px;
-				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				border-bottom: 2px solid rgba(0, 255, 255, 0.4);
 				padding-bottom: 10px;
+				text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
 			}
 			.indicator-category h4 {
 				color: rgba(255, 255, 255, 0.9);
@@ -577,9 +864,12 @@
 				text-align: center;
 			}
 			.summary-stats h3 {
-				color: var(--primary-color);
+				color: #00ffff;
 				font-size: 28px;
 				margin-bottom: 20px;
+				text-shadow: 
+					0 0 10px rgba(0, 255, 255, 0.8),
+					0 0 20px rgba(0, 255, 255, 0.6);
 			}
 			.summary-stats ul {
 				list-style: none;
@@ -617,30 +907,44 @@
 				line-height: 1.6;
 			}
 			.asset-list-item {
-				background: rgba(255, 255, 255, 0.05);
-				border: 1px solid rgba(255, 255, 255, 0.1);
+				background: rgba(10, 14, 39, 0.6);
+				border: 2px solid rgba(0, 255, 255, 0.3);
 				border-radius: 8px;
 				padding: 20px;
 				transition: all 0.3s ease;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
+				backdrop-filter: blur(8px);
+				box-shadow: 
+					0 0 10px rgba(0, 255, 255, 0.2),
+					inset 0 0 20px rgba(0, 255, 255, 0.05);
 			}
 			.asset-list-item:hover {
 				transform: translateY(-3px);
-				box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-				border-color: rgba(255, 255, 255, 0.3);
+				box-shadow: 
+					0 0 20px rgba(0, 255, 255, 0.4),
+					0 0 40px rgba(255, 0, 255, 0.2),
+					0 6px 20px rgba(0, 0, 0, 0.5);
+				border-color: rgba(0, 255, 255, 0.6);
 			}
 			.asset-list-item.buy {
-				border-left: 4px solid #4caf50;
+				border-left: 4px solid #00ff88;
+				box-shadow: 
+					0 0 10px rgba(0, 255, 136, 0.3),
+					inset 0 0 20px rgba(0, 255, 136, 0.05);
 			}
 			.asset-list-item.sell {
-				border-left: 4px solid #f44336;
+				border-left: 4px solid #ff0080;
+				box-shadow: 
+					0 0 10px rgba(255, 0, 128, 0.3),
+					inset 0 0 20px rgba(255, 0, 128, 0.05);
 			}
 			.asset-name {
 				font-size: 20px;
 				font-weight: bold;
-				color: var(--primary-color);
+				color: #00ffff;
+				text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
 			}
 			.asset-signal {
 				display: flex;
@@ -656,12 +960,16 @@
 				border-radius: 4px;
 			}
 			.asset-signal-action.buy {
-				background-color: rgba(76, 175, 80, 0.2);
-				color: #4caf50;
+				background-color: rgba(0, 255, 136, 0.2);
+				color: #00ff88;
+				text-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
+				border: 1px solid rgba(0, 255, 136, 0.4);
 			}
 			.asset-signal-action.sell {
-				background-color: rgba(244, 67, 54, 0.2);
-				color: #f44336;
+				background-color: rgba(255, 0, 128, 0.2);
+				color: #ff0080;
+				text-shadow: 0 0 10px rgba(255, 0, 128, 0.8);
+				border: 1px solid rgba(255, 0, 128, 0.4);
 			}
 			.asset-signal-time {
 				font-size: 12px;
@@ -672,20 +980,28 @@
 				color: rgba(255, 255, 255, 0.7);
 			}
 			.subscribe-button {
-				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				background: linear-gradient(135deg, #ff00ff 0%, #00ffff 100%);
 				color: #fff;
-				border: none;
+				border: 2px solid rgba(255, 255, 255, 0.3);
 				padding: 12px 24px;
 				border-radius: 6px;
 				font-weight: bold;
 				font-size: 16px;
 				cursor: pointer;
 				transition: all 0.3s ease;
-				box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+				box-shadow: 
+					0 0 15px rgba(255, 0, 255, 0.5),
+					0 0 30px rgba(0, 255, 255, 0.3),
+					0 4px 12px rgba(0, 0, 0, 0.4);
+				text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 			}
 			.subscribe-button:hover {
 				transform: translateY(-2px);
-				box-shadow: 0 6px 16px rgba(102, 126, 234, 0.6);
+				box-shadow: 
+					0 0 25px rgba(255, 0, 255, 0.7),
+					0 0 50px rgba(0, 255, 255, 0.5),
+					0 6px 20px rgba(0, 0, 0, 0.5);
+				border-color: rgba(255, 255, 255, 0.6);
 			}
 			.subscribe-button:disabled {
 				opacity: 0.6;
@@ -900,15 +1216,24 @@
 			<div id="backing"></div>
 			<div class="content">
 				<a href="index.html">HOME</a>
-				<a href="catalog.html">CATALOG</a>
-				<a href="signals.html" style="font-weight: bold;">SIGNALS</a>
-				<a href="#" onclick="event.preventDefault(); showStockSignals(); return false;">📈 STOCKS</a>
-				<a href="#" onclick="event.preventDefault(); showHistoricalSignals(); return false;">📜 HISTORICAL</a>
+				<a href="catalog.html">🎵 CATALOG</a>
+				<a href="signals.html">🚀 Crypto Signals</a>
+				<a href="#" onclick="event.preventDefault(); showStockSignals(); return false;">📈 Stock Signals</a>
+				<a href="#" onclick="event.preventDefault(); showHistoricalSignals(); return false;">📜 Historical Signals</a>
 				<a href="#" onclick="event.preventDefault(); showSubscriptionModal(); return false;" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 6px; padding: 8px 16px; margin-left: 10px;">
 					💳 Subscribe
 				</a>
 			</div>
 		</nav>
+		
+		<!-- Floating Right-Side Navigation -->
+		<div class="floating-nav">
+			<a href="#" onclick="event.preventDefault(); switchToCrypto(); return false;">🚀 Crypto</a>
+			<a href="#" onclick="event.preventDefault(); showStockSignals(); return false;">📈 Stocks</a>
+			<a href="#" onclick="event.preventDefault(); showHistoricalSignals(); return false;">📜 Historical</a>
+			<a href="#asset-list" onclick="event.preventDefault(); showAssetList(); return false;">📋 Assets</a>
+			<a href="#" onclick="event.preventDefault(); showSubscriptionModal(); return false;">💳 Subscribe</a>
+		</div>
 		
 		<div class="content signals-container" id="signals-content">
 			<!-- Trial Status Banner -->
@@ -929,7 +1254,7 @@
 			</div>
 			
 			<div class="signals-header">
-				<h1>Trading Signals</h1>
+				<h1>🚀 Crypto Signals</h1>
 				<p>Live feed of buy and sell signals from trading strategies</p>
 				<div style="margin-top: 15px;">
 					<span class="status-indicator active" id="status-indicator"></span>
@@ -938,18 +1263,8 @@
 				</div>
 			</div>
 			
-			<!-- Live Signals Navigation Bar (Crypto vs Stocks) -->
-			<div id="live-signals-nav" style="display: flex !important; visibility: visible !important; opacity: 1 !important; justify-content: center; gap: 20px; margin: 30px 0 20px; padding: 20px; background: rgba(0, 0, 0, 0.8); border-radius: 8px; border: 2px solid rgba(255, 255, 255, 0.2); z-index: 100;">
-				<button id="nav-crypto-btn" onclick="switchToCrypto()" onmouseover="if(this.style.background.includes('1)')) { this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(33, 150, 243, 0.6)'; }" onmouseout="if(this.style.background.includes('1)')) { this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(33, 150, 243, 0.4)'; }" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 15px 30px; background: rgba(33, 150, 243, 1) !important; border: 3px solid #42a5f5; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);">
-					💎 Live Signals - Crypto
-				</button>
-				<button id="nav-stocks-btn" onclick="switchToStocks()" onmouseover="if(this.style.background.includes('1)')) { this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 16px rgba(76, 175, 80, 0.6)'; }" onmouseout="if(this.style.background.includes('1)')) { this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(76, 175, 80, 0.4)'; }" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 15px 30px; background: rgba(76, 175, 80, 0.5) !important; border: 3px solid rgba(76, 175, 80, 0.5); border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; transition: all 0.3s ease;">
-					📈 Live Signals - Stocks
-				</button>
-			</div>
-			
 			<!-- Page Navigation -->
-			<div id="page-navigation" style="display: flex !important; visibility: visible !important; opacity: 1 !important; justify-content: center; gap: 15px; margin: 30px 0 20px; padding: 20px; background: rgba(0, 0, 0, 0.7); border-radius: 8px; flex-wrap: wrap; z-index: 100;">
+			<div id="page-navigation" style="display: flex !important; visibility: visible !important; opacity: 1 !important; justify-content: center; gap: 15px; margin: 30px 0 20px; margin-top: 180px; padding: 20px; background: rgba(0, 0, 0, 0.7); border-radius: 8px; flex-wrap: wrap; z-index: 100;">
 				<a href="#asset-list" onclick="event.preventDefault(); showAssetList(); return false;" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(255, 193, 7, 0.8) !important; border: 2px solid #ffc107; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255, 193, 7, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255, 193, 7, 0.8)'; this.style.transform='translateY(0)'">
 					📋 List of Assets
 				</a>
@@ -968,7 +1283,7 @@
 			
 			<!-- Crypto Signals (Recent - Last 1 Day) -->
 			<div id="crypto-signals-container" style="display: block;">
-			<h2 style="color: var(--primary-color); font-size: 28px; margin: 40px 0 20px; text-align: center;">💎 Cryptocurrency Signals (Last 24 Hours)</h2>
+				<h2 style="color: var(--primary-color); font-size: 28px; margin: 40px 0 20px; text-align: center;">🚀 Crypto Signals</h2>
 			<div id="signals-grid" class="signals-grid" style="background: rgba(255,0,0,0.1); border: 2px dashed rgba(255,255,255,0.3); padding: 20px; min-height: 50px; margin-bottom: 0 !important;">
 				<div class="loading">⏳ Waiting for signals...</div>
 				</div>
@@ -976,7 +1291,7 @@
 			
 			<!-- Stock Signals (Recent - Last 7 Days) - Hidden by default -->
 			<div id="stock-signals-container" style="margin: 40px 0; padding: 0; display: none;">
-				<h2 style="color: var(--primary-color); font-size: 28px; margin: 40px 0 20px; text-align: center;">📈 Stock & ETF Signals (Last 7 Days)</h2>
+				<h2 style="color: var(--primary-color); font-size: 28px; margin: 40px 0 20px; text-align: center;">📊 Stock Signals</h2>
 				<p style="color: rgba(255, 255, 255, 0.6); font-size: 14px; text-align: center; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">
 					Stocks and ETFs are long-term plays, so signals remain valid for extended periods. Recent stock signals from the past week are shown below.
 				</p>
@@ -1078,7 +1393,7 @@
 					
 					<div style="background: rgba(244, 67, 54, 0.15); border: 2px solid #ef5350; padding: 25px; border-radius: 8px; margin: 20px 0;">
 						<p style="color: rgba(255, 255, 255, 0.95); font-size: 18px; line-height: 1.8; margin: 0; font-weight: bold;">
-							That being said, <span style="color: #ef5350; font-size: 24px;">447,623,973,008% ROI</span> with 
+							That being said, <span class="roi-animated">447,623,973,008% ROI</span><span class="roi-money-emoji">💰</span> with 
 							<span style="color: #4caf50;">83.87% accuracy</span>, 
 							<span style="color: #ffa726;">14.362 Profit Factor</span> is <strong>INSANE</strong>, and I am <strong>INSANE</strong> for giving this away for FREE. 
 							When Blackrock finds out about this, they'll certainly make me "sleep with the fishes." 🐟💀
@@ -1107,9 +1422,6 @@
 			<div class="indicators-section" style="margin-top: 0px !important; background: rgba(76, 175, 80, 0.1); border: 2px solid #4caf50;">
 				<div class="indicators-header">
 					<h2>💡 How to Use These Signals</h2>
-					<p style="color: rgba(255, 255, 255, 0.9); font-size: 18px; max-width: 900px; margin: 0 auto 30px; line-height: 1.8;">
-						<strong>Important: There is NO race to act on signals immediately.</strong> In fact, waiting for confirmation is often the smarter approach.
-					</p>
 				</div>
 				
 				<div class="indicators-content">
@@ -1119,6 +1431,8 @@
 						<h4>Wait for Confirmation (Recommended)</h4>
 						<ul>
 							<li><strong>Don't rush the entry</strong> - Give signals a few hours to confirm the move is real. Consider starting with a smaller position (25-50% of your intended size) and adding to it as the move confirms through price action, additional indicators, or time. This scaling approach lets you participate while managing risk.
+							<br><br>
+							Being 3-12 hours late on the signal is actually a good thing, and is the sweet spot IF the directional bias seems to be playing out correctly. The more time passes by, the more our massive suite of indicators get carved into stone and can't be undone.
 							<br><br>
 							<strong>Understanding "Repainting":</strong> There's a phenomenon called repainting, which is when live prices are moving so fast that the signal "changes its mind." In order to mitigate repainting, consider slowly scaling in as you feel the move gets more and more confirmed. Of course, the market is filled with manipulation and "short squeezes," so this thinking helps mitigate that risk. 
 							<br><br>
@@ -1170,6 +1484,43 @@
 				</div>
 			</div>
 			
+			<!-- Benefits Section -->
+			<div class="indicators-section" style="margin-top: 40px;">
+				<div class="indicators-header">
+					<h2>🚀 Why This Is Different</h2>
+				</div>
+				
+				<div class="indicators-content">
+					<div class="indicator-category" style="background: rgba(76, 175, 80, 0.1); border: 2px solid rgba(76, 175, 80, 0.3); padding: 25px; border-radius: 12px;">
+						<h3 style="color: #4caf50; margin-top: 0;">💰 Become a Quant Trader Without the Complexity</h3>
+						<p style="color: rgba(255, 255, 255, 0.9); font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
+							<strong>You can be a quant trader making life-changing money with 0 math or coding experience for only $9.99.</strong>
+						</p>
+						
+						<div style="background: rgba(244, 67, 54, 0.1); border-left: 4px solid #f44336; padding: 20px; margin: 20px 0; border-radius: 4px;">
+							<h4 style="color: #f44336; margin-top: 0;">⚠️ Stay Safe: Watch Out for Scams</h4>
+							<p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 10px;">
+								<strong>Be careful of the scams that say you can make 2 ETH a day with arbitrage.</strong> 99% of them are scams trying to trick you into downloading their wallet drainer. These malicious programs can drain your entire crypto wallet the moment you connect it.
+							</p>
+							<p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 0;">
+								<strong>No sketchy code to download or install that can drain your account.</strong> Simply visit this page to take advantage of institutional hedge fund grade code tirelessly hunting down the best trades for you.
+							</p>
+						</div>
+						
+						<div style="background: rgba(33, 150, 243, 0.1); border-left: 4px solid #2196f3; padding: 20px; margin-top: 20px; border-radius: 4px;">
+							<h4 style="color: #2196f3; margin-top: 0;">✅ What Makes This Safe and Legitimate</h4>
+							<ul style="color: rgba(255, 255, 255, 0.9); margin-bottom: 0;">
+								<li><strong>No downloads required</strong> - Just visit this page, no software to install</li>
+								<li><strong>No wallet connections</strong> - We never ask you to connect your wallet</li>
+								<li><strong>Transparent signals</strong> - All signals are publicly visible with permanent timestamps</li>
+								<li><strong>Institutional-grade code</strong> - Professional trading algorithms working 24/7</li>
+								<li><strong>Simple subscription</strong> - Just $9.99/month for access to all signals</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
 			<!-- Ticker Symbols Section -->
 			<div id="code-explanation"></div>
 			<div class="indicators-section" style="margin-top: 40px;">
@@ -1198,7 +1549,7 @@
 					</div>
 					
 					<div class="indicator-category">
-						<h3>STOCKS & ETFs (Stock Strategy 11)</h3>
+						<h3>STOCKS & ETFs</h3>
 						<p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 15px;">Our stock strategy focuses on sector ETFs, benchmarks, and select individual stocks:</p>
 						<h4>US Sector ETFs</h4>
 						<ul>
@@ -1674,26 +2025,11 @@
 				const cryptoContainer = document.getElementById('crypto-signals-container');
 				const stockContainer = document.getElementById('stock-signals-container');
 				const assetListContainer = document.getElementById('asset-list-container');
-				const cryptoBtn = document.getElementById('nav-crypto-btn');
-				const stocksBtn = document.getElementById('nav-stocks-btn');
 				
 				// Show crypto, hide stocks and asset list
 				if (cryptoContainer) cryptoContainer.style.display = 'block';
 				if (stockContainer) stockContainer.style.display = 'none';
 				if (assetListContainer) assetListContainer.style.display = 'none';
-				
-				// Update button styles
-				if (cryptoBtn) {
-					cryptoBtn.style.background = 'rgba(33, 150, 243, 1)';
-					cryptoBtn.style.border = '3px solid #42a5f5';
-					cryptoBtn.style.boxShadow = '0 4px 12px rgba(33, 150, 243, 0.4)';
-				}
-				if (stocksBtn) {
-					stocksBtn.style.background = 'rgba(76, 175, 80, 0.5)';
-					stocksBtn.style.border = '3px solid rgba(76, 175, 80, 0.5)';
-					stocksBtn.style.boxShadow = 'none';
-					stocksBtn.style.transform = 'translateY(0)';
-				}
 				
 				// Scroll to crypto section
 				setTimeout(() => {
@@ -1708,27 +2044,12 @@
 				const stockContainer = document.getElementById('stock-signals-container');
 				const stockHistoricalContainer = document.getElementById('stock-historical-container');
 				const assetListContainer = document.getElementById('asset-list-container');
-				const cryptoBtn = document.getElementById('nav-crypto-btn');
-				const stocksBtn = document.getElementById('nav-stocks-btn');
 				
 				// Hide crypto and asset list, show stocks
 				if (cryptoContainer) cryptoContainer.style.display = 'none';
 				if (stockContainer) stockContainer.style.display = 'block';
 				if (stockHistoricalContainer) stockHistoricalContainer.style.display = 'block';
 				if (assetListContainer) assetListContainer.style.display = 'none';
-				
-				// Update button styles
-				if (cryptoBtn) {
-					cryptoBtn.style.background = 'rgba(33, 150, 243, 0.5)';
-					cryptoBtn.style.border = '3px solid rgba(33, 150, 243, 0.5)';
-					cryptoBtn.style.boxShadow = 'none';
-					cryptoBtn.style.transform = 'translateY(0)';
-				}
-				if (stocksBtn) {
-					stocksBtn.style.background = 'rgba(76, 175, 80, 1)';
-					stocksBtn.style.border = '3px solid #4caf50';
-					stocksBtn.style.boxShadow = '0 4px 12px rgba(76, 175, 80, 0.4)';
-				}
 				
 				// Scroll to stock signals section
 					setTimeout(() => {
@@ -2209,7 +2530,7 @@
 									` : ''}
 									${signal.note ? `
 										<div class="note-highlight">
-											${signal.note}
+											${signal.note.replace(/HMM Extreme/gi, 'AI').replace(/JSON/gi, 'indicator suite')}
 										</div>
 									` : ''}
 								</div>
@@ -2425,9 +2746,9 @@
 				signalsVisible = initializeTrial();
 				
 				switchToCrypto();
-				
+			
 				// Load signals immediately regardless; loadSignals will hide if expired
-				loadSignals();
+			loadSignals();
 			// Auto-refresh every 30 seconds
 			refreshInterval = setInterval(loadSignals, 30000);
 			});
@@ -2469,8 +2790,8 @@
 						status.style.display = 'block';
 						status.style.color = '#f44336';
 						status.textContent = 'Please enter a valid email.';
-						return;
-					}
+					return;
+				}
 					localStorage.setItem(STORAGE_KEY_EMAIL, email);
 					status.style.display = 'block';
 					status.style.color = '#4caf50';
@@ -2491,13 +2812,13 @@
 				}
 				
 				// Payment Links work without backend - always enable button
-				if (errorDiv) {
-					errorDiv.style.display = 'none';
-					errorDiv.textContent = '';
-				}
-				if (button) {
-					button.disabled = false;
-					button.textContent = 'Start 7-Day Free Trial';
+					if (errorDiv) {
+						errorDiv.style.display = 'none';
+						errorDiv.textContent = '';
+					}
+					if (button) {
+						button.disabled = false;
+						button.textContent = 'Start 7-Day Free Trial';
 				}
 			}
 			
@@ -2532,8 +2853,8 @@
 				} else {
 					// Fallback error (shouldn't happen if Payment Link is configured)
 					const errorDiv = document.getElementById('subscription-error');
-					if (errorDiv) {
-						errorDiv.style.display = 'block';
+						if (errorDiv) {
+							errorDiv.style.display = 'block';
 						errorDiv.textContent = '⚠️ Payment Link not configured. Please contact support.';
 					}
 				}
