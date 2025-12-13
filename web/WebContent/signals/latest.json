@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "AAVE/USD",
-  "quantity": 0.5037529595486373,
-  "price": 198.31,
+  "action": "sell",
+  "symbol": "RENDER/USD",
+  "quantity": 0.0,
+  "price": 1.557,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2025-12-13T16:00:14.863410Z",
-  "received_at": "2025-12-13T16:00:14.863431Z",
-  "id": "2025-12-13T16:00:14.863431Z-AAVE/USD-buy"
+  "timestamp": "2025-12-13T17:00:21.982365Z",
+  "received_at": "2025-12-13T17:00:21.982382Z",
+  "id": "2025-12-13T17:00:21.982382Z-RENDER/USD-sell"
 }
