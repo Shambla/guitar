@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "AAVE/USD",
+    "quantity": 0.5162622612287042,
+    "price": 193.51,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-13T02:00:05.888285Z",
+    "received_at": "2025-12-13T02:00:05.888313Z",
+    "id": "2025-12-13T02:00:05.888313Z-AAVE/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "AAVE/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
