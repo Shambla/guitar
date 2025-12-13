@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "SUI/USD",
-  "quantity": 62.27425582264292,
-  "price": 1.6042,
+  "action": "sell",
+  "symbol": "ETH/USD",
+  "quantity": 0.0,
+  "price": 3109.8,
   "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2025-12-13T18:00:23.232611Z",
-  "received_at": "2025-12-13T18:00:23.232626Z",
-  "id": "2025-12-13T18:00:23.232626Z-SUI/USD-buy"
+  "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+  "timestamp": "2025-12-13T20:02:27.664369Z",
+  "received_at": "2025-12-13T20:02:27.664598Z",
+  "id": "2025-12-13T20:02:27.664598Z-ETH/USD-sell"
 }
