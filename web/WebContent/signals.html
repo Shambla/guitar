@@ -1903,6 +1903,8 @@
 				// Extract stock signals only
 				const stockSignals = signals.filter(s => isStockSignal(s));
 				
+				console.log('🔍 renderTop3Signals - Total signals:', signals.length, 'Stock signals:', stockSignals.length);
+				
 				if (stockSignals.length === 0) {
 					document.getElementById('top-buy-signals').innerHTML = '<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">No stock signals available</div>';
 					document.getElementById('top-sell-signals').innerHTML = '<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">No stock signals available</div>';
@@ -1943,6 +1945,13 @@
 						totalSell = parseInt(sellMatch[2]);
 					}
 					
+					// Determine action from scores if not explicitly set
+					let action = signal.action;
+					if (!action || action === '') {
+						// If no explicit action, use the higher score to determine
+						action = buyScore > sellScore ? 'buy' : (sellScore > buyScore ? 'sell' : 'buy');
+					}
+					
 					return {
 						symbol: signal.symbol || 'N/A',
 						price: signal.price,
@@ -1950,23 +1959,35 @@
 						sellScore: sellScore,
 						totalBuy: totalBuy,
 						totalSell: totalSell,
-						action: signal.action,
+						action: action ? action.toLowerCase() : 'buy',
 						timestamp: signal.timestamp || signal.received_at,
 						sector: signal.sector || 'N/A'
 					};
 				});
 				
-				// Sort by buy_score descending
+				// Sort by buy_score descending - show top 3 regardless of threshold or score value
+				// Include all signals, using buy_score to rank them (even if 0)
 				const topBuy = signalsWithScores
-					.filter(s => s.action && s.action.toLowerCase() === 'buy')
+					.filter(s => {
+						// Include if explicitly marked as buy, OR if buy_score >= sell_score (best buy candidates)
+						// This ensures we show the "best" buy signals even if scores are low
+						return s.action === 'buy' || s.buyScore >= s.sellScore;
+					})
 					.sort((a, b) => b.buyScore - a.buyScore)
 					.slice(0, 3);
 				
-				// Sort by sell_score descending
+				// Sort by sell_score descending - show top 3 regardless of threshold or score value
+				// Include all signals, using sell_score to rank them (even if 0)
 				const topSell = signalsWithScores
-					.filter(s => s.action && s.action.toLowerCase() === 'sell')
+					.filter(s => {
+						// Include if explicitly marked as sell, OR if sell_score >= buy_score (best sell candidates)
+						// This ensures we show the "best" sell signals even if scores are low
+						return s.action === 'sell' || s.sellScore >= s.buyScore;
+					})
 					.sort((a, b) => b.sellScore - a.sellScore)
 					.slice(0, 3);
+				
+				console.log('📊 Top 3 BUY:', topBuy.length, 'Top 3 SELL:', topSell.length);
 				
 				// Render Top 3 BUY
 				const buyContainer = document.getElementById('top-buy-signals');
