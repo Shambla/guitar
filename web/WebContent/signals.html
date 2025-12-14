@@ -1818,7 +1818,7 @@
 							<li><strong>Donchian Channels</strong> - 20-period high/low breakout system</li>
 							<li><strong>Support/Resistance Detection</strong> - Pivot-based S/R levels (4-period pivots, max 5 levels), Channel width analysis (10% max), Strength-based ranking (min strength 2), Most recent resistance tracking, Underneath resistance detection (0.1-2% band)</li>
 							<li><strong>Fibonacci Retracements</strong> - 0.382, 0.500, 0.618, 0.764, 0.854 levels, 150-bar lookback for high/low, Fib 0.382 avoid-long band (1% underneath)</li>
-							<li><strong>Round Number Avoidance</strong> - Unique indicator that identifies psychologically significant price levels. For example, BTC crossing $20,000 or $100,000 is a HUGE event and many traders pile in limit sell orders around those zones. Even God likes the number 10 in the 10 commandments. Only trades once price is convincingly above or below the round number by 1%. Multiples of 50, 100, 1000, 10000 are monitored with proximity range (3 points default).</li>
+							<li><strong>Round Number Avoidance</strong> - Unique indicator that identifies psychologically significant price levels. For example, BTC crossing $20,000 or $100,000 is a HUGE event and many traders pile in limit sell orders around those zones. Only trades once price is convincingly above or below the round number by 1%. Multiples of 50, 100, 1000, 10000 are monitored with proximity range (3 points default).</li>
 						</ul>
 					</div>
 					
@@ -2157,6 +2157,114 @@
 				return formattedQty;
 			}
 			
+			// Function to get emojis for a ticker symbol
+			function getSymbolEmojis(symbol) {
+				if (!symbol) return '';
+				const sym = symbol.toUpperCase();
+				
+				// Technology (XLK, QQQ)
+				if (sym === 'XLK' || sym === 'QQQ') return '💻 🖥️ 📱 🤖 ⚙️';
+				
+				// Healthcare (XLV)
+				if (sym === 'XLV') return '🏥 🧬 💊 🩺';
+				
+				// Financials (XLF)
+				if (sym === 'XLF') return '🏦 💳 💰 📊 💼';
+				
+				// Consumer Discretionary (XLY)
+				if (sym === 'XLY') return '🛍️ 🚗 🏖️ 🎮 🍔';
+				
+				// Consumer Staples (XLP)
+				if (sym === 'XLP') return '🧃 🧻 🛒 🍞 🥫';
+				
+				// Energy (XLE)
+				if (sym === 'XLE') return '🛢️ ⛽ 🔥 ⚡ 🌍';
+				
+				// Industrials (XLI)
+				if (sym === 'XLI') return '🏭 ⚙️ 🚛 🏗️ 🧱';
+				
+				// Materials (XLB)
+				if (sym === 'XLB') return '🧱 🪨 ⚒️ 🧪 🧯';
+				
+				// Utilities (XLU)
+				if (sym === 'XLU') return '⚡ 💡 🔌 🚰 🌊';
+				
+				// Real Estate (XLRE)
+				if (sym === 'XLRE') return '🏠';
+				
+				// Communication Services (XLC)
+				if (sym === 'XLC') return '📡';
+				
+				// Gold / Precious Metals (GLD, GDX)
+				if (sym === 'GLD' || sym === 'GDX') return '🪙 🧈 🏅 💎 ⛏️';
+				
+				// Silver
+				if (sym === 'SLV') return '🥈 🪙 ⚒️';
+				
+				// Commodities (DBC, PDBC)
+				if (sym === 'DBC' || sym === 'PDBC') return '🌾 🛢️ 🪨 ⚒️';
+				
+				// Bonds / Fixed Income (TLT, BND)
+				if (sym === 'TLT' || sym === 'BND') return '📜 🏦 🧾 💵';
+				
+				// Treasuries
+				if (sym === 'TLT' || sym.includes('TREASURY')) return '🏛️ 📜 💵';
+				
+				// Dividend / Income ETFs
+				if (sym.includes('DIV') || sym.includes('INCOME')) return '💰 🪙 🏦 📈';
+				
+				// Growth ETFs
+				if (sym.includes('GROWTH')) return '🚀 📈 🌱';
+				
+				// Value ETFs
+				if (sym.includes('VALUE')) return '💎 📊 🧮';
+				
+				// Broad Market (SPY, VTI)
+				if (sym === 'SPY' || sym === 'VTI') return '📈 🌍 🏛️';
+				
+				// Small Cap (IWM)
+				if (sym === 'IWM') return '🐣 🏪 📈';
+				
+				// Mid Cap
+				if (sym.includes('MID')) return '🏢 📊';
+				
+				// International / Global
+				if (sym === 'EEM' || sym === 'MCHI' || sym === 'INDA' || sym === 'EWJ' || sym === 'EWG' || sym === 'EWT') return '🌍';
+				
+				// Emerging Markets
+				if (sym === 'EEM') return '🌱 🌎 📈';
+				
+				// Volatility (VIX, UVXY)
+				if (sym === 'VIX' || sym === 'UVXY') return '🌪️ ⚠️ 📉';
+				
+				// Defensive / Risk-Off
+				if (sym.includes('DEFENSIVE') || sym.includes('RISK')) return '🛡️';
+				
+				// Crypto / Digital Assets
+				if (sym.includes('BTC') || sym === 'BITCOIN') return '₿';
+				if (sym.includes('ETH') || sym === 'ETHEREUM') return '🔷';
+				
+				// Semiconductor (SOXX)
+				if (sym === 'SOXX') return '💻 🖥️ 📱 🤖 ⚙️';
+				
+				// NVIDIA (NVDA)
+				if (sym === 'NVDA') return '💻 🖥️ 📱 🤖 ⚙️';
+				
+				// Platinum (PPLT)
+				if (sym === 'PPLT') return '🪙 🧈 🏅 💎 ⛏️';
+				
+				// Palladium (PALL)
+				if (sym === 'PALL') return '🪙 🧈 🏅 💎 ⛏️';
+				
+				// Oil (USO)
+				if (sym === 'USO') return '🛢️ ⛽ 🔥 ⚡ 🌍';
+				
+				// Credit (PCEF, HYG)
+				if (sym === 'PCEF' || sym === 'HYG') return '📜 🏦 🧾 💵';
+				
+				return '';
+			}
+			
 			// Function to identify if a signal is a stock/ETF (not crypto)
 			function isStockSignal(signal) {
 				const symbol = (signal.symbol || '').toUpperCase();
@@ -2331,6 +2439,10 @@
 				const actionClass = isBuy ? 'buy' : 'sell';
 				const actionEmoji = isBuy ? '🟢 📈' : '🔴 📉';
 				
+				// Get emojis for this symbol
+				const symbolEmojis = getSymbolEmojis(asset.symbol);
+				const symbolDisplay = symbolEmojis ? `${symbolEmojis} ${asset.symbol}` : asset.symbol;
+				
 				// Determine conviction badge
 				let signalBadge = '';
 				let signalClass = '';
@@ -2352,7 +2464,7 @@
 				return `
 					<div class="asset-list-item ${actionClass}">
 						<div>
-							<div class="asset-name">${asset.symbol}</div>
+							<div class="asset-name">${symbolDisplay}</div>
 							${asset.price !== null && asset.price !== undefined ? `
 								<div class="asset-signal-price">${formatPrice(asset.price)}</div>
 							` : ''}
@@ -2469,10 +2581,13 @@
 							? `<span style="color: #4caf50; font-weight: bold;">✅ Met (≥${BUY_THRESHOLD})</span>`
 							: `<span style="color: #ffc107; font-weight: bold;">⚠️ Need ${BUY_THRESHOLD - signal.buyScore} more (threshold: ≥${BUY_THRESHOLD})</span>`;
 						
+						const symbolEmojis = getSymbolEmojis(signal.symbol);
+						const symbolDisplay = symbolEmojis ? `${symbolEmojis} ${signal.symbol}` : signal.symbol;
+						
 						return `
 							<div style="background: rgba(0, 0, 0, 0.3); padding: 15px; margin-bottom: 12px; border-radius: 6px; border-left: 3px solid #4caf50;">
 								<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-									<span style="color: #4caf50; font-weight: bold; font-size: 18px;">#${idx + 1} ${signal.symbol}</span>
+									<span style="color: #4caf50; font-weight: bold; font-size: 18px;">#${idx + 1} ${symbolDisplay}</span>
 									${signal.price ? `<span style="color: #fff; font-weight: bold;">$${parseFloat(signal.price).toFixed(2)}</span>` : ''}
 								</div>
 								<div style="color: rgba(255, 255, 255, 0.9); font-size: 14px; margin-bottom: 6px;">
@@ -2497,10 +2612,13 @@
 							? `<span style="color: #4caf50; font-weight: bold;">✅ Met (≥${SELL_THRESHOLD})</span>`
 							: `<span style="color: #ffc107; font-weight: bold;">⚠️ Need ${SELL_THRESHOLD - signal.sellScore} more (threshold: ≥${SELL_THRESHOLD})</span>`;
 						
+						const symbolEmojis = getSymbolEmojis(signal.symbol);
+						const symbolDisplay = symbolEmojis ? `${symbolEmojis} ${signal.symbol}` : signal.symbol;
+						
 						return `
 							<div style="background: rgba(0, 0, 0, 0.3); padding: 15px; margin-bottom: 12px; border-radius: 6px; border-left: 3px solid #f44336;">
 								<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-									<span style="color: #f44336; font-weight: bold; font-size: 18px;">#${idx + 1} ${signal.symbol}</span>
+									<span style="color: #f44336; font-weight: bold; font-size: 18px;">#${idx + 1} ${symbolDisplay}</span>
 									${signal.price ? `<span style="color: #fff; font-weight: bold;">$${parseFloat(signal.price).toFixed(2)}</span>` : ''}
 								</div>
 								<div style="color: rgba(255, 255, 255, 0.9); font-size: 14px; margin-bottom: 6px;">
@@ -2654,10 +2772,13 @@
 					}
 						// Skip "Raw JSON signal" - internal only, not shown to users
 						
+						const symbolEmojis = getSymbolEmojis(signal.symbol);
+						const symbolDisplay = symbolEmojis ? `${symbolEmojis} ${signal.symbol || 'N/A'}` : (signal.symbol || 'N/A');
+						
 						const cardHtml = `
 							<div class="signal-card ${actionClass}">
 								<div class="signal-header">
-									<span class="signal-symbol">${signal.symbol || 'N/A'}</span>
+									<span class="signal-symbol">${symbolDisplay}</span>
 									<div>
 										<span class="signal-action ${actionClass}">${isBuy ? '🟢 📈' : '🔴 📉'} ${action.toUpperCase()}</span>
 										${signalBadge ? `<span class="confluence-badge ${signalClass}">${signalBadge}</span>` : ''}
@@ -3040,10 +3161,29 @@
 			// Check if signals should be visible
 			let signalsVisible = true; // Default to visible
 			
+			// Update static asset list items with emojis
+			function updateStaticAssetListEmojis() {
+				const assetItems = document.querySelectorAll('li[data-symbol]');
+				assetItems.forEach(item => {
+					const symbol = item.getAttribute('data-symbol');
+					const emojis = getSymbolEmojis(symbol);
+					if (emojis) {
+						const strongTag = item.querySelector('strong');
+						if (strongTag) {
+							// Add emojis before the symbol in the strong tag
+							strongTag.innerHTML = `${emojis} ${strongTag.textContent.trim()}`;
+						}
+					}
+				});
+			}
+			
 			// Initialize: Show crypto by default on page load
 			window.addEventListener('DOMContentLoaded', function() {
 				// Check trial status first
 				signalsVisible = initializeTrial();
+				
+				// Update static asset list with emojis
+				updateStaticAssetListEmojis();
 				
 				switchToCrypto();
 			
