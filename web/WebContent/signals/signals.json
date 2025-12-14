@@ -1,6 +1,28 @@
 [
   {
     "action": "buy",
+    "symbol": "CRV/USD",
+    "quantity": 257.93139025019343,
+    "price": 0.3873,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-14T14:00:23.795331Z",
+    "received_at": "2025-12-14T14:00:23.795355Z",
+    "id": "2025-12-14T14:00:23.795355Z-CRV/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "SUI/USD",
+    "quantity": 61.3986615091791,
+    "price": 1.6271,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-14T14:00:23.155564Z",
+    "received_at": "2025-12-14T14:00:23.155577Z",
+    "id": "2025-12-14T14:00:23.155577Z-SUI/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "BONK/USD",
     "quantity": 100.0,
     "price": null,
@@ -2132,27 +2154,5 @@
     "timestamp": "2025-12-07T14:00:33.161260Z",
     "received_at": "2025-12-07T14:00:33.161274Z",
     "id": "2025-12-07T14:00:33.161274Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "AERO/USD",
-    "quantity": 152.3275651961979,
-    "price": 0.65582,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-07T14:00:22.622126Z",
-    "received_at": "2025-12-07T14:00:22.622140Z",
-    "id": "2025-12-07T14:00:22.622140Z-AERO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.032985338017251335,
-    "price": 3028.62,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-07T14:00:19.211245Z",
-    "received_at": "2025-12-07T14:00:19.211258Z",
-    "id": "2025-12-07T14:00:19.211258Z-ETH/USD-buy"
   }
 ]
