@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "AERO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-14T12:00:14.307588Z",
+    "received_at": "2025-12-14T12:00:14.307669Z",
+    "id": "2025-12-14T12:00:14.307669Z-AERO/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "ETH/USD",
     "quantity": 0.03214245,
@@ -2099,82 +2110,5 @@
     "timestamp": "2025-12-07T14:00:03.987860Z",
     "received_at": "2025-12-07T14:00:03.987884Z",
     "id": "2025-12-07T14:00:03.987884Z-ETH/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 3036.46,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2025-12-07T11:36:30.584157Z",
-    "received_at": "2025-12-07T11:36:30.584174Z",
-    "id": "2025-12-07T11:36:30.584174Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "SUI/USD",
-    "quantity": 129.9,
-    "price": 1.5653,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-07T11:06:57.561123Z",
-    "received_at": "2025-12-07T11:06:57.561137Z",
-    "id": "2025-12-07T11:06:57.561137Z-SUI/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "SUI/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-07T11:00:09.567872Z",
-    "received_at": "2025-12-07T11:00:09.567884Z",
-    "id": "2025-12-07T11:00:09.567884Z-SUI/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 3035.81,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2025-12-07T10:30:40.384561Z",
-    "received_at": "2025-12-07T10:30:40.384573Z",
-    "id": "2025-12-07T10:30:40.384573Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "AERO/USD",
-    "quantity": 146.90713397,
-    "price": 0.66393,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-07T10:07:41.732672Z",
-    "received_at": "2025-12-07T10:07:41.732686Z",
-    "id": "2025-12-07T10:07:41.732686Z-AERO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "AERO/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-07T10:00:37.939587Z",
-    "received_at": "2025-12-07T10:00:37.939604Z",
-    "id": "2025-12-07T10:00:37.939604Z-AERO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 3035.56,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2025-12-07T09:26:52.877919Z",
-    "received_at": "2025-12-07T09:26:52.877937Z",
-    "id": "2025-12-07T09:26:52.877937Z-ETH/USD-sell"
   }
 ]
