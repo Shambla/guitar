@@ -1,5 +1,27 @@
 [
   {
+    "action": "buy",
+    "symbol": "SOL/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-14T09:00:08.768821Z",
+    "received_at": "2025-12-14T09:00:08.768834Z",
+    "id": "2025-12-14T09:00:08.768834Z-SOL/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-14T09:00:08.673813Z",
+    "received_at": "2025-12-14T09:00:08.673904Z",
+    "id": "2025-12-14T09:00:08.673904Z-ETH/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
@@ -2121,60 +2143,5 @@
     "timestamp": "2025-12-07T09:26:52.877919Z",
     "received_at": "2025-12-07T09:26:52.877937Z",
     "id": "2025-12-07T09:26:52.877937Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 3035.18,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-07T09:00:08.771543Z",
-    "received_at": "2025-12-07T09:00:08.771556Z",
-    "id": "2025-12-07T09:00:08.771556Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-07T09:00:08.520565Z",
-    "received_at": "2025-12-07T09:00:08.520577Z",
-    "id": "2025-12-07T09:00:08.520577Z-ETH/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.03301757,
-    "price": 3022.63262,
-    "source": "MASTER_BOT_162",
-    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-    "timestamp": "2025-12-07T08:16:11.818160Z",
-    "received_at": "2025-12-07T08:16:11.818183Z",
-    "id": "2025-12-07T08:16:11.818183Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "RENDER/USD",
-    "quantity": 62.814070351758794,
-    "price": 1.59,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-07T08:01:38.171591Z",
-    "received_at": "2025-12-07T08:01:38.171624Z",
-    "id": "2025-12-07T08:01:38.171624Z-RENDER/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "RENDER/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-07T08:01:22.270028Z",
-    "received_at": "2025-12-07T08:01:22.270129Z",
-    "id": "2025-12-07T08:01:22.270129Z-RENDER/USD-buy"
   }
 ]
