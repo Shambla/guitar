@@ -3,6 +3,17 @@
     "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
+    "price": 3094.81,
+    "source": "MASTER_BOT_162",
+    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+    "timestamp": "2025-12-14T17:09:06.954000Z",
+    "received_at": "2025-12-14T17:09:06.954887Z",
+    "id": "2025-12-14T17:09:06.954887Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
     "price": 3097.8,
     "source": "MASTER_BOT_162",
     "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
