@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "SOL/USD",
-  "quantity": 0.7499062617172854,
-  "price": 133.22,
+  "symbol": "ETH/USD",
+  "quantity": 0.03203895,
+  "price": 3114.9575999999997,
   "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2025-12-14T02:00:22.863866Z",
-  "received_at": "2025-12-14T02:00:22.863886Z",
-  "id": "2025-12-14T02:00:22.863886Z-SOL/USD-buy"
+  "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+  "timestamp": "2025-12-14T02:02:28.720120Z",
+  "received_at": "2025-12-14T02:02:28.720156Z",
+  "id": "2025-12-14T02:02:28.720156Z-ETH/USD-buy"
 }
