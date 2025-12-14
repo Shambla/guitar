@@ -1008,6 +1008,73 @@
 				cursor: not-allowed;
 				transform: none;
 			}
+			
+			/* Signal status indicators for asset list */
+			.asset-signal-status {
+				display: inline-block;
+				margin-left: 12px;
+				padding: 4px 10px;
+				border-radius: 6px;
+				font-size: 12px;
+				font-weight: bold;
+				text-transform: uppercase;
+				letter-spacing: 0.5px;
+				transition: all 0.3s ease;
+			}
+			
+			.asset-signal-status.buy {
+				background: rgba(76, 175, 80, 0.2);
+				border: 1px solid rgba(76, 175, 80, 0.6);
+				color: #4caf50;
+				box-shadow: 0 0 8px rgba(76, 175, 80, 0.4);
+			}
+			
+			.asset-signal-status.sell {
+				background: rgba(244, 67, 54, 0.2);
+				border: 1px solid rgba(244, 67, 54, 0.6);
+				color: #f44336;
+				box-shadow: 0 0 8px rgba(244, 67, 54, 0.4);
+			}
+			
+			.asset-signal-status.neutral {
+				background: rgba(158, 158, 158, 0.2);
+				border: 1px solid rgba(158, 158, 158, 0.6);
+				color: #9e9e9e;
+				box-shadow: 0 0 8px rgba(158, 158, 158, 0.3);
+			}
+			
+			.asset-signal-status.locked {
+				background: rgba(102, 126, 234, 0.2);
+				border: 1px solid rgba(102, 126, 234, 0.6);
+				color: #667eea;
+			}
+			
+			.asset-signal-status .time-ago {
+				font-size: 10px;
+				opacity: 0.8;
+				margin-left: 4px;
+				text-transform: none;
+			}
+			
+			.asset-signal-status .subscribe-mini-btn {
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				color: white;
+				border: none;
+				padding: 4px 10px;
+				border-radius: 4px;
+				font-size: 11px;
+				font-weight: bold;
+				cursor: pointer;
+				text-decoration: none;
+				display: inline-block;
+				transition: all 0.3s ease;
+			}
+			
+			.asset-signal-status .subscribe-mini-btn:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 4px 12px rgba(102, 126, 234, 0.6);
+			}
+			
 			.subscription-badge {
 				display: inline-block;
 				padding: 4px 12px;
@@ -1436,7 +1503,7 @@
 								Our system uses <strong>built-in position sizing</strong> based on how many indicators are confirming the signal. When multiple indicators align, it indicates stronger conviction, and the system automatically scales position size accordingly.
 							</p>
 							<ul style="color: rgba(255, 255, 255, 0.85); line-height: 1.8;">
-								<li><strong>Buy positions can be pyramided up to 3 times</strong> - As more indicators confirm the signal, additional buy signals may appear, allowing you to scale into the position with increasing confidence</li>
+								<li><strong>Buy positions can be pyramided up to 3 times</strong> - As more indicators confirm the signal, additional buy signals may appear, allowing you to scale into the position with increasing confidence. The different tickers all trading is position sizing even more. If multiple signals fire on different assets, that scales in even more. A perfect dollar-cost-average strategy.</li>
 								<li><strong>Sells are always 100% of the position</strong> - When a sell signal appears, it represents a complete exit of the position, regardless of how many buy signals were used to build it</li>
 								<li><strong>More signals = Higher conviction</strong> - Multiple simultaneous signals indicate stronger confluence and higher probability setups</li>
 							</ul>
@@ -1479,7 +1546,7 @@
 							<ul style="margin-bottom: 0;">
 								<li><strong>Not every signal will be profitable</strong> - That's trading. Even 55-60% win rate with proper risk management is excellent</li>
 								<li><strong>Confirmation > Speed</strong> - Missing the first 2% of a move to gain 80% confidence is a good trade-off</li>
-								<li><strong>Risk management matters most</strong> - Use stop-losses, position sizing, and never risk more than 1-2% per trade</li>
+								<li><strong>Risk management matters most</strong> - Use stop-losses and position sizing</li>
 								<li><strong>The trend is your friend</strong> - Signals work best when aligned with higher timeframe trends</li>
 								<li><strong>Patience wins</strong> - Let high-probability setups come to you rather than forcing trades</li>
 							</ul>
@@ -1497,9 +1564,16 @@
 				<div class="indicators-content">
 					<div class="indicator-category" style="background: rgba(76, 175, 80, 0.1); border: 2px solid rgba(76, 175, 80, 0.3); padding: 25px; border-radius: 12px;">
 						<h3 style="color: #4caf50; margin-top: 0;">💰 Become a Quant Trader Without the Complexity</h3>
-						<p style="color: rgba(255, 255, 255, 0.9); font-size: 18px; line-height: 1.8; margin-bottom: 20px;">
-							<strong>Access institutional-grade trading signals in the most lucrative asset class in human history with 0 math or coding experience for only $9.99.</strong>
-						</p>
+						<ul style="color: rgba(255, 255, 255, 0.9); font-size: 18px; line-height: 1.8; margin-bottom: 20px; padding-left: 25px;">
+							<li><strong>Access institutional-grade trading signals</strong> in the most lucrative asset class in human history</li>
+							<li><strong>Large funds don't trade crypto</strong> - creating a huge opportunity for retail traders</li>
+							<li><strong>No math or coding experience required</strong> - only $9.99</li>
+							<li><strong>Massive opportunity cost</strong> of manually staring at charts all day instead of focusing on family, friends, and your career</li>
+							<li><strong>Human emotions are your enemy:</strong> Can you really stay emotionless after losing $5,000 in a month? Will you avoid revenge trading?</li>
+							<li><strong>AI outperforms human traders:</strong> Can you buy when crypto drops -50% even when analysis says you should? Can you sell when everyone's bragging about gains?</li>
+							<li><strong>Chart > News:</strong> The chart tells the story, not the news. Big players use news to make you buy tops and sell bottoms</li>
+							<li><strong>AI is revealing Wall Street's secrets:</strong> This secretive industry is finally being democratized</li>
+						</ul>
 						
 						<div style="background: rgba(244, 67, 54, 0.1); border-left: 4px solid #f44336; padding: 20px; margin: 20px 0; border-radius: 4px;">
 							<h4 style="color: #f44336; margin-top: 0;">⚠️ Stay Safe: Watch Out for Scams</h4>
@@ -1514,11 +1588,11 @@
 						<div style="background: rgba(33, 150, 243, 0.1); border-left: 4px solid #2196f3; padding: 20px; margin-top: 20px; border-radius: 4px;">
 							<h4 style="color: #2196f3; margin-top: 0;">✅ What Makes This Safe and Legitimate</h4>
 							<ul style="color: rgba(255, 255, 255, 0.9); margin-bottom: 0;">
-								<li><strong>No downloads required</strong> - Just visit this page, no software to install</li>
+								<li><strong>No downloads required</strong> - Just visit this page, no software to install. I will never ask for passwords/seed phrase. Never share these to anyone. Pro tip: Have a separate device with only $100 of crypto with a fresh seed phrase for "exploring".</li>
 								<li><strong>No wallet connections</strong> - We never ask you to connect your wallet</li>
 								<li><strong>Transparent signals</strong> - All signals are publicly visible with permanent timestamps</li>
 								<li><strong>Institutional-grade code</strong> - Professional trading algorithms working 24/7</li>
-								<li><strong>Simple subscription</strong> - Just $9.99/month for access to all signals</li>
+								<li><strong>Simple subscription</strong> - Just $9.99/month for access to all signals through secure https payment with Stripe. (crypto payments coming soon!). I'm not hiding behind an alias Moonboy777, I'm using my legal name. Bloomberg Terminal costs $2,500 a month, Refinitiv $2,200 a month, Motley Fool $2,000 a year, TrendSpider $1,500 a year, TradingView Premium $599 a year, Trading courses are often $3,000+. You'll spend more on coffee this month than this costs. </li>
 							</ul>
 						</div>
 					</div>
@@ -1529,7 +1603,7 @@
 			<div id="code-explanation"></div>
 			<div class="indicators-section" style="margin-top: 40px;">
 				<div class="indicators-header">
-					<h2>🔧 System Overview</h2>
+					<h2>Assets Traded</h2>
 					<p>We focus on a curated selection of assets to ensure quality analysis and signal generation. Below are the specific ticker symbols we actively monitor and trade.</p>
 				</div>
 				
@@ -1538,15 +1612,15 @@
 						<h3>CRYPTOCURRENCIES</h3>
 						<p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 15px;">Our cryptocurrency selection is based on extensive backtesting analysis. These tokens have demonstrated the strongest historical performance and signal reliability in our trading system:</p>
 						<ul>
-							<li><strong>ETH/USD</strong> - Ethereum: The second-largest cryptocurrency and leading smart contract platform, powering the majority of DeFi and NFT ecosystems</li>
-							<li><strong>SOL/USD</strong> - Solana: High-performance blockchain with fast transaction speeds and low fees, popular for DeFi and NFT applications</li>
-							<li><strong>BONK/USD</strong> - Bonk: Meme coin on the Solana blockchain with strong community engagement and high volatility</li>
-							<li><strong>CRV/USD</strong> - Curve DAO Token: Governance token for Curve Finance, a leading DeFi protocol specializing in stablecoin swaps and liquidity pools</li>
-							<li><strong>SUI/USD</strong> - Sui: Next-generation blockchain platform designed for high throughput and low latency, focusing on gaming and DeFi applications</li>
-							<li><strong>AERO/USD</strong> - Aerodrome: DeFi protocol token on Base blockchain, providing liquidity and yield farming opportunities</li>
-							<li><strong>FET/USD</strong> - Fetch.ai: AI-powered blockchain platform enabling autonomous economic agents and machine learning applications</li>
-							<li><strong>RNDR/USD</strong> - Render Token: Decentralized GPU rendering network connecting artists with distributed computing power for 3D rendering</li>
-							<li><strong>AAVE/USD</strong> - Aave: Leading DeFi lending protocol token, enabling users to lend and borrow cryptocurrencies with competitive interest rates</li>
+							<li data-symbol="ETH/USD"><strong>ETH/USD</strong> - Ethereum: The second-largest cryptocurrency and leading smart contract platform, powering the majority of DeFi and NFT ecosystems <span class="asset-signal-status"></span></li>
+							<li data-symbol="SOL/USD"><strong>SOL/USD</strong> - Solana: High-performance blockchain with fast transaction speeds and low fees, popular for DeFi and NFT applications <span class="asset-signal-status"></span></li>
+							<li data-symbol="BONK/USD"><strong>BONK/USD</strong> - Bonk: Meme coin on the Solana blockchain with strong community engagement and high volatility <span class="asset-signal-status"></span></li>
+							<li data-symbol="CRV/USD"><strong>CRV/USD</strong> - Curve DAO Token: Governance token for Curve Finance, a leading DeFi protocol specializing in stablecoin swaps and liquidity pools <span class="asset-signal-status"></span></li>
+							<li data-symbol="SUI/USD"><strong>SUI/USD</strong> - Sui: Next-generation blockchain platform designed for high throughput and low latency, focusing on gaming and DeFi applications <span class="asset-signal-status"></span></li>
+							<li data-symbol="AERO/USD"><strong>AERO/USD</strong> - Aerodrome: DeFi protocol token on Base blockchain, providing liquidity and yield farming opportunities <span class="asset-signal-status"></span></li>
+							<li data-symbol="FET/USD"><strong>FET/USD</strong> - Fetch.ai: AI-powered blockchain platform enabling autonomous economic agents and machine learning applications <span class="asset-signal-status"></span></li>
+							<li data-symbol="RNDR/USD"><strong>RNDR/USD</strong> - Render Token: Decentralized GPU rendering network connecting artists with distributed computing power for 3D rendering <span class="asset-signal-status"></span></li>
+							<li data-symbol="AAVE/USD"><strong>AAVE/USD</strong> - Aave: Leading DeFi lending protocol token, enabling users to lend and borrow cryptocurrencies with competitive interest rates <span class="asset-signal-status"></span></li>
 						</ul>
 						<p style="color: rgba(255, 255, 255, 0.6); font-size: 0.9em; margin-top: 10px; font-style: italic;">These cryptocurrencies were selected based on comprehensive backtesting results showing optimal signal performance and trading outcomes.</p>
 					</div>
@@ -1556,54 +1630,54 @@
 						<p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 15px;">Our stock strategy focuses on sector ETFs, benchmarks, and select individual stocks:</p>
 						<h4>US Sector ETFs</h4>
 						<ul>
-							<li><strong>XLK</strong> - Technology Select Sector SPDR Fund</li>
-							<li><strong>XLY</strong> - Consumer Discretionary Select Sector SPDR Fund</li>
-							<li><strong>XLP</strong> - Consumer Staples Select Sector SPDR Fund</li>
-							<li><strong>XLI</strong> - Industrial Select Sector SPDR Fund</li>
-							<li><strong>XLB</strong> - Materials Select Sector SPDR Fund</li>
-							<li><strong>XLRE</strong> - Real Estate Select Sector SPDR Fund</li>
-							<li><strong>XLU</strong> - Utilities Select Sector SPDR Fund</li>
-							<li><strong>XLC</strong> - Communication Services Select Sector SPDR Fund</li>
-							<li><strong>XLF</strong> - Financial Select Sector SPDR Fund</li>
-							<li><strong>XLV</strong> - Health Care Select Sector SPDR Fund</li>
-							<li><strong>XLE</strong> - Energy Select Sector SPDR Fund</li>
+							<li data-symbol="XLK"><strong>XLK</strong> - Technology Select Sector SPDR Fund <span class="asset-signal-status"></span></li>
+							<li data-symbol="XLY"><strong>XLY</strong> - Consumer Discretionary Select Sector SPDR Fund <span class="asset-signal-status"></span></li>
+							<li data-symbol="XLP"><strong>XLP</strong> - Consumer Staples Select Sector SPDR Fund <span class="asset-signal-status"></span></li>
+							<li data-symbol="XLI"><strong>XLI</strong> - Industrial Select Sector SPDR Fund <span class="asset-signal-status"></span></li>
+							<li data-symbol="XLB"><strong>XLB</strong> - Materials Select Sector SPDR Fund <span class="asset-signal-status"></span></li>
+							<li data-symbol="XLRE"><strong>XLRE</strong> - Real Estate Select Sector SPDR Fund <span class="asset-signal-status"></span></li>
+							<li data-symbol="XLU"><strong>XLU</strong> - Utilities Select Sector SPDR Fund <span class="asset-signal-status"></span></li>
+							<li data-symbol="XLC"><strong>XLC</strong> - Communication Services Select Sector SPDR Fund <span class="asset-signal-status"></span></li>
+							<li data-symbol="XLF"><strong>XLF</strong> - Financial Select Sector SPDR Fund <span class="asset-signal-status"></span></li>
+							<li data-symbol="XLV"><strong>XLV</strong> - Health Care Select Sector SPDR Fund <span class="asset-signal-status"></span></li>
+							<li data-symbol="XLE"><strong>XLE</strong> - Energy Select Sector SPDR Fund <span class="asset-signal-status"></span></li>
 						</ul>
 						<h4>Specialized Sectors</h4>
 						<ul>
-							<li><strong>SOXX</strong> - iShares Semiconductor ETF</li>
+							<li data-symbol="SOXX"><strong>SOXX</strong> - iShares Semiconductor ETF <span class="asset-signal-status"></span></li>
 						</ul>
 						<h4>Individual Stocks</h4>
 						<ul>
-							<li><strong>NVDA</strong> - NVIDIA Corporation</li>
+							<li data-symbol="NVDA"><strong>NVDA</strong> - NVIDIA Corporation <span class="asset-signal-status"></span></li>
 						</ul>
 						<h4>Benchmarks</h4>
 						<ul>
-							<li><strong>SPY</strong> - SPDR S&P 500 ETF Trust</li>
+							<li data-symbol="SPY"><strong>SPY</strong> - SPDR S&P 500 ETF Trust <span class="asset-signal-status"></span></li>
 						</ul>
 						<h4>Precious Metals</h4>
 						<ul>
-							<li><strong>GLD</strong> - SPDR Gold Trust</li>
-							<li><strong>SLV</strong> - iShares Silver Trust</li>
-							<li><strong>PPLT</strong> - Aberdeen Standard Physical Platinum Shares ETF</li>
-							<li><strong>PALL</strong> - Aberdeen Standard Physical Palladium Shares ETF</li>
+							<li data-symbol="GLD"><strong>GLD</strong> - SPDR Gold Trust <span class="asset-signal-status"></span></li>
+							<li data-symbol="SLV"><strong>SLV</strong> - iShares Silver Trust <span class="asset-signal-status"></span></li>
+							<li data-symbol="PPLT"><strong>PPLT</strong> - Aberdeen Standard Physical Platinum Shares ETF <span class="asset-signal-status"></span></li>
+							<li data-symbol="PALL"><strong>PALL</strong> - Aberdeen Standard Physical Palladium Shares ETF <span class="asset-signal-status"></span></li>
 						</ul>
 						<h4>Energy</h4>
 						<ul>
-							<li><strong>USO</strong> - United States Oil Fund</li>
+							<li data-symbol="USO"><strong>USO</strong> - United States Oil Fund <span class="asset-signal-status"></span></li>
 						</ul>
 						<h4>International & Credit</h4>
 						<ul>
-							<li><strong>EEM</strong> - iShares MSCI Emerging Markets ETF</li>
-							<li><strong>PCEF</strong> - Invesco CEF Income Composite ETF</li>
-							<li><strong>HYG</strong> - iShares iBoxx $ High Yield Corporate Bond ETF</li>
+							<li data-symbol="EEM"><strong>EEM</strong> - iShares MSCI Emerging Markets ETF <span class="asset-signal-status"></span></li>
+							<li data-symbol="PCEF"><strong>PCEF</strong> - Invesco CEF Income Composite ETF <span class="asset-signal-status"></span></li>
+							<li data-symbol="HYG"><strong>HYG</strong> - iShares iBoxx $ High Yield Corporate Bond ETF <span class="asset-signal-status"></span></li>
 						</ul>
 						<h4>Country/Region ETFs</h4>
 						<ul>
-							<li><strong>MCHI</strong> - iShares MSCI China ETF</li>
-							<li><strong>INDA</strong> - iShares MSCI India ETF</li>
-							<li><strong>EWJ</strong> - iShares MSCI Japan ETF</li>
-							<li><strong>EWG</strong> - iShares MSCI Germany ETF</li>
-							<li><strong>EWT</strong> - iShares MSCI Taiwan ETF</li>
+							<li data-symbol="MCHI"><strong>MCHI</strong> - iShares MSCI China ETF <span class="asset-signal-status"></span></li>
+							<li data-symbol="INDA"><strong>INDA</strong> - iShares MSCI India ETF <span class="asset-signal-status"></span></li>
+							<li data-symbol="EWJ"><strong>EWJ</strong> - iShares MSCI Japan ETF <span class="asset-signal-status"></span></li>
+							<li data-symbol="EWG"><strong>EWG</strong> - iShares MSCI Germany ETF <span class="asset-signal-status"></span></li>
+							<li data-symbol="EWT"><strong>EWT</strong> - iShares MSCI Taiwan ETF <span class="asset-signal-status"></span></li>
 						</ul>
 					</div>
 				</div>
@@ -1613,7 +1687,7 @@
 			<div class="indicators-section">
 				<div class="indicators-header">
 					<h2>📊 Comprehensive Indicator Analysis</h2>
-					<p>Our trading signals are generated using a sophisticated multi-indicator confluence approach. Below is a complete inventory of all technical indicators, filters, and analysis methods used across our trading systems.</p>
+					<p>Our trading signals are generated using a sophisticated multi-indicator confluence approach (as you are about to see, it is a seemingly never-ending list of indicators).</p>
 				</div>
 				
 				<div class="indicators-content">
@@ -1643,7 +1717,7 @@
 						</ul>
 						<h4>Trend Strength & Direction</h4>
 						<ul>
-							<li><strong>ADX (Average Directional Index)</strong> - 14-period ADX for trend strength measurement, ADX thresholds: 7-8 for shorts, 8+ for longs, ADX Divergence - price vs trend strength divergence</li>
+							<li><strong>ADX (Average Directional Index)</strong> - Helps the bot avoid getting in and out of trades doring horizontal consildation price action. 14-period ADX for trend strength measurement, ADX thresholds: 7-8 for shorts, 8+ for longs, ADX Divergence - price vs trend strength divergence</li>
 							<li><strong>Parabolic SAR</strong> - Acceleration 0.02, maximum 0.2 - dynamic stop and reverse</li>
 							<li><strong>Ichimoku Cloud</strong> - Tenkan (9-period), Kijun (26-period), Senkou A/B (52-period), Chikou span, cloud thickness analysis, comprehensive trend system with support/resistance</li>
 							<li><strong>SuperTrend</strong> - ATR-based trend following with dynamic stop levels, Factor 3.0, ATR period 10, SuperTrend Slope Divergence - price vs trend slope divergence</li>
@@ -1666,7 +1740,7 @@
 							</p>
 							<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 0; line-height: 1.6;">
 								<strong>In simple terms:</strong> We're finding moments where there are fewer buyers (or less buying pressure), yet the price still went up. This is a warning sign that the price move might be weak or unsustainable. 
-								Conversely, if prices are falling but buying pressure is increasing, it could signal a potential reversal. Divergences help us spot when price movements might be running out of steam before the average trader notices.
+								Conversely, if prices are falling but buying pressure is increasing, it could signal a potential reversal. Divergences help us spot when price movements might be running out of steam before the average trader notices. The added beauty of this: less hard-coding (knowing history too well A.K.A. over-fitting) and it is a more robust strategy between asset classes.
 							</p>
 						</div>
 						<ul>
@@ -1766,7 +1840,7 @@
 								<strong>The clever twist:</strong> Candlestick patterns are sometimes used as <strong>anti-trades</strong> rather than direct signals. 
 							</p>
 							<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 0; line-height: 1.6;">
-								For example, if a bearish shooting star appears, we do <strong>NOT</strong> take a long trade. This approach recognizes that candlestick patterns can be mediocre signals on their own because they can just be noise on low timeframes. 
+								For example, if a bearish shooting star appears, we do <strong>NOT</strong> take a long trade. This approach recognizes that candlestick patterns can be medicore signals on their own because they can just be noise on low timeframes. 
 								Instead, we use them to filter out bad trades - if a bearish pattern forms, we avoid bullish entries, and vice versa. This helps prevent entering trades when the market structure suggests weakness.
 							</p>
 						</div>
@@ -1796,9 +1870,9 @@
 							<li><strong>Hilbert Transform</strong> - Cycle length detection, Real and imaginary components, Phase analysis (teal/maroon/silver fills)</li>
 							<li><strong>Ehler's Roofing Filter</strong> - High-pass filter (48-period default), Super Smoother Filter (10-period, 2-3 poles), Noise reduction for trend clarity</li>
 						</ul>
-						<h4>AI-Powered Market Regime Detection</h4>
+						<h4>Macro Regime Filters - Huge Edge, many bots can day trade, but can they take the big picture macro enviroment into consideration?</h4>
 						<ul>
-							<li><strong>Hidden Markov Model (AI System)</strong> - 9-state Gaussian AI model, Features: Log Returns, Volatility, RSI, MFI, Regime labels: Extreme Bearish → Extreme Bullish, Regime persistence tracking, Transition probability analysis</li>
+							<li><strong>Hidden Markov Model (AI System)</strong> - 9-state Gaussian AI machine learning model, Features: Log Returns, Volatility, RSI, MFI, Regime labels: Extreme Bearish → Extreme Bullish, Regime persistence tracking, Transition probability analysis. Essentially, you feed AI years of .csv data, open, high, low, close, returns and indicators and it answers these questions: How long to bear/bull regimes last? What are typical returns? What is the probability of changing or persisting in the current regime. Obviously this is an edge because a human can't meaningfully analyze hundreds of thousands of data points in a giant .csv file.</li>
 							<li><strong>Regime Filter (BTC Halving)</strong> - Weekly timeframe EMA(20), Market price vs EMA + 0.25 ATR, RSI momentum filter (70 threshold, optional), Bullish/bearish/caution counters</li>
 							<li><strong>Bearish Counter (Extended Downturn Detection)</strong> - Unique timing indicator that counts consecutive bearish bars to identify prolonged market downturns:
 								<ul>
@@ -1894,30 +1968,31 @@
 							</p>
 						</div>
 						
-						<div style="background: rgba(156, 39, 176, 0.15); border-left: 4px solid #ab47bc; padding: 20px; margin-bottom: 20px; border-radius: 4px;">
-							<h4 style="color: #ab47bc; margin-top: 0;">⭐⭐⭐ ULTRA HIGH CONVICTION</h4>
-							<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 10px;">
-								<strong>Source:</strong> TradingView + AI confirmation<br>
-								<strong>AI layer:</strong> 9-state Hidden Markov Model analyzing market regime
-							</p>
-							<p style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin: 0;">
-								Both TradingView indicators AND our AI system agree on the signal direction. 
-								The AI analyzes market structure, volatility patterns, and regime shifts to confirm the setup is legitimate.
-							</p>
-						</div>
-						
-						<div style="background: rgba(244, 67, 54, 0.15); border-left: 4px solid #ef5350; padding: 20px; margin-bottom: 20px; border-radius: 4px;">
-							<h4 style="color: #ef5350; margin-top: 0;">⭐⭐⭐⭐ BEST CONVICTION</h4>
-							<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 10px;">
-								<strong>Source:</strong> AI-detected extreme regime (standalone)<br>
-								<strong>Rarity:</strong> Only triggered in the strongest market conditions
-							</p>
-							<p style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin: 0;">
-								<strong>The rarest and most reliable signals.</strong> Our AI system detects extreme bullish or bearish market regimes 
-								with such high confidence that it publishes the signal even without TradingView confirmation. 
-								These represent the clearest, highest-probability setups.
-							</p>
-						</div>
+					<div style="background: rgba(156, 39, 176, 0.15); border-left: 4px solid #ab47bc; padding: 20px; margin-bottom: 20px; border-radius: 4px;">
+						<h4 style="color: #ab47bc; margin-top: 0;">⭐⭐⭐ ULTRA HIGH CONVICTION</h4>
+						<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 10px;">
+							<strong>Source:</strong> AI-detected extreme regime (standalone)<br>
+							<strong>Rarity:</strong> Only triggered in the strongest market conditions
+						</p>
+						<p style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin: 0;">
+							Our AI system detects extreme bullish or bearish market regimes with such high confidence 
+							that it publishes the signal even without TradingView confirmation. 
+							These represent very strong, high-probability setups detected by the 9-state Hidden Markov Model.
+						</p>
+					</div>
+					
+					<div style="background: rgba(244, 67, 54, 0.15); border-left: 4px solid #ef5350; padding: 20px; margin-bottom: 20px; border-radius: 4px;">
+						<h4 style="color: #ef5350; margin-top: 0;">⭐⭐⭐⭐ BEST CONVICTION</h4>
+						<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 10px;">
+							<strong>Source:</strong> TradingView + AI confirmation (maximum confluence)<br>
+							<strong>AI layer:</strong> 9-state Hidden Markov Model analyzing market regime
+						</p>
+						<p style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin: 0;">
+							<strong>The highest conviction signals.</strong> Both TradingView's 100+ technical indicators AND our AI system agree on the signal direction. 
+							This maximum confluence means the AI analyzes market structure, volatility patterns, and regime shifts 
+							to confirm that TradingView's setup is legitimate. The combination of both systems creates the most reliable signals.
+						</p>
+					</div>
 						
 						<div style="background: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107; padding: 20px; margin-top: 30px; border-radius: 4px;">
 							<h4 style="color: #ffc107; margin-top: 0;">💡 How to Use the Conviction System</h4>
@@ -2266,13 +2341,13 @@
 				} else if (note.includes('EMA + JSON')) {
 					signalBadge = '⭐⭐';
 					signalClass = 'confluence-ema';
-				} else if (note.includes('HMM + JSON')) {
-					signalBadge = '⭐⭐⭐';
-					signalClass = 'confluence-hmm';
-				} else if (note.includes('HMM Extreme')) {
-					signalBadge = '⭐⭐⭐⭐';
-					signalClass = 'confluence-extreme';
-				}
+			} else if (note.includes('HMM + JSON')) {
+				signalBadge = '⭐⭐⭐⭐';
+				signalClass = 'confluence-hmm';
+			} else if (note.includes('HMM Extreme')) {
+				signalBadge = '⭐⭐⭐';
+				signalClass = 'confluence-extreme';
+			}
 				
 				return `
 					<div class="asset-list-item ${actionClass}">
@@ -2570,13 +2645,13 @@
 						} else if (note.includes('EMA + JSON')) {
 							signalBadge = '⭐⭐ HIGH CONVICTION';
 							signalClass = 'confluence-ema';
-						} else if (note.includes('HMM + JSON')) {
-							signalBadge = '⭐⭐⭐ ULTRA HIGH CONVICTION';
-							signalClass = 'confluence-hmm';
-						} else if (note.includes('HMM Extreme')) {
-							signalBadge = '⭐⭐⭐⭐ BEST CONVICTION';
-							signalClass = 'confluence-extreme';
-						}
+					} else if (note.includes('HMM + JSON')) {
+						signalBadge = '⭐⭐⭐⭐ BEST CONVICTION';
+						signalClass = 'confluence-hmm';
+					} else if (note.includes('HMM Extreme')) {
+						signalBadge = '⭐⭐⭐ ULTRA HIGH CONVICTION';
+						signalClass = 'confluence-extreme';
+					}
 						// Skip "Raw JSON signal" - internal only, not shown to users
 						
 						const cardHtml = `
@@ -2669,6 +2744,9 @@
 							renderAssetList(signals);
 						}
 						
+						// Update signal status in asset list
+						updateAssetSignalStatus(signals);
+						
 						document.getElementById('status-indicator').className = 'status-indicator active';
 						document.getElementById('status-text').textContent = 'Connected';
 						document.getElementById('last-update').textContent = 'Last updated: ' + new Date().toLocaleTimeString();
@@ -2680,6 +2758,150 @@
 						document.getElementById('status-indicator').className = 'status-indicator inactive';
 						document.getElementById('status-text').textContent = 'Servers Restarting';
 						showServerRestartBanner();
+					});
+			}
+			
+			// ========================================
+			// ASSET SIGNAL STATUS FUNCTIONS
+			// ========================================
+			
+			/**
+			 * Normalize symbol format for matching (handles ETH/USD, ETH-USD, etc.)
+			 */
+			function normalizeSymbol(symbol) {
+				if (!symbol) return '';
+				// Convert to uppercase and replace common separators
+				return symbol.toUpperCase().replace(/[-_]/g, '/');
+			}
+			
+			/**
+			 * Get the latest signal for each symbol from the signals array
+			 */
+			function getLatestSignalsBySymbol(signals) {
+				const latestBySymbol = {};
+				
+				if (!signals || !Array.isArray(signals)) {
+					return latestBySymbol;
+				}
+				
+				signals.forEach(signal => {
+					if (!signal.symbol) return;
+					
+					const symbol = normalizeSymbol(signal.symbol);
+					const timestamp = signal.timestamp || signal.received_at;
+					
+					if (!timestamp) return;
+					
+					// Parse timestamp
+					const signalTime = new Date(timestamp);
+					
+					// Skip invalid dates
+					if (isNaN(signalTime.getTime())) return;
+					
+					// If we don't have a signal for this symbol yet, or this one is newer
+					if (!latestBySymbol[symbol] || signalTime > latestBySymbol[symbol].time) {
+						latestBySymbol[symbol] = {
+							action: signal.action || signal.side || '',
+							time: signalTime,
+							timestamp: timestamp,
+							price: signal.price
+						};
+					}
+				});
+				
+				return latestBySymbol;
+			}
+			
+			/**
+			 * Check if a signal is older than 72 hours
+			 */
+			function isSignalOlderThan72Hours(signalTime) {
+				if (!signalTime) return true;
+				
+				const now = new Date();
+				const hoursDiff = (now - signalTime) / (1000 * 60 * 60);
+				return hoursDiff > 72;
+			}
+			
+			/**
+			 * Format time ago string (e.g., "2 hours ago", "3 days ago")
+			 */
+			function formatTimeAgo(signalTime) {
+				if (!signalTime) return '';
+				
+				const now = new Date();
+				const diffMs = now - signalTime;
+				const diffHours = diffMs / (1000 * 60 * 60);
+				const diffDays = diffMs / (1000 * 60 * 60 * 24);
+				
+				if (diffHours < 1) {
+					const diffMins = Math.floor(diffMs / (1000 * 60));
+					return diffMins <= 1 ? 'just now' : `${diffMins} min ago`;
+				} else if (diffHours < 24) {
+					const hours = Math.floor(diffHours);
+					return `${hours} ${hours === 1 ? 'hour' : 'hours'} ago`;
+				} else {
+					const days = Math.floor(diffDays);
+					return `${days} ${days === 1 ? 'day' : 'days'} ago`;
+				}
+			}
+			
+			/**
+			 * Update signal status for all assets in the "Assets Traded" section
+			 */
+			function updateAssetSignalStatus(signals) {
+				const latestSignals = getLatestSignalsBySymbol(signals);
+				const isSubscribed = localStorage.getItem(STORAGE_KEY_SUBSCRIBED) === 'true';
+				const trialActive = typeof signalsVisible !== 'undefined' ? signalsVisible : true;
+				const hasAccess = isSubscribed || trialActive;
+				
+				// Find all asset list items
+				const assetItems = document.querySelectorAll('li[data-symbol]');
+				
+				assetItems.forEach(item => {
+					const symbol = normalizeSymbol(item.getAttribute('data-symbol'));
+					const statusSpan = item.querySelector('.asset-signal-status');
+					
+					if (!statusSpan) return;
+					
+					const latestSignal = latestSignals[symbol];
+					
+					// Clear existing classes
+					statusSpan.className = 'asset-signal-status';
+					
+					if (!hasAccess) {
+						// Show subscribe button for non-subscribers
+						statusSpan.className += ' locked';
+						statusSpan.innerHTML = '<a href="#" onclick="event.preventDefault(); showSubscriptionModal(); return false;" class="subscribe-mini-btn">Subscribe</a>';
+					} else if (!latestSignal) {
+						// No signal found for this symbol
+						statusSpan.className += ' neutral';
+						statusSpan.innerHTML = '⚪ NEUTRAL';
+					} else {
+						const signalTime = latestSignal.time;
+						const isOld = isSignalOlderThan72Hours(signalTime);
+						
+						if (isOld) {
+							// Signal is >72 hours old, show neutral
+							statusSpan.className += ' neutral';
+							statusSpan.innerHTML = '⚪ NEUTRAL';
+						} else {
+							// Show BUY or SELL with time ago
+							const action = latestSignal.action.toLowerCase();
+							const timeAgo = formatTimeAgo(signalTime);
+							
+							if (action === 'buy') {
+								statusSpan.className += ' buy';
+								statusSpan.innerHTML = `🟢 BUY<span class="time-ago"> (${timeAgo})</span>`;
+							} else if (action === 'sell') {
+								statusSpan.className += ' sell';
+								statusSpan.innerHTML = `🔴 SELL<span class="time-ago"> (${timeAgo})</span>`;
+							} else {
+								statusSpan.className += ' neutral';
+								statusSpan.innerHTML = '⚪ NEUTRAL';
+							}
+						}
+					}
 					});
 			}
 			
@@ -2772,6 +2994,11 @@
 					message.style.fontWeight = 'bold';
 					message.innerHTML = '⏰ <strong style="font-size: 24px;">Your Trial Has Expired</strong><br><span style="font-size: 18px; font-weight: normal; margin-top: 10px; display: block;">Please subscribe to continue viewing signals.</span><br><a href="#" onclick="event.preventDefault(); showSubscriptionModal(); return false;" style="color: #fff; text-decoration: underline; font-weight: bold; font-size: 18px; margin-top: 10px; display: inline-block; background: rgba(255, 255, 255, 0.2); padding: 8px 16px; border-radius: 6px;">Subscribe Now →</a>';
 				}
+				
+				// Refresh asset signal status when trial status changes
+				if (typeof window.allSignals !== 'undefined' && window.allSignals) {
+					updateAssetSignalStatus(window.allSignals);
+				}
 			}
 			
 			// Hide all signal grids when trial expires
@@ -2824,6 +3051,9 @@
 			loadSignals();
 			// Auto-refresh every 30 seconds
 			refreshInterval = setInterval(loadSignals, 30000);
+			
+			// Initialize asset signal status (will show subscribe buttons if no access)
+			updateAssetSignalStatus([]);
 			});
 			
 			// Add scroll detection for mobile nav shrinking
