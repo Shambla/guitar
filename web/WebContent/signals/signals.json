@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 3079.95,
+    "source": "MASTER_BOT_162",
+    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+    "timestamp": "2025-12-14T16:09:38.414382Z",
+    "received_at": "2025-12-14T16:09:38.414402Z",
+    "id": "2025-12-14T16:09:38.414402Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "AAVE/USD",
     "quantity": 0.503,
     "price": 191.28,
