@@ -2402,5 +2402,22 @@
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0
+  },
+  {
+    "action": "info",
+    "symbol": "NVDA",
+    "price": 175.02000427246094,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Below thresholds | buy 8/16 | sell 12/13",
+    "timestamp": "2025-12-15T10:12:27.484183Z",
+    "received_at": "2025-12-15T10:12:27.484183Z",
+    "id": "2025-12-15T10:12:27.484183Z-NVDA-info",
+    "threshold_met": false,
+    "buy_score": 8,
+    "sell_score": 12,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0
   }
 ]
