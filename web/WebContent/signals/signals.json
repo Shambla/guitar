@@ -2368,5 +2368,22 @@
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0
+  },
+  {
+    "action": "info",
+    "symbol": "XLE",
+    "price": 45.5099983215332,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Below thresholds | buy 14/16 | sell 11/13",
+    "timestamp": "2025-12-15T10:08:52.639760Z",
+    "received_at": "2025-12-15T10:08:52.639760Z",
+    "id": "2025-12-15T10:08:52.639760Z-XLE-info",
+    "threshold_met": false,
+    "buy_score": 14,
+    "sell_score": 11,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0
   }
 ]
