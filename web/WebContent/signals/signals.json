@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 3013.66,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2025-12-15T15:56:50.745730Z",
+    "received_at": "2025-12-15T15:56:50.745761Z",
+    "id": "2025-12-15T15:56:50.745761Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "BONK/USD",
     "quantity": 10917030.53244999,
     "price": 8.89e-06,
