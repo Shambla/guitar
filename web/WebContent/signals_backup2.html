@@ -133,32 +133,6 @@
 				position: relative;
 			}
 			
-			/* Sparkle highlight for "ACTUALLY MACHINE LEARNING" */
-			@keyframes mlShimmer {
-				0%, 100% {
-					text-shadow:
-						0 0 6px rgba(255, 235, 59, 0.8),
-						0 0 14px rgba(255, 193, 7, 0.7),
-						0 0 24px rgba(255, 193, 7, 0.5);
-				}
-				50% {
-					text-shadow:
-						0 0 10px rgba(255, 255, 255, 0.95),
-						0 0 18px rgba(255, 193, 7, 0.9),
-						0 0 32px rgba(255, 193, 7, 0.7);
-				}
-			}
-			.sparkle-ml {
-				color: #ffeb3b !important;
-				font-weight: 900 !important;
-				letter-spacing: 0.5px;
-				text-shadow:
-					0 0 6px rgba(255, 235, 59, 0.8),
-					0 0 14px rgba(255, 193, 7, 0.7),
-					0 0 24px rgba(255, 193, 7, 0.5);
-				animation: mlShimmer 1.8s ease-in-out infinite;
-			}
-			
 			/* Gradient shift animation for background */
 			@keyframes roiGradientShift {
 				0% { background-position: 0% 50%; }
@@ -1546,7 +1520,7 @@
 								<strong>You may notice multiple signals appearing at the same time for a given ticker. This is a feature, not a bug.</strong>
 							</p>
 							<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 15px; line-height: 1.6;">
-								The System uses <strong>built-in position sizing</strong> based on how many indicators are confirming the signal. When multiple indicators align, it indicates stronger conviction, and the system automatically scales position size accordingly.
+								Our system uses <strong>built-in position sizing</strong> based on how many indicators are confirming the signal. When multiple indicators align, it indicates stronger conviction, and the system automatically scales position size accordingly.
 							</p>
 							<ul style="color: rgba(255, 255, 255, 0.85); line-height: 1.8;">
 								<li><strong>Buy positions can be pyramided up to 3 times</strong> - As more indicators confirm the signal, additional buy signals may appear, allowing you to scale into the position with increasing confidence. The different tickers all trading is position sizing even more. If multiple signals fire on different assets, that scales in even more. A perfect dollar-cost-average strategy.</li>
@@ -1561,7 +1535,7 @@
 						<ul>
 							<li><strong>Don't rush the entry</strong> - Give signals a few hours to confirm the move is real. Consider starting with a smaller position (25-50% of your intended size) and adding to it as the move confirms through price action, additional indicators, or time. This scaling approach lets you participate while managing risk.
 							<br><br>
-							Being 3-12 hours late on the signal is actually a good thing, and is the sweet spot IF the directional bias seems to be playing out correctly. The more time passes by, the more the massive suite of indicators get carved into stone and can't be undone.
+							Being 3-12 hours late on the signal is actually a good thing, and is the sweet spot IF the directional bias seems to be playing out correctly. The more time passes by, the more our massive suite of indicators get carved into stone and can't be undone.
 							<br><br>
 							<strong>Understanding "Repainting":</strong> There's a phenomenon called repainting, which is when live prices are moving so fast that the signal "changes its mind." In order to mitigate repainting, consider slowly scaling in as you feel the move gets more and more confirmed. Of course, the market is filled with manipulation and "short squeezes," so this thinking helps mitigate that risk. 
 							<br><br>
@@ -1656,7 +1630,7 @@
 				<div class="indicators-content">
 					<div class="indicator-category">
 						<h3>CRYPTOCURRENCIES</h3>
-						<p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 15px;">Cryptocurrency selection is based on extensive backtesting analysis. These tokens have demonstrated the strongest historical performance and signal reliability in the trading system:</p>
+						<p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 15px;">Our cryptocurrency selection is based on extensive backtesting analysis. These tokens have demonstrated the strongest historical performance and signal reliability in our trading system:</p>
 						<ul>
 							<li data-symbol="ETH/USD"><strong>ETH/USD</strong> - Ethereum: The second-largest cryptocurrency and leading smart contract platform, powering the majority of DeFi and NFT ecosystems <span class="asset-signal-status"></span></li>
 							<li data-symbol="SOL/USD"><strong>SOL/USD</strong> - Solana: High-performance blockchain with fast transaction speeds and low fees, popular for DeFi and NFT applications <span class="asset-signal-status"></span></li>
@@ -1673,7 +1647,7 @@
 					
 					<div class="indicator-category">
 						<h3>STOCKS & ETFs</h3>
-						<p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 15px;">Stock strategy focuses on sector ETFs, benchmarks, and select individual stocks:</p>
+						<p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 15px;">Our stock strategy focuses on sector ETFs, benchmarks, and select individual stocks:</p>
 						<h4>US Sector ETFs</h4>
 						<ul>
 							<li data-symbol="XLK"><strong>XLK</strong> - Technology Select Sector SPDR Fund <span class="asset-signal-status"></span></li>
@@ -1733,7 +1707,7 @@
 			<div class="indicators-section">
 				<div class="indicators-header">
 					<h2>📊 Comprehensive Indicator Analysis</h2>
-					<p>Trading signals are generated using a sophisticated multi-indicator confluence approach (as you are about to see, it is a seemingly never-ending list of indicators).</p>
+					<p>Our trading signals are generated using a sophisticated multi-indicator confluence approach (as you are about to see, it is a seemingly never-ending list of indicators).</p>
 				</div>
 				
 				<div class="indicators-content">
@@ -1918,7 +1892,7 @@
 						</ul>
 						<h4>Macro Regime Filters - Huge Edge, many bots can day trade, but can they take the big picture macro enviroment into consideration?</h4>
 						<ul>
-							<li><strong>Hidden Markov Model (AI System)</strong> - 9-state Gaussian AI machine learning model, Features: Log Returns, Volatility, RSI, MFI, Regime labels: Extreme Bearish → Extreme Bullish, Regime persistence tracking, Transition probability analysis. Essentially, you feed AI years of .csv data, open, high, low, close, returns and indicators and it answers these questions: How long to bear/bull regimes last? What are typical returns? What is the probability of changing or persisting in the current regime. Obviously this is an edge because a human can't meaningfully analyze hundreds of thousands of data points in a giant .csv file. Many indicators say AI because it is a buzzword that sells well, which is true, but their code doesn't actually use AI. This is <span class="sparkle-ml">ACTUALLY MACHINE LEARNING!</span></li>
+							<li><strong>Hidden Markov Model (AI System)</strong> - 9-state Gaussian AI machine learning model, Features: Log Returns, Volatility, RSI, MFI, Regime labels: Extreme Bearish → Extreme Bullish, Regime persistence tracking, Transition probability analysis. Essentially, you feed AI years of .csv data, open, high, low, close, returns and indicators and it answers these questions: How long to bear/bull regimes last? What are typical returns? What is the probability of changing or persisting in the current regime. Obviously this is an edge because a human can't meaningfully analyze hundreds of thousands of data points in a giant .csv file.</li>
 							<li><strong>Regime Filter (BTC Halving)</strong> - Weekly timeframe EMA(20), Market price vs EMA + 0.25 ATR, RSI momentum filter (70 threshold, optional), Bullish/bearish/caution counters</li>
 							<li><strong>Bearish Counter (Extended Downturn Detection)</strong> - Unique timing indicator that counts consecutive bearish bars to identify prolonged market downturns:
 								<ul>
@@ -2017,11 +1991,13 @@
 					<div style="background: rgba(156, 39, 176, 0.15); border-left: 4px solid #ab47bc; padding: 20px; margin-bottom: 20px; border-radius: 4px;">
 						<h4 style="color: #ab47bc; margin-top: 0;">⭐⭐⭐ ULTRA HIGH CONVICTION</h4>
 						<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 10px;">
-							<strong>Source:</strong> AI extreme regime + MACD alignment + Volume > SMA + cooldown<br>
+							<strong>Source:</strong> AI-detected extreme regime (standalone)<br>
 							<strong>Rarity:</strong> Only triggered in the strongest market conditions
 						</p>
 						<p style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin: 0;">
-							The 9-state Hidden Markov Model flags an extreme bullish/bearish regime, then we additionally require MACD in the same direction, above-average volume, and the HMM cooldown to allow it. TradingView confirmation isn’t required for these, but momentum/volume and cooldown are.
+							Our AI system detects extreme bullish or bearish market regimes with such high confidence 
+							that it publishes the signal even without TradingView confirmation. 
+							These represent very strong, high-probability setups detected by the 9-state Hidden Markov Model.
 						</p>
 					</div>
 					
@@ -2032,7 +2008,7 @@
 							<strong>AI layer:</strong> 9-state Hidden Markov Model analyzing market regime
 						</p>
 						<p style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin: 0;">
-							<strong>The highest conviction signals.</strong> Both TradingView's 100+ technical indicators AND the AI system agree on the signal direction. 
+							<strong>The highest conviction signals.</strong> Both TradingView's 100+ technical indicators AND our AI system agree on the signal direction. 
 							This maximum confluence means the AI analyzes market structure, volatility patterns, and regime shifts 
 							to confirm that TradingView's setup is legitimate. The combination of both systems creates the most reliable signals.
 						</p>
@@ -2042,7 +2018,7 @@
 							<h4 style="color: #ffc107; margin-top: 0;">💡 How to Use the Conviction System</h4>
 							<ul style="margin-bottom: 0;">
 								<li><strong>Position Sizing</strong> - Consider larger positions on higher conviction signals (still maintain proper risk management)</li>
-								<li><strong>Entry Timing</strong> - Standard signals may benefit from additional confirmation time.</li>
+								<li><strong>Entry Timing</strong> - Standard signals may benefit from additional confirmation time; Best signals are often immediate opportunities</li>
 								<li><strong>Risk Tolerance</strong> - Conservative traders focus on Ultra High and Best; aggressive traders can trade all levels</li>
 								<li><strong>Track Performance</strong> - Monitor which conviction levels work best for your trading style and market conditions</li>
 								<li><strong>Not Guarantees</strong> - Higher conviction = higher probability, but no signal is perfect. Always use stop-losses.</li>
@@ -2068,7 +2044,7 @@
 						
 						<div class="philosophy-box">
 							<h4>Signal Generation Philosophy</h4>
-							<p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 15px;">Trading systems employ a <strong>multi-indicator confluence approach</strong> where signals require:</p>
+							<p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 15px;">Our trading systems employ a <strong>multi-indicator confluence approach</strong> where signals require:</p>
 							<ol>
 								<li><strong>Multiple confirmations</strong> across different indicator categories</li>
 								<li><strong>Timeframe alignment</strong> (daily, weekly, monthly)</li>
@@ -2178,24 +2154,6 @@
 				if (price === null || price === undefined) return 'N/A';
 				return '$' + parseFloat(price).toFixed(4);
 			}
-
-			// Helper: pick the first available numeric price field from a signal
-			function getSignalPrice(signal) {
-				if (!signal) return null;
-				const candidates = [
-					signal.price,
-					signal.avg_price,
-					signal.last_price,
-					signal.entry_price,
-					signal.limit_price,
-					signal.close
-				];
-				for (const c of candidates) {
-					const num = parseFloat(c);
-					if (!Number.isNaN(num)) return num;
-				}
-				return null;
-			}
 			
 			function formatQuantity(quantity, symbol) {
 				if (quantity === null || quantity === undefined) return 'N/A';
@@ -2258,37 +2216,37 @@
 				if (sym === 'XLC') return '📡';
 				
 				// Gold / Precious Metals (GLD, GDX)
-				if (sym === 'GLD' || sym === 'GDX') return ' 🏅 ';
+				if (sym === 'GLD' || sym === 'GDX') return '🪙 🧈 🏅 💎 ⛏️';
 				
 				// Silver
-				if (sym === 'SLV') return '🥈 ';
+				if (sym === 'SLV') return '🥈 🪙 ⚒️';
 				
 				// Commodities (DBC, PDBC)
 				if (sym === 'DBC' || sym === 'PDBC') return '🌾 🛢️ 🪨 ⚒️';
 				
 				// Bonds / Fixed Income (TLT, BND)
-				if (sym === 'TLT' || sym === 'BND') return '🏦  💵';
+				if (sym === 'TLT' || sym === 'BND') return '📜 🏦 🧾 💵';
 				
 				// Treasuries
-				if (sym === 'TLT' || sym.includes('TREASURY')) return '🏛️ 💵';
+				if (sym === 'TLT' || sym.includes('TREASURY')) return '🏛️ 📜 💵';
 				
 				// Dividend / Income ETFs
-				if (sym.includes('DIV') || sym.includes('INCOME')) return '🏦 💵';
+				if (sym.includes('DIV') || sym.includes('INCOME')) return '💰 🪙 🏦 📈';
 				
 				// Growth ETFs
 				if (sym.includes('GROWTH')) return '🚀 📈 🌱';
 				
 				// Value ETFs
-				if (sym.includes('VALUE')) return '💎';
+				if (sym.includes('VALUE')) return '💎 📊 🧮';
 				
 				// Broad Market (SPY, VTI)
-				if (sym === 'SPY' || sym === 'VTI') return '🌍';
+				if (sym === 'SPY' || sym === 'VTI') return '📈 🌍 🏛️';
 				
 				// Small Cap (IWM)
-				if (sym === 'IWM') return '🐣';
+				if (sym === 'IWM') return '🐣 🏪 📈';
 				
 				// Mid Cap
-				if (sym.includes('MID')) return '🏢';
+				if (sym.includes('MID')) return '🏢 📊';
 				
 				// International / Global
 				if (sym === 'EEM' || sym === 'MCHI' || sym === 'INDA' || sym === 'EWJ' || sym === 'EWG' || sym === 'EWT') return '🌍';
@@ -2313,50 +2271,30 @@
 				if (sym === 'NVDA') return '💻 🖥️ 📱 🤖 ⚙️';
 				
 				// Platinum (PPLT)
-				if (sym === 'PPLT') return '🪙 ⛏️ 🧈';
+				if (sym === 'PPLT') return '🪙 🧈 🏅 💎 ⛏️';
 				
 				// Palladium (PALL)
-				if (sym === 'PALL') return '🪙 ⛏️ 🧈';
+				if (sym === 'PALL') return '🪙 🧈 🏅 💎 ⛏️';
 				
 				// Oil (USO)
-				if (sym === 'USO') return '🛢️ ⛽';
+				if (sym === 'USO') return '🛢️ ⛽ 🔥 ⚡ 🌍';
 				
 				// Credit (PCEF, HYG)
-				if (sym === 'PCEF' || sym === 'HYG') return '🏦 🧾 💵';
+				if (sym === 'PCEF' || sym === 'HYG') return '📜 🏦 🧾 💵';
 				
 				return '';
 			}
 			
 			// Function to identify if a signal is a stock/ETF (not crypto)
 			function isStockSignal(signal) {
-				const raw = (signal.symbol || '').trim();
-				if (!raw) return false;
-				const sym = raw.toUpperCase();
-				const normalized = sym.replace(/[-_]/g, '/'); // allow XLK-USD → XLK/USD
-
-				// Treat obvious crypto pairs (crypto quote leg) as NOT stocks
-				if (normalized.includes('/') && /\/(USD|USDT|USDC|BTC|ETH)$/i.test(normalized)) {
+				const symbol = (signal.symbol || '').toUpperCase();
+				// Crypto symbols typically have "/USD" or "/USDT" etc.
+				if (symbol.includes('/')) {
 					return false;
 				}
-
-				// Plain tickers (e.g., SPY, XLK, NVDA, GLD, SLV, PPLT)
-				if (/^[A-Z]{1,6}$/.test(sym)) return true;
-
-				// Ticker with fiat suffix separated by slash (XLK/USD, NVDA/USD)
-				const parts = normalized.split('/');
-				if (
-					parts.length === 2 &&
-					/^[A-Z]+$/.test(parts[0]) &&
-					parts[0].length <= 6 &&
-					['USD', 'USDT', 'USDC'].includes(parts[1])
-				) {
-					return true;
-				}
-
-				// Dot-style tickers (e.g., BRK.B, XLK.US)
-				if (/^[A-Z]{1,5}\.[A-Z]{1,3}$/.test(sym)) return true;
-
-				return false;
+				// Common stock/ETF patterns (letters only, typically 2-5 characters)
+				// This will catch SPY, XLK, NVDA, GLD, etc.
+				return /^[A-Z]{1,5}$/.test(symbol);
 			}
 			
 			function switchToCrypto() {
@@ -2469,14 +2407,13 @@
 				signals.forEach(signal => {
 					const symbol = signal.symbol || '';
 					const timestamp = new Date(signal.timestamp || signal.received_at).getTime();
-					const price = getSignalPrice(signal);
 					
 					// Check if we already have a signal for this asset
 					if (!assetMap.has(symbol) || timestamp > assetMap.get(symbol).timestamp) {
 						assetMap.set(symbol, {
 							symbol: symbol,
 							action: signal.action || 'unknown',
-							price: price,
+							price: signal.price,
 							timestamp: timestamp,
 							note: signal.note || '',
 							source: signal.source || ''
@@ -3005,7 +2942,7 @@
 					.catch(error => {
 						console.error('Error loading signals:', error);
 						document.getElementById('signals-grid').innerHTML = 
-							'<div class="empty-state"><h3>⏳ Waiting for signals...</h3><p>Servers are restarting. Signals are stale. Please check back in a few minutes.</p></div>';
+							'<div class="empty-state"><h3>⏳ Waiting for signals...</h3><p>Our servers are restarting. Signals are stale. Please check back in a few minutes.</p></div>';
 						document.getElementById('status-indicator').className = 'status-indicator inactive';
 						document.getElementById('status-text').textContent = 'Servers Restarting';
 						showServerRestartBanner();
