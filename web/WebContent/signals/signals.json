@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "BONK/USD",
+    "quantity": 10917030.53244999,
+    "price": 8.89e-06,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-15T15:06:06.503642Z",
+    "received_at": "2025-12-15T15:06:06.503657Z",
+    "id": "2025-12-15T15:06:06.503657Z-BONK/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "AAVE/USD",
     "quantity": 0.643,
     "price": 188.85,
