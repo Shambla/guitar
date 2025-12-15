@@ -2453,5 +2453,22 @@
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0
+  },
+  {
+    "action": "info",
+    "symbol": "SLV",
+    "price": 56.09999847412109,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Below thresholds | buy 18/16 | sell 15/13",
+    "timestamp": "2025-12-15T10:17:58.053338Z",
+    "received_at": "2025-12-15T10:17:58.053338Z",
+    "id": "2025-12-15T10:17:58.053338Z-SLV-info",
+    "threshold_met": false,
+    "buy_score": 18,
+    "sell_score": 15,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0
   }
 ]
