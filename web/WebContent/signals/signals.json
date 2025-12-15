@@ -2623,5 +2623,22 @@
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0
+  },
+  {
+    "action": "info",
+    "symbol": "EWG",
+    "price": 42.18000030517578,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Below thresholds | buy 18/16 | sell 11/13",
+    "timestamp": "2025-12-15T10:36:01.253460Z",
+    "received_at": "2025-12-15T10:36:01.253460Z",
+    "id": "2025-12-15T10:36:01.253460Z-EWG-info",
+    "threshold_met": false,
+    "buy_score": 18,
+    "sell_score": 11,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0
   }
 ]
