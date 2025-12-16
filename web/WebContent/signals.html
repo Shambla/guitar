@@ -2676,7 +2676,7 @@
 				// Render Top 3 BUY
 				const buyContainer = document.getElementById('top-buy-signals');
 				if (topBuy.length === 0) {
-					buyContainer.innerHTML = '<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">No BUY signals today<br><small style="font-style: italic;">No data on weekends, stock market closed.</small></div>';
+					buyContainer.innerHTML = '<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">No BUY signals today<br><small style="font-style: italic;">No data on weekends, stock market closed, or no valid signals.</small></div>';
 				} else {
 					buyContainer.innerHTML = topBuy.map((signal, idx) => {
 						const metThreshold = signal.buyScore >= BUY_THRESHOLD;
@@ -2707,7 +2707,7 @@
 				// Render Top 3 SELL
 				const sellContainer = document.getElementById('top-sell-signals');
 				if (topSell.length === 0) {
-					sellContainer.innerHTML = '<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">No SELL signals today<br><small style="font-style: italic;">No data on weekends, stock market closed.</small></div>';
+					sellContainer.innerHTML = '<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">No SELL signals today<br><small style="font-style: italic;">No data on weekends, stock market closed, or no valid signals.</small></div>';
 				} else {
 					sellContainer.innerHTML = topSell.map((signal, idx) => {
 						const metThreshold = signal.sellScore >= SELL_THRESHOLD;
