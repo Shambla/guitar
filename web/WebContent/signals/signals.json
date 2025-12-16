@@ -2688,5 +2688,22 @@
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0
+  },
+  {
+    "action": "info",
+    "symbol": "EWT",
+    "price": 64.11,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Below thresholds | buy 14/16 | sell 13/13",
+    "timestamp": "2025-12-16T10:43:59.635431Z",
+    "received_at": "2025-12-16T10:43:59.635431Z",
+    "id": "2025-12-16T10:43:59.635431Z-EWT-info",
+    "threshold_met": false,
+    "buy_score": 14,
+    "sell_score": 13,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0
   }
 ]
