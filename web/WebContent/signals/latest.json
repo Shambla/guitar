@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "ETH/USD",
-  "quantity": 0.03379737,
-  "price": 2952.89238,
+  "symbol": "BONK/USD",
+  "quantity": 11560693.641618498,
+  "price": 8.64e-06,
   "source": "MASTER_BOT_162",
-  "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-  "timestamp": "2025-12-16T12:10:56.395015Z",
-  "received_at": "2025-12-16T12:10:56.395039Z",
-  "id": "2025-12-16T12:10:56.395039Z-ETH/USD-buy"
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2025-12-16T13:00:16.616533Z",
+  "received_at": "2025-12-16T13:00:16.616551Z",
+  "id": "2025-12-16T13:00:16.616551Z-BONK/USD-buy"
 }
