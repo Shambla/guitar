@@ -2603,5 +2603,22 @@
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0
+  },
+  {
+    "action": "info",
+    "symbol": "HYG",
+    "price": 80.61,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Below thresholds | buy 14/16 | sell 11/13",
+    "timestamp": "2025-12-16T10:31:09.362993Z",
+    "received_at": "2025-12-16T10:31:09.362993Z",
+    "id": "2025-12-16T10:31:09.362993Z-HYG-info",
+    "threshold_met": false,
+    "buy_score": 14,
+    "sell_score": 11,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0
   }
 ]
