@@ -2620,5 +2620,22 @@
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0
+  },
+  {
+    "action": "info",
+    "symbol": "MCHI",
+    "price": 60.87,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Below thresholds | buy 12/16 | sell 15/13",
+    "timestamp": "2025-12-16T10:33:39.618078Z",
+    "received_at": "2025-12-16T10:33:39.618078Z",
+    "id": "2025-12-16T10:33:39.618078Z-MCHI-info",
+    "threshold_met": false,
+    "buy_score": 12,
+    "sell_score": 15,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0
   }
 ]
