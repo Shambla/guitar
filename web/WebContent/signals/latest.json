@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "SOL/USD",
-  "quantity": 1e-08,
-  "price": 127.35,
+  "symbol": "ETH/USD",
+  "quantity": 0.10224341,
+  "price": 2953.36,
   "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2025-12-16T18:00:14.859676Z",
-  "received_at": "2025-12-16T18:00:14.859695Z",
-  "id": "2025-12-16T18:00:14.859695Z-SOL/USD-sell"
+  "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+  "timestamp": "2025-12-16T18:56:32.081359Z",
+  "received_at": "2025-12-16T18:56:32.081409Z",
+  "id": "2025-12-16T18:56:32.081409Z-ETH/USD-sell"
 }
