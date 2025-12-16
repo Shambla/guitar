@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "CRV/USD",
-  "quantity": 271.7391304347826,
-  "price": 0.3676,
+  "action": "sell",
+  "symbol": "SOL/USD",
+  "quantity": 1e-08,
+  "price": 127.35,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2025-12-16T17:00:17.660729Z",
-  "received_at": "2025-12-16T17:00:17.660746Z",
-  "id": "2025-12-16T17:00:17.660746Z-CRV/USD-buy"
+  "timestamp": "2025-12-16T18:00:14.859676Z",
+  "received_at": "2025-12-16T18:00:14.859695Z",
+  "id": "2025-12-16T18:00:14.859695Z-SOL/USD-sell"
 }
