@@ -2637,5 +2637,22 @@
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0
+  },
+  {
+    "action": "info",
+    "symbol": "INDA",
+    "price": 53.1,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Below thresholds | buy 15/16 | sell 12/13",
+    "timestamp": "2025-12-16T10:36:11.719986Z",
+    "received_at": "2025-12-16T10:36:11.719986Z",
+    "id": "2025-12-16T10:36:11.719986Z-INDA-info",
+    "threshold_met": false,
+    "buy_score": 15,
+    "sell_score": 12,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0
   }
 ]
