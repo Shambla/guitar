@@ -1372,68 +1372,6 @@
 				</a>
 			</div>
 			
-			<!-- Bitcoin Dominance Indicator -->
-			<div id="bitcoin-dominance-section" style="margin: 30px 0; padding: 25px; background: rgba(247, 147, 26, 0.1); border: 2px solid rgba(247, 147, 26, 0.5); border-radius: 12px;">
-				<div style="text-align: center; margin-bottom: 15px;">
-					<h3 style="color: #f7931a; font-size: 24px; margin-bottom: 10px;">₿ Bitcoin Dominance</h3>
-					<div style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin-bottom: 15px;">
-						Bitcoin's market capitalization as a percentage of total cryptocurrency market cap
-					</div>
-				</div>
-				
-				<!-- TradingView Bitcoin Dominance Widget -->
-				<div class="tradingview-widget-container" style="height: 500px; width: 100%; margin-bottom: 20px;">
-					<div class="tradingview-widget-container__widget" style="height: 100%; width: 100%;"></div>
-					<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-					{
-						"autosize": true,
-						"symbol": "CRYPTOCAP:BTC.D",
-						"interval": "D",
-						"timezone": "Etc/UTC",
-						"theme": "dark",
-						"style": "1",
-						"locale": "en",
-						"backgroundColor": "rgba(0, 0, 0, 0.3)",
-						"gridColor": "rgba(255, 255, 255, 0.1)",
-						"hide_top_toolbar": false,
-						"hide_legend": false,
-						"save_image": false,
-						"support_host": "https://www.tradingview.com"
-					}
-					</script>
-				</div>
-				
-				<!-- Bitcoin Dominance Warning -->
-				<div id="btc-dominance-warning" style="display: none; background: rgba(244, 67, 54, 0.2); border: 2px solid #f44336; padding: 20px; border-radius: 8px; margin-top: 15px;">
-					<div style="color: #f44336; font-weight: bold; font-size: 18px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
-						<span>🚨 RISING BITCOIN DOMINANCE WARNING</span>
-					</div>
-					<div style="color: rgba(255, 255, 255, 0.95); font-size: 16px; line-height: 1.6;">
-						Bitcoin dominance is <strong>trending upwards</strong>, which typically indicates that capital is flowing from altcoins back into Bitcoin.
-					</div>
-					<div style="color: rgba(255, 255, 255, 0.9); font-size: 15px; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.2);">
-						⚠️ <strong>Exercise extreme caution when taking altcoin long positions</strong> during rising Bitcoin dominance. Consider:
-						<ul style="margin: 10px 0 0 20px; padding-left: 10px;">
-							<li>Avoiding or reducing altcoin long positions when dominance is rising</li>
-							<li>Waiting for Bitcoin dominance to stabilize or decline before entering altcoin longs</li>
-							<li>Using tighter stop-losses on any existing altcoin positions</li>
-							<li>Focusing on Bitcoin or stablecoins during dominance uptrends</li>
-							<li>Remember: When Bitcoin dominance rises, altcoins typically underperform or decline</li>
-						</ul>
-					</div>
-				</div>
-				
-				<!-- Bitcoin Dominance Info (when not rising) -->
-				<div id="btc-dominance-info" style="display: none; background: rgba(76, 175, 80, 0.15); border: 2px solid rgba(76, 175, 80, 0.5); padding: 15px; border-radius: 8px; margin-top: 15px;">
-					<div style="color: #4caf50; font-weight: bold; font-size: 16px; margin-bottom: 8px;">
-						✅ Bitcoin Dominance Status
-					</div>
-					<div style="color: rgba(255, 255, 255, 0.9); font-size: 14px; line-height: 1.6;">
-						Bitcoin dominance appears stable or declining. This environment is generally more favorable for altcoin trading, but always use proper risk management.
-					</div>
-				</div>
-			</div>
-			
 			<div id="live-signals"></div>
 			
 			<!-- Crypto Signals (Recent - Last 1 Day) -->
@@ -1469,21 +1407,8 @@
 					</div>
 				</div>
 				
-			<!-- Market Breadth Indicator -->
-			<div id="market-breadth-section" style="margin: 30px 0; padding: 25px; background: rgba(156, 39, 176, 0.1); border: 2px solid rgba(156, 39, 176, 0.5); border-radius: 12px;">
-				<div style="text-align: center; margin-bottom: 15px;">
-					<h3 style="color: #9c27b0; font-size: 24px; margin-bottom: 10px;">📊 Market Breadth Indicator</h3>
-					<div style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin-bottom: 15px;">
-						Percentage of scanned assets showing BUY vs SELL signals based on multi-indicator analysis
-					</div>
-				</div>
-				<div id="market-breadth-content" style="min-height: 80px;">
-					<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">Loading market breadth...</div>
-				</div>
-			</div>
-			
-			<!-- Top 3 Signals Section with Thresholds -->
-			<div id="top-signals-section" style="margin: 30px 0; padding: 25px; background: rgba(33, 150, 243, 0.1); border: 2px solid rgba(33, 150, 243, 0.5); border-radius: 12px;">
+				<!-- Top 3 Signals Section with Thresholds -->
+				<div id="top-signals-section" style="margin: 30px 0; padding: 25px; background: rgba(33, 150, 243, 0.1); border: 2px solid rgba(33, 150, 243, 0.5); border-radius: 12px;">
 					<div style="text-align: center; margin-bottom: 20px;">
 						<h3 style="color: var(--primary-color); font-size: 24px; margin-bottom: 15px;">🏆 Top 3 Stock Signals (Best of the Day)</h3>
 						<div style="background: rgba(0, 0, 0, 0.3); padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #ffc107;">
@@ -1670,28 +1595,6 @@
 								<li><strong>Risk management matters most</strong> - Use stop-losses and position sizing</li>
 								<li><strong>The trend is your friend</strong> - Signals work best when aligned with higher timeframe trends</li>
 								<li><strong>Patience wins</strong> - Let high-probability setups come to you rather than forcing trades</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<!-- Stock vs Crypto Strategy Advice -->
-			<div class="indicators-section" style="margin-top: 40px; background: rgba(156, 39, 176, 0.1); border: 2px solid rgba(156, 39, 176, 0.5);">
-				<div class="indicators-header">
-					<h2>📈 Stock Strategy vs Crypto Strategy</h2>
-				</div>
-				
-				<div class="indicators-content">
-					<div class="indicator-category" style="background: rgba(156, 39, 176, 0.05);">
-						<div style="background: rgba(156, 39, 176, 0.1); border-left: 4px solid #9c27b0; padding: 20px; margin-bottom: 20px; border-radius: 4px;">
-							<p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 15px; line-height: 1.6;">
-								<strong>The stock strategy is different code than crypto. The stock strategy emphasizes trend while the crypto strategy is much more of a mean reversion strategy.</strong>
-							</p>
-							<ul style="color: rgba(255, 255, 255, 0.85); line-height: 1.8;">
-								<li><strong>Buy into strength for stocks</strong> - Stocks mostly trend forever. When you see a strong uptrend signal, the momentum is likely to continue. Follow the trend and add to positions as they move in your favor.</li>
-								<li><strong>Buy into weakness for crypto</strong> - Crypto is much more of a roller coaster ride. Mean reversion strategies work better here. When crypto drops significantly, that's often the best time to buy, as it tends to bounce back.</li>
-								<li><strong>Different mindsets</strong> - Stocks reward trend-following patience. Crypto rewards contrarian thinking and buying the dip.</li>
 							</ul>
 						</div>
 					</div>
@@ -2216,58 +2119,6 @@
 			</div>
 		</div>
 		
-		<!-- Other Tips & Tricks Section -->
-		<div class="indicators-section" style="margin: 60px 0 40px 0; background: rgba(33, 150, 243, 0.1); border: 2px solid rgba(33, 150, 243, 0.5);">
-			<div class="indicators-header">
-				<h2>💡 Other Tips & Tricks</h2>
-			</div>
-			
-			<div class="indicators-content">
-				<div class="indicator-category" style="background: rgba(33, 150, 243, 0.05);">
-					
-					<!-- Tip 1: Liquidity Providing -->
-					<div style="background: rgba(76, 175, 80, 0.1); border-left: 4px solid #4caf50; padding: 20px; margin-bottom: 20px; border-radius: 4px;">
-						<h3 style="color: #4caf50; margin-top: 0; font-size: 20px; margin-bottom: 12px;">1. 💰 Liquidity Providing - Own the Casino</h3>
-						<p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 12px; line-height: 1.7;">
-							Liquidity providing can be very lucrative. This is when you use a self-custodial account to be your own market maker. Two coins are needed, and one of them could be USD stable coin.
-						</p>
-						<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 12px; line-height: 1.7;">
-							A beginner setup would be <strong>$100 of WETH and $100 of USDC</strong>. Every time people trade, it collects fees, leading to APY from <strong>8% to 1200%+</strong>. Essentially, <strong>don't be a gambler, own the casino instead</strong>.
-						</p>
-						<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 0; line-height: 1.7;">
-							<strong>The downside?</strong> You may end up entirely in the under performing crypto, but if you keep an eye on it, you could always just readjust that. I recommend <strong>MetaMask and Uniswap</strong> as the way to do this for a beginner, as that is where this concept originated from. Same concept applies to most other blockchains though.
-						</p>
-					</div>
-					
-					<!-- Tip 2: Hardware Wallets & Security -->
-					<div style="background: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107; padding: 20px; margin-bottom: 20px; border-radius: 4px;">
-						<h3 style="color: #ffc107; margin-top: 0; font-size: 20px; margin-bottom: 12px;">2. 🔒 Hardware Wallets & Security</h3>
-						<p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 12px; line-height: 1.7;">
-							If you have a large portfolio, consider getting a <strong>hardware wallet</strong>, with <strong>Trezor being the most trusted company</strong>.
-						</p>
-						<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 12px; line-height: 1.7;">
-							Also consider getting a <strong>fireproof safe</strong> and keeping your passwords inside of it. Or buy a <strong>specialized steel cylinder from Trezor</strong> that is designed to punch your passwords into steel.
-						</p>
-						<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 0; line-height: 1.7;">
-							<strong>Remember:</strong> There is no help desk in crypto, so if you lose your passwords, there is nothing that can be done. <strong>You are the bank</strong>.
-						</p>
-					</div>
-					
-					<!-- Tip 3: Bitcoin Dominance -->
-					<div style="background: rgba(156, 39, 176, 0.1); border-left: 4px solid #9c27b0; padding: 20px; margin-bottom: 0; border-radius: 4px;">
-						<h3 style="color: #9c27b0; margin-top: 0; font-size: 20px; margin-bottom: 12px;">3. 📊 Bitcoin Dominance</h3>
-						<p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 12px; line-height: 1.7;">
-							<strong>Bitcoin dominance</strong> is a chart you can look up on the internet. The higher it goes, the more people go to BTC instead of taking on lots of risk in altcoins.
-						</p>
-						<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 0; line-height: 1.7;">
-							Perhaps this needs be incorporated more into the trading bot strategy to better understand market cycles and risk appetite.
-						</p>
-					</div>
-					
-				</div>
-			</div>
-		</div>
-		
 		<script>
 			let refreshInterval;
 			
@@ -2732,213 +2583,11 @@
 				`;
 			}
 			
-			function renderMarketBreadth(signals) {
-				// Extract stock signals only
-				const stockSignals = signals.filter(s => isStockSignal(s));
-				
-				if (stockSignals.length === 0) {
-					document.getElementById('market-breadth-content').innerHTML = 
-						'<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">No stock signals available for market breadth analysis</div>';
-					return;
-				}
-				
-				// Constants for thresholds (same as Top 3)
-				const BUY_THRESHOLD = 16;  // ≥16/38 (≈42%)
-				const SELL_THRESHOLD = 13; // ≥13/37 (≈35%)
-				
-				// Calculate market breadth
-				let totalSymbols = 0;
-				let buyCount = 0;
-				let sellCount = 0;
-				let mixedCount = 0;
-				let neutralCount = 0;
-				
-				stockSignals.forEach(signal => {
-					// Extract scores
-					let buyScore = 0, sellScore = 0;
-					
-					if (signal.buy_score !== undefined) {
-						buyScore = signal.buy_score;
-					}
-					if (signal.sell_score !== undefined) {
-						sellScore = signal.sell_score;
-					}
-					
-					// Try parsing from note if available
-					const note = signal.note || '';
-					const buyMatch = note.match(/buy\s+(\d+)\/(\d+)/i);
-					const sellMatch = note.match(/sell\s+(\d+)\/(\d+)/i);
-					
-					if (buyMatch) {
-						buyScore = parseInt(buyMatch[1]);
-					}
-					if (sellMatch) {
-						sellScore = parseInt(sellMatch[1]);
-					}
-					
-					// Determine if signal meets thresholds
-					const hasBuySignal = buyScore >= BUY_THRESHOLD;
-					const hasSellSignal = sellScore >= SELL_THRESHOLD;
-					
-					totalSymbols++;
-					
-					if (hasBuySignal && hasSellSignal) {
-						mixedCount++;
-					} else if (hasBuySignal) {
-						buyCount++;
-					} else if (hasSellSignal) {
-						sellCount++;
-					} else {
-						neutralCount++;
-					}
-				});
-				
-				// Calculate percentages
-				const buyPct = totalSymbols > 0 ? (buyCount / totalSymbols) : 0;
-				const sellPct = totalSymbols > 0 ? (sellCount / totalSymbols) : 0;
-				const mixedPct = totalSymbols > 0 ? (mixedCount / totalSymbols) : 0;
-				const neutralPct = totalSymbols > 0 ? (neutralCount / totalSymbols) : 0;
-				
-				// Determine if bearish warning is needed (>50% bearish)
-				const isBearish = sellPct > 0.50;
-				
-				// Render market breadth
-				const breadthContainer = document.getElementById('market-breadth-content');
-				let warningHtml = '';
-				
-				if (isBearish) {
-					warningHtml = `
-						<div style="background: rgba(244, 67, 54, 0.2); border: 2px solid #f44336; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
-							<div style="color: #f44336; font-weight: bold; font-size: 18px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
-								<span>🚨 BEARISH MARKET WARNING</span>
-							</div>
-							<div style="color: rgba(255, 255, 255, 0.95); font-size: 16px; line-height: 1.6;">
-								<strong>${(sellPct * 100).toFixed(0)}% of scanned assets</strong> (${sellCount}/${totalSymbols}) are showing SELL signals. 
-								Market breadth indicates <strong>bearish conditions</strong>.
-							</div>
-							<div style="color: rgba(255, 255, 255, 0.9); font-size: 15px; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.2);">
-								⚠️ <strong>Exercise caution when taking long positions</strong> - even if individual assets show BUY signals, 
-								the overall market environment is bearish. Consider:
-								<ul style="margin: 10px 0 0 20px; padding-left: 10px;">
-									<li>Reducing position sizes on long trades</li>
-									<li>Waiting for market breadth to improve before entering new longs</li>
-									<li>Using tighter stop-losses to protect capital</li>
-									<li>Focusing on defensive assets or cash positions</li>
-								</ul>
-							</div>
-						</div>
-					`;
-				}
-				
-				breadthContainer.innerHTML = `
-					${warningHtml}
-					<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: ${isBearish ? '0' : '15px'};">
-						<div style="background: rgba(76, 175, 80, 0.15); border: 2px solid rgba(76, 175, 80, 0.5); border-radius: 8px; padding: 15px; text-align: center;">
-							<div style="color: #4caf50; font-size: 32px; font-weight: bold; margin-bottom: 5px;">${(buyPct * 100).toFixed(0)}%</div>
-							<div style="color: rgba(255, 255, 255, 0.9); font-size: 14px; margin-bottom: 5px;">🟢 BUY Signals</div>
-							<div style="color: rgba(255, 255, 255, 0.7); font-size: 12px;">${buyCount} of ${totalSymbols} assets</div>
-						</div>
-						<div style="background: rgba(244, 67, 54, 0.15); border: 2px solid rgba(244, 67, 54, 0.5); border-radius: 8px; padding: 15px; text-align: center;">
-							<div style="color: #f44336; font-size: 32px; font-weight: bold; margin-bottom: 5px;">${(sellPct * 100).toFixed(0)}%</div>
-							<div style="color: rgba(255, 255, 255, 0.9); font-size: 14px; margin-bottom: 5px;">🔴 SELL Signals</div>
-							<div style="color: rgba(255, 255, 255, 0.7); font-size: 12px;">${sellCount} of ${totalSymbols} assets</div>
-						</div>
-						<div style="background: rgba(255, 193, 7, 0.15); border: 2px solid rgba(255, 193, 7, 0.5); border-radius: 8px; padding: 15px; text-align: center;">
-							<div style="color: #ffc107; font-size: 32px; font-weight: bold; margin-bottom: 5px;">${(mixedPct * 100).toFixed(0)}%</div>
-							<div style="color: rgba(255, 255, 255, 0.9); font-size: 14px; margin-bottom: 5px;">🟡 MIXED Signals</div>
-							<div style="color: rgba(255, 255, 255, 0.7); font-size: 12px;">${mixedCount} of ${totalSymbols} assets</div>
-						</div>
-						<div style="background: rgba(158, 158, 158, 0.15); border: 2px solid rgba(158, 158, 158, 0.5); border-radius: 8px; padding: 15px; text-align: center;">
-							<div style="color: #9e9e9e; font-size: 32px; font-weight: bold; margin-bottom: 5px;">${(neutralPct * 100).toFixed(0)}%</div>
-							<div style="color: rgba(255, 255, 255, 0.9); font-size: 14px; margin-bottom: 5px;">⚪ NEUTRAL</div>
-							<div style="color: rgba(255, 255, 255, 0.7); font-size: 12px;">${neutralCount} of ${totalSymbols} assets</div>
-						</div>
-					</div>
-				`;
-			}
-			
-			// Bitcoin Dominance tracking
-			async function fetchBitcoinDominance() {
-				try {
-					const response = await fetch('https://api.coingecko.com/api/v3/global');
-					const data = await response.json();
-					const btcDominance = data.data.market_cap_percentage.btc;
-					return btcDominance;
-				} catch (error) {
-					console.error('Error fetching Bitcoin dominance:', error);
-					return null;
-				}
-			}
-			
-			async function updateBitcoinDominanceWarning() {
-				try {
-					const currentDominance = await fetchBitcoinDominance();
-					if (currentDominance === null) {
-						return;
-					}
-					
-					// Get stored previous dominance values
-					const storedData = localStorage.getItem('btc_dominance_history');
-					let dominanceHistory = storedData ? JSON.parse(storedData) : [];
-					
-					// Add current value with timestamp
-					const now = Date.now();
-					dominanceHistory.push({
-						value: currentDominance,
-						timestamp: now
-					});
-					
-					// Keep only last 7 days of data (cleanup old entries)
-					const sevenDaysAgo = now - (7 * 24 * 60 * 60 * 1000);
-					dominanceHistory = dominanceHistory.filter(entry => entry.timestamp > sevenDaysAgo);
-					
-					// Save updated history
-					localStorage.setItem('btc_dominance_history', JSON.stringify(dominanceHistory));
-					
-					// Determine if dominance is rising
-					// Compare current to average of last 3 days vs previous 3 days
-					if (dominanceHistory.length >= 6) {
-						const sorted = dominanceHistory.sort((a, b) => a.timestamp - b.timestamp);
-						const recent = sorted.slice(-3); // Last 3 entries
-						const previous = sorted.slice(-6, -3); // Previous 3 entries
-						
-						const recentAvg = recent.reduce((sum, e) => sum + e.value, 0) / recent.length;
-						const previousAvg = previous.reduce((sum, e) => sum + e.value, 0) / previous.length;
-						
-						// If current is higher than recent average, and recent average is higher than previous, it's rising
-						const isRising = currentDominance > recentAvg && recentAvg > previousAvg;
-						
-						// Show/hide warnings
-						const warningDiv = document.getElementById('btc-dominance-warning');
-						const infoDiv = document.getElementById('btc-dominance-info');
-						
-						if (isRising) {
-							if (warningDiv) warningDiv.style.display = 'block';
-							if (infoDiv) infoDiv.style.display = 'none';
-						} else {
-							if (warningDiv) warningDiv.style.display = 'none';
-							if (infoDiv) infoDiv.style.display = 'block';
-						}
-					} else {
-						// Not enough data yet, show info by default
-						const warningDiv = document.getElementById('btc-dominance-warning');
-						const infoDiv = document.getElementById('btc-dominance-info');
-						if (warningDiv) warningDiv.style.display = 'none';
-						if (infoDiv) infoDiv.style.display = 'block';
-					}
-				} catch (error) {
-					console.error('Error updating Bitcoin dominance warning:', error);
-				}
-			}
-			
 			function renderTop3Signals(signals) {
 				// Extract stock signals only
 				const stockSignals = signals.filter(s => isStockSignal(s));
 				
 				console.log('🔍 renderTop3Signals - Total signals:', signals.length, 'Stock signals:', stockSignals.length);
-				
-				// Render market breadth first
-				renderMarketBreadth(signals);
 				
 				if (stockSignals.length === 0) {
 					document.getElementById('top-buy-signals').innerHTML = '<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">No stock signals available</div>';
@@ -3716,11 +3365,6 @@
 			
 			// Initialize asset signal status (will show subscribe buttons if no access)
 			updateAssetSignalStatus([]);
-			
-			// Initialize Bitcoin dominance tracking
-			updateBitcoinDominanceWarning();
-			// Update Bitcoin dominance every 5 minutes (less frequent than signals)
-			setInterval(updateBitcoinDominanceWarning, 5 * 60 * 1000);
 			});
 			
 			// Add scroll detection for mobile nav shrinking
@@ -4130,11 +3774,6 @@
 				updateWatchlistDisplay();
 			});
 		</script>
-		
-		<!-- Footer with Copyright -->
-		<footer style="text-align: center; padding: 20px; color: rgba(255, 255, 255, 0.7); font-size: 14px; margin-top: 40px; border-top: 1px solid rgba(255, 193, 7, 0.3);">
-			<p style="margin: 0;">© 2024 All Rights Reserved</p>
-		</footer>
 	</body>
 </html>
 
