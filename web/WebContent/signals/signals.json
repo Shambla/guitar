@@ -2331,5 +2331,24 @@
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0
+  },
+  {
+    "action": "info",
+    "symbol": "XLC",
+    "price": 115.79,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Below thresholds | buy 15/16 | sell 10/13",
+    "timestamp": "2025-12-17T21:58:10.221211Z",
+    "received_at": "2025-12-17T21:58:10.221211Z",
+    "id": "2025-12-17T21:58:10.221211Z-XLC-info",
+    "threshold_met": false,
+    "buy_score": 15,
+    "sell_score": 10,
+    "total_buy_components": 38,
+    "total_sell_components": 37,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0
   }
 ]
