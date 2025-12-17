@@ -1192,6 +1192,14 @@
 
 			/* --- Hard overrides to ensure signals are visible --- */
 			.signals-container,
+			#bitcoin-dominance-section {
+				display: block !important;
+				visibility: visible !important;
+				opacity: 1 !important;
+				pointer-events: auto !important;
+				z-index: 1;
+			}
+			
 			#crypto-signals-container,
 			#stock-signals-container,
 			#signals-grid,
@@ -1373,10 +1381,10 @@
 			</div>
 			
 			<!-- Bitcoin Dominance Indicator -->
-			<div id="bitcoin-dominance-section" style="margin: 30px 0; padding: 25px; background: rgba(247, 147, 26, 0.1); border: 2px solid rgba(247, 147, 26, 0.5); border-radius: 12px;">
+			<div id="bitcoin-dominance-section" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 30px 0; padding: 25px; background: rgba(247, 147, 26, 0.1); border: 2px solid rgba(247, 147, 26, 0.5); border-radius: 12px; position: relative; z-index: 1;">
 				<div style="text-align: center; margin-bottom: 15px;">
-					<h3 style="color: #f7931a; font-size: 24px; margin-bottom: 10px;">₿ Bitcoin Dominance</h3>
-					<div style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin-bottom: 15px;">
+					<h3 style="color: #f7931a !important; font-size: 24px; margin-bottom: 10px; opacity: 1 !important; visibility: visible !important;">₿ Bitcoin Dominance</h3>
+					<div style="color: rgba(255, 255, 255, 0.9) !important; font-size: 14px; margin-bottom: 15px; opacity: 1 !important; visibility: visible !important;">
 						Bitcoin's market capitalization as a percentage of total cryptocurrency market cap
 					</div>
 				</div>
