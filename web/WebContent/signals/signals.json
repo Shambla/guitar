@@ -1,6 +1,50 @@
 [
   {
     "action": "buy",
+    "symbol": "BONK/USD",
+    "quantity": 11223344.556677891,
+    "price": 8.9e-06,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-17T15:00:23.163435Z",
+    "received_at": "2025-12-17T15:00:23.163462Z",
+    "id": "2025-12-17T15:00:23.163462Z-BONK/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "BONK/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-17T15:00:21.113163Z",
+    "received_at": "2025-12-17T15:00:21.113177Z",
+    "id": "2025-12-17T15:00:21.113177Z-BONK/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "AAVE/USD",
+    "quantity": 0.526592943654555,
+    "price": 189.71,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-17T15:00:21.031275Z",
+    "received_at": "2025-12-17T15:00:21.031302Z",
+    "id": "2025-12-17T15:00:21.031302Z-AAVE/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "AAVE/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-17T15:00:18.867074Z",
+    "received_at": "2025-12-17T15:00:18.867114Z",
+    "id": "2025-12-17T15:00:18.867114Z-AAVE/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "ETH/USD",
     "quantity": 0.03414122,
     "price": 2923.15198,
@@ -2154,49 +2198,5 @@
     "timestamp": "2025-12-10T19:00:16.329268Z",
     "received_at": "2025-12-10T19:00:16.329284Z",
     "id": "2025-12-10T19:00:16.329284Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "SUI/USD",
-    "quantity": 61.37605106487449,
-    "price": 1.6277,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-10T18:00:15.995686Z",
-    "received_at": "2025-12-10T18:00:15.995702Z",
-    "id": "2025-12-10T18:00:15.995702Z-SUI/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "SUI/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-10T18:00:13.714854Z",
-    "received_at": "2025-12-10T18:00:13.714870Z",
-    "id": "2025-12-10T18:00:13.714870Z-SUI/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "RENDER/USD",
-    "quantity": 60.31363088057901,
-    "price": 1.656,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-10T17:01:42.489162Z",
-    "received_at": "2025-12-10T17:01:42.489181Z",
-    "id": "2025-12-10T17:01:42.489181Z-RENDER/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "RENDER/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-10T17:01:40.196182Z",
-    "received_at": "2025-12-10T17:01:40.196196Z",
-    "id": "2025-12-10T17:01:40.196196Z-RENDER/USD-buy"
   }
 ]
