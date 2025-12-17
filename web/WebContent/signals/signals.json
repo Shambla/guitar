@@ -2407,5 +2407,24 @@
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0
+  },
+  {
+    "action": "info",
+    "symbol": "SOXX",
+    "price": 296.2,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Below thresholds | buy 9/16 | sell 8/13",
+    "timestamp": "2025-12-17T10:05:05.075042Z",
+    "received_at": "2025-12-17T10:05:05.075042Z",
+    "id": "2025-12-17T10:05:05.075042Z-SOXX-info",
+    "threshold_met": false,
+    "buy_score": 9,
+    "sell_score": 8,
+    "total_buy_components": 38,
+    "total_sell_components": 37,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0
   }
 ]
