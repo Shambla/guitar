@@ -3566,5 +3566,24 @@
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0
+  },
+  {
+    "action": "info",
+    "symbol": "USO",
+    "price": 67.98,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Above thresholds | buy 14/16 | sell 16/13",
+    "timestamp": "2025-12-18T10:41:20.771020Z",
+    "received_at": "2025-12-18T10:41:20.771020Z",
+    "id": "2025-12-18T10:41:20.771020Z-USO-info",
+    "threshold_met": true,
+    "buy_score": 14,
+    "sell_score": 16,
+    "total_buy_components": 38,
+    "total_sell_components": 37,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0
   }
 ]
