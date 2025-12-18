@@ -1393,8 +1393,8 @@
 				<a href="#backtest" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(76, 175, 80, 0.8) !important; border: 2px solid #4caf50; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(76, 175, 80, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(76, 175, 80, 0.8)'; this.style.transform='translateY(0)'">
 					📈 Backtesting
 				</a>
-				<a href="#trading-advice" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(255, 152, 0, 0.8) !important; border: 2px solid #ffa726; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255, 152, 0, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255, 152, 0, 0.8)'; this.style.transform='translateY(0)'">
-					💡 Trading Advice
+				<a href="#trading-education" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(255, 152, 0, 0.8) !important; border: 2px solid #ffa726; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255, 152, 0, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255, 152, 0, 0.8)'; this.style.transform='translateY(0)'">
+					💡 Trading Education
 				</a>
 				<a href="#code-explanation" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(156, 39, 176, 0.8) !important; border: 2px solid #ab47bc; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(156, 39, 176, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(156, 39, 176, 0.8)'; this.style.transform='translateY(0)'">
 					🔧 Code Explanation
@@ -1403,10 +1403,15 @@
 			
 			<!-- Bitcoin Dominance Indicator -->
 			<div id="bitcoin-dominance-section" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 30px auto !important; padding: 25px !important; background: rgba(247, 147, 26, 0.3) !important; border: 3px solid #f7931a !important; border-radius: 12px; position: relative !important; z-index: 200 !important; min-height: 600px !important; width: calc(100% - 40px) !important; max-width: 1400px !important; box-shadow: 0 4px 20px rgba(247, 147, 26, 0.4) !important;">
-				<div style="text-align: center; margin-bottom: 15px;">
-					<h3 style="color: #f7931a !important; font-size: 24px; margin-bottom: 10px; opacity: 1 !important; visibility: visible !important;">₿ Bitcoin Dominance</h3>
-					<div style="color: rgba(255, 255, 255, 0.9) !important; font-size: 14px; margin-bottom: 15px; opacity: 1 !important; visibility: visible !important;">
-						Bitcoin's market capitalization as a percentage of total cryptocurrency market cap
+				<div style="display: flex; align-items: center; gap: 20px; margin-bottom: 15px; flex-wrap: wrap;">
+					<div style="flex: 1; min-width: 200px;">
+						<h3 style="color: #f7931a !important; font-size: 24px; margin-bottom: 10px; opacity: 1 !important; visibility: visible !important;">₿ Bitcoin Dominance</h3>
+						<div style="color: rgba(255, 255, 255, 0.9) !important; font-size: 14px; opacity: 1 !important; visibility: visible !important;">
+							Bitcoin's market capitalization as a percentage of total cryptocurrency market cap
+						</div>
+					</div>
+					<div style="flex-shrink: 0;">
+						<img src="img/Bitcoin Dominance image.png" alt="Bitcoin Dominance" style="max-width: 200px; max-height: 500px; width: auto; height: auto; border-radius: 8px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);">
 					</div>
 				</div>
 				
@@ -1417,7 +1422,7 @@
 					{
 						"autosize": true,
 						"symbol": "CRYPTOCAP:BTC.D",
-						"interval": "D",
+						"interval": "60",
 						"timezone": "Etc/UTC",
 						"theme": "dark",
 						"style": "1",
@@ -1427,7 +1432,21 @@
 						"hide_top_toolbar": false,
 						"hide_legend": false,
 						"save_image": false,
-						"support_host": "https://www.tradingview.com"
+						"support_host": "https://www.tradingview.com",
+						"studies": [
+							{
+								"id": "MASimple@tv-basicstudies",
+								"inputs": {
+									"length": 21,
+									"source": "close"
+								},
+								"overrides": {
+									"plot_0.style": 1,
+									"plot_0.color": "#ff9800",
+									"plot_0.plottype": 2
+								}
+							}
+						]
 					}
 					</script>
 				</div>
@@ -1452,13 +1471,14 @@
 					</div>
 				</div>
 				
-				<!-- Bitcoin Dominance Info (when not rising) -->
+				<!-- Bitcoin Dominance Info (dynamically updated based on trend) -->
 				<div id="btc-dominance-info" style="display: none; background: rgba(76, 175, 80, 0.15); border: 2px solid rgba(76, 175, 80, 0.5); padding: 15px; border-radius: 8px; margin-top: 15px;">
-					<div style="color: #4caf50; font-weight: bold; font-size: 16px; margin-bottom: 8px;">
-						✅ Bitcoin Dominance Status
+					<!-- Content will be dynamically updated by JavaScript -->
+					<div style="color: #9e9e9e; font-weight: bold; font-size: 16px; margin-bottom: 8px;">
+						⏳ Collecting Data
 					</div>
 					<div style="color: rgba(255, 255, 255, 0.9); font-size: 14px; line-height: 1.6;">
-						Bitcoin dominance appears stable or declining. This environment is generally more favorable for altcoin trading, but always use proper risk management.
+						Collecting Bitcoin dominance data to determine trend. Check back in a few minutes.
 					</div>
 				</div>
 			</div>
@@ -1636,7 +1656,7 @@
 			</div>
 			
 			<!-- Signal Timing & Repainting Explanation -->
-			<div id="trading-advice"></div>
+			<div id="trading-education"></div> <!-- Manual edit to trading education. double check my work to make sure I didn't break anything.-->
 			<div class="indicators-section" style="margin-top: 0px !important; background: rgba(76, 175, 80, 0.1); border: 2px solid #4caf50;">
 				<div class="indicators-header">
 					<h2>💡 How to Use These Signals</h2>
@@ -2924,8 +2944,11 @@
 					// Save updated history
 					localStorage.setItem('btc_dominance_history', JSON.stringify(dominanceHistory));
 					
-					// Determine if dominance is rising
-					// Compare current to average of last 3 days vs previous 3 days
+					// Get DOM elements
+					const warningDiv = document.getElementById('btc-dominance-warning');
+					const infoDiv = document.getElementById('btc-dominance-info');
+					
+					// Determine trend: rising, falling, or stable
 					if (dominanceHistory.length >= 6) {
 						const sorted = dominanceHistory.sort((a, b) => a.timestamp - b.timestamp);
 						const recent = sorted.slice(-3); // Last 3 entries
@@ -2933,27 +2956,57 @@
 						
 						const recentAvg = recent.reduce((sum, e) => sum + e.value, 0) / recent.length;
 						const previousAvg = previous.reduce((sum, e) => sum + e.value, 0) / previous.length;
+						const change = recentAvg - previousAvg;
+						const changePercent = (change / previousAvg) * 100;
 						
-						// If current is higher than recent average, and recent average is higher than previous, it's rising
-						const isRising = currentDominance > recentAvg && recentAvg > previousAvg;
-						
-						// Show/hide warnings
-						const warningDiv = document.getElementById('btc-dominance-warning');
-						const infoDiv = document.getElementById('btc-dominance-info');
-						
-						if (isRising) {
+						// Determine trend: rising if change > 0.5%, falling if change < -0.5%, otherwise stable
+						if (changePercent > 0.5) {
+							// RISING - Show warning
 							if (warningDiv) warningDiv.style.display = 'block';
 							if (infoDiv) infoDiv.style.display = 'none';
-						} else {
+						} else if (changePercent < -0.5) {
+							// FALLING - Show safe to proceed message
 							if (warningDiv) warningDiv.style.display = 'none';
-							if (infoDiv) infoDiv.style.display = 'block';
+							if (infoDiv) {
+								infoDiv.style.display = 'block';
+								infoDiv.innerHTML = `
+									<div style="color: #4caf50; font-weight: bold; font-size: 16px; margin-bottom: 8px;">
+										✅ SAFE TO PROCEED - Bitcoin Dominance Declining
+									</div>
+									<div style="color: rgba(255, 255, 255, 0.9); font-size: 14px; line-height: 1.6;">
+										Bitcoin dominance is <strong>trending downwards</strong> (${changePercent.toFixed(2)}% change), which typically indicates capital is flowing from Bitcoin into altcoins. This environment is generally <strong>more favorable for altcoin long positions</strong>.
+									</div>
+								`;
+							}
+						} else {
+							// STABLE - Show neutral message
+							if (warningDiv) warningDiv.style.display = 'none';
+							if (infoDiv) {
+								infoDiv.style.display = 'block';
+								infoDiv.innerHTML = `
+									<div style="color: #ffc107; font-weight: bold; font-size: 16px; margin-bottom: 8px;">
+										⚖️ Bitcoin Dominance Stable
+									</div>
+									<div style="color: rgba(255, 255, 255, 0.9); font-size: 14px; line-height: 1.6;">
+										Bitcoin dominance appears relatively stable (${changePercent.toFixed(2)}% change). This is a neutral environment for altcoin trading. Always use proper risk management regardless of dominance trends.
+									</div>
+								`;
+							}
 						}
 					} else {
-						// Not enough data yet, show info by default
-						const warningDiv = document.getElementById('btc-dominance-warning');
-						const infoDiv = document.getElementById('btc-dominance-info');
+						// Not enough data yet, show neutral message by default
 						if (warningDiv) warningDiv.style.display = 'none';
-						if (infoDiv) infoDiv.style.display = 'block';
+						if (infoDiv) {
+							infoDiv.style.display = 'block';
+							infoDiv.innerHTML = `
+								<div style="color: #9e9e9e; font-weight: bold; font-size: 16px; margin-bottom: 8px;">
+									⏳ Collecting Data
+								</div>
+								<div style="color: rgba(255, 255, 255, 0.9); font-size: 14px; line-height: 1.6;">
+									Collecting Bitcoin dominance data to determine trend. Check back in a few minutes.
+								</div>
+							`;
+						}
 					}
 				} catch (error) {
 					console.error('Error updating Bitcoin dominance warning:', error);
