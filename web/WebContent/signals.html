@@ -1191,13 +1191,34 @@
 			}
 
 			/* --- Hard overrides to ensure signals are visible --- */
-			.signals-container,
+			.signals-container {
+				display: block !important;
+				visibility: visible !important;
+				opacity: 1 !important;
+			}
+			
 			#bitcoin-dominance-section {
 				display: block !important;
 				visibility: visible !important;
 				opacity: 1 !important;
 				pointer-events: auto !important;
-				z-index: 1;
+				z-index: 200 !important;
+				position: relative !important;
+				background: rgba(247, 147, 26, 0.3) !important;
+				border: 3px solid rgba(247, 147, 26, 1) !important;
+				min-height: 600px !important;
+				margin: 30px 0 !important;
+				padding: 25px !important;
+			}
+			
+			#bitcoin-dominance-section * {
+				opacity: 1 !important;
+				visibility: visible !important;
+			}
+			
+			#bitcoin-dominance-section h3,
+			#bitcoin-dominance-section div {
+				color: rgba(255, 255, 255, 1) !important;
 			}
 			
 			#crypto-signals-container,
@@ -1381,7 +1402,7 @@
 			</div>
 			
 			<!-- Bitcoin Dominance Indicator -->
-			<div id="bitcoin-dominance-section" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 30px 0; padding: 25px; background: rgba(247, 147, 26, 0.1); border: 2px solid rgba(247, 147, 26, 0.5); border-radius: 12px; position: relative; z-index: 1;">
+			<div id="bitcoin-dominance-section" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 30px auto !important; padding: 25px !important; background: rgba(247, 147, 26, 0.3) !important; border: 3px solid #f7931a !important; border-radius: 12px; position: relative !important; z-index: 200 !important; min-height: 600px !important; width: calc(100% - 40px) !important; max-width: 1400px !important; box-shadow: 0 4px 20px rgba(247, 147, 26, 0.4) !important;">
 				<div style="text-align: center; margin-bottom: 15px;">
 					<h3 style="color: #f7931a !important; font-size: 24px; margin-bottom: 10px; opacity: 1 !important; visibility: visible !important;">₿ Bitcoin Dominance</h3>
 					<div style="color: rgba(255, 255, 255, 0.9) !important; font-size: 14px; margin-bottom: 15px; opacity: 1 !important; visibility: visible !important;">
