@@ -3120,6 +3120,21 @@
 						const symbolEmojis = getSymbolEmojis(signal.symbol);
 						const symbolDisplay = symbolEmojis ? `${symbolEmojis} ${signal.symbol}` : signal.symbol;
 						
+						// Format timestamp
+						let timestampDisplay = '';
+						if (signal.timestamp) {
+							try {
+								const signalTime = new Date(signal.timestamp);
+								const timeAgo = formatTimeAgo(signalTime);
+								const fullTimestamp = formatTimestamp(signal.timestamp);
+								timestampDisplay = `<div style="color: rgba(255, 255, 255, 0.6); font-size: 12px; margin-top: 6px;">
+									🕐 ${timeAgo} <span style="color: rgba(255, 255, 255, 0.5);">(${fullTimestamp})</span>
+								</div>`;
+							} catch (e) {
+								// If timestamp parsing fails, skip it
+							}
+						}
+						
 						return `
 							<div style="background: rgba(0, 0, 0, 0.3); padding: 15px; margin-bottom: 12px; border-radius: 6px; border-left: 3px solid #4caf50;">
 								<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
@@ -3132,6 +3147,7 @@
 								<div style="color: rgba(255, 255, 255, 0.7); font-size: 13px;">
 									SELL: ${signal.sellScore}/${signal.totalSell} | Sector: ${signal.sector}
 								</div>
+								${timestampDisplay}
 							</div>
 						`;
 					}).join('');
@@ -3151,6 +3167,21 @@
 						const symbolEmojis = getSymbolEmojis(signal.symbol);
 						const symbolDisplay = symbolEmojis ? `${symbolEmojis} ${signal.symbol}` : signal.symbol;
 						
+						// Format timestamp
+						let timestampDisplay = '';
+						if (signal.timestamp) {
+							try {
+								const signalTime = new Date(signal.timestamp);
+								const timeAgo = formatTimeAgo(signalTime);
+								const fullTimestamp = formatTimestamp(signal.timestamp);
+								timestampDisplay = `<div style="color: rgba(255, 255, 255, 0.6); font-size: 12px; margin-top: 6px;">
+									🕐 ${timeAgo} <span style="color: rgba(255, 255, 255, 0.5);">(${fullTimestamp})</span>
+								</div>`;
+							} catch (e) {
+								// If timestamp parsing fails, skip it
+							}
+						}
+						
 						return `
 							<div style="background: rgba(0, 0, 0, 0.3); padding: 15px; margin-bottom: 12px; border-radius: 6px; border-left: 3px solid #f44336;">
 								<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
@@ -3163,6 +3194,7 @@
 								<div style="color: rgba(255, 255, 255, 0.7); font-size: 13px;">
 									BUY: ${signal.buyScore}/${signal.totalBuy} | Sector: ${signal.sector}
 								</div>
+								${timestampDisplay}
 							</div>
 						`;
 					}).join('');
