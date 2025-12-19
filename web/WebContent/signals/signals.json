@@ -4098,5 +4098,24 @@
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0
+  },
+  {
+    "action": "info",
+    "symbol": "PPLT",
+    "price": 172.33,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Above thresholds | buy 16/16 | sell 12/13",
+    "timestamp": "2025-12-19T00:13:02.339914Z",
+    "received_at": "2025-12-19T00:13:02.339914Z",
+    "id": "2025-12-19T00:13:02.339914Z-PPLT-info",
+    "threshold_met": true,
+    "buy_score": 16,
+    "sell_score": 12,
+    "total_buy_components": 38,
+    "total_sell_components": 37,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0
   }
 ]
