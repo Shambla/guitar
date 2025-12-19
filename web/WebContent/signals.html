@@ -1415,6 +1415,28 @@
 					</div>
 				</div>
 				
+				<!-- Bitcoin Dominance Explanation -->
+				<div style="background: rgba(247, 147, 26, 0.15); border-left: 4px solid #f7931a; padding: 20px; margin-bottom: 20px; border-radius: 8px;">
+					<h4 style="color: #f7931a; font-size: 18px; margin-top: 0; margin-bottom: 15px; font-weight: bold;">📊 Understanding Bitcoin Dominance</h4>
+					<ul style="color: rgba(255, 255, 255, 0.9); font-size: 15px; line-height: 1.8; margin: 0; padding-left: 25px;">
+						<li style="margin-bottom: 10px;">
+							<strong>What it measures:</strong> Bitcoin dominance shows how much of the total cryptocurrency market cap belongs to Bitcoin. When it's high (e.g., 60%+), Bitcoin controls most of the market.
+						</li>
+						<li style="margin-bottom: 10px;">
+							<strong>Rising dominance (above 21 EMA):</strong> Capital is flowing from altcoins into Bitcoin. This is typically <strong style="color: #f44336;">bearish for altcoins</strong> - they tend to underperform or decline. The bot <strong>blocks buy signals</strong> during rising dominance to protect you from poor entry timing.
+						</li>
+						<li style="margin-bottom: 10px;">
+							<strong>Falling dominance (below 21 EMA):</strong> Capital is flowing from Bitcoin into altcoins. This is typically <strong style="color: #4caf50;">bullish for altcoins</strong> - they tend to outperform. The bot <strong>allows buy signals</strong> during falling dominance when conditions are favorable.
+						</li>
+						<li style="margin-bottom: 10px;">
+							<strong>Why it matters:</strong> Bitcoin dominance reflects market risk appetite. When investors are risk-averse, they flock to Bitcoin (the "safe haven" of crypto). When they're risk-on, they chase altcoin gains.
+						</li>
+						<li style="margin-bottom: 0;">
+							<strong>How the bot uses it:</strong> The bot calculates a 21-day EMA of Bitcoin dominance and compares it to the current value. This filter helps avoid buying altcoins when Bitcoin is likely to outperform, improving your entry timing.
+						</li>
+					</ul>
+				</div>
+				
 				<!-- TradingView Bitcoin Dominance Widget -->
 				<div class="tradingview-widget-container" style="height: 500px; width: 100%; margin-bottom: 20px;">
 					<div class="tradingview-widget-container__widget" style="height: 100%; width: 100%;"></div>
@@ -2065,6 +2087,7 @@
 						<h4>Macro Regime Filters - Huge Edge, many bots can day trade, but can they take the big picture macro enviroment into consideration?</h4>
 						<ul>
 							<li><strong>Hidden Markov Model (AI System)</strong> - 9-state Gaussian AI machine learning model, Features: Log Returns, Volatility, RSI, MFI, Regime labels: Extreme Bearish → Extreme Bullish, Regime persistence tracking, Transition probability analysis. Essentially, you feed AI years of .csv data, open, high, low, close, returns and indicators and it answers these questions: How long to bear/bull regimes last? What are typical returns? What is the probability of changing or persisting in the current regime. Obviously this is an edge because a human can't meaningfully analyze hundreds of thousands of data points in a giant .csv file. Many indicators say AI because it is a buzzword that sells well, which is true, but their code doesn't actually use AI. This is <span class="sparkle-ml">ACTUALLY MACHINE LEARNING!</span></li>
+							<li><strong>Bitcoin Dominance Filter</strong> - 21-day EMA of Bitcoin's market cap percentage, Current dominance vs EMA comparison, Blocks buy signals when dominance is above 21 EMA (rising - bearish for altcoins), Allows buy signals when dominance is below 21 EMA (falling - bullish for altcoins), Historical data loaded from CSV for accurate EMA calculation, Daily API updates to track current dominance. This filter helps avoid buying altcoins when Bitcoin is likely to outperform, improving entry timing by aligning with market risk appetite cycles.</li>
 							<li><strong>Regime Filter (BTC Halving)</strong> - Weekly timeframe EMA(20), Market price vs EMA + 0.25 ATR, RSI momentum filter (70 threshold, optional), Bullish/bearish/caution counters</li>
 							<li><strong>Bearish Counter (Extended Downturn Detection)</strong> - Unique timing indicator that counts consecutive bearish bars to identify prolonged market downturns:
 								<ul>
@@ -2299,17 +2322,6 @@
 						</p>
 						<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 0; line-height: 1.7;">
 							<strong>Remember:</strong> There is no help desk in crypto, so if you lose your passwords, there is nothing that can be done. <strong>You are the bank</strong>.
-						</p>
-					</div>
-					
-					<!-- Tip 3: Bitcoin Dominance -->
-					<div style="background: rgba(156, 39, 176, 0.1); border-left: 4px solid #9c27b0; padding: 20px; margin-bottom: 0; border-radius: 4px;">
-						<h3 style="color: #9c27b0; margin-top: 0; font-size: 20px; margin-bottom: 12px;">3. 📊 Bitcoin Dominance</h3>
-						<p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 12px; line-height: 1.7;">
-							<strong>Bitcoin dominance</strong> is a chart you can look up on the internet. The higher it goes, the more people go to BTC instead of taking on lots of risk in altcoins.
-						</p>
-						<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 0; line-height: 1.7;">
-							Perhaps this needs be incorporated more into the trading bot strategy to better understand market cycles and risk appetite.
 						</p>
 					</div>
 					
