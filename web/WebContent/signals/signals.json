@@ -1,6 +1,28 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.03356628,
+    "price": 2973.2216399999998,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2025-12-20T17:24:55.153841Z",
+    "received_at": "2025-12-20T17:24:55.153857Z",
+    "id": "2025-12-20T17:24:55.153857Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "AAVE/USD",
+    "quantity": 0.5500852632157984,
+    "price": 181.61,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-20T17:00:24.417350Z",
+    "received_at": "2025-12-20T17:00:24.417374Z",
+    "id": "2025-12-20T17:00:24.417374Z-AAVE/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "SOL/USD",
     "quantity": 0.7919537499010058,
     "price": 126.14,
@@ -2176,27 +2198,5 @@
     "timestamp": "2025-12-14T04:00:53.223295Z",
     "received_at": "2025-12-14T04:00:53.223309Z",
     "id": "2025-12-14T04:00:53.223309Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-14T04:00:51.232510Z",
-    "received_at": "2025-12-14T04:00:51.232526Z",
-    "id": "2025-12-14T04:00:51.232526Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "BONK/USD",
-    "quantity": 10787486.515641855,
-    "price": 9.26e-06,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-14T04:00:50.484557Z",
-    "received_at": "2025-12-14T04:00:50.484579Z",
-    "id": "2025-12-14T04:00:50.484579Z-BONK/USD-buy"
   }
 ]
