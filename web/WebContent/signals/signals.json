@@ -1,5 +1,27 @@
 [
   {
+    "action": "buy",
+    "symbol": "AAVE/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-20T17:00:07.032189Z",
+    "received_at": "2025-12-20T17:00:07.032210Z",
+    "id": "2025-12-20T17:00:07.032210Z-AAVE/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "SOL/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-20T17:00:03.060475Z",
+    "received_at": "2025-12-20T17:00:03.061477Z",
+    "id": "2025-12-20T17:00:03.061477Z-SOL/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
@@ -2176,27 +2198,5 @@
     "timestamp": "2025-12-14T04:00:48.227547Z",
     "received_at": "2025-12-14T04:00:48.227632Z",
     "id": "2025-12-14T04:00:48.227632Z-BONK/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 3121.21,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2025-12-14T02:09:34.899507Z",
-    "received_at": "2025-12-14T02:09:34.899576Z",
-    "id": "2025-12-14T02:09:34.899576Z-ETH/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.03203895,
-    "price": 3114.9575999999997,
-    "source": "MASTER_BOT_162",
-    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-    "timestamp": "2025-12-14T02:02:28.720120Z",
-    "received_at": "2025-12-14T02:02:28.720156Z",
-    "id": "2025-12-14T02:02:28.720156Z-ETH/USD-buy"
   }
 ]
