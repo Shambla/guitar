@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.04022135,
+    "price": 2984.24,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed, position sized by JSON count)",
+    "timestamp": "2025-12-20T21:03:23.257196Z",
+    "received_at": "2025-12-20T21:03:23.257847Z",
+    "id": "2025-12-20T21:03:23.257847Z-ETH/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "AERO/USD",
     "quantity": 0.00713397,
@@ -2187,16 +2198,5 @@
     "timestamp": "2025-12-14T06:00:05.407521Z",
     "received_at": "2025-12-14T06:00:05.407713Z",
     "id": "2025-12-14T06:00:05.407713Z-SUI/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 3111.87,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2025-12-14T05:10:26.620333Z",
-    "received_at": "2025-12-14T05:10:26.621561Z",
-    "id": "2025-12-14T05:10:26.621561Z-ETH/USD-sell"
   }
 ]
