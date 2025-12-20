@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "SOL/USD",
+    "quantity": 0.7917029530520149,
+    "price": 126.18,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-20T06:00:23.661540Z",
+    "received_at": "2025-12-20T06:00:23.662555Z",
+    "id": "2025-12-20T06:00:23.662555Z-SOL/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "SOL/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2187,16 +2198,5 @@
     "timestamp": "2025-12-13T14:59:48.279476Z",
     "received_at": "2025-12-13T14:59:48.279774Z",
     "id": "2025-12-13T14:59:48.279774Z-SUI/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "AAVE/USD",
-    "quantity": 0.503,
-    "price": 198.09,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-13T14:07:16.933107Z",
-    "received_at": "2025-12-13T14:07:16.933446Z",
-    "id": "2025-12-13T14:07:16.933446Z-AAVE/USD-sell"
   }
 ]
