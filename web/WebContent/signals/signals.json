@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "SUI/USD",
+    "quantity": 67.0,
+    "price": 1.4674,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-20T02:09:01.114745Z",
+    "received_at": "2025-12-20T02:09:01.114757Z",
+    "id": "2025-12-20T02:09:01.114757Z-SUI/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "FET/USD",
     "quantity": 437.41390603,
     "price": 0.209,
@@ -2187,16 +2198,5 @@
     "timestamp": "2025-12-13T14:07:16.557248Z",
     "received_at": "2025-12-13T14:07:16.557379Z",
     "id": "2025-12-13T14:07:16.557379Z-FET/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 3110.87,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2025-12-13T14:00:56.290337Z",
-    "received_at": "2025-12-13T14:00:56.290354Z",
-    "id": "2025-12-13T14:00:56.290354Z-ETH/USD-sell"
   }
 ]
