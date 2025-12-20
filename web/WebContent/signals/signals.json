@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "SOL/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-20T23:03:25.300967Z",
+    "received_at": "2025-12-20T23:03:25.301066Z",
+    "id": "2025-12-20T23:03:25.301066Z-SOL/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "RENDER/USD",
     "quantity": 77.45933384972889,
@@ -2187,16 +2198,5 @@
     "timestamp": "2025-12-14T06:00:10.170345Z",
     "received_at": "2025-12-14T06:00:10.172880Z",
     "id": "2025-12-14T06:00:10.172880Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-14T06:00:09.283429Z",
-    "received_at": "2025-12-14T06:00:09.283542Z",
-    "id": "2025-12-14T06:00:09.283542Z-ETH/USD-sell"
   }
 ]
