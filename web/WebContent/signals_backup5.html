@@ -2442,98 +2442,6 @@
 			const priceCache = new Map();
 			const PRICE_CACHE_TTL = 60000; // 1 minute cache
 			
-			// ============================================================================
-			// PnL TRACKING FUNCTIONS (for crypto signals)
-			// ============================================================================
-			
-			/**
-			 * Calculate PnL percentage from entry price and current price
-			 * @param {number} entryPrice - Price when position was opened
-			 * @param {number} currentPrice - Current/sell price
-			 * @returns {number|null} PnL percentage or null if invalid
-			 */
-			function calculatePnL(entryPrice, currentPrice) {
-				if (!entryPrice || !currentPrice || entryPrice <= 0 || currentPrice <= 0) {
-					return null;
-				}
-				return ((currentPrice - entryPrice) / entryPrice) * 100;
-			}
-			
-			/**
-			 * Format PnL percentage with color coding
-			 * @param {number|null} pnl - PnL percentage
-			 * @returns {string} HTML string with formatted PnL
-			 */
-			function formatPnL(pnl) {
-				if (pnl === null || pnl === undefined) {
-					return '<span style="color: rgba(255, 255, 255, 0.5);">N/A</span>';
-				}
-				const sign = pnl >= 0 ? '+' : '';
-				const color = pnl >= 0 ? '#4caf50' : '#f44336';
-				const emoji = pnl >= 0 ? '📈' : '📉';
-				return `<span style="color: ${color}; font-weight: bold;">${emoji} ${sign}${pnl.toFixed(2)}%</span>`;
-			}
-			
-			/**
-			 * Store buy position in localStorage
-			 * @param {string} symbol - Symbol (e.g., "AAVE/USD")
-			 * @param {number} entryPrice - Entry price
-			 * @param {string} timestamp - Timestamp of buy signal
-			 */
-			function storeBuyPosition(symbol, entryPrice, timestamp) {
-				if (!symbol || !entryPrice || entryPrice <= 0) return;
-				
-				const positionKey = `position_${symbol}`;
-				const positionData = {
-					entryPrice: entryPrice,
-					entryTime: timestamp || new Date().toISOString(),
-					symbol: symbol
-				};
-				
-				try {
-					localStorage.setItem(positionKey, JSON.stringify(positionData));
-					console.log(`[PnL] Stored buy position for ${symbol} at $${entryPrice}`);
-				} catch (e) {
-					console.error(`[PnL] Failed to store position for ${symbol}:`, e);
-				}
-			}
-			
-			/**
-			 * Get buy position from localStorage
-			 * @param {string} symbol - Symbol (e.g., "AAVE/USD")
-			 * @returns {Object|null} Position data or null if not found
-			 */
-			function getBuyPosition(symbol) {
-				if (!symbol) return null;
-				
-				const positionKey = `position_${symbol}`;
-				try {
-					const stored = localStorage.getItem(positionKey);
-					if (stored) {
-						return JSON.parse(stored);
-					}
-				} catch (e) {
-					console.error(`[PnL] Failed to retrieve position for ${symbol}:`, e);
-				}
-				return null;
-			}
-			
-			/**
-			 * Clear position from localStorage (when sell signal appears)
-			 * @param {string} symbol - Symbol (e.g., "AAVE/USD")
-			 */
-			function clearPosition(symbol) {
-				if (!symbol) return;
-				
-				const positionKey = `position_${symbol}`;
-				try {
-					localStorage.removeItem(positionKey);
-					console.log(`[PnL] Cleared position for ${symbol}`);
-				} catch (e) {
-					console.error(`[PnL] Failed to clear position for ${symbol}:`, e);
-				}
-			}
-			
 			// Map trading symbols to CoinGecko IDs
 			const coinGeckoSymbolMap = {
 				'ETH/USD': 'ethereum',
@@ -3615,9 +3523,6 @@
 					}
 						// Skip "Raw JSON signal" - internal only, not shown to users
 						
-						// Check if this is a crypto signal (not stock)
-						const isCrypto = !isStockSignal(signal);
-						
 						const symbolEmojis = getSymbolEmojis(signal.symbol);
 						const symbolDisplay = symbolEmojis ? `${symbolEmojis} ${signal.symbol || 'N/A'}` : (signal.symbol || 'N/A');
 						
@@ -3637,33 +3542,6 @@
 								${isWatched ? '⭐' : '☆'}
 							</button>
 						`;
-						
-						// Handle PnL tracking for crypto signals
-						const currentPrice = getSignalPrice(signal);
-						let pnlDisplay = '';
-						
-						if (isCrypto && currentPrice !== null && currentPrice !== undefined && currentPrice > 0) {
-							if (isBuy) {
-								// Store buy position for crypto signals
-								storeBuyPosition(signal.symbol, currentPrice, signal.timestamp || signal.received_at);
-							} else {
-								// Calculate and display PnL for crypto sell signals
-								const position = getBuyPosition(signal.symbol);
-								if (position && position.entryPrice) {
-									const pnl = calculatePnL(position.entryPrice, currentPrice);
-									if (pnl !== null) {
-										pnlDisplay = `
-											<div class="signal-detail-row">
-												<span class="signal-detail-label">PnL:</span>
-												<span class="signal-detail-value">${formatPnL(pnl)}</span>
-											</div>
-										`;
-									}
-									// Clear position after calculating PnL
-									clearPosition(signal.symbol);
-								}
-							}
-						}
 						
 						const cardHtml = `
 							<div class="signal-card ${actionClass}">
@@ -3699,7 +3577,6 @@
 										}
 										return '';
 									})()}
-									${pnlDisplay}
 									${signal.source ? `
 										<div class="signal-detail-row">
 											<span class="signal-detail-label">Source:</span>
