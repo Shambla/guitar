@@ -1310,7 +1310,7 @@
 				<p>Get unlimited access to all trading signals with our premium subscription.</p>
 				
 				<div class="subscription-pricing">
-					<div class="price">$9.99<span style="font-size: 18px; color: rgba(255, 255, 255, 0.7);">/month</span></div>
+					<div class="price">$9.99<span style="font-size: 16px; color: rgba(255, 255, 255, 0.7); display: block; margin-top: 4px; font-weight: normal;">One-Time Payment</span><span style="font-size: 14px; color: rgba(255, 193, 7, 0.9); display: block; margin-top: 4px; font-weight: bold;">⚠️ Limited Time Offer</span></div>
 					<div class="trial">✨ 7-Day Free Trial • No Credit Card Required</div>
 				</div>
 				
@@ -1809,7 +1809,7 @@
 								<li><strong>No wallet connections</strong> - We never ask you to connect your wallet</li>
 								<li><strong>Transparent signals</strong> - All signals are publicly visible with permanent timestamps</li>
 								<li><strong>Institutional-grade code</strong> - Professional trading algorithms working 24/7</li>
-								<li><strong>Simple subscription</strong> - Just $9.99/month for access to all signals through secure https payment with Stripe. (crypto payments coming soon!). I'm not hiding behind an alias Moonboy777, I'm using my legal name. Bloomberg Terminal costs $2,500 a month, Refinitiv $2,200 a month, Motley Fool $2,000 a year, TrendSpider $1,500 a year, TradingView Premium $599 a year, Trading courses are often $3,000+. You'll spend more on coffee this month than this costs. </li>
+								<li><strong>Simple one-time payment</strong> - Just $9.99 one-time payment (limited time offer) for permanent access to all signals through secure https payment with Stripe. (crypto payments coming soon!). I'm not hiding behind an alias Moonboy777, I'm using my legal name. Bloomberg Terminal costs $2,500 a month, Refinitiv $2,200 a month, Motley Fool $2,000 a year, TrendSpider $1,500 a year, TradingView Premium $599 a year, Trading courses are often $3,000+. You'll spend more on coffee this month than this costs. </li>
 							</ul>
 						</div>
 					</div>
@@ -2583,6 +2583,59 @@
 				return null;
 			}
 			
+			/**
+			 * Fetch stock price from Yahoo Finance API (JavaScript equivalent of yfinance)
+			 * @param {string} symbol - Stock symbol (e.g., "SPY", "NVDA", "AAPL")
+			 * @returns {Promise<number|null>} Stock price or null if unavailable
+			 */
+			async function fetchStockPrice(symbol) {
+				if (!symbol) return null;
+				
+				// Check cache first
+				const cacheKey = `stock_${symbol}`;
+				const cached = priceCache.get(cacheKey);
+				if (cached && (Date.now() - cached.timestamp) < PRICE_CACHE_TTL) {
+					return cached.price;
+				}
+				
+				try {
+					// Normalize symbol for Yahoo Finance (remove /USD if present, e.g., "SPY/USD" -> "SPY")
+					const normalizedSymbol = symbol.split('/')[0].toUpperCase();
+					
+					// Yahoo Finance quote endpoint (unofficial but stable)
+					const url = `https://query1.finance.yahoo.com/v8/finance/chart/${normalizedSymbol}?interval=1d&range=1d`;
+					
+					const response = await fetch(url);
+					if (!response.ok) {
+						console.warn(`Yahoo Finance API error for ${symbol}: ${response.status}`);
+						return null;
+					}
+					
+					const data = await response.json();
+					
+					// Extract price from Yahoo Finance response
+					if (data.chart && data.chart.result && data.chart.result.length > 0) {
+						const result = data.chart.result[0];
+						if (result.meta && result.meta.regularMarketPrice) {
+							const price = result.meta.regularMarketPrice;
+							// Cache the result
+							priceCache.set(cacheKey, { price, timestamp: Date.now() });
+							return price;
+						}
+						// Fallback to previous close if regularMarketPrice not available
+						if (result.meta && result.meta.previousClose) {
+							const price = result.meta.previousClose;
+							priceCache.set(cacheKey, { price, timestamp: Date.now() });
+							return price;
+						}
+					}
+				} catch (error) {
+					console.error(`Error fetching stock price for ${symbol} from Yahoo Finance:`, error);
+				}
+				
+				return null;
+			}
+			
 			// Batch update prices with rate limiting to avoid hitting API limits
 			async function updateMissingPrices(signals) {
 				// Find all signals that need price fetching
@@ -2608,7 +2661,16 @@
 					
 					if (priceElement) {
 						try {
-							const price = await fetchPriceFromCoinGecko(signal.symbol);
+							// Try crypto first (CoinGecko), then stocks (Yahoo Finance)
+							const isStock = isStockSignal(signal);
+							let price = null;
+							
+							if (isStock) {
+								price = await fetchStockPrice(signal.symbol);
+							} else {
+								price = await fetchPriceFromCoinGecko(signal.symbol);
+							}
+							
 							if (price !== null && priceElement) {
 								priceElement.textContent = formatPrice(price);
 								priceElement.style.color = ''; // Remove italic/gray styling
@@ -3531,7 +3593,7 @@
 								<h2 style="color: #fff; font-size: 32px; margin-bottom: 20px; font-weight: bold;">⏰ Your Trial Has Expired</h2>
 								<p style="color: #fff; font-size: 20px; margin: 20px 0; font-weight: 500;">Your 7-day free trial has ended.</p>
 								<p style="color: rgba(255, 255, 255, 0.9); font-size: 18px; margin-bottom: 30px;">Subscribe now to get <strong>permanent access</strong> to all stock signals.</p>
-								<a href="${STRIPE_PAYMENT_LINK}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 18px 40px; border-radius: 8px; font-size: 20px; font-weight: bold; cursor: pointer; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 25px rgba(102, 126, 234, 0.7)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.5)';">💳 Subscribe Now - $9.99/month</a>
+								<a href="${STRIPE_PAYMENT_LINK}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 18px 40px; border-radius: 8px; font-size: 20px; font-weight: bold; cursor: pointer; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 25px rgba(102, 126, 234, 0.7)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.5)';">💳 Pay Now - $9.99 One-Time (Limited Time)</a>
 								<p style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin-top: 20px;">After payment, you'll be redirected back and granted permanent access.</p>
 							</div>`
 							: '<div class="empty-state" style="text-align: center; padding: 60px 40px; background: rgba(244, 67, 54, 0.15); border: 3px solid rgba(244, 67, 54, 0.7); border-radius: 12px; margin: 20px 0;"><h2 style="color: #fff; font-size: 32px; margin-bottom: 20px; font-weight: bold;">⏰ Your Trial Has Expired</h2><p style="color: #fff; font-size: 20px; margin: 20px 0; font-weight: 500;">Your 7-day free trial has ended.</p><p style="color: rgba(255, 255, 255, 0.9); font-size: 18px; margin-bottom: 30px;">Please subscribe to continue viewing stock signals.</p></div>';
@@ -3638,16 +3700,19 @@
 							</button>
 						`;
 						
-						// Handle PnL tracking for crypto signals
+						// Handle PnL tracking for crypto and stock signals
 						const currentPrice = getSignalPrice(signal);
 						let pnlDisplay = '';
 						
-						if (isCrypto && currentPrice !== null && currentPrice !== undefined && currentPrice > 0) {
+						// Try to enable PnL for both crypto and stocks
+						// Comment out isCrypto check to enable for stocks too
+						// If stock prices don't work, can easily revert by uncommenting: if (isCrypto && currentPrice !== null ...
+						if (currentPrice !== null && currentPrice !== undefined && currentPrice > 0) {
 							if (isBuy) {
-								// Store buy position for crypto signals
+								// Store buy position (works for both crypto and stocks)
 								storeBuyPosition(signal.symbol, currentPrice, signal.timestamp || signal.received_at);
 							} else {
-								// Calculate and display PnL for crypto sell signals
+								// Calculate and display PnL for sell signals
 								const position = getBuyPosition(signal.symbol);
 								if (position && position.entryPrice) {
 									const pnl = calculatePnL(position.entryPrice, currentPrice);
@@ -3957,8 +4022,16 @@
 			const STORAGE_KEY_SUBSCRIBED = 'is_subscribed';
 			const STORAGE_KEY_EMAIL = 'user_email';
 			
-			// Stripe Payment Link - Configured for Trading Signals PRO $9.99/month with 7-day free trial
+			// Developer whitelist - Change this secret key to something only you know
+			// Two ways to activate: 
+			// 1. Set localStorage: localStorage.setItem('DEV_WHITELIST', 'true')
+			// 2. Add to URL: signals.html?dev=YOUR_SECRET_KEY_HERE
+			const DEV_WHITELIST_SECRET = 'dev_access_2024'; // Change this to your own secret key
+			const DEV_WHITELIST_STORAGE_KEY = 'DEV_WHITELIST';
+			
+			// Stripe Payment Link - Configured for Trading Signals PRO $9.99 one-time payment (limited time offer) with 7-day free trial
 			// Success URL should be set to: https://brianstreckfus.com/signals.html?paid=true
+			// NOTE: To update the Stripe payment page description, go to Stripe Dashboard > Payment Links > Edit and update the product description to say "One-Time Payment - Limited Time Offer"
 			const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/00w00legUbde5wT5UB8og00';
 			
 			// Initialize trial tracking
@@ -3966,8 +4039,20 @@
 				// Initialize non-blocking email capture
 				initEmailCapture();
 				
-				// Check if user is returning from successful payment (Payment Link redirect)
+				// Developer whitelist check - bypasses all subscription/trial checks
+				const devWhitelistLocalStorage = localStorage.getItem(DEV_WHITELIST_STORAGE_KEY) === 'true';
 				const urlParams = new URLSearchParams(window.location.search);
+				const devWhitelistUrlParam = urlParams.get('dev') === DEV_WHITELIST_SECRET;
+				
+				if (devWhitelistLocalStorage || devWhitelistUrlParam) {
+					// Auto-set subscribed status for dev access
+					localStorage.setItem(STORAGE_KEY_SUBSCRIBED, 'true');
+					updateTrialStatus('subscribed');
+					console.log('🔓 Developer whitelist active - full access granted');
+					return true; // Full access
+				}
+				
+				// Check if user is returning from successful payment (Payment Link redirect)
 				if (urlParams.get('paid') === 'true') {
 					// Mark as subscribed and grant permanent access
 					localStorage.setItem(STORAGE_KEY_SUBSCRIBED, 'true');
@@ -4046,6 +4131,20 @@
 			
 			// Check if user has access (trial active or subscribed)
 			function hasAccess() {
+				// Developer whitelist check - bypasses all subscription/trial checks
+				const devWhitelistLocalStorage = localStorage.getItem(DEV_WHITELIST_STORAGE_KEY) === 'true';
+				const urlParams = new URLSearchParams(window.location.search);
+				const devWhitelistUrlParam = urlParams.get('dev') === DEV_WHITELIST_SECRET;
+				
+				if (devWhitelistLocalStorage || devWhitelistUrlParam) {
+					// Auto-set subscribed status for dev access
+					if (!localStorage.getItem(STORAGE_KEY_SUBSCRIBED)) {
+						localStorage.setItem(STORAGE_KEY_SUBSCRIBED, 'true');
+					}
+					return true;
+				}
+				
+				// Normal access check
 				const isSubscribed = localStorage.getItem(STORAGE_KEY_SUBSCRIBED) === 'true';
 				return isSubscribed || (typeof signalsVisible !== 'undefined' && signalsVisible);
 			}
@@ -4071,7 +4170,7 @@
 						<h2 style="color: #fff; font-size: 32px; margin-bottom: 20px; font-weight: bold;">⏰ Your Trial Has Expired</h2>
 						<p style="color: #fff; font-size: 20px; margin: 20px 0; font-weight: 500;">Your 7-day free trial has ended.</p>
 						<p style="color: rgba(255, 255, 255, 0.9); font-size: 18px; margin-bottom: 30px;">Subscribe now to get <strong>permanent access</strong> to all trading signals.</p>
-						<a href="${STRIPE_PAYMENT_LINK}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 18px 40px; border-radius: 8px; font-size: 20px; font-weight: bold; cursor: pointer; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 25px rgba(102, 126, 234, 0.7)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.5)';">💳 Subscribe Now - $9.99/month</a>
+						<a href="${STRIPE_PAYMENT_LINK}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 18px 40px; border-radius: 8px; font-size: 20px; font-weight: bold; cursor: pointer; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 25px rgba(102, 126, 234, 0.7)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.5)';">💳 Pay Now - $9.99 One-Time (Limited Time)</a>
 						<p style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin-top: 20px;">After payment, you'll be redirected back and granted permanent access.</p>
 					</div>`
 					: '<div class="empty-state" style="text-align: center; padding: 60px 40px; background: rgba(244, 67, 54, 0.15); border: 3px solid rgba(244, 67, 54, 0.7); border-radius: 12px; margin: 20px 0;"><h2 style="color: #fff; font-size: 32px; margin-bottom: 20px; font-weight: bold;">⏰ Your Trial Has Expired</h2><p style="color: #fff; font-size: 20px; margin: 20px 0; font-weight: 500;">Your 7-day free trial has ended.</p><p style="color: rgba(255, 255, 255, 0.9); font-size: 18px; margin-bottom: 30px;">Please subscribe to continue viewing all trading signals.</p><p style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin-top: 20px;">⚠️ Payment link not configured. Please contact support.</p></div>';
@@ -4605,7 +4704,7 @@
 							<p style="color: #fff; font-size: 20px; margin-bottom: 15px; font-weight: bold;">🔒 Premium Content</p>
 							<p style="color: rgba(255, 255, 255, 0.9); font-size: 16px; margin-bottom: 25px;">Subscribe to access downloadable trading code and indicators.</p>
 							${paymentLinkConfigured 
-								? `<a href="${STRIPE_PAYMENT_LINK}" target="_blank" onclick="event.stopPropagation();" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 14px 28px; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 25px rgba(102, 126, 234, 0.7)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.5)';">💳 Subscribe Now - $9.99/month</a>`
+								? `<a href="${STRIPE_PAYMENT_LINK}" target="_blank" onclick="event.stopPropagation();" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 14px 28px; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(102, 126, 234, 0.5);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 25px rgba(102, 126, 234, 0.7)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(102, 126, 234, 0.5)';">💳 Pay Now - $9.99 One-Time (Limited Time)</a>`
 								: `<a href="#" onclick="event.preventDefault(); showSubscriptionModal(); return false;" style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 14px 28px; border-radius: 8px; font-size: 18px; font-weight: bold; cursor: pointer; text-decoration: none;">💳 Subscribe Now</a>`
 							}
 						</div>
