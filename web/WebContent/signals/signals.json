@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "ETH/USD",
+    "quantity": 0.04038568,
+    "price": 2970.83,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed, position sized by JSON count)",
+    "timestamp": "2025-12-21T03:45:51.981179Z",
+    "received_at": "2025-12-21T03:45:51.981216Z",
+    "id": "2025-12-21T03:45:51.981216Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
     "quantity": 0.03364103,
     "price": 2961.9175099999998,
     "source": "MASTER_BOT_162",
@@ -2187,16 +2198,5 @@
     "timestamp": "2025-12-14T14:00:23.155564Z",
     "received_at": "2025-12-14T14:00:23.155577Z",
     "id": "2025-12-14T14:00:23.155577Z-SUI/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "BONK/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-14T14:00:10.602051Z",
-    "received_at": "2025-12-14T14:00:10.602080Z",
-    "id": "2025-12-14T14:00:10.602080Z-BONK/USD-buy"
   }
 ]
