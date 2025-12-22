@@ -1,11 +1,11 @@
 {
   "action": "sell",
   "symbol": "SOL/USD",
-  "quantity": 1.58691818,
-  "price": 126.19,
+  "quantity": 0.0,
+  "price": 126.98,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2025-12-22T10:07:05.598433Z",
-  "received_at": "2025-12-22T10:07:05.598450Z",
-  "id": "2025-12-22T10:07:05.598450Z-SOL/USD-sell"
+  "timestamp": "2025-12-22T14:00:13.359091Z",
+  "received_at": "2025-12-22T14:00:13.360267Z",
+  "id": "2025-12-22T14:00:13.360267Z-SOL/USD-sell"
 }
