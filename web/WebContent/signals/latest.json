@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "SOL/USD",
+  "symbol": "SUI/USD",
   "quantity": 0.0,
-  "price": 126.98,
+  "price": 1.4356,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2025-12-22T14:00:13.359091Z",
-  "received_at": "2025-12-22T14:00:13.360267Z",
-  "id": "2025-12-22T14:00:13.360267Z-SOL/USD-sell"
+  "timestamp": "2025-12-22T20:00:14.158149Z",
+  "received_at": "2025-12-22T20:00:14.158169Z",
+  "id": "2025-12-22T20:00:14.158169Z-SUI/USD-sell"
 }
