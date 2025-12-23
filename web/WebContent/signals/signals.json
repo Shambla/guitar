@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.033972,
+    "price": 2937.7128,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2025-12-23T14:34:26.183019Z",
+    "received_at": "2025-12-23T14:34:26.186670Z",
+    "id": "2025-12-23T14:34:26.186670Z-ETH/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
@@ -2077,50 +2088,6 @@
     "timestamp": "2025-12-16T15:46:22.558855Z",
     "received_at": "2025-12-16T15:46:22.558955Z",
     "id": "2025-12-16T15:46:22.558955Z-ETH/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2923.91,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2025-12-16T14:32:15.649310Z",
-    "received_at": "2025-12-16T14:32:15.649326Z",
-    "id": "2025-12-16T14:32:15.649326Z-ETH/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.03411688,
-    "price": 2920.47222,
-    "source": "MASTER_BOT_162",
-    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
-    "timestamp": "2025-12-16T14:27:34.949478Z",
-    "received_at": "2025-12-16T14:27:34.950895Z",
-    "id": "2025-12-16T14:27:34.950895Z-ETH/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "RENDER/USD",
-    "quantity": 136.62,
-    "price": 1.397,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-16T14:07:48.660170Z",
-    "received_at": "2025-12-16T14:07:48.660183Z",
-    "id": "2025-12-16T14:07:48.660183Z-RENDER/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "SUI/USD",
-    "quantity": 124.9,
-    "price": 1.4942,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-16T14:07:16.465142Z",
-    "received_at": "2025-12-16T14:07:16.465157Z",
-    "id": "2025-12-16T14:07:16.465157Z-SUI/USD-sell"
   },
   {
     "action": "info",
