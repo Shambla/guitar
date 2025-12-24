@@ -2591,5 +2591,24 @@
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0
+  },
+  {
+    "action": "info",
+    "symbol": "EEM",
+    "price": 52.6,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Above thresholds | buy 12/16 | sell 13/13",
+    "timestamp": "2025-12-24T22:28:34.182771Z",
+    "received_at": "2025-12-24T22:28:34.182771Z",
+    "id": "2025-12-24T22:28:34.182771Z-EEM-info",
+    "threshold_met": true,
+    "buy_score": 12,
+    "sell_score": 13,
+    "total_buy_components": 38,
+    "total_sell_components": 37,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0
   }
 ]
