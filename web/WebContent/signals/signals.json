@@ -2247,5 +2247,24 @@
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0
+  },
+  {
+    "action": "info",
+    "symbol": "XLU",
+    "price": 42.76,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Above thresholds | buy 12/16 | sell 14/13",
+    "timestamp": "2025-12-24T00:32:18.217791Z",
+    "received_at": "2025-12-24T00:32:18.217791Z",
+    "id": "2025-12-24T00:32:18.217791Z-XLU-info",
+    "threshold_met": true,
+    "buy_score": 12,
+    "sell_score": 14,
+    "total_buy_components": 38,
+    "total_sell_components": 37,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0
   }
 ]
