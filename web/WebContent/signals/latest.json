@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "ETH/USD",
-  "quantity": 0.0,
-  "price": 2941.08,
-  "source": "MASTER_BOT_162",
-  "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-  "timestamp": "2025-12-24T03:51:12.304652Z",
-  "received_at": "2025-12-24T03:51:12.304862Z",
-  "id": "2025-12-24T03:51:12.304862Z-ETH/USD-sell"
+  "symbol": "RENDER/USD",
+  "quantity": 100.0,
+  "price": null,
+  "source": "TradingView JSON",
+  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+  "timestamp": "2025-12-24T04:00:16.252502Z",
+  "received_at": "2025-12-24T04:00:16.252525Z",
+  "id": "2025-12-24T04:00:16.252525Z-RENDER/USD-sell"
 }

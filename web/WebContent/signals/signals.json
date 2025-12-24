@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-24T04:00:16.252502Z",
+    "received_at": "2025-12-24T04:00:16.252525Z",
+    "id": "2025-12-24T04:00:16.252525Z-RENDER/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
     "price": 2941.08,
@@ -2238,25 +2249,6 @@
     "threshold_met": true,
     "buy_score": 12,
     "sell_score": 14,
-    "total_buy_components": 38,
-    "total_sell_components": 37,
-    "buy_threshold": 16,
-    "sell_threshold": 13,
-    "strength_1_10": 0
-  },
-  {
-    "action": "info",
-    "symbol": "XLK",
-    "price": 139.39,
-    "quantity": null,
-    "source": "MAIN_stock_strat12",
-    "note": "Above thresholds | buy 13/16 | sell 15/13",
-    "timestamp": "2025-12-23T23:46:47.979722Z",
-    "received_at": "2025-12-23T23:46:47.979722Z",
-    "id": "2025-12-23T23:46:47.979722Z-XLK-info",
-    "threshold_met": true,
-    "buy_score": 13,
-    "sell_score": 15,
     "total_buy_components": 38,
     "total_sell_components": 37,
     "buy_threshold": 16,
