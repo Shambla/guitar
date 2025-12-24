@@ -70,6 +70,27 @@
 				z-index: 1;
 			}
 			
+			/* Emoji font support - ensure emojis use system emoji fonts */
+			/* Use font-family with emoji fallbacks for proper emoji rendering */
+			body, html {
+				font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif, 
+					'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', 'Android Emoji';
+			}
+			
+			/* Ensure emoji characters specifically use emoji fonts */
+			.asset-name, .symbol-display {
+				font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif, 
+					'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', 'Android Emoji';
+			}
+			
+			/* Unicode range for emoji - ensures emoji characters use emoji fonts */
+			@font-face {
+				font-family: 'EmojiFallback';
+				src: local('Apple Color Emoji'), local('Segoe UI Emoji'), local('Segoe UI Symbol'), 
+					local('Noto Color Emoji'), local('EmojiOne Color'), local('Android Emoji');
+				unicode-range: U+1F300-1F9FF, U+1FA00-1FAFF, U+2600-26FF, U+2700-27BF;
+			}
+			
 			/* Neon glow text effect */
 			@keyframes neonGlow {
 				0%, 100% {
@@ -2788,44 +2809,51 @@
 				if (!symbol) return '';
 				const sym = symbol.toUpperCase();
 				
+				// Helper to wrap emojis in span with emoji font support
+				const wrapEmojis = (emojiString) => {
+					return emojiString.split(' ').map(emoji => 
+						`<span style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', 'Android Emoji', sans-serif; font-style: normal;">${emoji}</span>`
+					).join(' ');
+				};
+				
 				// Technology (XLK, QQQ)
-				if (sym === 'XLK' || sym === 'QQQ') return '💻 🖥️ 📱 🤖 ⚙️';
+				if (sym === 'XLK' || sym === 'QQQ') return wrapEmojis('💻 🖥️ 📱 🤖 ⚙️');
 				
 				// Healthcare (XLV)
-				if (sym === 'XLV') return '🏥 🧬 💊 🩺';
+				if (sym === 'XLV') return wrapEmojis('🏥 🧬 💊 🩺');
 				
 				// Financials (XLF)
-				if (sym === 'XLF') return '🏦 💳 💰 📊 💼';
+				if (sym === 'XLF') return wrapEmojis('🏦 💳 💰 📊 💼');
 				
 				// Consumer Discretionary (XLY)
-				if (sym === 'XLY') return '🛍️ 🚗 🏖️ 🎮 🍔';
+				if (sym === 'XLY') return wrapEmojis('🛍️ 🚗 🏖️ 🎮 🍔');
 				
 				// Consumer Staples (XLP)
-				if (sym === 'XLP') return '🧃 🧻 🛒 🍞 🥫';
+				if (sym === 'XLP') return wrapEmojis('🧃 🧻 🛒 🍞 🥫');
 				
 				// Energy (XLE)
-				if (sym === 'XLE') return '🛢️ ⛽ 🔥 ⚡ 🌍';
+				if (sym === 'XLE') return wrapEmojis('🛢️ ⛽ 🔥 ⚡ 🌍');
 				
 				// Industrials (XLI)
-				if (sym === 'XLI') return '🏭 ⚙️ 🚛 🏗️ 🧱';
+				if (sym === 'XLI') return wrapEmojis('🏭 ⚙️ 🚛 🏗️ 🧱');
 				
 				// Materials (XLB)
-				if (sym === 'XLB') return '🧱 🪨 ⚒️ 🧪 🧯';
+				if (sym === 'XLB') return wrapEmojis('🧱 🪨 ⚒️ 🧪 🧯');
 				
 				// Utilities (XLU)
-				if (sym === 'XLU') return '⚡ 💡 🔌 🚰 🌊';
+				if (sym === 'XLU') return wrapEmojis('⚡ 💡 🔌 🚰 🌊');
 				
 				// Real Estate (XLRE)
-				if (sym === 'XLRE') return '🏠';
+				if (sym === 'XLRE') return wrapEmojis('🏠');
 				
 				// Communication Services (XLC)
-				if (sym === 'XLC') return '📡';
+				if (sym === 'XLC') return wrapEmojis('📡');
 				
 				// Gold / Precious Metals (GLD, GDX)
-				if (sym === 'GLD' || sym === 'GDX') return ' 🏅 ';
+				if (sym === 'GLD' || sym === 'GDX') return wrapEmojis('🏅');
 				
 				// Silver
-				if (sym === 'SLV') return '🥈 ';
+				if (sym === 'SLV') return wrapEmojis('🥈');
 				
 				// Commodities (DBC, PDBC)
 				if (sym === 'DBC' || sym === 'PDBC') return '🌾 🛢️ 🪨 ⚒️';
