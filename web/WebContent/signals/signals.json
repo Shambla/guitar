@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2930.57,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2025-12-24T18:28:27.210996Z",
+    "received_at": "2025-12-24T18:28:27.211009Z",
+    "id": "2025-12-24T18:28:27.211009Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "BONK/USD",
     "quantity": 12836970.53244999,
     "price": 7.79e-06,
@@ -2246,25 +2257,6 @@
     "threshold_met": true,
     "buy_score": 13,
     "sell_score": 15,
-    "total_buy_components": 38,
-    "total_sell_components": 37,
-    "buy_threshold": 16,
-    "sell_threshold": 13,
-    "strength_1_10": 0
-  },
-  {
-    "action": "info",
-    "symbol": "XLY",
-    "price": 120.52,
-    "quantity": null,
-    "source": "MAIN_stock_strat12",
-    "note": "Above thresholds | buy 15/16 | sell 13/13",
-    "timestamp": "2025-12-24T13:12:48.026105Z",
-    "received_at": "2025-12-24T13:12:48.026105Z",
-    "id": "2025-12-24T13:12:48.026105Z-XLY-info",
-    "threshold_met": true,
-    "buy_score": 15,
-    "sell_score": 13,
     "total_buy_components": 38,
     "total_sell_components": 37,
     "buy_threshold": 16,
