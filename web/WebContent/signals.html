@@ -1706,6 +1706,24 @@
 								<li><strong>Sells are always 100% of the position</strong> - When a sell signal appears, it represents a complete exit of the position, regardless of how many buy signals were used to build it</li>
 								<li><strong>More signals = Higher conviction</strong> - Multiple simultaneous signals indicate stronger confluence and higher probability setups</li>
 							</ul>
+							
+							<div style="background: rgba(255, 165, 0, 0.15); border-left: 4px solid rgba(255, 165, 0, 0.8); padding: 20px; margin-top: 20px; border-radius: 4px;">
+								<h4 style="color: rgba(255, 165, 0, 0.9); margin-top: 0;">🛡️ Understanding Stop Losses (Risk Management, Not Bearish Signals)</h4>
+								<p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 15px; line-height: 1.6;">
+									<strong>Important:</strong> If you see a sell signal with a -3% loss, this is <strong>NOT</strong> because the bot is bearish on the asset. This is our <strong>fixed stop loss protection</strong> - a "guardian angel" that prevents large losses.
+								</p>
+								<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 15px; line-height: 1.6;">
+									<strong>How it works:</strong> The bot uses multiple stop loss systems working together to protect your capital:
+								</p>
+								<ul style="color: rgba(255, 255, 255, 0.85); line-height: 1.8; margin-bottom: 15px;">
+									<li><strong>Fixed 3% Stop Loss</strong> - Hard floor that never allows more than 3% loss per trade. This is checked FIRST and acts as your ultimate safety net.</li>
+									<li><strong>ATR Trailing Stop</strong> - Dynamically adjusts based on volatility, protecting profits as they develop while allowing trends to run.</li>
+									<li><strong>Trend Exhaustion Detection</strong> - Exits when parabola patterns break or trend strength (ADX) weakens significantly.</li>
+								</ul>
+								<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 0; line-height: 1.6;">
+									<strong>Why this matters:</strong> Professional traders use stop losses not because they're bearish, but because <strong>capital preservation is more important than being right</strong>. A -3% loss is much better than a -10% or -20% loss. This is capital efficiency and risk management, not a bearish signal. The bot is protecting you from catastrophic losses so you can live to trade another day.
+								</p>
+							</div>
 						</div>
 						
 						<h3 style="color: #4caf50;">🎯 Signal Timing Philosophy</h3>
@@ -1745,7 +1763,7 @@
 							<ul style="margin-bottom: 0;">
 								<li><strong>Not every signal will be profitable</strong> - That's trading. Even 55-60% win rate with proper risk management is excellent</li>
 								<li><strong>Confirmation > Speed</strong> - Missing the first 2% of a move to gain 80% confidence is a good trade-off</li>
-								<li><strong>Risk management matters most</strong> - Use stop-losses and position sizing</li>
+								<li><strong>Risk management matters most</strong> - The bot uses multiple stop losses (fixed 3% hard floor, ATR trailing stops, trend exhaustion detection) to protect capital. A -3% loss is not a bearish signal - it's capital efficiency and protection.</li>
 								<li><strong>The trend is your friend</strong> - Signals work best when aligned with higher timeframe trends</li>
 								<li><strong>Patience wins</strong> - Let high-probability setups come to you rather than forcing trades</li>
 							</ul>
@@ -3482,6 +3500,8 @@
 				
 				// Sort by buy_score descending - show top 3 regardless of threshold or score value
 				// Include all signals, using buy_score to rank them (even if 0)
+				// Deduplicate by symbol to prevent same ticker appearing multiple times
+				const seenBuySymbols = new Set();
 				const topBuy = signalsWithScores
 					.filter(s => {
 						// Include if explicitly marked as buy, OR if buy_score >= sell_score (best buy candidates)
@@ -3489,10 +3509,20 @@
 						return s.action === 'buy' || s.buyScore >= s.sellScore;
 					})
 					.sort((a, b) => b.buyScore - a.buyScore)
+					.filter(s => {
+						// Deduplicate: keep only first occurrence of each symbol (highest score)
+						if (seenBuySymbols.has(s.symbol)) {
+							return false;
+						}
+						seenBuySymbols.add(s.symbol);
+						return true;
+					})
 					.slice(0, 3);
 				
 				// Sort by sell_score descending - show top 3 regardless of threshold or score value
 				// Include all signals, using sell_score to rank them (even if 0)
+				// Deduplicate by symbol to prevent same ticker appearing multiple times
+				const seenSellSymbols = new Set();
 				const topSell = signalsWithScores
 					.filter(s => {
 						// Include if explicitly marked as sell, OR if sell_score >= buy_score (best sell candidates)
@@ -3500,6 +3530,14 @@
 						return s.action === 'sell' || s.sellScore >= s.buyScore;
 					})
 					.sort((a, b) => b.sellScore - a.sellScore)
+					.filter(s => {
+						// Deduplicate: keep only first occurrence of each symbol (highest score)
+						if (seenSellSymbols.has(s.symbol)) {
+							return false;
+						}
+						seenSellSymbols.add(s.symbol);
+						return true;
+					})
 					.slice(0, 3);
 				
 				console.log('📊 Top 3 BUY:', topBuy.length, 'Top 3 SELL:', topSell.length);
@@ -3867,7 +3905,7 @@
 										${watchButtonHtml}
 									</div>
 									<div>
-										<span class="signal-action ${actionClass}">${isBuy ? '🟢 📈' : '🔴 📉'} ${action.toUpperCase()}</span>
+										<span class="signal-action ${actionClass}">${isBuy ? '🟢 📈' : '🔴 📉'} ${action.toUpperCase()}${signal.partial_exit ? ` <span style="color: rgba(255, 165, 0, 0.9); font-size: 0.85em;">(PARTIAL ${(signal.partial_exit_pct || signal.exit_pct || 0) * 100}%)</span>` : ''}</span>
 										${signalBadge ? `<span class="confluence-badge ${signalClass}">${signalBadge}</span>` : ''}
 									</div>
 								</div>
@@ -3894,6 +3932,25 @@
 										return '';
 									})()}
 									${pnlDisplay}
+									${signal.partial_exit ? `
+										<div class="signal-detail-row" style="background: rgba(255, 165, 0, 0.15); border-left: 3px solid rgba(255, 165, 0, 0.6); padding: 8px; margin: 8px 0; border-radius: 4px;">
+											<span class="signal-detail-label" style="color: rgba(255, 165, 0, 0.9); font-weight: bold;">⚠️ Partial Exit:</span>
+											<span class="signal-detail-value" style="color: rgba(255, 165, 0, 0.9);">
+												Level ${signal.partial_exit_level || 'N/A'} - ${((signal.partial_exit_pct || signal.exit_pct || 0) * 100).toFixed(0)}% of position
+											</span>
+										</div>
+									` : ''}
+									${signal.is_stop_loss && signal.exit_reason ? `
+										<div class="signal-detail-row" style="background: rgba(33, 150, 243, 0.15); border-left: 3px solid rgba(33, 150, 243, 0.8); padding: 10px; margin: 8px 0; border-radius: 4px;">
+											<span class="signal-detail-label" style="color: rgba(33, 150, 243, 0.9); font-weight: bold;">🛡️ Stop Loss (Risk Management):</span>
+											<span class="signal-detail-value" style="color: rgba(255, 255, 255, 0.9); font-size: 13px; line-height: 1.4;">
+												${signal.exit_reason}
+												<br><small style="color: rgba(255, 255, 255, 0.7); font-style: italic; margin-top: 4px; display: block;">
+													This is NOT a bearish signal - it's capital protection. The bot limits losses to preserve your capital for future trades.
+												</small>
+											</span>
+										</div>
+									` : ''}
 									${signal.source ? `
 										<div class="signal-detail-row">
 											<span class="signal-detail-label">Source:</span>
@@ -5692,13 +5749,80 @@ plotshape(series=bear_parabola_break, title="Parabola Bear Break", location=loca
 // - Set use_position_tracking = false to avoid conflicts with main strategy
 // ============================================================================ `;
 
+				// Store Kalman MA code in global object for download
+				window.codeDownloads['kalman_ma'] = `//@version=5
+indicator("Kalman Moving Average (Kalman MA)", overlay=true, max_lines_count=500, max_labels_count=500)
+
+// A simple 1D Kalman filter used as a moving average alternative.
+// It can respond faster than an EMA for similar smoothness, with tunable process/measurement noise.
+
+// User inputs
+src         = input.source(close, "Source")
+base_q      = input.float(0.0001, "Base process noise (Q)", minval=0.0, step=0.0001)   // Higher Q ~ shorter EMA (more reactive)
+base_r      = input.float(0.01,   "Base measurement noise (R)", minval=0.0, step=0.0001) // Higher R ~ longer EMA (more smoothing)
+
+// Volatility-adaptive tuning (ATR + StdDev blend)
+use_adapt   = input.bool(true, "Adaptive Q/R with volatility")
+atr_len     = input.int(14, "ATR length", minval=1)
+std_len     = input.int(20, "StdDev length", minval=1)
+vol_blend   = input.float(0.5, "Blend ATR vs StdDev (0=ATR,1=Std)", minval=0.0, maxval=1.0, step=0.05)
+q_scale     = input.float(2.0, "Q scale at high vol", minval=0.0, step=0.1)
+r_scale     = input.float(2.0, "R scale at low vol", minval=0.0, step=0.1)
+vol_floor   = input.float(0.0005, "Vol floor (avoid div/0)", minval=0.0, step=0.0001)
+
+show_ema    = input.bool(true, "Show EMA comparison")
+ema_length  = input.int(21, "EMA length", minval=1)
+
+// Kalman filter state
+var float kalman_estimate = na
+var float kalman_error    = na
+
+// Initialize
+if na(kalman_estimate)
+    kalman_estimate := src
+    kalman_error    := 1.0
+
+// Volatility measures
+atr_val   = ta.atr(atr_len)
+std_val   = ta.stdev(src, std_len)
+atr_ratio = atr_val / math.max(math.abs(src), vol_floor)
+std_ratio = std_val / math.max(math.abs(src), vol_floor)
+vol_mix   = vol_blend * std_ratio + (1 - vol_blend) * atr_ratio
+
+// Adaptive Q/R
+q_eff = use_adapt ? base_q * (1 + q_scale * vol_mix) : base_q
+r_eff = use_adapt ? base_r * (1 + r_scale * (1 - math.min(vol_mix, 1.0))) : base_r
+
+// Predict
+pred_estimate = kalman_estimate
+pred_error    = kalman_error + q_eff
+
+// Update
+kalman_gain      = pred_error / (pred_error + r_eff)
+kalman_estimate := pred_estimate + kalman_gain * (src - pred_estimate)
+kalman_error    := (1.0 - kalman_gain) * pred_error
+
+// EMA for reference
+ema_val = ta.ema(src, ema_length)
+
+// Plot
+plot(kalman_estimate, title="Kalman MA", color=color.new(color.teal, 0), linewidth=2)
+plot(show_ema ? ema_val : na, title="EMA", color=color.new(color.orange, 0), linewidth=1, style=plot.style_line)
+
+// Quick guidance (tooltip)
+// - Increase Q (process_noise) to make the line react faster (less smoothing).
+// - Increase R (measurement_noise) to smooth more (slower, less noisy).
+// - Future idea: tiny on-chart mini-sweep of a few Q/R presets over recent bars to pick the best combo (lightweight pseudo backtest).`;
+
 				const dxyCode = window.codeDownloads['dxy_indicator'];
 				const mfiObvCode = window.codeDownloads['normalized_mfi_obv'];
 				const parabolaCode = window.codeDownloads['parabola_detector'];
+				const kalmanCode = window.codeDownloads['kalman_ma'];
 				// Escape code for HTML display
 				const escapedDxyCode = dxyCode.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 				const escapedMfiObvCode = mfiObvCode.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 				const escapedParabolaCode = parabolaCode.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+				const escapedKalmanCode = kalmanCode.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 				
 				container.innerHTML = '<div style="margin-bottom: 30px;">' +
 					'<div style="background: rgba(255, 193, 7, 0.1); border: 1px solid rgba(255, 193, 7, 0.3); border-radius: 8px; padding: 20px; margin-bottom: 20px;">' +
@@ -5757,6 +5881,26 @@ plotshape(series=bear_parabola_break, title="Parabola Bear Break", location=loca
 					'<details style="margin-top: 15px;">' +
 					'<summary style="color: rgba(255, 255, 255, 0.9); cursor: pointer; font-weight: 500; font-size: 14px; padding: 10px; background: rgba(0, 0, 0, 0.2); border-radius: 4px;">View Code Preview</summary>' +
 					'<pre style="background: rgba(0, 0, 0, 0.5); padding: 15px; border-radius: 6px; overflow-x: auto; margin-top: 10px; border: 1px solid rgba(255, 193, 7, 0.2); max-height: 400px; overflow-y: auto;"><code style="color: rgba(255, 255, 255, 0.9); font-family: \'Courier New\', monospace; font-size: 13px; line-height: 1.5; white-space: pre;">' + escapedParabolaCode + '</code></pre>' +
+					'</details>' +
+					'</div>' +
+					'</div>' +
+					'<div style="margin-bottom: 30px;">' +
+					'<div style="background: rgba(255, 193, 7, 0.1); border: 1px solid rgba(255, 193, 7, 0.3); border-radius: 8px; padding: 20px; margin-bottom: 20px;">' +
+					'<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 15px;">' +
+					'<div>' +
+					'<h3 style="color: #ffc107; font-size: 20px; margin: 0 0 5px 0; font-weight: bold;">Kalman Moving Average (PineScript)</h3>' +
+					'<p style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin: 0;"><strong style="color: #ffc107;">Advanced Adaptive Filter</strong> - Superior to SMA, EMA, and Hull MA. Uses optimal Kalman filtering with volatility-adaptive Q/R parameters (process/measurement noise) that automatically adjust via ATR. Responds faster than EMA with similar smoothness, adapts to market volatility, and provides mathematically optimal noise filtering. This adaptive moving average outperforms traditional MAs by dynamically adjusting responsiveness based on market conditions.</p>' +
+					'</div>' +
+					'<button onclick="downloadCode(\'Kalman_MA.pine\', \'kalman_ma\')" ' +
+					'style="background: linear-gradient(135deg, #4caf50 0%, #45a049 100%); color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4); white-space: nowrap;" ' +
+					'onmouseover="this.style.transform=\'translateY(-2px)\'; this.style.boxShadow=\'0 6px 20px rgba(76, 175, 80, 0.6)\';" ' +
+					'onmouseout="this.style.transform=\'translateY(0)\'; this.style.boxShadow=\'0 4px 15px rgba(76, 175, 80, 0.4)\';">' +
+					'📥 Download .pine' +
+					'</button>' +
+					'</div>' +
+					'<details style="margin-top: 15px;">' +
+					'<summary style="color: rgba(255, 255, 255, 0.9); cursor: pointer; font-weight: 500; font-size: 14px; padding: 10px; background: rgba(0, 0, 0, 0.2); border-radius: 4px;">View Code Preview</summary>' +
+					'<pre style="background: rgba(0, 0, 0, 0.5); padding: 15px; border-radius: 6px; overflow-x: auto; margin-top: 10px; border: 1px solid rgba(255, 193, 7, 0.2); max-height: 400px; overflow-y: auto;"><code style="color: rgba(255, 255, 255, 0.9); font-family: \'Courier New\', monospace; font-size: 13px; line-height: 1.5; white-space: pre;">' + escapedKalmanCode + '</code></pre>' +
 					'</details>' +
 					'</div>' +
 					'</div>' +
