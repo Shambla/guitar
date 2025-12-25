@@ -269,6 +269,38 @@
 				box-shadow: 0 0 50px rgba(255, 193, 7, 1) !important;
 			}
 			
+			/* Bull image above navigation - non-fixed, scrolls with page */
+			.bull-image-nav {
+				display: inline-block;
+				width: 100px;
+				height: 100px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				border-radius: 12px;
+				background: rgba(255, 193, 7, 0.2);
+				border: 2px solid rgba(255, 193, 7, 0.6);
+				padding: 8px;
+				box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
+				opacity: 1 !important;
+				visibility: visible !important;
+			}
+			
+			.bull-image-nav img {
+				width: 100% !important;
+				height: 100% !important;
+				object-fit: contain !important;
+				opacity: 1 !important;
+				display: block !important;
+				visibility: visible !important;
+			}
+			
+			.bull-image-nav:hover {
+				transform: scale(1.1);
+				background: rgba(255, 193, 7, 0.4);
+				border-color: rgba(255, 193, 7, 1);
+				box-shadow: 0 0 25px rgba(255, 193, 7, 0.8);
+			}
+			
 			/* Bull image inside Bitcoin dominance box */
 			.bull-image-inline {
 				width: 120px !important;
@@ -1455,11 +1487,6 @@
 		</div>
 		
 		<div class="content signals-container" id="signals-content">
-			<!-- Clickable Bull Image for Music - AT THE VERY TOP -->
-			<div class="bull-image" id="bull-image" title="Click to play music" style="position: fixed !important; top: 100px !important; left: 50% !important; transform: translateX(-50%) !important; z-index: 99999 !important; margin: 0 !important; width: 150px !important; height: 150px !important; background: rgba(255, 193, 7, 0.5) !important; border: 4px solid #ffc107 !important; padding: 10px !important; border-radius: 12px !important; box-shadow: 0 0 40px rgba(255, 193, 7, 1), inset 0 0 20px rgba(255, 193, 7, 0.3) !important; display: flex !important; align-items: center !important; justify-content: center !important; cursor: pointer !important;">
-				<img src="img/Angry Bull 3.png" alt="Angry Bull - Click to play music" onerror="this.style.display='none'; this.parentElement.innerHTML='🐂 BULL'; this.parentElement.style.fontSize='80px'; this.parentElement.style.color='#ffc107';" style="opacity: 1 !important; display: block !important; width: 100% !important; height: 100% !important; object-fit: contain !important;" />
-			</div>
-			
 			<!-- Trial Status Banner -->
 			<div id="trial-status-banner" style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.2) 0%, rgba(33, 150, 243, 0.2) 100%); border: 2px solid rgba(76, 175, 80, 0.5); border-radius: 12px; padding: 20px; margin-bottom: 30px; text-align: center;">
 				<div id="trial-status-message" style="color: #fff; font-size: 16px; font-weight: bold; line-height: 1.6;">
@@ -1487,8 +1514,15 @@
 				</div>
 			</div>
 			
+			<!-- Bull Image Above Navigation -->
+			<div style="text-align: center; margin: 30px 0 20px; margin-top: 180px;">
+				<div class="bull-image-nav" id="bull-image-nav" title="Click to play music" style="display: inline-block; width: 100px; height: 100px; cursor: pointer; transition: all 0.3s ease; border-radius: 12px; background: rgba(255, 193, 7, 0.2); border: 2px solid rgba(255, 193, 7, 0.6); padding: 8px; box-shadow: 0 0 15px rgba(255, 193, 7, 0.5); opacity: 1 !important; visibility: visible !important;">
+					<img src="img/Angry Bull 3.png" alt="Angry Bull - Click to play music" style="opacity: 1 !important; display: block !important; width: 100% !important; height: 100% !important; object-fit: contain !important; visibility: visible !important;" />
+				</div>
+			</div>
+			
 			<!-- Page Navigation -->
-			<div id="page-navigation" style="display: flex !important; visibility: visible !important; opacity: 1 !important; justify-content: center; gap: 15px; margin: 30px 0 20px; margin-top: 180px; padding: 20px; background: rgba(0, 0, 0, 0.7); border-radius: 8px; flex-wrap: wrap; z-index: 100;">
+			<div id="page-navigation" style="display: flex !important; visibility: visible !important; opacity: 1 !important; justify-content: center; gap: 15px; margin: 30px 0 20px; padding: 20px; background: rgba(0, 0, 0, 0.7); border-radius: 8px; flex-wrap: wrap; z-index: 100;">
 				<a href="#asset-list" onclick="event.preventDefault(); showAssetList(); return false;" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(255, 193, 7, 0.8) !important; border: 2px solid #ffc107; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255, 193, 7, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255, 193, 7, 0.8)'; this.style.transform='translateY(0)'">
 					📋 List of Assets
 				</a>
@@ -1500,6 +1534,12 @@
 				</a>
 				<a href="#code-explanation" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(156, 39, 176, 0.8) !important; border: 2px solid #ab47bc; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(156, 39, 176, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(156, 39, 176, 0.8)'; this.style.transform='translateY(0)'">
 					🔧 Code Explanation
+				</a>
+				<a href="#code-for-sale" onclick="event.preventDefault(); showCodeForSale(); return false;" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(33, 150, 243, 0.8) !important; border: 2px solid #2196f3; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(33, 150, 243, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(33, 150, 243, 0.8)'; this.style.transform='translateY(0)'">
+					💰 Optional Code for Sale
+				</a>
+				<a href="#miscellaneous-tips" onclick="event.preventDefault(); showMiscellaneousTips(); return false;" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(233, 30, 99, 0.8) !important; border: 2px solid #e91e63; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(233, 30, 99, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(233, 30, 99, 0.8)'; this.style.transform='translateY(0)'">
+					💡 Miscellaneous Tips
 				</a>
 			</div>
 			
