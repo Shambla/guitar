@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "SUI/USD",
-  "quantity": 0.1,
-  "price": 1.414,
+  "symbol": "AERO/USD",
+  "quantity": 0.00713397,
+  "price": 0.4787,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2025-12-25T02:00:06.651053Z",
-  "received_at": "2025-12-25T02:00:06.651068Z",
-  "id": "2025-12-25T02:00:06.651068Z-SUI/USD-sell"
+  "timestamp": "2025-12-25T02:00:35.221766Z",
+  "received_at": "2025-12-25T02:00:35.221781Z",
+  "id": "2025-12-25T02:00:35.221781Z-AERO/USD-sell"
 }
