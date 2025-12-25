@@ -235,23 +235,32 @@
 				left: 20px;
 				top: 50%;
 				transform: translateY(-50%);
-				width: 100px;
-				height: 100px;
-				background-image: url('img/Angry Bull 3.png');
-				background-size: contain;
-				background-repeat: no-repeat;
-				background-position: center;
-				opacity: 0.9; /* Much more visible */
+				width: 120px;
+				height: 120px;
 				cursor: pointer;
 				z-index: 1001;
 				transition: all 0.3s ease;
 				border-radius: 8px;
+				background: rgba(255, 193, 7, 0.1);
+				border: 2px solid rgba(255, 193, 7, 0.3);
+				padding: 5px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			
+			.bull-image img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				opacity: 1;
 			}
 			
 			.bull-image:hover {
-				opacity: 1;
-				transform: translateY(-50%) scale(1.2);
-				filter: drop-shadow(0 0 20px rgba(255, 193, 7, 0.8));
+				transform: translateY(-50%) scale(1.15);
+				background: rgba(255, 193, 7, 0.2);
+				border-color: rgba(255, 193, 7, 0.6);
+				box-shadow: 0 0 25px rgba(255, 193, 7, 0.8);
 			}
 			.signals-header h1 {
 				color: var(--primary-color);
@@ -1424,7 +1433,9 @@
 			
 			<div class="signals-header">
 				<!-- Clickable Bull Image for Music -->
-				<div class="bull-image" id="bull-image" title="Click to play music"></div>
+				<div class="bull-image" id="bull-image" title="Click to play music">
+					<img src="img/Angry Bull 3.png" alt="Angry Bull - Click to play music" />
+				</div>
 				<h1>🚀 Crypto Signals</h1>
 				<p>Live feed of buy and sell signals from trading strategies</p>
 				<div style="margin-top: 15px;">
@@ -4947,6 +4958,15 @@
 				const container = document.getElementById('code-download-content');
 				if (!container) return;
 				
+				// Save which details elements are open before updating
+				const openDetails = [];
+				const detailsElements = container.querySelectorAll('details');
+				detailsElements.forEach((details, index) => {
+					if (details.open) {
+						openDetails.push(index);
+					}
+				});
+				
 				if (!hasAccess()) {
 					const paymentLinkConfigured = STRIPE_PAYMENT_LINK && STRIPE_PAYMENT_LINK !== 'https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE';
 					container.innerHTML = `
@@ -5969,13 +5989,32 @@ plot(show_ema ? ema_val : na, title="EMA", color=color.new(color.orange, 0), lin
 					'</div>' +
 					'</div>' +
 					'<p style="color: rgba(255, 255, 255, 0.6); font-size: 14px; text-align: center; margin-top: 20px; font-style: italic;">More code downloads coming soon...</p>';
+				
+				// Restore open state of details elements after a short delay
+				setTimeout(() => {
+					const newDetailsElements = container.querySelectorAll('details');
+					openDetails.forEach(index => {
+						if (newDetailsElements[index]) {
+							newDetailsElements[index].open = true;
+						}
+					});
+				}, 10);
 			}
+			
+			// Track last access state to only update when it changes
+			let lastAccessState = null;
 			
 			// Update code download section on page load
 			document.addEventListener('DOMContentLoaded', function() {
 				updateCodeDownloadSection();
-				// Also update when subscription status might change
-				setInterval(updateCodeDownloadSection, 1000);
+				// Only update when subscription status actually changes, not every second
+				setInterval(() => {
+					const currentAccessState = hasAccess();
+					if (currentAccessState !== lastAccessState) {
+						lastAccessState = currentAccessState;
+						updateCodeDownloadSection();
+					}
+				}, 1000);
 			});
 		</script>
 		
