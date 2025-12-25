@@ -226,6 +226,26 @@
 				padding: 20px;
 				z-index: 1000;
 				box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+				overflow: hidden; /* Ensure image doesn't overflow */
+			}
+			
+			/* Subtle Angry Bull background image on left side */
+			.signals-header::before {
+				content: '';
+				position: absolute;
+				left: -50px;
+				top: 50%;
+				transform: translateY(-50%);
+				width: 200px;
+				height: 200px;
+				background-image: url('img/Angry Bull 3.png');
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+				opacity: 0.15; /* Very subtle - just for ambience */
+				pointer-events: none;
+				z-index: -1;
+				filter: blur(2px); /* Slight blur for more subtle effect */
 			}
 			.signals-header h1 {
 				color: var(--primary-color);
@@ -2368,6 +2388,14 @@
 						</p>
 						<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 0; line-height: 1.7;">
 							<strong>Remember:</strong> There is no help desk in crypto, so if you lose your passwords, there is nothing that can be done. <strong>You are the bank</strong>.
+						</p>
+					</div>
+					
+					<!-- Tip 3: Coinbase Advanced -->
+					<div style="background: rgba(33, 150, 243, 0.1); border-left: 4px solid #2196f3; padding: 20px; margin-bottom: 20px; border-radius: 4px;">
+						<h3 style="color: #2196f3; margin-top: 0; font-size: 20px; margin-bottom: 12px;">3. 💸 Use Coinbase Advanced Instead of the User-Friendly Version</h3>
+						<p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 0; line-height: 1.7;">
+							<strong>Trading fees are nearly 10x cheaper!!</strong> Coinbase Advanced (formerly Coinbase Pro) offers significantly lower trading fees compared to the regular Coinbase platform. If you're making frequent trades, the savings can add up quickly and significantly improve your overall returns.
 						</p>
 					</div>
 					
