@@ -231,36 +231,77 @@
 			
 			/* Angry Bull image - clickable for music - positioned below header */
 			.bull-image {
-				position: relative;
-				width: 150px;
-				height: 150px;
-				cursor: pointer;
-				z-index: 10000;
-				transition: all 0.3s ease;
-				border-radius: 12px;
-				background: rgba(255, 193, 7, 0.2);
-				border: 3px solid rgba(255, 193, 7, 0.6);
-				padding: 10px;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				margin: 20px auto;
-				box-shadow: 0 0 20px rgba(255, 193, 7, 0.5);
+				position: fixed !important;
+				top: 100px !important;
+				left: 50% !important;
+				transform: translateX(-50%) !important;
+				width: 150px !important;
+				height: 150px !important;
+				cursor: pointer !important;
+				z-index: 99999 !important;
+				transition: all 0.3s ease !important;
+				border-radius: 12px !important;
+				background: rgba(255, 193, 7, 0.5) !important;
+				border: 4px solid #ffc107 !important;
+				padding: 10px !important;
+				display: flex !important;
+				align-items: center !important;
+				justify-content: center !important;
+				margin: 0 !important;
+				box-shadow: 0 0 40px rgba(255, 193, 7, 1), inset 0 0 20px rgba(255, 193, 7, 0.3) !important;
+				opacity: 1 !important;
+				visibility: visible !important;
 			}
 			
 			.bull-image img {
-				width: 100%;
-				height: 100%;
-				object-fit: contain;
+				width: 100% !important;
+				height: 100% !important;
+				object-fit: contain !important;
 				opacity: 1 !important;
-				display: block;
+				display: block !important;
+				visibility: visible !important;
 			}
 			
 			.bull-image:hover {
-				transform: scale(1.1);
-				background: rgba(255, 193, 7, 0.3);
-				border-color: rgba(255, 193, 7, 1);
-				box-shadow: 0 0 30px rgba(255, 193, 7, 1);
+				transform: translateX(-50%) scale(1.1) !important;
+				background: rgba(255, 193, 7, 0.7) !important;
+				border-color: #ffc107 !important;
+				box-shadow: 0 0 50px rgba(255, 193, 7, 1) !important;
+			}
+			
+			/* Bull image inside Bitcoin dominance box */
+			.bull-image-inline {
+				width: 120px !important;
+				height: 120px !important;
+				cursor: pointer !important;
+				transition: all 0.3s ease !important;
+				border-radius: 12px !important;
+				background: rgba(255, 193, 7, 0.3) !important;
+				border: 3px solid #ffc107 !important;
+				padding: 8px !important;
+				display: inline-flex !important;
+				align-items: center !important;
+				justify-content: center !important;
+				box-shadow: 0 0 20px rgba(255, 193, 7, 0.8) !important;
+				opacity: 1 !important;
+				visibility: visible !important;
+				vertical-align: middle !important;
+				margin-left: 15px !important;
+			}
+			
+			.bull-image-inline img {
+				width: 100% !important;
+				height: 100% !important;
+				object-fit: contain !important;
+				opacity: 1 !important;
+				display: block !important;
+				visibility: visible !important;
+			}
+			
+			.bull-image-inline:hover {
+				transform: scale(1.1) !important;
+				background: rgba(255, 193, 7, 0.5) !important;
+				box-shadow: 0 0 30px rgba(255, 193, 7, 1) !important;
 			}
 			.signals-header h1 {
 				color: var(--primary-color);
@@ -1465,11 +1506,17 @@
 			<!-- Bitcoin Dominance Indicator -->
 			<div id="bitcoin-dominance-section" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 30px auto !important; padding: 20px !important; background: rgba(247, 147, 26, 0.3) !important; border: 3px solid #f7931a !important; border-radius: 12px; position: relative !important; z-index: 200 !important; width: calc(100% - 40px) !important; max-width: 1400px !important; box-shadow: 0 4px 20px rgba(247, 147, 26, 0.4) !important;">
 				<!-- Compact Header -->
-				<div style="margin-bottom: 15px;">
-					<h3 style="color: #f7931a !important; font-size: 20px; margin: 0 0 5px 0; opacity: 1 !important; visibility: visible !important; display: inline-block;">₿ Bitcoin Dominance</h3>
-					<span style="color: rgba(255, 255, 255, 0.8) !important; font-size: 13px; opacity: 1 !important; visibility: visible !important; margin-left: 10px;">
-						Bitcoin's market cap as % of total crypto market cap
-					</span>
+				<div style="margin-bottom: 15px; display: flex; align-items: center; flex-wrap: wrap; gap: 10px;">
+					<div>
+						<h3 style="color: #f7931a !important; font-size: 20px; margin: 0 0 5px 0; opacity: 1 !important; visibility: visible !important; display: inline-block;">₿ Bitcoin Dominance</h3>
+						<span style="color: rgba(255, 255, 255, 0.8) !important; font-size: 13px; opacity: 1 !important; visibility: visible !important; margin-left: 10px;">
+							Bitcoin's market cap as % of total crypto market cap
+						</span>
+					</div>
+					<!-- Bull Image in Bitcoin Dominance Box -->
+					<div class="bull-image-inline" id="bull-image-inline" title="Click to play music" style="opacity: 1 !important; visibility: visible !important; display: inline-flex !important;">
+						<img src="img/Angry Bull 3.png" alt="Angry Bull - Click to play music" style="opacity: 1 !important; display: block !important; visibility: visible !important;" />
+					</div>
 				</div>
 				
 				<!-- Bitcoin Dominance Explanation with Image -->
