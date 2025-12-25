@@ -2369,5 +2369,24 @@
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0
+  },
+  {
+    "action": "info",
+    "symbol": "XLV",
+    "price": 155.8,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Below thresholds | buy 12/16 | sell 11/13",
+    "timestamp": "2025-12-25T10:07:43.259038Z",
+    "received_at": "2025-12-25T10:07:43.259038Z",
+    "id": "2025-12-25T10:07:43.259038Z-XLV-info",
+    "threshold_met": false,
+    "buy_score": 12,
+    "sell_score": 11,
+    "total_buy_components": 38,
+    "total_sell_components": 37,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0
   }
 ]
