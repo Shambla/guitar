@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2946.28,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2025-12-25T02:19:41.198320Z",
+    "received_at": "2025-12-25T02:19:41.198337Z",
+    "id": "2025-12-25T02:19:41.198337Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "FET/USD",
     "quantity": 490.11390604,
     "price": 0.2095,
@@ -2187,16 +2198,5 @@
     "timestamp": "2025-12-19T04:00:56.377952Z",
     "received_at": "2025-12-19T04:00:56.377985Z",
     "id": "2025-12-19T04:00:56.377985Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "BONK/USD",
-    "quantity": 12674271.22940431,
-    "price": 7.88e-06,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-19T04:00:53.545426Z",
-    "received_at": "2025-12-19T04:00:53.545445Z",
-    "id": "2025-12-19T04:00:53.545445Z-BONK/USD-buy"
   }
 ]
