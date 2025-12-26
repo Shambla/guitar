@@ -2464,5 +2464,24 @@
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0
+  },
+  {
+    "action": "info",
+    "symbol": "GLD",
+    "price": 417.02,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Above thresholds | buy 14/16 | sell 15/13",
+    "timestamp": "2025-12-26T19:37:43.665351Z",
+    "received_at": "2025-12-26T19:37:43.665351Z",
+    "id": "2025-12-26T19:37:43.665351Z-GLD-info",
+    "threshold_met": true,
+    "buy_score": 14,
+    "sell_score": 15,
+    "total_buy_components": 38,
+    "total_sell_components": 37,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0
   }
 ]
