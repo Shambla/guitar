@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.03412724,
+    "price": 2924.34958,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2025-12-26T21:10:15.440490Z",
+    "received_at": "2025-12-26T21:10:15.440537Z",
+    "id": "2025-12-26T21:10:15.440537Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "FET/USD",
     "quantity": 474.8338081671415,
     "price": 0.2104,
@@ -2187,16 +2198,5 @@
     "timestamp": "2025-12-20T08:00:09.322278Z",
     "received_at": "2025-12-20T08:00:09.322353Z",
     "id": "2025-12-20T08:00:09.322353Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "AAVE/USD",
-    "quantity": 0.5506911173522772,
-    "price": 181.41,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-20T06:01:16.716998Z",
-    "received_at": "2025-12-20T06:01:16.717018Z",
-    "id": "2025-12-20T06:01:16.717018Z-AAVE/USD-buy"
   }
 ]
