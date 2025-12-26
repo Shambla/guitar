@@ -2255,5 +2255,24 @@
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0
+  },
+  {
+    "action": "info",
+    "symbol": "XLK",
+    "price": 146.3,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Above thresholds | buy 14/16 | sell 13/13",
+    "timestamp": "2025-12-26T04:09:27.295036Z",
+    "received_at": "2025-12-26T04:09:27.295036Z",
+    "id": "2025-12-26T04:09:27.295036Z-XLK-info",
+    "threshold_met": true,
+    "buy_score": 14,
+    "sell_score": 13,
+    "total_buy_components": 38,
+    "total_sell_components": 37,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0
   }
 ]
