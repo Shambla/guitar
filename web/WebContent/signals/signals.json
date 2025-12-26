@@ -1,5 +1,115 @@
 [
   {
+    "action": "sell",
+    "symbol": "BONK/USD",
+    "quantity": 0.53244999,
+    "price": 8.1e-06,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-26T02:26:15.762281Z",
+    "received_at": "2025-12-26T02:26:15.763187Z",
+    "id": "2025-12-26T02:26:15.763187Z-BONK/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "BONK/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-26T02:26:15.516021Z",
+    "received_at": "2025-12-26T02:26:15.516041Z",
+    "id": "2025-12-26T02:26:15.516041Z-BONK/USD-sell"
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 489.71596474045054,
+    "price": 0.204,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-26T02:01:13.432428Z",
+    "received_at": "2025-12-26T02:01:13.432442Z",
+    "id": "2025-12-26T02:01:13.432442Z-FET/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-26T02:00:57.578926Z",
+    "received_at": "2025-12-26T02:00:57.578942Z",
+    "id": "2025-12-26T02:00:57.578942Z-FET/USD-buy"
+  },
+  {
+    "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 0.0,
+    "price": 0.3925,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-26T02:00:48.966972Z",
+    "received_at": "2025-12-26T02:00:48.968529Z",
+    "id": "2025-12-26T02:00:48.968529Z-CRV/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-26T02:00:48.734667Z",
+    "received_at": "2025-12-26T02:00:48.736453Z",
+    "id": "2025-12-26T02:00:48.736453Z-CRV/USD-sell"
+  },
+  {
+    "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 80.90614886731392,
+    "price": 1.235,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-26T02:00:43.617433Z",
+    "received_at": "2025-12-26T02:00:43.617447Z",
+    "id": "2025-12-26T02:00:43.617447Z-RENDER/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 0.452509163310557,
+    "price": 220.77,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-26T02:00:40.349666Z",
+    "received_at": "2025-12-26T02:00:40.350941Z",
+    "id": "2025-12-26T02:00:40.350941Z-TAO/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "AAVE/USD",
+    "quantity": 0.6665333599946678,
+    "price": 149.88,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-26T02:00:37.206046Z",
+    "received_at": "2025-12-26T02:00:37.207101Z",
+    "id": "2025-12-26T02:00:37.207101Z-AAVE/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "SUI/USD",
+    "quantity": 72.95542423579194,
+    "price": 1.3693,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-26T02:00:31.488807Z",
+    "received_at": "2025-12-26T02:00:31.488825Z",
+    "id": "2025-12-26T02:00:31.488825Z-SUI/USD-buy"
+  },
+  {
     "action": "buy",
     "symbol": "RENDER/USD",
     "quantity": 100.0,
@@ -2088,115 +2198,5 @@
     "timestamp": "2025-12-19T22:59:17.414087Z",
     "received_at": "2025-12-19T22:59:17.414166Z",
     "id": "2025-12-19T22:59:17.414166Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.03351453,
-    "price": 2974.16,
-    "source": "MASTER_BOT_162",
-    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
-    "timestamp": "2025-12-19T21:59:51.552006Z",
-    "received_at": "2025-12-19T21:59:51.552078Z",
-    "id": "2025-12-19T21:59:51.552078Z-ETH/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.03351453525393963,
-    "price": 2980.8,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-19T20:00:33.218301Z",
-    "received_at": "2025-12-19T20:00:33.218325Z",
-    "id": "2025-12-19T20:00:33.218325Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-19T20:00:16.527399Z",
-    "received_at": "2025-12-19T20:00:16.527731Z",
-    "id": "2025-12-19T20:00:16.527731Z-ETH/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "SOL/USD",
-    "quantity": 0.77297674,
-    "price": 125.23,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-19T17:07:05.686072Z",
-    "received_at": "2025-12-19T17:07:05.686088Z",
-    "id": "2025-12-19T17:07:05.686088Z-SOL/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "SOL/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-19T17:00:18.126591Z",
-    "received_at": "2025-12-19T17:00:18.127592Z",
-    "id": "2025-12-19T17:00:18.127592Z-SOL/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.03374046831770025,
-    "price": 2960.84,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-19T16:00:23.862908Z",
-    "received_at": "2025-12-19T16:00:23.862924Z",
-    "id": "2025-12-19T16:00:23.862924Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-19T16:00:08.051321Z",
-    "received_at": "2025-12-19T16:00:08.051388Z",
-    "id": "2025-12-19T16:00:08.051388Z-ETH/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "AAVE/USD",
-    "quantity": 0.57799999,
-    "price": 182.25,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-19T14:07:16.651467Z",
-    "received_at": "2025-12-19T14:07:16.651487Z",
-    "id": "2025-12-19T14:07:16.651487Z-AAVE/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2959.31,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-19T14:00:22.946682Z",
-    "received_at": "2025-12-19T14:00:22.946697Z",
-    "id": "2025-12-19T14:00:22.946697Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-19T14:00:22.736644Z",
-    "received_at": "2025-12-19T14:00:22.736657Z",
-    "id": "2025-12-19T14:00:22.736657Z-ETH/USD-sell"
   }
 ]
