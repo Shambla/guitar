@@ -271,18 +271,20 @@
 			
 			/* Bull image above navigation - non-fixed, scrolls with page */
 			.bull-image-nav {
-				display: inline-block;
-				width: 100px;
-				height: 100px;
-				cursor: pointer;
-				transition: all 0.3s ease;
-				border-radius: 12px;
-				background: rgba(255, 193, 7, 0.2);
-				border: 2px solid rgba(255, 193, 7, 0.6);
-				padding: 8px;
-				box-shadow: 0 0 15px rgba(255, 193, 7, 0.5);
+				display: inline-block !important;
+				width: 100px !important;
+				height: 100px !important;
+				cursor: pointer !important;
+				transition: all 0.3s ease !important;
+				border-radius: 12px !important;
+				background: rgba(255, 193, 7, 0.2) !important;
+				border: 2px solid rgba(255, 193, 7, 0.6) !important;
+				padding: 8px !important;
+				box-shadow: 0 0 15px rgba(255, 193, 7, 0.5) !important;
 				opacity: 1 !important;
 				visibility: visible !important;
+				position: relative !important;
+				z-index: 150 !important;
 			}
 			
 			.bull-image-nav img {
@@ -1515,8 +1517,8 @@
 			</div>
 			
 			<!-- Bull Image Above Navigation -->
-			<div style="text-align: center; margin: 30px 0 20px; margin-top: 180px;">
-				<div class="bull-image-nav" id="bull-image-nav" title="Click to play music" style="display: inline-block; width: 100px; height: 100px; cursor: pointer; transition: all 0.3s ease; border-radius: 12px; background: rgba(255, 193, 7, 0.2); border: 2px solid rgba(255, 193, 7, 0.6); padding: 8px; box-shadow: 0 0 15px rgba(255, 193, 7, 0.5); opacity: 1 !important; visibility: visible !important;">
+			<div style="text-align: center; margin: 30px 0 20px; position: relative; z-index: 150;">
+				<div class="bull-image-nav" id="bull-image-nav" title="Click to play music" style="display: inline-block !important; width: 100px !important; height: 100px !important; cursor: pointer !important; transition: all 0.3s ease !important; border-radius: 12px !important; background: rgba(255, 193, 7, 0.2) !important; border: 2px solid rgba(255, 193, 7, 0.6) !important; padding: 8px !important; box-shadow: 0 0 15px rgba(255, 193, 7, 0.5) !important; opacity: 1 !important; visibility: visible !important; position: relative !important; z-index: 150 !important;">
 					<img src="img/Angry Bull 3.png" alt="Angry Bull - Click to play music" style="opacity: 1 !important; display: block !important; width: 100% !important; height: 100% !important; object-fit: contain !important; visibility: visible !important;" />
 				</div>
 			</div>
@@ -1532,13 +1534,13 @@
 				<a href="#trading-education" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(255, 152, 0, 0.8) !important; border: 2px solid #ffa726; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255, 152, 0, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(255, 152, 0, 0.8)'; this.style.transform='translateY(0)'">
 					💡 Trading Education
 				</a>
-				<a href="#code-explanation" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(156, 39, 176, 0.8) !important; border: 2px solid #ab47bc; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(156, 39, 176, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(156, 39, 176, 0.8)'; this.style.transform='translateY(0)'">
+				<a href="#comprehensive-indicator-analysis" onclick="event.preventDefault(); showCodeExplanation(); return false;" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(156, 39, 176, 0.8) !important; border: 2px solid #ab47bc; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(156, 39, 176, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(156, 39, 176, 0.8)'; this.style.transform='translateY(0)'">
 					🔧 Code Explanation
 				</a>
-				<a href="#code-for-sale" onclick="event.preventDefault(); showCodeForSale(); return false;" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(33, 150, 243, 0.8) !important; border: 2px solid #2196f3; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(33, 150, 243, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(33, 150, 243, 0.8)'; this.style.transform='translateY(0)'">
+				<a href="#code-download-section" onclick="event.preventDefault(); showCodeForSale(); return false;" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(33, 150, 243, 0.8) !important; border: 2px solid #2196f3; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(33, 150, 243, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(33, 150, 243, 0.8)'; this.style.transform='translateY(0)'">
 					💰 Optional Code for Sale
 				</a>
-				<a href="#miscellaneous-tips" onclick="event.preventDefault(); showMiscellaneousTips(); return false;" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(233, 30, 99, 0.8) !important; border: 2px solid #e91e63; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(233, 30, 99, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(233, 30, 99, 0.8)'; this.style.transform='translateY(0)'">
+				<a href="#other-tips-tricks" onclick="event.preventDefault(); showMiscellaneousTips(); return false;" style="display: inline-block !important; visibility: visible !important; opacity: 1 !important; color: #fff !important; text-decoration: none; padding: 12px 24px; background: rgba(233, 30, 99, 0.8) !important; border: 2px solid #e91e63; border-radius: 6px; font-weight: bold; transition: all 0.3s ease;" onmouseover="this.style.background='rgba(233, 30, 99, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='rgba(233, 30, 99, 0.8)'; this.style.transform='translateY(0)'">
 					💡 Miscellaneous Tips
 				</a>
 			</div>
@@ -1988,7 +1990,7 @@
 			
 			<!-- Ticker Symbols Section -->
 			<div id="code-explanation"></div>
-			<div class="indicators-section" style="margin-top: 40px;">
+			<div id="assets-traded-section" class="indicators-section" style="margin-top: 40px;">
 				<div class="indicators-header">
 					<h2>Assets Traded</h2>
 					<p>We focus on a curated selection of assets to ensure quality analysis and signal generation. Below are the specific ticker symbols we actively monitor and trade.</p>
@@ -2071,7 +2073,7 @@
 			</div>
 			
 			<!-- Indicator Inventory Section -->
-			<div class="indicators-section">
+			<div id="comprehensive-indicator-analysis" class="indicators-section">
 				<div class="indicators-header">
 					<h2>📊 Comprehensive Indicator Analysis</h2>
 					<p>Trading signals are generated using a sophisticated multi-indicator confluence approach (as you are about to see, it is a seemingly never-ending list of indicators).</p>
@@ -2462,7 +2464,7 @@
 		</div>
 		
 		<!-- Other Tips & Tricks Section -->
-		<div class="indicators-section" style="margin: 60px 0 40px 0; background: rgba(33, 150, 243, 0.1); border: 2px solid rgba(33, 150, 243, 0.5);">
+		<div id="other-tips-tricks" class="indicators-section" style="margin: 60px 0 40px 0; background: rgba(33, 150, 243, 0.1); border: 2px solid rgba(33, 150, 243, 0.5);">
 			<div class="indicators-header">
 				<h2>💡 Other Tips & Tricks</h2>
 			</div>
@@ -2547,6 +2549,56 @@
 			
 			// Initialize disclaimer on page load
 			initDisclaimer();
+			
+			// Bull Audio Player - Click to play music
+			let bullAudio = null;
+			let isPlaying = false;
+			
+			function initBullAudio() {
+				// Create audio element (hidden, no autoplay)
+				bullAudio = new Audio('audio/bull_synth.mp3');
+				bullAudio.loop = true; // Loop the music
+				bullAudio.volume = 0.5; // Set volume to 50%
+				
+				// Add click handlers to all bull images
+				const bullImageNav = document.getElementById('bull-image-nav');
+				const bullImageInline = document.getElementById('bull-image-inline');
+				
+				function toggleBullAudio() {
+					if (!bullAudio) return;
+					
+					if (isPlaying) {
+						bullAudio.pause();
+						isPlaying = false;
+						// Update title to indicate it can be played
+						if (bullImageNav) bullImageNav.title = 'Click to play music';
+						if (bullImageInline) bullImageInline.title = 'Click to play music';
+					} else {
+						bullAudio.play().then(() => {
+							isPlaying = true;
+							// Update title to indicate it can be paused
+							if (bullImageNav) bullImageNav.title = 'Click to pause music';
+							if (bullImageInline) bullImageInline.title = 'Click to pause music';
+						}).catch(err => {
+							console.error('Error playing audio:', err);
+							alert('Could not play audio. Please check your browser settings.');
+						});
+					}
+				}
+				
+				// Attach click handlers
+				if (bullImageNav) {
+					bullImageNav.addEventListener('click', toggleBullAudio);
+				}
+				if (bullImageInline) {
+					bullImageInline.addEventListener('click', toggleBullAudio);
+				}
+			}
+			
+			// Initialize bull audio when DOM is ready
+			document.addEventListener('DOMContentLoaded', function() {
+				initBullAudio();
+			});
 			
 			function formatTimestamp(timestamp) {
 				if (!timestamp) return 'N/A';
@@ -3158,27 +3210,61 @@
 			}
 			
 			function showAssetList() {
+				const assetsTradedSection = document.getElementById('assets-traded-section');
 				const assetListContainer = document.getElementById('asset-list-container');
 				const cryptoContainer = document.getElementById('crypto-signals-container');
 				const stockContainer = document.getElementById('stock-signals-container');
-				
-				if (!assetListContainer) return;
 				
 				// Hide other sections
 				if (cryptoContainer) cryptoContainer.style.display = 'none';
 				if (stockContainer) stockContainer.style.display = 'none';
 				
-				// Show asset list
-				assetListContainer.style.display = 'block';
+				// Show asset list container if it exists
+				if (assetListContainer) {
+					assetListContainer.style.display = 'block';
+				}
 				
-				// Scroll to asset list
-				setTimeout(() => {
-					assetListContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-				}, 100);
+				// Scroll to Assets Traded section
+				if (assetsTradedSection) {
+					setTimeout(() => {
+						assetsTradedSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}, 100);
+				} else if (assetListContainer) {
+					setTimeout(() => {
+						assetListContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}, 100);
+				}
 				
 				// Render the asset list if we have signals
 				if (window.allSignals && window.allSignals.length > 0) {
 					renderAssetList(window.allSignals);
+				}
+			}
+			
+			function showCodeExplanation() {
+				const section = document.getElementById('comprehensive-indicator-analysis');
+				if (section) {
+					setTimeout(() => {
+						section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}, 100);
+				}
+			}
+			
+			function showCodeForSale() {
+				const section = document.getElementById('code-download-section');
+				if (section) {
+					setTimeout(() => {
+						section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}, 100);
+				}
+			}
+			
+			function showMiscellaneousTips() {
+				const section = document.getElementById('other-tips-tricks');
+				if (section) {
+					setTimeout(() => {
+						section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}, 100);
 				}
 			}
 			

@@ -559,31 +559,38 @@ def search_videos_by_title(service, search_term: str) -> List[Dict]:
 # =============================================================================
 
 if __name__ == "__main__":
-    # Example usage
-    
     # Authenticate
     print("Authenticating with YouTube API...")
     service = get_authenticated_service()
     print("✓ Authentication successful\n")
     
+    print("YouTube API Manager ready!")
+    print("\nAvailable functions (uncomment to use):")
+    print("=" * 60)
+    
     # Example 1: Update description for all videos
+    # Uncomment the lines below to update all video descriptions
     # new_description = "Check out my latest content! Subscribe for more!"
     # update_all_videos_description(service, new_description, append=True)
     
     # Example 2: Update description for specific videos
+    # Uncomment the lines below to update specific videos
     # video_ids = ["VIDEO_ID_1", "VIDEO_ID_2"]
     # batch_update_descriptions(service, video_ids, "New description text")
     
     # Example 3: Add tags to a video
+    # Uncomment the lines below to update video tags
     # update_video_tags(service, "VIDEO_ID", ["guitar", "music", "tutorial"], replace=False)
     
     # Example 4: Create playlist and add videos
+    # Uncomment the lines below to create a playlist
     # playlist_id = create_playlist(service, "My New Playlist", "Playlist description")
     # add_video_to_playlist(service, playlist_id, "VIDEO_ID")
     
-    # Example 5: Export all videos
+    # Example 5: Export all videos (read-only, safe to run)
+    # Uncomment the line below to export video list to JSON
     # export_video_list(service)
     
-    print("\nYouTube API Manager ready!")
-    print("Uncomment examples above or use the functions directly in your code.")
+    print("\nTo use these functions, uncomment the examples above or call them directly.")
+    print("Nothing will run automatically - you must uncomment the code you want to execute.")
 
