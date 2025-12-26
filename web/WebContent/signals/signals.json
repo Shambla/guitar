@@ -2293,5 +2293,24 @@
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0
+  },
+  {
+    "action": "info",
+    "symbol": "XLRE",
+    "price": 40.44,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Above thresholds | buy 10/16 | sell 14/13",
+    "timestamp": "2025-12-26T19:18:23.221505Z",
+    "received_at": "2025-12-26T19:18:23.221505Z",
+    "id": "2025-12-26T19:18:23.221505Z-XLRE-info",
+    "threshold_met": true,
+    "buy_score": 10,
+    "sell_score": 14,
+    "total_buy_components": 38,
+    "total_sell_components": 37,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0
   }
 ]
