@@ -2255,5 +2255,24 @@
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0
+  },
+  {
+    "action": "info",
+    "symbol": "XLF",
+    "price": 55.73,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Above thresholds | buy 14/16 | sell 14/13",
+    "timestamp": "2025-12-26T06:10:44.965054Z",
+    "received_at": "2025-12-26T06:10:44.965054Z",
+    "id": "2025-12-26T06:10:44.965054Z-XLF-info",
+    "threshold_met": true,
+    "buy_score": 14,
+    "sell_score": 14,
+    "total_buy_components": 38,
+    "total_sell_components": 37,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0
   }
 ]
