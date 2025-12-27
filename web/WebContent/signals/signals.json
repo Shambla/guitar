@@ -1,6 +1,39 @@
 [
   {
     "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 0.0,
+    "price": 0.3834,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-27T14:02:05.689361Z",
+    "received_at": "2025-12-27T14:02:05.689379Z",
+    "id": "2025-12-27T14:02:05.689379Z-CRV/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-27T14:02:05.442131Z",
+    "received_at": "2025-12-27T14:02:05.442146Z",
+    "id": "2025-12-27T14:02:05.442146Z-CRV/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 474.81390604,
+    "price": 0.2109,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-27T14:00:54.978288Z",
+    "received_at": "2025-12-27T14:00:54.978310Z",
+    "id": "2025-12-27T14:00:54.978310Z-FET/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "FET/USD",
     "quantity": 100.0,
     "price": null,
@@ -2165,38 +2198,5 @@
     "timestamp": "2025-12-20T14:07:45.354610Z",
     "received_at": "2025-12-20T14:07:45.354650Z",
     "id": "2025-12-20T14:07:45.354650Z-ETH/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "BONK/USD",
-    "quantity": 0.53244999,
-    "price": 8.27e-06,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-20T14:01:04.317570Z",
-    "received_at": "2025-12-20T14:01:04.317607Z",
-    "id": "2025-12-20T14:01:04.317607Z-BONK/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "BONK/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-20T14:01:04.016041Z",
-    "received_at": "2025-12-20T14:01:04.017353Z",
-    "id": "2025-12-20T14:01:04.017353Z-BONK/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "AERO/USD",
-    "quantity": 0.00713397,
-    "price": 0.5142,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-20T14:00:27.368021Z",
-    "received_at": "2025-12-20T14:00:27.368034Z",
-    "id": "2025-12-20T14:00:27.368034Z-AERO/USD-sell"
   }
 ]
