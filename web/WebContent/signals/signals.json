@@ -1,5 +1,27 @@
 [
   {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 0.01390603,
+    "price": 0.2156,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-27T22:00:09.519706Z",
+    "received_at": "2025-12-27T22:00:09.519726Z",
+    "id": "2025-12-27T22:00:09.519726Z-FET/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-27T22:00:09.260648Z",
+    "received_at": "2025-12-27T22:00:09.260752Z",
+    "id": "2025-12-27T22:00:09.260752Z-FET/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "FET/USD",
     "quantity": 468.6035613870665,
@@ -2165,38 +2187,5 @@
     "timestamp": "2025-12-20T22:03:35.351807Z",
     "received_at": "2025-12-20T22:03:35.352949Z",
     "id": "2025-12-20T22:03:35.352949Z-RENDER/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.04022135,
-    "price": 2984.24,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed, position sized by JSON count)",
-    "timestamp": "2025-12-20T21:03:23.257196Z",
-    "received_at": "2025-12-20T21:03:23.257847Z",
-    "id": "2025-12-20T21:03:23.257847Z-ETH/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "AERO/USD",
-    "quantity": 0.00713397,
-    "price": 0.51797,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-20T21:01:31.363358Z",
-    "received_at": "2025-12-20T21:01:31.363376Z",
-    "id": "2025-12-20T21:01:31.363376Z-AERO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "AERO/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-20T21:01:30.914891Z",
-    "received_at": "2025-12-20T21:01:30.914926Z",
-    "id": "2025-12-20T21:01:30.914926Z-AERO/USD-sell"
   }
 ]
