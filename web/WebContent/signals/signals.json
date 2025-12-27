@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "RENDER/USD",
+    "quantity": 78.18,
+    "price": 1.28,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-27T14:07:17.843072Z",
+    "received_at": "2025-12-27T14:07:17.843165Z",
+    "id": "2025-12-27T14:07:17.843165Z-RENDER/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
     "price": 2927.87,
@@ -2187,16 +2198,5 @@
     "timestamp": "2025-12-20T15:00:29.080711Z",
     "received_at": "2025-12-20T15:00:29.081859Z",
     "id": "2025-12-20T15:00:29.081859Z-ETH/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.04039057,
-    "price": 2968.09,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed, position sized by JSON count)",
-    "timestamp": "2025-12-20T14:15:02.707898Z",
-    "received_at": "2025-12-20T14:15:02.707932Z",
-    "id": "2025-12-20T14:15:02.707932Z-ETH/USD-buy"
   }
 ]
