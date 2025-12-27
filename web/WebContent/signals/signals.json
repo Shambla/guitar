@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2927.87,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2025-12-27T14:06:33.762141Z",
+    "received_at": "2025-12-27T14:06:33.762167Z",
+    "id": "2025-12-27T14:06:33.762167Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "CRV/USD",
     "quantity": 0.0,
     "price": 0.3834,
@@ -2187,16 +2198,5 @@
     "timestamp": "2025-12-20T14:15:02.707898Z",
     "received_at": "2025-12-20T14:15:02.707932Z",
     "id": "2025-12-20T14:15:02.707932Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.03364567,
-    "price": 2959.18573,
-    "source": "MASTER_BOT_162",
-    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
-    "timestamp": "2025-12-20T14:07:45.354610Z",
-    "received_at": "2025-12-20T14:07:45.354650Z",
-    "id": "2025-12-20T14:07:45.354650Z-ETH/USD-buy"
   }
 ]
