@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-28T04:00:09.394788Z",
+    "received_at": "2025-12-28T04:00:09.395962Z",
+    "id": "2025-12-28T04:00:09.395962Z-TAO/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "CRV/USD",
     "quantity": 258.32999999,
@@ -2187,16 +2198,5 @@
     "timestamp": "2025-12-21T10:00:10.117230Z",
     "received_at": "2025-12-21T10:00:10.117248Z",
     "id": "2025-12-21T10:00:10.117248Z-RENDER/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "RENDER/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-21T10:00:07.957640Z",
-    "received_at": "2025-12-21T10:00:07.957712Z",
-    "id": "2025-12-21T10:00:07.957712Z-RENDER/USD-buy"
   }
 ]
