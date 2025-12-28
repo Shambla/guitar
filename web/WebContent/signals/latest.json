@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "TAO/USD",
-  "quantity": 0.44679999,
-  "price": 224.47,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2025-12-28T07:05:55.958891Z",
-  "received_at": "2025-12-28T07:05:55.958907Z",
-  "id": "2025-12-28T07:05:55.958907Z-TAO/USD-sell"
+  "action": "buy",
+  "symbol": "FET/USD",
+  "quantity": 100.0,
+  "price": null,
+  "source": "TradingView JSON",
+  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+  "timestamp": "2025-12-28T10:00:10.799118Z",
+  "received_at": "2025-12-28T10:00:10.799199Z",
+  "id": "2025-12-28T10:00:10.799199Z-FET/USD-buy"
 }
