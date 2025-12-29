@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "RENDER/USD",
-    "quantity": 75.34999999,
-    "price": 1.319,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-29T11:07:15.091457Z",
-    "received_at": "2025-12-29T11:07:15.091480Z",
-    "id": "2025-12-29T11:07:15.091480Z-RENDER/USD-sell"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 146.3,
@@ -718,6 +707,42 @@
     "sell_conviction": 0.615,
     "sell_persistence": 8,
     "sell_position_multiplier": 1.0
+  },
+  {
+    "action": "info",
+    "symbol": "EWG",
+    "price": 42.650001525878906,
+    "quantity": null,
+    "source": "MAIN_stock_strat12",
+    "note": "Above thresholds | buy 15/16 | sell 13/13",
+    "timestamp": "2025-12-29T11:08:36.905074Z",
+    "received_at": "2025-12-29T11:08:36.905074Z",
+    "id": "2025-12-29T11:08:36.905074Z-EWG-info",
+    "threshold_met": true,
+    "buy_score": 15,
+    "sell_score": 13,
+    "total_buy_components": 41,
+    "total_sell_components": 40,
+    "buy_threshold": 16,
+    "sell_threshold": 13,
+    "strength_1_10": 0,
+    "buy_conviction": 0.36585365853658536,
+    "buy_persistence": 0,
+    "buy_position_multiplier": 0.5,
+    "sell_conviction": 0.41500000000000004,
+    "sell_persistence": 3,
+    "sell_position_multiplier": 1.0
+  },
+  {
+    "action": "sell",
+    "symbol": "RENDER/USD",
+    "quantity": 75.34999999,
+    "price": 1.319,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-29T11:07:15.091457Z",
+    "received_at": "2025-12-29T11:07:15.091480Z",
+    "id": "2025-12-29T11:07:15.091480Z-RENDER/USD-sell"
   },
   {
     "action": "sell",
