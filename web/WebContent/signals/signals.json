@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "CRV/USD",
+    "quantity": 258.1311306143521,
+    "price": 0.387,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-29T23:00:46.836123Z",
+    "received_at": "2025-12-29T23:00:46.836147Z",
+    "id": "2025-12-29T23:00:46.836147Z-CRV/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "CRV/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2605,16 +2616,5 @@
     "timestamp": "2025-12-26T02:00:16.133197Z",
     "received_at": "2025-12-26T02:00:16.133270Z",
     "id": "2025-12-26T02:00:16.133270Z-SUI/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2903.22,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2025-12-25T23:54:29.588802Z",
-    "received_at": "2025-12-25T23:54:29.588828Z",
-    "id": "2025-12-25T23:54:29.588828Z-ETH/USD-sell"
   }
 ]
