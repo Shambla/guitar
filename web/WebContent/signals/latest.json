@@ -2,10 +2,10 @@
   "action": "sell",
   "symbol": "ETH/USD",
   "quantity": 0.0,
-  "price": 2944.22,
+  "price": 2948.26,
   "source": "MASTER_BOT_162",
   "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-  "timestamp": "2025-12-30T06:44:59.206677Z",
-  "received_at": "2025-12-30T06:44:59.206771Z",
-  "id": "2025-12-30T06:44:59.206771Z-ETH/USD-sell"
+  "timestamp": "2025-12-30T07:14:49.526258Z",
+  "received_at": "2025-12-30T07:14:49.526354Z",
+  "id": "2025-12-30T07:14:49.526354Z-ETH/USD-sell"
 }
