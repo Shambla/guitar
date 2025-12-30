@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "CRV/USD",
+  "action": "buy",
+  "symbol": "DASH/USD",
   "quantity": 100.0,
   "price": null,
   "source": "TradingView JSON",
   "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2025-12-30T20:00:16.105508Z",
-  "received_at": "2025-12-30T20:00:16.105622Z",
-  "id": "2025-12-30T20:00:16.105622Z-CRV/USD-sell"
+  "timestamp": "2025-12-30T20:02:31.144442Z",
+  "received_at": "2025-12-30T20:02:31.144472Z",
+  "id": "2025-12-30T20:02:31.144472Z-DASH/USD-buy"
 }

@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "DASH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-30T20:02:31.144442Z",
+    "received_at": "2025-12-30T20:02:31.144472Z",
+    "id": "2025-12-30T20:02:31.144472Z-DASH/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "CRV/USD",
     "quantity": 100.0,
@@ -2675,16 +2686,5 @@
     "timestamp": "2025-12-27T14:02:05.689361Z",
     "received_at": "2025-12-27T14:02:05.689379Z",
     "id": "2025-12-27T14:02:05.689379Z-CRV/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-27T14:02:05.442131Z",
-    "received_at": "2025-12-27T14:02:05.442146Z",
-    "id": "2025-12-27T14:02:05.442146Z-CRV/USD-sell"
   }
 ]
