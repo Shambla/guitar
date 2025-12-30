@@ -2,6 +2,17 @@
   {
     "action": "sell",
     "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2944.22,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2025-12-30T06:44:59.206677Z",
+    "received_at": "2025-12-30T06:44:59.206771Z",
+    "id": "2025-12-30T06:44:59.206771Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
     "quantity": 0.03410303,
     "price": 2941.18,
     "source": "MASTER_BOT_162",
@@ -2675,16 +2686,5 @@
     "timestamp": "2025-12-26T16:00:20.351231Z",
     "received_at": "2025-12-26T16:00:20.351246Z",
     "id": "2025-12-26T16:00:20.351246Z-CRV/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "TAO/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-26T16:00:19.288587Z",
-    "received_at": "2025-12-26T16:00:19.288609Z",
-    "id": "2025-12-26T16:00:19.288609Z-TAO/USD-sell"
   }
 ]
