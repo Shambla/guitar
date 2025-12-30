@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "DASH/USD",
+    "quantity": 2.3218017181332713,
+    "price": 43.03,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-30T20:02:45.321864Z",
+    "received_at": "2025-12-30T20:02:45.321879Z",
+    "id": "2025-12-30T20:02:45.321879Z-DASH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "DASH/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2675,16 +2686,5 @@
     "timestamp": "2025-12-27T14:06:33.762141Z",
     "received_at": "2025-12-27T14:06:33.762167Z",
     "id": "2025-12-27T14:06:33.762167Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 0.0,
-    "price": 0.3834,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-27T14:02:05.689361Z",
-    "received_at": "2025-12-27T14:02:05.689379Z",
-    "id": "2025-12-27T14:02:05.689379Z-CRV/USD-sell"
   }
 ]
