@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "CRV/USD",
-  "quantity": 263.71308016877634,
-  "price": 0.3788,
+  "action": "sell",
+  "symbol": "DASH/USD",
+  "quantity": 4.68991567,
+  "price": 43.05,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2025-12-30T14:00:35.090986Z",
-  "received_at": "2025-12-30T14:00:35.091007Z",
-  "id": "2025-12-30T14:00:35.091007Z-CRV/USD-buy"
+  "timestamp": "2025-12-30T14:01:21.570867Z",
+  "received_at": "2025-12-30T14:01:21.570882Z",
+  "id": "2025-12-30T14:01:21.570882Z-DASH/USD-sell"
 }
