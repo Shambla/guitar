@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-30T06:01:45.097804Z",
+    "received_at": "2025-12-30T06:01:45.097882Z",
+    "id": "2025-12-30T06:01:45.097882Z-RENDER/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "ETH/USD",
     "quantity": 0.03404093,
@@ -2675,16 +2686,5 @@
     "timestamp": "2025-12-26T16:00:15.916638Z",
     "received_at": "2025-12-26T16:00:15.916653Z",
     "id": "2025-12-26T16:00:15.916653Z-FET/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-26T16:00:15.491494Z",
-    "received_at": "2025-12-26T16:00:15.492788Z",
-    "id": "2025-12-26T16:00:15.492788Z-FET/USD-sell"
   }
 ]
