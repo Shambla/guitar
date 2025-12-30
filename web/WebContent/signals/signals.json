@@ -2,6 +2,17 @@
   {
     "action": "sell",
     "symbol": "RENDER/USD",
+    "quantity": 76.98999999,
+    "price": 1.293,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-30T06:09:02.655333Z",
+    "received_at": "2025-12-30T06:09:02.655455Z",
+    "id": "2025-12-30T06:09:02.655455Z-RENDER/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "RENDER/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2675,16 +2686,5 @@
     "timestamp": "2025-12-26T16:00:18.615639Z",
     "received_at": "2025-12-26T16:00:18.615673Z",
     "id": "2025-12-26T16:00:18.615673Z-AAVE/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 0.01390603,
-    "price": 0.2078,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-26T16:00:15.916638Z",
-    "received_at": "2025-12-26T16:00:15.916653Z",
-    "id": "2025-12-26T16:00:15.916653Z-FET/USD-sell"
   }
 ]
