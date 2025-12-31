@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "TAO/USD",
+    "quantity": 0.44869999,
+    "price": 221.21,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-31T08:07:31.814019Z",
+    "received_at": "2025-12-31T08:07:31.814117Z",
+    "id": "2025-12-31T08:07:31.814117Z-TAO/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "BTC/USD",
     "quantity": 0.001129892817237464,
@@ -2675,16 +2686,5 @@
     "timestamp": "2025-12-28T02:02:48.120148Z",
     "received_at": "2025-12-28T02:02:48.120165Z",
     "id": "2025-12-28T02:02:48.120165Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "TAO/USD",
-    "quantity": 0.46129999,
-    "price": 222.48,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-28T02:00:32.549541Z",
-    "received_at": "2025-12-28T02:00:32.549569Z",
-    "id": "2025-12-28T02:00:32.549569Z-TAO/USD-sell"
   }
 ]
