@@ -586,13 +586,13 @@
   {
     "action": "info",
     "symbol": "PCEF",
-    "price": 19.81,
+    "price": 19.9,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 13/16 | sell 14/13",
-    "timestamp": "2025-12-30T12:15:16.945489Z",
-    "received_at": "2025-12-30T12:15:16.945489Z",
-    "id": "2025-12-30T12:15:16.945489Z-PCEF-info",
+    "timestamp": "2025-12-31T01:47:02.741177Z",
+    "received_at": "2025-12-31T01:47:02.741177Z",
+    "id": "2025-12-31T01:47:02.741177Z-PCEF-info",
     "threshold_met": true,
     "buy_score": 13,
     "sell_score": 14,
@@ -604,9 +604,9 @@
     "buy_conviction": 0.3170731707317073,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.38,
-    "sell_persistence": 1,
-    "sell_position_multiplier": 0.5
+    "sell_conviction": 0.41,
+    "sell_persistence": 2,
+    "sell_position_multiplier": 1.0
   },
   {
     "action": "info",
