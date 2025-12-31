@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "TAO/USD",
+  "symbol": "ETH/USD",
   "quantity": 100.0,
   "price": null,
   "source": "TradingView JSON",
   "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2025-12-31T03:00:14.930956Z",
-  "received_at": "2025-12-31T03:00:14.930973Z",
-  "id": "2025-12-31T03:00:14.930973Z-TAO/USD-buy"
+  "timestamp": "2025-12-31T03:00:16.192884Z",
+  "received_at": "2025-12-31T03:00:16.192910Z",
+  "id": "2025-12-31T03:00:16.192910Z-ETH/USD-buy"
 }
