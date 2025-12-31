@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "DASH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2025-12-31T09:00:23.314388Z",
+    "received_at": "2025-12-31T09:00:23.314494Z",
+    "id": "2025-12-31T09:00:23.314494Z-DASH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "TAO/USD",
     "quantity": 0.44869999,
     "price": 221.21,
@@ -2675,16 +2686,5 @@
     "timestamp": "2025-12-28T02:07:08.357997Z",
     "received_at": "2025-12-28T02:07:08.358011Z",
     "id": "2025-12-28T02:07:08.358011Z-DASH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2941.16,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2025-12-28T02:02:48.120148Z",
-    "received_at": "2025-12-28T02:02:48.120165Z",
-    "id": "2025-12-28T02:02:48.120165Z-ETH/USD-sell"
   }
 ]
