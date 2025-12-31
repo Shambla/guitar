@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "RENDER/USD",
+    "quantity": 77.39,
+    "price": 1.295,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-31T14:09:21.923755Z",
+    "received_at": "2025-12-31T14:09:21.923776Z",
+    "id": "2025-12-31T14:09:21.923776Z-RENDER/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "TAO/USD",
     "quantity": 0.4465,
     "price": 223.36,
@@ -2675,16 +2686,5 @@
     "timestamp": "2025-12-28T13:00:15.326412Z",
     "received_at": "2025-12-28T13:00:15.326497Z",
     "id": "2025-12-28T13:00:15.326497Z-SUI/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "SUI/USD",
-    "quantity": 69.0,
-    "price": 1.4487,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-28T11:02:57.861156Z",
-    "received_at": "2025-12-28T11:02:57.861171Z",
-    "id": "2025-12-28T11:02:57.861171Z-SUI/USD-sell"
   }
 ]
