@@ -2,6 +2,28 @@
   {
     "action": "buy",
     "symbol": "FET/USD",
+    "quantity": 485.90864917395527,
+    "price": 0.2056,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-31T13:00:49.800686Z",
+    "received_at": "2025-12-31T13:00:49.800713Z",
+    "id": "2025-12-31T13:00:49.800713Z-FET/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "AAVE/USD",
+    "quantity": 0.6732646603379788,
+    "price": 148.38,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2025-12-31T13:00:47.087771Z",
+    "received_at": "2025-12-31T13:00:47.087802Z",
+    "id": "2025-12-31T13:00:47.087802Z-AAVE/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2664,27 +2686,5 @@
     "timestamp": "2025-12-28T07:05:55.958891Z",
     "received_at": "2025-12-28T07:05:55.958907Z",
     "id": "2025-12-28T07:05:55.958907Z-TAO/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "RENDER/USD",
-    "quantity": 74.90636704119851,
-    "price": 1.334,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-28T07:00:45.493083Z",
-    "received_at": "2025-12-28T07:00:45.493098Z",
-    "id": "2025-12-28T07:00:45.493098Z-RENDER/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "RENDER/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-28T07:00:43.577329Z",
-    "received_at": "2025-12-28T07:00:43.577353Z",
-    "id": "2025-12-28T07:00:43.577353Z-RENDER/USD-buy"
   }
 ]
