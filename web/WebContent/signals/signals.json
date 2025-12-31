@@ -686,13 +686,13 @@
   {
     "action": "info",
     "symbol": "EWJ",
-    "price": 81.09,
+    "price": 80.98,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 13/16 | sell 15/13",
-    "timestamp": "2025-12-30T12:29:23.915550Z",
-    "received_at": "2025-12-30T12:29:23.915550Z",
-    "id": "2025-12-30T12:29:23.915550Z-EWJ-info",
+    "timestamp": "2025-12-31T02:05:37.631862Z",
+    "received_at": "2025-12-31T02:05:37.631862Z",
+    "id": "2025-12-31T02:05:37.631862Z-EWJ-info",
     "threshold_met": true,
     "buy_score": 13,
     "sell_score": 15,
@@ -704,8 +704,8 @@
     "buy_conviction": 0.3170731707317073,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.645,
-    "sell_persistence": 9,
+    "sell_conviction": 0.675,
+    "sell_persistence": 10,
     "sell_position_multiplier": 1.0
   },
   {
