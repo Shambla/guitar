@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "TAO/USD",
+  "symbol": "DASH/USD",
   "quantity": 100.0,
   "price": null,
   "source": "TradingView JSON",
   "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-01-02T18:00:18.467296Z",
-  "received_at": "2026-01-02T18:00:18.468687Z",
-  "id": "2026-01-02T18:00:18.468687Z-TAO/USD-buy"
+  "timestamp": "2026-01-02T18:00:27.748768Z",
+  "received_at": "2026-01-02T18:00:27.748787Z",
+  "id": "2026-01-02T18:00:27.748787Z-DASH/USD-buy"
 }
