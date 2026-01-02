@@ -1,27 +1,5 @@
 [
   {
-    "action": "buy",
-    "symbol": "DASH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-01-02T18:00:27.748768Z",
-    "received_at": "2026-01-02T18:00:27.748787Z",
-    "id": "2026-01-02T18:00:27.748787Z-DASH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "TAO/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-01-02T18:00:18.467296Z",
-    "received_at": "2026-01-02T18:00:18.468687Z",
-    "id": "2026-01-02T18:00:18.468687Z-TAO/USD-buy"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 143.92,
@@ -558,26 +536,26 @@
   {
     "action": "info",
     "symbol": "USO",
-    "price": 69.16,
+    "price": 68.5,
     "quantity": null,
     "source": "MAIN_stock_strat12",
-    "note": "Above thresholds | buy 11/16 | sell 16/13",
-    "timestamp": "2026-01-02T05:54:05.002304Z",
-    "received_at": "2026-01-02T05:54:05.002304Z",
-    "id": "2026-01-02T05:54:05.002304Z-USO-info",
+    "note": "Above thresholds | buy 14/16 | sell 17/13",
+    "timestamp": "2026-01-02T18:01:33.673640Z",
+    "received_at": "2026-01-02T18:01:33.673640Z",
+    "id": "2026-01-02T18:01:33.673640Z-USO-info",
     "threshold_met": true,
-    "buy_score": 11,
-    "sell_score": 16,
+    "buy_score": 14,
+    "sell_score": 17,
     "total_buy_components": 41,
     "total_sell_components": 40,
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0,
-    "buy_conviction": 0.2682926829268293,
+    "buy_conviction": 0.34146341463414637,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.7,
-    "sell_persistence": 31,
+    "sell_conviction": 0.725,
+    "sell_persistence": 32,
     "sell_position_multiplier": 1.5
   },
   {
@@ -989,6 +967,28 @@
     "sell_conviction": 0.3,
     "sell_persistence": 0,
     "sell_position_multiplier": 0.5
+  },
+  {
+    "action": "buy",
+    "symbol": "DASH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-02T18:00:27.748768Z",
+    "received_at": "2026-01-02T18:00:27.748787Z",
+    "id": "2026-01-02T18:00:27.748787Z-DASH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-02T18:00:18.467296Z",
+    "received_at": "2026-01-02T18:00:18.468687Z",
+    "id": "2026-01-02T18:00:18.468687Z-TAO/USD-buy"
   },
   {
     "action": "buy",
