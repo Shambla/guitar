@@ -1,11 +1,11 @@
 {
   "action": "buy",
   "symbol": "CRV/USD",
-  "quantity": 100.0,
-  "price": null,
-  "source": "TradingView JSON",
-  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-01-03T05:00:07.633284Z",
-  "received_at": "2026-01-03T05:00:07.633304Z",
-  "id": "2026-01-03T05:00:07.633304Z-CRV/USD-buy"
+  "quantity": 246.06299212598427,
+  "price": 0.406,
+  "source": "MASTER_BOT_162",
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-01-03T05:05:45.099185Z",
+  "received_at": "2026-01-03T05:05:45.099199Z",
+  "id": "2026-01-03T05:05:45.099199Z-CRV/USD-buy"
 }
