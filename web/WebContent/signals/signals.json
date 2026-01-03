@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "SUI/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-03T15:00:14.561856Z",
+    "received_at": "2026-01-03T15:00:14.561938Z",
+    "id": "2026-01-03T15:00:14.561938Z-SUI/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "TAO/USD",
     "quantity": 0.40551500405515006,
     "price": 246.35,
@@ -2715,16 +2726,5 @@
     "timestamp": "2025-12-29T13:00:22.991362Z",
     "received_at": "2025-12-29T13:00:22.991388Z",
     "id": "2025-12-29T13:00:22.991388Z-FET/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-29T13:00:21.863029Z",
-    "received_at": "2025-12-29T13:00:21.863145Z",
-    "id": "2025-12-29T13:00:21.863145Z-FET/USD-sell"
   }
 ]
