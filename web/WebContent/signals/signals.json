@@ -1,6 +1,28 @@
 [
   {
     "action": "buy",
+    "symbol": "BTC/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-03T14:01:10.696217Z",
+    "received_at": "2026-01-03T14:01:10.696233Z",
+    "id": "2026-01-03T14:01:10.696233Z-BTC/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "CRV/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-03T14:01:10.674130Z",
+    "received_at": "2026-01-03T14:01:10.675866Z",
+    "id": "2026-01-03T14:01:10.675866Z-CRV/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "TAO/USD",
     "quantity": 100.0,
     "price": null,
@@ -2704,27 +2726,5 @@
     "timestamp": "2025-12-29T02:00:16.340030Z",
     "received_at": "2025-12-29T02:00:16.340055Z",
     "id": "2025-12-29T02:00:16.340055Z-DASH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "SUI/USD",
-    "quantity": 67.93939805693321,
-    "price": 1.4704,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-29T02:00:15.448246Z",
-    "received_at": "2025-12-29T02:00:15.448273Z",
-    "id": "2025-12-29T02:00:15.448273Z-SUI/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-29T02:00:14.741020Z",
-    "received_at": "2025-12-29T02:00:14.741036Z",
-    "id": "2025-12-29T02:00:14.741036Z-CRV/USD-buy"
   }
 ]
