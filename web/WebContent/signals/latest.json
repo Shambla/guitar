@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "DASH/USD",
-  "quantity": 2.3196474135931338,
-  "price": 43.07,
+  "symbol": "ETH/USD",
+  "quantity": 0.03226316,
+  "price": 3093.31098,
   "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-01-03T13:06:24.432694Z",
-  "received_at": "2026-01-03T13:06:24.432723Z",
-  "id": "2026-01-03T13:06:24.432723Z-DASH/USD-buy"
+  "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+  "timestamp": "2026-01-03T13:18:48.854333Z",
+  "received_at": "2026-01-03T13:18:48.854448Z",
+  "id": "2026-01-03T13:18:48.854448Z-ETH/USD-buy"
 }
