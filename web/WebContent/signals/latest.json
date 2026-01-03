@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "ETH/USD",
-  "quantity": 0.03226316,
-  "price": 3093.31098,
-  "source": "MASTER_BOT_162",
-  "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-  "timestamp": "2026-01-03T13:18:48.854333Z",
-  "received_at": "2026-01-03T13:18:48.854448Z",
-  "id": "2026-01-03T13:18:48.854448Z-ETH/USD-buy"
+  "symbol": "RENDER/USD",
+  "quantity": 100.0,
+  "price": null,
+  "source": "TradingView JSON",
+  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+  "timestamp": "2026-01-03T14:00:04.227866Z",
+  "received_at": "2026-01-03T14:00:04.227879Z",
+  "id": "2026-01-03T14:00:04.227879Z-RENDER/USD-buy"
 }
