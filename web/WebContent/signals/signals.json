@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "DASH/USD",
+    "quantity": 2.3196474135931338,
+    "price": 43.07,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-03T13:06:24.432694Z",
+    "received_at": "2026-01-03T13:06:24.432723Z",
+    "id": "2026-01-03T13:06:24.432723Z-DASH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "DASH/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2715,16 +2726,5 @@
     "timestamp": "2025-12-29T02:00:05.416151Z",
     "received_at": "2025-12-29T02:00:05.416223Z",
     "id": "2025-12-29T02:00:05.416223Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "TAO/USD",
-    "quantity": 0.4436360409919702,
-    "price": 225.18,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-29T01:00:17.260417Z",
-    "received_at": "2025-12-29T01:00:17.260434Z",
-    "id": "2025-12-29T01:00:17.260434Z-TAO/USD-buy"
   }
 ]
