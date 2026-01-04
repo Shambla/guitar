@@ -2,6 +2,8 @@
 YouTube API Manager
 Efficiently manage YouTube video descriptions, tags, thumbnails, playlists, and chapters.
 
+Double check auth 
+
 ------------------------------------------------------------------------------
 READ THIS FIRST (Secrets / Keys / OAuth)
 ------------------------------------------------------------------------------
