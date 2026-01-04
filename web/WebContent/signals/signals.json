@@ -2,6 +2,28 @@
   {
     "action": "buy",
     "symbol": "ETH/USD",
+    "quantity": 0.03181106770667651,
+    "price": 3140.42,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-04T22:06:31.398809Z",
+    "received_at": "2026-01-04T22:06:31.398827Z",
+    "id": "2026-01-04T22:06:31.398827Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.03181106770667651,
+    "price": 3140.42,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-04T22:06:28.881536Z",
+    "received_at": "2026-01-04T22:06:28.881568Z",
+    "id": "2026-01-04T22:06:28.881568Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2704,27 +2726,5 @@
     "timestamp": "2025-12-30T10:00:23.531394Z",
     "received_at": "2025-12-30T10:00:23.531409Z",
     "id": "2025-12-30T10:00:23.531409Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.04023713,
-    "price": 2975.46,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed, position sized by JSON count)",
-    "timestamp": "2025-12-30T09:52:18.728535Z",
-    "received_at": "2025-12-30T09:52:18.728920Z",
-    "id": "2025-12-30T09:52:18.728920Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.03363062,
-    "price": 2962.37613,
-    "source": "MASTER_BOT_162",
-    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
-    "timestamp": "2025-12-30T09:17:55.924964Z",
-    "received_at": "2025-12-30T09:17:55.925051Z",
-    "id": "2025-12-30T09:17:55.925051Z-ETH/USD-buy"
   }
 ]
