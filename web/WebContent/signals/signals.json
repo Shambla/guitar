@@ -2,6 +2,28 @@
   {
     "action": "sell",
     "symbol": "AAVE/USD",
+    "quantity": 0.60699999,
+    "price": 162.53,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-04T20:07:41.794352Z",
+    "received_at": "2026-01-04T20:07:41.794367Z",
+    "id": "2026-01-04T20:07:41.794367Z-AAVE/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "BTC/USD",
+    "quantity": 0.0010914,
+    "price": 91101.89,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-04T20:07:40.247125Z",
+    "received_at": "2026-01-04T20:07:40.247153Z",
+    "id": "2026-01-04T20:07:40.247153Z-BTC/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "AAVE/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2704,27 +2726,5 @@
     "timestamp": "2025-12-30T08:00:15.918234Z",
     "received_at": "2025-12-30T08:00:15.918311Z",
     "id": "2025-12-30T08:00:15.918311Z-RENDER/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2948.26,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2025-12-30T07:14:49.526258Z",
-    "received_at": "2025-12-30T07:14:49.526354Z",
-    "id": "2025-12-30T07:14:49.526354Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2944.22,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2025-12-30T06:44:59.206677Z",
-    "received_at": "2025-12-30T06:44:59.206771Z",
-    "id": "2025-12-30T06:44:59.206771Z-ETH/USD-sell"
   }
 ]
