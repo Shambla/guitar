@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "BTC/USD",
-  "quantity": 0.00112659,
-  "price": 91235.99,
+  "symbol": "TAO/USD",
+  "quantity": 0.0269,
+  "price": 265.07,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-01-04T14:11:32.741277Z",
-  "received_at": "2026-01-04T14:11:32.741291Z",
-  "id": "2026-01-04T14:11:32.741291Z-BTC/USD-sell"
+  "timestamp": "2026-01-04T14:11:58.630406Z",
+  "received_at": "2026-01-04T14:11:58.630421Z",
+  "id": "2026-01-04T14:11:58.630421Z-TAO/USD-sell"
 }
