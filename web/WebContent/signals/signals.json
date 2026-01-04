@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.03190525,
+    "price": 3128.01144,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-01-04T13:24:54.361451Z",
+    "received_at": "2026-01-04T13:24:54.361471Z",
+    "id": "2026-01-04T13:24:54.361471Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "AAVE/USD",
     "quantity": 0.6065752759917505,
     "price": 164.7,
@@ -2715,16 +2726,5 @@
     "timestamp": "2025-12-29T19:00:36.599880Z",
     "received_at": "2025-12-29T19:00:36.599914Z",
     "id": "2025-12-29T19:00:36.599914Z-DASH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "DASH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-29T19:00:13.262938Z",
-    "received_at": "2025-12-29T19:00:13.263064Z",
-    "id": "2025-12-29T19:00:13.263064Z-DASH/USD-buy"
   }
 ]
