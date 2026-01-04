@@ -1,5 +1,38 @@
 [
   {
+    "action": "sell",
+    "symbol": "SUI/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-04T14:00:07.581005Z",
+    "received_at": "2026-01-04T14:00:07.581021Z",
+    "id": "2026-01-04T14:00:07.581021Z-SUI/USD-sell"
+  },
+  {
+    "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-04T14:00:04.573695Z",
+    "received_at": "2026-01-04T14:00:04.573713Z",
+    "id": "2026-01-04T14:00:04.573713Z-RENDER/USD-buy"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-04T14:00:04.074849Z",
+    "received_at": "2026-01-04T14:00:04.075313Z",
+    "id": "2026-01-04T14:00:04.075313Z-ETH/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "ETH/USD",
     "quantity": 0.03190525,
@@ -2693,38 +2726,5 @@
     "timestamp": "2025-12-29T20:20:14.141898Z",
     "received_at": "2025-12-29T20:20:14.142098Z",
     "id": "2025-12-29T20:20:14.142098Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2931.49,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2025-12-29T19:52:24.512780Z",
-    "received_at": "2025-12-29T19:52:24.512892Z",
-    "id": "2025-12-29T19:52:24.512892Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.03426394,
-    "price": 2932.0,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2025-12-29T19:24:47.334378Z",
-    "received_at": "2025-12-29T19:24:47.334509Z",
-    "id": "2025-12-29T19:24:47.334509Z-ETH/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "DASH/USD",
-    "quantity": 2.3386342376052385,
-    "price": 42.72,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-29T19:00:36.599880Z",
-    "received_at": "2025-12-29T19:00:36.599914Z",
-    "id": "2025-12-29T19:00:36.599914Z-DASH/USD-buy"
   }
 ]
