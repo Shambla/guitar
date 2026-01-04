@@ -656,7 +656,7 @@ nav a:hover::after {
 	position:		relative;
 	min-height:		100%;
 	padding:		20px;
-	padding-bottom:	80px;
+	padding-bottom:	120px;
 	display:		flex;
 	flex-direction:	column;
 	justify-content: flex-start;
@@ -676,8 +676,8 @@ nav a:hover::after {
 #bio-text-overlay .link-button {
 	pointer-events:	auto;
 	transition:		opacity 0.4s var(--ease-out);
-	margin-top:		20px;
-	margin-bottom:	20px;
+	margin-top:		10px;
+	margin-bottom:	0;
 }
 
 /* Hide overlay text on smaller screens or if user prefers text below */

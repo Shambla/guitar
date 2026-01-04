@@ -56,3 +56,7 @@ credentials.json
 client_secrets.json
 *api_key*
 *apikey*
+
+# OAuth tokens (YouTube / Google) - never commit
+web/WebContent/youtube_token.json
+web/WebContent/token*.json

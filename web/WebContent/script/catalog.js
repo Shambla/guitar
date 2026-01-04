@@ -2,6 +2,33 @@
 
 let catalogData = [];
 let currentFilter = 'all';
+let currentSort = 'default';
+
+function parsePriceToNumber(priceStr) {
+    const cleaned = (priceStr || '')
+        .toString()
+        .replace(/[^0-9.]/g, '');
+    const n = parseFloat(cleaned);
+    return Number.isFinite(n) ? n : NaN;
+}
+
+function difficultyRank(difficultyStr) {
+    const d = (difficultyStr || '').toString().toLowerCase().trim();
+    if (d === 'beginner') return 1;
+    if (d === 'intermediate') return 2;
+    if (d === 'advanced') return 3;
+    return 99;
+}
+
+// Normalize text for consistent searching (e.g., "film-score" matches "film score")
+function normalizeSearchText(str) {
+    return (str || '')
+        .toString()
+        .toLowerCase()
+        .replace(/[-_]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
 
 // Handle image loading errors - try fallback paths
 function handleImageError(img, originalSrc, basePath) {
@@ -40,6 +67,8 @@ function loadCatalog() {
         .then(data => {
             catalogData = data;
             displayCatalog(catalogData);
+            // Apply any selected sort after initial render
+            sortCatalog();
         })
         .catch(error => {
             console.error('Error loading catalog:', error);
@@ -70,7 +99,15 @@ function displayCatalog(items) {
             const itemDiv = document.createElement('div');
             itemDiv.className = 'catalog-item';
             itemDiv.setAttribute('data-category', `${item.category} ${item.difficulty.toLowerCase()}`);
-            itemDiv.setAttribute('data-search', `${item.title} ${item.composer} ${item.category} ${item.difficulty}`.toLowerCase());
+            itemDiv.setAttribute('data-title', normalizeSearchText(item.title));
+            itemDiv.setAttribute('data-composer', normalizeSearchText(item.composer));
+            itemDiv.setAttribute('data-difficulty-rank', String(difficultyRank(item.difficulty)));
+            itemDiv.setAttribute('data-price', String(parsePriceToNumber(item.price)));
+            // data-search is a normalized concatenation of searchable fields
+            itemDiv.setAttribute(
+                'data-search',
+                normalizeSearchText(`${item.title} ${item.composer} ${item.category} ${item.difficulty}`)
+            );
             
             // Difficulty class for color coding
             const difficultyClass = item.difficulty.toLowerCase();
@@ -129,7 +166,8 @@ function displayCatalog(items) {
             `;
             
             // Ensure visibility (fixes display issues)
-            itemDiv.style.display = 'block';
+            // Keep the intended flex layout for catalog cards.
+            itemDiv.style.display = 'flex';
             itemDiv.style.visibility = 'visible';
             itemDiv.style.opacity = '1';
             
@@ -148,6 +186,59 @@ function displayCatalog(items) {
     } else {
         console.error('Grid has no children - items were not appended.');
     }
+}
+
+// Sort visible catalog items based on the dropdown selection
+function sortCatalog() {
+    const grid = document.getElementById('catalog-grid');
+    if (!grid) return;
+
+    const select = document.getElementById('sort-select');
+    const selected = select ? select.value : 'default';
+    currentSort = selected || 'default';
+
+    // Collect existing item nodes (ignore messages like loading/no-results)
+    const nodes = Array.from(grid.children).filter(
+        el => el.classList && el.classList.contains('catalog-item')
+    );
+    if (nodes.length <= 1) return;
+
+    // Preserve current display state (filter/search may hide items)
+    const byDisplay = (el) => (el.style && el.style.display === 'none') ? 1 : 0;
+
+    const cmpText = (a, b) => (a || '').localeCompare((b || ''), undefined, { sensitivity: 'base' });
+    const cmpNum = (a, b) => {
+        const na = Number(a), nb = Number(b);
+        const aBad = !Number.isFinite(na);
+        const bBad = !Number.isFinite(nb);
+        if (aBad && bBad) return 0;
+        if (aBad) return 1;
+        if (bBad) return -1;
+        return na - nb;
+    };
+
+    const comparator = (aEl, bEl) => {
+        // Keep hidden items after visible items so sorting doesn't "look empty"
+        const d = byDisplay(aEl) - byDisplay(bEl);
+        if (d !== 0) return d;
+
+        if (currentSort === 'title_asc') return cmpText(aEl.dataset.title, bEl.dataset.title);
+        if (currentSort === 'title_desc') return cmpText(bEl.dataset.title, aEl.dataset.title);
+
+        if (currentSort === 'composer_asc') return cmpText(aEl.dataset.composer, bEl.dataset.composer);
+        if (currentSort === 'composer_desc') return cmpText(bEl.dataset.composer, aEl.dataset.composer);
+
+        if (currentSort === 'difficulty_asc') return cmpNum(aEl.dataset.difficultyRank, bEl.dataset.difficultyRank);
+        if (currentSort === 'difficulty_desc') return cmpNum(bEl.dataset.difficultyRank, aEl.dataset.difficultyRank);
+
+        if (currentSort === 'price_asc') return cmpNum(aEl.dataset.price, bEl.dataset.price);
+        if (currentSort === 'price_desc') return cmpNum(bEl.dataset.price, aEl.dataset.price);
+
+        return 0; // default
+    };
+
+    nodes.sort(comparator);
+    nodes.forEach(n => grid.appendChild(n));
 }
 
 // Filter catalog by category
@@ -170,6 +261,9 @@ function filterBy(category) {
             item.style.display = 'none';
         }
     });
+
+    // Maintain sort ordering after filter changes
+    sortCatalog();
     
     // Check if any items are visible
     const visibleItems = Array.from(items).filter(item => item.style.display !== 'none');
@@ -180,12 +274,12 @@ function filterBy(category) {
 
 // Search catalog
 function searchCatalog() {
-    const searchTerm = document.getElementById('search-bar').value.toLowerCase();
+    const searchTerm = normalizeSearchText(document.getElementById('search-bar').value);
     const items = document.querySelectorAll('.catalog-item');
     let visibleCount = 0;
     
     items.forEach(item => {
-        const searchData = item.getAttribute('data-search');
+        const searchData = item.getAttribute('data-search') || '';
         if (searchData.includes(searchTerm)) {
             item.style.display = 'flex';
             visibleCount++;
@@ -211,6 +305,9 @@ function searchCatalog() {
             noResults.remove();
         }
     }
+
+    // Maintain sort ordering after search changes
+    sortCatalog();
 }
 
 // Fallback image handler for live previews

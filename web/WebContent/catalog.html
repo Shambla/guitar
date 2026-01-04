@@ -53,6 +53,24 @@
 				<button class="filter-btn" onclick="filterBy('advanced')">Advanced</button>
 			</div>
 			
+			<!-- Sort Options -->
+			<div class="catalog-controls">
+				<div class="sort-control">
+					<label for="sort-select">Sort:</label>
+					<select id="sort-select" onchange="sortCatalog()">
+						<option value="default" selected>Default</option>
+						<option value="title_asc">Title (A → Z)</option>
+						<option value="title_desc">Title (Z → A)</option>
+						<option value="composer_asc">Composer (A → Z)</option>
+						<option value="composer_desc">Composer (Z → A)</option>
+						<option value="difficulty_asc">Difficulty (Beginner → Advanced)</option>
+						<option value="difficulty_desc">Difficulty (Advanced → Beginner)</option>
+						<option value="price_asc">Price (Low → High)</option>
+						<option value="price_desc">Price (High → Low)</option>
+					</select>
+				</div>
+			</div>
+			
 			<!-- Search Bar -->
 			<div style="margin: 20px 0;">
 				<input type="text" id="search-bar" placeholder="Search by title, composer, or keyword..." onkeyup="searchCatalog()">

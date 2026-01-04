@@ -81,7 +81,7 @@
     "title": "Chord Exercises 1",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1809229/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1809229/Product.aspx",
@@ -92,7 +92,7 @@
     "title": "Chord Exercises 2",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1809051/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1809051/Product.aspx",
@@ -103,7 +103,7 @@
     "title": "Chord Exercises 3",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1791448/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1791448/Product.aspx",
@@ -202,7 +202,7 @@
     "title": "Study No. 13 - Modes of D Major (arr. Brian Streckfus)",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "Check listing",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1738128/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1738128/Product.aspx",
@@ -422,7 +422,7 @@
     "title": "A Whole New World (arr. Brian Streckfus)",
     "composer": "Alan Menken, Tim Rice",
     "difficulty": "Intermediate",
-    "category": "disney",
+    "category": "film-score",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1629463/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1629463/Product.aspx",
@@ -598,7 +598,7 @@
     "title": "5 Common Chords (arr. Brian Streckfus)",
     "composer": "Brian Streckfus",
     "difficulty": "Beginner",
-    "category": "technique",
+    "category": "theory",
     "price": "Check listing",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1469051/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1469051/Product.aspx",
@@ -633,7 +633,8 @@
     "category": "theory",
     "price": "$4.99",
     "preview_url": "",
-    "sheet_music_direct_url": ""
+    "sheet_music_direct_url": "",
+    "preview_image": "img/previews/All Chord Progression Generators-preview.png"
   },
   {
     "id": "inactive-harmonic-minor-chord-progression-generator-for-guitar",
@@ -654,7 +655,8 @@
     "category": "theory",
     "price": "$4.99",
     "preview_url": "",
-    "sheet_music_direct_url": ""
+    "sheet_music_direct_url": "",
+    "preview_image": "img/previews/D_Dorian_1_Just_Melody_Version_2-preview.png"
   },
   {
     "id": "eyes-open",
@@ -675,7 +677,8 @@
     "category": "theory",
     "price": "$5.99",
     "preview_url": "",
-    "sheet_music_direct_url": ""
+    "sheet_music_direct_url": "",
+    "preview_image": "img/previews/Study - Dynamics - Brian Streckfus-preview.png"
   },
   {
     "id": "lost-boy",
@@ -685,7 +688,8 @@
     "category": "popular",
     "price": "$2.99",
     "preview_url": "",
-    "sheet_music_direct_url": ""
+    "sheet_music_direct_url": "",
+    "preview_image": "img/previews/Lost_Boy_4_3_23-preview.png"
   },
   {
     "id": "study-no-6-no-7---major-and-minor-modes",
@@ -695,7 +699,8 @@
     "category": "theory",
     "price": "$4.99",
     "preview_url": "",
-    "sheet_music_direct_url": ""
+    "sheet_music_direct_url": "",
+    "preview_image": "img/previews/Study_No_6_+_7_-_Streckfus-preview.png"
   },
   {
     "id": "cancion-del-emperador",
@@ -771,7 +776,8 @@
     "category": "holiday",
     "price": "$2.99",
     "preview_url": "",
-    "sheet_music_direct_url": ""
+    "sheet_music_direct_url": "",
+    "preview_image": "img/previews/Shenadoah_8-preview.png"
   },
   {
     "id": "californication",
@@ -825,7 +831,8 @@
     "category": "classical",
     "price": "$4.99",
     "preview_url": "",
-    "sheet_music_direct_url": ""
+    "sheet_music_direct_url": "",
+    "preview_image": "img/previews/Mountain_King_6-preview.png"
   },
   {
     "id": "go-rest-ye-marry-gentleman",
@@ -945,7 +952,8 @@
     "category": "classical",
     "price": "$4.99",
     "preview_url": "",
-    "sheet_music_direct_url": ""
+    "sheet_music_direct_url": "",
+    "preview_image": "img/previews/Bach_Minuet_8-preview.png"
   },
   {
     "id": "jesu-joy-of-mans-desiring",
@@ -985,10 +993,11 @@
     "title": "Guitar Chord Exercises - Iterating Chords",
     "composer": "Various",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$4.99",
     "preview_url": "",
-    "sheet_music_direct_url": ""
+    "sheet_music_direct_url": "",
+    "preview_image": "img/previews/23_Left_Hand_Exercises_for_Guitar-preview.png"
   },
   {
     "id": "movable-guitar-chords",
@@ -1030,7 +1039,8 @@
     "category": "jazz",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1373452/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1373452/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1373452/Product.aspx",
+    "preview_image": "img/previews/Blue_bossa_4_pianobass_Combine08-03-preview.png"
   },
   {
     "id": "tango",
@@ -1062,7 +1072,8 @@
     "category": "classical",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1371831/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1371831/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1371831/Product.aspx",
+    "preview_image": "img/previews/Kuu_Gl_-_Swan_Lake_Theme_For_Guitar-preview.png"
   },
   {
     "id": "whiskey-glasses",
@@ -1072,7 +1083,8 @@
     "category": "popular",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1371830/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1371830/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1371830/Product.aspx",
+    "preview_image": "img/previews/Whiskey_Glasses_4-preview.png"
   },
   {
     "id": "god-bless-america",
@@ -1082,7 +1094,8 @@
     "category": "patriotic",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1371717/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1371717/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1371717/Product.aspx",
+    "preview_image": "img/previews/God_Bless_America_2-preview.png"
   },
   {
     "id": "have-yourself-a-merry-little-christmas",
@@ -1136,7 +1149,8 @@
     "category": "popular",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1351677/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1351677/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1351677/Product.aspx",
+    "preview_image": "img/previews/ALL_ALONG_THE_WATCHTOWER-preview.png"
   },
   {
     "id": "etude-no-7-op-60",
@@ -1254,7 +1268,8 @@
     "category": "traditional",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1290007/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1290007/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1290007/Product.aspx",
+    "preview_image": "img/previews/Shenadoah_8-preview.png"
   },
   {
     "id": "love-me-do",
@@ -1272,7 +1287,7 @@
     "title": "Rhythm Packet 6 Pages",
     "composer": "Traditional",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1289894/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1289894/Product.aspx",
@@ -1297,7 +1312,8 @@
     "category": "popular",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1283410/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1283410/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1283410/Product.aspx",
+    "preview_image": "img/previews/Sweet_Chariot_1-preview.png"
   },
   {
     "id": "aria-excerpt-from-goldberg-variations",
@@ -1307,7 +1323,8 @@
     "category": "classical",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1280941/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1280941/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1280941/Product.aspx",
+    "preview_image": "img/previews/Bach_Goldberg_Aria_Solo_3_Sections-preview.png"
   },
   {
     "id": "nocturne-op-9-no-1",
@@ -1336,7 +1353,7 @@
     "title": "5 Scale Forms For Guitar",
     "composer": "Traditional",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1273053/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1273053/Product.aspx"
@@ -1360,14 +1377,15 @@
     "category": "popular",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1271564/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1271564/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1271564/Product.aspx",
+    "preview_image": "img/previews/NFL_Fox_theme_D_minor-preview.png"
   },
   {
     "id": "triad-chord-worksheet",
     "title": "Triad Chord Worksheet",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1270919/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1270919/Product.aspx"
@@ -1380,7 +1398,8 @@
     "category": "popular",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1270919/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1270919/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1270919/Product.aspx",
+    "preview_image": "img/previews/Drowsy_Maggie_Guitar_7-preview.png"
   },
   {
     "id": "the-entertainer",
@@ -1390,7 +1409,8 @@
     "category": "ragtime",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1270919/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1270919/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1270919/Product.aspx",
+    "preview_image": "img/previews/Entertainer_6-preview.png"
   },
   {
     "id": "star-spangled-banner",
@@ -1441,7 +1461,7 @@
     "title": "Study no 12 Secondary Dominance",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1259404/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1259404/Product.aspx",
@@ -1452,7 +1472,7 @@
     "title": "Study no 11: Dynamics",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1259388/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1259388/Product.aspx",
@@ -1463,7 +1483,7 @@
     "title": "Study no 10: Modes Of C Major",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1259365/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1259365/Product.aspx",
@@ -1477,7 +1497,8 @@
     "category": "jazz",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1874921/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1874921/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1874921/Product.aspx",
+    "preview_image": "img/previews/A minor Roman Numerals JAZZ 3-preview.png"
   },
   {
     "id": "g-major-e-minor-d-mixolydian",
@@ -1508,7 +1529,8 @@
     "category": "classical",
     "price": "$5.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1874274/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1874274/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1874274/Product.aspx",
+    "preview_image": "img/previews/chopin-nocturne-op37-1-preview.png"
   },
   {
     "id": "b-minor-d-major---synthwave-electronic-music",
@@ -1526,7 +1548,7 @@
     "title": "G Harmonic Minor (D Jewish Scale)",
     "composer": "Traditional",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1874269/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1874269/Product.aspx",
@@ -1540,7 +1562,8 @@
     "category": "popular",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1863082/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1863082/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1863082/Product.aspx",
+    "preview_image": "img/previews/Last_Night_-_Morgan_Wallen-preview.png"
   },
   {
     "id": "yesterday-woodwind-quartet",
@@ -1627,7 +1650,8 @@
     "category": "popular",
     "price": "$2.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1256277/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1256277/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1256277/Product.aspx",
+    "preview_image": "img/previews/Blank Guitar Sheet Music TAB Chord diagram v5-preview.png"
   },
   {
     "id": "blank-guitar-sheet-music",
@@ -1648,7 +1672,8 @@
     "category": "classical",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1252174/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1252174/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1252174/Product.aspx",
+    "preview_image": "img/previews/Gnossienne 1 Guitar Tab 4.0 PDF -preview.png"
   },
   {
     "id": "gnossienne-no-3-tablature-and-sheet-music",
@@ -1658,7 +1683,8 @@
     "category": "classical",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1252173/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1252173/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1252173/Product.aspx",
+    "preview_image": "img/previews/Gnossienne_3_Combine_02_01_23-preview.png"
   },
   {
     "id": "gnossienne-no-1-tablature-and-sheet-music",
@@ -1679,7 +1705,8 @@
     "category": "classical",
     "price": "$5.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1249132/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1249132/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1249132/Product.aspx",
+    "preview_image": "img/previews/Moonlight_Sonata_sustain08-03-preview.png"
   },
   {
     "id": "blackbird",
@@ -1722,7 +1749,8 @@
     "category": "popular",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1248389/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1248389/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1248389/Product.aspx",
+    "preview_image": "img/previews/Canon_in_D_by_Johann_Pachelbel-preview.png"
   },
   {
     "id": "excerpt---pavane-for-a-dead-princess",
@@ -1754,7 +1782,8 @@
     "category": "popular",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1246931/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1246931/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1246931/Product.aspx",
+    "preview_image": "img/previews/Flow_My_Tears_John_Dowland_2-preview.png"
   },
   {
     "id": "landler-no-10",
@@ -1816,7 +1845,7 @@
     "title": "Guitar Chord Progression Generators For Common Scales - 12 Pages",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1235452/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1235452/Product.aspx",
@@ -1838,7 +1867,7 @@
     "title": "G Mixolydian Chord Progression Generator Guitar",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.arrangeme.com/title/739939",
     "sheet_music_direct_url": "https://www.arrangeme.com/title/739939",
@@ -1849,7 +1878,7 @@
     "title": "F Lydian Progression Generator Guitar",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1235449/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1235449/Product.aspx",
@@ -1860,7 +1889,7 @@
     "title": "E Phrygian Progression Generator Guitar",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1235447/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1235447/Product.aspx",
@@ -1871,7 +1900,7 @@
     "title": "D Dorian Chord Progression Generator Guitar",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1235446/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1235446/Product.aspx",
@@ -1882,7 +1911,7 @@
     "title": "C Major Chord Progression Generator Guitar",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1235445/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1235445/Product.aspx",
@@ -1893,7 +1922,7 @@
     "title": "B Locrian Chord Progression Generator Guitar",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1235442/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1235442/Product.aspx",
@@ -1904,7 +1933,7 @@
     "title": "A Minor Chord Progression Generator For Guitar (small)",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1235440/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1235440/Product.aspx",
@@ -1915,7 +1944,7 @@
     "title": "A Minor Chord Progression Generator Guitar (large Chords)",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1233992/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1233992/Product.aspx",
@@ -1936,7 +1965,7 @@
     "title": "A Harmonic Minor Chord Progression Generator For Guitars (small Chords)",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1233962/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1233962/Product.aspx",
@@ -1947,7 +1976,7 @@
     "title": "Harmonic Minor Chord Progression Generator Guitar",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1233955/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1233955/Product.aspx",
@@ -1958,11 +1987,11 @@
     "title": "Study no 2 D Dorian Mode",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1232286/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1232286/Product.aspx",
-    "preview_image": "img/previews/Prelude_No_2.png"
+    "preview_image": "img/previews/D_Dorian_1_Just_Melody_Version_2-preview.png"
   },
   {
     "id": "eyes-open",
@@ -1983,7 +2012,8 @@
     "category": "classical",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1231854/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1231854/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1231854/Product.aspx",
+    "preview_image": "img/previews/Study - Dynamics - Brian Streckfus-preview.png"
   },
   {
     "id": "lost-boy",
@@ -1993,14 +2023,15 @@
     "category": "popular",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1231459/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1231459/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1231459/Product.aspx",
+    "preview_image": "img/previews/Lost_Boy_4_3_23-preview.png"
   },
   {
     "id": "study-no-6--no-7-major-and-minor-modes",
     "title": "Study no 6 & no 7 Major And Minor Modes",
     "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "technique",
+    "category": "theory",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1229627/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1229627/Product.aspx",
@@ -2245,7 +2276,8 @@
     "category": "classical",
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1220640/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1220640/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1220640/Product.aspx",
+    "preview_image": "img/previews/Bach_Minuet_8-preview.png"
   },
   {
     "id": "jesu-joy-of-a-mans-desiring",

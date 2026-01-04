@@ -1571,16 +1571,16 @@
 									<strong>What it measures:</strong> Bitcoin dominance shows how much of the total cryptocurrency market cap belongs to Bitcoin. When it's high (e.g., 60%+), Bitcoin controls most of the market.
 								</li>
 								<li style="margin-bottom: 8px;">
-									<strong>Rising dominance (above 21 EMA):</strong> Capital is flowing from altcoins into Bitcoin. This is typically <strong style="color: #f44336;">bearish for altcoins</strong> - they tend to underperform or decline. The bot <strong>blocks buy signals</strong> during rising dominance to protect you from poor entry timing.
+									<strong>Rising dominance (above 2 EMA):</strong> Capital is flowing from altcoins into Bitcoin. This is typically <strong style="color: #f44336;">bearish for altcoins</strong> - they tend to underperform or decline. The bot <strong>blocks buy signals</strong> during rising dominance to protect you from poor entry timing.
 								</li>
 								<li style="margin-bottom: 8px;">
-									<strong>Falling dominance (below 21 EMA):</strong> Capital is flowing from Bitcoin into altcoins. This is typically <strong style="color: #4caf50;">bullish for altcoins</strong> - they tend to outperform. The bot <strong>allows buy signals</strong> during falling dominance when conditions are favorable.
+									<strong>Falling dominance (below 2 EMA):</strong> Capital is flowing from Bitcoin into altcoins. This is typically <strong style="color: #4caf50;">bullish for altcoins</strong> - they tend to outperform. The bot <strong>allows buy signals</strong> during falling dominance when conditions are favorable.
 								</li>
 								<li style="margin-bottom: 8px;">
 									<strong>Why it matters:</strong> Bitcoin dominance reflects market risk appetite. When investors are risk-averse, they flock to Bitcoin (the "safe haven" of crypto). When they're risk-on, they chase altcoin gains.
 								</li>
 								<li style="margin-bottom: 0;">
-									<strong>How the bot uses it:</strong> The bot calculates a 21-day EMA of Bitcoin dominance and compares it to the current value. This filter helps avoid buying altcoins when Bitcoin is likely to outperform, improving your entry timing.
+									<strong>How the bot uses it:</strong> The bot calculates a 2-period EMA of Bitcoin dominance and compares it to the current value. This filter helps avoid buying altcoins when Bitcoin is likely to outperform, improving your entry timing.
 								</li>
 							</ul>
 						</div>
@@ -1717,7 +1717,7 @@
 								<strong>SELL Threshold:</strong> ≥13/37 indicators (≈35%) must agree<br>
 								<span style="color: rgba(255, 255, 255, 0.7); font-size: 13px; display: block; margin-top: 8px;">
 									💡 These are the <strong>best signals</strong> from today's scan, even if they don't meet the full threshold. 
-									On quiet market days, these represent the strongest setups available.
+									On quiet market days, these represent the strongest setups available. Ideally, you would want to be patient and only act on signals that meet the thresholds, which have been backtested for maximum efficiency: not too afraid to act, but also not over-trading.
 								</span>
 							</div>
 						</div>
@@ -2262,7 +2262,7 @@
 						<h4>Macro Regime Filters - Huge Edge, many bots can day trade, but can they take the big picture macro enviroment into consideration?</h4>
 						<ul>
 							<li><strong>Hidden Markov Model (AI System)</strong> - 9-state Gaussian AI machine learning model, Features: Log Returns, Volatility, RSI, MFI, Regime labels: Extreme Bearish → Extreme Bullish, Regime persistence tracking, Transition probability analysis. Essentially, you feed AI years of .csv data, open, high, low, close, returns and indicators and it answers these questions: How long to bear/bull regimes last? What are typical returns? What is the probability of changing or persisting in the current regime. Obviously this is an edge because a human can't meaningfully analyze hundreds of thousands of data points in a giant .csv file. Many indicators say AI because it is a buzzword that sells well, which is true, but their code doesn't actually use AI. This is <span class="sparkle-ml">ACTUALLY MACHINE LEARNING!</span></li>
-							<li><strong>Bitcoin Dominance Filter</strong> - 21-day EMA of Bitcoin's market cap percentage, Current dominance vs EMA comparison, Blocks buy signals when dominance is above 21 EMA (rising - bearish for altcoins), Allows buy signals when dominance is below 21 EMA (falling - bullish for altcoins), Historical data loaded from CSV for accurate EMA calculation, Daily API updates to track current dominance. This filter helps avoid buying altcoins when Bitcoin is likely to outperform, improving entry timing by aligning with market risk appetite cycles.</li>
+							<li><strong>Bitcoin Dominance Filter</strong> - 2-period EMA of Bitcoin's market cap percentage, Current dominance vs EMA comparison, Blocks buy signals when dominance is above 2 EMA (rising - bearish for altcoins), Allows buy signals when dominance is below 2 EMA (falling - bullish for altcoins), Historical data loaded from CSV for accurate EMA calculation, Daily API updates to track current dominance. This filter helps avoid buying altcoins when Bitcoin is likely to outperform, improving entry timing by aligning with market risk appetite cycles.</li>
 							<li><strong>Regime Filter (BTC Halving)</strong> - Weekly timeframe EMA(20), Market price vs EMA + 0.25 ATR, RSI momentum filter (70 threshold, optional), Bullish/bearish/caution counters</li>
 							<li><strong>Bearish Counter (Extended Downturn Detection)</strong> - Unique timing indicator that counts consecutive bearish bars to identify prolonged market downturns:
 								<ul>
@@ -4180,6 +4180,64 @@
 										}
 										return '';
 									})()}
+									${(() => {
+										// Position sizing display for stock signals
+										const hasPositionData = (signal.buy_position_multiplier !== undefined || signal.sell_position_multiplier !== undefined);
+										if (isStockSignal(signal) && hasPositionData) {
+											const isBuy = action.toLowerCase() === 'buy';
+											const multiplier = isBuy ? (signal.buy_position_multiplier || 1.0) : (signal.sell_position_multiplier || 1.0);
+											const conviction = isBuy ? (signal.buy_conviction || 0.0) : (signal.sell_conviction || 0.0);
+											const persistence = isBuy ? (signal.buy_persistence || 0) : (signal.sell_persistence || 0);
+											
+											// Determine multiplier color and label
+											let multiplierColor = '#9e9e9e'; // Default gray
+											let multiplierLabel = 'Normal';
+											if (multiplier < 0.75) {
+												multiplierColor = '#ff9800'; // Orange for low (0.5x)
+												multiplierLabel = 'Low';
+											} else if (multiplier > 1.25) {
+												multiplierColor = '#4caf50'; // Green for high (1.5x)
+												multiplierLabel = 'High';
+											}
+											
+											// Conviction color based on level
+											let convictionColor = '#9e9e9e';
+											if (conviction >= 0.7) convictionColor = '#4caf50'; // High
+											else if (conviction >= 0.4) convictionColor = '#ffc107'; // Medium
+											else convictionColor = '#ff9800'; // Low
+											
+											return `
+												<div class="signal-detail-row" style="background: rgba(33, 150, 243, 0.1); border-left: 3px solid rgba(33, 150, 243, 0.6); padding: 10px; margin: 10px 0; border-radius: 4px;">
+													<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+														<span class="signal-detail-label" style="color: rgba(33, 150, 243, 0.9); font-weight: bold; font-size: 13px;">💰 Position Sizing</span>
+														<span style="background: ${multiplierColor}; color: #fff; padding: 4px 10px; border-radius: 12px; font-size: 12px; font-weight: bold;">
+															${multiplier.toFixed(1)}x (${multiplierLabel})
+														</span>
+													</div>
+													<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; font-size: 12px;">
+														<div>
+															<span style="color: rgba(255, 255, 255, 0.7);">Conviction:</span>
+															<span style="color: ${convictionColor}; font-weight: bold; margin-left: 4px;">
+																${(conviction * 100).toFixed(0)}%
+															</span>
+														</div>
+														<div>
+															<span style="color: rgba(255, 255, 255, 0.7);">Persistence:</span>
+															<span style="color: rgba(255, 255, 255, 0.9); font-weight: bold; margin-left: 4px;">
+																${persistence} bars
+															</span>
+														</div>
+													</div>
+													<div style="margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255, 255, 255, 0.1);">
+														<small style="color: rgba(255, 255, 255, 0.6); font-size: 11px; line-height: 1.4;">
+															${multiplier < 0.75 ? 'Half size (0.5x) - Lower conviction signal' : multiplier > 1.25 ? 'Larger size (1.5x) - High conviction signal' : 'Normal size (1.0x) - Medium conviction signal'}
+														</small>
+													</div>
+												</div>
+											`;
+										}
+										return '';
+									})()}
 									${pnlDisplay}
 									${signal.partial_exit ? `
 										<div class="signal-detail-row" style="background: rgba(255, 165, 0, 0.15); border-left: 3px solid rgba(255, 165, 0, 0.6); padding: 8px; margin: 8px 0; border-radius: 4px;">
@@ -6029,7 +6087,7 @@ r_scale     = input.float(2.0, "R scale at low vol", minval=0.0, step=0.1)
 vol_floor   = input.float(0.0005, "Vol floor (avoid div/0)", minval=0.0, step=0.0001)
 
 show_ema    = input.bool(true, "Show EMA comparison")
-ema_length  = input.int(21, "EMA length", minval=1)
+ema_length  = input.int(2, "EMA length", minval=1)
 
 // Kalman filter state
 var float kalman_estimate = na

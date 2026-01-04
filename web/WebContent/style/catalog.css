@@ -50,6 +50,44 @@
     border-color: #666;
 }
 
+/* Sort Control */
+.catalog-controls {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0 20px 0;
+}
+
+.sort-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #f9f9f9;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 10px 14px;
+}
+
+.sort-control label {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: #333;
+}
+
+#sort-select {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 2px solid #ddd;
+    background: #fff;
+    color: #333;
+}
+
+#sort-select:focus {
+    outline: none;
+    border-color: #666;
+}
+
 /* Catalog Grid */
 .catalog-grid {
     display: grid;
@@ -294,6 +332,20 @@
         max-width: 100%;
         padding: 10px 15px;
         font-size: 14px;
+    }
+
+    .catalog-controls {
+        margin: 10px 0 15px 0;
+    }
+
+    .sort-control {
+        width: 100%;
+        max-width: 600px;
+        justify-content: space-between;
+    }
+
+    #sort-select {
+        width: 65%;
     }
     
     /* Catalog grid - single column on very small screens */
