@@ -1,5 +1,14 @@
 /* Catalog Page Styles */
 
+/* Catalog page layout: nav is fixed and can be tall on mobile, so give the page room. */
+body.catalog-page {
+    padding-top: 110px;
+}
+
+.catalog-content {
+    margin-top: 0;
+}
+
 /* Filter Buttons */
 .filters {
     text-align: center;
@@ -43,6 +52,8 @@
     font-family: 'Montserrat', sans-serif;
     display: block;
     margin: 0 auto;
+    background: #fff;
+    color: #111;
 }
 
 #search-bar:focus {
@@ -53,8 +64,16 @@
 /* Sort Control */
 .catalog-controls {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    margin: 10px 0 20px 0;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0 15px 0;
+}
+
+.search-wrap {
+    width: 100%;
+    max-width: 600px;
 }
 
 .sort-control {
@@ -266,6 +285,11 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    body.catalog-page {
+        /* Mobile nav stacks vertically and is taller than desktop */
+        padding-top: 220px;
+    }
+
     /* Navigation - stack vertically on mobile */
     nav {
         padding: 15px 0 !important;
@@ -335,7 +359,7 @@
     }
 
     .catalog-controls {
-        margin: 10px 0 15px 0;
+        margin: 15px 0 10px 0;
     }
 
     .sort-control {

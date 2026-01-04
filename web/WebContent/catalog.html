@@ -25,7 +25,7 @@
 		</script>
 		<title>Sheet Music Catalog - Brian Streckfus</title>
 	</head>
-	<body>
+	<body class="catalog-page">
 		<nav>
 			<div id="backing"></div>
 			<div class="content">
@@ -38,23 +38,15 @@
 			</div>
 		</nav>
 		
-		<div class="content" style="margin-top: 100px;">
+		<div class="content catalog-content">
 			<h1>Sheet Music Catalog</h1>
 			<p>Browse my complete collection of arrangements that span a vast amount of genres. My publications include playable, intuitive and visual music theory. My publications also include visually beautiful and efficient scales and chord diagrams. Each tile pulls a fresh snapshot directly from the live listing, so you can confirm the piece before jumping to Sheet Music Direct.</p>
-			
-			<!-- Filter/Sort Options -->
-			<div class="filters">
-				<button class="filter-btn active" onclick="filterBy('all')">All Pieces</button>
-				<button class="filter-btn" onclick="filterBy('classical')">Classical</button>
-				<button class="filter-btn" onclick="filterBy('jazz')">Jazz/Standards</button>
-				<button class="filter-btn" onclick="filterBy('popular')">Popular</button>
-				<button class="filter-btn" onclick="filterBy('beginner')">Beginner</button>
-				<button class="filter-btn" onclick="filterBy('intermediate')">Intermediate</button>
-				<button class="filter-btn" onclick="filterBy('advanced')">Advanced</button>
-			</div>
-			
-			<!-- Sort Options -->
+
+			<!-- Search + Sort (kept at the very top so it doesn't get lost) -->
 			<div class="catalog-controls">
+				<div class="search-wrap">
+					<input type="text" id="search-bar" placeholder="Search by title, composer, or keyword..." onkeyup="searchCatalog()">
+				</div>
 				<div class="sort-control">
 					<label for="sort-select">Sort:</label>
 					<select id="sort-select" onchange="sortCatalog()">
@@ -71,9 +63,15 @@
 				</div>
 			</div>
 			
-			<!-- Search Bar -->
-			<div style="margin: 20px 0;">
-				<input type="text" id="search-bar" placeholder="Search by title, composer, or keyword..." onkeyup="searchCatalog()">
+			<!-- Filter Options -->
+			<div class="filters">
+				<button class="filter-btn active" onclick="filterBy('all')">All Pieces</button>
+				<button class="filter-btn" onclick="filterBy('classical')">Classical</button>
+				<button class="filter-btn" onclick="filterBy('jazz')">Jazz/Standards</button>
+				<button class="filter-btn" onclick="filterBy('popular')">Popular</button>
+				<button class="filter-btn" onclick="filterBy('beginner')">Beginner</button>
+				<button class="filter-btn" onclick="filterBy('intermediate')">Intermediate</button>
+				<button class="filter-btn" onclick="filterBy('advanced')">Advanced</button>
 			</div>
 			
 			<!-- Catalog Grid (populated by JavaScript from catalog-data.json) -->
