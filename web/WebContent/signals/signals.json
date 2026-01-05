@@ -2,6 +2,17 @@
   {
     "action": "sell",
     "symbol": "RENDER/USD",
+    "quantity": 55.71,
+    "price": 2.084,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-05T02:00:42.110852Z",
+    "received_at": "2026-01-05T02:00:42.110870Z",
+    "id": "2026-01-05T02:00:42.110870Z-RENDER/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "RENDER/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2745,16 +2756,5 @@
     "timestamp": "2025-12-30T14:00:35.090986Z",
     "received_at": "2025-12-30T14:00:35.091007Z",
     "id": "2025-12-30T14:00:35.091007Z-CRV/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-30T14:00:32.935126Z",
-    "received_at": "2025-12-30T14:00:32.935145Z",
-    "id": "2025-12-30T14:00:32.935145Z-CRV/USD-buy"
   }
 ]
