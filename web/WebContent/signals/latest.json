@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "AAVE/USD",
-  "quantity": 0.6092360180333861,
-  "price": 163.98,
+  "action": "sell",
+  "symbol": "SUI/USD",
+  "quantity": 0.0,
+  "price": 1.7078,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-01-05T00:06:00.115122Z",
-  "received_at": "2026-01-05T00:06:00.115141Z",
-  "id": "2026-01-05T00:06:00.115141Z-AAVE/USD-buy"
+  "timestamp": "2026-01-05T01:00:12.120382Z",
+  "received_at": "2026-01-05T01:00:12.120397Z",
+  "id": "2026-01-05T01:00:12.120397Z-SUI/USD-sell"
 }
