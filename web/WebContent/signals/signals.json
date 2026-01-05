@@ -3,6 +3,17 @@
     "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
+    "price": 3155.69,
+    "source": "MASTER_BOT_162",
+    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+    "timestamp": "2026-01-05T15:24:24.060331Z",
+    "received_at": "2026-01-05T15:24:24.060463Z",
+    "id": "2026-01-05T15:24:24.060463Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
     "price": 3167.53,
     "source": "MASTER_BOT_162",
     "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
@@ -2775,16 +2786,5 @@
     "timestamp": "2025-12-30T20:07:18.299961Z",
     "received_at": "2025-12-30T20:07:18.299984Z",
     "id": "2025-12-30T20:07:18.299984Z-CRV/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "DASH/USD",
-    "quantity": 2.3218017181332713,
-    "price": 43.03,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-30T20:02:45.321864Z",
-    "received_at": "2025-12-30T20:02:45.321879Z",
-    "id": "2025-12-30T20:02:45.321879Z-DASH/USD-buy"
   }
 ]
