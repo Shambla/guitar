@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "SUI/USD",
-  "quantity": 0.0,
-  "price": 1.7078,
+  "action": "buy",
+  "symbol": "BTC/USD",
+  "quantity": 0.00108229793497554,
+  "price": 92303.6,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-01-05T01:00:12.120382Z",
-  "received_at": "2026-01-05T01:00:12.120397Z",
-  "id": "2026-01-05T01:00:12.120397Z-SUI/USD-sell"
+  "timestamp": "2026-01-05T01:05:51.499834Z",
+  "received_at": "2026-01-05T01:05:51.499856Z",
+  "id": "2026-01-05T01:05:51.499856Z-BTC/USD-buy"
 }
