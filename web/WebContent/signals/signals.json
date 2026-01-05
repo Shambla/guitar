@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-05T04:00:13.914105Z",
+    "received_at": "2026-01-05T04:00:13.914203Z",
+    "id": "2026-01-05T04:00:13.914203Z-TAO/USD-buy"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 144.3,
@@ -2775,49 +2786,5 @@
     "timestamp": "2025-12-30T14:08:52.939434Z",
     "received_at": "2025-12-30T14:08:52.939478Z",
     "id": "2025-12-30T14:08:52.939478Z-RENDER/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "TAO/USD",
-    "quantity": 0.45169999,
-    "price": 220.23,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-30T14:08:50.583030Z",
-    "received_at": "2025-12-30T14:08:50.583120Z",
-    "id": "2025-12-30T14:08:50.583120Z-TAO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "DASH/USD",
-    "quantity": 4.68991567,
-    "price": 43.05,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-30T14:01:21.570867Z",
-    "received_at": "2025-12-30T14:01:21.570882Z",
-    "id": "2025-12-30T14:01:21.570882Z-DASH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "DASH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-30T14:00:54.893616Z",
-    "received_at": "2025-12-30T14:00:54.893635Z",
-    "id": "2025-12-30T14:00:54.893635Z-DASH/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "CRV/USD",
-    "quantity": 263.71308016877634,
-    "price": 0.3788,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-30T14:00:35.090986Z",
-    "received_at": "2025-12-30T14:00:35.091007Z",
-    "id": "2025-12-30T14:00:35.091007Z-CRV/USD-buy"
   }
 ]
