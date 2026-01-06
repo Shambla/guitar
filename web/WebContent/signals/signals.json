@@ -2,6 +2,28 @@
   {
     "action": "buy",
     "symbol": "CRV/USD",
+    "quantity": 232.07240659085636,
+    "price": 0.4305,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-06T14:05:52.757117Z",
+    "received_at": "2026-01-06T14:05:52.757158Z",
+    "id": "2026-01-06T14:05:52.757158Z-CRV/USD-buy"
+  },
+  {
+    "action": "sell",
+    "symbol": "SUI/USD",
+    "quantity": 58.39999999,
+    "price": 1.9852,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-06T14:00:36.393935Z",
+    "received_at": "2026-01-06T14:00:36.394851Z",
+    "id": "2026-01-06T14:00:36.394851Z-SUI/USD-sell"
+  },
+  {
+    "action": "buy",
+    "symbol": "CRV/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2784,27 +2806,5 @@
     "timestamp": "2025-12-31T13:00:09.913735Z",
     "received_at": "2025-12-31T13:00:09.913890Z",
     "id": "2025-12-31T13:00:09.913890Z-AAVE/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.03358883,
-    "price": 2971.2256399999997,
-    "source": "MASTER_BOT_162",
-    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-    "timestamp": "2025-12-31T11:02:12.733224Z",
-    "received_at": "2025-12-31T11:02:12.733242Z",
-    "id": "2025-12-31T11:02:12.733242Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "TAO/USD",
-    "quantity": 0.4515895953757225,
-    "price": 221.22,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-31T11:00:31.097123Z",
-    "received_at": "2025-12-31T11:00:31.097140Z",
-    "id": "2025-12-31T11:00:31.097140Z-TAO/USD-buy"
   }
 ]
