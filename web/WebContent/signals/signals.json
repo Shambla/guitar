@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.03038867,
+    "price": 3286.6802900000002,
+    "source": "MASTER_BOT_162",
+    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+    "timestamp": "2026-01-06T15:34:07.820705Z",
+    "received_at": "2026-01-06T15:34:07.820819Z",
+    "id": "2026-01-06T15:34:07.820819Z-ETH/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "FET/USD",
     "quantity": 0.01390603,
@@ -2795,16 +2806,5 @@
     "timestamp": "2025-12-31T14:00:11.456269Z",
     "received_at": "2025-12-31T14:00:11.456439Z",
     "id": "2025-12-31T14:00:11.456439Z-ETH/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 485.90864917395527,
-    "price": 0.2056,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-31T13:00:49.800686Z",
-    "received_at": "2025-12-31T13:00:49.800713Z",
-    "id": "2025-12-31T13:00:49.800713Z-FET/USD-buy"
   }
 ]
