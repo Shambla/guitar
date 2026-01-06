@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "ETH/USD",
+    "quantity": 0.03106998825554444,
+    "price": 3215.32,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-06T08:05:51.656770Z",
+    "received_at": "2026-01-06T08:05:51.656793Z",
+    "id": "2026-01-06T08:05:51.656793Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2795,16 +2806,5 @@
     "timestamp": "2025-12-31T09:00:23.314388Z",
     "received_at": "2025-12-31T09:00:23.314494Z",
     "id": "2025-12-31T09:00:23.314494Z-DASH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "TAO/USD",
-    "quantity": 0.44869999,
-    "price": 221.21,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-31T08:07:31.814019Z",
-    "received_at": "2025-12-31T08:07:31.814117Z",
-    "id": "2025-12-31T08:07:31.814117Z-TAO/USD-sell"
   }
 ]
