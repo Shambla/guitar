@@ -1,38 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "TAO/USD",
-    "quantity": 0.0,
-    "price": 279.51,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-01-06T19:00:13.599781Z",
-    "received_at": "2026-01-06T19:00:13.599801Z",
-    "id": "2026-01-06T19:00:13.599801Z-TAO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-01-06T19:00:13.174041Z",
-    "received_at": "2026-01-06T19:00:13.174069Z",
-    "id": "2026-01-06T19:00:13.174069Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "TAO/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-01-06T19:00:13.122403Z",
-    "received_at": "2026-01-06T19:00:13.123426Z",
-    "id": "2026-01-06T19:00:13.123426Z-TAO/USD-sell"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 146.14,
@@ -719,27 +686,27 @@
   {
     "action": "info",
     "symbol": "EWJ",
-    "price": 83.13,
+    "price": 82.94,
     "quantity": null,
     "source": "MAIN_stock_strat12",
-    "note": "Above thresholds | buy 17/16 | sell 14/13",
-    "timestamp": "2026-01-06T06:41:49.597145Z",
-    "received_at": "2026-01-06T06:41:49.597145Z",
-    "id": "2026-01-06T06:41:49.597145Z-EWJ-info",
+    "note": "Above thresholds | buy 16/16 | sell 12/13",
+    "timestamp": "2026-01-06T19:02:49.811640Z",
+    "received_at": "2026-01-06T19:02:49.811640Z",
+    "id": "2026-01-06T19:02:49.811640Z-EWJ-info",
     "threshold_met": true,
-    "buy_score": 17,
-    "sell_score": 14,
+    "buy_score": 16,
+    "sell_score": 12,
     "total_buy_components": 41,
     "total_sell_components": 40,
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0,
-    "buy_conviction": 0.44463414634146337,
-    "buy_persistence": 1,
+    "buy_conviction": 0.4502439024390244,
+    "buy_persistence": 2,
     "buy_position_multiplier": 1.0,
-    "sell_conviction": 0.6499999999999999,
-    "sell_persistence": 13,
-    "sell_position_multiplier": 1.0
+    "sell_conviction": 0.3,
+    "sell_persistence": 0,
+    "sell_position_multiplier": 0.5
   },
   {
     "action": "info",
@@ -1151,23 +1118,23 @@
   {
     "action": "buy",
     "symbol": "EWJ",
-    "price": 83.13,
+    "price": 82.94,
     "quantity": null,
     "source": "MAIN_stock_strat14",
-    "note": "buy 17/41 | sell 14/40 | Strength=2/10 | MTF:M",
-    "timestamp": "2026-01-06T06:41:49.580926Z",
-    "received_at": "2026-01-06T06:41:49.580926Z",
-    "id": "2026-01-06T06:41:49.580926Z-EWJ-buy",
-    "buy_score": 17,
-    "sell_score": 14,
+    "note": "buy 16/41 | sell 12/40 | Strength=1/10 | MTF:M",
+    "timestamp": "2026-01-06T19:02:49.793352Z",
+    "received_at": "2026-01-06T19:02:49.793352Z",
+    "id": "2026-01-06T19:02:49.793352Z-EWJ-buy",
+    "buy_score": 16,
+    "sell_score": 12,
     "total_buy_components": 41,
     "total_sell_components": 40,
-    "buy_conviction": 0.44463414634146337,
-    "buy_persistence": 1,
+    "buy_conviction": 0.4502439024390244,
+    "buy_persistence": 2,
     "buy_position_multiplier": 1.0,
-    "sell_conviction": 0.6499999999999999,
-    "sell_persistence": 13,
-    "sell_position_multiplier": 1.0
+    "sell_conviction": 0.3,
+    "sell_persistence": 0,
+    "sell_position_multiplier": 0.5
   },
   {
     "action": "buy",
@@ -1252,6 +1219,50 @@
     "sell_conviction": 0.3,
     "sell_persistence": 0,
     "sell_position_multiplier": 0.5
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.06718976,
+    "price": 3216.5,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-06T19:00:40.211639Z",
+    "received_at": "2026-01-06T19:00:40.211652Z",
+    "id": "2026-01-06T19:00:40.211652Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "TAO/USD",
+    "quantity": 0.0,
+    "price": 279.51,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-06T19:00:13.599781Z",
+    "received_at": "2026-01-06T19:00:13.599801Z",
+    "id": "2026-01-06T19:00:13.599801Z-TAO/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-06T19:00:13.174041Z",
+    "received_at": "2026-01-06T19:00:13.174069Z",
+    "id": "2026-01-06T19:00:13.174069Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "TAO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-06T19:00:13.122403Z",
+    "received_at": "2026-01-06T19:00:13.123426Z",
+    "id": "2026-01-06T19:00:13.123426Z-TAO/USD-sell"
   },
   {
     "action": "buy",
@@ -2825,16 +2836,5 @@
     "timestamp": "2025-12-31T14:09:48.422936Z",
     "received_at": "2025-12-31T14:09:48.422957Z",
     "id": "2025-12-31T14:09:48.422957Z-AAVE/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "RENDER/USD",
-    "quantity": 77.39,
-    "price": 1.295,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-31T14:09:21.923755Z",
-    "received_at": "2025-12-31T14:09:21.923776Z",
-    "id": "2025-12-31T14:09:21.923776Z-RENDER/USD-sell"
   }
 ]
