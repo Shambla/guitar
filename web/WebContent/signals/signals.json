@@ -1,5 +1,27 @@
 [
   {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 0.01390603,
+    "price": 0.3017,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-06T15:00:17.421195Z",
+    "received_at": "2026-01-06T15:00:17.421210Z",
+    "id": "2026-01-06T15:00:17.421210Z-FET/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-06T15:00:17.046558Z",
+    "received_at": "2026-01-06T15:00:17.047585Z",
+    "id": "2026-01-06T15:00:17.047585Z-FET/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "ETH/USD",
     "quantity": 0.03043306,
@@ -2784,27 +2806,5 @@
     "timestamp": "2025-12-31T13:00:49.800686Z",
     "received_at": "2025-12-31T13:00:49.800713Z",
     "id": "2025-12-31T13:00:49.800713Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "AAVE/USD",
-    "quantity": 0.6732646603379788,
-    "price": 148.38,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2025-12-31T13:00:47.087771Z",
-    "received_at": "2025-12-31T13:00:47.087802Z",
-    "id": "2025-12-31T13:00:47.087802Z-AAVE/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2025-12-31T13:00:15.333569Z",
-    "received_at": "2025-12-31T13:00:15.333587Z",
-    "id": "2025-12-31T13:00:15.333587Z-FET/USD-buy"
   }
 ]
