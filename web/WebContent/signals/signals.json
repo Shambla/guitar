@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-08T07:00:15.515141Z",
+    "received_at": "2026-01-08T07:00:15.516848Z",
+    "id": "2026-01-08T07:00:15.516848Z-CRV/USD-sell"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 146.53,
@@ -2875,27 +2886,5 @@
     "timestamp": "2026-01-03T08:00:34.037489Z",
     "received_at": "2026-01-03T08:00:34.038797Z",
     "id": "2026-01-03T08:00:34.038797Z-CRV/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "DASH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-01-03T08:00:13.905649Z",
-    "received_at": "2026-01-03T08:00:13.905667Z",
-    "id": "2026-01-03T08:00:13.905667Z-DASH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-01-03T08:00:05.469982Z",
-    "received_at": "2026-01-03T08:00:05.469995Z",
-    "id": "2026-01-03T08:00:05.469995Z-CRV/USD-sell"
   }
 ]
