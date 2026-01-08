@@ -33,11 +33,12 @@ function normalizeSearchText(str) {
 // Handle image loading errors - try fallback paths
 function handleImageError(img, originalSrc, basePath) {
     img.onerror = null; // Prevent infinite loop
-
+    
     // If we tried previews/, try img/previews/ instead
     if (originalSrc.includes('previews/') && !originalSrc.includes('img/previews/')) {
         const filename = originalSrc.split('/').pop();
         img.src = basePath + 'img/previews/' + filename;
+        // Trying fallback path
     } else {
         // Final fallback
         img.src = basePath + 'img/sheet.png';
@@ -48,55 +49,14 @@ function handleImageError(img, originalSrc, basePath) {
     }
 }
 
-/**
- * FIX: If nav is position:fixed and its height changes (mobile / scrolled / fonts),
- * it can cover the search bar + controls. This syncs body padding-top to the nav height.
- */
-function syncCatalogPageOffsetForFixedNav() {
-    const body = document.body;
-    if (!body || !body.classList.contains('catalog-page')) return;
-
-    const nav = document.querySelector('nav');
-    if (!nav) return;
-
-    const navHeight = Math.ceil(nav.getBoundingClientRect().height);
-    const buffer = 16;
-
-    body.style.paddingTop = `${navHeight + buffer}px`;
-}
-
 // Load catalog when page loads
-document.addEventListener('DOMContentLoaded', function () {
-    // Prevent fixed nav from overlapping content
-    syncCatalogPageOffsetForFixedNav();
-
-    // Recalculate after fonts/layout settle
-    window.setTimeout(syncCatalogPageOffsetForFixedNav, 50);
-    window.setTimeout(syncCatalogPageOffsetForFixedNav, 250);
-
-    // Recalculate on resize/orientation changes
-    window.addEventListener('resize', syncCatalogPageOffsetForFixedNav);
-
-    // Your page toggles nav.scrolled; recalculating after scroll helps too
-    window.addEventListener('scroll', function () {
-        window.requestAnimationFrame(syncCatalogPageOffsetForFixedNav);
-    });
-
-    // Wire search input automatically (so HTML doesn't need inline onkeyup)
-    const sb = document.getElementById('search-bar');
-    if (sb) {
-        sb.addEventListener('input', function () {
-            searchCatalog();
-        });
-    } else {
-        console.warn('Search bar (#search-bar) not found in DOM. Search UI may be missing or ID mismatch.');
-    }
-
+document.addEventListener('DOMContentLoaded', function() {
     loadCatalog();
 });
 
 // Load catalog from JSON file
 function loadCatalog() {
+    // Use simple relative path - catalog-data.json is in same directory as catalog.html
     fetch('catalog-data.json')
         .then(response => {
             if (!response.ok) {
@@ -107,77 +67,93 @@ function loadCatalog() {
         .then(data => {
             catalogData = data;
             displayCatalog(catalogData);
+            // Apply any selected sort after initial render
             sortCatalog();
         })
         .catch(error => {
             console.error('Error loading catalog:', error);
-            const grid = document.getElementById('catalog-grid');
-            if (grid) {
-                grid.innerHTML =
-                    '<p class="no-results">Catalog coming soon! Check back later or visit <a href="https://www.sheetmusicdirect.com/en-US/Search.aspx?query=Brian%2BStreckfus" target="_blank" rel="noopener">Sheet Music Direct</a> to browse available pieces.</p>';
-            }
+            document.getElementById('catalog-grid').innerHTML = 
+                '<p class="no-results">Catalog coming soon! Check back later or visit <a href="https://www.sheetmusicdirect.com/en-US/Search.aspx?query=Brian%2BStreckfus" target="_blank">Sheet Music Direct</a> to browse available pieces.</p>';
         });
 }
 
 // Display catalog items
 function displayCatalog(items) {
     const grid = document.getElementById('catalog-grid');
-
+    
     if (!grid) {
         console.error('Catalog grid element not found!');
         return;
     }
-
-    if (!Array.isArray(items) || items.length === 0) {
+    
+    if (items.length === 0) {
         grid.innerHTML = '<p class="no-results">No pieces match your search. Try a different filter or search term.</p>';
         return;
     }
-
+    
     grid.innerHTML = '';
-
+    
+    let itemsCreated = 0;
     items.forEach((item, index) => {
         try {
             const itemDiv = document.createElement('div');
             itemDiv.className = 'catalog-item';
-
-            itemDiv.setAttribute('data-category', `${item.category} ${(item.difficulty || '').toString().toLowerCase()}`);
+            itemDiv.setAttribute('data-category', `${item.category} ${item.difficulty.toLowerCase()}`);
             itemDiv.setAttribute('data-title', normalizeSearchText(item.title));
             itemDiv.setAttribute('data-composer', normalizeSearchText(item.composer));
             itemDiv.setAttribute('data-difficulty-rank', String(difficultyRank(item.difficulty)));
             itemDiv.setAttribute('data-price', String(parsePriceToNumber(item.price)));
-
+            // data-search is a normalized concatenation of searchable fields
             itemDiv.setAttribute(
                 'data-search',
                 normalizeSearchText(`${item.title} ${item.composer} ${item.category} ${item.difficulty}`)
             );
-
-            const difficultyClass = (item.difficulty || '').toString().toLowerCase();
-
-            // Base path from current page location
+            
+            // Difficulty class for color coding
+            const difficultyClass = item.difficulty.toLowerCase();
+            
+            // Use manual preview images only (no thum.io)
+            // Get base path from current page location to ensure images load correctly
             const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
             let previewImageSrc = item.preview_image || 'img/sheet.png';
-
+            
             /*
              * PREVIEWS FOLDER STRUCTURE (sloppy, but documented):
-             *
+             * 
              * We have TWO previews folders:
              * 1. /previews/ - 183 items (27.8 MB) - Different filenames than JSON
              * 2. /img/previews/ - 57 items - Matches JSON filenames
+             * 
+             * CURRENT BEHAVIOR:
+             * - JSON has paths like "img/previews/Landslide_Fleetwood_Mac.png"
+             * - Code tries /previews/ first (line below) → Usually 404 (filenames don't match)
+             * - Error handler falls back to /img/previews/ → Works (matching filenames)
+             * - Final fallback: img/sheet.png
+             * 
+             * RESULT: Currently using /img/previews/ folder (57 items) because:
+             * - Only 2 files matched between JSON and /previews/ folder
+             * - /img/previews/ has matching filenames for most items
+             * 
+             * TODO: Either update JSON to match /previews/ filenames, or create a mapping
+             *       system to use the larger /previews/ folder (183 items).
              */
+            
+            // Try previews/ folder first, then img/previews/, then fallback
             if (previewImageSrc.startsWith('img/previews/')) {
+                // Try previews/ version first
                 const filename = previewImageSrc.replace('img/previews/', '');
                 previewImageSrc = 'previews/' + filename;
             }
-
+            
+            // Ensure path is relative to current page location
             if (!previewImageSrc.startsWith('/') && !previewImageSrc.startsWith('http')) {
                 previewImageSrc = basePath + previewImageSrc;
             }
-
-            const captionText = 'Preview image';
+            let captionText = 'Preview image';
 
             itemDiv.innerHTML = `
                 <div class="preview-screen">
-                    <img class="live-preview" src="${previewImageSrc}" alt="Preview of ${item.title}"
+                    <img class="live-preview" src="${previewImageSrc}" alt="Preview of ${item.title}" 
                          onerror="handleImageError(this, '${previewImageSrc}', '${basePath}');">
                     <span class="preview-caption">${captionText}</span>
                 </div>
@@ -188,21 +164,27 @@ function displayCatalog(items) {
                 <p class="price">${item.price}</p>
                 <a class="link-button" href="${item.sheet_music_direct_url}" target="_blank" rel="noopener">Open Listing</a>
             `;
-
+            
+            // Ensure visibility (fixes display issues)
+            // Keep the intended flex layout for catalog cards.
             itemDiv.style.display = 'flex';
             itemDiv.style.visibility = 'visible';
             itemDiv.style.opacity = '1';
-
+            
             grid.appendChild(itemDiv);
+            itemsCreated++;
         } catch (error) {
             console.error('Error creating item', index, ':', error);
         }
     });
-
+    
+    // Ensure grid is visible (fixes display issues)
     if (grid.children.length > 0) {
         grid.style.display = 'grid';
         grid.style.visibility = 'visible';
         grid.style.opacity = '1';
+    } else {
+        console.error('Grid has no children - items were not appended.');
     }
 }
 
@@ -215,12 +197,13 @@ function sortCatalog() {
     const selected = select ? select.value : 'default';
     currentSort = selected || 'default';
 
+    // Collect existing item nodes (ignore messages like loading/no-results)
     const nodes = Array.from(grid.children).filter(
         el => el.classList && el.classList.contains('catalog-item')
     );
     if (nodes.length <= 1) return;
 
-    // Keep hidden items after visible items
+    // Preserve current display state (filter/search may hide items)
     const byDisplay = (el) => (el.style && el.style.display === 'none') ? 1 : 0;
 
     const cmpText = (a, b) => (a || '').localeCompare((b || ''), undefined, { sensitivity: 'base' });
@@ -235,6 +218,7 @@ function sortCatalog() {
     };
 
     const comparator = (aEl, bEl) => {
+        // Keep hidden items after visible items so sorting doesn't "look empty"
         const d = byDisplay(aEl) - byDisplay(bEl);
         if (d !== 0) return d;
 
@@ -250,7 +234,7 @@ function sortCatalog() {
         if (currentSort === 'price_asc') return cmpNum(aEl.dataset.price, bEl.dataset.price);
         if (currentSort === 'price_desc') return cmpNum(bEl.dataset.price, aEl.dataset.price);
 
-        return 0;
+        return 0; // default
     };
 
     nodes.sort(comparator);
@@ -258,20 +242,19 @@ function sortCatalog() {
 }
 
 // Filter catalog by category
-function filterBy(category, evt) {
+function filterBy(category) {
     currentFilter = category;
-
+    
+    // Update active button
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
     });
-
-    if (evt && evt.target) {
-        evt.target.classList.add('active');
-    }
-
+    event.target.classList.add('active');
+    
+    // Filter items
     const items = document.querySelectorAll('.catalog-item');
     items.forEach(item => {
-        const itemCategory = item.getAttribute('data-category') || '';
+        const itemCategory = item.getAttribute('data-category');
         if (category === 'all' || itemCategory.includes(category)) {
             item.style.display = 'flex';
         } else {
@@ -279,36 +262,22 @@ function filterBy(category, evt) {
         }
     });
 
+    // Maintain sort ordering after filter changes
     sortCatalog();
-
-    // Show/hide a no-results message WITHOUT deleting the items
-    const grid = document.getElementById('catalog-grid');
-    if (!grid) return;
-
+    
+    // Check if any items are visible
     const visibleItems = Array.from(items).filter(item => item.style.display !== 'none');
-    let noResults = grid.querySelector('.no-results');
-
     if (visibleItems.length === 0) {
-        if (!noResults) {
-            noResults = document.createElement('p');
-            noResults.className = 'no-results';
-            noResults.textContent = 'No pieces found in this category.';
-            grid.appendChild(noResults);
-        }
-    } else {
-        if (noResults) noResults.remove();
+        document.getElementById('catalog-grid').innerHTML = '<p class="no-results">No pieces found in this category.</p>';
     }
 }
 
 // Search catalog
 function searchCatalog() {
-    const sb = document.getElementById('search-bar');
-    if (!sb) return;
-
-    const searchTerm = normalizeSearchText(sb.value);
+    const searchTerm = normalizeSearchText(document.getElementById('search-bar').value);
     const items = document.querySelectorAll('.catalog-item');
     let visibleCount = 0;
-
+    
     items.forEach(item => {
         const searchData = item.getAttribute('data-search') || '';
         if (searchData.includes(searchTerm)) {
@@ -318,34 +287,35 @@ function searchCatalog() {
             item.style.display = 'none';
         }
     });
-
-    const grid = document.getElementById('catalog-grid');
-    if (!grid) return;
-
-    const existing = grid.querySelector('.no-results');
-
+    
+    // Show "no results" message if nothing matches
     if (visibleCount === 0 && searchTerm !== '') {
-        if (!existing) {
+        const grid = document.getElementById('catalog-grid');
+        const noResults = grid.querySelector('.no-results');
+        if (!noResults) {
             const msg = document.createElement('p');
             msg.className = 'no-results';
-            msg.textContent = `No pieces found matching "${sb.value}". Try a different search term.`;
+            msg.textContent = `No pieces found matching "${searchTerm}". Try a different search term.`;
             grid.appendChild(msg);
         }
     } else {
-        if (existing) existing.remove();
+        // Remove "no results" message if it exists
+        const noResults = document.querySelector('.no-results');
+        if (noResults) {
+            noResults.remove();
+        }
     }
 
+    // Maintain sort ordering after search changes
     sortCatalog();
 }
 
 // Fallback image handler for live previews
-document.addEventListener('error', function (event) {
+document.addEventListener('error', function(event) {
     const target = event.target;
     if (target.classList && target.classList.contains('live-preview')) {
         target.src = 'img/sheet.png';
-        if (target.nextElementSibling) {
-            target.nextElementSibling.textContent = 'Preview unavailable (open listing to view score)';
-        }
+        target.nextElementSibling.textContent = 'Preview unavailable (open listing to view score)';
     }
 }, true);
 

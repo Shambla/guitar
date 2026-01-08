@@ -42,38 +42,36 @@
 			<h1>Sheet Music Catalog</h1>
 			<p>Browse my complete collection of arrangements that span a vast amount of genres. My publications include playable, intuitive and visual music theory. My publications also include visually beautiful and efficient scales and chord diagrams. Each tile pulls a fresh snapshot directly from the live listing, so you can confirm the piece before jumping to Sheet Music Direct.</p>
 
-			<!-- Search + Sort - Embedded in prominent box for visibility -->
-			<div style="background: #f9f9f9; border: 2px solid #ddd; border-radius: 8px; padding: 20px; margin: 25px 0; opacity: 1 !important; visibility: visible !important; display: block !important;">
-				<div class="catalog-controls" style="opacity: 1 !important; visibility: visible !important; display: flex !important;">
-					<div class="search-wrap">
-						<input type="text" id="search-bar" placeholder="🔍 Search by title, composer, or keyword..." onkeyup="searchCatalog()" style="opacity: 1 !important; visibility: visible !important; display: block !important; width: 100%; padding: 12px 20px; font-size: 16px; border: 2px solid #333; border-radius: 4px; background: #fff; color: #111;">
-					</div>
-					<div class="sort-control" style="opacity: 1 !important; visibility: visible !important; display: inline-flex !important;">
-						<label for="sort-select">Sort:</label>
-						<select id="sort-select" onchange="sortCatalog()">
-							<option value="default" selected>Default</option>
-							<option value="title_asc">Title (A → Z)</option>
-							<option value="title_desc">Title (Z → A)</option>
-							<option value="composer_asc">Composer (A → Z)</option>
-							<option value="composer_desc">Composer (Z → A)</option>
-							<option value="difficulty_asc">Difficulty (Beginner → Advanced)</option>
-							<option value="difficulty_desc">Difficulty (Advanced → Beginner)</option>
-							<option value="price_asc">Price (Low → High)</option>
-							<option value="price_desc">Price (High → Low)</option>
-						</select>
-					</div>
+			<!-- Search + Sort (kept at the very top so it doesn't get lost) -->
+			<div class="catalog-controls">
+				<div class="search-wrap">
+					<input type="text" id="search-bar" placeholder="Search by title, composer, or keyword..." onkeyup="searchCatalog()">
 				</div>
-				
-				<!-- Filter Options - Inside the same box -->
-				<div class="filters" style="opacity: 1 !important; visibility: visible !important; display: block !important; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
-					<button class="filter-btn active" onclick="filterBy('all', event)">All Pieces</button>
-					<button class="filter-btn" onclick="filterBy('classical', event)">Classical</button>
-					<button class="filter-btn" onclick="filterBy('jazz', event)">Jazz/Standards</button>
-					<button class="filter-btn" onclick="filterBy('popular', event)">Popular</button>
-					<button class="filter-btn" onclick="filterBy('beginner', event)">Beginner</button>
-					<button class="filter-btn" onclick="filterBy('intermediate', event)">Intermediate</button>
-					<button class="filter-btn" onclick="filterBy('advanced', event)">Advanced</button>
+				<div class="sort-control">
+					<label for="sort-select">Sort:</label>
+					<select id="sort-select" onchange="sortCatalog()">
+						<option value="default" selected>Default</option>
+						<option value="title_asc">Title (A → Z)</option>
+						<option value="title_desc">Title (Z → A)</option>
+						<option value="composer_asc">Composer (A → Z)</option>
+						<option value="composer_desc">Composer (Z → A)</option>
+						<option value="difficulty_asc">Difficulty (Beginner → Advanced)</option>
+						<option value="difficulty_desc">Difficulty (Advanced → Beginner)</option>
+						<option value="price_asc">Price (Low → High)</option>
+						<option value="price_desc">Price (High → Low)</option>
+					</select>
 				</div>
+			</div>
+			
+			<!-- Filter Options -->
+			<div class="filters">
+				<button class="filter-btn active" onclick="filterBy('all')">All Pieces</button>
+				<button class="filter-btn" onclick="filterBy('classical')">Classical</button>
+				<button class="filter-btn" onclick="filterBy('jazz')">Jazz/Standards</button>
+				<button class="filter-btn" onclick="filterBy('popular')">Popular</button>
+				<button class="filter-btn" onclick="filterBy('beginner')">Beginner</button>
+				<button class="filter-btn" onclick="filterBy('intermediate')">Intermediate</button>
+				<button class="filter-btn" onclick="filterBy('advanced')">Advanced</button>
 			</div>
 			
 			<!-- Catalog Grid (populated by JavaScript from catalog-data.json) -->
@@ -86,7 +84,7 @@
 		
 		<!-- Footer -->
 		<div style="text-align: center; padding: 40px 20px; margin-top: 60px; background: #f5f5f5;">
-			<p>&copy; 2025 Brian Streckfus. All sheet music available on <a href="https://www.sheetmusicdirect.com/en-US/Search.aspx?query=Brian%2BStreckfus" target="_blank" rel="noopener">Sheet Music Direct</a>.</p>
+			<p>&copy; 2025 Brian Streckfus. All sheet music available on <a href="https://www.sheetmusicdirect.com/en-US/Search.aspx?query=Brian%2BStreckfus" target="_blank">Sheet Music Direct</a>.</p>
 			<a href="index.html">Back to Home</a>
 		</div>
 	</body>

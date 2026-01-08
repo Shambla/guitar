@@ -2,34 +2,11 @@
 
 /* Catalog page layout: nav is fixed and can be tall on mobile, so give the page room. */
 body.catalog-page {
-    /* Fallback only — JS will override this to match the real nav height */
     padding-top: 110px;
 }
 
 .catalog-content {
     margin-top: 0;
-}
-
-/* Search + Sort wrapper */
-.catalog-controls {
-    position: relative;
-    z-index: 10; /* protect from overlaps */
-    display: flex !important;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 12px;
-    margin: 20px 0 15px 0;
-    /* Force visibility - override index.css .content > div { opacity: 0 } */
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
-}
-
-/* Search wrap */
-.search-wrap {
-    width: 100%;
-    max-width: 600px;
 }
 
 /* Filter Buttons */
@@ -39,11 +16,6 @@ body.catalog-page {
     padding: 20px;
     background: #f9f9f9;
     border-radius: 8px;
-    /* Force visibility - override index.css .content > div { opacity: 0 } */
-    opacity: 1 !important;
-    visibility: visible !important;
-    transform: none !important;
-    display: block !important;
 }
 
 .filter-btn {
@@ -82,16 +54,6 @@ body.catalog-page {
     margin: 0 auto;
     background: #fff;
     color: #111;
-
-    /* HARDENING AGAINST GLOBAL INPUT RULES IN index.css */
-    visibility: visible !important;
-    opacity: 1 !important;
-    height: auto !important;
-    min-height: 44px; /* keeps it from collapsing */
-    line-height: 1.2;
-    position: relative;
-    z-index: 11;
-    pointer-events: auto !important;
 }
 
 #search-bar:focus {
@@ -100,6 +62,20 @@ body.catalog-page {
 }
 
 /* Sort Control */
+.catalog-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0 15px 0;
+}
+
+.search-wrap {
+    width: 100%;
+    max-width: 600px;
+}
+
 .sort-control {
     display: inline-flex;
     align-items: center;
@@ -310,7 +286,7 @@ body.catalog-page {
 /* Responsive Design */
 @media (max-width: 768px) {
     body.catalog-page {
-        /* Fallback only — JS will override */
+        /* Mobile nav stacks vertically and is taller than desktop */
         padding-top: 220px;
     }
 
@@ -380,7 +356,6 @@ body.catalog-page {
         max-width: 100%;
         padding: 10px 15px;
         font-size: 14px;
-        min-height: 42px;
     }
 
     .catalog-controls {
