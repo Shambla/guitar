@@ -1,5 +1,27 @@
 [
   {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 3099.79,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2026-01-08T07:03:26.272610Z",
+    "received_at": "2026-01-08T07:03:26.272623Z",
+    "id": "2026-01-08T07:03:26.272623Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 471.19999999,
+    "price": 0.4088,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-08T07:00:43.574568Z",
+    "received_at": "2026-01-08T07:00:43.574584Z",
+    "id": "2026-01-08T07:00:43.574584Z-CRV/USD-sell"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 146.53,
@@ -2864,27 +2886,5 @@
     "timestamp": "2026-01-03T13:00:45.660332Z",
     "received_at": "2026-01-03T13:00:45.660443Z",
     "id": "2026-01-03T13:00:45.660443Z-DASH/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "DASH/USD",
-    "quantity": 4.76852666,
-    "price": 42.63,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-01-03T08:00:38.771613Z",
-    "received_at": "2026-01-03T08:00:38.771628Z",
-    "id": "2026-01-03T08:00:38.771628Z-DASH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 30.66,
-    "price": 0.3976,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-01-03T08:00:34.037489Z",
-    "received_at": "2026-01-03T08:00:34.038797Z",
-    "id": "2026-01-03T08:00:34.038797Z-CRV/USD-sell"
   }
 ]
