@@ -3,6 +3,17 @@
     "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
+    "price": 3077.2,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2026-01-09T14:42:15.446038Z",
+    "received_at": "2026-01-09T14:42:15.446125Z",
+    "id": "2026-01-09T14:42:15.446125Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
     "price": 3082.68,
     "source": "MASTER_BOT_162",
     "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
@@ -2905,16 +2916,5 @@
     "timestamp": "2026-01-04T13:24:54.361451Z",
     "received_at": "2026-01-04T13:24:54.361471Z",
     "id": "2026-01-04T13:24:54.361471Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "AAVE/USD",
-    "quantity": 0.6065752759917505,
-    "price": 164.7,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-01-04T13:05:43.312622Z",
-    "received_at": "2026-01-04T13:05:43.312642Z",
-    "id": "2026-01-04T13:05:43.312642Z-AAVE/USD-buy"
   }
 ]
