@@ -2,7 +2,7 @@
   {
     "id": "chopin-nocturne-op37-1",
     "title": "Nocturne Op 37 No. 1 (Guitar Version)",
-    "composer": "Frédéric Chopin",
+    "composer": "Frederic Chopin",
     "difficulty": "Advanced",
     "category": "romantic classical",
     "price": "$5.99",
@@ -68,7 +68,7 @@
   {
     "id": "how-insensitive-arr-brian-streckfus",
     "title": "How Insensitive (arr. Brian Streckfus)",
-    "composer": "Antônio Carlos Jobim",
+    "composer": "Antonio Carlos Jobim",
     "difficulty": "Intermediate",
     "category": "jazz latin",
     "price": "$3.99",
@@ -178,7 +178,7 @@
   {
     "id": "hey-ya-arr-brian-streckfus",
     "title": "Hey Ya! (arr. Brian Streckfus)",
-    "composer": "André 3000",
+    "composer": "Andre 3000",
     "difficulty": "Intermediate",
     "category": "popular",
     "price": "$3.99",
@@ -497,7 +497,7 @@
   {
     "id": "waltz-no-2-op34-guitar-arr-brian-streckfus",
     "title": "Waltz No. 2 Op. 34 (Guitar) (arr. Brian Streckfus)",
-    "composer": "Frédéric Chopin",
+    "composer": "Frederic Chopin",
     "difficulty": "Advanced",
     "category": "romantic classical",
     "price": "$5.99",
@@ -1329,7 +1329,7 @@
   {
     "id": "nocturne-op-9-no-1",
     "title": "Nocturne Op. 9 no 1",
-    "composer": "Frédéric Chopin",
+    "composer": "Frederic Chopin",
     "difficulty": "Advanced",
     "category": "romantic classical",
     "price": "$5.99",
@@ -1340,7 +1340,7 @@
   {
     "id": "nocturne-op-48-no-1",
     "title": "Nocturne Op. 48 no 1",
-    "composer": "Frédéric Chopin",
+    "composer": "Frederic Chopin",
     "difficulty": "Advanced",
     "category": "romantic classical",
     "price": "$5.99",
@@ -1447,7 +1447,7 @@
   },
   {
     "id": "la-canción-del-emperador",
-    "title": "La Canción Del Emperador",
+    "title": "La Cancion Del Emperador",
     "composer": "Traditional",
     "difficulty": "Intermediate",
     "category": "classical",
@@ -1524,7 +1524,7 @@
   {
     "id": "nocturne-op9-no2",
     "title": "Nocturne Op.9 No.2",
-    "composer": "Frédéric Chopin",
+    "composer": "Frederic Chopin",
     "difficulty": "Advanced",
     "category": "romantic classical",
     "price": "$5.99",
@@ -2039,7 +2039,7 @@
   },
   {
     "id": "canción-del-emperador",
-    "title": "Canción Del Emperador",
+    "title": "Cancion Del Emperador",
     "composer": "Traditional",
     "difficulty": "Intermediate",
     "category": "classical",

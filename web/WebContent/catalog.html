@@ -29,12 +29,12 @@
 		<nav>
 			<div id="backing"></div>
 			<div class="content">
-				<a href="index.html#bio">BIO</a>
-				<a href="index.html#performances">PERFORMANCES</a>
-				<a href="index.html#media">MEDIA</a>
-				<a href="index.html#contact">CONTACT</a>
-				<a href="catalog.html" style="font-weight: bold;">CATALOG</a>
-				<a href="signals.html">&#128201; TRADING SIGNALS</a>
+				<a href="index.html#bio">&#128100; BIO</a>
+				<a href="index.html#performances">&#127908; PERFORMANCES</a>
+				<a href="index.html#media">&#128247; &#9654; MEDIA</a>
+				<a href="index.html#contact">&#128236; CONTACT</a>
+				<a href="catalog.html" class="catalog-nav-link" style="font-weight: bold;">&#128220; &#127925; &#128722; CATALOG &#127911; &#127925; &#127928;</a>
+				<a href="signals.html">💹 Trading Signals</a>
 			</div>
 		</nav>
 		
@@ -44,22 +44,22 @@
 
 			<!-- Search + Sort - Embedded in prominent box for visibility -->
 			<div style="background: #f9f9f9; border: 2px solid #ddd; border-radius: 8px; padding: 20px; margin: 25px 0; opacity: 1 !important; visibility: visible !important; display: block !important;">
-				<div class="catalog-controls" style="opacity: 1 !important; visibility: visible !important; display: flex !important;">
-					<div class="search-wrap">
-						<input type="text" id="search-bar" placeholder="🔍 Search by title, composer, or keyword..." onkeyup="searchCatalog()" style="opacity: 1 !important; visibility: visible !important; display: block !important; width: 100%; padding: 12px 20px; font-size: 16px; border: 2px solid #333; border-radius: 4px; background: #fff; color: #111;">
+				<div class="catalog-controls" style="opacity: 1 !important; visibility: visible !important; display: flex !important; flex-wrap: wrap; gap: 12px; align-items: center;">
+					<div class="search-wrap" style="flex: 1; min-width: 200px;">
+						<input type="text" id="search-bar" placeholder="Search by title, composer, or keyword..." onkeyup="searchCatalog()" style="opacity: 1 !important; visibility: visible !important; display: block !important; width: 100%; padding: 12px 20px; font-size: 16px; border: 2px solid #333; border-radius: 4px; background: #fff; color: #111; box-sizing: border-box;">
 					</div>
-					<div class="sort-control" style="opacity: 1 !important; visibility: visible !important; display: inline-flex !important;">
+					<div class="sort-control" style="opacity: 1 !important; visibility: visible !important; display: inline-flex !important; flex-shrink: 0; z-index: 100; position: relative;">
 						<label for="sort-select">Sort:</label>
-						<select id="sort-select" onchange="sortCatalog()">
+						<select id="sort-select" onchange="sortCatalog()" style="opacity: 1 !important; visibility: visible !important;">
 							<option value="default" selected>Default</option>
-							<option value="title_asc">Title (A → Z)</option>
-							<option value="title_desc">Title (Z → A)</option>
-							<option value="composer_asc">Composer (A → Z)</option>
-							<option value="composer_desc">Composer (Z → A)</option>
-							<option value="difficulty_asc">Difficulty (Beginner → Advanced)</option>
-							<option value="difficulty_desc">Difficulty (Advanced → Beginner)</option>
-							<option value="price_asc">Price (Low → High)</option>
-							<option value="price_desc">Price (High → Low)</option>
+							<option value="title_asc">Title (A to Z)</option>
+							<option value="title_desc">Title (Z to A)</option>
+							<option value="composer_asc">Composer (A to Z)</option>
+							<option value="composer_desc">Composer (Z to A)</option>
+							<option value="difficulty_asc">Difficulty (Beginner to Advanced)</option>
+							<option value="difficulty_desc">Difficulty (Advanced to Beginner)</option>
+							<option value="price_asc">Price (Low to High)</option>
+							<option value="price_desc">Price (High to Low)</option>
 						</select>
 					</div>
 				</div>

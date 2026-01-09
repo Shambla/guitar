@@ -28,7 +28,8 @@ body.catalog-page {
 
 /* Search wrap */
 .search-wrap {
-    width: 100%;
+    flex: 1;
+    min-width: 200px;
     max-width: 600px;
 }
 
@@ -101,13 +102,16 @@ body.catalog-page {
 
 /* Sort Control */
 .sort-control {
-    display: inline-flex;
+    display: inline-flex !important;
     align-items: center;
     gap: 10px;
     background: #f9f9f9;
     border: 2px solid #ddd;
     border-radius: 8px;
     padding: 10px 14px;
+    flex-shrink: 0;
+    z-index: 100;
+    position: relative;
 }
 
 .sort-control label {
@@ -124,6 +128,10 @@ body.catalog-page {
     border: 2px solid #ddd;
     background: #fff;
     color: #333;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 101;
+    position: relative;
 }
 
 #sort-select:focus {
