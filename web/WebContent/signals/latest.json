@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "TAO/USD",
-  "quantity": 0.35255958256945424,
-  "price": 283.36,
+  "action": "sell",
+  "symbol": "DASH/USD",
+  "quantity": 0.0,
+  "price": 38.72,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-01-09T13:00:07.939980Z",
-  "received_at": "2026-01-09T13:00:07.939996Z",
-  "id": "2026-01-09T13:00:07.939996Z-TAO/USD-buy"
+  "timestamp": "2026-01-09T14:00:16.117970Z",
+  "received_at": "2026-01-09T14:00:16.117994Z",
+  "id": "2026-01-09T14:00:16.117994Z-DASH/USD-sell"
 }
