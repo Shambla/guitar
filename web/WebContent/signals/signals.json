@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 3084.21,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2026-01-10T02:34:50.700565Z",
+    "received_at": "2026-01-10T02:34:50.700578Z",
+    "id": "2026-01-10T02:34:50.700578Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "SUI/USD",
     "quantity": 55.0,
     "price": 1.8064,
@@ -2905,16 +2916,5 @@
     "timestamp": "2026-01-05T01:00:11.689532Z",
     "received_at": "2026-01-05T01:00:11.689546Z",
     "id": "2026-01-05T01:00:11.689546Z-SUI/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "BTC/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-01-05T01:00:10.955931Z",
-    "received_at": "2026-01-05T01:00:10.956108Z",
-    "id": "2026-01-05T01:00:10.956108Z-BTC/USD-buy"
   }
 ]
