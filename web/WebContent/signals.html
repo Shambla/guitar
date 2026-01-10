@@ -1602,9 +1602,9 @@
 			<a href="#" onclick="event.preventDefault(); showHistoricalSignals(); return false;">📜 Historical</a>
 			<a href="#asset-list" onclick="event.preventDefault(); showAssetList(); return false;">📋 Assets</a>
 			<a href="#" onclick="event.preventDefault(); showSubscriptionModal(); return false;" class="subscribe-nav-link">💳 Subscribe</a>
-			<a href="catalog.html" class="bull-nav-link" title="Music Catalog">
-				<img src="img/Angry Bull 3.png" alt="Music Catalog" />
-				<span class="bull-text">Get pumped for the pump</span>
+			<a href="#" onclick="event.preventDefault(); toggleBullAudio(); return false;" class="bull-nav-link" title="Click to play music">
+				<img src="img/Angry Bull 3.png" alt="Click to play music" />
+				<span class="bull-text">Get Pumped for the Pump!</span>
 			</a>
 		</div>
 		
@@ -2117,8 +2117,11 @@
 						<h3>CRYPTOCURRENCIES</h3>
 						<p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 15px;">Cryptocurrency selection is based on extensive backtesting analysis. These tokens have demonstrated the strongest historical performance and signal reliability in the trading system:</p>
 						<ul>
+							<li data-symbol="BTC/USD"><strong>BTC/USD</strong> - Bitcoin: The original and largest cryptocurrency, serving as digital gold and a store of value with the highest market capitalization <span class="asset-signal-status"></span></li>
 							<li data-symbol="ETH/USD"><strong>ETH/USD</strong> - Ethereum: The second-largest cryptocurrency and leading smart contract platform, powering the majority of DeFi and NFT ecosystems <span class="asset-signal-status"></span></li>
 							<li data-symbol="SOL/USD"><strong>SOL/USD</strong> - Solana: High-performance blockchain with fast transaction speeds and low fees, popular for DeFi and NFT applications <span class="asset-signal-status"></span></li>
+							<li data-symbol="DASH/USD"><strong>DASH/USD</strong> - Dash: Privacy-focused cryptocurrency with instant transactions, decentralized governance, and optional private send features <span class="asset-signal-status"></span></li>
+							<li data-symbol="TAO/USD"><strong>TAO/USD</strong> - Bittensor: Decentralized AI network token powering machine learning models and neural networks through distributed computing <span class="asset-signal-status"></span></li>
 							<li data-symbol="BONK/USD"><strong>BONK/USD</strong> - Bonk: Meme coin on the Solana blockchain with strong community engagement and high volatility <span class="asset-signal-status"></span></li>
 							<li data-symbol="CRV/USD"><strong>CRV/USD</strong> - Curve DAO Token: Governance token for Curve Finance, a leading DeFi protocol specializing in stablecoin swaps and liquidity pools <span class="asset-signal-status"></span></li>
 							<li data-symbol="SUI/USD"><strong>SUI/USD</strong> - Sui: Next-generation blockchain platform designed for high throughput and low latency, focusing on gaming and DeFi applications <span class="asset-signal-status"></span></li>
@@ -2679,8 +2682,9 @@
 				// Add click handlers to all bull images
 				const bullImageNav = document.getElementById('bull-image-nav');
 				const bullImageInline = document.getElementById('bull-image-inline');
+				const bullNavLink = document.querySelector('.bull-nav-link');
 				
-				function toggleBullAudio() {
+				window.toggleBullAudio = function() {
 					if (!bullAudio) return;
 					
 					if (isPlaying) {
@@ -2689,12 +2693,14 @@
 						// Update title to indicate it can be played
 						if (bullImageNav) bullImageNav.title = 'Click to play music';
 						if (bullImageInline) bullImageInline.title = 'Click to play music';
+						if (bullNavLink) bullNavLink.title = 'Click to play music';
 					} else {
 						bullAudio.play().then(() => {
 							isPlaying = true;
 							// Update title to indicate it can be paused
 							if (bullImageNav) bullImageNav.title = 'Click to pause music';
 							if (bullImageInline) bullImageInline.title = 'Click to pause music';
+							if (bullNavLink) bullNavLink.title = 'Click to pause music';
 						}).catch(err => {
 							console.error('Error playing audio:', err);
 							alert('Could not play audio. Please check your browser settings.');
@@ -4377,7 +4383,7 @@
 									${signal.source ? `
 										<div class="signal-detail-row">
 											<span class="signal-detail-label">Source:</span>
-											<span class="signal-detail-value">${signal.source}</span>
+											<span class="signal-detail-value">${signal.source.replace(/MASTER_BOT_\d+/gi, 'Python Bot').replace(/MASTERMASTER/gi, 'Python Bot')}</span>
 										</div>
 									` : ''}
 									${signal.note ? `
