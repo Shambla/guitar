@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "DASH/USD",
-  "quantity": 0.0,
-  "price": 37.12,
+  "symbol": "SUI/USD",
+  "quantity": 54.89999999,
+  "price": 1.7946,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-01-11T22:00:47.591793Z",
-  "received_at": "2026-01-11T22:00:47.591829Z",
-  "id": "2026-01-11T22:00:47.591829Z-DASH/USD-sell"
+  "timestamp": "2026-01-11T22:06:54.057302Z",
+  "received_at": "2026-01-11T22:06:54.057340Z",
+  "id": "2026-01-11T22:06:54.057340Z-SUI/USD-sell"
 }
