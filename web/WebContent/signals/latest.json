@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "CRV/USD",
-  "quantity": 246.78,
-  "price": 0.4046,
+  "symbol": "SUI/USD",
+  "quantity": 109.79999999,
+  "price": 1.8058,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-01-11T17:00:34.682972Z",
-  "received_at": "2026-01-11T17:00:34.682992Z",
-  "id": "2026-01-11T17:00:34.682992Z-CRV/USD-sell"
+  "timestamp": "2026-01-11T17:02:35.154650Z",
+  "received_at": "2026-01-11T17:02:35.154662Z",
+  "id": "2026-01-11T17:02:35.154662Z-SUI/USD-sell"
 }

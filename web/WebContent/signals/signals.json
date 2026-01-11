@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "SUI/USD",
+    "quantity": 109.79999999,
+    "price": 1.8058,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-11T17:02:35.154650Z",
+    "received_at": "2026-01-11T17:02:35.154662Z",
+    "id": "2026-01-11T17:02:35.154662Z-SUI/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "CRV/USD",
     "quantity": 246.78,
     "price": 0.4046,
@@ -2905,16 +2916,5 @@
     "timestamp": "2026-01-06T19:00:40.211639Z",
     "received_at": "2026-01-06T19:00:40.211652Z",
     "id": "2026-01-06T19:00:40.211652Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "TAO/USD",
-    "quantity": 0.0,
-    "price": 279.51,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-01-06T19:00:13.599781Z",
-    "received_at": "2026-01-06T19:00:13.599801Z",
-    "id": "2026-01-06T19:00:13.599801Z-TAO/USD-sell"
   }
 ]
