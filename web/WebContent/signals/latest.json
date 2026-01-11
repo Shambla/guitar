@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "AAVE/USD",
-  "quantity": 0.6042661187987189,
-  "price": 165.32,
+  "symbol": "DASH/USD",
+  "quantity": 2.680965147453083,
+  "price": 37.26,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-01-11T02:01:50.733477Z",
-  "received_at": "2026-01-11T02:01:50.733493Z",
-  "id": "2026-01-11T02:01:50.733493Z-AAVE/USD-buy"
+  "timestamp": "2026-01-11T02:02:56.203032Z",
+  "received_at": "2026-01-11T02:02:56.203051Z",
+  "id": "2026-01-11T02:02:56.203051Z-DASH/USD-buy"
 }
