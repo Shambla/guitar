@@ -3,6 +3,17 @@
     "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
+    "price": 3094.56,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2026-01-11T08:40:59.207904Z",
+    "received_at": "2026-01-11T08:40:59.207922Z",
+    "id": "2026-01-11T08:40:59.207922Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
     "price": 3089.52,
     "source": "MASTER_BOT_162",
     "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
@@ -2905,16 +2916,5 @@
     "timestamp": "2026-01-06T15:00:17.046558Z",
     "received_at": "2026-01-06T15:00:17.047585Z",
     "id": "2026-01-06T15:00:17.047585Z-FET/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.03043306,
-    "price": 3279.3282,
-    "source": "MASTER_BOT_162",
-    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-    "timestamp": "2026-01-06T14:56:51.387695Z",
-    "received_at": "2026-01-06T14:56:51.387840Z",
-    "id": "2026-01-06T14:56:51.387840Z-ETH/USD-buy"
   }
 ]
