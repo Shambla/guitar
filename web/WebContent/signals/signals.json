@@ -2,6 +2,17 @@
   {
     "action": "sell",
     "symbol": "ETH/USD",
+    "quantity": 0.03227097,
+    "price": 3121.74,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-12T02:08:12.578679Z",
+    "received_at": "2026-01-12T02:08:12.578694Z",
+    "id": "2026-01-12T02:08:12.578694Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2905,16 +2916,5 @@
     "timestamp": "2026-01-08T07:03:26.272610Z",
     "received_at": "2026-01-08T07:03:26.272623Z",
     "id": "2026-01-08T07:03:26.272623Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 471.19999999,
-    "price": 0.4088,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-01-08T07:00:43.574568Z",
-    "received_at": "2026-01-08T07:00:43.574584Z",
-    "id": "2026-01-08T07:00:43.574584Z-CRV/USD-sell"
   }
 ]
