@@ -1,6 +1,28 @@
 [
   {
     "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-12T09:00:19.368642Z",
+    "received_at": "2026-01-12T09:00:19.368718Z",
+    "id": "2026-01-12T09:00:19.368718Z-CRV/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "AAVE/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-12T09:00:15.413151Z",
+    "received_at": "2026-01-12T09:00:15.413167Z",
+    "id": "2026-01-12T09:00:15.413167Z-AAVE/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "TAO/USD",
     "quantity": 0.0,
     "price": 283.28,
@@ -2894,27 +2916,5 @@
     "timestamp": "2026-01-09T05:00:13.597467Z",
     "received_at": "2026-01-09T05:00:13.598036Z",
     "id": "2026-01-09T05:00:13.598036Z-SUI/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.03200531,
-    "price": 3107.31,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2026-01-09T02:57:49.339282Z",
-    "received_at": "2026-01-09T02:57:49.339374Z",
-    "id": "2026-01-09T02:57:49.339374Z-ETH/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.03209088,
-    "price": 3109.9177,
-    "source": "MASTER_BOT_162",
-    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-    "timestamp": "2026-01-09T02:36:37.368420Z",
-    "received_at": "2026-01-09T02:36:37.368438Z",
-    "id": "2026-01-09T02:36:37.368438Z-ETH/USD-buy"
   }
 ]
