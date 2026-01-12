@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-12T02:00:13.205621Z",
+    "received_at": "2026-01-12T02:00:13.205636Z",
+    "id": "2026-01-12T02:00:13.205636Z-ETH/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "DASH/USD",
     "quantity": 2.6116479498563594,
@@ -2905,16 +2916,5 @@
     "timestamp": "2026-01-08T07:00:43.574568Z",
     "received_at": "2026-01-08T07:00:43.574584Z",
     "id": "2026-01-08T07:00:43.574584Z-CRV/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-01-08T07:00:15.515141Z",
-    "received_at": "2026-01-08T07:00:15.516848Z",
-    "id": "2026-01-08T07:00:15.516848Z-CRV/USD-sell"
   }
 ]
