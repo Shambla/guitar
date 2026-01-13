@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "TAO/USD",
-  "quantity": 0.3557452863749555,
-  "price": 280.82,
+  "symbol": "CRV/USD",
+  "quantity": 253.5496957403651,
+  "price": 0.394,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-01-13T02:00:16.488462Z",
-  "received_at": "2026-01-13T02:00:16.488480Z",
-  "id": "2026-01-13T02:00:16.488480Z-TAO/USD-buy"
+  "timestamp": "2026-01-13T02:05:57.434532Z",
+  "received_at": "2026-01-13T02:05:57.434558Z",
+  "id": "2026-01-13T02:05:57.434558Z-CRV/USD-buy"
 }
