@@ -1,5 +1,7 @@
 # Website TODO - Features to Implement
 
+1. Watch 3 YouTube videos all the way through, get a free PDF.
+
 ## 🔄 Subscription Section (For signals.html)
 
 **Status:** Ready to implement when Stripe account is set up
