@@ -1498,28 +1498,6 @@
     "preview_image": "img/previews/Study_No_13_Modes_of_D_Major.png"
   },
   {
-    "id": "f-minor-ab-major-bossa-nova-jazz",
-    "title": "F Minor AB Major Bossa Nova Jazz",
-    "composer": "Traditional",
-    "difficulty": "Intermediate",
-    "category": "jazz",
-    "price": "$3.99",
-    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1874921/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1874921/Product.aspx",
-    "preview_image": "img/previews/A minor Roman Numerals JAZZ 3-preview.png"
-  },
-  {
-    "id": "g-major-e-minor-d-mixolydian",
-    "title": "G Major/ E Minor/ D Mixolydian",
-    "composer": "Traditional",
-    "difficulty": "Intermediate",
-    "category": "country",
-    "price": "$3.99",
-    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1874387/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1874387/Product.aspx",
-    "preview_image": "img/previews/Study_No_13_Modes_of_D_Major.png"
-  },
-  {
     "id": "g-major-e-minor-irish-folk",
     "title": "G Major/ E Minor Irish Folk",
     "composer": "Traditional",
@@ -1541,26 +1519,15 @@
     "preview_image": "img/previews/chopin-nocturne-op37-1-preview.png"
   },
   {
-    "id": "b-minor-d-major---synthwave-electronic-music",
-    "title": "B Minor/ D Major - Synthwave Electronic Music",
-    "composer": "Traditional",
+    "id": "g-harmonic-minor-backing-track-d-jewish-scale",
+    "title": "G Harmonic minor Backing Track – (D Jewish scale) - Indian",
+    "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
-    "category": "popular",
-    "price": "$3.99",
-    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1874273/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1874273/Product.aspx",
-    "preview_image": "img/previews/Study_No_13_Modes_of_D_Major.png"
-  },
-  {
-    "id": "g-harmonic-minor-d-jewish-scale",
-    "title": "G Harmonic Minor (D Jewish Scale)",
-    "composer": "Traditional",
-    "difficulty": "Intermediate",
-    "category": "world",
-    "price": "$3.99",
+    "category": "mp3 audio",
+    "price": "$1.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1874269/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1874269/Product.aspx",
-    "preview_image": "img/previews/A harmonic minor Roman Numeral small-preview.png"
+    "preview_image": "img/mp3-placeholder.png"
   },
   {
     "id": "last-night",
@@ -2724,6 +2691,50 @@
     "price": "$1.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1910146/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1910146/Product.aspx",
+    "preview_image": "img/mp3-placeholder.png"
+  },
+  {
+    "id": "f-lydian-backing-track",
+    "title": "F Lydian Backing Track",
+    "composer": "Brian Streckfus",
+    "difficulty": "Intermediate",
+    "category": "mp3 audio",
+    "price": "$1.99",
+    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1906019/Product.aspx",
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1906019/Product.aspx",
+    "preview_image": "img/mp3-placeholder.png"
+  },
+  {
+    "id": "d-mixolydian-backing-track-country",
+    "title": "G Major / E minor / D Mixolydian | Backing Track – Country",
+    "composer": "Brian Streckfus",
+    "difficulty": "Intermediate",
+    "category": "mp3 audio",
+    "price": "$1.99",
+    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1874387/Product.aspx",
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1874387/Product.aspx",
+    "preview_image": "img/mp3-placeholder.png"
+  },
+  {
+    "id": "f-minor-ab-major-bossa-nova-jazz-backing-track",
+    "title": "F minor / Ab Major | Backing Track - Bossa Nova Jazz",
+    "composer": "Brian Streckfus",
+    "difficulty": "Intermediate",
+    "category": "mp3 audio",
+    "price": "$1.99",
+    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1874921/Product.aspx",
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1874921/Product.aspx",
+    "preview_image": "img/mp3-placeholder.png"
+  },
+  {
+    "id": "b-minor-d-major-synthwave-backing-track",
+    "title": "B minor / D Major Backing Track | Synthwave Electronic Music",
+    "composer": "Brian Streckfus",
+    "difficulty": "Intermediate",
+    "category": "mp3 audio",
+    "price": "$1.99",
+    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1874273/Product.aspx",
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1874273/Product.aspx",
     "preview_image": "img/mp3-placeholder.png"
   }
 ]
