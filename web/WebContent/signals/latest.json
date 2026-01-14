@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "ETH/USD",
-  "quantity": 0.06376945,
-  "price": 3195.96,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-01-13T20:44:19.036402Z",
-  "received_at": "2026-01-13T20:44:19.036424Z",
-  "id": "2026-01-13T20:44:19.036424Z-ETH/USD-sell"
+  "action": "buy",
+  "symbol": "GLD",
+  "quantity": null,
+  "price": 421.63,
+  "source": "MAIN_stock_strat14",
+  "note": "buy 20/41 | sell 12/40 | Strength=4/10 | MTF:W+M",
+  "timestamp": "2026-01-14T10:22:16.700303Z",
+  "received_at": "2026-01-14T10:22:16.700512Z",
+  "id": "2026-01-14T10:22:16.700512Z-GLD-buy"
 }
