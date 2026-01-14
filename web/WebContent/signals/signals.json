@@ -1,6 +1,39 @@
 [
   {
     "action": "buy",
+    "symbol": "BTC/USD",
+    "quantity": 0.0010530531327435605,
+    "price": 94867.01,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-14T14:07:23.748675Z",
+    "received_at": "2026-01-14T14:07:23.748694Z",
+    "id": "2026-01-14T14:07:23.748694Z-BTC/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.03028834504482675,
+    "price": 3298.3,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-14T14:07:23.356622Z",
+    "received_at": "2026-01-14T14:07:23.356642Z",
+    "id": "2026-01-14T14:07:23.356642Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 0.343878954607978,
+    "price": 290.51,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-14T14:07:21.830551Z",
+    "received_at": "2026-01-14T14:07:21.830564Z",
+    "id": "2026-01-14T14:07:21.830564Z-TAO/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "FET/USD",
     "quantity": 347.1017007983339,
     "price": 0.2878,
@@ -2863,38 +2896,5 @@
     "timestamp": "2026-01-10T15:53:29.857608Z",
     "received_at": "2026-01-10T15:53:29.857624Z",
     "id": "2026-01-10T15:53:29.857624Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 3090.99,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2026-01-10T15:26:07.583753Z",
-    "received_at": "2026-01-10T15:26:07.583774Z",
-    "id": "2026-01-10T15:26:07.583774Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 3088.11,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-01-10T15:00:07.426211Z",
-    "received_at": "2026-01-10T15:00:07.426246Z",
-    "id": "2026-01-10T15:00:07.426246Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-01-10T15:00:07.233601Z",
-    "received_at": "2026-01-10T15:00:07.233640Z",
-    "id": "2026-01-10T15:00:07.233640Z-ETH/USD-sell"
   }
 ]
