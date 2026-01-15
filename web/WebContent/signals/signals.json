@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 1e-08,
+    "price": 3285.7,
+    "source": "MASTER_BOT_162",
+    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+    "timestamp": "2026-01-15T20:42:23.938453Z",
+    "received_at": "2026-01-15T20:42:23.939305Z",
+    "id": "2026-01-15T20:42:23.939305Z-ETH/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "GLD",
     "price": 425.94,
@@ -2895,16 +2906,5 @@
     "timestamp": "2026-01-11T02:01:48.680109Z",
     "received_at": "2026-01-11T02:01:48.680128Z",
     "id": "2026-01-11T02:01:48.680128Z-AAVE/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 355.99857600569595,
-    "price": 0.2806,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-01-11T02:00:15.278673Z",
-    "received_at": "2026-01-11T02:00:15.278691Z",
-    "id": "2026-01-11T02:00:15.278691Z-FET/USD-buy"
   }
 ]
