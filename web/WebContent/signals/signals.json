@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 1e-08,
-    "price": 3285.7,
-    "source": "MASTER_BOT_162",
-    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
-    "timestamp": "2026-01-15T20:42:23.938453Z",
-    "received_at": "2026-01-15T20:42:23.939305Z",
-    "id": "2026-01-15T20:42:23.939305Z-ETH/USD-sell"
-  },
-  {
     "action": "buy",
     "symbol": "GLD",
     "price": 425.94,
@@ -134,26 +123,26 @@
   {
     "action": "info",
     "symbol": "XLB",
-    "price": 48.75,
+    "price": 49.065,
     "quantity": null,
     "source": "MAIN_stock_strat12",
-    "note": "Above thresholds | buy 16/16 | sell 13/13",
-    "timestamp": "2026-01-14T22:09:02.165308Z",
-    "received_at": "2026-01-14T22:09:02.165308Z",
-    "id": "2026-01-14T22:09:02.165308Z-XLB-info",
+    "note": "Above thresholds | buy 15/16 | sell 14/13",
+    "timestamp": "2026-01-15T20:46:12.747577Z",
+    "received_at": "2026-01-15T20:46:12.747577Z",
+    "id": "2026-01-15T20:46:12.747577Z-XLB-info",
     "threshold_met": true,
-    "buy_score": 16,
-    "sell_score": 13,
+    "buy_score": 15,
+    "sell_score": 14,
     "total_buy_components": 41,
     "total_sell_components": 40,
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0,
-    "buy_conviction": 0.6602439024390244,
-    "buy_persistence": 9,
-    "buy_position_multiplier": 1.0,
-    "sell_conviction": 0.535,
-    "sell_persistence": 7,
+    "buy_conviction": 0.36585365853658536,
+    "buy_persistence": 0,
+    "buy_position_multiplier": 0.5,
+    "sell_conviction": 0.59,
+    "sell_persistence": 8,
     "sell_position_multiplier": 1.0
   },
   {
@@ -1377,6 +1366,17 @@
     "sell_conviction": 0.225,
     "sell_persistence": 0,
     "sell_position_multiplier": 0.5
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 1e-08,
+    "price": 3285.7,
+    "source": "MASTER_BOT_162",
+    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+    "timestamp": "2026-01-15T20:42:23.938453Z",
+    "received_at": "2026-01-15T20:42:23.939305Z",
+    "id": "2026-01-15T20:42:23.939305Z-ETH/USD-sell"
   },
   {
     "action": "sell",
