@@ -369,6 +369,86 @@
 				transition: all 0.3s ease;
 			}
 			
+			/* Minimized state - hide menu content, show only toggle button */
+			.floating-nav.minimized {
+				padding: 8px !important;
+				gap: 0 !important;
+			}
+			
+			.floating-nav.minimized .floating-nav-content {
+				display: none !important;
+			}
+			
+			.floating-nav.minimized .floating-nav-close {
+				display: none !important;
+			}
+			
+			.floating-nav.minimized .floating-nav-toggle {
+				display: flex !important;
+			}
+			
+			/* Close/Minimize button */
+			.floating-nav-close {
+				position: absolute;
+				top: 8px;
+				right: 8px;
+				width: 28px;
+				height: 28px;
+				background: rgba(255, 0, 0, 0.6) !important;
+				border: 2px solid rgba(255, 0, 0, 0.8) !important;
+				border-radius: 50%;
+				color: #fff !important;
+				font-size: 18px;
+				font-weight: bold;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				line-height: 1;
+				transition: all 0.3s ease;
+				z-index: 10001;
+				opacity: 0.8;
+			}
+			
+			.floating-nav-close:hover {
+				background: rgba(255, 0, 0, 0.9) !important;
+				border-color: rgba(255, 0, 0, 1) !important;
+				opacity: 1;
+				transform: scale(1.1);
+				box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+			}
+			
+			/* Toggle button to reopen minimized menu */
+			.floating-nav-toggle {
+				display: none;
+				width: 40px;
+				height: 40px;
+				background: rgba(0, 255, 255, 0.3) !important;
+				border: 2px solid rgba(0, 255, 255, 0.5) !important;
+				border-radius: 8px;
+				color: #fff !important;
+				font-size: 20px;
+				font-weight: bold;
+				cursor: pointer;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				transition: all 0.3s ease;
+			}
+			
+			.floating-nav-toggle:hover {
+				background: rgba(0, 255, 255, 0.5) !important;
+				border-color: rgba(0, 255, 255, 0.8) !important;
+				transform: scale(1.1);
+				box-shadow: 0 0 15px rgba(0, 255, 255, 0.6);
+			}
+			
+			.floating-nav-content {
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+			}
+			
 			.floating-nav:hover {
 				background: rgba(10, 14, 39, 0.95) !important;
 				backdrop-filter: blur(10px);
@@ -427,8 +507,9 @@
 				transform: scale(1.1);
 			}
 			
-			/* Animated Subscribe Button */
-			.floating-nav .subscribe-nav-link {
+			/* Animated Subscribe Button - Applied to both nav and floating menu */
+			.subscribe-nav-link,
+			nav .subscribe-nav-link {
 				background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
 				background-size: 200% 200% !important;
 				border: 2px solid rgba(255, 255, 255, 0.4) !important;
@@ -439,9 +520,12 @@
 				animation: subscribeGradient 3s ease infinite, subscribePulse 2s ease-in-out infinite !important;
 				position: relative;
 				overflow: hidden;
+				color: #fff !important;
+				text-decoration: none !important;
 			}
 			
-			.floating-nav .subscribe-nav-link::before {
+			.subscribe-nav-link::before,
+			nav .subscribe-nav-link::before {
 				content: '';
 				position: absolute;
 				top: -50%;
@@ -452,6 +536,9 @@
 				animation: subscribeShimmer 3s infinite;
 			}
 			
+			/* Hover behavior:
+			   - floating menu: slide left a bit
+			   - top nav: lift up slightly (avoid shifting the whole nav row) */
 			.floating-nav .subscribe-nav-link:hover {
 				transform: translateX(-5px) scale(1.05) !important;
 				box-shadow: 
@@ -461,6 +548,17 @@
 					inset 0 0 30px rgba(255, 255, 255, 0.2) !important;
 				border-color: rgba(255, 255, 255, 0.7) !important;
 			}
+
+			nav .subscribe-nav-link:hover {
+				transform: translateY(-2px) scale(1.05) !important;
+				box-shadow: 
+					0 0 30px rgba(102, 126, 234, 0.9),
+					0 0 60px rgba(118, 75, 162, 0.6),
+					0 0 80px rgba(240, 147, 251, 0.4),
+					inset 0 0 30px rgba(255, 255, 255, 0.2) !important;
+				border-color: rgba(255, 255, 255, 0.7) !important;
+			}
+			
 			
 			@keyframes subscribeGradient {
 				0% { background-position: 0% 50%; }
@@ -517,6 +615,9 @@
 					right: 10px;
 					padding: 15px 10px;
 				}
+				.floating-nav.minimized {
+					padding: 6px !important;
+				}
 				.floating-nav a {
 					padding: 10px 15px;
 					font-size: 12px;
@@ -529,6 +630,18 @@
 				.floating-nav .bull-nav-link .bull-text {
 					font-size: 10px !important;
 					text-align: center;
+				}
+				.floating-nav-close {
+					width: 24px;
+					height: 24px;
+					font-size: 16px;
+					top: 6px;
+					right: 6px;
+				}
+				.floating-nav-toggle {
+					width: 36px;
+					height: 36px;
+					font-size: 18px;
 				}
 			}
 			.status-indicator {
@@ -1589,23 +1702,27 @@
 				<a href="signals.html">🚀 Crypto Signals</a>
 				<a href="#" onclick="event.preventDefault(); showStockSignals(); return false;">📈 Stock Signals</a>
 				<a href="#" onclick="event.preventDefault(); showHistoricalSignals(); return false;">📜 Historical Signals</a>
-				<a href="#" onclick="event.preventDefault(); showSubscriptionModal(); return false;" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 6px; padding: 8px 16px; margin-left: 10px;">
+				<a href="#" onclick="event.preventDefault(); showSubscriptionModal(); return false;" class="subscribe-nav-link" style="border-radius: 6px; padding: 8px 16px; margin-left: 10px;">
 					💳 Subscribe
 				</a>
 			</div>
 		</nav>
 		
 		<!-- Floating Right-Side Navigation -->
-		<div class="floating-nav">
-			<a href="#" onclick="event.preventDefault(); switchToCrypto(); return false;">🚀 Crypto</a>
-			<a href="#" onclick="event.preventDefault(); showStockSignals(); return false;">📈 Stocks</a>
-			<a href="#" onclick="event.preventDefault(); showHistoricalSignals(); return false;">📜 Historical</a>
-			<a href="#asset-list" onclick="event.preventDefault(); showAssetList(); return false;">📋 Assets</a>
-			<a href="#" onclick="event.preventDefault(); showSubscriptionModal(); return false;" class="subscribe-nav-link">💳 Subscribe</a>
-			<a href="#" onclick="event.preventDefault(); toggleBullAudio(); return false;" class="bull-nav-link" title="Click to play music">
-				<img src="img/Angry Bull 3.png" alt="Click to play music" />
-				<span class="bull-text">Get Pumped for the Pump!</span>
-			</a>
+		<div class="floating-nav" id="floating-nav">
+			<button class="floating-nav-close" onclick="toggleFloatingNav()" title="Minimize menu" aria-label="Minimize menu">×</button>
+			<button class="floating-nav-toggle" onclick="toggleFloatingNav()" title="Show menu" aria-label="Show menu">☰</button>
+			<div class="floating-nav-content">
+				<a href="#" onclick="event.preventDefault(); switchToCrypto(); return false;">🚀 Crypto</a>
+				<a href="#" onclick="event.preventDefault(); showStockSignals(); return false;">📈 Stocks</a>
+				<a href="#" onclick="event.preventDefault(); showHistoricalSignals(); return false;">📜 Historical</a>
+				<a href="#asset-list" onclick="event.preventDefault(); showAssetList(); return false;">📋 Assets</a>
+				<a href="#" onclick="event.preventDefault(); showSubscriptionModal(); return false;" class="subscribe-nav-link">💳 Subscribe</a>
+				<a href="#" onclick="event.preventDefault(); toggleBullAudio(); return false;" class="bull-nav-link" title="Click to play music">
+					<img src="img/Angry Bull 3.png" alt="Click to play music" />
+					<span class="bull-text">Get Pumped for the Pump!</span>
+				</a>
+			</div>
 		</div>
 		
 		<div class="content signals-container" id="signals-content">
@@ -1629,10 +1746,12 @@
 			<div class="signals-header">
 				<h1>🚀 Crypto Signals</h1>
 				<p>Live feed of buy and sell signals from trading strategies</p>
-				<div style="margin-top: 15px;">
+				<div style="margin-top: 15px; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
 					<span class="status-indicator active" id="status-indicator"></span>
 					<span id="status-text">Connected</span>
 					<span style="margin-left: 20px;" id="last-update"></span>
+					<button id="refresh-prices-btn" onclick="manualRefreshPrices(); return false;" style="background: rgba(255, 255, 255, 0.10); border: 1px solid rgba(255, 255, 255, 0.5); color: #fff; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-weight: 700; transition: all 0.2s ease;" onmouseover="this.style.background='rgba(255,255,255,0.16)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='rgba(255,255,255,0.10)'; this.style.transform='translateY(0)';" title="Force refresh prices (cached prices still show immediately)">🔄 Refresh Prices</button>
+					<span id="price-refresh-status" style="color: rgba(255, 255, 255, 0.6); font-size: 13px;"></span>
 				</div>
 			</div>
 			
@@ -2361,14 +2480,53 @@
 					</div>
 					
 					<div class="indicator-category">
-						<h3>ELLIOTT WAVE ANALYSIS</h3>
-						<h4>Wave Patterns</h4>
+						<h3>ELLIOTT WAVE & HARMONIC PATTERN ANALYSIS</h3>
+						<h4>Elliott Wave Patterns</h4>
 						<ul>
 							<li><strong>Motive Waves (1-2-3-4-5)</strong> - Bullish and bearish impulse patterns, Wave vaAdvicelidation (W3 != min of W1, W3, W5), Wave structure confirmation</li>
 							<li><strong>Corrective Waves (A-B-C)</strong> - Bullish and bearish corrective patterns, Fibonacci-based validation (0.854 threshold), Box pattern for corrective waves</li>
 							<li><strong>Wave Invalidation</strong> - Dot pattern for invalidated waves, Break detection (box breakouts)</li>
 							<li><strong>Fibonacci Extensions</strong> - 0.500, 0.618, 0.764, 0.854 levels, Wave-based Fibonacci projections</li>
 						</ul>
+						<h4>Harmonic Patterns</h4>
+						<ul>
+							<li><strong>Gartley Pattern</strong> - Bullish and bearish Gartley formations with Fibonacci retracement validation</li>
+							<li><strong>Butterfly Pattern</strong> - Extended harmonic patterns with precise Fibonacci ratios</li>
+							<li><strong>Bat Pattern</strong> - Harmonic reversal patterns with specific Fibonacci relationships</li>
+							<li><strong>Fibonacci Ratio Validation</strong> - Multiple Fibonacci levels (0.382, 0.500, 0.618, 0.786, 0.886, 1.272, 1.414, 1.618) required for pattern confirmation</li>
+							<li><strong>Pattern Structure Rules</strong> - Complex geometric relationships between swing points (X-A-B-C-D structure validation)</li>
+						</ul>
+						<div style="background: rgba(255, 193, 7, 0.1); border-left: 4px solid #ffc107; padding: 20px; margin-top: 20px; border-radius: 4px;">
+							<h4 style="color: #ffc107; margin-top: 0; font-size: 18px;">🎯 The Anti-Signal Approach: Where the Real Edge Lies</h4>
+							<p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 15px; line-height: 1.7; font-size: 16px;">
+								<strong>The cleverness:</strong> Elliott Wave and Harmonic Patterns are implemented as <strong>anti-signals</strong> rather than direct trade triggers. This is a sophisticated risk management approach that most trading systems completely miss.
+							</p>
+							<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 15px; line-height: 1.7;">
+								<strong>How it works:</strong> When a bearish harmonic pattern or Elliott Wave structure is detected, the system <strong>blocks buy signals</strong> for a time-limited window (typically 2-4 hours). Conversely, when a bullish pattern appears, <strong>sell signals are blocked</strong>. This prevents entering trades that go against powerful pattern-based market structure, even when other indicators might suggest a trade.
+							</p>
+							<p style="color: rgba(255, 255, 255, 0.85); margin-bottom: 15px; line-height: 1.7;">
+								<strong>Why this matters:</strong> Pattern recognition systems are notoriously difficult to code correctly because they require understanding market psychology, Fibonacci relationships, and complex geometric rules. Most algorithmic traders avoid them entirely because they're too complex. But this complexity is exactly what creates the edge - by using these patterns to <strong>filter out bad trades</strong> rather than generate new ones, we're leveraging sophisticated market structure analysis that most competitors simply don't have.
+							</p>
+							<p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 0; line-height: 1.7; font-weight: bold;">
+								<strong>The Edge:</strong> Elliott Wave and Harmonic Pattern analysis requires implementing hundreds of rules, multiple Fibonacci retracement and extension levels, complex geometric pattern validation, and understanding wave structure relationships. This level of complexity means most quantitative trading systems and algorithms simply don't include these patterns at all. By having this capability and using it as an anti-signal filter, we're operating with a layer of market structure analysis that most competitors cannot replicate.
+							</p>
+						</div>
+						<div style="background: rgba(156, 39, 176, 0.1); border-left: 4px solid #9c27b0; padding: 20px; margin-top: 20px; border-radius: 4px;">
+							<h4 style="color: #9c27b0; margin-top: 0; font-size: 16px;">⚙️ Technical Implementation Complexity</h4>
+							<p style="color: rgba(255, 255, 255, 0.9); margin-bottom: 10px; line-height: 1.6;">
+								<strong>Why These Patterns Are Extremely Difficult to Code:</strong>
+							</p>
+							<ul style="color: rgba(255, 255, 255, 0.85); margin-bottom: 0; line-height: 1.7;">
+								<li><strong>Hundreds of Rules:</strong> Elliott Wave theory requires validating wave relationships (e.g., Wave 3 cannot be the shortest, Wave 4 cannot overlap Wave 1 in impulse patterns), corrective wave structures, and pattern invalidation conditions</li>
+								<li><strong>Multiple Fibonacci Levels:</strong> Harmonic patterns require precise Fibonacci ratios (0.382, 0.500, 0.618, 0.786, 0.886, 1.272, 1.414, 1.618) to be validated simultaneously across multiple swing points</li>
+								<li><strong>Geometric Relationships:</strong> Patterns must satisfy complex geometric rules (e.g., X-A-B-C-D structure in harmonics, where each leg must meet specific Fibonacci retracement requirements)</li>
+								<li><strong>Pattern Persistence:</strong> Systems must track pattern state over time, handle pattern invalidation, and manage time-based expiration of anti-signal blocks</li>
+								<li><strong>Multi-Timeframe Validation:</strong> True pattern recognition requires analysis across multiple timeframes to confirm pattern validity</li>
+							</ul>
+							<p style="color: rgba(255, 255, 255, 0.9); margin-top: 15px; margin-bottom: 0; line-height: 1.7; font-style: italic;">
+								This complexity is precisely why most quantitative trading systems avoid these patterns entirely. The difficulty of implementation becomes our competitive advantage - we have market structure analysis capabilities that most algorithms simply cannot replicate.
+							</p>
+						</div>
 					</div>
 					
 					<div class="indicator-category">
@@ -2522,7 +2680,7 @@
 							<li><strong>Volume Indicators</strong>: 8+</li>
 							<li><strong>Support/Resistance</strong>: 6+</li>
 							<li><strong>Candlestick Patterns</strong>: 8+</li>
-							<li><strong>Elliott Wave</strong>: Complete 5-wave + ABC system</li>
+							<li><strong>Elliott Wave & Harmonic Patterns</strong>: Complete 5-wave + ABC system, Gartley/Butterfly/Bat patterns with Fibonacci validation</li>
 							<li><strong>Advanced Filters</strong>: 10+</li>
 							<li><strong>Statistical/ML</strong>: 5+</li>
 							<li><strong>Timing Filters</strong>: 5+</li>
@@ -2537,7 +2695,7 @@
 								<li><strong>Timeframe alignment</strong> (daily, weekly, monthly)</li>
 								<li><strong>Regime awareness</strong> (HMM, halving cycles, market structure)</li>
 								<li><strong>Risk filters</strong> (volatility, volume, timing)</li>
-								<li><strong>Pattern recognition</strong> (Elliott Wave, candlesticks, parabola)</li>
+								<li><strong>Pattern recognition</strong> (Elliott Wave, Harmonic Patterns, candlesticks, parabola)</li>
 								<li><strong>Statistical validation</strong> (Z-scores, Sharpe/Sortino, technical ratings)</li>
 							</ol>
 							<p style="color: rgba(255, 255, 255, 0.9); margin-top: 15px; font-style: italic;">This comprehensive approach ensures that only <strong>high-conviction signals</strong> with multiple layers of confirmation are generated, reducing false signals and improving trade quality.</p>
@@ -2633,6 +2791,32 @@
 		
 		<script>
 			let refreshInterval;
+			
+			// Floating Nav Toggle Function
+			function toggleFloatingNav() {
+				const nav = document.getElementById('floating-nav');
+				if (nav.classList.contains('minimized')) {
+					nav.classList.remove('minimized');
+					localStorage.setItem('floating-nav-minimized', 'false');
+				} else {
+					nav.classList.add('minimized');
+					localStorage.setItem('floating-nav-minimized', 'true');
+				}
+			}
+			
+			// Restore floating nav state on page load
+			function initFloatingNav() {
+				const nav = document.getElementById('floating-nav');
+				const savedState = localStorage.getItem('floating-nav-minimized');
+				if (savedState === 'true') {
+					nav.classList.add('minimized');
+				}
+			}
+			
+			// Initialize floating nav state when page loads
+			document.addEventListener('DOMContentLoaded', function() {
+				initFloatingNav();
+			});
 			
 			// Disclaimer handling
 			function initDisclaimer() {
@@ -2792,7 +2976,130 @@
 			
 			// Price cache to avoid repeated API calls
 			const priceCache = new Map();
-			const PRICE_CACHE_TTL = 60000; // 1 minute cache
+			const PRICE_CACHE_TTL = 60000; // 1 minute "fresh" cache
+			const PRICE_STALE_WARN_MS = 5 * 60 * 1000; // 5 minutes: show stale warning if older than this
+			const PRICE_CACHE_STORAGE_KEY = 'signals_price_cache_v1';
+			
+			function _safeUpper(s) {
+				return (s || '').toString().trim().toUpperCase();
+			}
+			
+			function _normalizeSymbolForPrice(symbol) {
+				const raw = (symbol || '').toString().trim();
+				if (!raw) return '';
+				const upper = raw.toUpperCase();
+				const normalized = upper.replace(/[-_]/g, '/');
+				return normalized.split('/')[0];
+			}
+			
+			function _cacheKeyForSymbol(symbol, isStock) {
+				const base = _normalizeSymbolForPrice(symbol);
+				if (!base) return '';
+				return `${isStock ? 'stock' : 'crypto'}_${base}`;
+			}
+			
+			function _loadPriceCacheFromStorage() {
+				try {
+					const raw = localStorage.getItem(PRICE_CACHE_STORAGE_KEY);
+					if (!raw) return;
+					const parsed = JSON.parse(raw);
+					if (!parsed || typeof parsed !== 'object') return;
+					for (const [k, v] of Object.entries(parsed)) {
+						if (!v || typeof v !== 'object') continue;
+						if (typeof v.price !== 'number' || typeof v.timestamp !== 'number') continue;
+						priceCache.set(k, { price: v.price, timestamp: v.timestamp, source: v.source || '' });
+					}
+				} catch (e) {
+					// ignore
+				}
+			}
+			
+			function _persistPriceCacheToStorage() {
+				try {
+					const obj = {};
+					for (const [k, v] of priceCache.entries()) {
+						if (!v || typeof v !== 'object') continue;
+						if (typeof v.price !== 'number' || typeof v.timestamp !== 'number') continue;
+						obj[k] = { price: v.price, timestamp: v.timestamp, source: v.source || '' };
+					}
+					localStorage.setItem(PRICE_CACHE_STORAGE_KEY, JSON.stringify(obj));
+				} catch (e) {
+					// ignore
+				}
+			}
+			
+			_loadPriceCacheFromStorage();
+			
+			function getCachedPriceEntry(symbol, isStock) {
+				const k = _cacheKeyForSymbol(symbol, isStock);
+				if (!k) return null;
+				const entry = priceCache.get(k);
+				if (!entry || typeof entry.price !== 'number' || typeof entry.timestamp !== 'number') return null;
+				return { ...entry, cacheKey: k };
+			}
+			
+			function setCachedPriceEntry(symbol, isStock, price, source) {
+				const k = _cacheKeyForSymbol(symbol, isStock);
+				if (!k) return;
+				if (typeof price !== 'number' || !(price > 0)) return;
+				priceCache.set(k, { price, timestamp: Date.now(), source: source || '' });
+				_persistPriceCacheToStorage();
+			}
+			
+			function formatPriceWithStaleWarning(price, ageMs) {
+				const base = formatPrice(price);
+				if (ageMs !== null && ageMs !== undefined && ageMs > PRICE_STALE_WARN_MS) {
+					const mins = Math.round(ageMs / 60000);
+					return `${base} <span title="Price may be stale (~${mins}m old)" style="color: rgba(255, 193, 7, 0.95); font-weight: 700; margin-left: 6px;">⚠️</span>`;
+				}
+				return base;
+			}
+			
+			// Deterministic DOM key: fixes intermittent updates caused by Date.now() mismatches.
+			function getSignalDomKey(signal) {
+				if (!signal) return 'sig-unknown';
+				const id = (signal.id !== undefined && signal.id !== null) ? String(signal.id) : '';
+				if (id) return id.replace(/[^a-zA-Z0-9_-]/g, '_');
+				const sym = _safeUpper(signal.symbol).replace(/[^A-Z0-9._/-]/g, '').replace(/[-_]/g, '/');
+				const ts = (signal.timestamp || signal.received_at || signal.time || '').toString();
+				const action = _safeUpper(signal.action || signal.side || signal.type || '');
+				const key = `${sym}__${ts}__${action}`;
+				return key.replace(/[^a-zA-Z0-9._:-]/g, '_');
+			}
+			
+			async function fetchJsonWithRetry(url, options = {}, retryCfg = {}) {
+				const retries = Number.isFinite(retryCfg.retries) ? retryCfg.retries : 2;
+				const baseDelayMs = Number.isFinite(retryCfg.baseDelayMs) ? retryCfg.baseDelayMs : 700;
+				const maxDelayMs = Number.isFinite(retryCfg.maxDelayMs) ? retryCfg.maxDelayMs : 2500;
+				const retryStatuses = retryCfg.retryStatuses || [429, 500, 502, 503, 504];
+				
+				let lastErr = null;
+				for (let attempt = 0; attempt <= retries; attempt++) {
+					try {
+						const resp = await fetch(url, options);
+						if (!resp.ok) {
+							if (retryStatuses.includes(resp.status) && attempt < retries) {
+								const delay = Math.min(maxDelayMs, baseDelayMs * Math.pow(2, attempt)) + Math.floor(Math.random() * 200);
+								await new Promise(r => setTimeout(r, delay));
+								continue;
+							}
+							const err = new Error(`HTTP ${resp.status}`);
+							err.status = resp.status;
+							throw err;
+						}
+						return await resp.json();
+					} catch (e) {
+						lastErr = e;
+						if (attempt < retries) {
+							const delay = Math.min(maxDelayMs, baseDelayMs * Math.pow(2, attempt)) + Math.floor(Math.random() * 200);
+							await new Promise(r => setTimeout(r, delay));
+							continue;
+						}
+						throw lastErr;
+					}
+				}
+				throw lastErr || new Error('fetchJsonWithRetry failed');
+			}
 			
 			// ============================================================================
 			// PnL TRACKING FUNCTIONS (FIFO-based for DCA accounting)
@@ -2826,6 +3133,56 @@
 				const color = pnl >= 0 ? '#4caf50' : '#f44336';
 				const emoji = pnl >= 0 ? '📈' : '📉';
 				return `<span style="color: ${color}; font-weight: bold;">${emoji} ${sign}${pnl.toFixed(2)}%</span>`;
+			}
+			
+			// ============================================================================
+			// PnL De-duplication + persistence (prevents intermittent PnL due to re-renders)
+			// ============================================================================
+			const PNL_PROCESSED_SIGNALS_KEY = 'signals_pnl_processed_v1'; // domKey -> true
+			const PNL_SELL_RESULTS_KEY = 'signals_pnl_sell_results_v1'; // domKey -> { pnl:number|null, ts:number, note?:string }
+			
+			function _getJsonLS(key, fallback) {
+				try {
+					const raw = localStorage.getItem(key);
+					if (!raw) return fallback;
+					return JSON.parse(raw);
+				} catch (e) {
+					return fallback;
+				}
+			}
+			
+			function _setJsonLS(key, value) {
+				try {
+					localStorage.setItem(key, JSON.stringify(value));
+				} catch (e) {
+					// ignore
+				}
+			}
+			
+			function wasPnLSignalProcessed(domKey) {
+				if (!domKey) return false;
+				const seen = _getJsonLS(PNL_PROCESSED_SIGNALS_KEY, {});
+				return !!seen[domKey];
+			}
+			
+			function markPnLSignalProcessed(domKey) {
+				if (!domKey) return;
+				const seen = _getJsonLS(PNL_PROCESSED_SIGNALS_KEY, {});
+				seen[domKey] = true;
+				_setJsonLS(PNL_PROCESSED_SIGNALS_KEY, seen);
+			}
+			
+			function getStoredSellPnL(domKey) {
+				if (!domKey) return null;
+				const all = _getJsonLS(PNL_SELL_RESULTS_KEY, {});
+				return all[domKey] || null;
+			}
+			
+			function setStoredSellPnL(domKey, pnl, note = '') {
+				if (!domKey) return;
+				const all = _getJsonLS(PNL_SELL_RESULTS_KEY, {});
+				all[domKey] = { pnl: pnl === null ? null : Number(pnl), ts: Date.now(), note: note || '' };
+				_setJsonLS(PNL_SELL_RESULTS_KEY, all);
 			}
 			
 			/**
@@ -2967,33 +3324,44 @@
 			async function fetchPriceFromCoinGecko(symbol) {
 				if (!symbol) return null;
 				
-				// Check cache first
-				const cacheKey = symbol;
-				const cached = priceCache.get(cacheKey);
-				if (cached && (Date.now() - cached.timestamp) < PRICE_CACHE_TTL) {
-					return cached.price;
+				// Check persisted cache first
+				const cachedEntry = getCachedPriceEntry(symbol, false);
+				if (cachedEntry && (Date.now() - cachedEntry.timestamp) < PRICE_CACHE_TTL) {
+					return cachedEntry.price;
 				}
 				
 				// Get CoinGecko ID
 				const coinId = coinGeckoSymbolMap[symbol] || symbol.split('/')[0].toLowerCase();
 				
 				try {
-					const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=usd`);
-					if (!response.ok) {
-						console.warn(`CoinGecko API error for ${symbol}: ${response.status}`);
-						return null;
-					}
-					
-					const data = await response.json();
+					const url = `https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=usd`;
+					const data = await fetchJsonWithRetry(url, {}, { retries: 2, baseDelayMs: 700 });
 					
 					if (data[coinId] && data[coinId].usd) {
 						const price = data[coinId].usd;
-						// Cache the result
-						priceCache.set(cacheKey, { price, timestamp: Date.now() });
+						setCachedPriceEntry(symbol, false, price, 'coingecko');
 						return price;
 					}
 				} catch (error) {
-					console.error(`Error fetching price for ${symbol} from CoinGecko:`, error);
+					// Fallback: Binance (often avoids CoinGecko rate limits for major coins)
+					try {
+						const base = _normalizeSymbolForPrice(symbol);
+						if (base) {
+							const pair = `${base}USDT`;
+							const binanceUrl = `https://api.binance.com/api/v3/ticker/price?symbol=${pair}`;
+							const data = await fetchJsonWithRetry(binanceUrl, {}, { retries: 2, baseDelayMs: 700 });
+							if (data && data.price) {
+								const price = parseFloat(data.price);
+								if (!Number.isNaN(price) && price > 0) {
+									setCachedPriceEntry(symbol, false, price, 'binance');
+									return price;
+								}
+							}
+						}
+					} catch (e2) {
+						// ignore fallback
+					}
+					console.error(`Error fetching price for ${symbol} from CoinGecko/Binance:`, error);
 				}
 				
 				return null;
@@ -3007,41 +3375,41 @@
 			async function fetchStockPrice(symbol) {
 				if (!symbol) return null;
 				
-				// Check cache first
-				const cacheKey = `stock_${symbol}`;
-				const cached = priceCache.get(cacheKey);
-				if (cached && (Date.now() - cached.timestamp) < PRICE_CACHE_TTL) {
-					return cached.price;
+				// Check persisted cache first
+				const cachedEntry = getCachedPriceEntry(symbol, true);
+				if (cachedEntry && (Date.now() - cachedEntry.timestamp) < PRICE_CACHE_TTL) {
+					return cachedEntry.price;
 				}
 				
 				try {
 					// Normalize symbol for Yahoo Finance (remove /USD if present, e.g., "SPY/USD" -> "SPY")
 					const normalizedSymbol = symbol.split('/')[0].toUpperCase();
 					
-					// Yahoo Finance quote endpoint (unofficial but stable)
-					const url = `https://query1.finance.yahoo.com/v8/finance/chart/${normalizedSymbol}?interval=1d&range=1d`;
-					
-					const response = await fetch(url);
-					if (!response.ok) {
-						console.warn(`Yahoo Finance API error for ${symbol}: ${response.status}`);
-						return null;
+					async function tryYahoo(host) {
+						const url = `https://${host}.finance.yahoo.com/v8/finance/chart/${normalizedSymbol}?interval=1d&range=1d`;
+						return await fetchJsonWithRetry(url, {}, { retries: 2, baseDelayMs: 700 });
 					}
 					
-					const data = await response.json();
+					// Yahoo sometimes rate limits; try query1 then query2.
+					let data = null;
+					try {
+						data = await tryYahoo('query1');
+					} catch (e1) {
+						data = await tryYahoo('query2');
+					}
 					
 					// Extract price from Yahoo Finance response
 					if (data.chart && data.chart.result && data.chart.result.length > 0) {
 						const result = data.chart.result[0];
 						if (result.meta && result.meta.regularMarketPrice) {
 							const price = result.meta.regularMarketPrice;
-							// Cache the result
-							priceCache.set(cacheKey, { price, timestamp: Date.now() });
+							setCachedPriceEntry(symbol, true, price, 'yahoo');
 							return price;
 						}
 						// Fallback to previous close if regularMarketPrice not available
 						if (result.meta && result.meta.previousClose) {
 							const price = result.meta.previousClose;
-							priceCache.set(cacheKey, { price, timestamp: Date.now() });
+							setCachedPriceEntry(symbol, true, price, 'yahoo_prev_close');
 							return price;
 						}
 					}
@@ -3053,14 +3421,29 @@
 			}
 			
 			// Batch update prices with rate limiting to avoid hitting API limits
-			async function updateMissingPrices(signals) {
-				// Find all signals that need price fetching
-				const signalsNeedingPrice = signals.filter(signal => {
-					const price = getSignalPrice(signal);
-					return price === null && 
-						   signal.source && 
-						   signal.source.includes('TradingView') && 
-						   signal.symbol;
+			async function updateMissingPrices(signals, opts = {}) {
+				const force = !!opts.force;
+				
+				// Find all signals that might need price fetching (NOT TradingView-only)
+				// - Fetch if missing price OR if forced OR if cached is older than "fresh" TTL
+				const signalsNeedingPrice = (signals || []).filter(signal => {
+					if (!signal || !signal.symbol) return false;
+					const isStock = isStockSignal(signal);
+					const cached = getCachedPriceEntry(signal.symbol, isStock);
+					const hasAnyPrice = getSignalPrice(signal) !== null;
+					if (force) return true;
+					if (!hasAnyPrice) return true;
+					// If the signal already has a price, seed the cache once (no fetch needed)
+					if (!cached) {
+						const p = getSignalPrice(signal);
+						const num = parseFloat(p);
+						if (!Number.isNaN(num) && num > 0) {
+							setCachedPriceEntry(signal.symbol, isStock, num, 'signal');
+						}
+						return false;
+					}
+					if (cached && (Date.now() - cached.timestamp) > PRICE_CACHE_TTL) return true;
+					return false;
 				});
 				
 				if (signalsNeedingPrice.length === 0) return;
@@ -3072,25 +3455,87 @@
 				
 				for (let i = 0; i < signalsNeedingPrice.length; i++) {
 					const signal = signalsNeedingPrice[i];
-					const priceElementId = `price-${signal.id || signal.symbol}-${signal.timestamp || Date.now()}`;
+					const domKey = getSignalDomKey(signal);
+					const priceElementId = `price-${domKey}`;
+					const pnlElementId = `pnl-${domKey}`;
 					const priceElement = document.getElementById(priceElementId);
+					const pnlElement = document.getElementById(pnlElementId);
+					
+					const actionL = ((signal.action || '').toString().toLowerCase());
+					const isBuy = actionL === 'buy';
+					const isSell = actionL === 'sell';
 					
 					if (priceElement) {
 						try {
-							// Try crypto first (CoinGecko), then stocks (Yahoo Finance)
+							// Show cached price immediately (even if stale), then refresh if needed
 							const isStock = isStockSignal(signal);
-							let price = null;
+							const cached = getCachedPriceEntry(signal.symbol, isStock);
+							if (cached && typeof cached.price === 'number') {
+								const ageMs = Date.now() - cached.timestamp;
+								priceElement.innerHTML = formatPriceWithStaleWarning(cached.price, ageMs);
+								priceElement.style.color = '';
+								priceElement.style.fontStyle = 'normal';
+							}
 							
-							if (isStock) {
-								price = await fetchStockPrice(signal.symbol);
-							} else {
-								price = await fetchPriceFromCoinGecko(signal.symbol);
+							// Fetch fresh price unless cache is still "fresh" and not forced
+							let shouldFetch = force;
+							if (!shouldFetch) {
+								if (!cached) shouldFetch = true;
+								else if ((Date.now() - cached.timestamp) > PRICE_CACHE_TTL) shouldFetch = true;
+							}
+							
+							let price = cached ? cached.price : null;
+							if (shouldFetch) {
+								if (isStock) {
+									price = await fetchStockPrice(signal.symbol);
+								} else {
+									price = await fetchPriceFromCoinGecko(signal.symbol);
+								}
 							}
 							
 							if (price !== null && priceElement) {
-								priceElement.textContent = formatPrice(price);
+								const latest = getCachedPriceEntry(signal.symbol, isStock);
+								const ageMs = latest ? (Date.now() - latest.timestamp) : null;
+								priceElement.innerHTML = formatPriceWithStaleWarning(price, ageMs);
 								priceElement.style.color = ''; // Remove italic/gray styling
 								priceElement.style.fontStyle = 'normal';
+								
+								// If the original signal lacked a price, keep it for downstream logic
+								if (getSignalPrice(signal) === null) {
+									signal.price = price;
+								}
+								
+								// PnL when price arrives asynchronously (de-duped across refreshes):
+								if (isBuy) {
+									if (!wasPnLSignalProcessed(domKey)) {
+										const quantity = getSignalQuantity(signal);
+										storeBuyPosition(signal.symbol, price, quantity, signal.timestamp || signal.received_at);
+										markPnLSignalProcessed(domKey);
+									}
+								} else if (isSell && pnlElement) {
+									const stored = getStoredSellPnL(domKey);
+									if (stored && (stored.pnl === null || typeof stored.pnl === 'number')) {
+										if (typeof stored.pnl === 'number') pnlElement.innerHTML = formatPnL(stored.pnl);
+										else pnlElement.innerHTML = '<span style="color: rgba(255, 165, 0, 0.8); font-style: italic;">⚠️ No entry data</span>';
+									} else if (!wasPnLSignalProcessed(domKey)) {
+										const position = getFirstBuyPosition(signal.symbol);
+										if (position && position.entryPrice) {
+											const pnl = calculatePnL(position.entryPrice, price);
+											if (pnl !== null) {
+												setStoredSellPnL(domKey, pnl, '');
+												pnlElement.innerHTML = formatPnL(pnl);
+											} else {
+												setStoredSellPnL(domKey, null, 'Invalid price');
+												pnlElement.innerHTML = '<span style="color: rgba(255, 165, 0, 0.8); font-style: italic;">⚠️ Invalid price</span>';
+											}
+											removeFirstBuyPosition(signal.symbol);
+										} else {
+											setStoredSellPnL(domKey, null, 'No entry data');
+											pnlElement.innerHTML = '<span style="color: rgba(255, 165, 0, 0.8); font-style: italic;">⚠️ No entry data</span>';
+										}
+										markPnLSignalProcessed(domKey);
+									}
+								}
 							} else if (priceElement) {
 								priceElement.textContent = 'Price unavailable';
 								priceElement.style.color = 'rgba(255, 255, 255, 0.5)';
@@ -3111,6 +3556,33 @@
 				}
 				
 				console.log('Price fetching complete');
+			}
+			
+			async function manualRefreshPrices() {
+				const btn = document.getElementById('refresh-prices-btn');
+				const statusEl = document.getElementById('price-refresh-status');
+				try {
+					if (btn) {
+						btn.disabled = true;
+						btn.style.opacity = '0.7';
+						btn.style.cursor = 'not-allowed';
+					}
+					if (statusEl) statusEl.textContent = 'Refreshing prices…';
+					
+					const signals = window.__latestSignalsForPriceRefresh || [];
+					await updateMissingPrices(signals, { force: true });
+					
+					if (statusEl) statusEl.textContent = `Prices refreshed @ ${new Date().toLocaleTimeString()}`;
+				} catch (e) {
+					console.error('Manual refresh failed:', e);
+					if (statusEl) statusEl.textContent = 'Refresh failed (check console).';
+				} finally {
+					if (btn) {
+						btn.disabled = false;
+						btn.style.opacity = '';
+						btn.style.cursor = 'pointer';
+					}
+				}
 			}
 			
 			// Function to get emojis for a ticker symbol
@@ -3138,13 +3610,13 @@
 				if (sym === 'XLY') return wrapEmojis('🛍️ 🚗 🏖️ 🎮 🍔');
 				
 				// Consumer Staples (XLP)
-				if (sym === 'XLP') return wrapEmojis('🧃 🧻 🛒 🍞 🥫');
+				if (sym === 'XLP') return wrapEmojis('🧃 🧼 🛍️ 🍞 📦');
 				
 				// Energy (XLE)
 				if (sym === 'XLE') return wrapEmojis('🛢️ ⛽ 🔥 ⚡ 🌍');
 				
 				// Industrials (XLI)
-				if (sym === 'XLI') return wrapEmojis('🏭 ⚙️ 🚛 🏗️ 🧱');
+				if (sym === 'XLI') return wrapEmojis('🏭 ⚙️ 🚛 🏗️ 🔨');
 				
 				// Materials (XLB)
 				if (sym === 'XLB') return wrapEmojis('🧱 🪨 ⚒️ 🧪 🧯');
@@ -3223,7 +3695,7 @@
 				if (sym === 'USO') return '🛢️ ⛽';
 				
 				// Credit (PCEF, HYG)
-				if (sym === 'PCEF' || sym === 'HYG') return '🏦 🧾 💵';
+				if (sym === 'PCEF' || sym === 'HYG') return '🏦 📄 💵';
 				
 				return '';
 			}
@@ -4171,7 +4643,10 @@
 				}
 				
 				// Update missing prices asynchronously (after all cards are rendered)
-				// This will fetch prices for TradingView signals that don't have prices in the webhook
+				// Keep latest signals in memory for manual refresh
+				window.__latestSignalsForPriceRefresh = signals;
+				
+				// Update prices asynchronously (all signals; uses cache + retries)
 				updateMissingPrices(signals).catch(err => {
 					console.error('Error updating missing prices:', err);
 				});
@@ -4230,42 +4705,75 @@
 						// Handle PnL tracking for crypto and stock signals (FIFO-based for DCA)
 						// NOTE: PnL tracking is standalone - uses localStorage only
 						const currentPrice = getSignalPrice(signal);
+						const domKey = getSignalDomKey(signal);
 						let pnlDisplay = '';
 						
 						// Enable PnL for both crypto and stocks
 						if (currentPrice !== null && currentPrice !== undefined && currentPrice > 0) {
 							if (isBuy) {
-								// Store buy position in FIFO queue (handles multiple buys/DCA)
-								const quantity = getSignalQuantity(signal);
-								storeBuyPosition(signal.symbol, currentPrice, quantity, signal.timestamp || signal.received_at);
+								// Store buy position only once per BUY signal (prevents duplicates on auto-refresh)
+								if (!wasPnLSignalProcessed(domKey)) {
+									const quantity = getSignalQuantity(signal);
+									storeBuyPosition(signal.symbol, currentPrice, quantity, signal.timestamp || signal.received_at);
+									markPnLSignalProcessed(domKey);
+								}
 							} else {
-								// Calculate and display PnL for sell signals using FIFO (oldest buy first)
-								const position = getFirstBuyPosition(signal.symbol);
-								if (position && position.entryPrice) {
-									const pnl = calculatePnL(position.entryPrice, currentPrice);
-									if (pnl !== null) {
+								// For sells, persist the computed result so it doesn't disappear on rerender.
+								const stored = getStoredSellPnL(domKey);
+								if (stored && (stored.pnl === null || typeof stored.pnl === 'number')) {
+									if (typeof stored.pnl === 'number') {
 										pnlDisplay = `
 											<div class="signal-detail-row">
 												<span class="signal-detail-label">PnL:</span>
-												<span class="signal-detail-value">${formatPnL(pnl)}</span>
+												<span class="signal-detail-value">${formatPnL(stored.pnl)}</span>
+											</div>
+										`;
+									} else {
+										pnlDisplay = `
+											<div class="signal-detail-row">
+												<span class="signal-detail-label">PnL:</span>
+												<span class="signal-detail-value" style="color: rgba(255, 165, 0, 0.8); font-style: italic;">⚠️ ${stored.note || 'No entry data'}</span>
 											</div>
 										`;
 									}
-									// Remove first position from FIFO queue after calculating PnL
-									// (2nd sell will show no PnL if position already cleared - this is expected)
-									removeFirstBuyPosition(signal.symbol);
-								} else {
-									// No stored buy position - warn user about missing data
-									// This happens if: (1) PnL tracking started mid-run, (2) position already cleared by previous sell
-									console.warn(`[PnL] No entry price found for ${signal.symbol} sell signal - may be mid-run start or backup sell signal`);
-									pnlDisplay = `
-										<div class="signal-detail-row">
-											<span class="signal-detail-label">PnL:</span>
-											<span class="signal-detail-value" style="color: rgba(255, 165, 0, 0.8); font-style: italic;">⚠️ No entry data</span>
-										</div>
-									`;
+								} else if (!wasPnLSignalProcessed(domKey)) {
+									const position = getFirstBuyPosition(signal.symbol);
+									if (position && position.entryPrice) {
+										const pnl = calculatePnL(position.entryPrice, currentPrice);
+										if (pnl !== null) {
+											setStoredSellPnL(domKey, pnl, '');
+											pnlDisplay = `
+												<div class="signal-detail-row">
+													<span class="signal-detail-label">PnL:</span>
+													<span class="signal-detail-value">${formatPnL(pnl)}</span>
+												</div>
+											`;
+										} else {
+											setStoredSellPnL(domKey, null, 'Invalid price');
+										}
+										removeFirstBuyPosition(signal.symbol);
+									} else {
+										console.warn(`[PnL] No entry price found for ${signal.symbol} sell signal - may be mid-run start or backup sell signal`);
+										setStoredSellPnL(domKey, null, 'No entry data');
+										pnlDisplay = `
+											<div class="signal-detail-row">
+												<span class="signal-detail-label">PnL:</span>
+												<span class="signal-detail-value" style="color: rgba(255, 165, 0, 0.8); font-style: italic;">⚠️ No entry data</span>
+											</div>
+										`;
+									}
+									markPnLSignalProcessed(domKey);
 								}
 							}
+						}
+						// If price is missing, create a PnL placeholder for SELL so we can fill it asynchronously
+						else if (!isBuy && signal.symbol) {
+							pnlDisplay = `
+								<div class="signal-detail-row">
+									<span class="signal-detail-label">PnL:</span>
+									<span class="signal-detail-value" id="pnl-${domKey}" style="color: rgba(255, 255, 255, 0.6); font-style: italic;">Loading...</span>
+								</div>
+							`;
 						}
 						
 						const cardHtml = `
@@ -4284,19 +4792,28 @@
 									${(() => {
 										const price = getSignalPrice(signal);
 										if (price !== null && price !== undefined) {
+											const domKey = getSignalDomKey(signal);
+											const priceElementId = `price-${domKey}`;
 											return `
 												<div class="signal-detail-row">
 													<span class="signal-detail-label">Price:</span>
-													<span class="signal-detail-value">${formatPrice(price)}</span>
+													<span class="signal-detail-value" id="${priceElementId}">${formatPrice(price)}</span>
 												</div>
 											`;
-										} else if (signal.source && signal.source.includes('TradingView') && signal.symbol) {
-											// Create unique ID for this price element so we can update it asynchronously
-											const priceElementId = `price-${signal.id || signal.symbol}-${signal.timestamp || Date.now()}`;
+										} else if (signal.symbol) {
+											// Deterministic ID so async updates always find the right element
+											const domKey = getSignalDomKey(signal);
+											const priceElementId = `price-${domKey}`;
+											
+											// If we have a cached price, show it immediately (even if stale)
+											const isStock = isStockSignal(signal);
+											const cached = getCachedPriceEntry(signal.symbol, isStock);
+											const cachedHtml = cached ? formatPriceWithStaleWarning(cached.price, Date.now() - cached.timestamp) : 'Loading...';
+											const cachedStyle = cached ? 'color: #fff; font-style: normal;' : 'color: rgba(255, 255, 255, 0.6); font-style: italic;';
 											return `
 												<div class="signal-detail-row">
 													<span class="signal-detail-label">Price:</span>
-													<span class="signal-detail-value" id="${priceElementId}" style="color: rgba(255, 255, 255, 0.6); font-style: italic;">Loading...</span>
+													<span class="signal-detail-value" id="${priceElementId}" style="${cachedStyle}">${cachedHtml}</span>
 												</div>
 											`;
 										}
