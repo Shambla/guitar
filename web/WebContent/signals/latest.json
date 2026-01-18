@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "BTC/USD",
-  "quantity": 0.0,
-  "price": 95137.65,
+  "action": "buy",
+  "symbol": "CRV/USD",
+  "quantity": 237.36055067647757,
+  "price": 0.4209,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-01-18T09:00:29.039445Z",
-  "received_at": "2026-01-18T09:00:29.039476Z",
-  "id": "2026-01-18T09:00:29.039476Z-BTC/USD-sell"
+  "timestamp": "2026-01-18T10:00:29.445758Z",
+  "received_at": "2026-01-18T10:00:29.445784Z",
+  "id": "2026-01-18T10:00:29.445784Z-CRV/USD-buy"
 }
