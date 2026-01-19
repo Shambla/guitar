@@ -73,13 +73,13 @@
   {
     "action": "info",
     "symbol": "XLP",
-    "price": 81.82,
+    "price": 82.11000061035156,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 17/16 | sell 13/13",
-    "timestamp": "2026-01-16T20:09:43.827201Z",
-    "received_at": "2026-01-16T20:09:43.827201Z",
-    "id": "2026-01-16T20:09:43.827201Z-XLP-info",
+    "timestamp": "2026-01-19T06:21:43.132774Z",
+    "received_at": "2026-01-19T06:21:43.132774Z",
+    "id": "2026-01-19T06:21:43.132774Z-XLP-info",
     "threshold_met": true,
     "buy_score": 17,
     "sell_score": 13,
@@ -91,9 +91,9 @@
     "buy_conviction": 0.6246341463414634,
     "buy_persistence": 7,
     "buy_position_multiplier": 1.0,
-    "sell_conviction": 0.475,
-    "sell_persistence": 5,
-    "sell_position_multiplier": 1.0
+    "sell_conviction": 0.385,
+    "sell_persistence": 2,
+    "sell_position_multiplier": 0.5
   },
   {
     "action": "info",
