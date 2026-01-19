@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "CRV/USD",
-  "quantity": 237.6425855513308,
-  "price": 0.4204,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-01-18T17:01:24.950496Z",
-  "received_at": "2026-01-18T17:01:24.950522Z",
-  "id": "2026-01-18T17:01:24.950522Z-CRV/USD-buy"
+  "symbol": "SLV",
+  "quantity": null,
+  "price": 81.0199966430664,
+  "source": "MAIN_stock_strat14",
+  "note": "buy 22/41 | sell 15/40 | Strength=5/10 | MTF:W+M",
+  "timestamp": "2026-01-19T07:12:09.223186Z",
+  "received_at": "2026-01-19T07:12:09.223442Z",
+  "id": "2026-01-19T07:12:09.223442Z-SLV-buy"
 }
