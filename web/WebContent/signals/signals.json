@@ -1,6 +1,50 @@
 [
   {
     "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 0.01390603,
+    "price": 0.2484,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-20T00:00:06.309437Z",
+    "received_at": "2026-01-20T00:00:06.309450Z",
+    "id": "2026-01-20T00:00:06.309450Z-FET/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-20T00:00:06.025242Z",
+    "received_at": "2026-01-20T00:00:06.025256Z",
+    "id": "2026-01-20T00:00:06.025256Z-FET/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "AAVE/USD",
+    "quantity": 0.001,
+    "price": 163.83,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-20T00:00:05.345861Z",
+    "received_at": "2026-01-20T00:00:05.345880Z",
+    "id": "2026-01-20T00:00:05.345880Z-AAVE/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "AAVE/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-20T00:00:05.023682Z",
+    "received_at": "2026-01-20T00:00:05.023701Z",
+    "id": "2026-01-20T00:00:05.023701Z-AAVE/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 1e-08,
     "price": 3189.89,
@@ -2677,16 +2721,5 @@
     "timestamp": "2026-01-13T02:00:07.252188Z",
     "received_at": "2026-01-13T02:00:07.252207Z",
     "id": "2026-01-13T02:00:07.252207Z-ETH/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 3090.1,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2026-01-12T23:47:18.255752Z",
-    "received_at": "2026-01-12T23:47:18.256719Z",
-    "id": "2026-01-12T23:47:18.256719Z-ETH/USD-sell"
   }
 ]
