@@ -271,6 +271,37 @@
 							</div>
 						</div>
 					</div>
+					<!-- Email List Signup -->
+					<div class="email-list-signup fade-in-up animate-delay-5" style="margin-top: 30px; padding: 20px; background: rgba(255, 255, 255, 0.05); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);">
+						<h3 style="color: #fff; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+							<i class='fa fa-envelope-o' style="font-size: 20px;"></i>
+							Join Our Email List
+						</h3>
+						<p style="color: rgba(255, 255, 255, 0.8); font-size: 14px; margin-bottom: 15px;">
+							Stay updated with the latest news, lessons, and music releases!
+						</p>
+						<form id="email-list-form" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+							<input 
+								type="email" 
+								id="email-list-input" 
+								placeholder="Enter your email address" 
+								required
+								style="flex: 1; min-width: 200px; padding: 12px 15px; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 6px; background: rgba(255, 255, 255, 0.1); color: #fff; font-size: 14px; outline: none; transition: all 0.3s ease;"
+								onfocus="this.style.borderColor='rgba(255, 255, 255, 0.6)'; this.style.background='rgba(255, 255, 255, 0.15)';"
+								onblur="this.style.borderColor='rgba(255, 255, 255, 0.3)'; this.style.background='rgba(255, 255, 255, 0.1)';"
+							/>
+							<button 
+								type="submit" 
+								id="email-list-submit"
+								style="padding: 12px 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; border-radius: 6px; color: #fff; font-size: 14px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; white-space: nowrap;"
+								onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(102, 126, 234, 0.4)';"
+								onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';"
+							>
+								Subscribe
+							</button>
+						</form>
+						<div id="email-list-message" style="margin-top: 10px; font-size: 14px; min-height: 20px;"></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -280,5 +311,103 @@
 		<audio autoplay loop>
 			<source src="audio/audio2.mp3" type="audio/mpeg"/>
 		</audio>
+		<script>
+			// Email List Signup Handler
+			(function() {
+				// API endpoint
+				// - Local dev: use localhost server
+				// - Production: use same-origin endpoint (recommended)
+				const API_ENDPOINT = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+					? 'http://localhost:5007/api/subscribe'
+					: '/api/subscribe';
+				
+				// Handle form submission
+				const form = document.getElementById('email-list-form');
+				const input = document.getElementById('email-list-input');
+				const messageDiv = document.getElementById('email-list-message');
+				const submitButton = document.getElementById('email-list-submit');
+				
+				if (form) {
+					form.addEventListener('submit', async function(e) {
+						e.preventDefault();
+						
+						const email = input.value.trim();
+						
+						if (!email) {
+							showMessage('Please enter a valid email address.', 'error');
+							return;
+						}
+						
+						// Basic email validation
+						const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+						if (!emailRegex.test(email)) {
+							showMessage('Please enter a valid email address.', 'error');
+							return;
+						}
+						
+						// Disable button and show loading state
+						if (submitButton) {
+							submitButton.disabled = true;
+							submitButton.textContent = 'Subscribing...';
+						}
+						
+						try {
+							// Send email to backend API
+							const response = await fetch(API_ENDPOINT, {
+								method: 'POST',
+								headers: {
+									'Content-Type': 'application/json',
+								},
+								body: JSON.stringify({ email: email })
+							});
+							
+							const data = await response.json();
+							
+							if (data.success) {
+								if (data.already_subscribed) {
+									showMessage('You\'re already subscribed! Thank you.', 'info');
+								} else {
+									showMessage('✓ Thank you! You\'ve been added to our email list.', 'success');
+									input.value = ''; // Clear input
+									console.log('New email subscriber:', email);
+									if (data.total_subscribers) {
+										console.log('Total subscribers:', data.total_subscribers);
+									}
+								}
+							} else {
+								showMessage(data.error || 'Something went wrong. Please try again.', 'error');
+							}
+						} catch (error) {
+							console.error('Error subscribing:', error);
+							showMessage('Unable to connect to server. Please try again later.', 'error');
+						} finally {
+							// Re-enable button
+							if (submitButton) {
+								submitButton.disabled = false;
+								submitButton.textContent = 'Subscribe';
+							}
+						}
+					});
+				}
+				
+				// Show message to user
+				function showMessage(text, type) {
+					if (!messageDiv) return;
+					
+					messageDiv.textContent = text;
+					messageDiv.style.color = type === 'success' ? '#4caf50' : 
+					                          type === 'error' ? '#f44336' : 
+					                          'rgba(255, 255, 255, 0.8)';
+					messageDiv.style.fontWeight = type === 'success' ? 'bold' : 'normal';
+					
+					// Clear message after 5 seconds
+					setTimeout(function() {
+						if (messageDiv.textContent === text) {
+							messageDiv.textContent = '';
+						}
+					}, 5000);
+				}
+			})();
+		</script>
 	</body>
 </html>

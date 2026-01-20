@@ -45,8 +45,7 @@ Setup:
     5. Download credentials JSON file
     6. Set CLIENT_SECRETS_FILE path below
 
-    cd /Users/olivia2/Documents/GitHub/guitar/web/WebContent
-    source venv_youtube/bin/activate
+    cd /path/to/your/site/web/WebContent    source venv_youtube/bin/activate
     python3 youtube_api.py
 
     1. TODO Comments that shill our websites. Ended at 130 latest videos --limit 130
@@ -546,17 +545,9 @@ def get_authenticated_service():
             # Example (commented out): if you stored your client secrets elsewhere:
             # client_secrets_path = "/absolute/path/to/client_secrets.json"
             # flow = InstalledAppFlow.from_client_secrets_file(client_secrets_path, SCOPES)
-            print("🌐 Starting OAuth authentication...")
-            print("   If your browser does NOT open automatically, the script will still print a URL.")
-            print("   Copy/paste that URL into your browser and complete the flow.")
+            print("🌐 Opening browser for OAuth authentication...")
             flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRETS_FILE, SCOPES)
-            # Try local server (recommended). If the environment can't open a browser,
-            # fall back to console-based flow.
-            try:
-                creds = flow.run_local_server(port=0, open_browser=True)
-            except Exception as e:
-                print(f"⚠️  run_local_server failed ({e}). Falling back to console OAuth flow...")
-                creds = flow.run_console()
+            creds = flow.run_local_server(port=0)
         
         # Save credentials for next run
         with open(TOKEN_FILE, 'w') as token:
