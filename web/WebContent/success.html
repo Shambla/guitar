@@ -7,7 +7,7 @@
 		<link type="text/css" rel="stylesheet" href="style/font-awesome.css">
 		<link type="text/css" rel="stylesheet" href="style/index.css">
 		<link rel="shortcut icon" href="img/favico.ico" type="image/x-icon">
-		<title>Payment Successful - Brian Streckfus</title>
+		<title>You're Subscribed - Brian Streckfus</title>
 		<style>
 			.success-container {
 				margin-top: 100px;
@@ -138,54 +138,33 @@
 		<div class="success-container">
 			<div class="success-icon">✅</div>
 			
-			<h1>Payment Successful!</h1>
+			<h1>You're Subscribed!</h1>
 			
-			<p>Thank you for your purchase! Your payment has been processed successfully.</p>
+			<p>Thanks for joining my email list. You'll get occasional updates about new sheet music, MP3 releases, and new YouTube uploads.</p>
 			
-			<div class="info-box" id="subscription-info" style="display: none;">
-				<h3>🎉 Welcome to Trading Signals PRO!</h3>
+			<div class="info-box" id="mailing-list-info">
+				<h3>📬 What you'll receive</h3>
 				<ul>
-					<li>Your subscription is now active</li>
-					<li>Access premium trading signals 24/7</li>
-					<li>Real-time alerts for crypto & stocks</li>
-					<li>100+ technical indicators</li>
-					<li>Cancel anytime from your account</li>
+					<li>New sheet music releases</li>
+					<li>New MP3 releases</li>
+					<li>New YouTube uploads</li>
 				</ul>
-			</div>
-			
-			<div class="info-box" id="purchase-info" style="display: none;">
-				<h3>📧 What's Next?</h3>
-				<ul>
-					<li>Check your email for a receipt</li>
-					<li>Your download link will be sent shortly</li>
-					<li>Purchased content is available immediately</li>
-					<li>Save your receipt for your records</li>
-				</ul>
-			</div>
-			
-			<div class="info-box" id="donation-info" style="display: none;">
-				<h3>💝 Thank You for Your Support!</h3>
-				<ul>
-					<li>Your donation helps create more content</li>
-					<li>You'll receive a receipt via email</li>
-					<li>100% tax-deductible (consult your tax advisor)</li>
-					<li>Your generosity is deeply appreciated!</li>
-				</ul>
+				<div style="margin-top: 18px; display: flex; gap: 12px; flex-wrap: wrap;">
+					<a class="success-button" href="img/scales.pdf" download>⬇️ Download free Guitar Scales PDF</a>
+					<a class="success-button" href="audio/Soothing_lydian.mp3" download>⬇️ Download soothing Lydian backing track</a>
+				</div>
 			</div>
 			
 			<div class="button-group">
-				<a href="signals.html" class="success-button" id="signals-button" style="display: none;">
-					📈 View Trading Signals
-				</a>
-				<a href="shop.html" class="success-button">
-					🛒 Continue Shopping
+				<a href="catalog.html" class="success-button">
+					📜 Browse the Catalog
 				</a>
 				<a href="index.html" class="success-button secondary">
 					🏠 Return Home
 				</a>
 			</div>
 			
-			<div class="session-id" id="session-id"></div>
+			<div class="session-id" id="session-id" style="display: none;"></div>
 		</div>
 		
 		<footer class="fade-in" style="text-align: center; padding: 40px 20px; margin-top: 60px; background: #f5f5f5; border-top: 1px solid #ddd;">
@@ -193,37 +172,8 @@
 		</footer>
 		
 		<script>
-			// Get session ID from URL parameter
-			const urlParams = new URLSearchParams(window.location.search);
-			const sessionId = urlParams.get('session_id');
-			
-			if (sessionId) {
-				document.getElementById('session-id').textContent = `Session ID: ${sessionId}`;
-				
-				// Fetch session details from your backend (optional)
-				// This would tell you what was purchased
-				// For now, we'll show generic success message
-				
-				// You could call your backend here:
-				// fetch(`/api/session/${sessionId}`)
-				//   .then(res => res.json())
-				//   .then(data => {
-				//     // Show specific message based on what was purchased
-				//   });
-			}
-			
-			// For now, show purchase info by default
-			// In production, determine this from session data
-			const purchaseType = urlParams.get('type') || 'purchase';
-			
-			if (purchaseType === 'subscription') {
-				document.getElementById('subscription-info').style.display = 'block';
-				document.getElementById('signals-button').style.display = 'inline-block';
-			} else if (purchaseType === 'donation') {
-				document.getElementById('donation-info').style.display = 'block';
-			} else {
-				document.getElementById('purchase-info').style.display = 'block';
-			}
+			// Mailing list redirect page (Basin custom redirect URL)
+			// Keep this page simple and focused on email list signup confirmation.
 		</script>
 	</body>
 </html>

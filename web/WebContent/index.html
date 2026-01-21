@@ -54,6 +54,42 @@
 			</div>
 		</div>
 		<div class="content">
+			<!-- Mailing List Offer (top-of-page, no popup) -->
+			<div class="fade-in-up" style="margin-top: 30px; margin-bottom: 50px; padding: 24px; background: rgba(0, 0, 0, 0.35); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.6);">
+				<h2 style="color: #fff; margin: 0 0 10px 0; font-size: 28px; display: flex; align-items: center; gap: 10px;">
+					<i class='fa fa-envelope-o' style="font-size: 22px;"></i>
+					Get the free Guitar Scales PDF + a soothing Lydian backing track
+				</h2>
+				<p style="color: rgba(255, 255, 255, 0.9); font-size: 15px; margin: 0 0 14px 0; line-height: 1.6;">
+					Join the mailing list and I’ll send you a free guitar scales PDF and a free soothing Lydian backing track as a token of my appreciation.
+					You’ll also get occasional updates about new sheet music, MP3 releases, and new YouTube uploads.
+				</p>
+				<form class="email-list-form" action="https://usebasin.com/f/7c55ae649861" method="POST" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+					<input
+						type="email"
+						name="email"
+						placeholder="Enter your email address"
+						required
+						style="flex: 1; min-width: 240px; padding: 12px 15px; border: 1px solid rgba(255, 255, 255, 0.6); border-radius: 6px; background: rgba(255, 255, 255, 0.12); color: #fff; font-size: 14px; outline: none; transition: all 0.3s ease;"
+						onfocus="this.style.borderColor='rgba(255, 255, 255, 0.8)'; this.style.background='rgba(255, 255, 255, 0.18)';"
+						onblur="this.style.borderColor='rgba(255, 255, 255, 0.6)'; this.style.background='rgba(255, 255, 255, 0.12)';"
+					/>
+					<button
+						type="submit"
+						class="email-list-submit"
+						style="padding: 12px 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; border-radius: 6px; color: #fff; font-size: 14px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; white-space: nowrap;"
+						onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(102, 126, 234, 0.4)';"
+						onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';"
+					>
+						Get the freebies
+					</button>
+				</form>
+				<div class="email-list-message" style="margin-top: 10px; font-size: 14px; min-height: 20px;"></div>
+				<div style="margin-top: 10px; color: rgba(255, 255, 255, 0.75); font-size: 12px;">
+					No spam. Unsubscribe anytime.
+				</div>
+			</div>
+
 			<div>
 				<h1 id="media" class="fade-in-up">Media</h1>
 				<div class="left-half fade-in-left">
@@ -278,12 +314,12 @@
 							Join Our Email List
 						</h3>
 						<p style="color: rgba(255, 255, 255, 0.8); font-size: 14px; margin-bottom: 15px;">
-							Stay updated with the latest news, lessons, and music releases!
+							Join the mailing list and get a free guitar scales PDF + a free soothing Lydian backing track as a token of my appreciation.
+							You’ll also get occasional updates about new sheet music, MP3 releases, and new YouTube uploads.
 						</p>
-						<form id="email-list-form" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+						<form class="email-list-form" action="https://usebasin.com/f/7c55ae649861" method="POST" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
 							<input 
 								type="email" 
-								id="email-list-input" 
 								name="email"
 								placeholder="Enter your email address" 
 								required
@@ -293,7 +329,7 @@
 							/>
 							<button 
 								type="submit" 
-								id="email-list-submit"
+								class="email-list-submit"
 								style="padding: 12px 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; border-radius: 6px; color: #fff; font-size: 14px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; white-space: nowrap;"
 								onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(102, 126, 234, 0.4)';"
 								onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';"
@@ -301,7 +337,7 @@
 								Subscribe
 							</button>
 						</form>
-						<div id="email-list-message" style="margin-top: 10px; font-size: 14px; min-height: 20px;"></div>
+						<div class="email-list-message" style="margin-top: 10px; font-size: 14px; min-height: 20px;"></div>
 					</div>
 				</div>
 			</div>
@@ -324,33 +360,39 @@
 					? 'http://localhost:5007/api/subscribe'
 					: BASIN_ENDPOINT;
 				
-				// Handle form submission
-				const form = document.getElementById('email-list-form');
-				const input = document.getElementById('email-list-input');
-				const messageDiv = document.getElementById('email-list-message');
-				const submitButton = document.getElementById('email-list-submit');
-				
-				if (form) {
+				// Handle form submission(s)
+				const forms = Array.from(document.querySelectorAll('form.email-list-form'));
+
+				function wireUpForm(form) {
+					if (!form) return;
+
+					const input = form.querySelector('input[name="email"]');
+					const messageDiv = form.parentElement ? form.parentElement.querySelector('.email-list-message') : null;
+					const submitButton = form.querySelector('.email-list-submit') || form.querySelector('button[type="submit"]');
+
+					if (!input) return;
+
 					form.addEventListener('submit', async function(e) {
 						e.preventDefault();
 						
-						const email = input.value.trim();
+						const email = (input.value || '').trim();
 						
 						if (!email) {
-							showMessage('Please enter a valid email address.', 'error');
+							showMessage(messageDiv, 'Please enter a valid email address.', 'error');
 							return;
 						}
 						
 						// Basic email validation
 						const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 						if (!emailRegex.test(email)) {
-							showMessage('Please enter a valid email address.', 'error');
+							showMessage(messageDiv, 'Please enter a valid email address.', 'error');
 							return;
 						}
 						
 						// Disable button and show loading state
 						if (submitButton) {
 							submitButton.disabled = true;
+							submitButton.dataset.prevText = submitButton.textContent || '';
 							submitButton.textContent = 'Subscribing...';
 						}
 						
@@ -371,13 +413,13 @@
 								});
 
 								if (response.ok) {
-									showMessage('✓ Thank you! You\'ve been added to our email list.', 'success');
+									showMessage(messageDiv, '✓ Thank you! Check your email for the freebies.', 'success');
 									input.value = '';
 								} else {
 									let serverText = '';
 									try { serverText = await response.text(); } catch (_) {}
 									console.error('Basin error response:', response.status, serverText);
-									showMessage('Something went wrong. Please try again.', 'error');
+									showMessage(messageDiv, 'Something went wrong. Please try again.', 'error');
 								}
 							} else {
 								// Send email to local backend API (JSON)
@@ -393,9 +435,9 @@
 
 								if (data.success) {
 									if (data.already_subscribed) {
-										showMessage('You\'re already subscribed! Thank you.', 'info');
+										showMessage(messageDiv, 'You\'re already subscribed! Thank you.', 'info');
 									} else {
-										showMessage('✓ Thank you! You\'ve been added to our email list.', 'success');
+										showMessage(messageDiv, '✓ Thank you! You\'ve been added to our email list.', 'success');
 										input.value = ''; // Clear input
 										console.log('New email subscriber:', email);
 										if (data.total_subscribers) {
@@ -403,7 +445,7 @@
 										}
 									}
 								} else {
-									showMessage(data.error || 'Something went wrong. Please try again.', 'error');
+									showMessage(messageDiv, data.error || 'Something went wrong. Please try again.', 'error');
 								}
 							}
 						} catch (error) {
@@ -417,24 +459,27 @@
 								try {
 									form.action = BASIN_ENDPOINT;
 									form.method = 'POST';
-									showMessage('Submitting…', 'info');
+									showMessage(messageDiv, 'Submitting…', 'info');
 									form.submit();
 									return;
 								} catch (_) {}
 							}
-							showMessage('Unable to connect to server. Please try again later.', 'error');
+							showMessage(messageDiv, 'Unable to connect to server. Please try again later.', 'error');
 						} finally {
 							// Re-enable button
 							if (submitButton) {
 								submitButton.disabled = false;
-								submitButton.textContent = 'Subscribe';
+								const prev = submitButton.dataset.prevText || 'Subscribe';
+								submitButton.textContent = prev;
 							}
 						}
 					});
 				}
+
+				forms.forEach(wireUpForm);
 				
 				// Show message to user
-				function showMessage(text, type) {
+				function showMessage(messageDiv, text, type) {
 					if (!messageDiv) return;
 					
 					messageDiv.textContent = text;
