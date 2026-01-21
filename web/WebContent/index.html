@@ -284,6 +284,7 @@
 							<input 
 								type="email" 
 								id="email-list-input" 
+								name="email"
 								placeholder="Enter your email address" 
 								required
 								style="flex: 1; min-width: 200px; padding: 12px 15px; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 6px; background: rgba(255, 255, 255, 0.1); color: #fff; font-size: 14px; outline: none; transition: all 0.3s ease;"
@@ -314,12 +315,14 @@
 		<script>
 			// Email List Signup Handler
 			(function() {
-				// API endpoint
-				// - Local dev: use localhost server
-				// - Production: use same-origin endpoint (recommended)
+				// API endpoint configuration
+				// - Local dev: use localhost server (run: python3 email_list_server.py --port 5007)
+				// - Production (S3/CloudFront): use a form backend service (Basin endpoint below)
+				//   Basin stores submissions privately + can email you notifications.
+				const BASIN_ENDPOINT = 'https://usebasin.com/f/7c55ae649861';
 				const API_ENDPOINT = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
 					? 'http://localhost:5007/api/subscribe'
-					: '/api/subscribe';
+					: BASIN_ENDPOINT;
 				
 				// Handle form submission
 				const form = document.getElementById('email-list-form');
@@ -352,33 +355,73 @@
 						}
 						
 						try {
-							// Send email to backend API
-							const response = await fetch(API_ENDPOINT, {
-								method: 'POST',
-								headers: {
-									'Content-Type': 'application/json',
-								},
-								body: JSON.stringify({ email: email })
-							});
-							
-							const data = await response.json();
-							
-							if (data.success) {
-								if (data.already_subscribed) {
-									showMessage('You\'re already subscribed! Thank you.', 'info');
-								} else {
+							// Local Flask server expects JSON. Basin expects a standard form POST.
+							if (API_ENDPOINT === BASIN_ENDPOINT) {
+								const fd = new FormData();
+								fd.append('email', email);
+								fd.append('source', location.href);
+								fd.append('ts', new Date().toISOString());
+
+								const response = await fetch(API_ENDPOINT, {
+									method: 'POST',
+									headers: {
+										'Accept': 'application/json'
+									},
+									body: fd
+								});
+
+								if (response.ok) {
 									showMessage('✓ Thank you! You\'ve been added to our email list.', 'success');
-									input.value = ''; // Clear input
-									console.log('New email subscriber:', email);
-									if (data.total_subscribers) {
-										console.log('Total subscribers:', data.total_subscribers);
-									}
+									input.value = '';
+								} else {
+									let serverText = '';
+									try { serverText = await response.text(); } catch (_) {}
+									console.error('Basin error response:', response.status, serverText);
+									showMessage('Something went wrong. Please try again.', 'error');
 								}
 							} else {
-								showMessage(data.error || 'Something went wrong. Please try again.', 'error');
+								// Send email to local backend API (JSON)
+								const response = await fetch(API_ENDPOINT, {
+									method: 'POST',
+									headers: {
+										'Content-Type': 'application/json',
+									},
+									body: JSON.stringify({ email: email })
+								});
+
+								const data = await response.json();
+
+								if (data.success) {
+									if (data.already_subscribed) {
+										showMessage('You\'re already subscribed! Thank you.', 'info');
+									} else {
+										showMessage('✓ Thank you! You\'ve been added to our email list.', 'success');
+										input.value = ''; // Clear input
+										console.log('New email subscriber:', email);
+										if (data.total_subscribers) {
+											console.log('Total subscribers:', data.total_subscribers);
+										}
+									}
+								} else {
+									showMessage(data.error || 'Something went wrong. Please try again.', 'error');
+								}
 							}
 						} catch (error) {
 							console.error('Error subscribing:', error);
+							console.error('API endpoint attempted:', API_ENDPOINT);
+							// More detailed error message for debugging
+							const errorMsg = error.message || 'Unable to connect to server. Please try again later.';
+							// If Basin fetch is blocked by CORS or extensions, fall back to a normal form POST
+							// (This will navigate away, but it will reliably submit.)
+							if (API_ENDPOINT === BASIN_ENDPOINT && form) {
+								try {
+									form.action = BASIN_ENDPOINT;
+									form.method = 'POST';
+									showMessage('Submitting…', 'info');
+									form.submit();
+									return;
+								} catch (_) {}
+							}
 							showMessage('Unable to connect to server. Please try again later.', 'error');
 						} finally {
 							// Re-enable button
