@@ -4337,7 +4337,11 @@
 						totalSell: totalSell,
 						action: action ? action.toLowerCase() : 'buy',
 						timestamp: signal.timestamp || signal.received_at,
-						sector: signal.sector || 'N/A'
+						sector: signal.sector || 'N/A',
+						note: signal.note || '',
+						// Exclude blocked-buy candidates from Top 3, but still show them as cards below.
+						buyBlockedRsiBearDiv: !!signal.buy_blocked_rsi_bear_div || (signal.note || '').toLowerCase().includes('high divergences detected'),
+						buySignalRaw: !!signal.buy_signal_raw
 					};
 				});
 				
@@ -4347,6 +4351,9 @@
 				const seenBuySymbols = new Set();
 				const topBuy = signalsWithScores
 					.filter(s => {
+						// Don't show blocked buys in Top 3 BUY list (they should appear as warning cards below instead).
+						if (s.buyBlockedRsiBearDiv) return false;
+
 						// Include if explicitly marked as buy, OR if buy_score >= sell_score (best buy candidates)
 						// This ensures we show the "best" buy signals even if scores are low
 						return s.action === 'buy' || s.buyScore >= s.sellScore;
