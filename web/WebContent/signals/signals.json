@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 1e-08,
-    "price": 2928.48,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2026-01-23T10:50:51.382360Z",
-    "received_at": "2026-01-23T10:50:51.382423Z",
-    "id": "2026-01-23T10:50:51.382423Z-ETH/USD-sell"
-  },
-  {
     "action": "buy",
     "symbol": "XLI",
     "quantity": null,
@@ -573,9 +562,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 16/16 | sell 9/13",
-    "timestamp": "2026-01-22T22:34:57.560672Z",
-    "received_at": "2026-01-22T22:34:57.560672Z",
-    "id": "2026-01-22T22:34:57.560672Z-USO-info",
+    "timestamp": "2026-01-23T10:51:46.084750Z",
+    "received_at": "2026-01-23T10:51:46.084750Z",
+    "id": "2026-01-23T10:51:46.084750Z-USO-info",
     "threshold_met": true,
     "buy_score": 16,
     "sell_score": 9,
@@ -987,9 +976,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat14",
     "note": "buy 16/41 | sell 9/40 | Strength=3/10 | MTF:W+M",
-    "timestamp": "2026-01-22T22:34:57.545375Z",
-    "received_at": "2026-01-22T22:34:57.545375Z",
-    "id": "2026-01-22T22:34:57.545375Z-USO-buy",
+    "timestamp": "2026-01-23T10:51:46.066035Z",
+    "received_at": "2026-01-23T10:51:46.066035Z",
+    "id": "2026-01-23T10:51:46.066035Z-USO-buy",
     "buy_score": 16,
     "sell_score": 9,
     "total_buy_components": 41,
@@ -1357,6 +1346,17 @@
     "sell_conviction": 0.3,
     "sell_persistence": 0,
     "sell_position_multiplier": 0.5
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 1e-08,
+    "price": 2928.48,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2026-01-23T10:50:51.382360Z",
+    "received_at": "2026-01-23T10:50:51.382423Z",
+    "id": "2026-01-23T10:50:51.382423Z-ETH/USD-sell"
   },
   {
     "action": "sell",
