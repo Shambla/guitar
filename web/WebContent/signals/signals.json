@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 1e-08,
-    "price": 2919.06,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2026-01-23T10:20:58.285591Z",
-    "received_at": "2026-01-23T10:20:58.285680Z",
-    "id": "2026-01-23T10:20:58.285680Z-ETH/USD-sell"
-  },
-  {
     "action": "buy",
     "symbol": "XLI",
     "quantity": null,
@@ -277,13 +266,13 @@
   {
     "action": "info",
     "symbol": "XLF",
-    "price": 53.8,
+    "price": 53.81,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 13/16 | sell 14/13",
-    "timestamp": "2026-01-22T22:07:15.341067Z",
-    "received_at": "2026-01-22T22:07:15.341067Z",
-    "id": "2026-01-22T22:07:15.341067Z-XLF-info",
+    "timestamp": "2026-01-23T10:22:26.619570Z",
+    "received_at": "2026-01-23T10:22:26.619570Z",
+    "id": "2026-01-23T10:22:26.619570Z-XLF-info",
     "threshold_met": true,
     "buy_score": 13,
     "sell_score": 14,
@@ -1336,6 +1325,17 @@
     "sell_conviction": 0.275,
     "sell_persistence": 0,
     "sell_position_multiplier": 0.5
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 1e-08,
+    "price": 2919.06,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2026-01-23T10:20:58.285591Z",
+    "received_at": "2026-01-23T10:20:58.285680Z",
+    "id": "2026-01-23T10:20:58.285680Z-ETH/USD-sell"
   },
   {
     "action": "sell",
