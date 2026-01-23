@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "TAO/USD",
-  "quantity": 0.41589999,
-  "price": 238.3,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-01-23T10:07:43.459757Z",
-  "received_at": "2026-01-23T10:07:43.459776Z",
-  "id": "2026-01-23T10:07:43.459776Z-TAO/USD-sell"
+  "action": "buy",
+  "symbol": "XLI",
+  "quantity": null,
+  "price": 165.5,
+  "source": "MAIN_stock_strat14",
+  "note": "buy 20/41 | sell 12/40 | Strength=4/10 | MTF:W+M",
+  "timestamp": "2026-01-23T10:09:09.098252Z",
+  "received_at": "2026-01-23T10:09:09.098266Z",
+  "id": "2026-01-23T10:09:09.098266Z-XLI-buy"
 }
