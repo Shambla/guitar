@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 1e-08,
+    "price": 2951.23,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2026-01-23T22:52:08.894807Z",
+    "received_at": "2026-01-23T22:52:08.894910Z",
+    "id": "2026-01-23T22:52:08.894910Z-ETH/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "XLI",
     "price": 164.22,
