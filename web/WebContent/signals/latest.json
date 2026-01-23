@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "BTC/USD",
-  "quantity": 0.0011207499341279227,
-  "price": 89136.74,
+  "action": "sell",
+  "symbol": "RENDER/USD",
+  "quantity": 0.0,
+  "price": 2.047,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-01-23T14:00:19.425980Z",
-  "received_at": "2026-01-23T14:00:19.426006Z",
-  "id": "2026-01-23T14:00:19.426006Z-BTC/USD-buy"
+  "timestamp": "2026-01-23T14:00:24.787310Z",
+  "received_at": "2026-01-23T14:00:24.787327Z",
+  "id": "2026-01-23T14:00:24.787327Z-RENDER/USD-sell"
 }
