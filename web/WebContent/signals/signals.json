@@ -2,6 +2,17 @@
   {
     "action": "sell",
     "symbol": "CRV/USD",
+    "quantity": 271.68999999,
+    "price": 0.363,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-23T15:01:08.534774Z",
+    "received_at": "2026-01-23T15:01:08.534816Z",
+    "id": "2026-01-23T15:01:08.534816Z-CRV/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "CRV/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
