@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "XLI",
-  "quantity": null,
-  "price": 165.5,
-  "source": "MAIN_stock_strat14",
-  "note": "buy 20/41 | sell 12/40 | Strength=4/10 | MTF:W+M",
-  "timestamp": "2026-01-23T10:09:09.098252Z",
-  "received_at": "2026-01-23T10:09:09.098266Z",
-  "id": "2026-01-23T10:09:09.098266Z-XLI-buy"
+  "action": "sell",
+  "symbol": "ETH/USD",
+  "quantity": 1e-08,
+  "price": 2919.06,
+  "source": "MASTER_BOT_162",
+  "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+  "timestamp": "2026-01-23T10:20:58.285591Z",
+  "received_at": "2026-01-23T10:20:58.285680Z",
+  "id": "2026-01-23T10:20:58.285680Z-ETH/USD-sell"
 }
