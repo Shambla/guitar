@@ -1,6 +1,28 @@
 [
   {
     "action": "buy",
+    "symbol": "SOL/USD",
+    "quantity": 0.7811889696117491,
+    "price": 127.88,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-23T03:09:15.732443Z",
+    "received_at": "2026-01-23T03:09:15.732534Z",
+    "id": "2026-01-23T03:09:15.732534Z-SOL/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "CRV/USD",
+    "quantity": 272.7768685215494,
+    "price": 0.3662,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-23T03:09:15.650735Z",
+    "received_at": "2026-01-23T03:09:15.650951Z",
+    "id": "2026-01-23T03:09:15.650951Z-CRV/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "TAO/USD",
     "quantity": 100.0,
     "price": null,
