@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 1e-08,
+    "price": 2928.46,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2026-01-23T15:26:03.399934Z",
+    "received_at": "2026-01-23T15:26:03.404647Z",
+    "id": "2026-01-23T15:26:03.404647Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "CRV/USD",
     "quantity": 271.68999999,
     "price": 0.363,
