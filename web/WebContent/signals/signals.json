@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 1e-08,
+    "price": 2957.37,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2026-01-24T11:15:55.158598Z",
+    "received_at": "2026-01-24T11:15:55.158700Z",
+    "id": "2026-01-24T11:15:55.158700Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "AAVE/USD",
     "quantity": 0.634,
     "price": 155.88,
@@ -2935,16 +2946,5 @@
     "timestamp": "2026-01-19T10:00:13.037268Z",
     "received_at": "2026-01-19T10:00:13.037287Z",
     "id": "2026-01-19T10:00:13.037287Z-RENDER/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "CRV/USD",
-    "quantity": 237.6425855513308,
-    "price": 0.4204,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-01-18T17:01:24.950496Z",
-    "received_at": "2026-01-18T17:01:24.950522Z",
-    "id": "2026-01-18T17:01:24.950522Z-CRV/USD-buy"
   }
 ]
