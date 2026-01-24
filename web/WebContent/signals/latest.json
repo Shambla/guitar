@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "PPLT",
-  "quantity": null,
-  "price": 252.25,
-  "source": "MAIN_stock_strat14",
-  "note": "buy 22/41 | sell 12/40 | Strength=5/10 | MTF:W+M",
-  "timestamp": "2026-01-23T23:12:37.387099Z",
-  "received_at": "2026-01-23T23:12:37.387160Z",
-  "id": "2026-01-23T23:12:37.387160Z-PPLT-buy"
+  "action": "sell",
+  "symbol": "BTC/USD",
+  "quantity": 0.0,
+  "price": 89444.03,
+  "source": "MASTER_BOT_162",
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-01-24T02:00:21.340317Z",
+  "received_at": "2026-01-24T02:00:21.340335Z",
+  "id": "2026-01-24T02:00:21.340335Z-BTC/USD-sell"
 }
