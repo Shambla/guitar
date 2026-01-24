@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "SUI/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-24T08:00:18.044560Z",
+    "received_at": "2026-01-24T08:00:18.044630Z",
+    "id": "2026-01-24T08:00:18.044630Z-SUI/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "AAVE/USD",
     "quantity": 0.6363347120585428,
@@ -2935,16 +2946,5 @@
     "timestamp": "2026-01-18T14:00:05.007478Z",
     "received_at": "2026-01-18T14:00:05.007511Z",
     "id": "2026-01-18T14:00:05.007511Z-CRV/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-01-18T14:00:04.040857Z",
-    "received_at": "2026-01-18T14:00:04.040993Z",
-    "id": "2026-01-18T14:00:04.040993Z-CRV/USD-sell"
   }
 ]

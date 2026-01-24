@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "AAVE/USD",
-  "quantity": 0.6363347120585428,
-  "price": 156.99,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-01-24T05:00:18.416773Z",
-  "received_at": "2026-01-24T05:00:18.416791Z",
-  "id": "2026-01-24T05:00:18.416791Z-AAVE/USD-buy"
+  "action": "sell",
+  "symbol": "SUI/USD",
+  "quantity": 100.0,
+  "price": null,
+  "source": "TradingView JSON",
+  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+  "timestamp": "2026-01-24T08:00:18.044560Z",
+  "received_at": "2026-01-24T08:00:18.044630Z",
+  "id": "2026-01-24T08:00:18.044630Z-SUI/USD-sell"
 }
