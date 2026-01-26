@@ -1687,6 +1687,17 @@
 				<button id="start-subscription-btn" class="subscribe-button" onclick="startSubscription()">
 					Start 7-Day Free Trial
 				</button>
+				<a
+					id="pay-with-crypto-btn"
+					href="#"
+					class="subscribe-button"
+					onclick="event.preventDefault(); startCryptoPayment(); return false;"
+					style="display: inline-block; margin-top: 12px; background: linear-gradient(135deg, rgba(0, 200, 120, 0.90) 0%, rgba(0, 140, 255, 0.90) 100%); border: 2px solid rgba(255, 255, 255, 0.55); text-decoration: none;"
+					onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 0 25px rgba(0, 200, 120, 0.55), 0 0 45px rgba(0, 140, 255, 0.35), 0 6px 20px rgba(0, 0, 0, 0.5)'; this.style.borderColor='rgba(255, 255, 255, 0.75)';"
+					onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 0 15px rgba(0, 200, 120, 0.35), 0 0 30px rgba(0, 140, 255, 0.25), 0 4px 12px rgba(0, 0, 0, 0.4)'; this.style.borderColor='rgba(255, 255, 255, 0.55)';"
+				>
+					₿ Pay with Crypto (Coinbase)
+				</a>
 				<button onclick="closeSubscriptionModal()" style="background: transparent; border: 1px solid rgba(255, 255, 255, 0.3); color: rgba(255, 255, 255, 0.7); padding: 10px 20px; border-radius: 6px; margin-top: 15px; cursor: pointer; transition: all 0.3s ease;" onmouseover="this.style.borderColor='rgba(255, 255, 255, 0.5)'; this.style.color='#fff';" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.3)'; this.style.color='rgba(255, 255, 255, 0.7)';">
 					Maybe Later
 				</button>
@@ -1828,7 +1839,7 @@
 				<!-- TradingView Bitcoin Dominance Widget -->
 				<div class="tradingview-widget-container" style="height: 500px; width: 100%; margin-bottom: 20px;">
 					<div class="tradingview-widget-container__widget" style="height: 100%; width: 100%;"></div>
-					<script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+					<script type="application/json" id="tv-btc-d-widget-config">
 					{
 						"autosize": true,
 						"symbol": "CRYPTOCAP:BTC.D",
@@ -1858,6 +1869,22 @@
 							}
 						]
 					}
+					</script>
+					<script>
+						(function () {
+							// Keep the TradingView config as pure JSON (not JS) to avoid editor/linter issues,
+							// then dynamically create the exact script-tag TradingView expects.
+							const container = document.currentScript && document.currentScript.parentElement;
+							const cfgEl = document.getElementById('tv-btc-d-widget-config');
+							if (!container || !cfgEl) return;
+
+							const s = document.createElement('script');
+							s.type = 'text/javascript';
+							s.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
+							s.async = true;
+							s.text = cfgEl.textContent || '';
+							container.appendChild(s);
+						})();
 					</script>
 				</div>
 				
@@ -5172,6 +5199,7 @@
 			// Success URL should be set to: https://brianstreckfus.com/signals.html?paid=true
 			// NOTE: To update the Stripe payment page description, go to Stripe Dashboard > Payment Links > Edit and update the product description to say "One-Time Payment - Limited Time Offer"
 			const STRIPE_PAYMENT_LINK = 'https://buy.stripe.com/00w00legUbde5wT5UB8og00';
+			const COINBASE_COMMERCE_CHECKOUT_URL = 'https://commerce.coinbase.com/checkout/e29add99-d295-46f1-a97e-152221f9e3ad';
 			
 			// Initialize trial tracking
 			function initializeTrial() {
@@ -5472,6 +5500,22 @@
 						errorDiv.textContent = '⚠️ Payment Link not configured. Please contact support.';
 					}
 				}
+			}
+
+			function startCryptoPayment() {
+				// Coinbase Commerce checkout (2nd option; does NOT replace Stripe)
+				if (!COINBASE_COMMERCE_CHECKOUT_URL) {
+					const errorDiv = document.getElementById('subscription-error');
+					if (errorDiv) {
+						errorDiv.style.display = 'block';
+						errorDiv.textContent = '⚠️ Crypto checkout link not configured. Please contact support.';
+					}
+					return;
+				}
+
+				closeSubscriptionModal();
+				// Open in a new tab so the user can easily return to the signals page
+				window.open(COINBASE_COMMERCE_CHECKOUT_URL, '_blank', 'noopener');
 			}
 			
 			// Mark user as subscribed (called after successful payment)
