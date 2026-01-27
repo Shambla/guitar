@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "AAVE/USD",
-  "quantity": 0.6500682571670026,
-  "price": 153.68,
+  "symbol": "TAO/USD",
+  "quantity": 0.4347259053166978,
+  "price": 229.8,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-01-27T14:00:19.274350Z",
-  "received_at": "2026-01-27T14:00:19.279171Z",
-  "id": "2026-01-27T14:00:19.279171Z-AAVE/USD-buy"
+  "timestamp": "2026-01-27T14:00:44.651721Z",
+  "received_at": "2026-01-27T14:00:44.651748Z",
+  "id": "2026-01-27T14:00:44.651748Z-TAO/USD-buy"
 }
