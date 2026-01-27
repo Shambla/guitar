@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "RENDER/USD",
-  "quantity": 53.50454788657036,
-  "price": 1.867,
+  "symbol": "TAO/USD",
+  "quantity": 0.42909246942716156,
+  "price": 232.82,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-01-27T17:00:34.313603Z",
-  "received_at": "2026-01-27T17:00:34.313649Z",
-  "id": "2026-01-27T17:00:34.313649Z-RENDER/USD-buy"
+  "timestamp": "2026-01-27T20:00:24.341023Z",
+  "received_at": "2026-01-27T20:00:24.341043Z",
+  "id": "2026-01-27T20:00:24.341043Z-TAO/USD-buy"
 }
