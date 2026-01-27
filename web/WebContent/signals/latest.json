@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "PPLT",
-  "quantity": null,
-  "price": 246.75,
-  "source": "MAIN_stock_strat14",
-  "note": "buy 23/41 | sell 12/40 | Strength=6/10 | MTF:W+M",
-  "timestamp": "2026-01-27T03:54:21.735145Z",
-  "received_at": "2026-01-27T03:54:21.735255Z",
-  "id": "2026-01-27T03:54:21.735255Z-PPLT-buy"
+  "action": "sell",
+  "symbol": "TAO/USD",
+  "quantity": 0.0,
+  "price": 232.71,
+  "source": "MASTER_BOT_162",
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-01-27T06:00:19.815934Z",
+  "received_at": "2026-01-27T06:00:19.815966Z",
+  "id": "2026-01-27T06:00:19.815966Z-TAO/USD-sell"
 }
