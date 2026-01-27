@@ -1,27 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 0.01,
-    "price": 0.3525,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-01-27T03:01:30.912568Z",
-    "received_at": "2026-01-27T03:01:30.912588Z",
-    "id": "2026-01-27T03:01:30.912588Z-CRV/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-01-27T03:01:29.989655Z",
-    "received_at": "2026-01-27T03:01:29.990055Z",
-    "id": "2026-01-27T03:01:29.990055Z-CRV/USD-sell"
-  },
-  {
     "action": "buy",
     "symbol": "PPLT",
     "quantity": null,
@@ -88,13 +66,13 @@
   {
     "action": "info",
     "symbol": "XLK",
-    "price": 145.09,
+    "price": 146.08,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 13/16 | sell 11/13",
-    "timestamp": "2026-01-23T22:18:11.187495Z",
-    "received_at": "2026-01-23T22:18:11.187495Z",
-    "id": "2026-01-23T22:18:11.187495Z-XLK-info",
+    "timestamp": "2026-01-27T03:04:45.511438Z",
+    "received_at": "2026-01-27T03:04:45.511438Z",
+    "id": "2026-01-27T03:04:45.511438Z-XLK-info",
     "threshold_met": false,
     "buy_score": 13,
     "sell_score": 11,
@@ -1473,6 +1451,28 @@
     "sell_conviction": 0.355,
     "sell_persistence": 1,
     "sell_position_multiplier": 0.5
+  },
+  {
+    "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 0.01,
+    "price": 0.3525,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-01-27T03:01:30.912568Z",
+    "received_at": "2026-01-27T03:01:30.912588Z",
+    "id": "2026-01-27T03:01:30.912588Z-CRV/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-01-27T03:01:29.989655Z",
+    "received_at": "2026-01-27T03:01:29.990055Z",
+    "id": "2026-01-27T03:01:29.990055Z-CRV/USD-sell"
   },
   {
     "action": "sell",
