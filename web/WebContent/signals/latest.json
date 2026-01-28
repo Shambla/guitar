@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "TAO/USD",
-  "quantity": 0.0,
-  "price": 240.81,
+  "action": "buy",
+  "symbol": "SUI/USD",
+  "quantity": 70.00840100812097,
+  "price": 1.427,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-01-28T12:00:10.569669Z",
-  "received_at": "2026-01-28T12:00:10.569690Z",
-  "id": "2026-01-28T12:00:10.569690Z-TAO/USD-sell"
+  "timestamp": "2026-01-28T13:00:24.855899Z",
+  "received_at": "2026-01-28T13:00:24.857276Z",
+  "id": "2026-01-28T13:00:24.857276Z-SUI/USD-buy"
 }
