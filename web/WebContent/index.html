@@ -930,7 +930,8 @@
 										composer: item.composer,
 										difficulty: item.difficulty,
 										category: item.category,
-										price: item.price
+										price: item.price,
+										sheet_music_direct_url: item.sheet_music_direct_url || item.preview_url || null
 									}))
 								};
 							}
