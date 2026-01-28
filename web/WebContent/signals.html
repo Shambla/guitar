@@ -7370,6 +7370,75 @@ plot(show_ema ? ema_val : na, title="EMA", color=color.new(color.orange, 0), lin
 						return null;
 					}
 				}
+
+				// Helper: Build a compact, relevant catalog context for the worker
+				function buildCatalogContext(catalog, message) {
+					if (!Array.isArray(catalog) || catalog.length === 0) return null;
+					const original = message || '';
+					const lower = original.toLowerCase();
+
+					let query = '';
+
+					// 1) Prefer text in quotes: "Californication"
+					const quoted = original.match(/"([^"]{2,80})"/);
+					if (quoted) {
+						query = quoted[1].toLowerCase();
+					}
+
+					// 2) Fallback: after "arrangement of ..."
+					if (!query) {
+						const m = original.match(/arrangement of\s+(.+?)(\?|$)/i);
+						if (m) {
+							query = m[1].toLowerCase();
+						}
+					}
+
+					// 3) Trim generic suffixes like "by the Red Hot Chili Peppers"
+					if (query.includes(' by ')) {
+						const parts = query.split(' by ');
+						query = parts[0].trim();
+					}
+
+					let filtered = catalog;
+
+					if (query) {
+						const q = query;
+						filtered = catalog.filter(item => {
+							const title = (item.title || '').toLowerCase();
+							const composer = (item.composer || '').toLowerCase();
+							return title.includes(q) || composer.includes(q);
+						});
+
+						// If no direct phrase match, fall back to word-based fuzzy match
+						if (filtered.length === 0) {
+							const words = q.split(/\s+/).filter(w => w.length > 3);
+							if (words.length) {
+								filtered = catalog.filter(item => {
+									const title = (item.title || '').toLowerCase();
+									const composer = (item.composer || '').toLowerCase();
+									return words.some(w => title.includes(w) || composer.includes(w));
+								});
+							}
+						}
+					}
+
+					// Hard cap to avoid huge prompts; keep first 80 relevant entries
+					if (filtered.length > 80) {
+						filtered = filtered.slice(0, 80);
+					}
+
+					return {
+						type: 'catalog',
+						songs: filtered.map(item => ({
+							title: item.title,
+							composer: item.composer,
+							difficulty: item.difficulty,
+							category: item.category,
+							price: item.price,
+							sheet_music_direct_url: item.sheet_music_direct_url || item.preview_url || null
+						}))
+					};
+				}
 				
 				// Helper: Check if message is about signals
 				function isSignalsQuery(text) {
@@ -7436,17 +7505,7 @@ plot(show_ema ? ema_val : na, title="EMA", color=color.new(color.orange, 0), lin
 						} else if (isCatalogQuery(message)) {
 							const catalog = await fetchCatalog();
 							if (catalog) {
-								contextData = {
-									type: 'catalog',
-									songs: catalog.map(item => ({
-										title: item.title,
-										composer: item.composer,
-										difficulty: item.difficulty,
-										category: item.category,
-										price: item.price,
-										sheet_music_direct_url: item.sheet_music_direct_url || item.preview_url || null
-									}))
-								};
+								contextData = buildCatalogContext(catalog, message);
 							}
 						}
 						
