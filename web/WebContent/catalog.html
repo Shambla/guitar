@@ -529,6 +529,116 @@
 						return null;
 					}
 				}
+
+				// Helper: Build a compact, relevant catalog context for the worker
+				function buildCatalogContext(catalog, message) {
+					if (!Array.isArray(catalog) || catalog.length === 0) return null;
+					const original = message || '';
+					const lower = original.toLowerCase();
+
+					let query = '';
+
+					// 1) Prefer text in quotes: "Californication"
+					const quoted = original.match(/"([^"]{2,80})"/);
+					if (quoted) {
+						query = quoted[1].toLowerCase();
+					}
+
+					// 2) Fallback: after "arrangement of ..."
+					if (!query) {
+						const m = original.match(/arrangement of\s+(.+?)(\?|$)/i);
+						if (m) {
+							query = m[1].toLowerCase();
+						}
+					}
+
+					// 3) Fallback: after "arrangements by ..." / "by ..."
+					if (!query) {
+						const mBy = original.match(/\bby\s+(.+?)(\?|$)/i);
+						if (mBy) query = (mBy[1] || '').toLowerCase();
+					}
+
+					// 4) Fallback: after "arrangements for ..." / "for ..."
+					if (!query) {
+						const mFor = original.match(/\bfor\s+(.+?)(\?|$)/i);
+						if (mFor) query = (mFor[1] || '').toLowerCase();
+					}
+
+					// Trim common trailing phrases and punctuation
+					query = (query || '').replace(/[.!,;:"“”]+$/g, '').trim();
+
+					// If query is something like "Dreams by Fleetwood Mac", prefer the part before " by "
+					if (query.includes(' by ')) {
+						query = query.split(' by ')[0].trim();
+					}
+
+					let filtered = [];
+
+					const stopwords = new Set([
+						'do','you','have','any','an','a','the','this','that','these','those','please',
+						'arrangement','arrangements','song','songs','catalog','for','by','about','of','to','in','on','with','what'
+					]);
+
+					// Score-based matching so we never send an arbitrary slice of the catalog.
+					const tokens = (query ? query : lower)
+						.split(/[^a-z0-9]+/i)
+						.map(t => t.trim().toLowerCase())
+						.filter(t => t.length >= 3 && !stopwords.has(t));
+
+					if (query) {
+						const q = query.toLowerCase();
+						filtered = catalog
+							.map(item => {
+								const title = (item.title || '').toLowerCase();
+								const composer = (item.composer || '').toLowerCase();
+								let score = 0;
+								if (title.includes(q)) score += 8;
+								if (composer.includes(q)) score += 6;
+								for (const tok of tokens) {
+									if (title.includes(tok)) score += 2;
+									if (composer.includes(tok)) score += 1;
+								}
+								return { item, score };
+							})
+							.filter(r => r.score > 0)
+							.sort((a, b) => b.score - a.score)
+							.map(r => r.item);
+					} else {
+						// No clear query: use token scoring from the full message, but require a minimum score.
+						filtered = catalog
+							.map(item => {
+								const title = (item.title || '').toLowerCase();
+								const composer = (item.composer || '').toLowerCase();
+								let score = 0;
+								for (const tok of tokens) {
+									if (title.includes(tok)) score += 2;
+									if (composer.includes(tok)) score += 1;
+								}
+								return { item, score };
+							})
+							.filter(r => r.score >= 2) // avoid dumping random items
+							.sort((a, b) => b.score - a.score)
+							.map(r => r.item);
+					}
+
+					// Hard cap to avoid huge prompts; keep first 40 relevant entries
+					if (filtered.length > 40) filtered = filtered.slice(0, 40);
+
+					// If we still have no meaningful matches, return null so the bot asks a clarifying question.
+					if (filtered.length === 0) return null;
+
+					return {
+						type: 'catalog',
+						songs: filtered.map(item => ({
+							title: item.title,
+							composer: item.composer,
+							difficulty: item.difficulty,
+							category: item.category,
+							price: item.price,
+							sheet_music_direct_url: item.sheet_music_direct_url || item.preview_url || null
+						}))
+					};
+				}
 				
 				// Helper: Check if message is about signals
 				function isSignalsQuery(text) {
@@ -595,17 +705,7 @@
 						} else if (isCatalogQuery(message)) {
 							const catalog = await fetchCatalog();
 							if (catalog) {
-								contextData = {
-									type: 'catalog',
-									songs: catalog.map(item => ({
-										title: item.title,
-										composer: item.composer,
-										difficulty: item.difficulty,
-										category: item.category,
-										price: item.price,
-										sheet_music_direct_url: item.sheet_music_direct_url || item.preview_url || null
-									}))
-								};
+								contextData = buildCatalogContext(catalog, message);
 							}
 						}
 						
