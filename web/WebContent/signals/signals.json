@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "USO",
+    "quantity": null,
+    "price": 79.14,
+    "source": "MAIN_stock_strat14",
+    "note": "buy 20/41 | sell 13/40 | Strength=4/10 | MTF:W+M",
+    "timestamp": "2026-01-30T05:19:16.789491Z",
+    "received_at": "2026-01-30T05:19:16.789609Z",
+    "id": "2026-01-30T05:19:16.789609Z-USO-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "PPLT",
     "price": 239.13,
     "quantity": null,
@@ -940,23 +951,23 @@
   {
     "action": "buy",
     "symbol": "USO",
-    "price": 79.18,
+    "price": 79.14,
     "quantity": null,
     "source": "MAIN_stock_strat14",
-    "note": "buy 18/41 | sell 12/40 | Strength=1/10 | MTF:W+M",
-    "timestamp": "2026-01-29T16:42:38.106989Z",
-    "received_at": "2026-01-29T16:42:38.106989Z",
-    "id": "2026-01-29T16:42:38.106989Z-USO-buy",
-    "buy_score": 18,
-    "sell_score": 12,
+    "note": "buy 20/41 | sell 13/40 | Strength=2/10 | MTF:W+M",
+    "timestamp": "2026-01-30T05:19:16.734175Z",
+    "received_at": "2026-01-30T05:19:16.734175Z",
+    "id": "2026-01-30T05:19:16.734175Z-USO-buy",
+    "buy_score": 20,
+    "sell_score": 13,
     "total_buy_components": 41,
     "total_sell_components": 40,
-    "buy_conviction": 0.5290243902439025,
+    "buy_conviction": 0.5778048780487804,
     "buy_persistence": 3,
     "buy_position_multiplier": 1.0,
-    "sell_conviction": 0.3,
-    "sell_persistence": 0,
-    "sell_position_multiplier": 0.5
+    "sell_conviction": 0.41500000000000004,
+    "sell_persistence": 3,
+    "sell_position_multiplier": 1.0
   },
   {
     "action": "buy",
@@ -2945,16 +2956,5 @@
     "timestamp": "2026-01-23T14:00:23.222870Z",
     "received_at": "2026-01-23T14:00:23.222896Z",
     "id": "2026-01-23T14:00:23.222896Z-TAO/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "DASH/USD",
-    "quantity": 0.0,
-    "price": 70.38,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-01-23T14:00:21.818216Z",
-    "received_at": "2026-01-23T14:00:21.818236Z",
-    "id": "2026-01-23T14:00:21.818236Z-DASH/USD-sell"
   }
 ]
