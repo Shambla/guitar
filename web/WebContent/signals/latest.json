@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "USO",
+  "symbol": "EWJ",
   "quantity": null,
-  "price": 79.14,
+  "price": 85.52,
   "source": "MAIN_stock_strat14",
-  "note": "buy 20/41 | sell 13/40 | Strength=4/10 | MTF:W+M",
-  "timestamp": "2026-01-30T05:19:16.789491Z",
-  "received_at": "2026-01-30T05:19:16.789609Z",
-  "id": "2026-01-30T05:19:16.789609Z-USO-buy"
+  "note": "buy 20/41 | sell 10/40 | Strength=4/10 | MTF:W+M",
+  "timestamp": "2026-01-30T18:39:33.061978Z",
+  "received_at": "2026-01-30T18:39:33.063109Z",
+  "id": "2026-01-30T18:39:33.063109Z-EWJ-buy"
 }
