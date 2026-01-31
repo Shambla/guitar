@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.03709226,
+    "price": 2690.58804,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-01-31T03:32:32.462125Z",
+    "received_at": "2026-01-31T03:32:32.463008Z",
+    "id": "2026-01-31T03:32:32.463008Z-ETH/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 1e-08,
