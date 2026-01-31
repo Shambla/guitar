@@ -1888,55 +1888,6 @@
 					</script>
 				</div>
 				
-				<!-- DXY (Dollar Index) Indicator -->
-				<div id="dxy-section" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 30px auto !important; padding: 20px !important; background: rgba(76, 175, 80, 0.3) !important; border: 3px solid #4caf50 !important; border-radius: 12px; position: relative !important; z-index: 200 !important; width: calc(100% - 40px) !important; max-width: 1400px !important; box-shadow: 0 4px 20px rgba(76, 175, 80, 0.4) !important;">
-					<!-- Compact Header -->
-					<div style="margin-bottom: 15px; display: flex; align-items: center; flex-wrap: wrap; gap: 10px;">
-						<div>
-							<h3 style="color: #4caf50 !important; font-size: 20px; margin: 0 0 5px 0; opacity: 1 !important; visibility: visible !important; display: inline-block;">$ DXY - Dollar Index</h3>
-							<span style="color: rgba(255, 255, 255, 0.8) !important; font-size: 13px; opacity: 1 !important; visibility: visible !important; margin-left: 10px;">
-								U.S. Dollar strength against a basket of major currencies
-							</span>
-						</div>
-					</div>
-					
-					<!-- TradingView DXY Widget -->
-					<div class="tradingview-widget-container" style="height: 500px; width: 100%; margin-bottom: 20px;">
-						<div class="tradingview-widget-container__widget" style="height: 100%; width: 100%;"></div>
-						<script type="application/json" id="tv-dxy-widget-config">
-						{
-							"autosize": true,
-							"symbol": "TVC:DXY",
-							"interval": "60",
-							"timezone": "Etc/UTC",
-							"theme": "dark",
-							"style": "1",
-							"locale": "en",
-							"backgroundColor": "rgba(0, 0, 0, 0.3)",
-							"gridColor": "rgba(255, 255, 255, 0.1)",
-							"hide_top_toolbar": false,
-							"hide_legend": false,
-							"save_image": false,
-							"support_host": "https://www.tradingview.com"
-						}
-						</script>
-						<script>
-							(function () {
-								const container = document.currentScript && document.currentScript.parentElement;
-								const cfgEl = document.getElementById('tv-dxy-widget-config');
-								if (!container || !cfgEl) return;
-
-								const s = document.createElement('script');
-								s.type = 'text/javascript';
-								s.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js';
-								s.async = true;
-								s.text = cfgEl.textContent || '';
-								container.appendChild(s);
-							})();
-						</script>
-					</div>
-				</div>
-				
 				<!-- Bitcoin Dominance Warning -->
 				<div id="btc-dominance-warning" style="display: none; background: rgba(244, 67, 54, 0.2); border: 2px solid #f44336; padding: 20px; border-radius: 8px; margin-top: 15px;">
 					<div style="color: #f44336; font-weight: bold; font-size: 18px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;">
