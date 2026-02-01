@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "SOL/USD",
-  "quantity": 0.9642271719217047,
-  "price": 103.61,
+  "symbol": "BTC/USD",
+  "quantity": 0.0012782367286752086,
+  "price": 78154.54,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-02-01T11:00:11.568254Z",
-  "received_at": "2026-02-01T11:00:11.568326Z",
-  "id": "2026-02-01T11:00:11.568326Z-SOL/USD-buy"
+  "timestamp": "2026-02-01T11:00:13.462900Z",
+  "received_at": "2026-02-01T11:00:13.462942Z",
+  "id": "2026-02-01T11:00:13.462942Z-BTC/USD-buy"
 }
