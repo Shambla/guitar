@@ -1365,6 +1365,56 @@
 				font-size: 14px;
 				color: rgba(255, 255, 255, 0.7);
 			}
+			
+			/* Scrolling ticker tape - symbol + price */
+			#ticker-tape-wrap {
+				overflow: hidden;
+				background: rgba(0, 0, 0, 0.5);
+				border-top: 1px solid rgba(255, 193, 7, 0.4);
+				border-bottom: 1px solid rgba(255, 193, 7, 0.4);
+				padding: 10px 0;
+				margin: 15px 0;
+				position: relative;
+				z-index: 10;
+			}
+			#ticker-tape {
+				display: flex;
+				animation: tickerScroll 80s linear infinite;
+				width: max-content;
+			}
+			.ticker-track {
+				display: flex;
+				gap: 24px;
+				flex-shrink: 0;
+				padding: 0 24px;
+			}
+			#ticker-tape:hover {
+				animation-play-state: paused;
+			}
+			.ticker-item {
+				display: inline-flex;
+				align-items: center;
+				gap: 6px;
+				white-space: nowrap;
+				color: rgba(255, 255, 255, 0.9);
+				font-size: 14px;
+				font-weight: 600;
+			}
+			.ticker-item .ticker-sym {
+				color: #ffc107;
+			}
+			.ticker-item .ticker-price {
+				color: rgba(255, 255, 255, 0.95);
+			}
+			.ticker-sep {
+				color: rgba(255, 193, 7, 0.5);
+				user-select: none;
+			}
+			@keyframes tickerScroll {
+				0% { transform: translateX(0); }
+				100% { transform: translateX(-50%); }
+			}
+			
 			.subscribe-button {
 				background: linear-gradient(135deg, #ff00ff 0%, #00ffff 100%);
 				color: #fff;
@@ -1763,6 +1813,14 @@
 					<span style="margin-left: 20px;" id="last-update"></span>
 					<button id="refresh-prices-btn" onclick="manualRefreshPrices(); return false;" style="background: rgba(255, 255, 255, 0.10); border: 1px solid rgba(255, 255, 255, 0.5); color: #fff; padding: 8px 12px; border-radius: 8px; cursor: pointer; font-weight: 700; transition: all 0.2s ease;" onmouseover="this.style.background='rgba(255,255,255,0.16)'; this.style.transform='translateY(-1px)';" onmouseout="this.style.background='rgba(255,255,255,0.10)'; this.style.transform='translateY(0)';" title="Force refresh prices (cached prices still show immediately)">🔄 Refresh Prices</button>
 					<span id="price-refresh-status" style="color: rgba(255, 255, 255, 0.6); font-size: 13px;"></span>
+				</div>
+			</div>
+			
+			<!-- Scrolling Ticker Tape: symbols + prices -->
+			<div id="ticker-tape-wrap">
+				<div id="ticker-tape">
+					<div class="ticker-track" id="ticker-track-1"></div>
+					<div class="ticker-track" id="ticker-track-2"></div>
 				</div>
 			</div>
 			
@@ -2931,6 +2989,10 @@
 			// Initialize bull audio when DOM is ready
 			document.addEventListener('DOMContentLoaded', function() {
 				initBullAudio();
+				// Start ticker tape after a short delay (prices may come from cache or signals)
+				setTimeout(function() {
+					updateTickerTape();
+				}, 800);
 			});
 			
 			function formatTimestamp(timestamp) {
@@ -3609,7 +3671,99 @@
 						btn.style.opacity = '';
 						btn.style.cursor = 'pointer';
 					}
+					updateTickerTape();
 				}
+			}
+			
+			// Scrolling ticker tape: symbols + prices (ETH 2542 • BTC 88,432 • SOL 104.39 ...)
+			const TICKER_SYMBOLS = [
+				{ symbol: 'BTC/USD', isStock: false },
+				{ symbol: 'ETH/USD', isStock: false },
+				{ symbol: 'SOL/USD', isStock: false },
+				{ symbol: 'BONK/USD', isStock: false },
+				{ symbol: 'TAO/USD', isStock: false },
+				{ symbol: 'SUI/USD', isStock: false },
+				{ symbol: 'CRV/USD', isStock: false },
+				{ symbol: 'AAVE/USD', isStock: false },
+				{ symbol: 'FET/USD', isStock: false },
+				{ symbol: 'RNDR/USD', isStock: false },
+				{ symbol: 'DASH/USD', isStock: false },
+				{ symbol: 'AERO/USD', isStock: false },
+				{ symbol: 'SPY', isStock: true },
+				{ symbol: 'NVDA', isStock: true },
+				{ symbol: 'XLK', isStock: true },
+				{ symbol: 'GLD', isStock: true },
+				{ symbol: 'SLV', isStock: true },
+				{ symbol: 'USO', isStock: true }
+			];
+			
+			function formatPriceTicker(price) {
+				if (price === null || price === undefined || !(price > 0)) return '—';
+				const p = parseFloat(price);
+				if (p >= 1000) return p.toLocaleString('en-US', { maximumFractionDigits: 0 });
+				if (p >= 1) return p.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+				if (p >= 0.01) return p.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 4 });
+				return p.toFixed(6);
+			}
+			
+			function getTickerDisplaySymbol(symbol) {
+				if (!symbol) return '';
+				const parts = (symbol || '').split('/');
+				return parts[0] || symbol;
+			}
+			
+			function renderTickerTapeItems(items) {
+				const track1 = document.getElementById('ticker-track-1');
+				const track2 = document.getElementById('ticker-track-2');
+				if (!track1 || !track2) return;
+				const sep = '<span class="ticker-sep">•</span>';
+				const html = items.map(({ displaySym, priceStr }) =>
+					`<span class="ticker-item"><span class="ticker-sym">${displaySym}</span><span class="ticker-price">${priceStr}</span></span>`
+				).join(sep);
+				track1.innerHTML = html;
+				track2.innerHTML = html;
+			}
+			
+			async function updateTickerTape() {
+				const track1 = document.getElementById('ticker-track-1');
+				const track2 = document.getElementById('ticker-track-2');
+				if (!track1 || !track2) return;
+				
+				// Phase 1: render immediately from cache (instant for returning visitors)
+				const itemsFromCache = TICKER_SYMBOLS.map(({ symbol, isStock }) => {
+					const cached = getCachedPriceEntry(symbol, isStock);
+					const price = (cached && typeof cached.price === 'number') ? cached.price : null;
+					return {
+						displaySym: getTickerDisplaySymbol(symbol),
+						priceStr: formatPriceTicker(price)
+					};
+				});
+				renderTickerTapeItems(itemsFromCache);
+				
+				// Phase 2: fetch missing prices in background, then re-render
+				const items = [];
+				const RATE_LIMIT_MS = 800;
+				for (const { symbol, isStock } of TICKER_SYMBOLS) {
+					let price = null;
+					const cached = getCachedPriceEntry(symbol, isStock);
+					if (cached && typeof cached.price === 'number') {
+						price = cached.price;
+					} else {
+						try {
+							if (isStock) {
+								price = await fetchStockPrice(symbol);
+							} else {
+								price = await fetchPriceFromCoinGecko(symbol);
+							}
+						} catch (e) { /* ignore */ }
+						await new Promise(r => setTimeout(r, RATE_LIMIT_MS));
+					}
+					items.push({
+						displaySym: getTickerDisplaySymbol(symbol),
+						priceStr: formatPriceTicker(price)
+					});
+				}
+				renderTickerTapeItems(items);
 			}
 			
 			// Function to get emojis for a ticker symbol
@@ -4681,8 +4835,11 @@
 				window.__latestSignalsForPriceRefresh = signals;
 				
 				// Update prices asynchronously (all signals; uses cache + retries)
-				updateMissingPrices(signals).catch(err => {
+				updateMissingPrices(signals).then(() => {
+					updateTickerTape();
+				}).catch(err => {
 					console.error('Error updating missing prices:', err);
+					updateTickerTape();
 				});
 			}
 			
