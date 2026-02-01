@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "IWM",
-  "quantity": null,
-  "price": 248.02999877929688,
-  "source": "MAIN_stock_strat14",
-  "note": "buy 15/41 | sell 21/40 | Strength=4/10 | MTF:D-only (no higher timeframe confirmation)",
-  "timestamp": "2026-02-01T05:48:52.684887Z",
-  "received_at": "2026-02-01T05:48:52.685148Z",
-  "id": "2026-02-01T05:48:52.685148Z-IWM-sell"
+  "symbol": "SUI/USD",
+  "quantity": 0.0,
+  "price": 1.138,
+  "source": "MASTER_BOT_162",
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-02-01T06:00:03.034967Z",
+  "received_at": "2026-02-01T06:00:03.034979Z",
+  "id": "2026-02-01T06:00:03.034979Z-SUI/USD-sell"
 }
