@@ -6,6 +6,17 @@
     "price": 248.02999877929688,
     "source": "MAIN_stock_strat14",
     "note": "buy 15/41 | sell 21/40 | Strength=4/10 | MTF:D-only (no higher timeframe confirmation)",
+    "timestamp": "2026-02-02T06:02:02.251149Z",
+    "received_at": "2026-02-02T06:02:02.252171Z",
+    "id": "2026-02-02T06:02:02.252171Z-IWM-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "IWM",
+    "quantity": null,
+    "price": 248.02999877929688,
+    "source": "MAIN_stock_strat14",
+    "note": "buy 15/41 | sell 21/40 | Strength=4/10 | MTF:D-only (no higher timeframe confirmation)",
     "timestamp": "2026-02-01T18:15:44.548856Z",
     "received_at": "2026-02-01T18:15:44.549051Z",
     "id": "2026-02-01T18:15:44.549051Z-IWM-sell"
@@ -2983,16 +2994,5 @@
     "timestamp": "2026-01-28T14:00:10.978695Z",
     "received_at": "2026-01-28T14:00:10.978708Z",
     "id": "2026-01-28T14:00:10.978708Z-SOL/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "SOL/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-01-28T14:00:10.643585Z",
-    "received_at": "2026-01-28T14:00:10.643600Z",
-    "id": "2026-01-28T14:00:10.643600Z-SOL/USD-sell"
   }
 ]
