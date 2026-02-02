@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "DASH/USD",
-  "quantity": 2.2753128555176336,
-  "price": 43.91,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-02-02T14:00:20.332993Z",
-  "received_at": "2026-02-02T14:00:20.334028Z",
-  "id": "2026-02-02T14:00:20.334028Z-DASH/USD-buy"
+  "action": "sell",
+  "symbol": "IWM",
+  "quantity": null,
+  "price": 248.02999877929688,
+  "source": "MAIN_stock_strat14",
+  "note": "buy 15/41 | sell 21/40 | Strength=4/10 | MTF:D-only (no higher timeframe confirmation)",
+  "timestamp": "2026-02-02T17:25:32.599849Z",
+  "received_at": "2026-02-02T17:25:32.599955Z",
+  "id": "2026-02-02T17:25:32.599955Z-IWM-sell"
 }
