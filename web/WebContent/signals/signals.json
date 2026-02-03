@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2292.6,
+    "source": "MASTER_BOT_162",
+    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+    "timestamp": "2026-02-03T15:59:20.707318Z",
+    "received_at": "2026-02-03T15:59:20.707388Z",
+    "id": "2026-02-03T15:59:20.707388Z-ETH/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "ETH/USD",
     "quantity": 0.04341427,
@@ -2973,16 +2984,5 @@
     "timestamp": "2026-02-01T02:00:15.745280Z",
     "received_at": "2026-02-01T02:00:15.745293Z",
     "id": "2026-02-01T02:00:15.745293Z-CRV/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "AAVE/USD",
-    "quantity": 0.772021925422682,
-    "price": 129.4,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-02-01T02:00:15.377717Z",
-    "received_at": "2026-02-01T02:00:15.377738Z",
-    "id": "2026-02-01T02:00:15.377738Z-AAVE/USD-buy"
   }
 ]
