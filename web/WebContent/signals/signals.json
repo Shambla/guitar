@@ -6,6 +6,17 @@
     "price": 248.02999877929688,
     "source": "MAIN_stock_strat14",
     "note": "buy 15/41 | sell 21/40 | Strength=4/10 | MTF:D-only (no higher timeframe confirmation)",
+    "timestamp": "2026-02-03T06:43:49.609196Z",
+    "received_at": "2026-02-03T06:43:49.610403Z",
+    "id": "2026-02-03T06:43:49.610403Z-IWM-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "IWM",
+    "quantity": null,
+    "price": 248.02999877929688,
+    "source": "MAIN_stock_strat14",
+    "note": "buy 15/41 | sell 21/40 | Strength=4/10 | MTF:D-only (no higher timeframe confirmation)",
     "timestamp": "2026-02-02T17:25:32.599849Z",
     "received_at": "2026-02-02T17:25:32.599955Z",
     "id": "2026-02-02T17:25:32.599955Z-IWM-sell"
@@ -2973,16 +2984,5 @@
     "timestamp": "2026-01-31T08:00:00.664101Z",
     "received_at": "2026-01-31T08:00:00.664126Z",
     "id": "2026-01-31T08:00:00.664126Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.00150734,
-    "price": 2685.08,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2026-01-31T07:30:49.723384Z",
-    "received_at": "2026-01-31T07:30:49.723407Z",
-    "id": "2026-01-31T07:30:49.723407Z-ETH/USD-sell"
   }
 ]
