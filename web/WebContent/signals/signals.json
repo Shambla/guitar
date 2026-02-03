@@ -1,6 +1,39 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.04426345,
+    "price": 2254.6816,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-02-03T22:14:55.230395Z",
+    "received_at": "2026-02-03T22:14:55.231418Z",
+    "id": "2026-02-03T22:14:55.231418Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 545.5537370430987,
+    "price": 0.1831,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-02-03T22:00:34.515405Z",
+    "received_at": "2026-02-03T22:00:34.515430Z",
+    "id": "2026-02-03T22:00:34.515430Z-FET/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-02-03T22:00:30.277913Z",
+    "received_at": "2026-02-03T22:00:30.277930Z",
+    "id": "2026-02-03T22:00:30.277930Z-FET/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "DASH/USD",
     "quantity": 2.314814814814815,
     "price": 43.16,
@@ -2911,38 +2944,5 @@
     "timestamp": "2026-02-01T06:45:38.235659Z",
     "received_at": "2026-02-01T06:45:38.235674Z",
     "id": "2026-02-01T06:45:38.235674Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 0.01,
-    "price": 0.2885,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-02-01T06:00:06.292226Z",
-    "received_at": "2026-02-01T06:00:06.292240Z",
-    "id": "2026-02-01T06:00:06.292240Z-CRV/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-02-01T06:00:06.008145Z",
-    "received_at": "2026-02-01T06:00:06.008158Z",
-    "id": "2026-02-01T06:00:06.008158Z-CRV/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "SUI/USD",
-    "quantity": 0.0,
-    "price": 1.138,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-02-01T06:00:03.034967Z",
-    "received_at": "2026-02-01T06:00:03.034979Z",
-    "id": "2026-02-01T06:00:03.034979Z-SUI/USD-sell"
   }
 ]
