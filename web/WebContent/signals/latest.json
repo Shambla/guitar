@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "IWM",
-  "quantity": null,
-  "price": 248.02999877929688,
-  "source": "MAIN_stock_strat14",
-  "note": "buy 15/41 | sell 21/40 | Strength=4/10 | MTF:D-only (no higher timeframe confirmation)",
-  "timestamp": "2026-02-03T06:43:49.609196Z",
-  "received_at": "2026-02-03T06:43:49.610403Z",
-  "id": "2026-02-03T06:43:49.610403Z-IWM-sell"
+  "action": "buy",
+  "symbol": "ETH/USD",
+  "quantity": 0.0431695,
+  "price": 2311.8170999999998,
+  "source": "MASTER_BOT_162",
+  "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+  "timestamp": "2026-02-03T06:44:35.480822Z",
+  "received_at": "2026-02-03T06:44:35.482338Z",
+  "id": "2026-02-03T06:44:35.482338Z-ETH/USD-buy"
 }

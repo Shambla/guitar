@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.0431695,
+    "price": 2311.8170999999998,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-02-03T06:44:35.480822Z",
+    "received_at": "2026-02-03T06:44:35.482338Z",
+    "id": "2026-02-03T06:44:35.482338Z-ETH/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "IWM",
     "quantity": null,
@@ -2973,16 +2984,5 @@
     "timestamp": "2026-01-31T08:00:13.022376Z",
     "received_at": "2026-01-31T08:00:13.022398Z",
     "id": "2026-01-31T08:00:13.022398Z-TAO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.00150734,
-    "price": 2675.12,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2026-01-31T08:00:00.664101Z",
-    "received_at": "2026-01-31T08:00:00.664126Z",
-    "id": "2026-01-31T08:00:00.664126Z-ETH/USD-sell"
   }
 ]
