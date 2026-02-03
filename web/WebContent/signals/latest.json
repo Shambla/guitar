@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "DASH/USD",
-  "quantity": 2.2867596615595702,
-  "price": 43.69,
+  "symbol": "SOL/USD",
+  "quantity": 0.9650646593321752,
+  "price": 103.52,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-02-03T06:01:43.101963Z",
-  "received_at": "2026-02-03T06:01:43.101992Z",
-  "id": "2026-02-03T06:01:43.101992Z-DASH/USD-buy"
+  "timestamp": "2026-02-03T06:05:50.837760Z",
+  "received_at": "2026-02-03T06:05:50.837782Z",
+  "id": "2026-02-03T06:05:50.837782Z-SOL/USD-buy"
 }
