@@ -2,6 +2,39 @@
   {
     "action": "buy",
     "symbol": "DASH/USD",
+    "quantity": 2.314814814814815,
+    "price": 43.16,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-02-03T22:00:16.550436Z",
+    "received_at": "2026-02-03T22:00:16.551409Z",
+    "id": "2026-02-03T22:00:16.551409Z-DASH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "SUI/USD",
+    "quantity": 88.62891075068687,
+    "price": 1.1272,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-02-03T22:00:14.099046Z",
+    "received_at": "2026-02-03T22:00:14.099068Z",
+    "id": "2026-02-03T22:00:14.099068Z-SUI/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "CRV/USD",
+    "quantity": 353.6067892503536,
+    "price": 0.2825,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-02-03T22:00:12.951905Z",
+    "received_at": "2026-02-03T22:00:12.951927Z",
+    "id": "2026-02-03T22:00:12.951927Z-CRV/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "DASH/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2911,27 +2944,5 @@
     "timestamp": "2026-02-01T06:00:03.034967Z",
     "received_at": "2026-02-01T06:00:03.034979Z",
     "id": "2026-02-01T06:00:03.034979Z-SUI/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "SUI/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-02-01T06:00:02.741899Z",
-    "received_at": "2026-02-01T06:00:02.741912Z",
-    "id": "2026-02-01T06:00:02.741912Z-SUI/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.04094316679017855,
-    "price": 2439.97,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-02-01T02:05:44.199565Z",
-    "received_at": "2026-02-01T02:05:44.199582Z",
-    "id": "2026-02-01T02:05:44.199582Z-ETH/USD-buy"
   }
 ]
