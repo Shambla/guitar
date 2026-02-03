@@ -1,16 +1,5 @@
 [
   {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.0431695,
-    "price": 2311.8170999999998,
-    "source": "MASTER_BOT_162",
-    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-    "timestamp": "2026-02-03T06:44:35.480822Z",
-    "received_at": "2026-02-03T06:44:35.482338Z",
-    "id": "2026-02-03T06:44:35.482338Z-ETH/USD-buy"
-  },
-  {
     "action": "sell",
     "symbol": "IWM",
     "quantity": null,
@@ -1581,9 +1570,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 16/16 | sell 11/13",
-    "timestamp": "2026-02-02T17:32:03.442349Z",
-    "received_at": "2026-02-02T17:32:03.442349Z",
-    "id": "2026-02-02T17:32:03.442349Z-DIA-info",
+    "timestamp": "2026-02-03T06:48:05.713723Z",
+    "received_at": "2026-02-03T06:48:05.713723Z",
+    "id": "2026-02-03T06:48:05.713723Z-DIA-info",
     "threshold_met": true,
     "buy_score": 16,
     "sell_score": 11,
@@ -1598,6 +1587,17 @@
     "sell_conviction": 0.275,
     "sell_persistence": 0,
     "sell_position_multiplier": 0.5
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.0431695,
+    "price": 2311.8170999999998,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-02-03T06:44:35.480822Z",
+    "received_at": "2026-02-03T06:44:35.482338Z",
+    "id": "2026-02-03T06:44:35.482338Z-ETH/USD-buy"
   },
   {
     "action": "buy",
