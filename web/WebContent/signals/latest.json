@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "RENDER/USD",
-  "quantity": 63.653723742838956,
-  "price": 1.569,
+  "action": "sell",
+  "symbol": "DASH/USD",
+  "quantity": 0.0,
+  "price": 41.84,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-02-04T02:00:26.458088Z",
-  "received_at": "2026-02-04T02:00:26.458101Z",
-  "id": "2026-02-04T02:00:26.458101Z-RENDER/USD-buy"
+  "timestamp": "2026-02-04T04:00:27.740681Z",
+  "received_at": "2026-02-04T04:00:27.740702Z",
+  "id": "2026-02-04T04:00:27.740702Z-DASH/USD-sell"
 }
