@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2276.05,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2026-02-04T04:44:42.116220Z",
+    "received_at": "2026-02-04T04:44:42.116319Z",
+    "id": "2026-02-04T04:44:42.116319Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "IWM",
     "quantity": null,
     "price": 248.02999877929688,
@@ -2933,16 +2944,5 @@
     "timestamp": "2026-02-01T11:00:13.462900Z",
     "received_at": "2026-02-01T11:00:13.462942Z",
     "id": "2026-02-01T11:00:13.462942Z-BTC/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "SUI/USD",
-    "quantity": 88.09796493700995,
-    "price": 1.134,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-02-01T11:00:13.254472Z",
-    "received_at": "2026-02-01T11:00:13.254508Z",
-    "id": "2026-02-01T11:00:13.254508Z-SUI/USD-buy"
   }
 ]
