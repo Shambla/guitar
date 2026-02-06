@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "AAVE/USD",
-  "quantity": 0.963855421686747,
-  "price": 103.65,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-02-06T03:00:16.939706Z",
-  "received_at": "2026-02-06T03:00:16.939729Z",
-  "id": "2026-02-06T03:00:16.939729Z-AAVE/USD-buy"
+  "symbol": "XLI",
+  "quantity": null,
+  "price": 168.37,
+  "source": "MAIN_stock_strat14",
+  "note": "buy 20/41 | sell 12/40 | Strength=4/10 | MTF:W+M",
+  "timestamp": "2026-02-06T10:25:19.472320Z",
+  "received_at": "2026-02-06T10:25:19.472393Z",
+  "id": "2026-02-06T10:25:19.472393Z-XLI-buy"
 }
