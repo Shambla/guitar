@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "BTC/USD",
+  "symbol": "ETH/USD",
   "quantity": 100.0,
   "price": null,
   "source": "TradingView JSON",
   "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-02-06T14:00:06.168825Z",
-  "received_at": "2026-02-06T14:00:06.168843Z",
-  "id": "2026-02-06T14:00:06.168843Z-BTC/USD-sell"
+  "timestamp": "2026-02-06T14:00:17.712933Z",
+  "received_at": "2026-02-06T14:00:17.713159Z",
+  "id": "2026-02-06T14:00:17.713159Z-ETH/USD-sell"
 }
