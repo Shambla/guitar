@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "TAO/USD",
-  "quantity": 0.5843,
-  "price": 167.12,
+  "symbol": "FET/USD",
+  "quantity": 619.43850812,
+  "price": 0.1687,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-02-07T02:08:07.800955Z",
-  "received_at": "2026-02-07T02:08:07.800968Z",
-  "id": "2026-02-07T02:08:07.800968Z-TAO/USD-sell"
+  "timestamp": "2026-02-07T02:08:36.738082Z",
+  "received_at": "2026-02-07T02:08:36.738095Z",
+  "id": "2026-02-07T02:08:36.738095Z-FET/USD-sell"
 }
