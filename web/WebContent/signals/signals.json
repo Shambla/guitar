@@ -1,5 +1,27 @@
 [
   {
+    "action": "sell",
+    "symbol": "DASH/USD",
+    "quantity": 0.0,
+    "price": 37.79,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-02-08T20:47:48.469343Z",
+    "received_at": "2026-02-08T20:47:48.469369Z",
+    "id": "2026-02-08T20:47:48.469369Z-DASH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "DASH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-02-08T20:47:48.286370Z",
+    "received_at": "2026-02-08T20:47:48.286522Z",
+    "id": "2026-02-08T20:47:48.286522Z-DASH/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "ETH/USD",
     "quantity": 0.04730391,
@@ -2952,27 +2974,5 @@
     "timestamp": "2026-02-06T02:03:09.677376Z",
     "received_at": "2026-02-06T02:03:09.677407Z",
     "id": "2026-02-06T02:03:09.677407Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "BTC/USD",
-    "quantity": 0.0015241114430287143,
-    "price": 65546.39,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-02-06T02:00:26.704827Z",
-    "received_at": "2026-02-06T02:00:26.704850Z",
-    "id": "2026-02-06T02:00:26.704850Z-BTC/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "BTC/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-02-06T02:00:07.354820Z",
-    "received_at": "2026-02-06T02:00:07.354858Z",
-    "id": "2026-02-06T02:00:07.354858Z-BTC/USD-buy"
   }
 ]
