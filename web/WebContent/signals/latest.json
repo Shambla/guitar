@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "ETH/USD",
-  "quantity": 0.04713423,
-  "price": 2117.3568,
+  "action": "sell",
+  "symbol": "CRV/USD",
+  "quantity": 0.01,
+  "price": 0.2584,
   "source": "MASTER_BOT_162",
-  "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-  "timestamp": "2026-02-08T13:06:23.784150Z",
-  "received_at": "2026-02-08T13:06:23.784165Z",
-  "id": "2026-02-08T13:06:23.784165Z-ETH/USD-buy"
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-02-08T14:00:09.285303Z",
+  "received_at": "2026-02-08T14:00:09.285320Z",
+  "id": "2026-02-08T14:00:09.285320Z-CRV/USD-sell"
 }
