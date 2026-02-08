@@ -1,6 +1,39 @@
 [
   {
     "action": "sell",
+    "symbol": "RENDER/USD",
+    "quantity": 0.0,
+    "price": 1.344,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-02-08T17:00:13.862269Z",
+    "received_at": "2026-02-08T17:00:13.862283Z",
+    "id": "2026-02-08T17:00:13.862283Z-RENDER/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-02-08T17:00:13.525270Z",
+    "received_at": "2026-02-08T17:00:13.527081Z",
+    "id": "2026-02-08T17:00:13.527081Z-RENDER/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "SUI/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-02-08T17:00:12.095730Z",
+    "received_at": "2026-02-08T17:00:12.095745Z",
+    "id": "2026-02-08T17:00:12.095745Z-SUI/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "DASH/USD",
     "quantity": 100.0,
     "price": null,
@@ -2941,38 +2974,5 @@
     "timestamp": "2026-02-04T15:01:37.178720Z",
     "received_at": "2026-02-04T15:01:37.183636Z",
     "id": "2026-02-04T15:01:37.183636Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.04523262,
-    "price": 2199.01,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2026-02-04T14:33:20.727345Z",
-    "received_at": "2026-02-04T14:33:20.727465Z",
-    "id": "2026-02-04T14:33:20.727465Z-ETH/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.04547521,
-    "price": 2194.602,
-    "source": "MASTER_BOT_162",
-    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-    "timestamp": "2026-02-04T14:19:25.817190Z",
-    "received_at": "2026-02-04T14:19:25.817253Z",
-    "id": "2026-02-04T14:19:25.817253Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "SOL/USD",
-    "quantity": 1.0612331529236974,
-    "price": 94.14,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-02-04T14:06:03.183885Z",
-    "received_at": "2026-02-04T14:06:03.183964Z",
-    "id": "2026-02-04T14:06:03.183964Z-SOL/USD-buy"
   }
 ]
