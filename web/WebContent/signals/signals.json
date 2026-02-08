@@ -1,6 +1,50 @@
 [
   {
     "action": "sell",
+    "symbol": "BTC/USD",
+    "quantity": 1e-08,
+    "price": 69348.31,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-02-08T02:00:08.636994Z",
+    "received_at": "2026-02-08T02:00:08.637009Z",
+    "id": "2026-02-08T02:00:08.637009Z-BTC/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "BTC/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-02-08T02:00:08.331623Z",
+    "received_at": "2026-02-08T02:00:08.331636Z",
+    "id": "2026-02-08T02:00:08.331636Z-BTC/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "AAVE/USD",
+    "quantity": 0.00062764,
+    "price": 113.61,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-02-08T02:00:06.740747Z",
+    "received_at": "2026-02-08T02:00:06.740774Z",
+    "id": "2026-02-08T02:00:06.740774Z-AAVE/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "SOL/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-02-08T02:00:06.707761Z",
+    "received_at": "2026-02-08T02:00:06.707784Z",
+    "id": "2026-02-08T02:00:06.707784Z-SOL/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "AAVE/USD",
     "quantity": 100.0,
     "price": null,
@@ -2930,49 +2974,5 @@
     "timestamp": "2026-02-03T22:00:12.951905Z",
     "received_at": "2026-02-03T22:00:12.951927Z",
     "id": "2026-02-03T22:00:12.951927Z-CRV/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "DASH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-02-03T22:00:08.538695Z",
-    "received_at": "2026-02-03T22:00:08.538709Z",
-    "id": "2026-02-03T22:00:08.538709Z-DASH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "SUI/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-02-03T22:00:07.495239Z",
-    "received_at": "2026-02-03T22:00:07.495255Z",
-    "id": "2026-02-03T22:00:07.495255Z-SUI/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-02-03T22:00:04.522250Z",
-    "received_at": "2026-02-03T22:00:04.522590Z",
-    "id": "2026-02-03T22:00:04.522590Z-CRV/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2139.02,
-    "source": "MASTER_BOT_162",
-    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
-    "timestamp": "2026-02-03T18:32:03.415088Z",
-    "received_at": "2026-02-03T18:32:03.416350Z",
-    "id": "2026-02-03T18:32:03.416350Z-ETH/USD-sell"
   }
 ]
