@@ -821,13 +821,13 @@
   {
     "action": "info",
     "symbol": "EWT",
-    "price": 70.05,
+    "price": 71.44,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 15/16 | sell 14/13",
-    "timestamp": "2026-02-07T00:37:20.300852Z",
-    "received_at": "2026-02-07T00:37:20.300852Z",
-    "id": "2026-02-07T00:37:20.300852Z-EWT-info",
+    "timestamp": "2026-02-11T09:17:24.866433Z",
+    "received_at": "2026-02-11T09:17:24.866433Z",
+    "id": "2026-02-11T09:17:24.866433Z-EWT-info",
     "threshold_met": true,
     "buy_score": 15,
     "sell_score": 14,
@@ -839,8 +839,8 @@
     "buy_conviction": 0.36585365853658536,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.41,
-    "sell_persistence": 2,
+    "sell_conviction": 0.47,
+    "sell_persistence": 4,
     "sell_position_multiplier": 1.0
   },
   {
