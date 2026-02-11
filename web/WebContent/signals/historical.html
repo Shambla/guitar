@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link type="text/css" rel="stylesheet" href="../style/montserrat.css">
+	<link rel="shortcut icon" href="../img/favico.ico" type="image/x-icon">
+	<title>Historical Signals – Archived Crypto & Stock Signals</title>
+	<style>
+		:root {
+			--primary-color: #00ffff;
+			--bg-color: rgba(10, 14, 39, 0.95);
+		}
+		html, body {
+			background: linear-gradient(135deg, #0a0e27 0%, #1a0d2e 25%, #16213e 50%, #0f3460 75%, #0a0e27 100%);
+			background-attachment: fixed;
+			min-height: 100vh;
+			margin: 0;
+			font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+			color: #fff;
+		}
+		body > * { position: relative; z-index: 1; }
+		nav {
+			text-align: center;
+			padding: 20px;
+			margin-bottom: 20px;
+			background: rgba(0, 0, 0, 0.5);
+			border-radius: 8px;
+			max-width: 900px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		nav a {
+			color: var(--primary-color);
+			text-decoration: none;
+			margin: 0 12px;
+			font-weight: bold;
+		}
+		nav a:hover { text-decoration: underline; }
+		.container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+		h1 { text-align: center; color: var(--primary-color); margin-bottom: 10px; }
+		.subtitle { text-align: center; color: rgba(255,255,255,0.7); margin-bottom: 30px; font-size: 14px; }
+		.section {
+			margin-bottom: 40px;
+			background: rgba(0,0,0,0.4);
+			border-radius: 12px;
+			padding: 20px;
+			border: 2px solid rgba(255,255,255,0.1);
+		}
+		.section h2 { color: var(--primary-color); margin-top: 0; margin-bottom: 15px; font-size: 22px; }
+		.section p.meta { color: rgba(255,255,255,0.6); font-size: 14px; margin-bottom: 20px; }
+		.signals-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+			gap: 16px;
+		}
+		.signal-card {
+			background: rgba(20,20,20,0.8);
+			border-radius: 8px;
+			padding: 16px;
+			border-left: 4px solid #888;
+		}
+		.signal-card.buy { border-left-color: #4caf50; }
+		.signal-card.sell { border-left-color: #f44336; }
+		.signal-symbol { font-weight: bold; font-size: 1.1em; margin-bottom: 6px; }
+		.signal-action { font-size: 0.95em; margin-bottom: 8px; }
+		.signal-detail-row { font-size: 13px; color: rgba(255,255,255,0.85); margin: 4px 0; }
+		.signal-detail-label { color: rgba(255,255,255,0.6); margin-right: 6px; }
+		.signal-timestamp { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 10px; }
+		.note-highlight { background: rgba(0,255,255,0.1); padding: 8px; border-radius: 4px; font-size: 12px; margin-top: 8px; }
+		.empty-state { text-align: center; padding: 40px 20px; color: rgba(255,255,255,0.6); }
+		.loading { text-align: center; padding: 40px; color: var(--primary-color); }
+		.error { text-align: center; padding: 20px; color: #f44336; }
+	</style>
+</head>
+<body>
+	<nav>
+		<a href="../index.html">HOME</a>
+		<a href="../catalog.html">CATALOG</a>
+		<a href="../signals.html">Live Signals</a>
+		<span style="color: rgba(255,255,255,0.5);">|</span>
+		<span style="color: var(--primary-color);">Historical Signals</span>
+	</nav>
+	<div class="container">
+		<h1>Historical Signals</h1>
+		<p class="subtitle">Archived crypto (1+ day) and stock/ETF (7+ days) signals for transparency and backtesting.</p>
+
+		<div id="crypto-section" class="section">
+			<h2>Historical Crypto Signals (1+ Days Old)</h2>
+			<p class="meta" id="crypto-meta">Loading…</p>
+			<div id="crypto-grid" class="signals-grid"></div>
+		</div>
+
+		<div id="stock-section" class="section">
+			<h2>Historical Stock & ETF Signals (7+ Days Old)</h2>
+			<p class="meta" id="stock-meta">Loading…</p>
+			<div id="stock-grid" class="signals-grid"></div>
+		</div>
+	</div>
+
+	<script>
+		function isStockSignal(signal) {
+			const raw = (signal.symbol || '').trim();
+			if (!raw) return false;
+			const sym = raw.toUpperCase();
+			const normalized = sym.replace(/[-_]/g, '/');
+			if (normalized.includes('/') && /\/(USD|USDT|USDC|BTC|ETH)$/i.test(normalized)) return false;
+			if (/^[A-Z]{1,6}$/.test(sym)) return true;
+			const parts = normalized.split('/');
+			if (parts.length === 2 && /^[A-Z]+$/.test(parts[0]) && parts[0].length <= 6 && ['USD','USDT','USDC'].includes(parts[1])) return true;
+			if (/^[A-Z]{1,5}\.[A-Z]{1,3}$/.test(sym)) return true;
+			return false;
+		}
+		function formatTimestamp(ts) {
+			if (!ts) return 'N/A';
+			try {
+				const d = new Date(ts);
+				const month = d.toLocaleString('en-US', { month: 'short', timeZone: 'UTC' });
+				const day = d.getUTCDate();
+				const year = d.getUTCFullYear();
+				const h = String(d.getUTCHours()).padStart(2,'0');
+				const m = String(d.getUTCMinutes()).padStart(2,'0');
+				const s = String(d.getUTCSeconds()).padStart(2,'0');
+				return month + ' ' + day + ', ' + year + ' ' + h + ':' + m + ':' + s + ' UTC';
+			} catch (e) { return ts; }
+		}
+		function formatPrice(price) {
+			if (price == null) return 'N/A';
+			return '$' + parseFloat(price).toFixed(4);
+		}
+		function getSignalPrice(signal) {
+			if (!signal) return null;
+			const c = [signal.price, signal.avg_price, signal.last_price, signal.entry_price, signal.limit_price, signal.close, signal.current_price, signal.market_price, signal.bid, signal.ask, signal.last, signal.value];
+			for (let i = 0; i < c.length; i++) if (c[i] != null && !isNaN(parseFloat(c[i]))) return parseFloat(c[i]);
+			return null;
+		}
+		function renderCards(signals, gridEl, metaEl) {
+			if (!signals.length) {
+				gridEl.innerHTML = '<div class="empty-state">No archived signals in this category.</div>';
+				metaEl.textContent = '(0 archived signals)';
+				return;
+			}
+			metaEl.textContent = '(' + signals.length + ' archived signals)';
+			const html = signals.map(function(s) {
+				const action = (s.action || 'unknown').toLowerCase();
+				const isBuy = action === 'buy';
+				const price = getSignalPrice(s);
+				const note = (s.note || '').replace(/HMM/gi,'AI').replace(/JSON/gi,'indicator suite');
+				return '<div class="signal-card ' + (isBuy ? 'buy' : 'sell') + '">' +
+					'<div class="signal-symbol">' + (s.symbol || 'N/A') + '</div>' +
+					'<div class="signal-action">' + (isBuy ? 'Buy' : 'Sell') + '</div>' +
+					(price != null ? '<div class="signal-detail-row"><span class="signal-detail-label">Price:</span><span class="signal-detail-value">' + formatPrice(price) + '</span></div>' : '') +
+					(s.source ? '<div class="signal-detail-row"><span class="signal-detail-label">Source:</span><span class="signal-detail-value">' + (s.source.replace(/MASTER_BOT_\d+/gi,'Python Bot').replace(/MASTERMASTER/gi,'Python Bot')) + '</span></div>' : '') +
+					(note ? '<div class="note-highlight">' + note + '</div>' : '') +
+					'<div class="signal-timestamp">' + formatTimestamp(s.timestamp || s.received_at) + '</div></div>';
+			}).join('');
+			gridEl.innerHTML = html;
+		}
+		function load() {
+			const cryptoGrid = document.getElementById('crypto-grid');
+			const stockGrid = document.getElementById('stock-grid');
+			const cryptoMeta = document.getElementById('crypto-meta');
+			const stockMeta = document.getElementById('stock-meta');
+			cryptoGrid.innerHTML = '<div class="loading">Loading…</div>';
+			stockGrid.innerHTML = '<div class="loading">Loading…</div>';
+			fetch('signals.json')
+				.then(function(r) {
+					if (!r.ok) throw new Error('Failed to load signals');
+					return r.json();
+				})
+				.then(function(data) {
+					const signals = Array.isArray(data) ? data : [data];
+					const stockSignals = [];
+					const cryptoSignals = [];
+					signals.forEach(function(s) {
+						if (isStockSignal(s)) stockSignals.push(s); else cryptoSignals.push(s);
+					});
+					const oneDayAgo = Date.now() - 24 * 60 * 60 * 1000;
+					const sevenDaysAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
+					const oldCrypto = cryptoSignals.filter(function(s) {
+						const t = new Date(s.timestamp || s.received_at).getTime();
+						return t <= oneDayAgo;
+					});
+					const oldStocks = stockSignals.filter(function(s) {
+						const t = new Date(s.timestamp || s.received_at).getTime();
+						return t <= sevenDaysAgo;
+					});
+					renderCards(oldCrypto, cryptoGrid, cryptoMeta);
+					renderCards(oldStocks, stockGrid, stockMeta);
+				})
+				.catch(function(err) {
+					cryptoGrid.innerHTML = '<div class="error">Could not load signals. ' + err.message + '</div>';
+					stockGrid.innerHTML = '';
+					cryptoMeta.textContent = '';
+					stockMeta.textContent = '';
+				});
+		}
+		document.addEventListener('DOMContentLoaded', load);
+	</script>
+</body>
+</html>

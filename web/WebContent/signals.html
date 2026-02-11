@@ -674,6 +674,16 @@
 				min-height: 200px;
 			}
 			
+			/* Top nav must sit above fixed .signals-header (z-index 1000) so links are clickable */
+			nav {
+				position: relative;
+				z-index: 1001;
+			}
+			nav .content {
+				position: relative;
+				z-index: 1;
+			}
+			
 			/* Mobile responsive styles */
 			@media (max-width: 768px) {
 				/* Navigation - stack vertically on mobile */
@@ -1635,8 +1645,6 @@
 			#stock-signals-container,
 			#signals-grid,
 			#stock-signals-grid,
-			#old-signals-grid,
-			#stock-historical-grid,
 			.asset-list-grid {
 				visibility: visible !important;
 				opacity: 1 !important;
@@ -1762,7 +1770,8 @@
 				<a href="catalog.html">🎵 CATALOG</a>
 				<a href="signals.html">🚀 Crypto Signals</a>
 				<a href="#" onclick="event.preventDefault(); showStockSignals(); return false;">📈 Stock Signals</a>
-				<a href="#" onclick="event.preventDefault(); showHistoricalSignals(); return false;">📜 Historical Signals</a>
+				<a href="signals/historical.html">📜 Historical Signals</a>
+				<a href="#code-download-section" onclick="event.preventDefault(); showCodeForSale(); return false;">📥 Downloadable Code (optional)</a>
 				<a href="#" onclick="event.preventDefault(); showSubscriptionModal(); return false;" class="subscribe-nav-link" style="border-radius: 6px; padding: 8px 16px; margin-left: 10px;">
 					💳 Subscribe
 				</a>
@@ -1778,6 +1787,7 @@
 				<a href="#" onclick="event.preventDefault(); showStockSignals(); return false;">📈 Stocks</a>
 				<a href="#" onclick="event.preventDefault(); showHistoricalSignals(); return false;">📜 Historical</a>
 				<a href="#asset-list" onclick="event.preventDefault(); showAssetList(); return false;">📋 Assets</a>
+				<a href="#code-download-section" onclick="event.preventDefault(); showCodeForSale(); return false;">📥 Downloadable Code (optional)</a>
 				<a href="#" onclick="event.preventDefault(); showSubscriptionModal(); return false;" class="subscribe-nav-link">💳 Subscribe</a>
 				<a href="#" onclick="event.preventDefault(); toggleBullAudio(); return false;" class="bull-nav-link" title="Click to play music">
 					<img src="img/Angry Bull 3.png" alt="Click to play music" />
@@ -2790,40 +2800,7 @@
 			</div>
 		</div>
 		
-		<!-- Stock Historical Signals Section (7+ days old) - Hidden by default -->
-		<div id="stock-historical-container" style="margin: 40px 0 !important; padding: 0; display: none;">
-			<div style="text-align: center; margin-bottom: 20px;">
-				<h2 style="color: var(--primary-color); margin-bottom: 15px;">📈 Historical Stock & ETF Signals (7+ Days Old)</h2>
-				<p style="color: rgba(255, 255, 255, 0.5); font-size: 14px; margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
-					Stock signals older than 7 days are archived here. Stocks are long-term plays, so these signals remain relevant for extended periods.<br>
-					<span id="stock-historical-count-display" style="display: block; margin-top: 10px; color: rgba(255, 255, 255, 0.7); font-weight: bold;">(<span id="stock-historical-count">0</span> archived stock signals)</span>
-				</p>
-			</div>
-			
-			<div id="stock-historical-grid" class="signals-grid" style="display: grid; background: rgba(76, 175, 80, 0.1); border: 2px solid rgba(76, 175, 80, 0.3); padding: 20px; opacity: 0.8;">
-				<!-- Historical stock signals will be rendered here -->
-			</div>
-		</div>
-		
-		<!-- Old Signals Section (Crypto 1+ days old) - Hidden by default -->
-		<div class="refresh-info" style="display: none;">
-			Auto-refreshing every 30 seconds
-		</div>
-		
-		<div id="old-signals-container" style="margin: 20px 0 !important; padding: 0; display: none;">
-			<div style="text-align: center; margin-bottom: 20px;">
-				<h2 style="color: var(--primary-color); margin-bottom: 15px;">📜 Historical Crypto Signals (1+ Days Old)</h2>
-				<p style="color: rgba(255, 255, 255, 0.5); font-size: 14px; margin-top: 10px; max-width: 600px; margin-left: auto; margin-right: auto;">
-					Crypto signals older than 1 day are archived here for transparency and backtesting.<br>
-					The longer a signal has aged without being edited, the more proof it provides against repainting.
-					<span id="old-signals-count-display" style="display: block; margin-top: 10px; color: rgba(255, 255, 255, 0.7); font-weight: bold;">(<span id="old-signals-count">0</span> archived crypto signals)</span>
-				</p>
-			</div>
-			
-			<div id="old-signals-grid" class="signals-grid" style="display: grid; background: rgba(0, 0, 0, 0.3); border: 2px solid rgba(255, 255, 255, 0.2); padding: 20px; opacity: 0.7;">
-				<!-- Old crypto signals will be rendered here -->
-			</div>
-		</div>
+		<!-- Historical signals moved to signals/historical.html -->
 		
 		<!-- Other Tips & Tricks Section -->
 		<div id="other-tips-tricks" class="indicators-section" style="margin: 60px 0 40px 0; background: rgba(33, 150, 243, 0.1); border: 2px solid rgba(33, 150, 243, 0.5);">
@@ -3934,7 +3911,6 @@
 			function switchToStocks() {
 				const cryptoContainer = document.getElementById('crypto-signals-container');
 				const stockContainer = document.getElementById('stock-signals-container');
-				const stockHistoricalContainer = document.getElementById('stock-historical-container');
 				const assetListContainer = document.getElementById('asset-list-container');
 				
 				// Hide crypto and asset list, show stocks
@@ -3957,31 +3933,7 @@
 			}
 			
 			function showHistoricalSignals() {
-				const oldContainer = document.getElementById('old-signals-container');
-				const oldGrid = document.getElementById('old-signals-grid');
-				
-				if (!oldContainer) return;
-				
-				// Toggle visibility
-				if (oldContainer.style.display === 'none' || oldContainer.style.display === '') {
-					// Show historical crypto signals
-					oldContainer.style.display = 'block';
-					if (oldGrid) {
-						oldGrid.style.display = 'grid';
-					}
-					// Scroll to the historical signals section
-					setTimeout(() => {
-						oldContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-					}, 100);
-				} else {
-					// Hide historical signals
-					oldContainer.style.display = 'none';
-					if (oldGrid) {
-						oldGrid.style.display = 'none';
-					}
-					// Scroll back to top
-					window.scrollTo({ top: 0, behavior: 'smooth' });
-				}
+				window.location.href = 'signals/historical.html';
 			}
 			
 			function showAssetList() {
@@ -4689,20 +4641,14 @@
 				window.allSignals = signals;
 				
 				const grid = document.getElementById('signals-grid'); // Crypto recent
-				const oldGrid = document.getElementById('old-signals-grid'); // Crypto historical
-				const oldContainer = document.getElementById('old-signals-container'); // Crypto historical container
 				const stockGrid = document.getElementById('stock-signals-grid'); // Stock recent
 				const stockContainer = document.getElementById('stock-signals-container'); // Stock recent container
-				const stockHistoricalGrid = document.getElementById('stock-historical-grid'); // Stock historical
-				const stockHistoricalContainer = document.getElementById('stock-historical-container'); // Stock historical container
 				
 				console.log('renderSignals called with', signals.length, 'signals');
 				
 				if (!signals || signals.length === 0) {
 					grid.innerHTML = '<div class="empty-state"><h3>⏳ Waiting for signals...</h3><p>Signals will appear here automatically when your trading bots generate them</p></div>';
-					oldContainer.style.display = 'none';
 					stockContainer.style.display = 'none';
-					stockHistoricalContainer.style.display = 'none';
 					return;
 				}
 				
@@ -4758,17 +4704,7 @@
 					renderSignalCards(recentCrypto, grid);
 				}
 				
-				// Render crypto historical (hidden by default)
-				if (oldCrypto.length > 0) {
-					oldContainer.style.display = 'none';
-					document.getElementById('old-signals-count').textContent = oldCrypto.length;
-					if (document.getElementById('old-signals-count-display')) {
-						document.getElementById('old-signals-count-display').style.display = 'block';
-					}
-					renderSignalCards(oldCrypto, oldGrid);
-				} else {
-					oldContainer.style.display = 'none';
-				}
+				// Historical crypto: see signals/historical.html
 				
 				// Render STOCK signals (only if user has access - trial active or subscribed)
 				if (!hasAccess()) {
@@ -4802,7 +4738,7 @@
 						renderTop3Signals(signals);
 						// Stock container visibility controlled by navigation buttons, don't override here
 					} else {
-						stockGrid.innerHTML = '<div class="empty-state"><h3>⏳ No recent stock signals</h3><p>Check historical stock signals or wait for new signals</p></div>';
+						stockGrid.innerHTML = '<div class="empty-state"><h3>⏳ No recent stock signals</h3><p><a href="signals/historical.html" style="color: var(--primary-color);">View historical signals</a> or wait for new signals</p></div>';
 						// Still try to render Top 3 from all signals
 						renderTop3Signals(signals);
 						// Stock container visibility controlled by navigation buttons, don't override here
@@ -4818,17 +4754,7 @@
 					}
 				}
 				
-				// Render stock historical (hidden by default)
-				if (oldStocks.length > 0) {
-					stockHistoricalContainer.style.display = 'none';
-					document.getElementById('stock-historical-count').textContent = oldStocks.length;
-					if (document.getElementById('stock-historical-count-display')) {
-						document.getElementById('stock-historical-count-display').style.display = 'block';
-					}
-					renderSignalCards(oldStocks, stockHistoricalGrid);
-				} else {
-					stockHistoricalContainer.style.display = 'none';
-				}
+				// Historical stock signals are on signals/historical.html
 				
 				// Update missing prices asynchronously (after all cards are rendered)
 				// Keep latest signals in memory for manual refresh
@@ -5478,8 +5404,6 @@
 				const grids = [
 					document.getElementById('signals-grid'),
 					document.getElementById('stock-signals-grid'),
-					document.getElementById('old-signals-grid'),
-					document.getElementById('stock-historical-grid'),
 					document.getElementById('crypto-asset-list'),
 					document.getElementById('stock-asset-list'),
 					document.getElementById('top-signals-section'),
@@ -6977,15 +6901,34 @@ plot(show_ema ? ema_val : na, title="EMA", color=color.new(color.orange, 0), lin
 // - Increase R (measurement_noise) to smooth more (slower, less noisy).
 // - Future idea: tiny on-chart mini-sweep of a few Q/R presets over recent bars to pick the best combo (lightweight pseudo backtest).`;
 
+				// Store Shorter's Fib code in global object for download
+				window.codeDownloads['fib_382_shorters'] = `//@version=5
+indicator("Shorter's Fib", overlay=true)
+
+// Rolling lookback for dynamic fib that moves with price
+lookback_bars = input.int(150, "Lookback Bars", minval=10, maxval=2000)
+
+// Highest/lowest over lookback window
+highPrice = ta.highest(high, lookback_bars)
+lowPrice = ta.lowest(low, lookback_bars)
+
+// 0.382 retracement level (shorter's fib)
+fib382 = lowPrice + (highPrice - lowPrice) * 0.382
+
+// Plot in gold (matches Mega Bot coloring)
+plot(fib382, color=#FFD700, linewidth=2, title="Fib 0.382")`;
+
 				const dxyCode = window.codeDownloads['dxy_indicator'];
 				const mfiObvCode = window.codeDownloads['normalized_mfi_obv'];
 				const parabolaCode = window.codeDownloads['parabola_detector'];
 				const kalmanCode = window.codeDownloads['kalman_ma'];
+				const fib382Code = window.codeDownloads['fib_382_shorters'];
 				// Escape code for HTML display
 				const escapedDxyCode = dxyCode.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 				const escapedMfiObvCode = mfiObvCode.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 				const escapedParabolaCode = parabolaCode.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 				const escapedKalmanCode = kalmanCode.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+				const escapedFib382Code = fib382Code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
 				
 				container.innerHTML = '<div style="margin-bottom: 30px;">' +
 					'<div style="background: rgba(255, 193, 7, 0.1); border: 1px solid rgba(255, 193, 7, 0.3); border-radius: 8px; padding: 20px; margin-bottom: 20px;">' +
@@ -7068,11 +7011,31 @@ plot(show_ema ? ema_val : na, title="EMA", color=color.new(color.orange, 0), lin
 					'</div>' +
 					'</div>' +
 					'<div style="margin-bottom: 30px;">' +
+					'<div style="background: rgba(255, 193, 7, 0.1); border: 1px solid rgba(255, 193, 7, 0.3); border-radius: 8px; padding: 20px; margin-bottom: 20px;">' +
+					'<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 15px;">' +
+					'<div>' +
+					'<h3 style="color: #ffc107; font-size: 20px; margin: 0 0 5px 0; font-weight: bold;">Shorter\'s Fib (Pine Script)</h3>' +
+					'<p style="color: rgba(255, 255, 255, 0.7); font-size: 14px; margin: 0;"><strong style="color: #ffc107;">Use case:</strong> The Shorter\'s Fib is a dynamic 0.382 Fibonacci retracement level that moves with price—like a moving average, but for the key 38.2% retrace. It plots a gold line on your chart so you can see where price sits relative to that level (e.g. avoid longs just underneath it, or use it as a reference for shorts). Configurable rolling lookback. This code is written in <strong>TradingView\'s proprietary language (Pine Script)</strong> and is for use as an indicator on TradingView only.</p>' +
+					'</div>' +
+					'<button onclick="downloadCode(\'fib_382_shorters.pine\', \'fib_382_shorters\')" ' +
+					'style="background: linear-gradient(135deg, #4caf50 0%, #45a049 100%); color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4); white-space: nowrap;" ' +
+					'onmouseover="this.style.transform=\'translateY(-2px)\'; this.style.boxShadow=\'0 6px 20px rgba(76, 175, 80, 0.6)\';" ' +
+					'onmouseout="this.style.transform=\'translateY(0)\'; this.style.boxShadow=\'0 4px 15px rgba(76, 175, 80, 0.4)\';">' +
+					'📥 Download .pine' +
+					'</button>' +
+					'</div>' +
+					'<details style="margin-top: 15px;">' +
+					'<summary style="color: rgba(255, 255, 255, 0.9); cursor: pointer; font-weight: 500; font-size: 14px; padding: 10px; background: rgba(0, 0, 0, 0.2); border-radius: 4px;">View Code Preview</summary>' +
+					'<pre style="background: rgba(0, 0, 0, 0.5); padding: 15px; border-radius: 6px; overflow-x: auto; margin-top: 10px; border: 1px solid rgba(255, 193, 7, 0.2); max-height: 400px; overflow-y: auto;"><code style="color: rgba(255, 255, 255, 0.9); font-family: \'Courier New\', monospace; font-size: 13px; line-height: 1.5; white-space: pre;">' + escapedFib382Code + '</code></pre>' +
+					'</details>' +
+					'</div>' +
+					'</div>' +
+					'<div style="margin-bottom: 30px;">' +
 					'<div style="background: rgba(33, 150, 243, 0.10); border: 1px solid rgba(33, 150, 243, 0.45); border-radius: 8px; padding: 20px; margin-bottom: 20px;">' +
 					'<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; flex-wrap: wrap; gap: 15px;">' +
 					'<div>' +
 					'<h3 style="color: rgba(255, 255, 255, 0.95); font-size: 20px; margin: 0 0 5px 0; font-weight: bold;">YouTube API Manager (Python)</h3>' +
-					'<p style="color: rgba(255, 255, 255, 0.75); font-size: 14px; margin: 0;"><strong style="color: rgba(33, 150, 243, 0.95);">Safe public version:</strong> no passwords/keys hardcoded. OAuth secrets/tokens are intentionally stored outside the code (do NOT upload those JSON files).</p>' +
+					'<p style="color: rgba(255, 255, 255, 0.75); font-size: 14px; margin: 0;"><strong style="color: rgba(33, 150, 243, 0.95);">Programmatically Edit All Your Youtube Videos in Minutes, not Hours:</strong>. Especially useful if you need to add one URL link to hundreds of videos, or if you are tired of typing in hash tags repeatedly.</p>' +
 					'</div>' +
 					'<a href="youtube_api_public.py" download ' +
 					'style="display: inline-block; background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%); color: white; border: none; padding: 12px 24px; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(33, 150, 243, 0.45); white-space: nowrap; text-decoration: none;" ' +
@@ -7337,10 +7300,10 @@ plot(show_ema ? ema_val : na, title="EMA", color=color.new(color.orange, 0), lin
 				</div>
 			</div>
 			<div id="chatPrompts">
-				<div class="chat-prompt">What are today's top 3 buys and top sells?</div>
-				<div class="chat-prompt">Do you have an arrangement of this song?</div>
-				<div class="chat-prompt">What is a moving average crossover strategy?</div>
-				<div class="chat-prompt">What guitar techniques are used in jazz?</div>
+				<div class="chat-prompt">What are today's top 3 buys and sells?</div>
+				<div class="chat-prompt">Do you have an arrangement for any songs written by The Beatles?</div>
+				<div class="chat-prompt">What assets are inside the ETF XLE?</div>
+				<div class="chat-prompt">What letter names are inside A harmonic minor?</div>
 			</div>
 			<form id="chatForm">
 				<input id="chatInput" type="text" autocomplete="off" placeholder="Ask a question..." />
