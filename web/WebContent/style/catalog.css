@@ -1,5 +1,14 @@
 /* Catalog Page Styles */
 
+/* Ensure top nav and its links stay clickable (above modal z-index 1000 and any overlays) */
+body.catalog-page nav {
+    z-index: 1001;
+}
+body.catalog-page nav .content {
+    position: relative;
+    z-index: 1;
+}
+
 /* Catalog page layout: nav is fixed and can be tall on mobile, so give the page room. */
 body.catalog-page {
     /* Fallback only — JS will override this to match the real nav height */

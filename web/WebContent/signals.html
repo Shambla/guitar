@@ -1402,13 +1402,15 @@
 				animation-play-state: paused;
 			}
 			.ticker-item {
-				display: inline-flex;
+				display: inline-flex !important;
 				align-items: center;
 				gap: 6px;
 				white-space: nowrap;
 				color: rgba(255, 255, 255, 0.9);
 				font-size: 14px;
 				font-weight: 600;
+				visibility: visible !important;
+				opacity: 1 !important;
 			}
 			.ticker-item .ticker-sym {
 				color: #ffc107;
@@ -2761,7 +2763,7 @@
 								<li><strong>Entry Timing</strong> - Standard signals may benefit from additional confirmation time.</li>
 								<li><strong>Risk Tolerance</strong> - Conservative traders focus on Ultra High and Best; aggressive traders can trade all levels</li>
 								<li><strong>Track Performance</strong> - Monitor which conviction levels work best for your trading style and market conditions</li>
-								<li><strong>Not Guarantees</strong> - Higher conviction = higher probability, but no signal is perfect. Always use stop-losses.</li>
+								<li><strong>No Guarantees</strong> - Higher conviction = higher probability, but no signal is perfect. Stop losses, especially trailing, ATR-based stop losses are highly recommended, unless you have a good reason not to do so, such as having an extremely long time horizon.</li>
 						</ul>
 						</div>
 					</div>
@@ -3409,7 +3411,7 @@
 						return price;
 					}
 				} catch (error) {
-					// Fallback: Binance (often avoids CoinGecko rate limits for major coins)
+					// Fallback: Binance (often avoids CoinGecko rate limits for major coins). Note: Binance can trigger CORS in browser if blocked or when not served from same origin.
 					try {
 						const base = _normalizeSymbolForPrice(symbol);
 						if (base) {
