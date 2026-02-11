@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-02-11T07:02:18.738471Z",
+    "received_at": "2026-02-11T07:02:18.738923Z",
+    "id": "2026-02-11T07:02:18.738923Z-CRV/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "XLI",
     "price": 174.31,
@@ -160,27 +171,6 @@
     "buy_position_multiplier": 1.5,
     "sell_conviction": 0.3,
     "sell_persistence": 0,
-    "sell_position_multiplier": 0.5
-  },
-  {
-    "action": "buy",
-    "symbol": "GLD",
-    "price": 476.1,
-    "quantity": null,
-    "source": "MAIN_stock_strat14",
-    "note": "buy 18/41 | sell 14/40 | Strength=2/10 | MTF:W+M",
-    "timestamp": "2026-01-28T05:01:44.655323Z",
-    "received_at": "2026-01-28T05:01:44.655323Z",
-    "id": "2026-01-28T05:01:44.655323Z-GLD-buy",
-    "buy_score": 18,
-    "sell_score": 14,
-    "total_buy_components": 41,
-    "total_sell_components": 40,
-    "buy_conviction": 0.7390243902439024,
-    "buy_persistence": 31,
-    "buy_position_multiplier": 1.5,
-    "sell_conviction": 0.38,
-    "sell_persistence": 1,
     "sell_position_multiplier": 0.5
   },
   {
