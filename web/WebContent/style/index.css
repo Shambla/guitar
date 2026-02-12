@@ -974,15 +974,21 @@ img:hover {
 }
 
 /* Section animations - Only apply to specific sections, not all divs */
-.content > div:not(.left-half):not(.right-half):not(#bio-right):not(#performance-details):not(#contact-details):not(#page-navigation) {
+.content > div:not(.left-half):not(.right-half):not(#bio-right):not(#performance-details):not(#contact-details):not(#page-navigation):not(#ticker-tape-wrap) {
 	opacity:		0;
 	transform:		translateY(15px);
 	transition:		opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
 }
 
-.content > div:not(.left-half):not(.right-half):not(#bio-right):not(#performance-details):not(#contact-details):not(#page-navigation).animate {
+.content > div:not(.left-half):not(.right-half):not(#bio-right):not(#performance-details):not(#contact-details):not(#page-navigation):not(#ticker-tape-wrap).animate {
 	opacity:		1;
 	transform:		translateY(0);
+}
+
+/* Signals page: keep all sections visible (no scroll-in animation) */
+.signals-container.content > div {
+	opacity:		1;
+	transform:		none;
 }
 
 /* List item animations - Make subtle, only if they have the class */

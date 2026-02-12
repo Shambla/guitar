@@ -1376,7 +1376,7 @@
 				color: rgba(255, 255, 255, 0.7);
 			}
 			
-			/* Scrolling ticker tape - symbol + price */
+			/* Scrolling ticker tape - symbol + price (APIs: CoinGecko then Binance fallback for crypto, Yahoo for stocks) */
 			#ticker-tape-wrap {
 				overflow: hidden;
 				background: rgba(0, 0, 0, 0.5);
@@ -1386,17 +1386,26 @@
 				margin: 15px 0;
 				position: relative;
 				z-index: 10;
+				min-height: 44px;
+				visibility: visible !important;
+				opacity: 1 !important;
+				display: block !important;
 			}
 			#ticker-tape {
-				display: flex;
+				display: flex !important;
 				animation: tickerScroll 80s linear infinite;
 				width: max-content;
+				visibility: visible !important;
+				opacity: 1 !important;
 			}
 			.ticker-track {
-				display: flex;
+				display: flex !important;
 				gap: 24px;
 				flex-shrink: 0;
 				padding: 0 24px;
+				visibility: visible !important;
+				opacity: 1 !important;
+				min-height: 24px;
 			}
 			#ticker-tape:hover {
 				animation-play-state: paused;
