@@ -3085,7 +3085,8 @@
 					for (const [k, v] of Object.entries(parsed)) {
 						if (!v || typeof v !== 'object') continue;
 						if (typeof v.price !== 'number' || typeof v.timestamp !== 'number') continue;
-						priceCache.set(k, { price: v.price, timestamp: v.timestamp, source: v.source || '' });
+						const changePercent = (v.changePercent != null && typeof v.changePercent === 'number') ? v.changePercent : null;
+						priceCache.set(k, { price: v.price, timestamp: v.timestamp, source: v.source || '', changePercent });
 					}
 				} catch (e) {
 					// ignore
@@ -3116,11 +3117,12 @@
 				return { ...entry, cacheKey: k };
 			}
 			
-			function setCachedPriceEntry(symbol, isStock, price, source) {
+			function setCachedPriceEntry(symbol, isStock, price, source, changePercent) {
 				const k = _cacheKeyForSymbol(symbol, isStock);
 				if (!k) return;
 				if (typeof price !== 'number' || !(price > 0)) return;
-				priceCache.set(k, { price, timestamp: Date.now(), source: source || '' });
+				const pct = (changePercent != null && typeof changePercent === 'number' && !Number.isNaN(changePercent)) ? changePercent : null;
+				priceCache.set(k, { price, timestamp: Date.now(), source: source || '', changePercent: pct });
 				_persistPriceCacheToStorage();
 			}
 			
@@ -3476,18 +3478,17 @@
 						data = await tryYahoo('query2');
 					}
 					
-					// Extract price from Yahoo Finance response
+					// Extract price and optional % change from Yahoo Finance response
 					if (data.chart && data.chart.result && data.chart.result.length > 0) {
 						const result = data.chart.result[0];
-						if (result.meta && result.meta.regularMarketPrice) {
-							const price = result.meta.regularMarketPrice;
-							setCachedPriceEntry(symbol, true, price, 'yahoo');
-							return price;
-						}
-						// Fallback to previous close if regularMarketPrice not available
-						if (result.meta && result.meta.previousClose) {
-							const price = result.meta.previousClose;
-							setCachedPriceEntry(symbol, true, price, 'yahoo_prev_close');
+						const meta = result.meta || {};
+						const price = meta.regularMarketPrice ?? meta.previousClose;
+						if (price != null && typeof price === 'number' && price > 0) {
+							let changePercent = null;
+							if (meta.regularMarketPrice != null && meta.previousClose != null && meta.previousClose > 0) {
+								changePercent = ((meta.regularMarketPrice - meta.previousClose) / meta.previousClose) * 100;
+							}
+							setCachedPriceEntry(symbol, true, price, meta.regularMarketPrice != null ? 'yahoo' : 'yahoo_prev_close', changePercent);
 							return price;
 						}
 					}
@@ -3725,34 +3726,36 @@
 					const price = (cached && typeof cached.price === 'number') ? cached.price : null;
 					return {
 						displaySym: getTickerDisplaySymbol(symbol),
-						priceStr: formatPriceTicker(price)
+						priceStr: formatPriceTicker(price),
+						changeStr: formatChangePercent(cached && cached.changePercent)
 					};
 				});
 				renderTickerTapeItems(itemsFromCache);
 				
-				// Phase 2: fetch missing prices in background, then re-render
-				const items = [];
+				// Phase 2: fetch missing prices in background, then re-render (cache now includes changePercent when API provides it)
 				const RATE_LIMIT_MS = 800;
 				for (const { symbol, isStock } of TICKER_SYMBOLS) {
-					let price = null;
 					const cached = getCachedPriceEntry(symbol, isStock);
-					if (cached && typeof cached.price === 'number') {
-						price = cached.price;
-					} else {
+					if (!cached || typeof cached.price !== 'number') {
 						try {
 							if (isStock) {
-								price = await fetchStockPrice(symbol);
+								await fetchStockPrice(symbol);
 							} else {
-								price = await fetchPriceFromCoinGecko(symbol);
+								await fetchPriceFromCoinGecko(symbol);
 							}
 						} catch (e) { /* ignore */ }
 						await new Promise(r => setTimeout(r, RATE_LIMIT_MS));
 					}
-					items.push({
-						displaySym: getTickerDisplaySymbol(symbol),
-						priceStr: formatPriceTicker(price)
-					});
 				}
+				const items = TICKER_SYMBOLS.map(({ symbol, isStock }) => {
+					const cached = getCachedPriceEntry(symbol, isStock);
+					const price = (cached && typeof cached.price === 'number') ? cached.price : null;
+					return {
+						displaySym: getTickerDisplaySymbol(symbol),
+						priceStr: formatPriceTicker(price),
+						changeStr: formatChangePercent(cached && cached.changePercent)
+					};
+				});
 				renderTickerTapeItems(items);
 			}
 			
