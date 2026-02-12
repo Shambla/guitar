@@ -1,6 +1,28 @@
 [
   {
     "action": "sell",
+    "symbol": "DASH/USD",
+    "quantity": 2.96524065,
+    "price": 34.72,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-02-12T14:09:26.035566Z",
+    "received_at": "2026-02-12T14:09:26.035580Z",
+    "id": "2026-02-12T14:09:26.035580Z-DASH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 421.33999999,
+    "price": 0.2384,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-02-12T14:09:25.738927Z",
+    "received_at": "2026-02-12T14:09:25.738949Z",
+    "id": "2026-02-12T14:09:25.738949Z-CRV/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
     "price": 1993.01,
@@ -2985,27 +3007,5 @@
     "timestamp": "2026-02-08T17:00:04.347994Z",
     "received_at": "2026-02-08T17:00:04.348015Z",
     "id": "2026-02-08T17:00:04.348015Z-DASH/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "DASH/USD",
-    "quantity": 2.721829069134458,
-    "price": 36.7,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-02-08T14:05:56.203711Z",
-    "received_at": "2026-02-08T14:05:56.203728Z",
-    "id": "2026-02-08T14:05:56.203728Z-DASH/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.09512674,
-    "price": 2126.53,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-02-08T14:00:33.610236Z",
-    "received_at": "2026-02-08T14:00:33.610256Z",
-    "id": "2026-02-08T14:00:33.610256Z-ETH/USD-sell"
   }
 ]
