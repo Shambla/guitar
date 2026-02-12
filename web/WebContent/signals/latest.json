@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "SUI/USD",
-  "quantity": 111.11111111111111,
-  "price": 0.8991,
+  "action": "sell",
+  "symbol": "ETH/USD",
+  "quantity": 0.0,
+  "price": 1940.29,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-02-11T21:00:14.684203Z",
-  "received_at": "2026-02-11T21:00:14.684234Z",
-  "id": "2026-02-11T21:00:14.684234Z-SUI/USD-buy"
+  "timestamp": "2026-02-12T00:00:12.228357Z",
+  "received_at": "2026-02-12T00:00:12.228377Z",
+  "id": "2026-02-12T00:00:12.228377Z-ETH/USD-sell"
 }
