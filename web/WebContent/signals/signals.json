@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-02-13T12:00:24.003294Z",
+    "received_at": "2026-02-13T12:00:24.003415Z",
+    "id": "2026-02-13T12:00:24.003415Z-RENDER/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "XLI",
     "price": 174.84,
     "quantity": null,
@@ -2966,16 +2977,5 @@
     "timestamp": "2026-02-08T21:35:05.494556Z",
     "received_at": "2026-02-08T21:35:05.494779Z",
     "id": "2026-02-08T21:35:05.494779Z-DASH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "DASH",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-02-08T20:58:37.910872Z",
-    "received_at": "2026-02-08T20:58:37.910888Z",
-    "id": "2026-02-08T20:58:37.910888Z-DASH-sell"
   }
 ]
