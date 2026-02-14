@@ -7708,6 +7708,28 @@ plot(fib382, color=#FFD700, linewidth=2, title="Fib 0.382")`;
 			})();
 		</script>
 
+		<!-- MIDI Tools (Python scripts for .mid and MusicXML) -->
+		<div id="midi-tools-section" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 30px auto !important; padding: 20px !important; background: rgba(0, 0, 0, 0.5) !important; border: 3px solid #00bcd4 !important; border-radius: 12px; position: relative !important; z-index: 200 !important; width: calc(100% - 40px) !important; max-width: 1400px !important; box-shadow: 0 4px 20px rgba(0, 188, 212, 0.35) !important;">
+			<div style="margin-bottom: 12px;">
+				<h3 style="color: #4dd0e1 !important; font-size: 20px; margin: 0 0 8px 0;">🎹 MIDI Tools</h3>
+				<span style="color: rgba(255, 255, 255, 0.85) !important; font-size: 13px;">Command-line Python scripts for cleaning and converting MIDI and MusicXML scores.</span>
+			</div>
+			<div style="margin-top: 20px;">
+				<h4 style="color: #80deea !important; font-size: 16px; margin: 0 0 6px 0;">MIDI_manipulator_MASTER.py</h4>
+				<p style="color: rgba(255, 255, 255, 0.8) !important; font-size: 13px; margin: 0 0 8px 0; line-height: 1.5;">
+					Command-line tool for .mid files (uses the mido library). It can merge all tracks into one, raise notes below a minimum pitch by octaves (e.g. for guitar range), remove unison duplicate notes and redundant pitch classes in chords, quantize note timing to a grid (whole through 32nd), and add guitar string or finger number annotations. Can also convert 2-staff piano MIDI to 1-staff guitar-style. Run with --input and --output plus optional flags (e.g. --merge-tracks, --min-pitch 40, --remove-unisons, --quantize sixteenth, --auto-number).
+				</p>
+				<a href="scripts/MIDI_manipulator_MASTER.py" download style="color: #4dd0e1; text-decoration: underline;">Download MIDI_manipulator_MASTER.py</a>
+			</div>
+			<div style="margin-top: 24px;">
+				<h4 style="color: #80deea !important; font-size: 16px; margin: 0 0 6px 0;">MIDI_manipulator_XML_MASTER.py</h4>
+				<p style="color: rgba(255, 255, 255, 0.8) !important; font-size: 13px; margin: 0 0 8px 0; line-height: 1.5;">
+					Command-line tool for MusicXML scores (uses music21). It can merge parts, raise notes below a minimum pitch by octaves, remove unison duplicates and redundant pitch classes, quantize offsets/durations to a grid, add text (lyrics, expressions, fingering, articulations) to notes or by pitch/offset, and auto-annotate guitar string or finger numbers. Input and output are MusicXML files. Run with --input and --output plus optional flags (e.g. --merge-parts, --min-pitch 40, --remove-unisons, --quantize sixteenth, --add-text, --auto-number, --auto-number-mode finger).
+				</p>
+				<a href="scripts/MIDI_manipulator_XML_MASTER.py" download style="color: #4dd0e1; text-decoration: underline;">Download MIDI_manipulator_XML_MASTER.py</a>
+			</div>
+		</div>
+
 		<!-- Economic Calendar (US: FOMC / CPI / Jobs / GDP, etc.) -->
 		<div id="economic-calendar-section" style="display: block !important; visibility: visible !important; opacity: 1 !important; margin: 30px auto !important; padding: 20px !important; background: rgba(0, 0, 0, 0.5) !important; border: 3px solid #2196f3 !important; border-radius: 12px; position: relative !important; z-index: 200 !important; width: calc(100% - 40px) !important; max-width: 1400px !important; box-shadow: 0 4px 20px rgba(33, 150, 243, 0.35) !important;">
 			<div style="margin-bottom: 12px; display: flex; align-items: center; flex-wrap: wrap; gap: 10px;">

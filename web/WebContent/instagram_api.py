@@ -7,7 +7,7 @@ READ THIS FIRST (Secrets / Tokens)
 ------------------------------------------------------------------------------
 This script does NOT hardcode any Instagram/Meta secrets. It reads credentials
 from environment variables or local files:
-
+  - Instagram media folder = GitHub/guitar/web/WebContent/img/uploading_folder/
   - Long-lived User Access Token (for Instagram Graph API)
   - Optional: Facebook App ID and App Secret (for token exchange/refresh)
 
@@ -54,6 +54,9 @@ except ImportError:
 # =============================================================================
 # CONFIGURATION
 # =============================================================================
+
+# Folder where you store media files to upload (path relative to this script).
+MEDIA_UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "img", "uploading_folder")
 
 # JSON file with at least: {"access_token": "..."}
 # Optional: "user_id" (Instagram Business Account ID) to avoid a profile lookup.
