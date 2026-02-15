@@ -185,6 +185,7 @@ function displayCatalog(items) {
             const captionText = isMp3Audio ? 'MP3 audio file' : 'Preview image';
 
             const imgAlt = isMp3Audio ? `MP3 audio: ${item.title}` : `Preview of ${item.title}`;
+            const difficultyHtml = isMp3Audio ? '' : `<p class="difficulty ${difficultyClass}">${item.difficulty}</p>`;
             itemDiv.innerHTML = `
                 <div class="preview-screen">
                     <img class="live-preview" src="${previewImageSrc}" alt="${imgAlt}"
@@ -194,7 +195,7 @@ function displayCatalog(items) {
                 <div class="composer">${item.composer}</div>
                 <h3>${item.title}</h3>
                 <span class="category-tag">${item.category}</span>
-                <p class="difficulty ${difficultyClass}">${item.difficulty}</p>
+                ${difficultyHtml}
                 <p class="price">${item.price}</p>
                 <a class="link-button" href="${item.sheet_music_direct_url}" target="_blank" rel="noopener">Open Listing</a>
             `;
