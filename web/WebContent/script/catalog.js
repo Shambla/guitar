@@ -38,8 +38,14 @@ function handleImageError(img, originalSrc, basePath) {
     if (originalSrc.includes('previews/') && !originalSrc.includes('img/previews/')) {
         const filename = originalSrc.split('/').pop();
         img.src = basePath + 'img/previews/' + filename;
+    } else if (originalSrc.includes('mp3_logo')) {
+        // MP3 logo failed; keep trying same path (no sheet-music fallback for audio items)
+        img.src = basePath + 'img/mp3_logo.png';
+        if (img.nextElementSibling) {
+            img.nextElementSibling.textContent = 'MP3 audio file';
+        }
     } else {
-        // Final fallback
+        // Final fallback for sheet music previews
         img.src = basePath + 'img/sheet.png';
         if (img.nextElementSibling) {
             img.nextElementSibling.textContent = 'Preview image not found';
@@ -155,7 +161,8 @@ function displayCatalog(items) {
 
             // Base path from current page location
             const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-            let previewImageSrc = item.preview_image || 'img/sheet.png';
+            const isMp3Audio = (item.category || '').toString().toLowerCase().includes('mp3');
+            let previewImageSrc = isMp3Audio ? 'img/mp3_logo.png' : (item.preview_image || 'img/sheet.png');
 
             /*
              * PREVIEWS FOLDER STRUCTURE (sloppy, but documented):
@@ -163,8 +170,10 @@ function displayCatalog(items) {
              * We have TWO previews folders:
              * 1. /previews/ - 183 items (27.8 MB) - Different filenames than JSON
              * 2. /img/previews/ - 57 items - Matches JSON filenames
+             *
+             * MP3 audio items always use img/mp3_logo.png so users see it's an audio file, not sheet music.
              */
-            if (previewImageSrc.startsWith('img/previews/')) {
+            if (!isMp3Audio && previewImageSrc.startsWith('img/previews/')) {
                 const filename = previewImageSrc.replace('img/previews/', '');
                 previewImageSrc = 'previews/' + filename;
             }
@@ -173,11 +182,12 @@ function displayCatalog(items) {
                 previewImageSrc = basePath + previewImageSrc;
             }
 
-            const captionText = 'Preview image';
+            const captionText = isMp3Audio ? 'MP3 audio file' : 'Preview image';
 
+            const imgAlt = isMp3Audio ? `MP3 audio: ${item.title}` : `Preview of ${item.title}`;
             itemDiv.innerHTML = `
                 <div class="preview-screen">
-                    <img class="live-preview" src="${previewImageSrc}" alt="Preview of ${item.title}"
+                    <img class="live-preview" src="${previewImageSrc}" alt="${imgAlt}"
                          onerror="handleImageError(this, '${previewImageSrc}', '${basePath}');">
                     <span class="preview-caption">${captionText}</span>
                 </div>
@@ -342,9 +352,10 @@ function searchCatalog() {
 document.addEventListener('error', function (event) {
     const target = event.target;
     if (target.classList && target.classList.contains('live-preview')) {
-        target.src = 'img/sheet.png';
+        const isMp3 = (target.src || '').includes('mp3_logo');
+        target.src = isMp3 ? 'img/mp3_logo.png' : 'img/sheet.png';
         if (target.nextElementSibling) {
-            target.nextElementSibling.textContent = 'Preview unavailable (open listing to view score)';
+            target.nextElementSibling.textContent = isMp3 ? 'MP3 audio file' : 'Preview unavailable (open listing to view score)';
         }
     }
 }, true);
