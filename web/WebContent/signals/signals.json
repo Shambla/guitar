@@ -688,13 +688,13 @@
   {
     "action": "info",
     "symbol": "MCHI",
-    "price": 61.93,
+    "price": 61.9900016784668,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 9/16 | sell 14/13",
-    "timestamp": "2026-02-13T23:36:20.946258Z",
-    "received_at": "2026-02-13T23:36:20.946258Z",
-    "id": "2026-02-13T23:36:20.946258Z-MCHI-info",
+    "timestamp": "2026-02-16T07:54:05.916050Z",
+    "received_at": "2026-02-16T07:54:05.916050Z",
+    "id": "2026-02-16T07:54:05.916050Z-MCHI-info",
     "threshold_met": true,
     "buy_score": 9,
     "sell_score": 14,
@@ -706,8 +706,8 @@
     "buy_conviction": 0.21951219512195122,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.5599999999999999,
-    "sell_persistence": 7,
+    "sell_conviction": 0.53,
+    "sell_persistence": 6,
     "sell_position_multiplier": 1.0
   },
   {
