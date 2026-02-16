@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 1984.37,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2026-02-16T09:24:15.756151Z",
+    "received_at": "2026-02-16T09:24:15.756323Z",
+    "id": "2026-02-16T09:24:15.756323Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "RENDER/USD",
     "quantity": 0.01,
     "price": 1.426,
@@ -2936,16 +2947,5 @@
     "timestamp": "2026-02-11T14:06:00.956500Z",
     "received_at": "2026-02-11T14:06:00.956518Z",
     "id": "2026-02-11T14:06:00.956518Z-CRV/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.05065548,
-    "price": 1970.17176,
-    "source": "MASTER_BOT_162",
-    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-    "timestamp": "2026-02-11T14:03:48.413527Z",
-    "received_at": "2026-02-11T14:03:48.413554Z",
-    "id": "2026-02-11T14:03:48.413554Z-ETH/USD-buy"
   }
 ]
