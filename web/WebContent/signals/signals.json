@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "RENDER/USD",
+    "quantity": 69.34812760055479,
+    "price": 1.441,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-02-16T11:05:50.059954Z",
+    "received_at": "2026-02-16T11:05:50.059969Z",
+    "id": "2026-02-16T11:05:50.059969Z-RENDER/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "RENDER/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2936,16 +2947,5 @@
     "timestamp": "2026-02-11T20:00:17.656884Z",
     "received_at": "2026-02-11T20:00:17.657876Z",
     "id": "2026-02-11T20:00:17.657876Z-TAO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "DASH/USD",
-    "quantity": 2.9895366218236172,
-    "price": 33.42,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-02-11T14:08:06.875077Z",
-    "received_at": "2026-02-11T14:08:06.875096Z",
-    "id": "2026-02-11T14:08:06.875096Z-DASH/USD-buy"
   }
 ]
