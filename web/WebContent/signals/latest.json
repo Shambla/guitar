@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "RENDER/USD",
-  "quantity": 69.39625260235947,
-  "price": 1.44,
+  "symbol": "SUI/USD",
+  "quantity": 102.99721907508497,
+  "price": 0.9699,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-02-16T02:02:56.067126Z",
-  "received_at": "2026-02-16T02:02:56.067162Z",
-  "id": "2026-02-16T02:02:56.067162Z-RENDER/USD-buy"
+  "timestamp": "2026-02-16T02:06:06.878172Z",
+  "received_at": "2026-02-16T02:06:06.878191Z",
+  "id": "2026-02-16T02:06:06.878191Z-SUI/USD-buy"
 }
