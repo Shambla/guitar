@@ -25,9 +25,10 @@ Security notes:
   - DO NOT commit or share: client_secrets.json, youtube_token.json
   - If you ever accidentally share them, rotate/revoke credentials immediately.
 
-Optional (recommended) path override via environment variables:
-  - YT_CLIENT_SECRETS_FILE: path to the OAuth client secrets JSON
-  - YT_TOKEN_FILE:         path to the saved user token JSON
+Optional path override via environment variables:
+  - YT_SECRETS_DIR:        folder for client_secrets.json and youtube_token.json (default: PRIVATE_SECRETS_DO_NOT_UPLOAD)
+  - YT_CLIENT_SECRETS_FILE: path to the OAuth client secrets JSON (overrides SECRETS_DIR)
+  - YT_TOKEN_FILE:         path to the saved user token JSON (overrides SECRETS_DIR)
 
 Example usage (commented out):
     # export YT_CLIENT_SECRETS_FILE="/absolute/path/to/client_secrets.json"
@@ -45,7 +46,8 @@ Setup:
     5. Download credentials JSON file
     6. Set CLIENT_SECRETS_FILE path below
 
-    cd /path/to/your/site/web/WebContent    source venv_youtube/bin/activate
+    cd /path/to/your/WebContent
+    source venv_youtube/bin/activate
     python3 youtube_api.py
 
     1. TODO Comments that shill our websites. Ended at 130 latest videos --limit 130
@@ -96,15 +98,16 @@ from googleapiclient.http import MediaFileUpload
 # CONFIGURATION
 # =============================================================================
 
+# Folder for OAuth secrets (optional). Default: same directory as this script.
+# Override with YT_SECRETS_DIR if you want secrets in a different folder.
+_SECRETS_DIR = os.getenv("YT_SECRETS_DIR", os.path.dirname(os.path.abspath(__file__)) or ".")
+
 # Path to your OAuth 2.0 client secrets JSON file
-CLIENT_SECRETS_FILE = os.getenv("YT_CLIENT_SECRETS_FILE", "client_secrets.json")
+CLIENT_SECRETS_FILE = os.getenv("YT_CLIENT_SECRETS_FILE", os.path.join(_SECRETS_DIR, "client_secrets.json"))
 # What is this file?
 # - It's the JSON you download from Google Cloud Console when you create OAuth
 #   credentials (Desktop app). It contains your client_id and client_secret.
 # - DO NOT share it. DO NOT commit it.
-#
-# If you want to hardcode an absolute path instead (not recommended), you could:
-# CLIENT_SECRETS_FILE = "/absolute/path/to/client_secrets.json"
 
 # OAuth 2.0 scopes required for YouTube API
 SCOPES = [
@@ -113,14 +116,11 @@ SCOPES = [
 ]
 
 # Token file to store credentials
-TOKEN_FILE = os.getenv("YT_TOKEN_FILE", "youtube_token.json")
+TOKEN_FILE = os.getenv("YT_TOKEN_FILE", os.path.join(_SECRETS_DIR, "youtube_token.json"))
 # What is this file?
 # - It's created by THIS script after you complete the browser OAuth flow.
 # - It usually includes an access token and refresh token for your account.
 # - Treat it like a password: DO NOT share it. DO NOT commit it.
-#
-# If you want to hardcode an absolute path instead (not recommended), you could:
-# TOKEN_FILE = "/absolute/path/to/youtube_token.json"
 
 # =============================================================================
 # CHANGE CATALOG / AUDIT LOGGING
@@ -363,11 +363,12 @@ def apply_bulk_comment_plan(service,
                             plan_file: str,
                             dry_run: bool = True,
                             batch_size: int = 20,
-                            delay_seconds: float = 2.0,
-                            skip_already_successful: bool = True) -> Dict[str, bool]:
+                            delay_seconds: float = 2.0) -> Dict[str, bool]:
     """
     Apply a previously generated comment plan file.
     Posts TOP-LEVEL comments (pinning not supported by API).
+    Does not skip videos that already have a comment; you can post a second (different) comment
+    per video. Duplicate prevention is per (video + comment text) inside post_top_level_comment.
     """
     if not os.path.exists(plan_file):
         raise FileNotFoundError(f"Plan file not found: {plan_file}")
@@ -383,8 +384,6 @@ def apply_bulk_comment_plan(service,
     print(f"Mode: {'DRY RUN (no changes)' if dry_run else 'LIVE UPDATE'}")
     print(f"Total videos in plan: {total}")
     print(f"Batch size: {batch_size} | Delay: {delay_seconds}s\n")
-    if skip_already_successful:
-        print("Skip already-successful videos: ON (uses youtube_change_log.jsonl)\n")
 
     if not dry_run:
         if service is None:
@@ -397,8 +396,6 @@ def apply_bulk_comment_plan(service,
             return {}
         print()
 
-    ok_ids = _load_successful_video_ids("post_comment") if skip_already_successful else set()
-
     import time
     for i, v in enumerate(videos, 1):
         video_id = str(v.get("id") or "")
@@ -408,11 +405,6 @@ def apply_bulk_comment_plan(service,
         if not video_id:
             results[video_id] = False
             print("   ✗ Missing video_id in plan\n")
-            continue
-
-        if skip_already_successful and video_id in ok_ids:
-            results[video_id] = True
-            print("   ↩︎ Skipping (comment already posted successfully in a previous run)\n")
             continue
 
         if dry_run:
@@ -545,9 +537,17 @@ def get_authenticated_service():
             # Example (commented out): if you stored your client secrets elsewhere:
             # client_secrets_path = "/absolute/path/to/client_secrets.json"
             # flow = InstalledAppFlow.from_client_secrets_file(client_secrets_path, SCOPES)
-            print("🌐 Opening browser for OAuth authentication...")
+            print("🌐 Starting OAuth authentication...")
+            print("   If your browser does NOT open automatically, the script will still print a URL.")
+            print("   Copy/paste that URL into your browser and complete the flow.")
             flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRETS_FILE, SCOPES)
-            creds = flow.run_local_server(port=0)
+            # Try local server (recommended). If the environment can't open a browser,
+            # fall back to console-based flow.
+            try:
+                creds = flow.run_local_server(port=0, open_browser=True)
+            except Exception as e:
+                print(f"⚠️  run_local_server failed ({e}). Falling back to console OAuth flow...")
+                creds = flow.run_console()
         
         # Save credentials for next run
         with open(TOKEN_FILE, 'w') as token:
@@ -571,6 +571,43 @@ def get_channel_id(service) -> str:
         raise Exception("No channel found for authenticated user")
     except HttpError as e:
         raise Exception(f"Error getting channel ID: {e}")
+
+
+def get_recent_videos(service, n: int = 5, channel_id: Optional[str] = None) -> List[Dict]:
+    """
+    Get the N most recently uploaded videos (what YouTube returns as "last" in upload order).
+    Uses one playlistItems request; minimal quota. Useful for prompt context.
+    Returns list of dicts with id, title, publishedAt, url.
+    """
+    if not channel_id:
+        channel_id = get_channel_id(service)
+    try:
+        request = service.channels().list(part='contentDetails', id=channel_id)
+        response = request.execute()
+        if not response['items']:
+            return []
+        uploads_playlist_id = response['items'][0]['contentDetails']['relatedPlaylists']['uploads']
+        request = service.playlistItems().list(
+            part='snippet,contentDetails',
+            playlistId=uploads_playlist_id,
+            maxResults=min(n, 50),
+        )
+        response = request.execute()
+        out = []
+        for item in response.get('items', []):
+            vid = item.get('contentDetails', {}).get('videoId') or ''
+            sn = item.get('snippet', {})
+            title = (sn.get('title') or '').strip()
+            published = sn.get('publishedAt') or ''
+            out.append({
+                'id': vid,
+                'title': title,
+                'publishedAt': published,
+                'url': f"https://www.youtube.com/watch?v={vid}" if vid else '',
+            })
+        return out
+    except HttpError as e:
+        raise Exception(f"Error getting recent videos: {e}")
 
 
 def get_all_videos(service, channel_id: Optional[str] = None) -> List[Dict]:
@@ -1941,6 +1978,21 @@ def search_videos_by_title(service, search_term: str) -> List[Dict]:
 
 
 # =============================================================================
+# TRADING VIDEOS (tags + description append for ETH/USD bot videos)
+# =============================================================================
+TRADING_VIDEO_IDS = ["ZY7c9qZDI-I", "tX9Wztlh3bI"]  # "Forward Testing a Trading Bot on ETH/USD"
+TRADING_VIDEO_TAGS = [
+    "quant trading", "algorithmic trading", "crypto trading", "ETH", "Ethereum",
+    "futures trading", "trading bot", "forward testing", "systematic trading",
+    "cryptocurrency", "crypto", "automated trading", "trading strategy", "backtesting",
+]
+TRADING_DESCRIPTION_APPEND = """
+
+---
+This video is part of my quant/trading content: forward testing an automated trading bot on ETH/USD. Focused on crypto, algorithmic trading, and systematic trading — different from my usual music/guitar uploads.
+"""
+
+# =============================================================================
 # EXAMPLE USAGE
 # =============================================================================
 
@@ -1962,12 +2014,60 @@ if __name__ == "__main__":
     parser.add_argument("--batch-size", type=int, default=10, help="Batch size for live posting pauses (default: 10)")
     parser.add_argument("--delay-seconds", type=float, default=2.0, help="Delay between batches in live mode (default: 2.0)")
 
+    # List recent videos (for prompt context / sanity check)
+    parser.add_argument("--list-recent", action="store_true", help="Print the last N videos on your channel (as the API sees them) for better prompts.")
+    parser.add_argument("--last-n", type=int, default=5, help="With --list-recent: how many videos to show (default: 5).")
+
+    # Fix trading videos: update tags + append description for the two "Forward Testing a Trading Bot" ETH videos
+    parser.add_argument("--fix-trading-videos", action="store_true", help="Update tags and append description for the two ETH/USD trading bot videos (quant/crypto emphasis).")
+    parser.add_argument("--dry-run-trading", action="store_true", help="With --fix-trading-videos: print what would be updated, no API writes.")
+
+    parser.add_argument("--export", "--create-backup", dest="create_backup", action="store_true", help="Export all channel videos to a new backup JSON (youtube_backup_<timestamp>.json).")
+    parser.add_argument("--export-output", default=None, help="Optional output path for --export.")
+
     args = parser.parse_args()
 
     print("YouTube API Manager ready!")
     print("=" * 60)
     print("NOTE: The YouTube Data API v3 does NOT support pinning comments.")
     print("      This script can only post TOP-LEVEL comments.\n")
+
+    # --export: create new backup JSON then exit
+    if args.create_backup:
+        svc = get_authenticated_service()
+        export_video_list(svc, output_file=args.export_output)
+        raise SystemExit(0)
+
+    # --list-recent: show last N videos then exit
+    if args.list_recent:
+        svc = get_authenticated_service()
+        n = max(1, min(int(args.last_n), 50))
+        videos = get_recent_videos(svc, n=n)
+        print(f"Last {len(videos)} video(s) on your channel (newest first):\n")
+        for i, v in enumerate(videos, 1):
+            print(f"  {i}. {v.get('title') or '(no title)'}")
+            print(f"     id: {v.get('id')}  |  published: {v.get('publishedAt')}")
+            if v.get('url'):
+                print(f"     {v['url']}")
+            print()
+        raise SystemExit(0)
+
+    # --fix-trading-videos: update tags and append description for the two ETH trading bot videos
+    if args.fix_trading_videos:
+        svc = get_authenticated_service()
+        dry = bool(args.dry_run_trading)
+        if dry:
+            print(" [DRY RUN] No API writes. Would update the following videos:\n")
+        for vid in TRADING_VIDEO_IDS:
+            if dry:
+                print(f"   Video {vid}: set tags ({len(TRADING_VIDEO_TAGS)} tags), append trading description block")
+                continue
+            ok_tags = update_video_tags(svc, vid, TRADING_VIDEO_TAGS, replace=True)
+            ok_desc = update_video_description(svc, vid, TRADING_DESCRIPTION_APPEND.strip(), append=True)
+            print(f"   {vid}: tags={'✓' if ok_tags else '✗'}  description_append={'✓' if ok_desc else '✗'}")
+        if dry:
+            print("\n Run without --dry-run-trading to apply changes.")
+        raise SystemExit(0)
 
     # If no explicit workflow flags were provided, just print guidance and exit.
     if not args.bulk_comment:
@@ -1977,6 +2077,12 @@ if __name__ == "__main__":
         print("\nExample (LIVE posting; will authenticate and post comments):")
         print("  python3 youtube_api.py --bulk-comment --live --backup-file youtube_backup_20251227_032322.json --batch-size 10 --delay-seconds 2")
         print("\nTip: Provide your promotional comment with --comment-text-file promo.txt (recommended) or --comment-text \"...\"")
+        print("\nSee your last 5 videos (for prompt context):")
+        print("  python3 youtube_api.py --list-recent")
+        print("  python3 youtube_api.py --list-recent --last-n 10")
+        print("\nUpdate tags + description for the two ETH trading bot videos:")
+        print("  python3 youtube_api.py --fix-trading-videos --dry-run-trading   # preview")
+        print("  python3 youtube_api.py --fix-trading-videos                   # apply")
         raise SystemExit(0)
 
     # Resolve comment text
@@ -2026,6 +2132,5 @@ if __name__ == "__main__":
         dry_run=False,
         batch_size=int(args.batch_size),
         delay_seconds=float(args.delay_seconds),
-        skip_already_successful=True,
     )
 

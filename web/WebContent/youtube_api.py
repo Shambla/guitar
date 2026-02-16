@@ -362,11 +362,12 @@ def apply_bulk_comment_plan(service,
                             plan_file: str,
                             dry_run: bool = True,
                             batch_size: int = 20,
-                            delay_seconds: float = 2.0,
-                            skip_already_successful: bool = True) -> Dict[str, bool]:
+                            delay_seconds: float = 2.0) -> Dict[str, bool]:
     """
     Apply a previously generated comment plan file.
     Posts TOP-LEVEL comments (pinning not supported by API).
+    Does not skip videos that already have a comment; you can post a second (different) comment
+    per video. Duplicate prevention is per (video + comment text) inside post_top_level_comment.
     """
     if not os.path.exists(plan_file):
         raise FileNotFoundError(f"Plan file not found: {plan_file}")
@@ -382,8 +383,6 @@ def apply_bulk_comment_plan(service,
     print(f"Mode: {'DRY RUN (no changes)' if dry_run else 'LIVE UPDATE'}")
     print(f"Total videos in plan: {total}")
     print(f"Batch size: {batch_size} | Delay: {delay_seconds}s\n")
-    if skip_already_successful:
-        print("Skip already-successful videos: ON (uses youtube_change_log.jsonl)\n")
 
     if not dry_run:
         if service is None:
@@ -396,8 +395,6 @@ def apply_bulk_comment_plan(service,
             return {}
         print()
 
-    ok_ids = _load_successful_video_ids("post_comment") if skip_already_successful else set()
-
     import time
     for i, v in enumerate(videos, 1):
         video_id = str(v.get("id") or "")
@@ -407,11 +404,6 @@ def apply_bulk_comment_plan(service,
         if not video_id:
             results[video_id] = False
             print("   ✗ Missing video_id in plan\n")
-            continue
-
-        if skip_already_successful and video_id in ok_ids:
-            results[video_id] = True
-            print("   ↩︎ Skipping (comment already posted successfully in a previous run)\n")
             continue
 
         if dry_run:
@@ -2029,12 +2021,21 @@ if __name__ == "__main__":
     parser.add_argument("--fix-trading-videos", action="store_true", help="Update tags and append description for the two ETH/USD trading bot videos (quant/crypto emphasis).")
     parser.add_argument("--dry-run-trading", action="store_true", help="With --fix-trading-videos: print what would be updated, no API writes.")
 
+    parser.add_argument("--export", "--create-backup", dest="create_backup", action="store_true", help="Export all channel videos to a new backup JSON (youtube_backup_<timestamp>.json).")
+    parser.add_argument("--export-output", default=None, help="Optional output path for --export.")
+
     args = parser.parse_args()
 
     print("YouTube API Manager ready!")
     print("=" * 60)
     print("NOTE: The YouTube Data API v3 does NOT support pinning comments.")
     print("      This script can only post TOP-LEVEL comments.\n")
+
+    # --export: create new backup JSON then exit
+    if args.create_backup:
+        svc = get_authenticated_service()
+        export_video_list(svc, output_file=args.export_output)
+        raise SystemExit(0)
 
     # --list-recent: show last N videos then exit
     if args.list_recent:
@@ -2130,6 +2131,5 @@ if __name__ == "__main__":
         dry_run=False,
         batch_size=int(args.batch_size),
         delay_seconds=float(args.delay_seconds),
-        skip_already_successful=True,
     )
 

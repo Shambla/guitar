@@ -12,8 +12,140 @@
 		<script type="text/javascript" src="script/iframetracker.js"></script>
 		<script type="text/javascript" src="https://apis.google.com/js/client.js?onload=loadYoutube"></script>
 		<title>Brian Streckfus</title>
+		<style>
+			/* Creator tools side panel - left, collapsible */
+			#creator-tools-panel {
+				position: fixed;
+				left: 0;
+				top: 50%;
+				transform: translateY(-50%);
+				z-index: 9000;
+				display: flex;
+				align-items: stretch;
+				box-shadow: 4px 0 20px rgba(0,0,0,0.35);
+				transition: left 0.3s ease;
+			}
+			#creator-tools-panel.collapsed {
+				left: -280px;
+			}
+			#creator-tools-tab {
+				width: 36px;
+				background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+				color: #fff;
+				writing-mode: vertical-rl;
+				text-orientation: mixed;
+				transform: rotate(180deg);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 16px 8px;
+				font-size: 13px;
+				font-weight: bold;
+				letter-spacing: 0.5px;
+				cursor: pointer;
+				border-radius: 0 8px 8px 0;
+				box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+			}
+			#creator-tools-tab:hover { opacity: 0.95; }
+			#creator-tools-content {
+				width: 280px;
+				max-height: 85vh;
+				overflow-y: auto;
+				background: rgba(0, 0, 0, 0.92);
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				border-left: none;
+				border-radius: 0 12px 12px 0;
+				padding: 16px;
+			}
+			#creator-tools-content h3 {
+				color: #2196f3;
+				font-size: 16px;
+				margin: 0 0 12px 0;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+			#creator-tools-content h3 button {
+				background: transparent;
+				border: none;
+				color: rgba(255,255,255,0.8);
+				font-size: 20px;
+				cursor: pointer;
+				padding: 0 4px;
+				line-height: 1;
+			}
+			#creator-tools-content h3 button:hover { color: #fff; }
+			.creator-tool-card {
+				background: rgba(255, 255, 255, 0.06);
+				border: 1px solid rgba(255, 255, 255, 0.15);
+				border-radius: 8px;
+				padding: 12px;
+				margin-bottom: 12px;
+			}
+			.creator-tool-card:last-child { margin-bottom: 0; }
+			.creator-tool-card h4 {
+				color: rgba(255, 255, 255, 0.95);
+				font-size: 14px;
+				margin: 0 0 6px 0;
+			}
+			.creator-tool-card p {
+				color: rgba(255, 255, 255, 0.75);
+				font-size: 12px;
+				line-height: 1.45;
+				margin: 0 0 10px 0;
+			}
+			.creator-tool-card a {
+				display: inline-block;
+				background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+				color: #fff;
+				padding: 8px 14px;
+				border-radius: 6px;
+				font-size: 12px;
+				font-weight: bold;
+				text-decoration: none;
+				transition: transform 0.2s, box-shadow 0.2s;
+			}
+			.creator-tool-card a:hover {
+				transform: translateY(-1px);
+				box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+			}
+			@media (max-width: 768px) {
+				#creator-tools-panel.collapsed { left: -260px; }
+				#creator-tools-content { width: 260px; }
+			}
+		</style>
 	</head>
 	<body>
+		<!-- Creator tools side panel (for creators; paid tools) -->
+		<div id="creator-tools-panel" class="collapsed">
+			<div id="creator-tools-tab" onclick="toggleCreatorToolsPanel()" title="Creator tools">Creator tools</div>
+			<div id="creator-tools-content">
+				<h3>Tools for creators <button type="button" onclick="toggleCreatorToolsPanel()" title="Close">×</button></h3>
+				<p style="color: rgba(255,255,255,0.7); font-size: 12px; margin-bottom: 14px;">Scripts for YouTubers and musicians. View options and get access on my site.</p>
+				<div class="creator-tool-card">
+					<h4>YouTube API Manager</h4>
+					<p>Edit descriptions, tags, thumbnails, and more across all your videos in minutes. Add one link or hashtags to hundreds of videos at once.</p>
+					<a href="signals.html#code-download-section">Get it</a>
+				</div>
+				<div class="creator-tool-card">
+					<h4>MIDI Tools</h4>
+					<p>Command-line scripts for .mid and MusicXML: merge tracks, quantize, transpose, clean chords, add fingerings. For arrangers and producers.</p>
+					<a href="signals.html#code-download-section">Get it</a>
+				</div>
+			</div>
+		</div>
+		<script>
+			function toggleCreatorToolsPanel() {
+				var el = document.getElementById('creator-tools-panel');
+				el.classList.toggle('collapsed');
+				try { localStorage.setItem('creator-tools-panel-open', el.classList.contains('collapsed') ? '0' : '1'); } catch (e) {}
+			}
+			(function() {
+				try {
+					if (localStorage.getItem('creator-tools-panel-open') === '1') document.getElementById('creator-tools-panel').classList.remove('collapsed');
+				} catch (e) {}
+			})();
+		</script>
 		<nav>
 			<div id="backing"></div>
 			<div class="content">
@@ -22,7 +154,7 @@
 				<!-- <a href="shop.html">&#128722; SHOP</a> -->
 				<a href="#media">&#128247; &#9654; MEDIA</a>
 				<a href="#bio">&#128100; BIO</a>
-				<a href="#performances">&#127908; PERFORMANCES</a>
+				<a href="#performances">&#127908; BOOK A GIG</a>
 				<a href="signals.html">💹  Trading Signals</a>
 				<a href="#contact">&#128236; CONTACT</a>
 				<div id="music-container">
@@ -208,7 +340,7 @@
 			</div>
 			<div style="clear: both"></div>
 			<div class="right">
-				<h1 id="performances" class="fade-in-up">Performances</h1>
+				<h1 id="performances" class="fade-in-up">Book a Gig</h1>
 				<div style="clear: both"></div>
 				<div class="left-half fade-in-left">
 					<!-- <img id="perform" src="img/perform.png"/> -->
