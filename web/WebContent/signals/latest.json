@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "FET/USD",
-  "quantity": 578.33850812,
-  "price": 0.1728,
+  "symbol": "DASH/USD",
+  "quantity": 2.65831173,
+  "price": 37.11,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-02-16T07:08:33.570907Z",
-  "received_at": "2026-02-16T07:08:33.570920Z",
-  "id": "2026-02-16T07:08:33.570920Z-FET/USD-sell"
+  "timestamp": "2026-02-16T07:09:33.677561Z",
+  "received_at": "2026-02-16T07:09:33.677579Z",
+  "id": "2026-02-16T07:09:33.677579Z-DASH/USD-sell"
 }
