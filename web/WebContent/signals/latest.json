@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "ETH/USD",
-  "quantity": 0.05112422,
-  "price": 1952.10796,
+  "symbol": "AAVE/USD",
+  "quantity": 0.7952286282306164,
+  "price": 125.62,
   "source": "MASTER_BOT_162",
-  "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-  "timestamp": "2026-02-16T02:56:02.091550Z",
-  "received_at": "2026-02-16T02:56:02.091659Z",
-  "id": "2026-02-16T02:56:02.091659Z-ETH/USD-buy"
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-02-16T03:00:09.826940Z",
+  "received_at": "2026-02-16T03:00:09.826966Z",
+  "id": "2026-02-16T03:00:09.826966Z-AAVE/USD-buy"
 }
