@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "ETH/USD",
-  "quantity": 0.0,
-  "price": 1993.47,
+  "symbol": "DASH/USD",
+  "quantity": 1e-08,
+  "price": 37.77,
   "source": "MASTER_BOT_162",
-  "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-  "timestamp": "2026-02-17T03:25:34.594970Z",
-  "received_at": "2026-02-17T03:25:34.595086Z",
-  "id": "2026-02-17T03:25:34.595086Z-ETH/USD-sell"
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-02-17T06:00:19.355980Z",
+  "received_at": "2026-02-17T06:00:19.355998Z",
+  "id": "2026-02-17T06:00:19.355998Z-DASH/USD-sell"
 }
