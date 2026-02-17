@@ -1,0 +1,3034 @@
+// This Pine Script™ code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © Rustyribcage
+
+//@version=5
+// pyramid = 3? Might be cheaper to pyramid in python.
+// Defval megabot timeframe '720' Conversions: 3 '4hr' bars | 12 '1hr' bars | 24 '30m' bars | 48 '15m bars'
+strategy("Mega Bot MASTERMASTER 8/15/25", overlay=true, initial_capital = 1, default_qty_type = strategy.percent_of_equity, default_qty_value = 100, commission_type = strategy.commission.percent, commission_value = .7, process_orders_on_close = true)// .01% slippage?
+// --------------IMPORT CANDLESTICK PATTERNS--------------------------------------------------------{
+
+import ZenAndTheArtOfTrading/ZenLibrary/8 as zen //which version?
+
+//Brian's Custom Indicator's (Candle patterns for now)
+import Rustyribcage/ShootingStarLibrary/1 as ssl
+import Rustyribcage/BullishMarubozuLib/1 as bm
+import Rustyribcage/BearishMarubozuLib/1 as bearm
+import Rustyribcage/BullHammer/1 as bh
+import Rustyribcage/ThreeBullSoldiersLib/1 as tbulls
+import Rustyribcage/ThreeBearSoldiersLib/1 as tb
+import Rustyribcage/DoubleTopBottomLibrary/1 as dtb
+
+//TradingView's indicators
+import TradingView/TechnicalRating/1 as tr
+import TradingView/RiskMetrics/1 as TVrm
+import TradingView/ta/7 as TVta
+
+
+//var string GROUP_MOD = 'Mods'
+//Any other candlestick patterns I want to include?
+
+
+// Define the user-defined boolean //, group = "Custom Settings"
+
+// ---------------- Gating Toggles (buy/sell criteria) ----------------{
+// These toggles will be used to gate individual criteria in the signal logic (next refactor step).
+// Turning a toggle OFF will allow that criterion to auto‑pass (no effect) when we wire it in.
+gate_useAdx            = input.bool(true,  title = "Gate: ADX filter",                  group = "Gating Toggles", tooltip = "Require ADX > adxLong (or adxShort for shorts)")
+gate_allowTTMSqueeze   = input.bool(true,  title = "Gate: Allow TTMSqueeze as strength", group = "Gating Toggles", tooltip = "Use TTMSqueeze as an alternative strength condition")
+gate_useAtrFilter      = input.bool(true,  title = "Gate: ATR consolidation filter",     group = "Gating Toggles", tooltip = "Require zen.atrFilter(atrFilterLength, atrFilterThresh)")
+gate_useSourceGuard    = input.bool(true,  title = "Gate: Source guard (< 5)",           group = "Gating Toggles", tooltip = "Require sourceShortInput2 < 5 (noise guard)")
+gate_requireFlat       = input.bool(true,  title = "Gate: Flat only (no position)",      group = "Gating Toggles", tooltip = "Require strategy.position_size == 0 for new entries")
+gate_blockFridaysBuy   = input.bool(true,  title = "Gate: Block Friday entries",         group = "Gating Toggles", tooltip = "Disallow new BUY entries on Fridays")
+gate_useMonteCarloSkip = input.bool(false, title = "Gate: Monte Carlo skip",             group = "Gating Toggles", tooltip = "Enable probabilistic skip via SKIP_TRADE_CHANCE")
+gate_useMegaSignal     = input.bool(true,  title = "Gate: Mega signal (crossover)",      group = "Gating Toggles", tooltip = "Require longConditionMega/shortConditionMega to be true")
+gate_useMegaConfirm    = input.bool(true,  title = "Gate: Mega confirm (validation)",    group = "Gating Toggles", tooltip = "Require *_MegaConfirm validation condition")
+gate_useRsiDivFilter   = input.bool(true,  title = "Gate: RSI divergence filter",        group = "Gating Toggles", tooltip = "Use RSI divergence checks where applicable")
+gate_useMacd1          = input.bool(true,  title = "Gate: MACD1 filter",                 group = "Gating Toggles", tooltip = "Use MACD1 conditions where applicable")
+gate_useMacd2          = input.bool(true,  title = "Gate: MACD2 (Impulse) filter",       group = "Gating Toggles", tooltip = "Use MACD2 conditions where applicable")
+gate_useRoundNumber    = input.bool(true,  title = "Gate: Round number proximity filter",group = "Gating Toggles", tooltip = "Avoid trades when price is near detected round numbers")
+gate_avoidResistance   = input.bool(true,  title = "Gate: Avoid underneath resistance",  group = "Gating Toggles", tooltip = "Require not underneath_resistance when entering longs; or prefer shorts when under resistance (to be wired)")
+gate_useParabola       = input.bool(true,  title = "Gate: Parabola signal",              group = "Gating Toggles", tooltip = "Use parabola bull/bear signals (module)")
+gate_useParabolaPersist= input.bool(true,  title = "Gate: Parabola persistent modes",    group = "Gating Toggles", tooltip = "Use persistent parabola start/end variants where applicable")
+gate_useThreeSoldiers  = input.bool(true,  title = "Gate: Three Soldiers patterns",      group = "Gating Toggles", tooltip = "Use three bull/bear soldiers candlestick patterns")
+gate_useFib382         = input.bool(true,  title = "Gate: Fib .382 filter",              group = "Gating Toggles", tooltip = "Apply Fibonacci 0.382 context filter when deciding entries")
+gate_useHilbertAntiSignal = input.bool(false, title = "Gate: Hilbert anti-signal (invalidation)", group = "Gating Toggles", tooltip = "Block trades when Hilbert momentum conflicts with signal direction (longs blocked if bearish, shorts blocked if bullish)") // TODO Blocks too hard...needs back testing for gapo 
+gate_useHilbertCross   = input.bool(false,  title = "Gate: Hilbert crossover (trend change)", group = "Gating Toggles", tooltip = "Require Hilbert bullish crossover for longs, bearish crossover for shorts (trend change detection)")
+gate_useHilbertState   = input.bool(false,  title = "Gate: Hilbert state (bullish/bearish)", group = "Gating Toggles", tooltip = "Require Hilbert bullish state (real > imag) for longs, bearish state for shorts")
+// gate_useElliottAntiSignal = input.bool(true, title = "Gate: Elliott anti-signal (block opposite)", group = "Gating Toggles", tooltip = "REMOVED 2026-01-02: Elliott/Harmonic external injections no longer used here.")
+// gate_useHarmonicAntiSignal = input.bool(true, title = "Gate: Harmonic anti-signal (block opposite)", group = "Gating Toggles", tooltip = "REMOVED 2026-01-02: Elliott/Harmonic external injections no longer used here.")
+// --------------------------------------------------------------------}
+
+// Helper: gate a condition with a toggle; when the toggle is OFF, the condition auto-passes
+f_req(use, cond) => use ? cond : true
+
+asset                   = input.string("ETH/USD", "Asset to Trade", tooltip = "Syntax: XYZ/USD")
+useHalvings             = input.bool(defval = false, title= "Use Halvings", tooltip = "Use bitcoin halvings? Useful only for crypto on 4 hr candles - defval false", group = "Custom Settings") //!!!!CHANGE FOR OTHER COINS
+hodlStrategyDiamondHand = input(title = "Hold through macro bull runs?", tooltip = "More profitable and accurate, but a lot less signals - defval false", defval = false, group = "Custom Settings")
+// use1Hr                  = input.bool(true, title="Use 1-Hour Candles? defval true")  // COMMENTED OUT - Now using automatic timeframe detection (2025-12-22)
+lessrekt                = input.bool(defval = false, title = "less rekt", tooltip = "Use ema 13 filter? defval false", group = "Custom Settings")
+moneyPrinterGoBrrr      = input.bool(defval = false, title = "*NOT IMPLEMENTED YET* Take DXY $USD Hawkish/Dovish into consideration. defval false")
+adxLong                 = input.int(defval = 8, title = "adxLong", tooltip = "Filter out low volatility for longs - defval 8", group = "Custom Settings")
+adxShort                = input.int(defval = 7, title = "adxShort", tooltip = "Filter out low volatility for shorts - defval 7", group = "Custom Settings")
+profitPercentage        = input(1.4, title="Profit Percentage", display = display.none, tooltip = "*NOT IMPLEMENTED YET* Will try to hodl bad trades until the specified percentage gain happens - defval 1.4", group = "Custom Settings") //minimum profit to exit a trade. Not in use.
+profitPercentage2       = input(8, title ="Profit Percentage", display = display.none, tooltip = "*NOT IMPLEMENTED YET* Will try to hodl bad trades until the specified percentage gain happens - defval 8", group = "Custom Settings")
+//halvingBullLength       = input.int(title = "Bottom to Top Macro Bull Run Length", defval = 3291, tooltip = "How Many Bars since halving should a macro bull run last? defval works best on 4 hr candles.", group = "Custom Settings")
+//preHalvingLength        = input.int(title = "Bottom to Bottom Macro Cycle Length", defval = 7500, tooltip = "How Many Bars since halving should you front run the next halving? defval works best on 4 hr candles.", group = "Custom Settings")
+
+//---------------------------------------------------------------------------------------------------------------------------------}
+
+// Custom Indicators ---------------------------------------------------------------------------{
+atrFilterLength      = input(1111, title = "atrFilterLength", tooltip = "To filter out Consolidation - defval 1111.")
+atrFilterThresh      = input(2.5, title = "atrFilterThresh", tooltip = "To filter out Consolidation - defval 2.5")
+bullDivAmount        = input(7, title = "bullDivAmount", tooltip = "How many bull divergences to take a long? - defval 7") //bull is 7
+bearDivAmount        = input(10, title = "bearDivAmount", tooltip = "How many bear divergences to take a long? - defval 10") //bear is 10
+bearishCounterAmount = input(300, title = "bearishCounterAmount", tooltip = "trying to buy after an extremely lengthy downturn")
+// Custom Indicators ---------------------------------------------------------------------------}
+
+//-------------------------------Monte Carlo--------------------------------------
+//{
+
+float SKIP_TRADE_CHANCE = input.float(title="Monte Carlo Skip %", defval=0, tooltip = "0 = no Monte Carlo", group = "Monte Carlo")
+float RANDOM_SPREAD = input.float(title="Random Spread", defval=0, group = "Monte Carlo")
+int MONTE_CARLO_REFRESH = input.int(title="Monte Carlo Refresh", defval=0, group = "Monte Carlo")
+
+// Prepare monte carlo spread (if input MC spread is zero, we rng will not affect LOs at all)
+float monteCarloSpread = zen.toPips(zen.random(0, RANDOM_SPREAD))
+
+// Trade stops & targets 
+var float RISK_REWARD = 2
+var float tradeTakeProfit = na 
+var float tradeStopLoss = na
+float atrValueMonteCarlo = ta.atr(14)
+float stopDistance = atrValueMonteCarlo
+float takeProfitDistance = atrValueMonteCarlo * RISK_REWARD
+//-------------------------------Monte Carlo--------------------------------------
+//}
+
+// Fib Levels ----------------------------------------------------------------------------------{
+// Define the lookback period for the high and low
+lookbackPeriodFib = 150
+
+// Find the highest and lowest prices in the last 150 bars
+highPrice = ta.highest(high, lookbackPeriodFib)
+lowPrice = ta.lowest(low, lookbackPeriodFib)
+
+// Determine the indexes of these extreme prices
+highIndex = ta.highestbars(high, lookbackPeriodFib)
+lowIndex = ta.lowestbars(low, lookbackPeriodFib)
+
+// Determine if the highest price is before the lowest price (downward move)
+isDownwardMove = highIndex > lowIndex
+
+// var float fibRetrace382 = na
+// Calculate the 0.382 Fibonacci retracement level
+fibRetrace382 = lowPrice + (highPrice - lowPrice) * 0.382
+
+// Avoid-long band just under the .382 retracement ("shorters fib")
+fib382_avoid_band_pct = input.float(0.01, title = "Fib .382 avoid-long band % (underneath)", minval = 0.0, maxval = 0.2, step = 0.001, group = "Fibonacci values (Elliot)")
+nearUnderFib382 = close < fibRetrace382 and close >= fibRetrace382 * (1 - fib382_avoid_band_pct)
+
+// Plot the 0.382 Fibonacci retracement level
+plot(fibRetrace382, color=#ff990080, linewidth=3, title="Fib Retrace 0.382")
+
+//if close < fibRetrace382
+// Optional: Plot the high and low for visual reference
+// plot(highPrice, color=#ff525281, linewidth=1, title="Highest High")
+// plot(lowPrice, color=#4caf4f80, linewidth=1, title="Lowest Low")
+
+// Fib Levels ----------------------------------------------------------------------------------}
+// ADX volatility---------------------------------------------------------------------------
+//Define the length for ADX calculation
+adx_length = input.int(14, title="ADX Length", tooltip = "ADX Length - defval 14")
+percent_change_length = input.int(10, title="Percentage Change Period", tooltip = "defval 10")
+
+// Calculate the True Range
+true_range = ta.tr(true)
+
+plus_dm = ta.change(high)
+minus_dm = -ta.change(low)
+plus_dm := (plus_dm > minus_dm and plus_dm > 0) ? plus_dm : 0
+minus_dm := (minus_dm > plus_dm and minus_dm > 0) ? minus_dm : 0
+
+// Calculate the smoothed values
+tr14 = ta.rma(true_range, adx_length)
+plus_dm14 = ta.rma(plus_dm, adx_length)
+minus_dm14 = ta.rma(minus_dm, adx_length)
+
+// Calculate the Directional Indicators
+plus_di14 = 100 * (plus_dm14 / tr14)
+minus_di14 = 100 * (minus_dm14 / tr14)
+
+// Calculate the DX
+dx = 100 * math.abs((plus_di14 - minus_di14) / (plus_di14 + minus_di14))
+
+// Calculate the ADX
+adx = ta.rma(dx, adx_length)
+
+// Calculate the percentage change of the ADX over the specified period
+adx_change = (adx - adx[percent_change_length]) / adx[percent_change_length] * 100
+
+// Plot ADX value
+plot(adx, title="ADX", color=color.blue, display = display.data_window) //20 is the threshold
+
+// Plot the percentage change of the ADX
+//plot(adx_change, title="ADX 10-Bar % Change", color=color.red, display = display.data_window)
+
+// Optionally, plot a horizontal line to represent a threshold
+//hline(20, "Threshold", color=color.red)
+
+
+sourceLongInput   = input.source(high, "1L Custom Long Indicator", display = display.none, group = "External indicators", tooltip = "megabot Long Condition = True")
+// sourceLongInput   = input.source(high, "1L Custom Long Indicator", confirm = true, display = display.none) // megabot: longconditionTrue
+sourceShortInput  = input.source(low, "1S Custom Short Indicator", display = display.none, group = "External indicators", tooltip = "megabot short Condition = True") // megabot: shortconditionTrue
+sourceLongInput2  = input.source(low, "2L Custom Long Indicator", display = display.none, group = "External indicators", tooltip = "SumdnumdivBottom Bull Divs") // SumdnumdivBottom //Truly in use
+sourceShortInput2 = input.source(low, "2S Custom Short Indicator", display = display.none, group = "External indicators", tooltip = "SumdnumdivTop Bear Divs")  // SumdnumdivTop     //Truly in use
+sourceLongInput3  = input.source(low, "3L Custom Long Indicator", display = display.none, group = "External indicators", tooltip = "defval Low")  //Elliot wave new wave discovered //-> RSI divergence is an old idea? Plus we already have it// RSI Divergence... Doesn't work that well actually
+sourceShortInput3 = input.source(low, "3S Custom Short Indicator", display = display.none, group = "External indicators", tooltip = "defval Low")  //Elliot wave new wave discovered //-> RSI divergence is an old idea? Plus we already have it// RSI Divergence
+sourceLongInput4  = input.source(low, "4L Custom Long Indicator", display = display.none, group = "External indicators", tooltip = "defval Low")  //Harmonic pattern bull //-> Old DXY idea, this can probably be baked in// DXY
+sourceShortInput4 = input.source(low, "4S Custom Short Indicator", display = display.none, group = "External indicators", tooltip = "defval Low") //Harmonic pattern bear //-> Old DXY idea, this can probably be baked in // DXY
+
+// ------------------ External Indicator Injection (simple 0/1 booleans) ------------------{
+// REMOVED 2026-01-02: Elliott Wave + Harmonic Pattern external injections were added recently
+// (HMA direction-signing + persistence + anti-signal gating). We are no longer using them here.
+// Keeping this section commented out for reference only.
+// -------------------------------------------------------------------------------}
+// sourceLongInput5  = input.source(low, "5L Custom Long Indicator", display = display.none, group = "External indicators")  // KOV
+// sourceShortInput5 = input.source(low, "5S Custom Short Indicator", display = display.none, group = "External indicators")  //KOV
+// sourceLongInput6  = input.source(low, "6L Custom Long Indicator", display = display.none, group = "External indicators")  // BB
+// sourceShortInput6 = input.source(low, "6S Custom Short Indicator", display = display.none, group = "External indicators")  // BB
+// sourceLongInput7  = input.source(low, "7L Custom Long Indicator", display = display.none, group = "External indicators")  // volatility
+// sourceShortInput7 = input.source(low, "7S Custom Short Indicator", display = display.none, group = "External indicators")  // volatility
+// sourceLongInput8  = input.source(low, "8L Custom Long Indicator", display = display.none, group = "External indicators")  // RSI divergence again
+// sourceShortInput8 = input.source(low, "8S Custom Short Indicator", display = display.none, group = "External indicators")  // RSI divergence again
+
+// Add def vals?
+//megacryptobot_Strategy: longconditionTrue
+//megacryptobot_Strategy: shortconditionTrue
+
+//------------------SPX REGIME--------------------------------------------------------------{
+//SPX regime? Not being used I think.
+// sp500Symbol = input("SPX", title = "S&P 500 Symbol", display = display.none, group = "External Ticker")
+
+// length = input(100)
+// sp500Close = request.security(sp500Symbol, "D", close)
+// sp500MA200 = request.security(sp500Symbol, "D", ta.sma(sp500Close,200))
+// regimeFilter2 = sp500Close > sp500MA200
+
+// ------------------------------------------------------------------------------------------}
+
+// ------------------------MEGABOT------------------------------------------------------------------{
+
+// Candle body resistance Channel
+
+Megaperiod  = input.timeframe(defval='720', title="Timeframe", tooltip = "Timeframe for megabot. Can cause repainting if higher than the current chart's time frame - defval 720", options=['1', '3', '5', '15', '30', '60', '240', '720', 'D', 'W', 'M'], group = "Megabot Crosses")
+lenMega     = input.int(defval = 34, title = "Megabot Moving Average Length", tooltip = "defval 34", group = "Megabot Crosses") //define. thelength of the moving average for the megabot
+//MegaPeriod  = input.int(defval = 720, title = "Megabot Period", tooltip = "If the number of minutes is higher than your current chart timeframe, there will be repainting.")
+src         = close // Use the closing price as the source for calculations
+out         = ta.sma(src, lenMega) // Calculate the simple moving average (SMA) of the closing price over the specified length
+last8h      = ta.highest(close, 13) // Find the highest closing price over the last 13 bars
+lastl8      = ta.lowest(close, 13) // Find the lowest closing price over the last 13 bars
+bearishMega = ta.crossover(close, out) and ta.falling(close, 1) // Determine if the close has crossed over the SMA and the price is falling, indicating a bearish condition
+bullishMega = ta.crossover(close, out) and ta.rising(close, 1) // Find the lowest closing price over the last 13 bars 
+channel2    = input.bool(false, title="Bar Channel On/Off") // User input to toggle the "Bar Channel" feature on or off
+ul2         = plot(channel2 ? last8h : last8h == na(last8h[1]) ? last8h : na, color=color.black, linewidth=1, title="Candle body resistance level top", offset=0) // Plot the upper level of the resistance channel if the channel is enabled; otherwise, check if it remains unchanged
+ll2         = plot(channel2 ? lastl8 : lastl8 == na(lastl8[1]) ? lastl8 : na, color=color.black, linewidth=1, title="Candle body resistance level bottom", offset=0) // Plot the lower level of the resistance channel if the channel is enabled; otherwise, check if it remains unchanged
+
+// Support and Resistance 
+RST  = input.int(title='Support / Resistance length:', defval=10, group = "Megabot Crosses", tooltip = "Megabot Support and Resistance - defval 10") // User input for the length used in calculating support and resistance
+RSTT = ta.valuewhen(high >= ta.highest(high, RST), high, 0) // Get the value of the high when it is equal to the highest high over the given length
+RSTB = ta.valuewhen(low <= ta.lowest(low, RST), low, 0) // Get the value of the low when it is equal to the lowest low over the given length
+RT2  = plot(RSTT, color=RSTT != RSTT[1] ? na : color.red, linewidth=1, offset=+0) // Plot the resistance level in red if it remains unchanged; otherwise, hide the plot
+RB2  = plot(RSTB, color=RSTB != RSTB[1] ? na : color.green, linewidth=1, offset=0) // Plot the support level in green if it remains unchanged; otherwise, hide the plot
+
+// Trend colour EMA
+len0 = input.int(13, minval=1, title="EMA 1", group = "Megabot Crosses", tooltip = "Megabot EMA1 fast - Defval 13") // User input for the length of the first EMA 13
+ema0 = ta.ema(close, len0)
+directionMega = ta.rising(ema0, 2) ? 1 : ta.falling(ema0, 2) ? -1 : 0 // Determine the trend direction based on whether the second EMA is rising or falling over the last two bars
+plot_color = directionMega > 0 ? color.lime : directionMega < 0 ? color.red : na
+plot(ema0, title="EMA 13", color=plot_color, linewidth=1)
+
+// EMA 2
+len02 = input.int(21, minval=1, title="EMA 2", group = "Megabot Crosses", tooltip = "Megabot EMA2 slow - Defval 21") // User input for the length of the second EMA 21
+ema02 = ta.ema(close, len02)
+direction2 = ta.rising(ema02, 2) ? 1 : ta.falling(ema02, 2) ? -1 : 0 // Determine the trend direction based on whether the second EMA is rising or falling over the last two bars
+plot_color2 = direction2 > 0 ? color.lime : direction2 < 0 ? color.red : na
+plot(ema02, title="EMA 21", color=plot_color2, linewidth=1)
+
+// Hull MA
+show_hma = input.bool(false, title="Display Hull MA Set:", tooltip = "defval false", group = "Megabot Crosses")
+hma_src = close
+hma_base_length = input.int(8, minval=1, title="Hull MA's Base Length:", tooltip = "Megabot HullMA Base length - defval 8") //Hull Length = 8
+hma_length_scalar = input.int(5, minval=0, title="Hull MA's Length Scalar:", tooltip = "Megabot HullMA Scalar length - defval 5") //Hull scalar = 5
+hullma(src, length) => // Function to calculate the Hull Moving Average
+    ta.wma(2 * ta.wma(src, length / 2) - ta.wma(src, length), math.round(math.sqrt(length)))
+plot_hma = show_hma ? hullma(hma_src, hma_base_length + hma_length_scalar * 6) : na
+plot(plot_hma, color=color.black, linewidth=2, title="Hull MA")
+
+// Signal Generators
+//period = input.timeframe('720')
+ch1 = request.security(syminfo.tickerid, Megaperiod, open) // HIGHER TIMEFRAME Request the opening price of the specified period from a higher timeframe
+ch2 = request.security(syminfo.tickerid, Megaperiod, close) //HIGHER TIMEFRAME
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!IMPORTANT!!!!!!!!!!BAR LOOKAHEAD IS ON!!!!REPAINTING IS ON!!!!!!!!!!!!!!
+longConditionMega = ta.crossover(request.security(syminfo.tickerid, Megaperiod, close, lookahead = barmerge.lookahead_on), request.security(syminfo.tickerid, Megaperiod, open, lookahead = barmerge.lookahead_on))
+shortConditionMega = ta.crossunder(request.security(syminfo.tickerid, Megaperiod, close, lookahead = barmerge.lookahead_on), request.security(syminfo.tickerid, Megaperiod, open, lookahead = barmerge.lookahead_on))
+
+// Validation logic to confirm the signal
+// Check if the conditions still hold on subsequent bars
+longConditionMegaConfirm = longConditionMega and (close > ch1) and ta.valuewhen(longConditionMega, close, 1) > ch1[1]
+shortConditionMegaConfirm = shortConditionMega and (close < ch1) and ta.valuewhen(shortConditionMega, close, 1) < ch1[1]
+
+
+// longConditionMega = ta.crossover(request.security(syminfo.tickerid, period, close), request.security(syminfo.tickerid, period, open))
+// shortConditionMega = ta.crossunder(request.security(syminfo.tickerid, period, close), request.security(syminfo.tickerid, period, open))
+
+// longconditionTrue = longCondition
+// shortconditionTrue = shortCondition
+
+// plotchar(longconditionTrue, title="longconditionTrue", transp = 100)
+// plotchar(shortconditionTrue, title="shortconditionTrue", transp = 100)
+
+longconditionPlot = longConditionMega ? 1 : na
+shortconditionPlot = shortConditionMega ? 1 : na
+
+// Plot the conditions
+//plot(longconditionPlot, title="Long Condition", color=color.green, style=plot.style_columns, linewidth=2)
+//plot(shortconditionPlot, title="Short Condition", color=color.red, style=plot.style_columns, linewidth=2)
+
+//plot(longCondition, title="longCondition True")
+//plot(shortCondition, title="shortCondition True")
+
+// ------------------------------------------------------------------------------------------}
+// -------------TTM SQUEEZE----------------------------------------------------
+lengthSqueeze = input.int(title="lengthSqueeze", defval=20, minval=0, tooltip = "defval 20", group = "TTM Squeeze") 
+bband(lengthSqueeze, mult) =>
+	ta.sma(close, lengthSqueeze) + mult * ta.stdev(close, lengthSqueeze)
+keltner(lengthSqueeze, mult) =>
+	ta.ema(close, lengthSqueeze) + mult * ta.ema(ta.tr, lengthSqueeze)
+
+e1 = (ta.highest(high, lengthSqueeze) + ta.lowest(low, lengthSqueeze)) / 2 + ta.sma(close, lengthSqueeze)
+oscSqueeze = ta.linreg(close - e1 / 2, lengthSqueeze, 0)
+diff = bband(lengthSqueeze, 2) - keltner(lengthSqueeze, 1)
+osc_color = oscSqueeze[1] < oscSqueeze[0] ? oscSqueeze[0] >= 0 ? #00ffff : #cc00cc : oscSqueeze[0] >= 0 ? #009b9b : #ff9bff
+mid_color = diff >= 0 ? color.green : color.red
+
+TTMSqueeze = diff < 0
+NonTTMSqueeze = diff > 0
+
+//plotchar(TTMSqueeze, title = "TTM Squeeze", display = display.data_window)
+//plotchar(NonTTMSqueeze, title = "NonTTM Squeeze", display = display.data_window)
+//plot(oscSqueeze, color=osc_color, style= plot.style_histogram, linewidth=2, display = display.data_window)
+//plot(0, color=mid_color, style=plot.style_circles, linewidth=3, display = display.data_window)
+// -------------------------------------------------------------------------------
+//Custom Inputs
+
+sma_20 = ta.sma(close, 18)
+sma_200 = ta.sma(close, 200)
+// sma_20 = ta.ema(close, 15)
+
+tim=input('160', display = display.none, tooltip = "Timeframe for selecting securities - ***NOT IMPLEMENTED? - defval 160") //Trailingstop
+// User-defined input for profit percentage
+
+
+// -------------------------------------------------------------------------------}
+
+//-----------BTC Halving-----------------------------------------------------------------------{
+plot_halvings = input(true,"Plot Halvings", tooltip = "defval true")
+plot_mas = input(true,"Plot MAs", tooltip = "defval true")
+trans=input(90,"Transparancy", tooltip = "defval 90")
+
+l1 = input(50,"Length MA fast", tooltip = "Fast MA for BTC halvings - defval 50")
+l2Halving = input(200,"Length MA slow", tooltip = "Slow MA for BTC halvings - defval 200")
+tf = input("D","Timeframe", tooltip = "Timeframe for BTC Halvings - defval D")
+
+// HALVINGS
+
+halving_1 = timestamp(2012,11,28,0,0)
+halving_2 = timestamp(2016,7,9,0,0)
+halving_3 = timestamp(2020,5,11,0,0)
+halving_4 = timestamp(2024,4,20,0,0) 
+
+bandhalving = 1
+
+// Are these ranges bearish actually? Halving length from halving 2 to 3 = 1400 Bars (Days)
+// h1_range = time >= halving_1 - bandhalving*(24*60*60*1000) and time <= halving_1 + bandhalving*(24*60*60*1000) //adds 3 day either side for chart visibility
+// h2_range = time >= halving_2 - bandhalving*(24*60*60*1000) and time <= halving_2 + bandhalving*(24*60*60*1000) //adds 3 day either side for chart visibility
+// h3_range = time >= halving_3 - bandhalving*(24*60*60*1000) and time <= halving_3 + bandhalving*(24*60*60*1000) //adds 3 day either side for chart visibility
+// h4_range = time >= halving_4 - bandhalving*(24*60*60*1000) and time <= halving_4 + bandhalving*(24*60*60*1000) // Created by Brian typo halving_4 - bandhalving*(24*60*60*1000) and time <= halving_3
+
+
+// bgcolor(plot_halvings and h1_range? color.red : na, transp = 20)
+// bgcolor(plot_halvings and h2_range? color.red : na, transp = 20)
+// bgcolor(plot_halvings and h3_range? color.red : na, transp = 20)
+// bgcolor(plot_halvings and h4_range? color.red : na, transp = 20)
+
+
+// MAS useSym37
+// Comement back out to GAINSECURITIES tf isn't working. sym_37 is BTC. sym_38 is ETH is 16.705635491606715 smaller than BTC.
+m1 = ta.sma(close, l1)
+m2 = ta.sma(close, l2Halving)
+// m1 = (sym37 ta.sma(close, l1))
+// m2 = (sym38), ta.sma(close, l2Halving)
+// Will these work? Was it even refrencing btc?
+// m1 = request.security(sym37,tf,ta.sma(close, l1))
+// m2 = request.security(sym38,tf,ta.sma(close, l2Halving))
+
+// plot(plot_mas ? m1 : na, color=color.blue, style=plot.style_line, linewidth=2, transp = 0, title=" Fast MA") //SMA50
+// plot(plot_mas ? m2 : na, color=color.gray, style=plot.style_line,  linewidth=2, transp = 50, title=" Slow MA") //SMA200
+
+bars_since_halving = ta.barssince(time==halving_1 or time==halving_2 or time==halving_3 or time==halving_4)
+
+bull = (ta.barssince(m1<m2) > bars_since_halving)
+     or (ta.barssince(ta.crossover(m1,m2)) < bars_since_halving and ta.barssince(ta.crossunder(m1,m2)) > bars_since_halving)
+
+// Maybe it only plots one bull run because it requires barssince. 
+plot(bars_since_halving, title = "Bars Since Halving", display = display.data_window)
+//bgcolor(bull?color.green:na,transp=trans)
+
+
+// // Are these ranges bearish actually? Halving length from halving 2 to 3 = 1400 Bars (Days)
+// h1_range = time >= halving_1 - bandhalving*(24*60*60*1000) and time <= halving_1 + bandhalving*(24*60*60*1000) //adds 3 day either side for chart visibility
+// h2_range = time >= halving_2 - bandhalving*(24*60*60*1000) and time <= halving_2 + bandhalving*(24*60*60*1000) //adds 3 day either side for chart visibility
+// h3_range = time >= halving_3 - bandhalving*(24*60*60*1000) and time <= halving_3 + bandhalving*(24*60*60*1000) //adds 3 day either side for chart visibility
+// h4_range = time >= halving_4 - bandhalving*(24*60*60*1000) and time <= halving_3 + bandhalving*(24*60*60*1000) // Created by Brian
+
+// Time buffer (1-day window for visibility)
+// bandhalving = 1
+buffer_time = bandhalving * 24 * 60 * 60 * 1000  // 1 day in milliseconds
+
+// Define Halving Ranges
+h1_range = time >= halving_1 - buffer_time and time <= halving_1 + buffer_time
+h2_range = time >= halving_2 - buffer_time and time <= halving_2 + buffer_time
+h3_range = time >= halving_3 - buffer_time and time <= halving_3 + buffer_time
+h4_range = time >= halving_4 - buffer_time and time <= halving_4 + buffer_time  // Fixed typo
+
+// Plot background highlights for halving events
+// bgcolor(h1_range ? color.red : na, transp=85)
+// bgcolor(h2_range ? color.orange : na, transp=85)
+// bgcolor(h3_range ? color.blue : na, transp=85)
+// bgcolor(h4_range ? color.green : na, transp=85)
+
+var table_source = table(na)
+table_source := table.new(position=position.bottom_left, columns=1, rows=1, bgcolor=color.white, border_width=1)
+
+// ============================================================================
+// AUTOMATIC TIMEFRAME DETECTION FOR HALVING PERIOD LENGTHS (2025-12-22)
+// ============================================================================
+// Automatically detects chart timeframe and calculates halving period lengths
+// Base values are calibrated for 4H timeframe (14400 seconds)
+// Multipliers: 1H=0.25x, 4H=1x, Daily=6x, Weekly=42x, Monthly~180x
+
+// Base timeframe (4H = 14400 seconds)
+base_tf_seconds = 14400  // 4 hours in seconds
+
+// Base halving period lengths (calibrated for 4H timeframe)
+base_halvingBullLength = 552
+base_preHalvingLength  = 1100
+base_maxBullLength     = 3312
+base_maxPreHalving     = 6600
+
+// Detect current chart timeframe and calculate multiplier
+current_tf_seconds = timeframe.in_seconds(timeframe.period)
+tf_multiplier = current_tf_seconds / base_tf_seconds
+
+// Calculate timeframe-specific halving period lengths using multiplier
+halvingBullLength = base_halvingBullLength * tf_multiplier
+preHalvingLength  = base_preHalvingLength * tf_multiplier
+maxBullLength     = base_maxBullLength * tf_multiplier
+maxPreHalving     = base_maxPreHalving * tf_multiplier
+
+// ============================================================================
+// OLD MANUAL TOGGLE CODE (COMMENTED OUT - 2025-12-22)
+// ============================================================================
+// // User input: Select between 4-hour and 1-hour candles
+// 
+// // Define halving period lengths for both timeframes
+// halvingBullLength_4Hr = 552
+// preHalvingLength_4Hr  = 1100
+// maxBullLength_4Hr     = 3312
+// maxPreHalving_4Hr     = 6600
+// 
+// // Convert for 1-hour candles (multiply by 4)
+// halvingBullLength_1Hr = halvingBullLength_4Hr * 4  // 2208
+// preHalvingLength_1Hr  = preHalvingLength_4Hr * 4   // 4400
+// maxBullLength_1Hr     = maxBullLength_4Hr * 4      // 13248
+// maxPreHalving_1Hr     = maxPreHalving_4Hr * 4      // 26400
+// 
+// // Set correct values based on user choice
+// halvingBullLength = use1Hr ? halvingBullLength_1Hr : halvingBullLength_4Hr
+// preHalvingLength  = use1Hr ? preHalvingLength_1Hr  : preHalvingLength_4Hr
+// maxBullLength     = use1Hr ? maxBullLength_1Hr     : maxBullLength_4Hr
+// maxPreHalving     = use1Hr ? maxPreHalving_1Hr     : maxPreHalving_4Hr
+
+// Define halving cycle conditions
+halvingBull   = bars_since_halving < maxBullLength
+halvingBull2  = bars_since_halving > preHalvingLength
+halvingBear   = bars_since_halving > maxBullLength
+halvingBear2  = bars_since_halving > maxBullLength and bars_since_halving < preHalvingLength
+
+
+// halvingBull   = bars_since_halving < halvingBullLength //< 552...3312
+// halvingBull2  = bars_since_halving > preHalvingLength // >1100...26400
+// halvingBear   = bars_since_halving > halvingBullLength //> 552...3312
+// halvingBear2  = bars_since_halving > halvingBullLength and bars_since_halving < preHalvingLength //552...1100...3312...26400
+
+// // What are these numbers x4 3312, 6600, 
+// //Just x4 these numbers for 1 hr candles?
+
+// halvingBull   = bars_since_halving < halvingBullLength //< 2208...13248
+// halvingBull2  = bars_since_halving > preHalvingLength // >4400...26400
+// halvingBear   = bars_since_halving > halvingBullLength //> 2208...13248
+// halvingBear2  = bars_since_halving > halvingBullLength and bars_since_halving < preHalvingLength //2208...4400...13248...26400
+
+// Define colors
+halvingBullColor = color.new(color.green, 80) // 80 transparency corresponds to 20% opacity
+halvingBearColor = color.new(color.red, 80)   // 80 transparency corresponds to 20% opacity
+
+// Apply background color based on conditions
+bgcolor(halvingBull ? halvingBullColor : na)
+bgcolor(halvingBull2 ? halvingBullColor : na)
+bgcolor(halvingBear ? halvingBearColor : na)
+bgcolor(halvingBear2 ? halvingBearColor : na)
+
+
+//bgcolor(halvingBear, color = color.red)
+//--------------------------------------------------------------------------------------------}
+
+//----------------------MACD1-----------------------------------------------------------------{
+resMACD       = input.timeframe("",  "Indicator TimeFrame", tooltip = "Timeframe for normal MACD1 defval Chart")
+fast_length   = input.int(title="Fast Length", defval=12, tooltip = "Fast MA for MACD - defval 12")
+slow_length   = input.int(title="Slow Length", defval=26, tooltip = "Slow MA for MACD - defval 26")
+srcMACD       = input.source(title="Source", defval=close, tooltip = "defval close")
+signal_length = input.int(title="Signal Smoothing", minval = 1, maxval = 999, defval = 9, tooltip = "Signal_length for MACD - defval 9")
+sma_source    = input.string(title="Oscillator MA Type", defval="EMA", options=["SMA", "EMA"], tooltip = "Oscillator MA type - defval EMA")
+sma_signal    = input.string(title="Signal Line MA Type", defval="EMA", options=["SMA", "EMA"], tooltip = "Signal Line MA Type - defval EMA")
+// Show Plots T/F
+show_macd     = input.bool(true, title="Show MACD Lines", group="Show Plots?", inline="SP10", tooltip = "show_macd Lines - defval true")
+show_macd_LW  = input.int(3, minval=0, maxval=5, title = "MACD Width", group="Show Plots?", inline="SP11", tooltip = "defval 3")
+show_signal_LW= input.int(2, minval=0, maxval=5, title = "Signal Width", group="Show Plots?", inline="SP11", tooltip = "defval 2")
+show_Hist     = input.bool(true, title="Show Histogram", group="Show Plots?", inline="SP20", tooltip = "defval true")
+show_hist_LW  = input.int(5, minval=0, maxval=5, title = "-- Width", group="Show Plots?", inline="SP20", tooltip = "defval 5")
+show_trend    = input.bool(true, title = "Show MACD Lines w/ Trend Color", group="Show Plots?", inline="SP30", tooltip = "defval true")
+show_HB       = input.bool(false, title="Show Highlight Price Bars", group="Show Plots?", inline="SP40", tooltip = "defval false")
+show_cross    = input.bool(false, title = "Show BackGround on Cross", group="Show Plots?", inline="SP50", tooltip = "defval false")
+show_dots     = input.bool(true, title = "Show Circle on Cross", group="Show Plots?", inline="SP60", tooltip = "defval true")
+show_dots_LW  = input.int(5, minval=0, maxval=5, title = "-- Width", group="Show Plots?", inline="SP60", tooltip = "defval 5")
+
+//show_trend    = input(true, title = "Colors MACD Lines w/ Trend Color", group="Show Plots?", inline="SP5")
+// MACD Lines colors
+col_macd      = input.color(#FF6D00, "MACD Line  ",  group="Color Settings", inline="CS1")
+col_signal    = input.color(#2962FF, "Signal Line  ",  group="Color Settings", inline="CS1")
+col_trnd_Up   = input.color(#4BAF4F, "Trend Up      ",  group="Color Settings", inline="CS2")
+col_trnd_Dn   = input.color(#B71D1C, "Trend Down    ",  group="Color Settings", inline="CS2")
+// Histogram Colors
+col_grow_above = input.color(#26A69A, "Above   Grow",  group="Histogram Colors", inline="Hist10")
+col_fall_above = input.color(#B2DFDB, "Fall",  group="Histogram Colors", inline="Hist10")
+col_grow_below = input.color(#FF5252, "Below Grow",  group="Histogram Colors", inline="Hist20")
+col_fall_below = input.color(#FFCDD2, "Fall",  group="Histogram Colors", inline="Hist20")
+// Alerts T/F Inputs
+alert_Long    = input.bool(true, title = "MACD Cross Up", group = "Alerts", inline="Alert10", tooltip = "defval true")
+alert_Short   = input.bool(true, title = "MACD Cross Dn", group = "Alerts", inline="Alert10", tooltip = "defval true")
+alert_Long_A  = input.bool(false, title = "MACD Cross Up & > 0", group = "Alerts", inline="Alert20", tooltip = "defval false")
+alert_Short_B = input.bool(false, title = "MACD Cross Dn & < 0", group = "Alerts", inline="Alert20", tooltip = "defval false")
+// Calculating
+fast_ma = request.security(syminfo.tickerid, resMACD, sma_source == "SMA" ? ta.sma(srcMACD, fast_length) : ta.ema(srcMACD, fast_length))
+slow_ma = request.security(syminfo.tickerid, resMACD, sma_source == "SMA" ? ta.sma(srcMACD, slow_length) : ta.ema(srcMACD, slow_length))
+macd = fast_ma - slow_ma
+signal = request.security(syminfo.tickerid, resMACD, sma_signal == "SMA" ? ta.sma(macd, signal_length) : ta.ema(macd, signal_length))
+hist = macd - signal
+// MACD Trend and Cross Up/Down conditions
+trend_up   = macd > signal
+trend_dn   = macd < signal
+cross_UP   = signal[1] >= macd[1] and signal < macd
+cross_DN   = signal[1] <= macd[1] and signal > macd
+cross_UP_A = (signal[1] >= macd[1] and signal < macd) and macd > 0
+cross_DN_B = (signal[1] <= macd[1] and signal > macd) and macd < 0
+// Condition that changes Color of MACD Line if Show Trend is turned on..
+trend_col = show_trend  and trend_up ? col_trnd_Up : trend_up ? col_macd : show_trend  and trend_dn ? col_trnd_Dn: trend_dn ? col_macd : na 
+
+//Var Statements for Histogram Color Change
+var bool histA_IsUp = false
+var bool histA_IsDown = false
+var bool histB_IsDown = false
+var bool histB_IsUp = false
+histA_IsUp   := hist == hist[1] ? histA_IsUp[1] : hist > hist[1] and hist > 0
+histA_IsDown := hist == hist[1] ? histA_IsDown[1] : hist < hist[1] and hist > 0
+histB_IsDown := hist == hist[1] ? histB_IsDown[1] : hist < hist[1] and hist <= 0
+histB_IsUp   := hist == hist[1] ? histB_IsUp[1] : hist > hist[1] and hist <= 0
+
+hist_col =  histA_IsUp ? col_grow_above : histA_IsDown ? col_fall_above : histB_IsDown ? col_grow_below : histB_IsUp ? col_fall_below :color.silver 
+
+//End Code MACD1------------------------------------------------------------------------------}
+//------------------------MACD2-LAZYBEAR-Consiladation-avoidance------------------------------{
+// Visuals only, not trading execution.
+lengthMA = input(34, tooltip = "MACD2 - defval 34")
+lengthSignal = input(9, tooltip = "MACD 2 - defval 9")
+//calc_smma(src, len) =>
+//	smma=na(smma[1]) ? ta.sma(src, len) : (ta.smma[1] * (len - 1) + src) / len
+//	smma
+
+calc_smma(src, len) =>
+	var float smma = na
+	smma := na(smma[1]) ? ta.sma(src, len) : (smma[1]) * (len - 1) + src / len
+
+calc_zlema(src, length) =>
+	ema1=ta.ema(src, length)
+	ema2=ta.ema(ema1, length)
+	d=ema1-ema2
+	ema1+d
+
+srcMACD2=hlc3 //srcMACD??
+hi=calc_smma(high, lengthMA)
+lo=calc_smma(low, lengthMA)
+mi=calc_zlema(srcMACD2, lengthMA) 
+
+md=(mi>hi)? (mi-hi) : (mi<lo) ? (mi - lo) : 0
+sb=ta.sma(md, lengthSignal)
+sh=md-sb
+mdc=srcMACD2>mi?srcMACD2>hi?color.lime:color.green:srcMACD2<lo?color.red:color.orange
+//plot(0, color = color.gray, linewidth=1, title="MidLine")
+//plot(md,color =  color.maroon, linewidth=2, title="ImpulseMACD", style = plot.style_histogram)
+//plot(sh, color = color.blue, linewidth=2, title="ImpulseHisto", style= plot.style_histogram)
+//plot(sb, color =   color.orange, linewidth=2, title="ImpulseMACDCDSignal")
+
+ebc=input(false, title="Enable bar colors")
+barcolor(ebc?mdc:na)
+//-----------------------------------END MACD2------------------------------------------------}
+//--------------------------------------------------------------------------------------------{
+// RSI Divergence Mr. Coingrats
+
+len            = input.int(title="RSI Period", minval=1, defval=14, display = display.none, group = "RSI Divergence", tooltip = "defval 14")
+srcRSI            = input(title="RSI Source", defval=close, display = display.none, group = "RSI Divergence", tooltip = "defval close")
+//Extra RSI
+l2             = input.int(7, minval=1, title="Fast Length", display = display.none, group = "RSI Divergence", tooltip = "defval 7")
+l3             = input.int(21, minval=1, title="Slow Length", display = display.none, group = "RSI Divergence", tooltip = "defval 21")
+//END
+lbR            = input(title="Pivot Lookback Right", defval=5, display = display.none, group = "RSI Divergence", tooltip = "defval 5")
+lbL            = input(title="Pivot Lookback Left", defval=5, display = display.none, group = "RSI Divergence", tooltip = "defval 5")
+rangeUpper     = input(title="Max of Lookback Range", defval=30, display = display.none, group = "RSI Divergence", tooltip = "defval 30")
+rangeLower     = input(title="Min of Lookback Range", defval=5, display = display.none, group = "RSI Divergence", tooltip = "defval 5")
+plotBull       = input(title="Plot Regular Bullish Divergence", defval=true, group = "RSI Divergence", tooltip = "defval true")
+plotHiddenBull = input(title="Plot Hidden Bullish Divergence", defval=true, group = "RSI Divergence", tooltip = "defval true")
+plotBear       = input(title="Plot Regular Bearish Divergence", defval=true, group = "RSI Divergence", tooltip = "defval true")
+plotHiddenBear = input(title="Plot Hidden Bearish DIvergence", defval=true, group = "RSI Divergence", tooltip = "defval true")
+////
+bearColor = color.red
+bullColor = color.green
+hiddenBullColor = color.orange
+hiddenBearColor = color.orange
+noneColor = color.new(color.white, 100)
+
+osc = ta.rsi(srcRSI, len)
+
+plot(osc, title="RSI", linewidth=1, color=#ffffff, display = display.data_window)
+h20=hline(20, color=color.new(#9598a1,100), linestyle=hline.style_dotted, title="Bottomline bearish area", display = display.none)
+hline(30, title="Oversold", linestyle=hline.style_dotted, display = display.none)
+h45=hline(45, color=color.new(#9598a1,100), linestyle=hline.style_dotted, title="Topline bearish area", display = display.none)
+hline(50, title="Middle Line", linestyle=hline.style_dotted, display = display.none)
+h65=hline(65, color=color.new(#9598a1,100), linestyle=hline.style_dotted, title="Bottomline bullish area", display = display.none)
+hline(70, title="Overbought", linestyle=hline.style_dotted, display = display.none)
+h80=hline(80, color=color.new(#9598a1,100), linestyle=hline.style_dotted, title="Topline bullish area", display = display.none)
+
+//Plot extra RSI
+rsi1 = ta.rsi(close, l2)
+r1 = plot(rsi1, color=color.rgb(41, 113, 130, 100), linewidth=1, title="Fast Length", display = display.data_window)
+rsi2 = ta.rsi(close, l3)
+r2 = plot(rsi2, color=color.rgb(38, 100, 115, 100), linewidth=1, title="Slow Length", display = display.data_window)
+
+// Fills removed because of invalid scale
+//fill(r1, r2, rsi1>rsi2?color.green : rsi2>rsi1?color.red : color.red, transp=70, title="Bull(0)/Bear(1) momentum")
+//fill(h20, h45, color=#000000,transp=75, title="Background bearish zone")
+//fill(h65, h80, color=#000000, transp=75, title="Background bullish zone")
+
+plFound = na(ta.pivotlow(osc, lbL, lbR)) ? false : true
+phFound = na(ta.pivothigh(osc, lbL, lbR)) ? false : true
+
+_inRange(cond) =>
+    bars = ta.barssince(cond == true)
+    rangeLower <= bars and bars <= rangeUpper
+
+//------------------------------------------------------------------------------
+// Regular Bullish Divergence
+
+// Osc: Higher Low
+oscHL = osc[lbR] > ta.valuewhen(plFound, osc[lbR], 1) and _inRange(plFound[1])
+
+// Price: Lower Low
+priceLL = low[lbR] < ta.valuewhen(plFound, low[lbR], 1)
+
+bullCond = plotBull and priceLL and oscHL and plFound
+
+plot(
+	 plFound ? osc[lbR] : na,
+	 offset=-lbR,
+	 title="Regular Bullish line",
+	 linewidth=2,
+	 color=(bullCond ? bullColor : noneColor),
+	 transp=50,
+	 display = display.data_window
+	 )
+
+plotshape(
+	 bullCond ? osc[lbR] : na,
+	 offset=-lbR,
+	 title="Regular Bullish Label",
+	 style=shape.arrowup,
+	 location=location.belowbar,
+	 color=bullColor,
+	 size=size.tiny,
+	 transp=0
+	 )
+
+// alertcondition(bullCond, title="RSI regular bullish divergence found", message="RSI regular bullish divergence found")
+
+//------------------------------------------------------------------------------
+// Hidden Bullish Divergence
+
+// Osc: Lower Low
+oscLL = osc[lbR] < ta.valuewhen(plFound, osc[lbR], 1) and _inRange(plFound[1])
+
+// Price: Higher Low
+priceHL = low[lbR] > ta.valuewhen(plFound, low[lbR], 1)
+
+hiddenBullCond = plotHiddenBull and priceHL and oscLL and plFound
+
+plot(
+	 plFound ? osc[lbR] : na,
+	 offset=-lbR,
+	 title="Hidden Bullish line",
+	 linewidth=2,
+	 color=(hiddenBullCond ? hiddenBullColor : noneColor),
+	 transp=50,
+	 display = display.data_window
+	 )
+
+plotshape(
+	 hiddenBullCond ? osc[lbR] : na,
+	 offset=-lbR,
+	 title="Hidden Bullish Label",
+	 style=shape.arrowup,
+	 location=location.belowbar,
+	 color=hiddenBullColor,
+	 size=size.tiny,
+	 transp=0
+	 )
+
+//alertcondition(hiddenBullCond, title="RSI hidden bullish divergence found", message="RSI hidden bullish divergence found")
+
+
+//------------------------------------------------------------------------------
+// Regular Bearish Divergence
+
+// Osc: Lower High
+oscLH = osc[lbR] < ta.valuewhen(phFound, osc[lbR], 1) and _inRange(phFound[1])
+
+// Price: Higher High
+priceHH = high[lbR] > ta.valuewhen(phFound, high[lbR], 1)
+
+bearCond = plotBear and priceHH and oscLH and phFound
+
+plot(
+	 phFound ? osc[lbR] : na,
+	 offset=-lbR,
+	 title="Regular Bearish line",
+	 linewidth=2,
+	 color=(bearCond ? bearColor : noneColor),
+	 transp=50,
+	 display = display.data_window
+	 )
+
+plotshape(
+	 bearCond ? osc[lbR] : na,
+	 offset=-lbR,
+	 title="Regular Bearish Label",
+	 style=shape.arrowdown,
+	 location=location.top,
+	 color=bearColor,
+	 size=size.tiny,
+	 transp=0
+	 )
+
+//alertcondition(bearCond, title="RSI regular bearish divergence found", message="RSI regular bearish divergence found")
+
+
+//------------------------------------------------------------------------------
+// Hidden Bearish Divergence
+
+// Osc: Higher High
+oscHH = osc[lbR] > ta.valuewhen(phFound, osc[lbR], 1) and _inRange(phFound[1])
+
+// Price: Lower High
+priceLH = high[lbR] < ta.valuewhen(phFound, high[lbR], 1)
+
+hiddenBearCond = plotHiddenBear and priceLH and oscHH and phFound
+
+plot(
+	 phFound ? osc[lbR] : na,
+	 offset=-lbR,
+	 title="Hidden Bearish line",
+	 linewidth=2,
+	 color=(hiddenBearCond ? hiddenBearColor : noneColor),
+	 transp=50,
+	 display = display.data_window
+	 )
+
+plotshape(
+	 hiddenBearCond ? osc[lbR] : na,
+	 offset=-lbR,
+	 title="Hidden Bearish Label",
+	 style=shape.arrowdown,
+	 location=location.top,
+	 color=hiddenBearColor,
+	 size=size.tiny,
+	 transp=0
+	 )
+
+//alertcondition(hiddenBearCond, title="RSI hidden bearish divergence found", message="RSI hidden bearish divergence found")
+
+//Removing because of too many alerts
+//if hiddenBearCond
+//    alert("RSI hidden bearish divergence", alert.freq_once_per_bar_close)
+
+//EMA Settings
+// ema12 = ta.ema(osc, 12)
+//Settings true or false plot EMA
+// E_12 = input(true, "Plot EMA 12")  
+//plot EMA lines
+// plot(E_12 ? ema12 : na, title="EMA 12", color=color.rgb(162, 191, 32), linewidth=1, display = display.none)
+//
+
+// Degradation factor
+decayRate = input.float(0.4, "Decay Rate", tooltip = "defval 0.4")
+
+// Persistent variable to store signal strength
+var float signalStrength = na
+
+// Update signal strength
+if na(signalStrength)
+    signalStrength := 0
+
+if (bullCond or hiddenBullCond)
+    signalStrength := signalStrength + 1
+else if (bearCond or hiddenBearCond)
+    signalStrength := signalStrength - 1
+else
+    signalStrength := signalStrength * (1 - decayRate / 100)
+
+// Plotting the signal strength ***NOT IMPLEMENTED***
+// plot(signalStrength, title="Divergence Signal Strength", color=color.purple, linewidth=2, style=plot.style_histogram, display = display.data_window)
+
+//-------------------------------------------------------------------------------------------------------}
+
+//--REGIME FILTER BTC------------------------------------------------------------------------------------{
+// Regime filter copy and paste
+
+// Get user input
+res         = input.timeframe(title="Timeframe", defval="W", display = display.none, group = "Regime Filter", tooltip = "defval W") //_res
+lenRegime   = input.int(title="EMA Length", defval=20, display = display.none, group = "Regime Filter", tooltip = "defval 20")
+marketTF    = input.timeframe(title="Market Timeframe", defval="D", display = display.none, group = "Regime Filter", tooltip = "defval D")
+useRsi      = input.bool(title="Use RSI Momentum Filter", defval=false, display = display.none, group = "Regime Filter", tooltip = "false")
+rsiMom      = input.int(title="RSI Momentum Threshold", defval=70, display = display.none, group = "Regime Filter", tooltip = "defval 70")
+//startTime   = input.time(title="Start Filter", defval=timestamp("01 Jan 2000 13:30 +0000"), group="Regime Time Filter", tooltip="Start date & time to begin searching for setups")
+//endTime     = input.time(title="End Filter", defval=timestamp("1 Jan 2099 19:30 +0000"), group="Regime Time Filter", tooltip="End date & time to stop searching for setups")
+
+// Define custom security function
+f_sec(_market, _res, _exp) => request.security(_market, _res, _exp[barstate.isrealtime ? 1 : 0])[barstate.isrealtime ? 0 : 1]
+
+// Define date filter
+dateFilter(int st, int et) => time >= st and time <= et
+
+// Get EMA value
+ema = ta.ema(close, lenRegime)
+htfEmaValue = f_sec(syminfo.tickerid, res, ema)
+
+// Get ATR value
+atrValue = ta.atr(5)
+
+// Check if price is above or below EMA filter
+marketPrice = f_sec(syminfo.tickerid, marketTF, close)
+regimeFilter = marketPrice > (htfEmaValue + (atrValue * 0.25))
+
+// Calculate RSI
+rsiValue = ta.rsi(close, 7)
+
+// Get bullish momentum filter
+bullish = regimeFilter and (rsiValue > rsiMom or not useRsi)
+
+// Check for bearish volatility caution
+caution = bullish and ta.highest(high, 7) - low > (atrValue * 1.5)
+bearish = not bullish and not caution
+
+// --------------End Regime Filter---------------------------------------------------------}
+
+//------------------bullishMarubozu END---------------------------------------------------------------}
+//---------------ATR volatility PSM -------------------------------------------------------{
+int length1         = input.int(title="Short-Term ATR Length", defval=5, display = display.none, group = "ATR Volatility", tooltip = "defval 5")
+int length2         = input.int(title="Long-Term ATR Length", defval=14, display = display.none, group = "ATR Volatility", tooltip = "defval 14")
+float rvolThreshold = input.float(title="RVOL Threshold", defval=0.78, display = display.none, group = "ATR Volatility", tooltip = "defval 0.78 IMPORTANT")
+
+// Get indicator values
+atr1 = ta.atr(length1)
+atr2 = ta.atr(length2)
+
+// Generate RVOL alert/signal
+rvolAlert = atr1 > (atr2 * rvolThreshold)
+volColor = rvolAlert ? color.aqua : color.gray
+
+horizontalChop2 = atr1 < (atr2 * rvolThreshold)
+
+// Draw data to chart
+// plot(atr1, title="Short-Term ATR", style=plot.style_columns, color=volColor, display = display.data_window)
+// plot(atr2, title="Long-Term ATR", color=color.black, display = display.data_window)
+// plot(atr2 * rvolThreshold, title="RVOL Threshold", color=color.blue, display = display.data_window)
+plotshape(horizontalChop2, title = "horizontalChop2", color =#2c72907b, style=shape.xcross, location=location.abovebar, size = size.huge) //horizontalChop2 is used
+// Giant X S
+
+//-------------End ATR volatility PSM ------------------------------------------------------------------}
+//-------------SuperTrend-------------------------------------------------------------------------------{
+src_fast = close, len_fast = input(5, title="Length Fast RSI", tooltip = "Fast Length SuperTrend", group = "SuperTrend", tooltip = "defval 5 IMPORTANT")
+src_slow = close, len_slow = input(14, title="Length Slow RSI", tooltip = "Slow Length RSI SuperTrend", group = "SuperTrend", tooltip = "defval 14 IMPORTANT")
+up_fast = ta.rma(math.max(ta.change(src_fast), 0), len_fast)
+down_fast = ta.rma(-math.min(ta.change(src_fast), 0), len_fast)
+rsi_fast = down_fast == 0 ? 100 : up_fast == 0 ? 0 : 100 - (100 / (1 + up_fast / down_fast))
+up_slow = ta.rma(math.max(ta.change(src_slow), 0), len_slow)
+down_slow = ta.rma(-math.min(ta.change(src_slow), 0), len_slow)
+rsi_slow = down_slow == 0 ? 100 : up_slow == 0 ? 0 : 100 - (100 / (1 + up_slow / down_slow))
+//plotfast = plot(rsi_fast, color=blue)
+//plotslow = plot(rsi_slow, color=orange)
+divergence = rsi_fast - rsi_slow
+// plotdiv = plot(divergence, color = divergence > 0 ? color.lime:color.red, linewidth = 2)
+//band1 = hline(70,color=green)
+//band0 = hline(30,color=red)
+band = hline(0, display = display.none)
+
+atrPeriod = input.int(10,    "ATR Length", minval = 1, tooltip = "atrPeriod SuperTrend", tooltip = "defval 10 IMPORTANT")
+factor =    input.float(3.0, "Factor",     minval = 0.01, step = 0.01, tooltip = "factor SuperTrend", tooltip = "defval 3.0 IMPORTANT")
+
+[supertrend, direction] = ta.supertrend(factor, atrPeriod)
+
+supertrend := barstate.isfirst ? na : supertrend
+//upTrend =    plot(direction < 0 ? supertrend : na, "Up Trend",   color = color.green, style = plot.style_linebr)
+//downTrend =  plot(direction < 0 ? na : supertrend, "Down Trend", color = color.red,   style = plot.style_linebr)
+upTrend =    direction < 0 ? supertrend : na
+downTrend =  direction < 0 ? na : supertrend
+bodyMiddle = plot(barstate.isfirst ? na : (open + close) / 2, "Body Middle",display = display.none)
+
+//fill(bodyMiddle, upTrend,   color.new(color.green, 90), fillgaps = false)
+//fill(bodyMiddle, downTrend, color.new(color.red,   90), fillgaps = false)
+
+// alertcondition(direction[1] > direction, title='Downtrend to Uptrend', message='The Supertrend value switched from Downtrend to Uptrend ')
+// alertcondition(direction[1] < direction, title='Uptrend to Downtrend', message='The Supertrend value switched from Uptrend to Downtrend')
+// alertcondition(direction[1] != direction, title='Trend Change', message='The Supertrend value switched from Uptrend to Downtrend or vice versa')
+
+upTrendBool = upTrend > 0 // ? supertrend : na
+downTrendBool= downTrend > 0 // ? na : supertrend
+// -------------------------END Supertrend------------------------------------------------------------------}
+
+//-------------LONG CONDITIONS-----------------------------------------------------------------------{
+//
+
+//longCondition = ta.crossover(request.security(syminfo.tickerid, tim, close),request.security(syminfo.tickerid, tim, open))
+longCondition   = sourceLongInput > 0 // Gettrend...Megabot long true
+longCondition2  = sourceLongInput2 > bullDivAmount // Sumdnumdivbottom //7
+//longCondition3 = sourceLongInput3 > 10 // RSI Divergence working RSI Divergence 
+longCondition3  = divergence > 25 //This bizarely helps. Just price > 25???
+// Restore pre-12/27 behavior (DXY-based placeholder)
+longCondition4  = sourceLongInput4 < 0.5 // DXY
+// longCondition5  = sourceLongInput5 < -500 //KOV 
+// longCondition6  = sourceLongInput6 > low // BB lower = 1805...low 1775... lowerBB(1805) > low(1775)
+// longCondition8  = sourceLongInput8 < -1 //simple bool sourceLongInput8 > 0 [1]
+longcondition10 = sourceLongInput > 0 //high number to avoid confusion...megabot true long
+
+plot(sourceLongInput2, title = "sourceLongInput2 (Bull Divs)", color = color.green, display = display.data_window)
+plot(sourceShortInput2, title = "sourceShortInput2 (Bear Divs)", color = color.red, display = display.data_window)
+
+//---------------------------------------------------------------------------------------------------------}
+//----SHORT CONDITIONS-------------------------------------------------------------------------------------{
+shortCondition   = sourceShortInput > 0 // Gettrend v2...Megabot short true
+shortCondition2  = sourceShortInput2 > bearDivAmount //SumdnumdivTop
+//shortCondition3 = sourceShortInput3 < -10 // RSI Divergence
+shortCondition3  = divergence < -24 // <-10
+// Restore pre-12/27 behavior (DXY-based placeholder)
+shortCondition4  = sourceShortInput3 > 0.8 // DXY
+// shortCondition5  = sourceShortInput5 < -400 // KOV/ KOV divergence with price?
+// shortCondition6  = sourceShortInput6 < high // BB 
+// shortCondition8  = sourceShortInput8 > 50
+shortcondition10 = sourceShortInput > 0 //high number to avoid confition...megabot true short
+
+//----SIDELINE CONDITIONS----------------------------------------------------------------------------------{
+// horizontalChop = sourceLongInput7 < 0.1
+// DXYHawkish = sourceShortInput4 > 0.6 //Never used in execution (OLD: repurposed; keep commented)
+longProfitExit = strategy.position_size > 0 and close > strategy.position_avg_price * (1 + profitPercentage / 100) //Never used in execution
+stopLoss = close < strategy.position_avg_price * 0.90 //Never used in execution
+//----SIDELINE CONDITIONS END------------------------------------------------------------------------------{
+
+// Counters
+var int bullishCounter = 0
+var int cautionCounter = 0
+var int bearishCounter = 0
+
+// Update counters
+bullishCounter := bullish ? bullishCounter + 1 : 0
+cautionCounter := caution ? cautionCounter + 1 : 0
+bearishCounter := bearish ? bearishCounter + 1 : 0
+
+plot(bullishCounter, title = "bullishCounter bars", display = display.data_window)
+plot(cautionCounter, title = "cautionCounter bars", display = display.data_window)
+plot(bearishCounter, title = "bearishCounter bars", display = display.data_window)
+
+var int barsSinceNoPosition = na
+
+if (strategy.position_size == 0)
+    barsSinceNoPosition := barsSinceNoPosition + 1
+else
+    barsSinceNoPosition := 0
+
+var int barsInPosition = na
+
+if (strategy.position_size != 0)
+    barsInPosition := barsInPosition + 1
+else
+    barsInPosition := 0
+
+// Debug plots
+// plot(barsSinceNoPosition, color=color.blue, title="Bars Since No Position", display = display.data_window)
+// plot(barsInPosition, color=color.green, title="Bars In Position", display = display.data_window)
+
+notFirstTrade = strategy.grossprofit_percent > 0 or strategy.grossprofit_percent < 0
+firstTrade = strategy.grossprofit_percent == 0
+
+beginBear =  bearishCounter < 300 and bearishCounter > 1 
+largePercentageCapital = input(75, title="Entry Capital Percentage 75")
+smallPercentageCapital = input(25, title="Entry Capital Percentage 25")
+// plot(zen.getBodyPercent(), title = "getBodyPercent", display = display.data_window)
+// plot(zen.getBodySize(), title = "getBodySize", display = display.data_window)
+// plot(zen.getBottomWickSize(), title = "getBottomWickSize", display = display.data_window)
+// plot(zen.getPctChange(close[1], close, 1), title = "getPctChange", display = display.data_window)
+
+// Volume condition
+volumeMA = ta.sma(volume, 2)
+volumeCondition = volume > volumeMA
+
+//-----------STATS faster to access-----------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------------{
+// Calculate win rate
+var float win_rate = 0.0
+if (strategy.closedtrades > 0)
+    win_rate := strategy.wintrades / strategy.closedtrades
+
+// Calculate drawdown
+var float max_equity = na
+if (na(max_equity) or strategy.equity > max_equity)
+    max_equity := strategy.equity
+var float drawdown = 0.0
+if (not na(max_equity))
+    drawdown := (max_equity - strategy.equity) / max_equity * 100
+//-------------------------------------------------------------------------------------------------------------------------}
+//-------------------------------------------------------------------------------------------------------------------------{
+//Percent of capital, Pyramiding, and stats
+percentage_variable_capital = 1  // 50% of available capital
+contract_size_prep = strategy.equity / close
+contract_size_var1 = contract_size_prep * 0.25 // Just invert these to understand the buying power for remaing contracts for Pyramiding
+contract_size_var2 = contract_size_prep * 0.75 // Just invert these to understand the buying power for remaing contracts for Pyramiding
+//remaining_contracts_var1 = (contract_size_var1) * 1.75 //Would need these for Pyramiding
+//remaining_contracts_var2 = (contract_size_var2) * 1.25 //Would need these for Pyramiding
+// Calculate the position size
+available_capital = (strategy.equity * percentage_variable_capital) - (strategy.position_size * close) //This is for altering the percentage of what you want to effect.
+position_size = available_capital / close //Divided by close to understand how many CONTRACTS not USD
+position_sizeUSD = position_size * close 
+position_size2USD = strategy.position_size * close
+position_sizeContracts = position_sizeUSD / close
+position_size_var1 = position_sizeContracts * 0.25
+position_size_var2 = position_sizeContracts * 0.75
+
+//Commented out to make room for more plots.
+// plot(strategy.equity, title = "USD equity (total including current trade and initial_capital) strategy.percent_of_equity", display = display.data_window)//USD equity including current trade
+// plot(strategy.position_size, title ="Contracts currently in a trade", display = display.data_window) //Contracts
+// plot(position_size2USD, title ="USD currently in a trade", display = display.data_window)
+// plot(position_sizeUSD, title = "Remaining available USD - (position_sizeUSD)", display = display.data_window)//USD
+// plot(position_sizeContracts, title = "Remaining available Contracts - (position_sizeContacts)", display = display.data_window)//USD
+//plot(available_capital, title = "available_capital strategy.equity * user defined input", display = display.data_window) //This is in USD
+//plot(position_size, title = "position_size", display = display.data_window) //Contracts...Redundant needs multiplier working
+
+// plot(contract_size_prep, title = "contract_size_prep", display = display.data_window)//USD //Need room for plots so I commented out
+// plot(contract_size_var1, title = "contract_size_var1", display = display.data_window)//USD //25%
+// plot(contract_size_var2, title = "contract_size_var2", display = display.data_window)//USD //75%
+
+
+trade_profit_percent = (strategy.position_avg_price - close) / strategy.position_avg_price * 100 * (strategy.position_size > 0 ? -1 : 1)
+minimum_Profit = trade_profit_percent >= 0.50
+maximum_Loss = trade_profit_percent < -1.0
+
+// plot(strategy.netprofit, title ="Net Profit (Excludes current trade and initial_capital)", color=color.green, display = display.data_window) //Contracts // Needs to be on a table
+// plot(win_rate * 100, title="Win Rate (%)", color=color.blue, display = display.data_window)
+// plot(drawdown, title="Drawdown (%)", color=color.red, display = display.data_window)
+// plot(trade_profit_percent, title="Percentage Profit of current trade (trade_profit_percent)", color=color.blue, display = display.data_window)
+
+var float total_profit = na
+if (na(total_profit))
+    total_profit := 0.0
+total_profit := strategy.netprofit
+//-------------Trading View Sortino and Sharpe----------------------------------------
+// Constants
+string BM01     = "Fixed rate of return (%)"
+string BM02     = "Benchmark symbol returns"
+color  WHITE    = color.white
+color  GRAY30   = color.new(color.gray, 30)
+color  GRAY60   = color.new(color.gray, 60)
+color  ORANGE80 = color.new(color.orange, 80)
+color  AQUA80   = color.new(color.aqua, 80)
+
+// Tooltips
+string TT_TF = "Timeframe of the sampled returns."
+string TT_NT = "Maximum number of periods to analyze. Periods are monthly if the chart's data spans at least
+     two months or daily if it spans at least two days. This script will not calculate periods for datasets spanning
+     less than two days."
+string TT_FI = "Type of benchmark to compare against the chart symbol's returns:\n
+     - If 'Fixed rate of return (%)', compares chart symbol returns to a fixed annual percentage benchmark.\n
+     - If 'Benchmark symbol returns', compares chart symbol returns to the returns from a benchmark symbol
+     (e.g., 'AMEX:SPY') to calculate Information ratios."
+string TT_PT = "Annual fixed rate of return to compare when the benchmark type is 'Fixed rate of return (%)'."
+string TT_SY = "Symbol to compare when the benchmark type is 'Benchmark symbol returns'."
+
+// Specify the timeframe of the returns, the number of calculation periods to analyze, and the performance benchmark.
+string tfInput         = input.timeframe("1M",    "Returns timeframe",                tooltip = TT_TF) 
+int    numOfTFsInput   = input.int(60,            "Max no. of periods used",          tooltip = TT_NT) 
+bool   useFixedInput   = input.string(BM02,       "Benchmark return type",            tooltip = TT_FI, options = [BM01, BM02]) == BM01 //BM01 or BM02
+float  percentageInput = input.float(2,           "    Risk-free rate of return (%)", tooltip = TT_PT, minval = 0) 
+string symbolInput     = input.symbol("SP:SPX", "    Benchmark symbol",             tooltip = TT_SY)
+
+// Group to control the appearance of the info table. 
+string GRP1                 = "Info table"
+bool   showInfoBoxInput     = input.bool(true,       "Show info table",                group = GRP1)
+string infoBoxSizeInput     = input.string("normal", "Size ",           inline = "21", group = GRP1, options = ["tiny", "small", "normal", "large", "huge", "auto"])
+string infoBoxYPosInput     = input.string("bottom", "↕",               inline = "21", group = GRP1, options = ["top", "middle", "bottom"])
+string infoBoxXPosInput     = input.string("right",  "↔",               inline = "21", group = GRP1, options = ["left", "center", "right"])
+color  infoBoxColorInput    = input.color(GRAY30,    "",                inline = "21", group = GRP1)
+color  infoBoxTxtColorInput = input.color(WHITE,     "",                inline = "21", group = GRP1)
+//#endregion
+
+
+
+//#region ———————————————————— Functions 
+
+
+// @function            Requests aligned prices from the chart's symbol and an `altSymbol` for statistical comparison.
+//                      Utilizes spread tickers to ensure the times of requested prices maintain consistent time 
+//                      alignment with the periodic points on the current chart.
+// @param altSymbol     (simple string) The symbol to align with the chart's symbol. For consistency, the spreads 
+//                      formed by this symbol and the chart's use extended hours and dividend adjustment modifiers, and 
+//                      they inherit additional settings from the chart, including "settlement-as-close" preferences. 
+// @param timeframe     (simple string) The timeframe of the aligned data request. Must be greater than or equal to  
+//                      the chart's timeframe. 
+// @param offset        (simple int) The bar offset applied to the requested prices. Use a value greater than or equal 
+//                      to 1 to prevent lookahead bias in requested HTF historical data.
+// @returns             ([series float, series float, series float, series float]) A tuple containing the aligned 
+//                      current and previous prices from the chart's symbol and the modified `altSymbol` on the 
+//                      specified `timeframe`.
+getAlignedPrices(simple string altSymbol, simple string timeframe, simple int offset = 0) =>
+    var string standard1 = ticker.standard(syminfo.tickerid)
+    var string standard2 = ticker.standard(altSymbol)
+    var string sumSpread = ticker.modify(
+         ticker.inherit(syminfo.tickerid, standard1 + "+" + standard2), session.extended, adjustment.dividends
+     )
+    var string diffSpread = ticker.modify(
+         ticker.inherit(syminfo.tickerid, standard1 + "-" + standard2), session.extended, adjustment.dividends
+     )
+    float currPrice = close[offset]
+    float prevPrice = nz(close[offset + 1], open[offset])
+    [currSum, prevSum] = request.security(
+         sumSpread, timeframe, [currPrice, prevPrice], barmerge.gaps_on, barmerge.lookahead_on
+     )
+    [currDiff, prevDiff] = request.security(
+         diffSpread, timeframe, [currPrice, prevPrice], barmerge.gaps_on, barmerge.lookahead_on
+     )
+    [0.5 * (currSum + currDiff), 0.5 * (currSum - currDiff), 0.5 * (prevSum + prevDiff), 0.5 * (prevSum - prevDiff)]
+//#endregion
+
+
+
+//#region ———————————————————— Calculations
+
+
+// @variable `true` if the chart's data spans at least two months, `false` if at least two days, `na` otherwise.
+var bool useMonths = TVrm.detectPeriod()
+// @variable `true` if the selected timeframe is higher than the current chart's timeframe.
+var bool isHtf = timeframe.in_seconds(tfInput) > timeframe.in_seconds()
+// @variable The fixed annual rate of return used when `useFixedInput` is `true`, 0 otherwise.
+var float fixedReturn = useFixedInput ? percentageInput : 0.0
+// @variable The estimated fixed rate of return per period, depending on the length of the dataset's history.
+var float fixedPeriodReturn = fixedReturn / (na(useMonths) ? na : useMonths ? 12 : 365)
+
+// Request prices for the chart's symbol on the `tfInput` timeframe with full history to compare with the `fixedReturn`.
+[htfCurrent, htfPrevious] = request.security(
+     syminfo.tickerid, tfInput, [close[1], nz(close[2], open[1])], barmerge.gaps_on, barmerge.lookahead_on
+ )
+// Request aligned prices for the chart symbol and `symbolInput` on the `tfInput` with modifiers for direct comparison.
+[chartVal, benchVal, chartVal1, benchVal1] = getAlignedPrices(symbolInput, timeframe.period)
+[htfChart, htfBench, htfChart1, htfBench1] = getAlignedPrices(symbolInput, tfInput, 1)
+
+// Determine the price values from the current symbol and the `symbolInput` used for returns calculations.
+float chartPrice  = useFixedInput ? (isHtf ? htfCurrent : close) : (isHtf ? htfChart : chartVal)
+float chartPrice1 = useFixedInput ? (isHtf ? htfPrevious : nz(close[1], open)) : (isHtf ? htfChart1 : chartVal1)
+float benchPrice  = isHtf ? htfBench : benchVal
+float benchPrice1 = isHtf ? htfBench1 : benchVal1
+
+// @variable The chart symbol's sampled percent change value.
+float chartReturn = TVta.changePercent(chartPrice, chartPrice1)
+// @variable The benchmark symbol's sampled percent change value. Returns 0 when `useFixedInput` is `true`.
+float benchReturn = useFixedInput ? percentageInput : TVta.changePercent(benchPrice, benchPrice1) // was originally useFixedInput ? 0.0
+
+// @variable The array of monthly or daily returns used in the ratio calculations.
+array<float> periodicReturns = TVrm.getPeriodicReturns(chartReturn, benchReturn, numOfTFsInput)
+
+// @variable The Sharpe ratio of the `periodicReturns`.
+float sharpe = TVrm.sharpeRatio(periodicReturns, fixedReturn)
+// @variable The Sortino ratio of the `periodicReturns`.
+float sortino = TVrm.sortinoRatio(periodicReturns, fixedReturn)
+
+// Apply fixnan() to Sharpe and Sortino ratios
+float sharpeDisplay = fixnan(sharpe)
+float sortinoDisplay = fixnan(sortino)
+
+// Create arrays of periodic returns from `chartReturn` and `benchReturn` values for display calculations.
+array<float> symbolChanges    = TVrm.getPeriodicReturns(chartReturn, numOfTFsInput)
+array<float> benchmarkChanges = useFixedInput ? na : TVrm.getPeriodicReturns(benchReturn, numOfTFsInput)
+// @variable The average return value in the `symbolChanges` array.
+float avgSymbolChange = symbolChanges.avg()
+// @variable The average periodic benchmark return.
+float avgBenchmarkChange = useFixedInput ? fixedPeriodReturn : benchmarkChanges.avg()
+// @variable Condition that indicates when new data is available if the `tfInput` is a higher timeframe.
+bool isNewPeriod = isHtf and not na(chartReturn)
+//#endregion
+
+
+
+//#region ———————————————————— Errors and outputs
+
+
+// Raise an error if the `tfInput` is smaller than the chart's timeframe.
+if timeframe.in_seconds(tfInput) < timeframe.in_seconds()
+    runtime.error("For accurate ratios, the requested TF must be greater than or equal to the TF of the chart.")
+
+// @variable The `chartReturn` series with `na` masking for display purposes.
+float chartReturnDisplay = fixnan(chartReturn)
+// @variable The `benchReturn` series with `na` masking for display purposes, or `na` if `useFixedInput` is `true`.
+float benchReturnDisplay = fixnan(useFixedInput ? na : benchReturn)
+// Main plot, fill, and background colors
+color plotColor = isNewPeriod ? color(na) : chartReturnDisplay < 0.0 ? color.orange : color.aqua
+color fillColor = isNewPeriod ? color(na) : chartReturnDisplay < 0.0 ? ORANGE80 : AQUA80
+color bgColor   = not isNewPeriod ? color(na) : chartReturnDisplay < 0.0 ? ORANGE80 : AQUA80
+
+// Plot the `chartReturnDisplay` and 0, then fill the space between them.
+// symbolChangePlot = plot(chartReturnDisplay, "Chart symbol return", plotColor, precision = 2, format = format.percent)
+// zeroPlot         = plot(0, "Zero level", color.new(color.gray, 60), display = display.pane) //is it ok to remove this?
+// fill(symbolChangePlot, zeroPlot, fillColor, "Chart symbol return fill")
+// // Plot the `benchReturnDisplay` value for visual comparison when `useFixedInput` is `false`.
+// plot(benchReturnDisplay, "Benchmark symbol return", color.gray, 2, precision = 2, format = format.percent)
+// // Highlight the main chart's background when `isNewPeriod` to signify the direction of `chartReturnDisplay`.
+// bgcolor(bgColor, title = "Background highlight", force_overlay = true)
+
+// Plot the average chart symbol and benchmark returns alongside the Sharpe and Sortino ratios in the Data Window.
+//-----------------------
+// Update the values with the output from tr.calcRatingAll()
+[rating1, rating2, rating3] = tr.calcRatingAll()
+
+// Define color coding for each rating
+color rating1Color = rating1 < -0.5 ? color.red : rating1 > 0.5 ? color.green : color.gray
+color rating2Color = rating2 < -0.5 ? color.red : rating2 > 0.5 ? color.green : color.gray
+color rating3Color = rating3 < -0.5 ? color.red : rating3 > 0.5 ? color.green : color.gray
+
+// Plot the total rating on the chart as a line (for example purposes)
+// plot(ratingTotal, color=color.blue, title="Total Technical Rating")
+plot(rating1, color=rating1Color, title="Total Technical Rating", display = display.data_window)
+plot(rating2, color=rating2Color, title="MAs Rating", display = display.data_window)
+plot(rating3, color=rating3Color, title="Indicators Rating", display = display.data_window)
+
+// Define your colors
+var color header_bgcolor = #787b865a
+var color header_textcolor = color.white
+var color cell_bgcolor = #00897b53
+
+// Create the table
+var table metrics_table = table.new(position.top_right, 2, 9, border_width=1, border_color=#00897b55, bgcolor=#00897b59)
+
+// Determine colors based on conditions
+win_rate_color = win_rate > 0.50 ? color.green : color.red
+total_profit_color = strategy.netprofit > 0 ? color.green : color.red
+
+// Update table contents
+if (bar_index > 1)
+    // Set headers
+    table.cell(metrics_table, 0, 0, "Metric", bgcolor=header_bgcolor, text_color=header_textcolor)
+    table.cell(metrics_table, 1, 0, "Value", bgcolor=header_bgcolor, text_color=header_textcolor)
+
+    // Set metric names
+    table.cell(metrics_table, 0, 1, "Total Profit", bgcolor=cell_bgcolor, text_color=total_profit_color)
+    table.cell(metrics_table, 0, 2, "Win Rate (%)", bgcolor=cell_bgcolor, text_color=win_rate_color)
+    table.cell(metrics_table, 0, 3, "Drawdown (%)", bgcolor=cell_bgcolor, text_color=color.red)
+    
+    // Add ratings to the table
+    table.cell(metrics_table, 0, 4, "MA + Indicators", bgcolor=cell_bgcolor, text_color=rating1Color)
+    table.cell(metrics_table, 0, 5, "Indicators", bgcolor=cell_bgcolor, text_color=rating2Color)
+    table.cell(metrics_table, 0, 6, "MA rating", bgcolor=cell_bgcolor, text_color=rating3Color)
+
+    // Set Sortino and Sharpe names
+    table.cell(metrics_table, 0, 7, "Sortino Ratio", bgcolor=cell_bgcolor, text_color=color.blue)
+    table.cell(metrics_table, 0, 8, "Sharpe Ratio", bgcolor=cell_bgcolor, text_color=color.purple)
+
+    // Set metric values
+    table.cell(metrics_table, 1, 1, str.tostring(total_profit, format.percent), bgcolor=cell_bgcolor, text_color=total_profit_color)
+    table.cell(metrics_table, 1, 2, str.tostring(win_rate * 100, format.percent), bgcolor=cell_bgcolor, text_color=win_rate_color)
+    table.cell(metrics_table, 1, 3, str.tostring(drawdown, format.percent), bgcolor=cell_bgcolor, text_color=color.red)
+    
+    // Add rating values to the table
+    table.cell(metrics_table, 1, 4, str.tostring(rating1, format.percent), bgcolor=cell_bgcolor, text_color=rating1Color)
+    table.cell(metrics_table, 1, 5, str.tostring(rating2, format.percent), bgcolor=cell_bgcolor, text_color=rating2Color)
+    table.cell(metrics_table, 1, 6, str.tostring(rating3, format.percent), bgcolor=cell_bgcolor, text_color=rating3Color)
+    
+	// Add Sortino and Sharpe values to the table
+	table.cell(metrics_table, 1, 7, str.tostring(sharpeDisplay, format.mintick), bgcolor=cell_bgcolor, text_color=color.blue)
+	table.cell(metrics_table, 1, 8, str.tostring(sortinoDisplay, format.mintick), bgcolor=cell_bgcolor, text_color=color.purple)
+
+//Adding Sharpe but I could not get it to work.
+//plot(sharpeDisplay, color=rating3Color, title="Sortino", display = display.data_window)
+//plot(sharpe, color=rating3Color, title="Debug", display = display.data_window) //2.0 for 2.0% risk free rate
+
+// Debugging the calculations
+// if bar_index > 0
+//     float chartReturn = (close - close[1]) / close[1]
+//     array.push(periodicReturns, chartReturn)
+
+//     // Check if the array has elements before trying to calculate the average
+//     if array.size(periodicReturns) > 0
+//         float debugValue1 = array.avg(periodicReturns)
+//         label.new(bar_index, high, "Avg Return: " + str.tostring(debugValue1), color=color.blue, textcolor=color.white)
+//     else
+//         label.new(bar_index, high, "Array is empty", color=color.red, textcolor=color.white)
+// float debugValue1 = array.avg(periodicReturns)
+// label.new(bar_index, high, "Avg Return: " + str.tostring(debugValue1))
+
+// float debugValue2 = fixedReturn
+// label.new(bar_index, high, "Fixed Return: " + str.tostring(debugValue2))
+//-------------------------------------------------------------------------------------------------------------------------}
+//----------------------------Support and Resistance-----------------------------------------------------------------------{
+prd = input.int(defval=4, title='Pivot Period', minval=4, maxval=30, group='Setup', tooltip = "defval 4") //defval 10
+ppsrc = input.string(defval='High/Low', title='Source', options=['High/Low', 'Close/Open'], group='Setup', tooltip = "defval High/Low")
+maxnumpp = input.int(defval=5, title=' Maximum Number of Pivot', minval=5, maxval=100, group='Setup', tooltip = "defval 5")
+ChannelW = input.int(defval=10, title='Maximum Channel Width %', minval=1, group='Setup', tooltip = "defval 10")
+maxnumsr = input.int(defval=5, title=' Maximum Number of S/R', minval=1, maxval=10, group='Setup', tooltip = "defval 5")
+min_strength = input.int(defval=2, title=' Minimum Strength', minval=1, maxval=10, group='Setup', tooltip = "defval 2")
+labelloc = input.int(defval=20, title='Label Location', group='Colors', tooltip='Positive numbers reference future bars, negative numbers reference histical bars', tooltip = "defval 20")
+linestyle = input.string(defval='Dashed', title='Line Style', options=['Solid', 'Dotted', 'Dashed'], group='Colors')
+linewidth = input.int(defval=2, title='Line Width', minval=1, maxval=4, group='Colors')
+resistancecolor = input.color(defval=color.red, title='Resistance Color', group='Colors')
+supportcolor = input.color(defval=color.lime, title='Support Color', group='Colors')
+showpp = input(false, title='Show Point Points')
+
+float src1 = ppsrc == 'High/Low' ? high : math.max(close, open)
+float src2 = ppsrc == 'High/Low' ? low : math.min(close, open)
+float ph = ta.pivothigh(src1, prd, prd)
+float pl = ta.pivotlow(src2, prd, prd)
+
+// plotshape(ph and showpp, text='H', style=shape.labeldown, color=na, textcolor=color.new(color.red, 0), location=location.abovebar, offset=-prd)
+// plotshape(pl and showpp, text='L', style=shape.labelup, color=na, textcolor=color.new(color.lime, 0), location=location.belowbar, offset=-prd)
+
+Lstyle = linestyle == 'Dashed' ? line.style_dashed : linestyle == 'Solid' ? line.style_solid : line.style_dotted
+
+//calculate maximum S/R channel zone width
+prdhighest = ta.highest(300)
+prdlowest = ta.lowest(300)
+cwidth = (prdhighest - prdlowest) * ChannelW / 100
+
+var pivotvals = array.new_float(0)
+
+if ph or pl
+    array.unshift(pivotvals, ph ? ph : pl)
+    if array.size(pivotvals) > maxnumpp  // limit the array size
+        array.pop(pivotvals)
+
+get_sr_vals(ind) =>
+    float lo = array.get(pivotvals, ind)
+    float hi = lo
+    int numpp = 0
+    for y = 0 to array.size(pivotvals) - 1 by 1
+        float cpp = array.get(pivotvals, y)
+        float wdth = cpp <= lo ? hi - cpp : cpp - lo
+        if wdth <= cwidth  // fits the max channel width?
+            if cpp <= hi
+                lo := math.min(lo, cpp)
+            else
+                hi := math.max(hi, cpp)
+
+            numpp += 1
+            numpp
+    [hi, lo, numpp]
+
+var sr_up_level = array.new_float(0)
+var sr_dn_level = array.new_float(0)
+sr_strength = array.new_float(0)
+
+find_loc(strength) =>
+    ret = array.size(sr_strength)
+    for i = ret > 0 ? array.size(sr_strength) - 1 : na to 0 by 1
+        if strength <= array.get(sr_strength, i)
+            break
+        ret := i
+        ret
+    ret
+
+check_sr(hi, lo, strength) =>
+    ret = true
+    for i = 0 to array.size(sr_up_level) > 0 ? array.size(sr_up_level) - 1 : na by 1
+        //included?
+        if array.get(sr_up_level, i) >= lo and array.get(sr_up_level, i) <= hi or array.get(sr_dn_level, i) >= lo and array.get(sr_dn_level, i) <= hi
+            if strength >= array.get(sr_strength, i)
+                array.remove(sr_strength, i)
+                array.remove(sr_up_level, i)
+                array.remove(sr_dn_level, i)
+                ret
+            else
+                ret := false
+                ret
+            break
+    ret
+
+var sr_lines = array.new_line(11, na)
+var sr_labels = array.new_label(11, na)
+
+for x = 1 to 10 by 1
+    rate = 100 * (label.get_y(array.get(sr_labels, x)) - close) / close
+    label.set_text(array.get(sr_labels, x), text=str.tostring(label.get_y(array.get(sr_labels, x))) + '(' + str.tostring(rate, '#.##') + '%)')
+    label.set_x(array.get(sr_labels, x), x=bar_index + labelloc)
+    label.set_color(array.get(sr_labels, x), color=label.get_y(array.get(sr_labels, x)) >= close ? color.red : color.lime)
+    label.set_textcolor(array.get(sr_labels, x), textcolor=label.get_y(array.get(sr_labels, x)) >= close ? color.white : color.black)
+    label.set_style(array.get(sr_labels, x), style=label.get_y(array.get(sr_labels, x)) >= close ? label.style_label_down : label.style_label_up)
+    line.set_color(array.get(sr_lines, x), color=line.get_y1(array.get(sr_lines, x)) >= close ? resistancecolor : supportcolor)
+
+if ph or pl
+    //because of new calculation, remove old S/R levels
+    array.clear(sr_up_level)
+    array.clear(sr_dn_level)
+    array.clear(sr_strength)
+    //find S/R zones
+    for x = 0 to array.size(pivotvals) - 1 by 1
+        [hi, lo, strength] = get_sr_vals(x)
+        if check_sr(hi, lo, strength)
+            loc = find_loc(strength)
+            // if strength is in first maxnumsr sr then insert it to the arrays 
+            if loc < maxnumsr and strength >= min_strength
+                array.insert(sr_strength, loc, strength)
+                array.insert(sr_up_level, loc, hi)
+                array.insert(sr_dn_level, loc, lo)
+                // keep size of the arrays = 5
+                if array.size(sr_strength) > maxnumsr
+                    array.pop(sr_strength)
+                    array.pop(sr_up_level)
+                    array.pop(sr_dn_level)
+
+    for x = 1 to 10 by 1
+        line.delete(array.get(sr_lines, x))
+        label.delete(array.get(sr_labels, x))
+
+    for x = 0 to array.size(sr_up_level) > 0 ? array.size(sr_up_level) - 1 : na by 1
+        float mid = math.round_to_mintick((array.get(sr_up_level, x) + array.get(sr_dn_level, x)) / 2)
+        rate = 100 * (mid - close) / close
+        array.set(sr_labels, x + 1, label.new(x=bar_index + labelloc, y=mid, text=str.tostring(mid) + '(' + str.tostring(rate, '#.##') + '%)', color=mid >= close ? color.red : color.lime, textcolor=mid >= close ? color.white : color.black, style=mid >= close ? label.style_label_down : label.style_label_up))
+
+        array.set(sr_lines, x + 1, line.new(x1=bar_index, y1=mid, x2=bar_index - 1, y2=mid, extend=extend.both, color=mid >= close ? resistancecolor : supportcolor, style=Lstyle, width=linewidth))
+
+f_crossed_over() =>
+    ret = false
+    for x = 0 to array.size(sr_up_level) > 0 ? array.size(sr_up_level) - 1 : na by 1
+        float mid = math.round_to_mintick((array.get(sr_up_level, x) + array.get(sr_dn_level, x)) / 2)
+        if close[1] <= mid and close > mid
+            ret := true
+            ret
+    ret
+
+f_crossed_under() =>
+    ret = false
+    for x = 0 to array.size(sr_up_level) > 0 ? array.size(sr_up_level) - 1 : na by 1
+        float mid = math.round_to_mintick((array.get(sr_up_level, x) + array.get(sr_dn_level, x)) / 2)
+        if close[1] >= mid and close < mid
+            ret := true
+            ret
+    ret
+crossed_over = f_crossed_over()
+crossed_under = f_crossed_under()
+alertcondition(crossed_over, title='Resistance Broken', message='Resistance Broken')
+alertcondition(crossed_under, title='Support Broken', message='Support Broken')
+alertcondition(crossed_over or crossed_under, title='Support or Resistance Broken', message='Support or Resistance Broken')
+// Example Resistance Level Array (from your script)
+// var sr_up_level = array.new_float(0)
+// Define percentage thresholds
+float threshold_low = 0.001
+float threshold_high = 0.02
+
+// Get the most recent resistance level
+float most_recent_resistance = na
+if array.size(sr_up_level) > 0
+    most_recent_resistance := array.get(sr_up_level, 0)
+
+// Calculate the lower and upper thresholds
+float lower_threshold = most_recent_resistance * (1 - threshold_high)
+float upper_threshold = most_recent_resistance * (1 - threshold_low)
+
+// Check if the current price is in range
+underneath_resistance = na(most_recent_resistance) ? na : close < most_recent_resistance and close >= lower_threshold and close <= upper_threshold
+plot(most_recent_resistance, title = "most_recent_resistance", color=color.orange)
+//plotshape(series=underneath_resistance, title="underneath_resistance", location=location.abovebar, color=color.orange, style=shape.labelup, size=size.tiny, text="Under Resistance")
+plotshape(series=underneath_resistance, title="underneath_resistance", location=location.abovebar, color=color.orange, style=shape.triangledown, size=size.tiny)
+
+//---------Support and Resistance END--------------------------------------------------------------------}
+
+//---------------------Round number avoidance------------------------------------------------------{
+// Parameters
+proximityRange = input.int(3, title="Proximity Range to Round Number", minval=1, tooltip = "defval 3 originally 5") //originally 5
+
+// Helper function to check if the price is near a round number, excluding 1 and 0
+is_near_round_number(number, proximity) =>
+    math.abs(close - number) <= proximity and number != 1 and number != 0
+
+// List of round numbers and their multiples
+multiples = array.new_float()
+array.push(multiples, 100)
+array.push(multiples, 1000)
+array.push(multiples, 10000)
+
+// List of multiples of 50 (e.g., 50, 100, 150, etc.)
+maxMultiplier = 10 // You can adjust this for larger multiples of 50 (e.g., 50 * 10 = 500)
+for i = 1 to maxMultiplier
+    array.push(multiples, 50 * i)
+
+// Variable to store the detected round number
+var float detectedRoundNumber = na
+
+// Detect if price is near any round number
+var label labelId = na
+for i = 0 to array.size(multiples) - 1
+    roundNumber = math.round(close / array.get(multiples, i)) * array.get(multiples, i)
+    
+    // Check if the price is near a round number, excluding 1 and 0
+    if is_near_round_number(roundNumber, proximityRange)
+        // Store the detected round number
+        detectedRoundNumber := roundNumber
+        
+        // Plot a label when the price is near a round number
+        if na(labelId) or label.get_x(labelId) != bar_index
+            labelId := label.new(bar_index, close, text="Near Round: " + str.tostring(roundNumber), color=color.green, size=size.tiny, textcolor=color.white)
+        break
+
+// // Condition to take a long trade if close is greater than the detected round number
+// if not na(detectedRoundNumber) and close > detectedRoundNumber
+//-------------------------------------------------------------------------------------------------------}
+//---------EXECUTE LONGS---------------------------------------------------------------------------------{
+//Megabot True Range
+// Convert the longConditionMega boolean to a numeric value (1 for true, 0 for false)
+mixedSingalLength = input.int(defval = 4, title = "mixedSingalLength", tooltip = "How many bars ago should an inverse signal scare you?", tooltip = "defval 4")
+
+megabotLongRangeBarInput = input.int(defval = 10, title = "MegabotRangeBarInput", tooltip = "How many bars should the megabot long cross be true?", tooltip = "defval 10 IMPORTANT")
+megabotShortRangeBarInput = input.int(defval = 10, title = "MegabotRangeBarInput", tooltip = "How many bars should the megabot short cross be true?", tooltip = "defval 10 IMPORTANT")
+longConditionMegaNumeric = longConditionMega ? 1 : 0
+
+// Sum the values over the last 10 bars
+longConditionMegaInRange = math.sum(longConditionMegaNumeric, 4)
+
+// If at least one occurrence of `longConditionMega` being true within the last 10 bars, then `longConditionMegaInRange` will be true
+longConditionMegaInRange2 = longConditionMegaInRange > 0
+//Megabot True Range
+// Convert the shortConditionMega boolean to a numeric value (1 for true, 0 for false)
+shortConditionMegaNumeric = shortConditionMega ? 1 : 0
+
+// Sum the values over the last 10 bars
+shortConditionMegaInRange = math.sum(shortConditionMegaNumeric, 4)
+
+// If at least one occurrence of `shortConditionMega` being true within the last 10 bars, then `shortConditionMegaInRange` will be true
+shortConditionMegaInRange2 = shortConditionMegaInRange > 0
+//debug check
+// plotchar(longConditionMegaInRange2, title = "longConditionMegaRange True over 10 bars?", display = display.data_window)
+// plotchar(shortConditionMegaInRange2, title = "shortConditionMegaRange True over 10 bars?", display = display.data_window)
+
+// Input for body size threshold. //Digression...but maybe we should define giant candles to help protect us somehow. 
+bodySizeThreshold = input.float(0.1, title="Body Size Threshold (as a fraction of range)", minval=0.0, maxval=1.0, tooltip = "Defining three bear soldiers candle stick pattern - defval 0.1")
+
+isLargeBearishCandle(oPrice, hPrice, lPrice, cPrice, threshold) =>
+    float bodySize      = math.abs(cPrice - oPrice)
+    float totalRange    = hPrice - lPrice
+    float bodyPercentage = totalRange > 0 ? bodySize / totalRange : 0.0
+    bool  isBearish     = cPrice < oPrice
+    bool  isLargeBody   = bodyPercentage >= threshold
+    isBearish and isLargeBody
+
+// Detect the "Three Bear Soldiers" pattern
+bearSoldier1 = isLargeBearishCandle(open[2], high[2], low[2], close[2], bodySizeThreshold) and close[2] < open[2]
+bearSoldier2 = isLargeBearishCandle(open[1], high[1], low[1], close[1], bodySizeThreshold) and close[1] < open[1]
+bearSoldier3 = isLargeBearishCandle(open, high, low, close, bodySizeThreshold) and close < open
+
+// Ensure each candle makes a lower low than the previous one
+lowerLows = low[2] > low[1] and low[1] > low
+
+// Combine the conditions to detect the pattern
+threeBearSoldiersDetected = bearSoldier1 and bearSoldier2 and bearSoldier3 and lowerLows
+
+// Plot a signal on the chart when the pattern is detected
+//TURNBACKON
+//plotshape(series=threeBearSoldiersDetected, title="Three Bear Soldiers", location=location.abovebar, color=color.red, style=shape.triangledown, size=size.small, text="3BS")
+
+// plotchar(tb.threeBearSoldiers(open, high, low, close, open[1], high[1], low[1], close[1], open[2], high[2], low[2], close[2], 0.9), title = "3BS", size = size.huge) //
+
+// // Condition to take a long trade if close is greater than the detected round number
+// if not na(detectedRoundNumber) and close > detectedRoundNumber
+
+// if not bearishAWaveCond
+//     strategy.entry("Long", strategy.long)
+
+//Things to experiment with:
+// 1. Round number 2. Elliot wave 3. Support and Resist levels 4. [1] 5. barstate.isconfirmed 6. Threebearsoldiers 7. .382 shorters golden fib 8. Stay with trade until the first lower high 9. First red candle that makes a close below previous candle.
+// 10. Inverse DXY 11. Halvings for both 1 hr and 4 hr.
+//11. if close < fibRetrace382
+ema195 = ta.ema(close, 195) //replacing lessrekt ema
+
+
+// ---------------------Hilbert Transform---------------------------
+// Inputs
+lpperiod  = input.int(20, title="Lowpass Period", tooltip = "defval 20")
+filttop   = input.int(48, title="Highpass Top Period", tooltip = "defval 48")
+hilbertsrc = input.source(close, title="Hilbert Source", tooltip = "defval close")
+
+pi = math.pi
+_z = 0.707 * 2 * pi / filttop
+
+var float HP = na
+alpha1 = (math.cos(_z) + math.sin(_z) - 1) / math.cos(_z)
+HP := math.pow((1 - alpha1 / 2), 2) * (hilbertsrc - 2 * hilbertsrc[1] + hilbertsrc[2]) + 2 * (1 - alpha1) * nz(HP[1]) - math.pow((1 - alpha1), 2) * nz(HP[2])
+
+a1 = math.exp(-1.414 * pi / lpperiod)
+b1 = 2 * a1 * math.cos(1.414 * pi / lpperiod)
+c2 = b1
+c3 = -math.pow(a1, 2)
+c1 = 1 - c2 - c3
+
+var float filt = na
+filt := c1 * (HP + nz(HP[1])) / 2 + c2 * nz(filt[1]) + c3 * nz(filt[2])
+
+// Peak Detection
+var float ipeak = na
+ipeak := math.abs(filt) > (0.991 * nz(ipeak[1])) ? math.abs(filt) : (0.991 * nz(ipeak[1]))
+real = filt / ipeak
+
+_quadrature = (real - nz(real[1]))
+
+var float qpeak = na
+qpeak := 0.991 * nz(qpeak[1])
+qpeak := math.abs(_quadrature) > qpeak ? math.abs(_quadrature) : qpeak
+quadrature = _quadrature / qpeak
+
+_a1 = math.exp(-1.414 * pi / 10)
+_b1 = 2 * _a1 * math.cos(1.414 * pi / 10)
+_c2 = _b1
+_c3 = -math.pow(_a1, 2)
+_c1 = 1 - _c2 - _c3
+
+var float imag = na
+imag := _c1 * (quadrature + nz(quadrature[1])) / 2 + _c2 * nz(imag[1]) + _c3 * nz(imag[2])
+
+// realp = plot(real, color=color.new(color.green, 0), linewidth=2, title="Real")
+// imagp = plot(imag, color=color.new(color.red, 0), linewidth=3, title="Imaginary")
+
+reals = math.sign(ta.change(real))
+imags = math.sign(ta.change(imag))
+
+fillcol = (reals < 0) and (imags < 0) ? color.maroon : (reals > 0) and (imags > 0) ? color.teal : color.silver
+
+// fill(realp, imagp, color=fillcol, title="Phase Fill")
+
+// Hilbert Transform State and Crossover Detection
+// Current state: real > imag = bullish phase, real < imag = bearish phase
+hilbertBullish = real > imag
+hilbertBearish = real < imag
+
+// Crossover detection with context (trend change signals)
+// Bullish crossover: real crosses above imag AND both components are rising (bullish momentum)
+hilbertBullishCross = ta.crossover(real, imag) and reals > 0 and imags > 0
+// Bearish crossover: real crosses below imag AND both components are falling (bearish momentum)
+hilbertBearishCross = ta.crossunder(real, imag) and reals < 0 and imags < 0
+
+//------------------------------ Ehler's Roofing Filter ------------------------------------------------------------
+// Inputs... Good settings for 1 hr candles.
+highpassLength = input.int(title="HighPass Length", defval=48, minval=1, tooltip = "defval 48", group = "Ehler Roofing Filter")
+ssfLength = input.int(title="Super Smoother Filter Length", defval=10, minval=1, tooltip = "defval 10", group = "Ehler Roofing Filter")
+numberOfPoles = input.int(title="Number of Poles", defval=2, options=[2, 3], tooltip = "defval 2", group = "Ehler Roofing Filter")
+ehlersrc = input.source(title="Source", defval=close, tooltip = "defval close", group = "Ehler Roofing Filter")
+
+PI = 2 * math.asin(1.0)
+
+// Two-pole Super Smoother Filter
+twoPoleSuperSmootherFilter(ehlersrc, length) =>
+    arg = math.sqrt(2) * PI / length
+    a1 = math.exp(-arg)
+    b1 = 2 * a1 * math.cos(arg)
+    c2 = b1
+    c3 = -math.pow(a1, 2)
+    c1 = 1 - c2 - c3
+    var float ssf = na
+    ssf := c1 * ehlersrc + c2 * nz(ssf[1]) + c3 * nz(ssf[2])
+
+// Three-pole Super Smoother Filter
+threePoleSuperSmootherFilter(ehlersrc, length) =>
+    arg = PI / length
+    a1 = math.exp(-arg)
+    b1 = 2 * a1 * math.cos(1.738 * arg)
+    c1 = math.pow(a1, 2)
+    coef2 = b1 + c1
+    coef3 = -(c1 + b1 * c1)
+    coef4 = math.pow(c1, 2)
+    coef1 = 1 - coef2 - coef3 - coef4
+    var float ssf = na
+    ssf := coef1 * ehlersrc + coef2 * nz(ssf[1]) + coef3 * nz(ssf[2]) + coef4 * nz(ssf[3])
+
+// Roofing Filter
+roofingFilter(ehlersrc, highpassLength, ssfLength, numberOfPoles) =>
+    alphaArg = 2 * PI / (highpassLength * math.sqrt(2))
+    var float alpha = na
+    alpha := math.cos(alphaArg) != 0
+         ? (math.cos(alphaArg) + math.sin(alphaArg) - 1) / math.cos(alphaArg)
+         : nz(alpha[1])
+    var float highpass = na
+    highpass := math.pow(1 - (alpha / 2), 2) * (ehlersrc - 2 * nz(ehlersrc[1]) + nz(ehlersrc[2])) + 2 * (1 - alpha) * nz(highpass[1]) - math.pow(1 - alpha, 2) * nz(highpass[2])
+
+    smoothed = (highpass + nz(highpass[1])) / 2
+    numberOfPoles == 2
+     ? twoPoleSuperSmootherFilter(smoothed, ssfLength)
+     : threePoleSuperSmootherFilter(smoothed, ssfLength)
+
+erf = roofingFilter(ehlersrc, highpassLength, ssfLength, numberOfPoles)
+erfColor = erf >= 0.0 ? color.new(#0ebb23, 0) : color.new(#ff0000, 0)
+
+//plot(erf, title="ERF", linewidth=2, color=erfColor)
+//hline(0, title="Zero Level", linestyle=hline.style_dotted, color=#989898)
+
+// --- Example trading signals...Simple 0 crossover---
+// longSignal  = ta.crossover(erf, 0)
+// shortSignal = ta.crossunder(erf, 0)
+
+
+// trade_profit_percent // pnl
+
+// // --- Second instance: trade_profit_percent2 and its own trailing stop ---
+// entryPrice = strategy.position_avg_price
+// trail_trigger = input.float(5.5, "Trailing Trigger (%)")
+// trail_distance = input.float(2.0, "Trailing Stop Distance (%)")
+
+
+// float trade_profit_percent2 = na
+// if strategy.position_size != 0
+//     if strategy.position_size > 0
+//         trade_profit_percent2 := (close - entryPrice) / entryPrice * 100
+//     else
+//         trade_profit_percent2 := (entryPrice - close) / entryPrice * 100
+
+// // Independent trailing stop logic for trade_profit_percent2
+// var float peak_profit2 = na
+// var bool trail_active2 = false
+
+// if strategy.position_size != 0 and not na(trade_profit_percent2)
+//     peak_profit2 := na(peak_profit2) ? trade_profit_percent2 : math.max(peak_profit2, trade_profit_percent2)
+//     if not trail_active2 and trade_profit_percent2 >= trail_trigger
+//         trail_active2 := true
+// else
+//     peak_profit2 := na
+//     trail_active2 := false
+
+// if trail_active2 and trade_profit_percent2 <= (peak_profit2 - trail_distance)
+//     strategy.close("TrailingStop2", comment="2% Trailing Stop Hit (TP2)")
+
+// Example entry logic for demonstration (replace with your own)
+// if ta.crossover(ta.sma(close, 10), ta.sma(close, 30))
+//     strategy.entry("Long", strategy.long)
+// if ta.crossunder(ta.sma(close, 10), ta.sma(close, 30))
+//     strategy.entry("Short", strategy.short)
+
+// Plotting for clarity
+//plot(trade_profit_percent, color=color.yellow, title="Trade Profit % (1)")
+//plot(peak_profit, color=color.green, title="Peak Profit % (1)")
+//plot(trade_profit_percent2, color=color.orange, title="Trade Profit % (2)")
+//plot(peak_profit2, color=color.red, title="Peak Profit % (2)")
+
+// if bar_index == ta.highest(bar_index, 1)  // show it once at the start
+//     label.new(x=bar_index, y=high, text="Asset: " + asset, style=label.style_label_down, color=color.green)
+
+
+// // Use this to perhaps help zapier not timeout
+// // Get 1-minute chart bar index
+// // minuteBarIndex = request.security(syminfo.tickerid, "1", bar_index)
+// // Measure delay since signal in 1-minute resolution
+// minutesSinceSignal = minuteBarIndex - request.security(syminfo.tickerid, "1", signalBar)
+// // Only fire alert if 3+ minutes have passed
+// delayedSignal = signal and (minutesSinceSignal >= 3)
+
+// //usage
+// // === Entry Condition ===
+// // Your original condition (add `isDelayedEnough`)
+// canEnter = not na(lastSignalMinuteBar) and barstate.isconfirmed and strategy.position_size == 0 and isDelayedEnough
+
+// // Calculate how many minutes have passed since signal. I think this is what we put at the end of the first block of conditions.
+// minutesSinceSignal = currentMinuteBar - lastSignalMinuteBar
+
+// // Delay check: true only if 3 or more minutes passed
+// isDelayedEnough = (minutesSinceSignal >= delayMinutes)
+
+//
+// indicator("Parabola Detector", overlay=true, max_lines_count=500, max_bars_back=500)
+// Parabola v5 plotless
+// ============================================================================
+// INPUT PARAMETERS
+// ============================================================================
+// Performance settings (originally from indicator declaration)
+// ============================================================================
+// CHANGELOG - Today's Modifications (for Python to Pine Script migration)
+// ============================================================================
+// 1. REMOVED INDICATOR DECLARATION
+//    - Removed @version=5 and indicator() declaration to prevent conflicts
+//    - This allows the code to be safely added to strategy scripts
+//    - Added max_bars_back and max_lines_count as input parameters instead
+//
+// 2. RENAMED VARIABLES FOR UNIQUENESS
+//    - plus_dm → plus_dm_parabola (to avoid conflicts with main strategy)
+//    - minus_dm → minus_dm_parabola (to avoid conflicts with main strategy)
+//    - dx → dx_parabola (to avoid conflicts with main strategy)
+//    - adx → adx_parabola (to avoid conflicts with main strategy)
+//    - All references updated throughout the code
+//
+// 3. REMOVED ALL PLOT STATEMENTS
+//    - Removed all plot() and plotshape() statements for lightweight version
+//    - Removed curved parabola line drawing logic
+//    - Kept all core logic, alerts, and info table
+//    - This creates a "plotless" version focused on signals and logic
+//
+// 4. ADDED PERFORMANCE PARAMETERS
+//    - max_bars_back = input.int(500, "Max Bars Back", minval=100, maxval=1000, group="Performance")
+//    - max_lines_count = input.int(500, "Max Lines Count", minval=100, maxval=1000, group="Performance")
+//    - These replace the original hardcoded values from indicator declaration
+//
+// 5. MAINTAINED FUNCTIONALITY
+//    - All parabola detection logic preserved
+//    - All ATR and ADX filtering preserved
+//    - All entry/exit signals preserved
+//    - All alerts preserved
+//    - Info table with status display preserved
+//    - Background color changes preserved
+//
+// PURPOSE: This module can now be safely integrated into larger Pine Script
+// strategies without variable name conflicts or declaration errors.
+// ============================================================================
+
+// ============================================================================
+// INPUT PARAMETERS
+// ============================================================================
+// ============================================================================
+// CHANGELOG - Today's Modifications (for Python to Pine Script migration)
+// ============================================================================
+// 1. REMOVED INDICATOR DECLARATION
+//    - Removed @version=5 and indicator() declaration to prevent conflicts
+//    - This allows the code to be safely added to strategy scripts
+//    - Added max_bars_back and max_lines_count as input parameters instead
+//
+// 2. RENAMED VARIABLES FOR UNIQUENESS
+//    - plus_dm → plus_dm_parabola (to avoid conflicts with main strategy)
+//    - minus_dm → minus_dm_parabola (to avoid conflicts with main strategy)
+//    - dx → dx_parabola (to avoid conflicts with main strategy)
+//    - adx → adx_parabola (to avoid conflicts with main strategy)
+//    - All references updated throughout the code
+//
+// 3. REMOVED ALL PLOT STATEMENTS
+//    - Removed all plot() and plotshape() statements for lightweight version
+//    - Removed curved parabola line drawing logic
+//    - Kept all core logic, alerts, and info table
+//    - This creates a "plotless" version focused on signals and logic
+//
+// 4. ADDED PERFORMANCE PARAMETERS
+//    - max_bars_back = input.int(500, "Max Bars Back", minval=100, maxval=1000, group="Performance")
+//    - max_lines_count = input.int(500, "Max Lines Count", minval=100, maxval=1000, group="Performance")
+//    - These replace the original hardcoded values from indicator declaration
+//
+// 5. MAINTAINED FUNCTIONALITY
+//    - All parabola detection logic preserved
+//    - All ATR and ADX filtering preserved
+//    - All entry/exit signals preserved
+//    - All alerts preserved
+//    - Info table with status display preserved
+//    - Background color changes preserved
+//
+// PURPOSE: This module can now be safely integrated into larger Pine Script
+// strategies without variable name conflicts or declaration errors.
+// ============================================================================
+
+// ============================================================================
+// INPUT PARAMETERS
+// ============================================================================
+// Performance settings (originally from indicator declaration)
+// ============================================================================
+// CHANGELOG - Today's Modifications (for Python to Pine Script migration)
+// ============================================================================
+// 1. REMOVED INDICATOR DECLARATION
+//    - Removed @version=5 and indicator() declaration to prevent conflicts
+//    - This allows the code to be safely added to strategy scripts
+//    - Added max_bars_back and max_lines_count as input parameters instead
+//
+// 2. RENAMED VARIABLES FOR UNIQUENESS
+//    - plus_dm → plus_dm_parabola (to avoid conflicts with main strategy)
+//    - minus_dm → minus_dm_parabola (to avoid conflicts with main strategy)
+//    - dx → dx_parabola (to avoid conflicts with main strategy)
+//    - adx → adx_parabola (to avoid conflicts with main strategy)
+//    - All references updated throughout the code
+//
+// 3. REMOVED ALL PLOT STATEMENTS
+//    - Removed all plot() and plotshape() statements for lightweight version
+//    - Removed curved parabola line drawing logic
+//    - Kept all core logic, alerts, and info table
+//    - This creates a "plotless" version focused on signals and logic
+//
+// 4. ADDED PERFORMANCE PARAMETERS
+//    - max_bars_back = input.int(500, "Max Bars Back", minval=100, maxval=1000, group="Performance")
+//    - max_lines_count = input.int(500, "Max Lines Count", minval=100, maxval=1000, group="Performance")
+//    - These replace the original hardcoded values from indicator declaration
+//
+// 5. MAINTAINED FUNCTIONALITY
+//    - All parabola detection logic preserved
+//    - All ATR and ADX filtering preserved
+//    - All entry/exit signals preserved
+//    - All alerts preserved
+//    - Info table with status display preserved
+//    - Background color changes preserved
+//
+// PURPOSE: This module can now be safely integrated into larger Pine Script
+// strategies without variable name conflicts or declaration errors.
+// ============================================================================
+
+// ============================================================================
+// INPUT PARAMETERS
+// ============================================================================
+// // ============================================================================
+// CHANGELOG - Today's Modifications (for Python to Pine Script migration)
+// ============================================================================
+// 1. REMOVED INDICATOR DECLARATION
+//    - Removed @version=5 and indicator() declaration to prevent conflicts
+//    - This allows the code to be safely added to strategy scripts
+//    - Added max_bars_back and max_lines_count as input parameters instead
+//
+// 2. RENAMED VARIABLES FOR UNIQUENESS
+//    - plus_dm → plus_dm_parabola (to avoid conflicts with main strategy)
+//    - minus_dm → minus_dm_parabola (to avoid conflicts with main strategy)
+//    - dx → dx_parabola (to avoid conflicts with main strategy)
+//    - adx → adx_parabola (to avoid conflicts with main strategy)
+//    - All references updated throughout the code
+//
+// 3. REMOVED ALL PLOT STATEMENTS
+//    - Removed all plot() and plotshape() statements for lightweight version
+//    - Removed curved parabola line drawing logic
+//    - Kept all core logic, alerts, and info table
+//    - This creates a "plotless" version focused on signals and logic
+//
+// 4. ADDED PERFORMANCE PARAMETERS
+//    - max_bars_back = input.int(500, "Max Bars Back", minval=100, maxval=1000, group="Performance")
+//    - max_lines_count = input.int(500, "Max Lines Count", minval=100, maxval=1000, group="Performance")
+//    - These replace the original hardcoded values from indicator declaration
+//
+// 5. MAINTAINED FUNCTIONALITY
+//    - All parabola detection logic preserved
+//    - All ATR and ADX filtering preserved
+//    - All entry/exit signals preserved
+//    - All alerts preserved
+//    - Info table with status display preserved
+//    - Background color changes preserved
+//
+// PURPOSE: This module can now be safely integrated into larger Pine Script
+// strategies without variable name conflicts or declaration errors.
+// ============================================================================
+
+// ============================================================================
+// PARABOLA MODULE (v6 plotless)
+// ============================================================================
+// This module detects parabolic price movements and generates signals for
+// trade entry/exit. Can be completely disabled via enable_parabola toggle.
+// ============================================================================
+
+// Master toggle to enable/disable entire parabola module
+enable_parabola = input.bool(true, "Enable Parabola Module", group="Parabola", tooltip="Master toggle: When OFF, all parabola calculations are skipped for better performance")
+
+// ============================================================================
+// PARABOLA INPUT PARAMETERS
+// ============================================================================
+// Performance settings (originally from indicator declaration)
+max_bars_back = input.int(100, "Max Bars Back", minval=100, maxval=1000, group="Parabola")
+max_lines_count = input.int(500, "Max Lines Count", minval=100, maxval=1000, group="Parabola")
+
+lookback_period = input.int(50, "Lookback Period", minval=10, maxval=200, group="Parabola")
+confidence_threshold = input.float(0.70, "Confidence Threshold", minval=0.5, maxval=1.0, group="Parabola")
+deviation_threshold = input.float(0.02, "Deviation Threshold", minval=0.01, maxval=0.1, group="Parabola")
+
+// Removed curve_type input - going back to parabola only
+
+// Visual settings
+show_parabola = input.bool(true, "Show Parabola Line", group="Parabola")
+show_bands = input.bool(true, "Show Deviation Bands", group="Parabola")
+show_signals = input.bool(false, "Show Entry/Exit Signals", group="Parabola")
+show_info = input.bool(true, "Show Info Table", group="Parabola")
+show_debug_labels = input.bool(false, "Show Debug Labels (R²)", group="Parabola")
+
+parabola_color = input.color(color.blue, "Parabola Color", group="Parabola")
+band_color = input.color(color.gray, "Band Color", group="Parabola")
+long_color = input.color(color.green, "Long Signal Color", group="Parabola")
+short_color = input.color(color.red, "Short Signal Color", group="Parabola")
+exit_color = input.color(color.orange, "Exit Signal Color", group="Parabola")
+
+// Add ATR and ADX calculations
+use_atr_filter = input.bool(true, "Use ATR Filter", group="Parabola")
+use_adx_filter = input.bool(true, "Use ADX Filter", group="Parabola")
+atr_period = input.int(14, "ATR Period", minval=1, maxval=50, group="Parabola")
+adx_period = input.int(14, "ADX Period", minval=1, maxval=50, group="Parabola")
+adx_threshold = input.int(15, "ADX Threshold", minval=10, maxval=50, group="Parabola")
+atr_threshold = input.float(0.3, "ATR Threshold Multiplier", minval=0.1, maxval=2.0, group="Parabola")
+
+// Persistence settings
+use_persistence = input.bool(true, "Use Signal Persistence", group="Parabola")
+// #TODO: Backtest persistence_duration to find optimal value for your trading pairs
+persistence_duration = input.int(16, "End Signal Persistence (bars)", minval=1, maxval=100, group="Parabola", tooltip="How long the 'parabola break' signal persists after detection. For 1h candles: 16 bars = 16 hours. Shorter (3-6h) = more signals but higher false signal risk. Longer (12-24h) = more conservative, higher confidence signals.")
+
+// EMA invalidation filter (for Elliott Wave 5th wave continuation)
+use_ema_invalidation = input.bool(true, "Use EMA Invalidation", group="Parabola", tooltip="Invalidate persistence if price crosses above/below EMA (catches 5th wave continuations)")
+ema_period = input.int(26, "EMA Period for Invalidation", minval=5, maxval=100, group="Parabola", tooltip="Short EMA to detect trend continuation. If price crosses above EMA after upward break, invalidate (5th wave may be coming). If price crosses below EMA after downward break, invalidate.")
+
+// Position management settings
+use_position_tracking = input.bool(false, "Use Position Tracking", group="Parabola", tooltip="Disable this if you handle positions in your main strategy")
+
+// ============================================================================
+// VARIABLES
+// ============================================================================
+var float parabola_a = na
+var float parabola_b = na
+var float parabola_c = na
+var float parabola_confidence = na
+var string parabola_direction = na
+var bool in_parabola = false
+var int parabola_start_bar = na
+var int parabola_end_bar = na
+
+// Position tracking
+var int position = 0  // 0 = no position, 1 = long, -1 = short
+var float entry_price = na
+var int entry_bar = na
+
+// Persistence tracking variables
+var bool persistent_bull_parabola = false
+var bool persistent_bear_parabola = false
+var bool persistent_bull_parabola_end = false
+var bool persistent_bear_parabola_end = false
+var int bull_parabola_end_bar = na
+var int bear_parabola_end_bar = na
+
+// Arrays for price data
+var float[] prices = array.new_float(0)
+var int[] bars = array.new_int(0)
+
+// Fitting variables
+var float a = na
+var float b = na
+var float c = na
+var float r_squared = na
+
+// ============================================================================
+// PARABOLA CALCULATIONS (only run if enable_parabola is true)
+// ============================================================================
+// Declare parabola-specific variables (initialized to default values)
+var float atr_parabola = 0.0
+var float adx_parabola = 0.0
+var float ema_parabola = close
+
+if enable_parabola
+    // Calculate ATR and ADX
+
+    // Manual ADX calculation
+    // Calculate True Range
+    tr1 = high - low
+    tr2 = math.abs(high - close[1])
+    tr3 = math.abs(low - close[1])
+    tr = math.max(tr1, math.max(tr2, tr3))
+
+    // Calculate Directional Movement
+    high_diff = high - high[1]
+    low_diff = low[1] - low
+
+    // +DM: Current high - Previous high (if positive and greater than previous low - current low)
+    plus_dm_parabola = high_diff > low_diff and high_diff > 0 ? high_diff : 0
+    // -DM: Previous low - Current low (if positive and greater than current high - previous high)
+    minus_dm_parabola = low_diff > high_diff and low_diff > 0 ? low_diff : 0
+
+    // Smooth the values using Wilder's smoothing (exponential moving average)
+    tr_smooth = ta.ema(tr, adx_period)
+    plus_dm_smooth = ta.ema(plus_dm_parabola, adx_period)
+    minus_dm_smooth = ta.ema(minus_dm_parabola, adx_period)
+
+    // Calculate +DI and -DI
+    plus_di = tr_smooth != 0 ? (plus_dm_smooth / tr_smooth) * 100 : 0
+    minus_di = tr_smooth != 0 ? (minus_dm_smooth / tr_smooth) * 100 : 0
+
+    // Calculate DX (Directional Index)
+    dx_parabola = (plus_di + minus_di) != 0 ? math.abs(plus_di - minus_di) / (plus_di + minus_di) * 100 : 0
+
+    // Calculate ADX, ATR, and EMA for persistence invalidation (catches 5th wave continuations)
+    atr_parabola := ta.atr(atr_period)
+    adx_parabola := ta.ema(dx_parabola, adx_period)
+    ema_parabola := ta.ema(close, ema_period)
+else
+    // When parabola is disabled, set default values
+    atr_parabola := 0.0
+    adx_parabola := 0.0
+    ema_parabola := close
+
+// ============================================================================
+// PARABOLA DETECTION FUNCTIONS
+// ============================================================================
+parabolic_function(x, a, b, c) =>
+    a * x * x + b * x + c
+
+calculate_r_squared(prices_array, a, b, c) =>
+    if array.size(prices_array) < 3
+        0
+    else
+        sum_residuals = 0.0
+        sum_total = 0.0
+        mean_price = array.avg(prices_array)
+        
+        for i = 0 to array.size(prices_array) - 1
+            predicted = parabolic_function(i, a, b, c)
+            actual = array.get(prices_array, i)
+            residual = actual - predicted
+            sum_residuals += residual * residual
+            sum_total += (actual - mean_price) * (actual - mean_price)
+        
+        r_squared = sum_total != 0 ? 1 - (sum_residuals / sum_total) : 0
+        r_squared
+
+fit_parabola(prices_array) =>
+    if array.size(prices_array) < 3
+        [na, na, na, 0]
+    else
+        // Simple parabola fitting using least squares
+        n = array.size(prices_array)
+        sum_x = 0.0
+        sum_x2 = 0.0
+        sum_x4 = 0.0
+        sum_y = 0.0
+        sum_xy = 0.0
+        sum_x2y = 0.0
+        
+        for i = 0 to n - 1
+            x = float(i)
+            y = array.get(prices_array, i)
+            x2 = x * x
+            
+            sum_x += x
+            sum_x2 += x2
+            sum_x4 += x2 * x2
+            sum_y += y
+            sum_xy += x * y
+            sum_x2y += x2 * y
+        
+        // Solve system of equations for a, b, c
+        det = n * sum_x4 - sum_x2 * sum_x2
+        
+        if det != 0
+            a = (n * sum_x2y - sum_x2 * sum_y) / det
+            b = (sum_xy * sum_x2 - sum_x2y * sum_x) / det
+            c = (sum_y - a * sum_x2 - b * sum_x) / n
+            
+            // Calculate R-squared
+            r_squared = calculate_r_squared(prices_array, a, b, c)
+            [a, b, c, r_squared]
+        else
+            [na, na, na, 0]
+
+// Removed exponential function - parabola only
+
+// ============================================================================
+// PARABOLA MAIN LOGIC (only run if enable_parabola is true)
+// ============================================================================
+if enable_parabola
+    // Add current price to arrays
+    array.push(prices, close)
+    array.push(bars, bar_index)
+
+    // Keep only lookback_period values
+    if array.size(prices) > lookback_period
+        array.shift(prices)
+        array.shift(bars)
+
+    // Detect parabola when we have enough data - WITH FILTERS
+    if array.size(prices) >= lookback_period
+        // Check market conditions based on toggle settings
+        is_trending = use_adx_filter ? adx_parabola > adx_threshold : true
+        has_volatility = use_atr_filter ? atr_parabola > ta.sma(atr_parabola, 20) * atr_threshold : true
+        
+        // Only detect parabola when filters are satisfied
+        if is_trending and has_volatility
+            // Fit the curve - parabola only
+            [temp_a, temp_b, temp_c, temp_r_squared] = fit_parabola(prices)
+            a := temp_a
+            b := temp_b
+            c := temp_c
+            r_squared := temp_r_squared
+        
+        // Debug output
+        if not na(a) and show_debug_labels
+            label.new(bar_index, high, "R²=" + str.tostring(r_squared, "#.###") + "\nConf=" + str.tostring(confidence_threshold, "#.###"), color=color.blue, style=label.style_label_down, textcolor=color.white, size=size.tiny)
+        
+        if not na(a) and r_squared >= confidence_threshold
+            parabola_a := a
+            parabola_b := b
+            parabola_c := c
+            parabola_confidence := r_squared
+            parabola_direction := a > 0 ? "up" : "down"
+            in_parabola := true
+            parabola_start_bar := array.get(bars, 0)
+            parabola_end_bar := bar_index
+            
+            // Debug label for successful detection
+            if show_debug_labels
+                label.new(bar_index, low, "DETECTED!\nParabola\nR²=" + str.tostring(r_squared, "#.###"), color=color.green, style=label.style_label_up, textcolor=color.white)
+            
+            // Generate entry signals
+            if use_position_tracking
+                if position == 0
+                    if parabola_direction == "up"
+                        position := 1
+                        entry_price := close
+                        entry_bar := bar_index
+                        if show_signals
+                            label.new(bar_index, low, "LONG\nParabola UP", color=long_color, style=label.style_label_up, textcolor=color.white)
+                    else if parabola_direction == "down"
+                        position := -1
+                        entry_price := close
+                        entry_bar := bar_index
+                        if show_signals
+                            label.new(bar_index, high, "SHORT\nParabola DOWN", color=short_color, style=label.style_label_down, textcolor=color.white)
+            else
+                // Just show signals without position tracking
+                if parabola_direction == "up" and show_signals
+                    label.new(bar_index, low, "LONG\nParabola UP", color=long_color, style=label.style_label_up, textcolor=color.white)
+                else if parabola_direction == "down" and show_signals
+                    label.new(bar_index, high, "SHORT\nParabola DOWN", color=short_color, style=label.style_label_down, textcolor=color.white)
+
+// Check for parabola break if in position - SIMPLIFIED (like v3)
+// Calculate deviation for all cases (needed for persistence logic)
+var float deviation = na
+if in_parabola and not na(parabola_a)
+    time_diff = bar_index - parabola_start_bar
+    var float expected_price = na
+    expected_price := parabolic_function(time_diff, parabola_a, parabola_b, parabola_c)
+    deviation := math.abs(close - expected_price) / close
+else
+    deviation := na
+
+// Check for parabola break if in position
+if use_position_tracking and position != 0 and in_parabola and not na(parabola_a) and not na(deviation)
+    // Simple exit condition (like v3)
+    if deviation > deviation_threshold
+        // Exit position
+        if show_signals
+            label.new(bar_index, position == 1 ? low : high, "EXIT\nParabola Break", color=exit_color, style=label.style_label_up, textcolor=color.white)
+        
+        position := 0
+        entry_price := na
+        entry_bar := na
+        in_parabola := false
+        parabola_a := na
+        parabola_b := na
+        parabola_c := na
+        parabola_confidence := na
+        parabola_direction := na
+    else if not use_position_tracking and in_parabola and not na(parabola_a) and not na(deviation)
+        // Just show exit signals without position tracking
+        if deviation > deviation_threshold and show_signals
+            label.new(bar_index, parabola_direction == "up" ? low : high, "EXIT\nParabola Break", color=exit_color, style=label.style_label_up, textcolor=color.white)
+else
+    // When parabola is disabled, reset all parabola state
+    in_parabola := false
+    persistent_bull_parabola := false
+    persistent_bear_parabola := false
+    persistent_bull_parabola_end := false
+    persistent_bear_parabola_end := false
+
+// ============================================================================
+// PARABOLA PERSISTENCE LOGIC (only run if enable_parabola is true)
+// ============================================================================
+if enable_parabola
+    // Update persistent signals based on current state
+    if use_persistence
+        if use_position_tracking
+            // Bull parabola persistence with position tracking
+            if in_parabola and parabola_direction == "up" and position == 1
+                persistent_bull_parabola := true
+                persistent_bear_parabola := false
+                persistent_bull_parabola_end := false
+                persistent_bear_parabola_end := false
+                bull_parabola_end_bar := na
+                bear_parabola_end_bar := na
+            else if position == 1 and not na(deviation) and deviation > deviation_threshold
+                persistent_bull_parabola := false
+                persistent_bear_parabola := false
+                persistent_bull_parabola_end := true
+                persistent_bear_parabola_end := false
+                bull_parabola_end_bar := bar_index
+                bear_parabola_end_bar := na
+            // Keep bull_parabola_end true until duration expires, EMA invalidation, or new parabola
+            else if persistent_bull_parabola_end and position == 0
+                // EMA invalidation: If price crosses above EMA, invalidate (5th wave continuation)
+                if use_ema_invalidation and close > ema_parabola
+                    persistent_bull_parabola_end := false
+                    bull_parabola_end_bar := na
+                // Check if duration has expired
+                else if not na(bull_parabola_end_bar) and (bar_index - bull_parabola_end_bar) > persistence_duration
+                    persistent_bull_parabola_end := false
+                    bull_parabola_end_bar := na
+                else
+                    // Keep persistent_bull_parabola_end = true (don't reset it)
+                    persistent_bull_parabola := false
+                    persistent_bear_parabola := false
+                    persistent_bear_parabola_end := false
+            
+            // Bear parabola persistence with position tracking
+            if in_parabola and parabola_direction == "down" and position == -1
+                persistent_bear_parabola := true
+                persistent_bull_parabola := false
+                persistent_bull_parabola_end := false
+                persistent_bear_parabola_end := false
+                bull_parabola_end_bar := na
+                bear_parabola_end_bar := na
+            else if position == -1 and not na(deviation) and deviation > deviation_threshold
+                persistent_bear_parabola := false
+                persistent_bull_parabola := false
+                persistent_bull_parabola_end := false
+                persistent_bear_parabola_end := true
+                bull_parabola_end_bar := na
+                bear_parabola_end_bar := bar_index
+            // Keep bear_parabola_end true until duration expires, EMA invalidation, or new parabola
+            else if persistent_bear_parabola_end and position == 0
+                // EMA invalidation: If price crosses below EMA, invalidate (5th wave continuation)
+                if use_ema_invalidation and close < ema_parabola
+                    persistent_bear_parabola_end := false
+                    bear_parabola_end_bar := na
+                // Check if duration has expired
+                else if not na(bear_parabola_end_bar) and (bar_index - bear_parabola_end_bar) > persistence_duration
+                    persistent_bear_parabola_end := false
+                    bear_parabola_end_bar := na
+                else
+                    // Keep persistent_bear_parabola_end = true (don't reset it)
+                    persistent_bear_parabola := false
+                    persistent_bull_parabola := false
+                    persistent_bull_parabola_end := false
+        
+            // Reset all signals only when a new parabola is detected (not just when position = 0)
+            if not in_parabola and position == 0 and not persistent_bull_parabola_end and not persistent_bear_parabola_end
+                persistent_bull_parabola := false
+                persistent_bear_parabola := false
+                persistent_bull_parabola_end := false
+                persistent_bear_parabola_end := false
+                bull_parabola_end_bar := na
+                bear_parabola_end_bar := na
+    else
+        // Persistence without position tracking - simpler logic
+        if in_parabola and parabola_direction == "up"
+            persistent_bull_parabola := true
+            persistent_bear_parabola := false
+            persistent_bull_parabola_end := false
+            persistent_bear_parabola_end := false
+            bull_parabola_end_bar := na
+            bear_parabola_end_bar := na
+        else if in_parabola and parabola_direction == "down"
+            persistent_bear_parabola := true
+            persistent_bull_parabola := false
+            persistent_bull_parabola_end := false
+            persistent_bear_parabola_end := false
+            bull_parabola_end_bar := na
+            bear_parabola_end_bar := na
+        else if not in_parabola and persistent_bull_parabola
+            // Bull parabola ended
+            persistent_bull_parabola := false
+            persistent_bull_parabola_end := true
+            bull_parabola_end_bar := bar_index
+        else if not in_parabola and persistent_bear_parabola
+            // Bear parabola ended
+            persistent_bear_parabola := false
+            persistent_bear_parabola_end := true
+            bear_parabola_end_bar := bar_index
+        else if persistent_bull_parabola_end
+            // EMA invalidation: If price crosses above EMA, invalidate (5th wave continuation)
+            if use_ema_invalidation and close > ema_parabola
+                persistent_bull_parabola_end := false
+                bull_parabola_end_bar := na
+            // Check if duration has expired for bull end
+            else if not na(bull_parabola_end_bar) and (bar_index - bull_parabola_end_bar) > persistence_duration
+                persistent_bull_parabola_end := false
+                bull_parabola_end_bar := na
+        else if persistent_bear_parabola_end
+            // EMA invalidation: If price crosses below EMA, invalidate (5th wave continuation)
+            if use_ema_invalidation and close < ema_parabola
+                persistent_bear_parabola_end := false
+                bear_parabola_end_bar := na
+            // Check if duration has expired for bear end
+            else if not na(bear_parabola_end_bar) and (bar_index - bear_parabola_end_bar) > persistence_duration
+                persistent_bear_parabola_end := false
+                bear_parabola_end_bar := na
+else
+    // No persistence - reset all persistent signals
+    persistent_bull_parabola := false
+    persistent_bear_parabola := false
+    persistent_bull_parabola_end := false
+    persistent_bear_parabola_end := false
+    bull_parabola_end_bar := na
+    bear_parabola_end_bar := na
+
+// ============================================================================
+// PARABOLA INFO TABLE (only run if enable_parabola is true)
+// ============================================================================
+if enable_parabola
+    if show_info
+        var table info_table = table.new(position.top_right, 2, 10, bgcolor=color.new(color.black, 80))
+        
+        table.cell(info_table, 0, 0, "Parabola", text_color=color.white, text_size=size.small)
+        table.cell(info_table, 1, 0, in_parabola ? "DETECTED" : "NONE", text_color=in_parabola ? color.green : color.red, text_size=size.small)
+        
+        table.cell(info_table, 0, 1, "Direction", text_color=color.white, text_size=size.small)
+        table.cell(info_table, 1, 1, parabola_direction, text_color=color.white, text_size=size.small)
+        
+        table.cell(info_table, 0, 2, "Confidence", text_color=color.white, text_size=size.small)
+        table.cell(info_table, 1, 2, str.tostring(parabola_confidence, "#.###"), text_color=color.white, text_size=size.small)
+        
+        table.cell(info_table, 0, 3, "Position", text_color=color.white, text_size=size.small)
+        var string position_text = ""
+        var color position_color = color.gray
+        if use_position_tracking
+            position_text := position == 1 ? "LONG" : position == -1 ? "SHORT" : "NONE"
+            position_color := position == 1 ? color.green : position == -1 ? color.red : color.gray
+        else
+            position_text := "DISABLED"
+            position_color := color.gray
+        table.cell(info_table, 1, 3, position_text, text_color=position_color, text_size=size.small)
+        
+        table.cell(info_table, 0, 4, "Entry Price", text_color=color.white, text_size=size.small)
+        if use_position_tracking
+            table.cell(info_table, 1, 4, str.tostring(entry_price, "#.##"), text_color=color.white, text_size=size.small)
+        else
+            table.cell(info_table, 1, 4, "N/A", text_color=color.gray, text_size=size.small)
+        
+        table.cell(info_table, 0, 5, "ADX Filter", text_color=color.white, text_size=size.small)
+        adx_status = use_adx_filter ? (adx_parabola > adx_threshold ? "ON ✓" : "ON ✗") : "OFF"
+        adx_color = use_adx_filter ? (adx_parabola > adx_threshold ? color.green : color.red) : color.gray
+        table.cell(info_table, 1, 5, adx_status, text_color=adx_color, text_size=size.small)
+        
+        table.cell(info_table, 0, 6, "ATR Filter", text_color=color.white, text_size=size.small)
+        atr_status = use_atr_filter ? (atr_parabola > ta.sma(atr_parabola, 20) * atr_threshold ? "ON ✓" : "ON ✗") : "OFF"
+        atr_color = use_atr_filter ? (atr_parabola > ta.sma(atr_parabola, 20) * atr_threshold ? color.green : color.red) : color.gray
+        table.cell(info_table, 1, 6, atr_status, text_color=atr_color, text_size=size.small)
+        
+        table.cell(info_table, 0, 7, "ADX Value", text_color=color.white, text_size=size.small)
+        table.cell(info_table, 1, 7, str.tostring(adx_parabola, "#.#"), text_color=color.white, text_size=size.small)
+        
+        table.cell(info_table, 0, 8, "ATR Value", text_color=color.white, text_size=size.small)
+        table.cell(info_table, 1, 8, str.tostring(atr_parabola, "#.##"), text_color=color.white, text_size=size.small)
+        
+        table.cell(info_table, 0, 9, "Deviation", text_color=color.white, text_size=size.small)
+        if in_parabola and not na(parabola_a)
+            time_diff = bar_index - parabola_start_bar
+            var float expected_price = na
+            expected_price := parabolic_function(time_diff, parabola_a, parabola_b, parabola_c)
+            current_deviation = math.abs(close - expected_price) / close
+            table.cell(info_table, 1, 9, str.tostring(current_deviation * 100, "#.##") + "%", text_color=color.white, text_size=size.small)
+        else
+            table.cell(info_table, 1, 9, "N/A", text_color=color.gray, text_size=size.small)
+
+// ============================================================================
+// PARABOLA ALERTS (must be at global scope)
+// ============================================================================
+// Entry alerts
+alertcondition(enable_parabola and position == 1 and position[1] == 0, title="Parabola Long Entry", message="Parabola UP detected - Long position entered at {{close}}")
+
+alertcondition(enable_parabola and position == -1 and position[1] == 0, title="Parabola Short Entry", message="Parabola DOWN detected - Short position entered at {{close}}")
+
+// Exit alerts
+alertcondition(enable_parabola and position == 0 and position[1] != 0, title="Parabola Exit", message="Parabola break detected - Position closed at {{close}}")
+
+// Parabola detection alerts
+alertcondition(enable_parabola and in_parabola and not in_parabola[1], title="Parabola Detected", message="Parabola {{parabola_direction}} detected with confidence {{parabola_confidence}}")
+
+// ============================================================================
+// PARABOLA BACKGROUND COLOR (must be at global scope)
+// ============================================================================
+bgcolor(enable_parabola and in_parabola ? (parabola_direction == "up" ? color.new(color.green, 95) : color.new(color.red, 95)) : na) 
+
+// ============================================================================
+// PARABOLA BREAK PLOTS (must be at global scope)
+// ============================================================================
+// Plot when bullish parabola breaks (becomes persistent_bull_parabola_end)
+bull_parabola_break = enable_parabola and persistent_bull_parabola_end and not persistent_bull_parabola_end[1]
+plotshape(series=bull_parabola_break, title="Parabola Bull Break", location=location.abovebar, color=color.orange, style=shape.xcross, size=size.small, text="Bull Break")
+
+// Plot when bearish parabola breaks (becomes persistent_bear_parabola_end)
+bear_parabola_break = enable_parabola and persistent_bear_parabola_end and not persistent_bear_parabola_end[1]
+plotshape(series=bear_parabola_break, title="Parabola Bear Break", location=location.belowbar, color=color.orange, style=shape.xcross, size=size.small, text="Bear Break")
+
+// ============================================================================
+// PARABOLA TRADING EXECUTION SCENARIOS
+// ============================================================================
+// This section documents the four key scenarios for using parabola detection
+// in actual trade execution within a larger strategy framework.
+//
+// SCENARIO 1: bull_parabola = true
+// - Trigger: When a bullish parabola is first detected (parabola_direction == "up")
+// - Action: Enter LONG position
+// - Logic: Price is following a parabolic upward trajectory
+// - Risk: Early entry, parabola might not be confirmed yet
+// - Use Case: Aggressive long entry on parabola formation
+//
+// SCENARIO 2: bull_parabola_end = true  
+// - Trigger: When a bullish parabola breaks down (deviation > deviation_threshold)
+// - Action: Exit LONG position or enter SHORT position
+// - Logic: Parabolic trend has ended, reversal likely
+// - Risk: Late exit, might miss optimal exit point
+// - Use Case: Exit long positions or enter short positions
+//
+// SCENARIO 3: bear_parabola = true
+// - Trigger: When a bearish parabola is first detected (parabola_direction == "down")
+// - Action: Enter SHORT position
+// - Logic: Price is following a parabolic downward trajectory
+// - Risk: Early entry, parabola might not be confirmed yet
+// - Use Case: Aggressive short entry on parabola formation
+//
+// SCENARIO 4: bear_parabola_end = true
+// - Trigger: When a bearish parabola breaks up (deviation > deviation_threshold)
+// - Action: Exit SHORT position or enter LONG position
+// - Logic: Parabolic downtrend has ended, reversal likely
+// - Risk: Late exit, might miss optimal exit point
+// - Use Case: Exit short positions or enter long positions
+//
+// IMPLEMENTATION NOTES:
+// - These scenarios can be used as boolean conditions in strategy logic
+// - Combine with other indicators for confirmation (ADX, ATR, volume)
+// - Consider position sizing based on parabola confidence level
+// - Use time-based filters to avoid false signals
+// - Monitor deviation levels for early warning of parabola breaks
+//
+// EXAMPLE USAGE IN STRATEGY:
+// if bull_parabola
+//     strategy.entry("Parabola Long", strategy.long)
+// if bull_parabola_end and position == 1
+//     strategy.close("Parabola Long")
+// if bear_parabola
+//     strategy.entry("Parabola Short", strategy.short)
+// if bear_parabola_end and position == -1
+//     strategy.close("Parabola Short")
+//
+// VARIABLE MAPPING:
+// ORIGINAL (Single-bar signals - only true for one bar):
+// bull_parabola = in_parabola and parabola_direction == "up" and position == 1
+// bull_parabola_end = position == 1 and deviation > deviation_threshold
+// bear_parabola = in_parabola and parabola_direction == "down" and position == -1
+// bear_parabola_end = position == -1 and deviation > deviation_threshold
+//
+// PERSISTENT (Multi-bar signals - true throughout parabola duration):
+// persistent_bull_parabola = true throughout entire bullish parabola until break
+// persistent_bull_parabola_end = true when bullish parabola breaks (persists for persistence_duration bars)
+// persistent_bear_parabola = true throughout entire bearish parabola until break
+// persistent_bear_parabola_end = true when bearish parabola breaks (persists for persistence_duration bars)
+//
+// POSITION TRACKING:
+// - Set use_position_tracking = false (default) to avoid conflicts with main strategy
+// - When disabled: Parabola signals work independently of position management
+// - When enabled: Parabola script manages its own position tracking
+// - Benefits of disabling: No conflicts with manual trades or main strategy positions
+//
+// USAGE RECOMMENDATION:
+// - Use persistent_* variables for ongoing position management
+// - Use original variables for entry/exit timing precision
+// - Set use_persistence = true to enable persistent signals
+// - Set persistence_duration to control how long end signals persist (default: 10 bars)
+// - Set use_position_tracking = false to avoid conflicts with main strategy
+// ============================================================================ 
+// ============================================================================
+// PARABOLA TRADING EXECUTION SCENARIOS
+// ============================================================================
+// This section documents the four key scenarios for using parabola detection
+// in actual trade execution within a larger strategy framework.
+//
+// SCENARIO 1: bull_parabola = true
+// - Trigger: When a bullish parabola is first detected (parabola_direction == "up")
+// - Action: Enter LONG position
+// - Logic: Price is following a parabolic upward trajectory
+// - Risk: Early entry, parabola might not be confirmed yet
+// - Use Case: Aggressive long entry on parabola formation
+//
+// SCENARIO 2: bull_parabola_end = true  
+// - Trigger: When a bullish parabola breaks down (deviation > deviation_threshold)
+// - Action: Exit LONG position or enter SHORT position
+// - Logic: Parabolic trend has ended, reversal likely
+// - Risk: Late exit, might miss optimal exit point
+// - Use Case: Exit long positions or enter short positions
+//
+// SCENARIO 3: bear_parabola = true
+// - Trigger: When a bearish parabola is first detected (parabola_direction == "down")
+// - Action: Enter SHORT position
+// - Logic: Price is following a parabolic downward trajectory
+// - Risk: Early entry, parabola might not be confirmed yet
+// - Use Case: Aggressive short entry on parabola formation
+//
+// SCENARIO 4: bear_parabola_end = true
+// - Trigger: When a bearish parabola breaks up (deviation > deviation_threshold)
+// - Action: Exit SHORT position or enter LONG position
+// - Logic: Parabolic downtrend has ended, reversal likely
+// - Risk: Late exit, might miss optimal exit point
+// - Use Case: Exit short positions or enter long positions
+//
+// IMPLEMENTATION NOTES:
+// - These scenarios can be used as boolean conditions in strategy logic
+// - Combine with other indicators for confirmation (ADX, ATR, volume)
+// - Consider position sizing based on parabola confidence level
+// - Use time-based filters to avoid false signals
+// - Monitor deviation levels for early warning of parabola breaks
+//
+// EXAMPLE USAGE IN STRATEGY:
+// if bull_parabola
+//     strategy.entry("Parabola Long", strategy.long)
+// if bull_parabola_end and position == 1
+//     strategy.close("Parabola Long")
+// if bear_parabola
+//     strategy.entry("Parabola Short", strategy.short)
+// if bear_parabola_end and position == -1
+//     strategy.close("Parabola Short")
+//
+// VARIABLE MAPPING:
+// ORIGINAL (Single-bar signals - only true for one bar):
+// bull_parabola = in_parabola and parabola_direction == "up" and position == 1
+// bull_parabola_end = position == 1 and deviation > deviation_threshold
+// bear_parabola = in_parabola and parabola_direction == "down" and position == -1
+// bear_parabola_end = position == -1 and deviation > deviation_threshold
+//
+// PERSISTENT (Multi-bar signals - true throughout parabola duration):
+// persistent_bull_parabola = true throughout entire bullish parabola until break
+// persistent_bull_parabola_end = true when bullish parabola breaks (persists for persistence_duration bars)
+// persistent_bear_parabola = true throughout entire bearish parabola until break
+// persistent_bear_parabola_end = true when bearish parabola breaks (persists for persistence_duration bars)
+//
+// POSITION TRACKING:
+// - Set use_position_tracking = false (default) to avoid conflicts with main strategy
+// - When disabled: Parabola signals work independently of position management
+// - When enabled: Parabola script manages its own position tracking
+// - Benefits of disabling: No conflicts with manual trades or main strategy positions
+//
+// USAGE RECOMMENDATION:
+// - Use persistent_* variables for ongoing position management
+// - Use original variables for entry/exit timing precision
+// - Set use_persistence = true to enable persistent signals
+// - Set persistence_duration to control how long end signals persist (default: 10 bars)
+// - Set use_position_tracking = false to avoid conflicts with main strategy
+// ============================================================================ 
+// ============================================================================
+// PARABOLA TRADING EXECUTION SCENARIOS
+// ============================================================================
+// This section documents the four key scenarios for using parabola detection
+// in actual trade execution within a larger strategy framework.
+//
+// SCENARIO 1: bull_parabola = true
+// - Trigger: When a bullish parabola is first detected (parabola_direction == "up")
+// - Action: Enter LONG position
+// - Logic: Price is following a parabolic upward trajectory
+// - Risk: Early entry, parabola might not be confirmed yet
+// - Use Case: Aggressive long entry on parabola formation
+//
+// SCENARIO 2: bull_parabola_end = true  
+// - Trigger: When a bullish parabola breaks down (deviation > deviation_threshold)
+// - Action: Exit LONG position or enter SHORT position
+// - Logic: Parabolic trend has ended, reversal likely
+// - Risk: Late exit, might miss optimal exit point
+// - Use Case: Exit long positions or enter short positions
+//
+// SCENARIO 3: bear_parabola = true
+// - Trigger: When a bearish parabola is first detected (parabola_direction == "down")
+// - Action: Enter SHORT position
+// - Logic: Price is following a parabolic downward trajectory
+// - Risk: Early entry, parabola might not be confirmed yet
+// - Use Case: Aggressive short entry on parabola formation
+//
+// SCENARIO 4: bear_parabola_end = true
+// - Trigger: When a bearish parabola breaks up (deviation > deviation_threshold)
+// - Action: Exit SHORT position or enter LONG position
+// - Logic: Parabolic downtrend has ended, reversal likely
+// - Risk: Late exit, might miss optimal exit point
+// - Use Case: Exit short positions or enter long positions
+//
+// IMPLEMENTATION NOTES:
+// - These scenarios can be used as boolean conditions in strategy logic
+// - Combine with other indicators for confirmation (ADX, ATR, volume)
+// - Consider position sizing based on parabola confidence level
+// - Use time-based filters to avoid false signals
+// - Monitor deviation levels for early warning of parabola breaks
+//
+// EXAMPLE USAGE IN STRATEGY:
+// if bull_parabola
+//     strategy.entry("Parabola Long", strategy.long)
+// if bull_parabola_end and position == 1
+//     strategy.close("Parabola Long")
+// if bear_parabola
+//     strategy.entry("Parabola Short", strategy.short)
+// if bear_parabola_end and position == -1
+//     strategy.close("Parabola Short")
+//
+// VARIABLE MAPPING:
+// ORIGINAL (Single-bar signals - only true for one bar):
+// bull_parabola = in_parabola and parabola_direction == "up" and position == 1
+// bull_parabola_end = position == 1 and deviation > deviation_threshold
+// bear_parabola = in_parabola and parabola_direction == "down" and position == -1 //Would it really be -1? My bot cannot short, only cash out into USD
+// bear_parabola_end = position == -1 and deviation > deviation_threshold
+//
+// PERSISTENT (Multi-bar signals - true throughout parabola duration):
+// persistent_bull_parabola = true throughout entire bullish parabola until break
+// persistent_bull_parabola_end = true when bullish parabola breaks (persists for persistence_duration bars)
+// persistent_bear_parabola = true throughout entire bearish parabola until break
+// persistent_bear_parabola_end = true when bearish parabola breaks (persists for persistence_duration bars)
+//
+// USAGE RECOMMENDATION:
+// - Use persistent_* variables for ongoing position management
+// - Use original variables for entry/exit timing precision
+// - Set use_persistence = true to enable persistent signals
+// - Set persistence_duration to control how long end signals persist (default: 10 bars)
+// ============================================================================ 
+
+// ============================ GOPA GOPARASHKININ =======================//
+gopa_length = input.int(5, "GAPO Length", minval=1, tooltip="Length for GAPO calculation - defval 5")
+
+// 2025-08-14: GAPO base (range-based) and normalized variants
+gapo = math.log(ta.highest(close, gopa_length) - ta.lowest(close, gopa_length)) / math.log(gopa_length)
+
+// Normalization settings
+gapo_norm_len = input.int(100, "GAPO Norm Length", minval=5) // 2025-08-14
+show_gapo_raw = input.bool(true, "Plot GAPO Raw", inline="gapoPlots", tooltip="Unnormalized GAPO") // 2025-08-14
+show_gapo_minmax = input.bool(true, "MinMax", inline="gapoPlots", tooltip="Min-Max normalized to [-1,1]") // 2025-08-14
+show_gapo_z = input.bool(false, "Z-Score", inline="gapoPlots2", tooltip="Z-score (mean/std)") // 2025-08-14
+show_gapo_tanh = input.bool(true, "Z→tanh", inline="gapoPlots2", tooltip="Z-score passed through tanh to clamp [-1,1]") // 2025-08-14
+
+// Colors
+gapoColor = gapo >= gapo[1] ? #0ebb23 : color.red
+
+// Min-Max normalization to [-1,1]
+gapo_min = ta.lowest(gapo, gapo_norm_len)
+gapo_max = ta.highest(gapo, gapo_norm_len)
+gapo_range = math.max(gapo_max - gapo_min, 1e-10)
+gapo_minmax01 = (gapo - gapo_min) / gapo_range
+gapo_minmax = (gapo_minmax01 * 2.0) - 1.0
+gapoMinMaxColor = gapo_minmax >= gapo_minmax[1] ? color.new(#0ebb23, 0) : color.new(color.red, 0)
+
+// Z-score and tanh-normalized [-1,1]
+gapo_mu = ta.sma(gapo, gapo_norm_len)
+gapo_sigma = ta.stdev(gapo, gapo_norm_len)
+gapo_z = gapo_sigma != 0 ? (gapo - gapo_mu) / gapo_sigma : 0.0
+// Calculate tanh manually since math.tanh() is not available in Pine Script v5
+// tanh(x) = (exp(2*x) - 1) / (exp(2*x) + 1)
+gapo_z_tanh = (math.exp(2 * gapo_z) - 1) / (math.exp(2 * gapo_z) + 1)
+gapoZColor = gapo_z >= gapo_z[1] ? color.new(#0ebb23, 0) : color.new(color.red, 0)
+gapoZTanhColor = gapo_z_tanh >= gapo_z_tanh[1] ? color.new(#0ebb23, 0) : color.new(color.red, 0)
+
+// Plots // We are over our limit for plots.
+// plot(show_gapo_raw ? gapo : na, title="GAPO (Raw)", linewidth=2, color=gapoColor, transp=0)
+// plot(show_gapo_minmax ? gapo_minmax : na, title="GAPO MinMax [-1,1]", linewidth=2, color=gapoMinMaxColor, transp=0)
+// plot(show_gapo_z ? gapo_z : na, title="GAPO Z-Score", linewidth=2, color=gapoZColor, transp=0)
+// plot(show_gapo_tanh ? gapo_z_tanh : na, title="GAPO Z→tanh [-1,1]", linewidth=2, color=gapoZTanhColor, transp=0)
+
+
+//--------------------------MEGABOT MAIN LONG-------------------------------------------------------------------------------------------------{
+// Initialize signal tracking variable
+var float signalBar1 = na // Stores the bar index when a signal occurs
+var float signalBar1Plot = na
+
+// Trigger signal and store the current bar index
+if useHalvings ? (not halvingBear and not halvingBear2) : (close > 0) // if longConditionMega[1]?
+    // Hilbert filter: require either bullish crossover OR bullish state (if toggles enabled), and not bearish (anti-signal)
+    // If both toggles OFF: auto-pass. If either/both ON: require corresponding condition(s)
+    hilbertLongOK = (not gate_useHilbertCross and not gate_useHilbertState) or f_req(gate_useHilbertCross, hilbertBullishCross) or f_req(gate_useHilbertState, hilbertBullish)
+    if f_req(gate_useMegaSignal, longConditionMega) and f_req(gate_useAtrFilter, zen.atrFilter(atrFilterLength, atrFilterThresh)) and f_req(gate_useSourceGuard, sourceShortInput2 < 5) and f_req(gate_requireFlat, strategy.position_size == 0) and f_req(gate_useRoundNumber, (not na(detectedRoundNumber) or close > detectedRoundNumber)) and f_req(gate_blockFridaysBuy, dayofweek != 5) and f_req(gate_avoidResistance, not underneath_resistance) and f_req(gate_useFib382, not nearUnderFib382) and f_req(gate_useParabola, not persistent_bull_parabola_end) and f_req(gate_useHilbertAntiSignal, not (reals < 0 and imags < 0)) and hilbertLongOK
+        if f_req(gate_useMonteCarloSkip, not zen.skipTradeMonteCarlo(SKIP_TRADE_CHANCE, true))
+            if lessrekt ? (close > ema195) : (close > 0) //orginally if lessrekt ? (close > ema0) : (close > 0)
+                // Store the bar index for the signal if not already set
+                if na(signalBar1) and barstate.isconfirmed
+                    signalBar1 := bar_index
+                    //alert("Long Signal detected...False sig1?...stored on " + syminfo.ticker + " at bar index " + str.tostring(bar_index), alert.freq_once_per_bar)  // Add alert here for tracking
+
+//Just a thought: Put strategy.entry in previous block, and then just delay alerts?
+// na(SignalBar1)[2] and na(signalBar1)[3] ??? strategy.position_size == 0???
+if not na(signalBar1)[1] and barstate.isconfirmed and strategy.position_size == 0 // and strategy.position_size == 0 ????is new positionsize? Needs help to prevent Pyramiding
+    // Execute the strategy entry and alert after 3-bar confirmation
+    //strategy.entry("long", strategy.long, alert_message = '{"action":"buy","symbol":"ETH/USD","quantity":100}', comment = "long 1 bullHalving") //single ' ?
+    strategy.entry("long", strategy.long, alert_message = '{"action":"buy","symbol":"' + asset + '","quantity":100}', comment = "long 1 bullHalving")
+
+    //strategy.entry("long", strategy.long, alert_message = '{"action":"buy","symbol":"{asset}/USD","quantity":100}', comment = "long 1 bullHalving") //single ' ?
+
+    //Example string jsonMessage = '{"action":"buy","symbol":"ETH/USD","quantity":100}'
+    // Havent tested double JSON pyramiding orders? Does pinescript have a delay fucntion? Do I really need double orders?
+    //
+    //I don't think I really need a double JSON order. I'll just handle position sizing and limit pecentage in python.
+    //alert('{"action":"buy","symbol":"ETH/USD","quantity":100}', alert.freq_once_per_bar)
+    //alert(jsonMessage)
+
+    // Assign signalBar2 value to be plotted
+    signalBar1Plot := signalBar1
+
+    // Reset signalBar2 globally
+    signalBar1 := na
+else
+    // Default plot value to na
+    signalBar1Plot := na
+
+// Plot signalBar2 globally. Add debugs to more??? What can I get rid of?
+// plot(signalBar1Plot, title="SignalBar1 Debug - Main megabot long", color=color.green, display=display.data_window) //Debug. Delete this eventually
+//-------------------------------------------------------------------------------------------------------------------------------------------}
+//----------------------Cautious MEGABOT LONG (requires volume/momentum)--------------------------------------------------------------------{
+// Initialize signal tracking variable
+var float signalBar2 = na // Stores the bar index when a signal occurs
+var float signalBar2Plot = na
+
+//adx squeeze will have to happen if useHalvings is not used.
+// Trigger signal and store the current bar index
+if useHalvings ? (halvingBear or halvingBear2) : (close > 0)
+    // Hilbert filter: require either bullish crossover OR bullish state (if toggles enabled), and not bearish (anti-signal)
+    // If both toggles OFF: auto-pass. If either/both ON: require corresponding condition(s)
+    hilbertLongOK2 = (not gate_useHilbertCross and not gate_useHilbertState) or f_req(gate_useHilbertCross, hilbertBullishCross) or f_req(gate_useHilbertState, hilbertBullish)
+    if f_req(gate_useAdx or gate_allowTTMSqueeze, ((gate_useAdx and adx > adxLong) or (gate_allowTTMSqueeze and TTMSqueeze))) // Additional conditions for signal
+        if f_req(gate_useMegaSignal, longConditionMega) and f_req(gate_useAtrFilter, zen.atrFilter(atrFilterLength, atrFilterThresh)) and f_req(gate_useSourceGuard, sourceShortInput2 < 5) and f_req(gate_requireFlat, strategy.position_size == 0) and f_req(gate_blockFridaysBuy, dayofweek != 5) and f_req(gate_useFib382, not nearUnderFib382) and f_req(gate_useParabola, not persistent_bull_parabola_end) and f_req(gate_useHilbertAntiSignal, not (reals < 0 and imags < 0)) and hilbertLongOK2 //Avoid Fridays
+            if f_req(gate_useMonteCarloSkip, not zen.skipTradeMonteCarlo(SKIP_TRADE_CHANCE, true))
+                if lessrekt ? (close > ema195) : (close > 0) // if user hasn't choosen lessrekt, this will do nothing.
+                        // Store the bar index for the signal if not already set
+                    if na(signalBar2) and barstate.isconfirmed
+                        signalBar2 := bar_index
+                        //alert("Long Signal detected...False sig4?...adx volume filter...stored on " + syminfo.ticker + " at bar index " + str.tostring(bar_index), alert.freq_once_per_bar)  // Add alert here for tracking
+
+// Confirm the signal after 3 bars and execute the strategy
+if not na(signalBar2)[1] and barstate.isconfirmed and strategy.position_size == 0
+    // Execute the strategy entry and alert after 3-bar confirmation
+    //strategy.entry("long", strategy.long, alert_message = '{"action":"buy","symbol":"ETH/USD","quantity":100}', comment = "long 2 bearHalving")
+    strategy.entry("long", strategy.long, alert_message = '{"action":"buy","symbol":"' + asset + '","quantity":100}', comment = "long 2 bullHalving")
+    // alert('{"action":"buy","symbol":"ETH/USD","quantity":100}', alert.freq_once_per_bar)
+    //Maybe this is what is making the double order?
+    // Assign signalBar2 value to be plotted
+    signalBar2Plot := signalBar2
+
+    // Reset signalBar2 globally
+    signalBar2 := na
+else
+    // Default plot value to na
+    signalBar2Plot := na
+
+// Plot signalBar2 globally. Add debugs to more??? What can I get rid of?
+plot(signalBar2Plot, title="SignalBar2 Debug - Cautious Volume long", color=color.green, display=display.data_window)
+    // Reset signalBar4 to allow new signals
+//	strategy.entry("long", strategy.long, qty = contract_size_var2, alert_message = "b=buy delay=2 e=coinbase t=market q=.02% s=ETH-USD", comment = "long 1") //75%
+//	strategy.entry("long", strategy.long, qty = contract_size_var1, alert_message = "b=buy delay=2 e=coinbase t=market q=.02% s=ETH-USD", comment = "long 1") //25%
+// -------------------------------------------------------------------------------------------------------------------------------------------}
+// -----STUPIDBULL LONG---longCondition3 = close > 25?----------------------------------------------------------------------------------------{
+// Initialize signal tracking variable
+var float signalBar3 = na // Stores the bar index when a signal occurs
+var float signalBar3Plot = na
+
+// Trigger signal and store the current bar index
+// Hilbert filter: require either bullish crossover OR bullish state (if toggles enabled), and not bearish (anti-signal)
+// If both toggles OFF: auto-pass. If either/both ON: require corresponding condition(s)
+hilbertLongOK3 = (not gate_useHilbertCross and not gate_useHilbertState) or f_req(gate_useHilbertCross, hilbertBullishCross) or f_req(gate_useHilbertState, hilbertBullish)
+if longCondition3 and f_req(gate_useAtrFilter, zen.atrFilter(atrFilterLength, atrFilterThresh)) and bearishCounter > bearishCounterAmount and not ssl.shootingStarCandle(open, high, low, close) and not cross_DN_B and f_req(gate_requireFlat, strategy.position_size == 0) and f_req(gate_avoidResistance, not underneath_resistance) and f_req(gate_blockFridaysBuy, dayofweek != 5) and f_req(gate_useFib382, not nearUnderFib382) and f_req(gate_useParabola, not persistent_bull_parabola_end) and f_req(gate_useHilbertAntiSignal, not (reals < 0 and imags < 0)) and hilbertLongOK3 //Avoid Fridays // Additional conditions
+    // Store the bar index for the signal if not already set
+    if na(signalBar3) and barstate.isconfirmed
+        signalBar3 := bar_index
+        //alert("Long Signal detected...False sig3?...dumb bull...stored on " + syminfo.ticker + " at bar index " + str.tostring(bar_index), alert.freq_once_per_bar)  // Add alert here for tracking
+
+// Confirm the signal after 3 bars and execute the strategy
+if not na(signalBar3)[1] and barstate.isconfirmed and strategy.position_size == 0
+    // Execute the strategy entry and alert after 3-bar confirmation
+    //strategy.entry("long", strategy.long, alert_message = '{"action":"buy","symbol":"ETH/USD","quantity":100}', comment = "long 3")
+    strategy.entry("long", strategy.long, alert_message = '{"action":"buy","symbol":"' + asset + '","quantity":100}', comment = "long 3")
+    // alert('{"action":"buy","symbol":"ETH/USD","quantity":100}', alert.freq_once_per_bar)
+
+
+    // Assign signalBar2 value to be plotted
+    signalBar3Plot := signalBar3
+
+    // Reset signalBar2 globally
+    signalBar3 := na
+else
+    // Default plot value to na
+    signalBar3Plot := na
+
+// Plot signalBar2 globally. Add debugs to more??? What can I get rid of?
+plot(signalBar3Plot, title="SignalBar3 Debug - Main megabot long", color=color.green, display=display.data_window)
+//--------------------------------------------------------------------------------------------------------------------------------------------{
+//--END LONG EXECUTION------------------------------------------------------------------------------------------------------------------------}
+//--SHORT EXECUTION---------------------------------------------------------------------------------------------------------------------------{
+//------MAIN MEGABOT SHORT---------------------------------------------------------------------------------------------------------------------{
+// Initialize signal tracking variable
+var float signalBar4 = na // Stores the bar index when a signal occurs
+var float signalBar4Plot = na
+
+// Trigger signal and store the current bar index
+// Hilbert filter: require either bearish crossover OR bearish state (if toggles enabled), and not bullish (anti-signal)
+// If both toggles OFF: auto-pass. If either/both ON: require corresponding condition(s)
+hilbertShortOK = (not gate_useHilbertCross and not gate_useHilbertState) or f_req(gate_useHilbertCross, hilbertBearishCross) or f_req(gate_useHilbertState, hilbertBearish)
+if f_req(gate_useAdx, adx > adxShort) and barsInPosition > 2 or trade_profit_percent > -1.1 // trade_profit_percent enures it doesn't give up too quickly. Additional conditions
+    if f_req(gate_useMegaSignal, shortConditionMega) and f_req(gate_useAtrFilter, zen.atrFilter(atrFilterLength, atrFilterThresh)) and barsInPosition > 1 and not longCondition2 and strategy.position_size > 0 and f_req(gate_useParabola, not persistent_bear_parabola_end) and f_req(gate_useHilbertAntiSignal, not (reals > 0 and imags > 0)) and hilbertShortOK
+        // Store the bar index for the signal if not already set
+        if na(signalBar4) and barstate.isconfirmed
+            signalBar4 := bar_index
+            //alert("Short Signal detected...False sig4?...Main megabot short...stored on " + syminfo.ticker + " at bar index " + str.tostring(bar_index), alert.freq_once_per_bar)  // Add alert here for tracking
+
+// Confirm the signal after 3 bars and execute the strategy
+if not na(signalBar4)[1] and barstate.isconfirmed // We might not want a position size check here because being in USD is safer.
+    // Execute the strategy close and alert after 3-bar confirmation
+    //strategy.close("long", comment = "short 1 adx", alert_message = '{"action":"sell","symbol":"ETH/USD","quantity":100}')
+    strategy.close("long", comment = "short 1 adx", alert_message = '{"action":"sell","symbol":"' + asset + '","quantity":100}')
+    // Trigger an alert instead of a second strategy.close. Might actually want to not have and strategy.position_size > 0 because it is safer being out of the game in USD than in it.
+    //alert('{"action":"sell","symbol":"ETH/USD","quantity":100}', alert.freq_once_per_bar)
+
+    signalBar4Plot := signalBar4
+    // Reset signalBar7 to allow new signals
+    signalBar4 := na
+else
+    // Default plot value to na
+    signalBar4Plot := na
+plot(signalBar4Plot, title="SignalBar4 Main Short", color=color.red, display=display.data_window)
+//--------------------------------------------------------------------------------------------------------------------------------------------}
+//----STOPLOSS BEAR---------------------------------------------------------------------------------------------------------------------------{
+// Initialize signal tracking variable
+var float signalBar5 = na // Stores the bar index when a signal occurs
+var float signalBar5Plot = na
+
+// Trigger signal and store the current bar index
+// Hilbert filter: require either bearish crossover OR bearish state (if toggles enabled), and not bullish (anti-signal)
+// If both toggles OFF: auto-pass. If either/both ON: require corresponding condition(s)
+hilbertShortOK5 = (not gate_useHilbertCross and not gate_useHilbertState) or f_req(gate_useHilbertCross, hilbertBearishCross) or f_req(gate_useHilbertState, hilbertBearish)
+if useHalvings ? (halvingBear or halvingBear2) : na
+    if trade_profit_percent > 4.7 and barsInPosition > 10 or trade_profit_percent < -1.2 // Additional conditions
+        if sourceShortInput2 > 8 and zen.isStar(0.786, false) and not longConditionMegaInRange2 and not bm.BullishMarubozuLib(open, high, low, close, 10, 2) and not bh.bullishHammer(open, high, low, close, 0.3) and strategy.position_size > 0 and f_req(gate_useParabola, not persistent_bear_parabola_end) and f_req(gate_useHilbertAntiSignal, not (reals > 0 and imags > 0)) and hilbertShortOK5
+            // Store the bar index for the signal if not already set
+            if na(signalBar5) and barstate.isconfirmed
+                signalBar5 := bar_index
+                //alert("Short Signal detected...False sig5?...stored on " + syminfo.ticker + " at bar index " + str.tostring(bar_index), alert.freq_once_per_bar)  // Add alert here for tracking
+
+// Confirm the signal after 3 bars and execute the strategy
+if not na(signalBar5)[1] and barstate.isconfirmed
+    // Execute the strategy close and alert after 3-bar confirmation
+    //strategy.close("long", comment = "short 2 Divs Bear", alert_message = '{"action":"sell","symbol":"ETH/USD","quantity":100}')
+    strategy.close("long", comment ="short 2 Divs Bear", alert_message = '{"action":"sell","symbol":"' + asset + '","quantity":100}')
+    // alert('{"action":"sell","symbol":"ETH/USD","quantity":100}', alert.freq_once_per_bar)
+
+
+   // Assign signalBar2 value to be plotted
+    signalBar5Plot := signalBar5
+
+    // Reset signalBar2 globally
+    signalBar5 := na
+else
+    // Default plot value to na
+    signalBar5Plot := na
+
+// Plot signalBar2 globally. Add debugs to more??? What can I get rid of?
+// plot(signalBar5Plot, title="SignalBar3 Debug - Main megabot long", color=color.green, display=display.data_window)
+//---------------------------------------------------------------------------------------------------------------------------------------------}
+//----STOPLOSS BULL----------------------------------------------------------------------------------------------------------------------------{
+//Harder to exit for bull markets. Essentially a stoploss
+// Initialize signal tracking variable
+var float signalBar6 = na // Stores the bar index when a signal occurs
+var float signalBar6Plot = na
+
+// Trigger signal and store the current bar index
+// Hilbert filter: require either bearish crossover OR bearish state (if toggles enabled), and not bullish (anti-signal)
+// If both toggles OFF: auto-pass. If either/both ON: require corresponding condition(s)
+hilbertShortOK6 = (not gate_useHilbertCross and not gate_useHilbertState) or f_req(gate_useHilbertCross, hilbertBearishCross) or f_req(gate_useHilbertState, hilbertBearish)
+if useHalvings ? (halvingBull or halvingBull2) : na
+    if barsInPosition > 10 or trade_profit_percent < -2.2 // Additional conditions
+        if sourceShortInput2 > 8 and zen.isStar(0.786, false) and not longConditionMegaInRange2 and not bm.BullishMarubozuLib(open, high, low, close, 10, 2) and not bh.bullishHammer(open, high, low, close, 0.3) and strategy.position_size > 0 and f_req(gate_useParabola, not persistent_bear_parabola_end) and f_req(gate_useHilbertAntiSignal, not (reals > 0 and imags > 0)) and hilbertShortOK6
+            // Store the bar index for the signal if not already set
+            if na(signalBar6) and barstate.isconfirmed
+                signalBar6 := bar_index
+                //alert("Short Signal detected...False sig9?...stored on " + syminfo.ticker + " at bar index " + str.tostring(bar_index), alert.freq_once_per_bar)  // Add alert here for tracking
+
+// Confirm the signal after 3 bars and execute the strategy
+if not na(signalBar6)[1] and barstate.isconfirmed
+    // Execute the strategy close and alert after 3-bar confirmation
+    //strategy.close("long", comment = "short 2 Divs Bull", alert_message = '{"action":"sell","symbol":"ETH/USD","quantity":100}')
+    strategy.close("long", comment = "short 2 Divs Bull", alert_message = '{"action":"sell","symbol":"' + asset + '","quantity":100}')
+    // alert('{"action":"sell","symbol":"ETH/USD","quantity":100}', alert.freq_once_per_bar)
+
+
+   // Assign signalBar2 value to be plotted
+    signalBar6Plot := signalBar6
+
+    // Reset signalBar2 globally
+    signalBar6 := na
+else
+    // Default plot value to na
+    signalBar6Plot := na
+
+// Plot signalBar2 globally. Add debugs to more??? What can I get rid of?
+// plot(signalBar6Plot, title="SignalBar3 Debug - Main megabot long", color=color.green, display=display.data_window)
+//-----------------------------------------------------------------------------------------------------------------------------------------}
+//----TECHNICAL RATING EXIT----------------------------------------------------------------------------------------------------------------{
+//NO EFFECT 8/25/24 Change longConditionMange to shorter. Name it after the range? 
+// Initialize signal tracking variable
+var float signalBar7 = na // Stores the bar index when a signal occurs
+
+// Trigger signal and store the current bar index
+// Hilbert filter: require either bearish crossover OR bearish state (if toggles enabled), and not bullish (anti-signal)
+// If both toggles OFF: auto-pass. If either/both ON: require corresponding condition(s)
+hilbertShortOK7 = (not gate_useHilbertCross and not gate_useHilbertState) or f_req(gate_useHilbertCross, hilbertBearishCross) or f_req(gate_useHilbertState, hilbertBearish)
+if barsInPosition > 10 and rating1 < -0.8 and not bm.BullishMarubozuLib(open, high, low, close, 10, 2) and not bh.bullishHammer(open, high, low, close, 0.3) and strategy.position_size > 0 and f_req(gate_useParabola, not persistent_bear_parabola_end) and f_req(gate_useHilbertAntiSignal, not (reals > 0 and imags > 0)) and hilbertShortOK7
+    // Store the bar index for the signal if not already set
+    if na(signalBar7) and barstate.isconfirmed
+        signalBar7 := bar_index
+        //alert("Short Signal detected...False sig10?...stored on " + syminfo.ticker + " at bar index " + str.tostring(bar_index), alert.freq_once_per_bar)  // Add alert here for tracking
+
+// Confirm the signal after 3 bars and execute the strategy
+if not na(signalBar7)[1] and barstate.isconfirmed
+    // Execute the strategy close and alert after 3-bar confirmation
+    //strategy.close("long", comment = "short 3 Rating", alert_message = '{"action":"sell","symbol":"ETH/USD","quantity":100}') //Slightly greedy exit
+    strategy.close("long", comment = "short 3 Rating", alert_message = '{"action":"sell","symbol":"' + asset + '","quantity":100}')
+    // alert('{"action":"sell","symbol":"ETH/USD","quantity":100}', alert.freq_once_per_bar)
+
+
+    // Reset signalBar10 to allow new signals
+    signalBar7 := na
+//plot(signalBar10, title="SignalBar10 Debug", color=color.green, display=display.data_window)
+//-------------------------------------------------------------------------------------------------------------------------------------------}
+//----AVERAGE TAKE PROFIT EXIT---------------------------------------------------------------------------------------------------------------{
+//NO EFFECT 8/25/24
+// Hilbert filter: require either bearish crossover OR bearish state (if toggles enabled), and not bullish (anti-signal)
+// If both toggles OFF: auto-pass. If either/both ON: require corresponding condition(s)
+hilbertShortOK8 = (not gate_useHilbertCross and not gate_useHilbertState) or f_req(gate_useHilbertCross, hilbertBearishCross) or f_req(gate_useHilbertState, hilbertBearish)
+if useHalvings ? (halvingBear or halvingBear2) : na
+	if strategy.openprofit_percent > 6.59 and not longConditionMega and barsInPosition > 10 and rating1 <-0.4 and f_req(gate_useHilbertAntiSignal, not (reals > 0 and imags > 0)) and hilbertShortOK8
+		//strategy.close("long", comment = "short 3 Rating", alert_message = '{"action":"sell","symbol":"ETH/USD","quantity":100}') //small amount greedy exit
+        strategy.close("long", comment = "short 1 adx", alert_message = '{"action":"sell","symbol":"' + asset + '","quantity":100}')
+
+//I didn't put a confirm alert on this one. I don't think it needs it that bad or ever even gets triggered in the first place.
+
+// strategy.openprofit_percent
+// strategy.avg_trade_percent
+// strategy.max_drawdown_percent
+// //
+// if rating1 < -0.5 and downTrendBool and zen.atrFilter(atrFilterLength, atrFilterThresh) and threeBearSoldiersDetected and not bm.BullishMarubozuLib(open, high, low, close, 10, 2) and not bh.bullishHammer(open, high, low, close, 0.3) and strategy.position_size > 0
+// 	strategy.close("long", comment = "short 3 Rating", alert_message = "b=sell delay=60 e=coinbase p=0.04% u=currency q=100% s=SOL-USD")
+//     if na(signalBar11)
+//         signalBar11 := bar_index
+
+
+// 	strategy.close("long", comment = "short 4 Rating", alert_message = "b=sell delay=60 e=coinbase p=0.04% u=currency q=100% s=SOL-USD")
+// alert_message = "b=buy delay=301 e=coinbase p=-0.25% u=currency q=25 s=AAVE-USD"
+// alert_message = "b=buy delay=301 e=coinbase u=currency p=-0.5% q=75 s=AAVE-USD"
+// alert_message = "b=sell delay=1 e=coinbase t=market u=currency q=100% s=AAVE-USD"
+
+longProfitExitCond = longProfitExit or barsInPosition > 2 //minimum profit to exit trade.
+// Notes and original TODOs moved to README.md for clarity.
