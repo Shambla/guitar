@@ -109,9 +109,50 @@
 				transform: translateY(-1px);
 				box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
 			}
+			/* Branding logo - stamp of approval, top-right below nav */
+			#guitar-branding-logo {
+				position: fixed;
+				top: 72px;
+				right: 24px;
+				z-index: 90;
+				max-width: 90px;
+				height: auto;
+				opacity: 0.92;
+				filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+				transition: opacity 0.3s ease;
+			}
+			#guitar-branding-logo:hover {
+				opacity: 1;
+			}
 			@media (max-width: 768px) {
 				#creator-tools-panel.collapsed { left: -260px; }
 				#creator-tools-content { width: 260px; }
+				#guitar-branding-logo {
+					max-width: 70px;
+					top: 68px;
+					right: 16px;
+				}
+			}
+			/* BAMS logo - professional stamp near lesson signup */
+			#lesson-with-bams {
+				display: inline-block;
+				vertical-align: top;
+			}
+			#bams-logo-wrap {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				margin-top: 12px;
+				opacity: 0.85;
+			}
+			#bams-logo-wrap img {
+				max-width: 100px;
+				height: auto;
+			}
+			#bams-logo-wrap span {
+				color: rgba(255, 255, 255, 0.75);
+				font-size: 12px;
+				letter-spacing: 0.5px;
 			}
 		</style>
 	</head>
@@ -146,6 +187,7 @@
 				} catch (e) {}
 			})();
 		</script>
+		<img id="guitar-branding-logo" src="img/guitar_branding_logo.jpg" alt="Brian Streckfus" title="Brian Streckfus" />
 		<nav>
 			<div id="backing"></div>
 			<div class="content">
@@ -246,7 +288,13 @@
 					<a class="link-button fade-in-up animate-delay-5" href="chopin-Waltz-No-2.pdf">&#128220; View Sample</a>
 					<a class="link-button fade-in-up animate-delay-5" href="catalog.html">&#127925; Browse Sheet Music Catalog &#128220;</a>
 					<a class="link-button fade-in-up animate-delay-5" href="https://www.sheetmusicdirect.com/en-US/Search.aspx?query=Brian%2BStreckfus" target="_blank" style="margin-right: 15px;">Directly go to SheetMusicDirect.com</a>
-					<a class="link-button fade-in-up animate-delay-5" href="https://belairmusicstudios.opus1.io/w/trial" target="_blank">&#128197; Schedule Free Online Trial Music Lesson &#127925;</a>
+					<div id="lesson-with-bams" class="fade-in-up animate-delay-5">
+						<a class="link-button" href="https://belairmusicstudios.opus1.io/w/trial" target="_blank">&#128197; Schedule Free Online Trial Music Lesson &#127925;</a>
+						<div id="bams-logo-wrap">
+							<img src="img/bams_logo.jpg" alt="Bel Air Music Studios" />
+							<span>Lessons at Bel Air Music Studios</span>
+						</div>
+					</div>
 				</div>
 				<div class="right-half fade-in-right">
 					<img id="sheet" src="img/sheet.png" style="max-width: 100%; height: auto; margin-top: -40px; margin-left: -40px;" class="scale-in"/>
