@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-02-18T18:00:13.916831Z",
+    "received_at": "2026-02-18T18:00:13.916916Z",
+    "id": "2026-02-18T18:00:13.916916Z-FET/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "AAVE/USD",
     "quantity": 0.7943442688061005,
@@ -2911,16 +2922,5 @@
     "timestamp": "2026-02-14T14:00:10.623239Z",
     "received_at": "2026-02-14T14:00:10.623251Z",
     "id": "2026-02-14T14:00:10.623251Z-DASH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "DASH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-02-14T14:00:10.371234Z",
-    "received_at": "2026-02-14T14:00:10.371248Z",
-    "id": "2026-02-14T14:00:10.371248Z-DASH/USD-sell"
   }
 ]
