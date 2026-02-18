@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 1968.0,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2026-02-18T18:27:13.704968Z",
+    "received_at": "2026-02-18T18:27:13.705042Z",
+    "id": "2026-02-18T18:27:13.705042Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "RENDER/USD",
     "quantity": 0.0,
     "price": 1.448,
@@ -2911,16 +2922,5 @@
     "timestamp": "2026-02-14T14:07:57.146286Z",
     "received_at": "2026-02-14T14:07:57.146305Z",
     "id": "2026-02-14T14:07:57.146305Z-TAO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 0.03850811,
-    "price": 0.1713,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-02-14T14:00:45.316539Z",
-    "received_at": "2026-02-14T14:00:45.316576Z",
-    "id": "2026-02-14T14:00:45.316576Z-FET/USD-sell"
   }
 ]
