@@ -1,27 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 0.03850811,
-    "price": 0.1711,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-02-18T07:03:51.201203Z",
-    "received_at": "2026-02-18T07:03:51.201225Z",
-    "id": "2026-02-18T07:03:51.201225Z-FET/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-02-18T07:03:50.773709Z",
-    "received_at": "2026-02-18T07:03:50.773814Z",
-    "id": "2026-02-18T07:03:50.773814Z-FET/USD-sell"
-  },
-  {
     "action": "buy",
     "symbol": "XLI",
     "price": 174.1699981689453,
@@ -167,9 +145,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 10/16 | sell 13/13",
-    "timestamp": "2026-02-17T18:55:55.449470Z",
-    "received_at": "2026-02-17T18:55:55.449470Z",
-    "id": "2026-02-17T18:55:55.449470Z-XLY-info",
+    "timestamp": "2026-02-18T07:06:38.209728Z",
+    "received_at": "2026-02-18T07:06:38.209728Z",
+    "id": "2026-02-18T07:06:38.209728Z-XLY-info",
     "threshold_met": true,
     "buy_score": 10,
     "sell_score": 13,
@@ -1371,6 +1349,28 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 0.03850811,
+    "price": 0.1711,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-02-18T07:03:51.201203Z",
+    "received_at": "2026-02-18T07:03:51.201225Z",
+    "id": "2026-02-18T07:03:51.201225Z-FET/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-02-18T07:03:50.773709Z",
+    "received_at": "2026-02-18T07:03:50.773814Z",
+    "id": "2026-02-18T07:03:50.773814Z-FET/USD-sell"
   },
   {
     "action": "sell",
