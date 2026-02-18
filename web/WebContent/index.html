@@ -13,23 +13,28 @@
 		<script type="text/javascript" src="https://apis.google.com/js/client.js?onload=loadYoutube"></script>
 		<title>Brian Streckfus</title>
 		<style>
-			/* Creator tools side panel - left, collapsible */
+			/* Creator tools side panel - right, collapsible */
 			#creator-tools-panel {
 				position: fixed;
-				left: 0;
+				right: 0;
 				top: 50%;
 				transform: translateY(-50%);
 				z-index: 9000;
 				display: flex;
+				flex-direction: row-reverse;
 				align-items: stretch;
-				box-shadow: 4px 0 20px rgba(0,0,0,0.35);
-				transition: left 0.3s ease;
+				width: 36px;
+				overflow: hidden;
+				box-shadow: -4px 0 20px rgba(0,0,0,0.35);
+				transition: width 0.3s ease;
 			}
-			#creator-tools-panel.collapsed {
-				left: -280px;
+			#creator-tools-panel.open {
+				width: 316px;
 			}
 			#creator-tools-tab {
 				width: 36px;
+				min-width: 36px;
+				flex-shrink: 0;
 				background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
 				color: #fff;
 				writing-mode: vertical-rl;
@@ -43,18 +48,27 @@
 				font-weight: bold;
 				letter-spacing: 0.5px;
 				cursor: pointer;
-				border-radius: 0 8px 8px 0;
-				box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+				border-radius: 8px 0 0 8px;
+				box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+				user-select: none;
 			}
 			#creator-tools-tab:hover { opacity: 0.95; }
+			#creator-tools-tab::before {
+				content: '← ';
+				font-style: normal;
+			}
+			#creator-tools-panel.open #creator-tools-tab::before {
+				content: '';
+			}
 			#creator-tools-content {
 				width: 280px;
+				min-width: 280px;
 				max-height: 85vh;
 				overflow-y: auto;
 				background: rgba(0, 0, 0, 0.92);
 				border: 1px solid rgba(255, 255, 255, 0.2);
-				border-left: none;
-				border-radius: 0 12px 12px 0;
+				border-right: none;
+				border-radius: 12px 0 0 12px;
 				padding: 16px;
 			}
 			#creator-tools-content h3 {
@@ -158,8 +172,8 @@
 	</head>
 	<body>
 		<!-- Creator tools side panel (for creators; paid tools) -->
-		<div id="creator-tools-panel" class="collapsed">
-			<div id="creator-tools-tab" onclick="toggleCreatorToolsPanel()" title="Creator tools">Creator tools</div>
+		<div id="creator-tools-panel" title="Creator tools">
+			<div id="creator-tools-tab" onclick="openCreatorToolsPanel()" title="Creator tools">Creator tools</div>
 			<div id="creator-tools-content">
 				<h3>Tools for creators <button type="button" onclick="toggleCreatorToolsPanel()" title="Close">×</button></h3>
 				<p style="color: rgba(255,255,255,0.7); font-size: 12px; margin-bottom: 14px;">Scripts for YouTubers and musicians. View options and get access on my site.</p>
@@ -176,14 +190,21 @@
 			</div>
 		</div>
 		<script>
-			function toggleCreatorToolsPanel() {
+			function openCreatorToolsPanel() {
 				var el = document.getElementById('creator-tools-panel');
-				el.classList.toggle('collapsed');
-				try { localStorage.setItem('creator-tools-panel-open', el.classList.contains('collapsed') ? '0' : '1'); } catch (e) {}
+				el.classList.add('open');
+				try { localStorage.setItem('creator-tools-panel-open', '1'); } catch (e) {}
+			}
+			function closeCreatorToolsPanel() {
+				var el = document.getElementById('creator-tools-panel');
+				el.classList.remove('open');
+				try { localStorage.setItem('creator-tools-panel-open', '0'); } catch (e) {}
 			}
 			(function() {
 				try {
-					if (localStorage.getItem('creator-tools-panel-open') === '1') document.getElementById('creator-tools-panel').classList.remove('collapsed');
+					if (localStorage.getItem('creator-tools-panel-open') === '1') {
+						document.getElementById('creator-tools-panel').classList.add('open');
+					}
 				} catch (e) {}
 			})();
 		</script>
@@ -232,10 +253,10 @@
 			<div class="fade-in-up" style="margin-top: 30px; margin-bottom: 50px; padding: 24px; background: rgba(0, 0, 0, 0.35); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.6);">
 				<h2 style="color: #fff; margin: 0 0 10px 0; font-size: 28px; display: flex; align-items: center; gap: 10px;">
 					<i class='fa fa-envelope-o' style="font-size: 22px;"></i>
-					Get the free Guitar Scales PDF + a soothing lydian backing track
+					Free $18.00 value! Get the most beautiful guitar scales PDF you have ever seen + a soothing F lydian (C major) backing track + a beginner-friendly arrangement of "The House of the Rising Sun" that will inspire you. Don't forget you also get a 7 day free trial of trading signals too!
 				</h2>
 				<p style="color: rgba(255, 255, 255, 0.9); font-size: 15px; margin: 0 0 14px 0; line-height: 1.6;">
-					I focus on low-hanging fruit, things that passively compound 🌳, so I can spend more time doing what I love. Join the mailing list and I’ll send you a free guitar scales PDF and a free soothing lydian backing track as a token of my appreciation.
+					I focus on low-hanging fruit, things that passively compound 🌳, so I can spend more time doing what I love. Join the mailing list and I’ll send you a free guitar scales PDF, a free House of the Rising Sun sheet music PDF, and a free soothing lydian backing track as a token of my appreciation.
 					Every two months you’ll also get occasional updates about discounts, new sheet music & TAB, new music resources, MP3 releases, and new YouTube uploads. I also give away a free 7 day trial to my trading signals.
 				</p>
 				<form class="email-list-form" action="https://usebasin.com/f/7c55ae649861" method="POST" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
@@ -494,7 +515,7 @@
 							Join Our Email List
 						</h3>
 						<p style="color: rgba(255, 255, 255, 0.8); font-size: 14px; margin-bottom: 15px;">
-							Join the mailing list and get a free guitar scales PDF + a free soothing Lydian backing track as a token of my appreciation.
+							Join the mailing list and get a free guitar scales PDF, House of the Rising Sun sheet music, and a free soothing Lydian backing track as a token of my appreciation.
 							You’ll also get occasional updates about new sheet music, MP3 releases, and new YouTube uploads.
 						</p>
 						<form class="email-list-form" action="https://usebasin.com/f/7c55ae649861" method="POST" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
