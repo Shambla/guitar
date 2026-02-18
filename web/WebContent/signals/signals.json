@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "SUI/USD",
-    "quantity": 103.09999999,
-    "price": 0.9763,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-02-18T08:06:58.912556Z",
-    "received_at": "2026-02-18T08:06:58.912573Z",
-    "id": "2026-02-18T08:06:58.912573Z-SUI/USD-sell"
-  },
-  {
     "action": "buy",
     "symbol": "XLI",
     "price": 174.1699981689453,
@@ -681,9 +670,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 10/16 | sell 16/13",
-    "timestamp": "2026-02-17T19:46:52.045068Z",
-    "received_at": "2026-02-17T19:46:52.045068Z",
-    "id": "2026-02-17T19:46:52.045068Z-MCHI-info",
+    "timestamp": "2026-02-18T08:08:21.889057Z",
+    "received_at": "2026-02-18T08:08:21.889057Z",
+    "id": "2026-02-18T08:08:21.889057Z-MCHI-info",
     "threshold_met": true,
     "buy_score": 10,
     "sell_score": 16,
@@ -1360,6 +1349,17 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "sell",
+    "symbol": "SUI/USD",
+    "quantity": 103.09999999,
+    "price": 0.9763,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-02-18T08:06:58.912556Z",
+    "received_at": "2026-02-18T08:06:58.912573Z",
+    "id": "2026-02-18T08:06:58.912573Z-SUI/USD-sell"
   },
   {
     "action": "buy",
