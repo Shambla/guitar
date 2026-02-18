@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.04934129,
+    "price": 2022.6466,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-02-18T08:28:49.025160Z",
+    "received_at": "2026-02-18T08:28:49.025268Z",
+    "id": "2026-02-18T08:28:49.025268Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "XLI",
     "price": 174.1699981689453,
     "quantity": null,
@@ -2911,16 +2922,5 @@
     "timestamp": "2026-02-13T14:00:27.333579Z",
     "received_at": "2026-02-13T14:00:27.333671Z",
     "id": "2026-02-13T14:00:27.333671Z-DASH/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "RENDER/USD",
-    "quantity": 76.51109410864575,
-    "price": 1.306,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-02-13T12:06:01.302168Z",
-    "received_at": "2026-02-13T12:06:01.302186Z",
-    "id": "2026-02-13T12:06:01.302186Z-RENDER/USD-buy"
   }
 ]
