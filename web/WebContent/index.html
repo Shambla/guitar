@@ -168,6 +168,72 @@
 				font-size: 12px;
 				letter-spacing: 0.5px;
 			}
+			/* Get the Freebies button - pulse animation */
+			@keyframes freebiesPulse {
+				0%, 100% { box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4); transform: translateY(0); }
+				50% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); transform: translateY(-1px); }
+			}
+			.email-list-submit.get-freebies-btn {
+				animation: freebiesPulse 2s ease-in-out infinite;
+			}
+			.email-list-submit.get-freebies-btn:hover {
+				animation: none;
+			}
+			/* Consolidated books - horizontal row, center aligned */
+			#consolidated-books {
+				margin-top: 28px;
+			}
+			#consolidated-books .consolidated-books-intro {
+				color: rgba(255, 255, 255, 0.9);
+				font-size: 15px;
+				line-height: 1.5;
+				margin-bottom: 14px;
+			}
+			.consolidated-books-row {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 16px;
+				align-items: flex-start;
+				justify-content: center;
+			}
+			.consolidated-books-row .book-item {
+				flex: 0 1 auto;
+				min-width: 70px;
+				max-width: 110px;
+				text-align: center;
+			}
+			.consolidated-books-row .book-item img {
+				width: 100%;
+				height: auto;
+				max-height: 140px;
+				object-fit: contain;
+				display: block;
+				border-radius: 6px;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+			}
+			.consolidated-books-row .book-item a.buy-link {
+				display: inline-block;
+				margin-top: 6px;
+				padding: 5px 10px;
+				background: linear-gradient(135deg, #f0c14b 0%, #e6a800 100%);
+				color: #111;
+				font-size: 11px;
+				font-weight: bold;
+				text-decoration: none;
+				border-radius: 6px;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+				transition: transform 0.2s, box-shadow 0.2s;
+			}
+			.consolidated-books-row .book-item a.buy-link:hover {
+				transform: translateY(-1px);
+				box-shadow: 0 4px 12px rgba(240, 193, 75, 0.4);
+			}
+			.consolidated-books-row .book-item .book-caption {
+				color: rgba(255, 255, 255, 0.85);
+				font-size: 11px;
+				line-height: 1.3;
+				margin-top: 4px;
+			}
 		</style>
 	</head>
 	<body>
@@ -353,6 +419,7 @@
 					<img id="sheet" src="img/sheet.png" style="max-width: 100%; height: auto; margin-top: -40px; margin-left: -40px;" class="scale-in"/>
 				</div>
 				<div style="clear: both"></div>
+				<h1 id="media" class="fade-in-up">Media</h1>
 				<!-- New Youtube attempt to fix 2025-->
 				<div class="left-half fade-in-left">
 					<h3 class="fade-in-up">Music Videos (Free!)</h3>
