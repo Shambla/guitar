@@ -1,6 +1,28 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 1964.11,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2026-02-19T10:17:30.873181Z",
+    "received_at": "2026-02-19T10:17:30.873196Z",
+    "id": "2026-02-19T10:17:30.873196Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "AAVE/USD",
+    "quantity": 0.78762765,
+    "price": 122.63,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-02-19T10:00:42.005722Z",
+    "received_at": "2026-02-19T10:00:42.005736Z",
+    "id": "2026-02-19T10:00:42.005736Z-AAVE/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "AAVE/USD",
     "quantity": 100.0,
     "price": null,
@@ -819,27 +841,6 @@
     "sell_conviction": 0.47,
     "sell_persistence": 4,
     "sell_position_multiplier": 1.0
-  },
-  {
-    "action": "buy",
-    "symbol": "EEM",
-    "price": 58.8,
-    "quantity": null,
-    "source": "MAIN_stock_strat14",
-    "note": "buy 19/41 | sell 10/40 | Strength=2/10 | MTF:W",
-    "timestamp": "2026-02-05T10:09:52.793246Z",
-    "received_at": "2026-02-05T10:09:52.793246Z",
-    "id": "2026-02-05T10:09:52.793246Z-EEM-buy",
-    "buy_score": 19,
-    "sell_score": 10,
-    "total_buy_components": 41,
-    "total_sell_components": 40,
-    "buy_conviction": 0.7634146341463415,
-    "buy_persistence": 20,
-    "buy_position_multiplier": 1.5,
-    "sell_conviction": 0.25,
-    "sell_persistence": 0,
-    "sell_position_multiplier": 0.5
   },
   {
     "action": "buy",
