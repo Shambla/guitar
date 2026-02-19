@@ -974,13 +974,13 @@ img:hover {
 }
 
 /* Section animations - Only apply to specific sections, not all divs */
-.content > div:not(.left-half):not(.right-half):not(#bio-right):not(#performance-details):not(#contact-details):not(#page-navigation):not(#ticker-tape-wrap) {
+.content > div:not(.left-half):not(.right-half):not(#bio-right):not(#performance-details):not(#contact-details):not(#page-navigation):not(#ticker-tape-wrap):not(#media-section) {
 	opacity:		0;
 	transform:		translateY(15px);
 	transition:		opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
 }
 
-.content > div:not(.left-half):not(.right-half):not(#bio-right):not(#performance-details):not(#contact-details):not(#page-navigation):not(#ticker-tape-wrap).animate {
+.content > div:not(.left-half):not(.right-half):not(#bio-right):not(#performance-details):not(#contact-details):not(#page-navigation):not(#ticker-tape-wrap):not(#media-section).animate {
 	opacity:		1;
 	transform:		translateY(0);
 }
