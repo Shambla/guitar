@@ -1,17 +1,6 @@
 [
   {
     "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.05080087,
-    "price": 1964.53306,
-    "source": "MASTER_BOT_162",
-    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-    "timestamp": "2026-02-20T10:11:44.677842Z",
-    "received_at": "2026-02-20T10:11:44.677879Z",
-    "id": "2026-02-20T10:11:44.677879Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
     "symbol": "XLI",
     "price": 174.1699981689453,
     "quantity": null,
@@ -356,9 +345,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 12/16 | sell 12/13",
-    "timestamp": "2026-02-19T20:17:21.949197Z",
-    "received_at": "2026-02-19T20:17:21.949197Z",
-    "id": "2026-02-19T20:17:21.949197Z-XLV-info",
+    "timestamp": "2026-02-20T10:16:52.062339Z",
+    "received_at": "2026-02-20T10:16:52.062339Z",
+    "id": "2026-02-20T10:16:52.062339Z-XLV-info",
     "threshold_met": false,
     "buy_score": 12,
     "sell_score": 12,
@@ -1234,6 +1223,17 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.05080087,
+    "price": 1964.53306,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-02-20T10:11:44.677842Z",
+    "received_at": "2026-02-20T10:11:44.677879Z",
+    "id": "2026-02-20T10:11:44.677879Z-ETH/USD-buy"
   },
   {
     "action": "buy",
