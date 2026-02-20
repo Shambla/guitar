@@ -1,17 +1,6 @@
 [
   {
     "action": "buy",
-    "symbol": "AAVE/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-02-20T10:00:08.193826Z",
-    "received_at": "2026-02-20T10:00:08.193976Z",
-    "id": "2026-02-20T10:00:08.193976Z-AAVE/USD-buy"
-  },
-  {
-    "action": "buy",
     "symbol": "XLI",
     "price": 174.1699981689453,
     "quantity": null,
@@ -306,9 +295,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 11/16 | sell 16/13",
-    "timestamp": "2026-02-19T20:08:44.275883Z",
-    "received_at": "2026-02-19T20:08:44.275883Z",
-    "id": "2026-02-19T20:08:44.275883Z-XLC-info",
+    "timestamp": "2026-02-20T10:01:44.271229Z",
+    "received_at": "2026-02-20T10:01:44.271229Z",
+    "id": "2026-02-20T10:01:44.271229Z-XLC-info",
     "threshold_met": true,
     "buy_score": 11,
     "sell_score": 16,
@@ -1234,6 +1223,17 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "buy",
+    "symbol": "AAVE/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-02-20T10:00:08.193826Z",
+    "received_at": "2026-02-20T10:00:08.193976Z",
+    "id": "2026-02-20T10:00:08.193976Z-AAVE/USD-buy"
   },
   {
     "action": "sell",
