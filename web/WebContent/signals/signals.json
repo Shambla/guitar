@@ -1,17 +1,6 @@
 [
   {
     "action": "buy",
-    "symbol": "AAVE/USD",
-    "quantity": 0.8,
-    "price": 124.88,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-02-20T10:05:52.420106Z",
-    "received_at": "2026-02-20T10:05:52.420169Z",
-    "id": "2026-02-20T10:05:52.420169Z-AAVE/USD-buy"
-  },
-  {
-    "action": "buy",
     "symbol": "XLI",
     "price": 174.1699981689453,
     "quantity": null,
@@ -331,9 +320,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 11/16 | sell 15/13",
-    "timestamp": "2026-02-19T20:13:09.882121Z",
-    "received_at": "2026-02-19T20:13:09.882121Z",
-    "id": "2026-02-19T20:13:09.882121Z-XLF-info",
+    "timestamp": "2026-02-20T10:09:21.652827Z",
+    "received_at": "2026-02-20T10:09:21.652827Z",
+    "id": "2026-02-20T10:09:21.652827Z-XLF-info",
     "threshold_met": true,
     "buy_score": 11,
     "sell_score": 15,
@@ -1234,6 +1223,17 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "buy",
+    "symbol": "AAVE/USD",
+    "quantity": 0.8,
+    "price": 124.88,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-02-20T10:05:52.420106Z",
+    "received_at": "2026-02-20T10:05:52.420169Z",
+    "id": "2026-02-20T10:05:52.420169Z-AAVE/USD-buy"
   },
   {
     "action": "buy",
