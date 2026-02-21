@@ -1,0 +1,61 @@
+{
+  "created_at": "2026-02-19T19:16:02",
+  "backup_file": "youtube_backup_20260216_165341.json",
+  "oldest_first": false,
+  "limit": 10,
+  "comment_text": "Curious about the gear I use for recording, streaming, and teaching?\nhttps://kit.co/WoodenBoxEngineer\n\nKit.co is simply a curated list of products I personally use and recommend, and you can see my product reviews there. \n\nIf you'd prefer to go directly to Amazon's website, here's a portable Bluetooth speaker I use and like:\nAnker Portable Bluetooth Speaker → https://amzn.to/4bWjf9q\n\nLinks are affiliate, which helps support the channel at no extra cost. Thanks!",
+  "comment_text_sha256": "e66bd280e827d6d3ce74530c267ea63042c36ead183614028f3f885e998e4a28",
+  "total_videos": 10,
+  "videos": [
+    {
+      "id": "yAxxuU91qwA",
+      "title": "What Makes me a Great Guitar Teacher",
+      "publishedAt": "2026-02-16T21:42:34Z"
+    },
+    {
+      "id": "rja69n-uaDo",
+      "title": "Guitar Lesson Commercial",
+      "publishedAt": "2026-02-16T21:22:32Z"
+    },
+    {
+      "id": "ufQO_pP2iPs",
+      "title": "Chill Jamming on Guitar with Backing Tracks – Work Playlist Music",
+      "publishedAt": "2026-02-14T16:50:48Z"
+    },
+    {
+      "id": "oD9kyTMrzm0",
+      "title": "Chill Guitar Jam ~ Random Genres",
+      "publishedAt": "2026-02-13T17:25:41Z"
+    },
+    {
+      "id": "s-b3lxSqXqw",
+      "title": "Brian Streckfus Live Stream",
+      "publishedAt": "2026-02-13T03:29:20Z"
+    },
+    {
+      "id": "AWPIGqgYVkk",
+      "title": "Strawberry Fields Forever | Solo Classical Guitar Arrangement",
+      "publishedAt": "2026-02-13T00:30:00Z"
+    },
+    {
+      "id": "ZY7c9qZDI-I",
+      "title": "Forward Testing a Trading Bot on ETH/USD 📈🤖",
+      "publishedAt": "2026-02-12T20:15:00Z"
+    },
+    {
+      "id": "tX9Wztlh3bI",
+      "title": "Forward Testing a Trading Bot on ETH/USD 📈🤖",
+      "publishedAt": "2026-02-08T14:15:00Z"
+    },
+    {
+      "id": "4oNClLIeMUY",
+      "title": "Strawberry Fields Forever | Solo Classical Guitar Arrangement",
+      "publishedAt": "2026-02-07T15:15:00Z"
+    },
+    {
+      "id": "ypJ17WSNgyc",
+      "title": "Strawberry Fields Forever | Solo Classical Guitar Arrangement",
+      "publishedAt": "2026-02-06T22:30:00Z"
+    }
+  ]
+}
