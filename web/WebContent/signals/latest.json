@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "SUI/USD",
-  "quantity": 105.38518284329223,
-  "price": 0.948,
+  "symbol": "FET/USD",
+  "quantity": 594.5303210463734,
+  "price": 0.168,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-02-21T07:05:48.829254Z",
-  "received_at": "2026-02-21T07:05:48.829295Z",
-  "id": "2026-02-21T07:05:48.829295Z-SUI/USD-buy"
+  "timestamp": "2026-02-21T10:03:28.473913Z",
+  "received_at": "2026-02-21T10:03:28.473934Z",
+  "id": "2026-02-21T10:03:28.473934Z-FET/USD-buy"
 }
