@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "SUI/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-02-21T14:00:05.352411Z",
+    "received_at": "2026-02-21T14:00:05.352523Z",
+    "id": "2026-02-21T14:00:05.352523Z-SUI/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "TAO/USD",
     "quantity": 0.5477951246233909,
@@ -2761,16 +2772,5 @@
     "timestamp": "2026-02-16T03:00:09.826940Z",
     "received_at": "2026-02-16T03:00:09.826966Z",
     "id": "2026-02-16T03:00:09.826966Z-AAVE/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "AAVE/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-02-16T03:00:06.228758Z",
-    "received_at": "2026-02-16T03:00:06.228849Z",
-    "id": "2026-02-16T03:00:06.228849Z-AAVE/USD-buy"
   }
 ]
