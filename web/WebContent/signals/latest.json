@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "RENDER/USD",
-  "quantity": 66.84,
-  "price": 1.376,
+  "symbol": "ETH/USD",
+  "quantity": 0.10182503,
+  "price": 1889.37,
   "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-02-23T16:07:33.561486Z",
-  "received_at": "2026-02-23T16:07:33.561504Z",
-  "id": "2026-02-23T16:07:33.561504Z-RENDER/USD-sell"
+  "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+  "timestamp": "2026-02-23T16:36:41.012322Z",
+  "received_at": "2026-02-23T16:36:41.012390Z",
+  "id": "2026-02-23T16:36:41.012390Z-ETH/USD-sell"
 }
