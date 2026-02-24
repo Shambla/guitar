@@ -1,6 +1,28 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 1852.74,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2026-02-24T23:15:06.253336Z",
+    "received_at": "2026-02-24T23:15:06.253386Z",
+    "id": "2026-02-24T23:15:06.253386Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "AAVE/USD",
+    "quantity": 0.87562764,
+    "price": 114.4,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-02-24T23:00:45.234301Z",
+    "received_at": "2026-02-24T23:00:45.234323Z",
+    "id": "2026-02-24T23:00:45.234323Z-AAVE/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "AAVE/USD",
     "quantity": 100.0,
     "price": null,
@@ -2706,27 +2728,5 @@
     "timestamp": "2026-02-18T02:00:29.212200Z",
     "received_at": "2026-02-18T02:00:29.212268Z",
     "id": "2026-02-18T02:00:29.212268Z-TAO/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.05023358,
-    "price": 1986.7186000000002,
-    "source": "MASTER_BOT_162",
-    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-    "timestamp": "2026-02-17T23:09:58.067304Z",
-    "received_at": "2026-02-17T23:09:58.067328Z",
-    "id": "2026-02-17T23:09:58.067328Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "SUI/USD",
-    "quantity": 103.36985734959686,
-    "price": 0.9664,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-02-17T23:05:41.733452Z",
-    "received_at": "2026-02-17T23:05:41.733472Z",
-    "id": "2026-02-17T23:05:41.733472Z-SUI/USD-buy"
   }
 ]
