@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 1953.01,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2026-02-27T14:22:17.110610Z",
+    "received_at": "2026-02-27T14:22:17.110626Z",
+    "id": "2026-02-27T14:22:17.110626Z-ETH/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "TAO/USD",
     "quantity": 0.5534340583319497,
