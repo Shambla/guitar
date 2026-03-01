@@ -2,6 +2,72 @@
   {
     "action": "sell",
     "symbol": "SUI/USD",
+    "quantity": 111.5,
+    "price": 0.9196,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-03-01T02:01:58.790664Z",
+    "received_at": "2026-03-01T02:01:58.790711Z",
+    "id": "2026-03-01T02:01:58.790711Z-SUI/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 662.63850811,
+    "price": 0.1593,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-03-01T02:00:48.099678Z",
+    "received_at": "2026-03-01T02:00:48.099698Z",
+    "id": "2026-03-01T02:00:48.099698Z-FET/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "TAO/USD",
+    "quantity": 1.07889999,
+    "price": 184.74,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-03-01T02:00:34.676569Z",
+    "received_at": "2026-03-01T02:00:34.676583Z",
+    "id": "2026-03-01T02:00:34.676583Z-TAO/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-03-01T02:00:19.491210Z",
+    "received_at": "2026-03-01T02:00:19.491233Z",
+    "id": "2026-03-01T02:00:19.491233Z-FET/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "RENDER/USD",
+    "quantity": 0.0,
+    "price": 1.432,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-03-01T02:00:18.991932Z",
+    "received_at": "2026-03-01T02:00:18.991954Z",
+    "id": "2026-03-01T02:00:18.991954Z-RENDER/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-03-01T02:00:18.624463Z",
+    "received_at": "2026-03-01T02:00:18.624488Z",
+    "id": "2026-03-01T02:00:18.624488Z-RENDER/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "SUI/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
