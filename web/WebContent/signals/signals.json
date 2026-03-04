@@ -612,9 +612,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 16/16 | sell 15/13",
-    "timestamp": "2026-03-03T14:27:27.342053Z",
-    "received_at": "2026-03-03T14:27:27.342053Z",
-    "id": "2026-03-03T14:27:27.342053Z-EEM-info",
+    "timestamp": "2026-03-04T02:33:25.819754Z",
+    "received_at": "2026-03-04T02:33:25.819754Z",
+    "id": "2026-03-04T02:33:25.819754Z-EEM-info",
     "threshold_met": true,
     "buy_score": 16,
     "sell_score": 15,
@@ -957,9 +957,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat14",
     "note": "buy 16/41 | sell 15/40 | Strength=2/10 | MTF:W",
-    "timestamp": "2026-03-03T14:27:27.326068Z",
-    "received_at": "2026-03-03T14:27:27.326068Z",
-    "id": "2026-03-03T14:27:27.326068Z-EEM-buy",
+    "timestamp": "2026-03-04T02:33:25.801801Z",
+    "received_at": "2026-03-04T02:33:25.801801Z",
+    "id": "2026-03-04T02:33:25.801801Z-EEM-buy",
     "buy_score": 16,
     "sell_score": 15,
     "total_buy_components": 41,
@@ -1165,6 +1165,17 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 1976.41,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2026-03-04T02:31:52.005082Z",
+    "received_at": "2026-03-04T02:31:52.005101Z",
+    "id": "2026-03-04T02:31:52.005101Z-ETH/USD-sell"
   },
   {
     "action": "sell",
@@ -2826,16 +2837,5 @@
     "timestamp": "2026-02-25T02:53:44.513099Z",
     "received_at": "2026-02-25T02:53:44.513124Z",
     "id": "2026-02-25T02:53:44.513124Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 1928.33,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
-    "timestamp": "2026-02-25T02:26:01.700571Z",
-    "received_at": "2026-02-25T02:26:01.700662Z",
-    "id": "2026-02-25T02:26:01.700662Z-ETH/USD-sell"
   }
 ]
