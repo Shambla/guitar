@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "XLI",
-  "quantity": null,
-  "price": 178.9,
-  "source": "MAIN_stock_strat14",
-  "note": "buy 21/41 | sell 13/40 | Strength=5/10 | MTF:W+M",
-  "timestamp": "2026-03-04T01:52:00.855030Z",
-  "received_at": "2026-03-04T01:52:00.855106Z",
-  "id": "2026-03-04T01:52:00.855106Z-XLI-buy"
+  "action": "sell",
+  "symbol": "SUI/USD",
+  "quantity": 0.0,
+  "price": 0.9104,
+  "source": "MASTER_BOT_162",
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-03-04T02:00:10.623566Z",
+  "received_at": "2026-03-04T02:00:10.623578Z",
+  "id": "2026-03-04T02:00:10.623578Z-SUI/USD-sell"
 }
