@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "XLI",
-  "quantity": null,
-  "price": 175.44,
-  "source": "MAIN_stock_strat14",
-  "note": "buy 20/41 | sell 12/40 | Strength=4/10 | MTF:W+M",
-  "timestamp": "2026-03-04T14:38:35.406659Z",
-  "received_at": "2026-03-04T14:38:35.406671Z",
-  "id": "2026-03-04T14:38:35.406671Z-XLI-buy"
+  "symbol": "AAVE/USD",
+  "quantity": 100.0,
+  "price": null,
+  "source": "TradingView JSON",
+  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+  "timestamp": "2026-03-05T01:00:10.063908Z",
+  "received_at": "2026-03-05T01:00:10.064557Z",
+  "id": "2026-03-05T01:00:10.064557Z-AAVE/USD-buy"
 }
