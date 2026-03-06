@@ -73,13 +73,14 @@
 			/* Emoji font support - ensure emojis use system emoji fonts */
 			/* Use font-family with emoji fallbacks for proper emoji rendering */
 			body, html {
-				font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif, 
+				/* EmojiFallback is an alias for system emoji fonts (see @font-face below). Putting it first makes emoji more reliable across browsers. */
+				font-family: 'EmojiFallback', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif, 
 					'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', 'Android Emoji';
 			}
 			
 			/* Ensure emoji characters specifically use emoji fonts */
 			.asset-name, .symbol-display {
-				font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif, 
+				font-family: 'EmojiFallback', 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif, 
 					'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', 'Android Emoji';
 			}
 			
@@ -88,7 +89,8 @@
 				font-family: 'EmojiFallback';
 				src: local('Apple Color Emoji'), local('Segoe UI Emoji'), local('Segoe UI Symbol'), 
 					local('Noto Color Emoji'), local('EmojiOne Color'), local('Android Emoji');
-				unicode-range: U+1F300-1F9FF, U+1FA00-1FAFF, U+2600-26FF, U+2700-27BF;
+				/* Broader range: most emoji blocks + common symbol ranges */
+				unicode-range: U+1F000-1FAFF, U+2600-26FF, U+2700-27BF;
 			}
 			
 			/* Neon glow text effect */
@@ -3767,7 +3769,7 @@
 				// Helper to wrap emojis in span with emoji font support
 				const wrapEmojis = (emojiString) => {
 					return emojiString.split(' ').map(emoji => 
-						`<span style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', 'Android Emoji', sans-serif; font-style: normal;">${emoji}</span>`
+						`<span style="font-family: 'EmojiFallback', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'EmojiOne Color', 'Android Emoji', sans-serif; font-style: normal;">${emoji}</span>`
 					).join(' ');
 				};
 				
