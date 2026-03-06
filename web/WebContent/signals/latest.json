@@ -2,10 +2,10 @@
   "action": "sell",
   "symbol": "ETH/USD",
   "quantity": 0.0,
-  "price": 1978.63,
+  "price": 1993.51,
   "source": "MASTER_BOT_162",
   "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
-  "timestamp": "2026-03-06T15:02:59.150054Z",
-  "received_at": "2026-03-06T15:02:59.150070Z",
-  "id": "2026-03-06T15:02:59.150070Z-ETH/USD-sell"
+  "timestamp": "2026-03-06T15:30:33.544645Z",
+  "received_at": "2026-03-06T15:30:33.544660Z",
+  "id": "2026-03-06T15:30:33.544660Z-ETH/USD-sell"
 }
