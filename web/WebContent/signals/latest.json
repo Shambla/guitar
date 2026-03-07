@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "SUI/USD",
-  "quantity": 109.46907498631637,
-  "price": 0.9126,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-03-07T10:05:41.992048Z",
-  "received_at": "2026-03-07T10:05:41.992061Z",
-  "id": "2026-03-07T10:05:41.992061Z-SUI/USD-buy"
+  "symbol": "RENDER/USD",
+  "quantity": 100.0,
+  "price": null,
+  "source": "TradingView JSON",
+  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+  "timestamp": "2026-03-07T11:00:08.991371Z",
+  "received_at": "2026-03-07T11:00:08.991411Z",
+  "id": "2026-03-07T11:00:08.991411Z-RENDER/USD-buy"
 }
