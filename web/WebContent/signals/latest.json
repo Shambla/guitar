@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "FET/USD",
-  "quantity": 0.13850812,
-  "price": 0.1443,
+  "action": "buy",
+  "symbol": "AAVE/USD",
+  "quantity": 0.9117432530999271,
+  "price": 109.57,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-03-07T16:00:10.909659Z",
-  "received_at": "2026-03-07T16:00:10.909674Z",
-  "id": "2026-03-07T16:00:10.909674Z-FET/USD-sell"
+  "timestamp": "2026-03-07T16:05:54.268136Z",
+  "received_at": "2026-03-07T16:05:54.268149Z",
+  "id": "2026-03-07T16:05:54.268149Z-AAVE/USD-buy"
 }
