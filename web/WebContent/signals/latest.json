@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "ETH/USD",
-  "quantity": 0.05111455,
-  "price": 1952.47722,
+  "symbol": "TAO/USD",
+  "quantity": 0.5639521768554027,
+  "price": 177.14,
   "source": "MASTER_BOT_162",
-  "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-  "timestamp": "2026-03-08T07:21:48.475792Z",
-  "received_at": "2026-03-08T07:21:48.475807Z",
-  "id": "2026-03-08T07:21:48.475807Z-ETH/USD-buy"
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-03-08T09:00:08.484567Z",
+  "received_at": "2026-03-08T09:00:08.484584Z",
+  "id": "2026-03-08T09:00:08.484584Z-TAO/USD-buy"
 }
