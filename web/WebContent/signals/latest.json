@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "RENDER/USD",
-  "quantity": 72.04610951008645,
-  "price": 1.387,
+  "symbol": "ETH/USD",
+  "quantity": 0.05108609,
+  "price": 1953.56504,
   "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-03-08T20:09:09.537157Z",
-  "received_at": "2026-03-08T20:09:09.537170Z",
-  "id": "2026-03-08T20:09:09.537170Z-RENDER/USD-buy"
+  "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+  "timestamp": "2026-03-08T20:34:19.293798Z",
+  "received_at": "2026-03-08T20:34:19.293866Z",
+  "id": "2026-03-08T20:34:19.293866Z-ETH/USD-buy"
 }
