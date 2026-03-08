@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 1945.62,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 EMA + JSON Confluence (EMA signal + JSON confirmed)",
+    "timestamp": "2026-03-08T15:14:56.268027Z",
+    "received_at": "2026-03-08T15:14:56.268044Z",
+    "id": "2026-03-08T15:14:56.268044Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "FET/USD",
     "quantity": 0.13850812,
     "price": 0.1422,
@@ -2865,16 +2876,5 @@
     "timestamp": "2026-03-04T08:06:03.278348Z",
     "received_at": "2026-03-04T08:06:03.278363Z",
     "id": "2026-03-04T08:06:03.278363Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "AAVE/USD",
-    "quantity": 0.8893632159373889,
-    "price": 112.33,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-03-04T08:00:35.710877Z",
-    "received_at": "2026-03-04T08:00:35.710894Z",
-    "id": "2026-03-04T08:00:35.710894Z-AAVE/USD-buy"
   }
 ]
