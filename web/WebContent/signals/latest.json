@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "SUI/USD",
+  "symbol": "RENDER/USD",
   "quantity": 100.0,
   "price": null,
   "source": "TradingView JSON",
   "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-03-08T14:00:07.440578Z",
-  "received_at": "2026-03-08T14:00:07.440596Z",
-  "id": "2026-03-08T14:00:07.440596Z-SUI/USD-sell"
+  "timestamp": "2026-03-08T14:01:30.416050Z",
+  "received_at": "2026-03-08T14:01:30.416955Z",
+  "id": "2026-03-08T14:01:30.416955Z-RENDER/USD-sell"
 }
