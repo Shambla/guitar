@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-03-08T20:03:32.866311Z",
+    "received_at": "2026-03-08T20:03:32.866326Z",
+    "id": "2026-03-08T20:03:32.866326Z-RENDER/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "TAO/USD",
     "quantity": 100.0,
     "price": null,
@@ -2865,16 +2876,5 @@
     "timestamp": "2026-03-04T09:00:05.164846Z",
     "received_at": "2026-03-04T09:00:05.164860Z",
     "id": "2026-03-04T09:00:05.164860Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "TAO/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-03-04T09:00:05.074664Z",
-    "received_at": "2026-03-04T09:00:05.074681Z",
-    "id": "2026-03-04T09:00:05.074681Z-TAO/USD-buy"
   }
 ]
