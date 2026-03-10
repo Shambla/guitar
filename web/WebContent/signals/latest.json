@@ -1,11 +1,11 @@
 {
   "action": "sell",
   "symbol": "ETH/USD",
-  "quantity": 100.0,
-  "price": null,
-  "source": "TradingView JSON",
-  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-03-10T14:00:09.482882Z",
-  "received_at": "2026-03-10T14:00:09.482947Z",
-  "id": "2026-03-10T14:00:09.482947Z-ETH/USD-sell"
+  "quantity": 0.05081858,
+  "price": 2033.99,
+  "source": "MASTER_BOT_162",
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-03-10T14:07:14.307830Z",
+  "received_at": "2026-03-10T14:07:14.307847Z",
+  "id": "2026-03-10T14:07:14.307847Z-ETH/USD-sell"
 }
