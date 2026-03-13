@@ -3930,6 +3930,7 @@
 				const cryptoContainer = document.getElementById('crypto-signals-container');
 				const stockContainer = document.getElementById('stock-signals-container');
 				const assetListContainer = document.getElementById('asset-list-container');
+				const stockHistoricalContainer = document.getElementById('stock-historical-container');
 				
 				// Hide crypto and asset list, show stocks
 				if (cryptoContainer) cryptoContainer.style.display = 'none';
@@ -3938,11 +3939,11 @@
 				if (assetListContainer) assetListContainer.style.display = 'none';
 				
 				// Scroll to stock signals section
-					setTimeout(() => {
+				setTimeout(() => {
 					if (stockContainer) {
 						stockContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
 					}
-					}, 100);
+				}, 100);
 			}
 			
 			function showStockSignals() {
