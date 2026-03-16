@@ -1,38 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2111.2,
-    "source": "MASTER_BOT_162",
-    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
-    "timestamp": "2026-03-15T19:49:09.046262Z",
-    "received_at": "2026-03-15T19:49:09.046404Z",
-    "id": "2026-03-15T19:49:09.046404Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2109.26,
-    "source": "MASTER_BOT_162",
-    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
-    "timestamp": "2026-03-15T19:14:04.586208Z",
-    "received_at": "2026-03-15T19:14:04.586307Z",
-    "id": "2026-03-15T19:14:04.586307Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.00306629,
-    "price": 2110.39,
-    "source": "MASTER_BOT_162",
-    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
-    "timestamp": "2026-03-15T18:46:04.996352Z",
-    "received_at": "2026-03-15T18:46:04.996884Z",
-    "id": "2026-03-15T18:46:04.996884Z-ETH/USD-sell"
-  },
-  {
     "action": "buy",
     "symbol": "XLI",
     "price": 170.02,
@@ -203,16 +170,16 @@
   {
     "action": "info",
     "symbol": "XLK",
-    "price": 137.84,
+    "price": 136.8,
     "quantity": null,
     "source": "MAIN_stock_strat12",
-    "note": "Above thresholds | buy 9/16 | sell 13/13",
-    "timestamp": "2026-03-13T13:13:12.124298Z",
-    "received_at": "2026-03-13T13:13:12.124298Z",
-    "id": "2026-03-13T13:13:12.124298Z-XLK-info",
-    "threshold_met": true,
+    "note": "Below thresholds | buy 9/16 | sell 12/13",
+    "timestamp": "2026-03-16T04:03:17.883513Z",
+    "received_at": "2026-03-16T04:03:17.883513Z",
+    "id": "2026-03-16T04:03:17.883513Z-XLK-info",
+    "threshold_met": false,
     "buy_score": 9,
-    "sell_score": 13,
+    "sell_score": 12,
     "total_buy_components": 41,
     "total_sell_components": 40,
     "buy_threshold": 16,
@@ -221,8 +188,8 @@
     "buy_conviction": 0.21951219512195122,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.385,
-    "sell_persistence": 2,
+    "sell_conviction": 0.3,
+    "sell_persistence": 0,
     "sell_position_multiplier": 0.5
   },
   {
@@ -1283,6 +1250,39 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2111.2,
+    "source": "MASTER_BOT_162",
+    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+    "timestamp": "2026-03-15T19:49:09.046262Z",
+    "received_at": "2026-03-15T19:49:09.046404Z",
+    "id": "2026-03-15T19:49:09.046404Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2109.26,
+    "source": "MASTER_BOT_162",
+    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+    "timestamp": "2026-03-15T19:14:04.586208Z",
+    "received_at": "2026-03-15T19:14:04.586307Z",
+    "id": "2026-03-15T19:14:04.586307Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.00306629,
+    "price": 2110.39,
+    "source": "MASTER_BOT_162",
+    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+    "timestamp": "2026-03-15T18:46:04.996352Z",
+    "received_at": "2026-03-15T18:46:04.996884Z",
+    "id": "2026-03-15T18:46:04.996884Z-ETH/USD-sell"
   },
   {
     "action": "buy",
