@@ -2,10 +2,10 @@
   "action": "sell",
   "symbol": "ETH/USD",
   "quantity": 0.0,
-  "price": 2347.84,
+  "price": 2360.9,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-03-16T21:15:59.187663Z",
-  "received_at": "2026-03-16T21:15:59.187677Z",
-  "id": "2026-03-16T21:15:59.187677Z-ETH/USD-sell"
+  "timestamp": "2026-03-17T00:11:39.135841Z",
+  "received_at": "2026-03-17T00:11:39.135855Z",
+  "id": "2026-03-17T00:11:39.135855Z-ETH/USD-sell"
 }
