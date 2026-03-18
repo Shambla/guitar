@@ -123,13 +123,13 @@
   {
     "action": "info",
     "symbol": "XLY",
-    "price": 112.2,
+    "price": 113.18,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 10/16 | sell 15/13",
-    "timestamp": "2026-03-17T14:50:46.654922Z",
-    "received_at": "2026-03-17T14:50:46.654922Z",
-    "id": "2026-03-17T14:50:46.654922Z-XLY-info",
+    "timestamp": "2026-03-18T11:53:21.062304Z",
+    "received_at": "2026-03-18T11:53:21.062304Z",
+    "id": "2026-03-18T11:53:21.062304Z-XLY-info",
     "threshold_met": true,
     "buy_score": 10,
     "sell_score": 15,
@@ -141,8 +141,8 @@
     "buy_conviction": 0.24390243902439024,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.405,
-    "sell_persistence": 1,
+    "sell_conviction": 0.435,
+    "sell_persistence": 2,
     "sell_position_multiplier": 1.0
   },
   {
