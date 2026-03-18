@@ -1,5 +1,27 @@
 [
   {
+    "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-03-18T11:00:27.091773Z",
+    "received_at": "2026-03-18T11:00:27.091788Z",
+    "id": "2026-03-18T11:00:27.091788Z-RENDER/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "SUI/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-03-18T11:00:23.606698Z",
+    "received_at": "2026-03-18T11:00:23.606713Z",
+    "id": "2026-03-18T11:00:23.606713Z-SUI/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "RENDER/USD",
     "quantity": 54.78,
