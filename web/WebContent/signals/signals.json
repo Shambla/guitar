@@ -1,17 +1,6 @@
 [
   {
     "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-03-19T01:00:37.977063Z",
-    "received_at": "2026-03-19T01:00:37.977078Z",
-    "id": "2026-03-19T01:00:37.977078Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
     "symbol": "XLI",
     "price": 170.02,
     "quantity": null,
@@ -540,9 +529,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 8/16 | sell 10/13",
-    "timestamp": "2026-03-18T12:40:04.844471Z",
-    "received_at": "2026-03-18T12:40:04.844471Z",
-    "id": "2026-03-18T12:40:04.844471Z-EEM-info",
+    "timestamp": "2026-03-19T01:00:47.652124Z",
+    "received_at": "2026-03-19T01:00:47.652124Z",
+    "id": "2026-03-19T01:00:47.652124Z-EEM-info",
     "threshold_met": false,
     "buy_score": 8,
     "sell_score": 10,
@@ -565,9 +554,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 13/16 | sell 16/13",
-    "timestamp": "2026-03-18T12:42:36.328794Z",
-    "received_at": "2026-03-18T12:42:36.328794Z",
-    "id": "2026-03-18T12:42:36.328794Z-PCEF-info",
+    "timestamp": "2026-03-19T01:03:52.544674Z",
+    "received_at": "2026-03-19T01:03:52.544674Z",
+    "id": "2026-03-19T01:03:52.544674Z-PCEF-info",
     "threshold_met": true,
     "buy_score": 13,
     "sell_score": 16,
@@ -1021,6 +1010,17 @@
     "buy_signal_raw": false,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-03-19T01:00:37.977063Z",
+    "received_at": "2026-03-19T01:00:37.977078Z",
+    "id": "2026-03-19T01:00:37.977078Z-FET/USD-buy"
   },
   {
     "action": "buy",
