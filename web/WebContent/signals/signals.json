@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 448.22949350067233,
+    "price": 0.2229,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-03-19T01:06:16.069420Z",
+    "received_at": "2026-03-19T01:06:16.069433Z",
+    "id": "2026-03-19T01:06:16.069433Z-FET/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "XLI",
     "price": 170.02,
     "quantity": null,
