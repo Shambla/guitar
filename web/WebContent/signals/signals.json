@@ -275,13 +275,13 @@
   {
     "action": "info",
     "symbol": "XLV",
-    "price": 146.61,
+    "price": 145.4,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 12/16 | sell 14/13",
-    "timestamp": "2026-03-20T02:10:33.269825Z",
-    "received_at": "2026-03-20T02:10:33.269825Z",
-    "id": "2026-03-20T02:10:33.269825Z-XLV-info",
+    "timestamp": "2026-03-20T18:47:20.093345Z",
+    "received_at": "2026-03-20T18:47:20.093345Z",
+    "id": "2026-03-20T18:47:20.093345Z-XLV-info",
     "threshold_met": true,
     "buy_score": 12,
     "sell_score": 14,
@@ -293,8 +293,8 @@
     "buy_conviction": 0.2926829268292683,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.47,
-    "sell_persistence": 4,
+    "sell_conviction": 0.5,
+    "sell_persistence": 5,
     "sell_position_multiplier": 1.0
   },
   {
