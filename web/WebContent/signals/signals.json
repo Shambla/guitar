@@ -125,13 +125,13 @@
   {
     "action": "info",
     "symbol": "XLI",
-    "price": 166.5,
+    "price": 164.06,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 14/16 | sell 14/13",
-    "timestamp": "2026-03-19T12:32:01.448688Z",
-    "received_at": "2026-03-19T12:32:01.448688Z",
-    "id": "2026-03-19T12:32:01.448688Z-XLI-info",
+    "timestamp": "2026-03-20T01:48:36.163031Z",
+    "received_at": "2026-03-20T01:48:36.163031Z",
+    "id": "2026-03-20T01:48:36.163031Z-XLI-info",
     "threshold_met": true,
     "buy_score": 14,
     "sell_score": 14,
@@ -143,8 +143,8 @@
     "buy_conviction": 0.34146341463414637,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.59,
-    "sell_persistence": 8,
+    "sell_conviction": 0.6499999999999999,
+    "sell_persistence": 10,
     "sell_position_multiplier": 1.0
   },
   {
