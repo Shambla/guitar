@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "SUI/USD",
+    "quantity": 103.98253093480295,
+    "price": 0.9607,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-03-21T20:05:40.871238Z",
+    "received_at": "2026-03-21T20:05:40.871259Z",
+    "id": "2026-03-21T20:05:40.871259Z-SUI/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "SUI/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
