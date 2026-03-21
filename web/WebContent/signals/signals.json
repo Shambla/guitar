@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.04637573,
+    "price": 2151.9874,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-03-21T14:50:23.915614Z",
+    "received_at": "2026-03-21T14:50:23.915686Z",
+    "id": "2026-03-21T14:50:23.915686Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "SUI/USD",
     "quantity": 104.03662089055348,
     "price": 0.9602,
