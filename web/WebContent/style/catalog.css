@@ -19,6 +19,37 @@ body.catalog-page {
     margin-top: 0;
 }
 
+/* Intro: text + songwriting illustration (img/songwriting.png) */
+.catalog-intro-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: flex-start;
+    margin-bottom: 4px;
+}
+
+.catalog-intro-main {
+    flex: 1 1 280px;
+    min-width: 0;
+}
+
+.catalog-intro-figure {
+    flex: 0 1 300px;
+    margin: 0;
+    max-width: 100%;
+}
+
+.catalog-intro-figure img {
+    display: block;
+    width: 100%;
+    max-width: 340px;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+}
+
 /* Search + Sort wrapper */
 .catalog-controls {
     position: relative;

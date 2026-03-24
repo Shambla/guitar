@@ -628,7 +628,7 @@
   {
     "id": "a-harmonic-minor-chord-progression-generator-for-guitar",
     "title": "A Harmonic Minor Chord Progression Generator for Guitar (small chords)",
-    "composer": "Various",
+    "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
     "category": "theory",
     "price": "$4.99",
@@ -639,7 +639,7 @@
   {
     "id": "inactive-harmonic-minor-chord-progression-generator-for-guitar",
     "title": "Inactive *** Harmonic Minor Chord Progression Generator for Guitar",
-    "composer": "Various",
+    "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
     "category": "theory",
     "price": "$5.99",
@@ -650,7 +650,7 @@
   {
     "id": "study-no-2-d-dorian-mode",
     "title": "Study No. 2 D Dorian Mode",
-    "composer": "Various",
+    "composer": "Brian Streckfus",
     "difficulty": "Advanced",
     "category": "theory",
     "price": "$4.99",
@@ -672,7 +672,7 @@
   {
     "id": "d-egyptian-etude",
     "title": "D Egyptian Etude",
-    "composer": "Various",
+    "composer": "Brian Streckfus",
     "difficulty": "Advanced",
     "category": "theory",
     "price": "$5.99",
@@ -694,7 +694,7 @@
   {
     "id": "study-no-6-no-7---major-and-minor-modes",
     "title": "Study No. 6 & No. 7 - Major and Minor Modes",
-    "composer": "Various",
+    "composer": "Brian Streckfus",
     "difficulty": "Advanced",
     "category": "theory",
     "price": "$4.99",
@@ -991,7 +991,7 @@
   {
     "id": "guitar-chord-exercises---iterating-chords",
     "title": "Guitar Chord Exercises - Iterating Chords",
-    "composer": "Various",
+    "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
     "category": "theory",
     "price": "$4.99",
@@ -1002,7 +1002,7 @@
   {
     "id": "movable-guitar-chords",
     "title": "Movable Guitar Chords",
-    "composer": "Traditional",
+    "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
     "category": "traditional",
     "price": "$1.99",
@@ -1293,7 +1293,7 @@
   {
     "id": "rhythm-packet-6-pages",
     "title": "Rhythm Packet 6 Pages",
-    "composer": "Traditional",
+    "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
     "category": "theory",
     "price": "$3.99",
@@ -1359,7 +1359,7 @@
   {
     "id": "5-scale-forms-for-guitar",
     "title": "5 Scale Forms For Guitar",
-    "composer": "Traditional",
+    "composer": "Brian Streckfus",
     "difficulty": "Intermediate",
     "category": "theory",
     "price": "$3.99",
@@ -1620,7 +1620,7 @@
   {
     "id": "blank-bass-sheet-music",
     "title": "Blank Bass Sheet Music",
-    "composer": "Traditional",
+    "composer": "Brian Streckfus",
     "difficulty": "Beginner",
     "category": "theory",
     "price": "$2.99",
@@ -1631,7 +1631,7 @@
   {
     "id": "blank-guitar-sheet-music",
     "title": "Blank Guitar Sheet Music",
-    "composer": "Traditional",
+    "composer": "Brian Streckfus",
     "difficulty": "Beginner",
     "category": "theory",
     "price": "$2.99",
@@ -2694,6 +2694,17 @@
     "preview_image": "img/mp3-placeholder.png"
   },
   {
+    "id": "blank-pop-rock-band-template",
+    "title": "Blank Pop & Rock Band Template (Sheet Music & TAB)",
+    "composer": "Brian Streckfus",
+    "difficulty": "Beginner",
+    "category": "theory",
+    "price": "$2.99",
+    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1908746/Product.aspx",
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1908746/Product.aspx",
+    "preview_image": "img/previews/Blank Guitar Sheet Music TAB Chord diagram v5-preview.png"
+  },
+  {
     "id": "f-lydian-backing-track",
     "title": "F Lydian Backing Track",
     "composer": "Brian Streckfus",
@@ -2736,5 +2747,148 @@
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1874273/Product.aspx",
     "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1874273/Product.aspx",
     "preview_image": "img/mp3-placeholder.png"
+  },
+  {
+    "id": "autumn-leaves-arr-brian-streckfus",
+    "title": "Autumn Leaves (arr. Brian Streckfus)",
+    "composer": "Bill Evans, Johnny Mercer",
+    "difficulty": "Intermediate",
+    "category": "jazz",
+    "price": "$3.99",
+    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1905005/Product.aspx",
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1905005/Product.aspx"
+  },
+  {
+    "id": "chopin-prelude-e-minor-op28-no4-arr-brian-streckfus",
+    "title": "Prelude in E minor Op. 28 No. 4 (arr. Brian Streckfus)",
+    "composer": "Fr\u00e9d\u00e9ric Chopin",
+    "difficulty": "Advanced",
+    "category": "classical",
+    "price": "$5.99",
+    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1901242/Product.aspx",
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1901242/Product.aspx"
+  },
+  {
+    "id": "rockin-around-the-christmas-tree-arr-brian-streckfus",
+    "title": "Rockin' Around The Christmas Tree (arr. Brian Streckfus)",
+    "composer": "Johnny Marks",
+    "difficulty": "Beginner",
+    "category": "holiday",
+    "price": "$2.99",
+    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1889911/Product.aspx",
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1889911/Product.aspx"
+  },
+  {
+    "id": "5-pentatonic-forms-brian-streckfus",
+    "title": "5 Pentatonic Forms",
+    "composer": "Brian Streckfus",
+    "difficulty": "Beginner",
+    "category": "theory",
+    "price": "$1.99",
+    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1963833/Product.aspx",
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1963833/Product.aspx"
+  },
+  {
+    "id": "just-remember-i-love-you-arr-brian-streckfus",
+    "title": "Just Remember I Love You (arr. Brian Streckfus)",
+    "composer": "Rick Roberts",
+    "difficulty": "Beginner",
+    "category": "popular country",
+    "price": "$2.99",
+    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1963803/Product.aspx",
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1963803/Product.aspx"
+  },
+  {
+    "id": "c-sharp-dorian-funk-backing-track-110-bpm",
+    "title": "C# Dorian Funk Backing Track (110 BPM)",
+    "composer": "Brian Streckfus",
+    "difficulty": "Intermediate",
+    "category": "mp3 audio",
+    "price": "$1.99",
+    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1957480/Product.aspx",
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1957480/Product.aspx",
+    "preview_image": "img/mp3-placeholder.png"
+  },
+  {
+    "id": "the-most-beautiful-guitar-scales-and-theory-collection",
+    "title": "The Most Beautiful Guitar Scales & Theory Collection",
+    "composer": "Brian Streckfus",
+    "difficulty": "Beginner",
+    "category": "theory",
+    "price": "$1.99",
+    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1940345/Product.aspx",
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1940345/Product.aspx"
+  },
+  {
+    "id": "lo-fi-eb-major-c-minor-backing-track",
+    "title": "Lo-Fi Eb Major / C minor Backing Track",
+    "composer": "Brian Streckfus",
+    "difficulty": "Intermediate",
+    "category": "mp3 audio",
+    "price": "$1.99",
+    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1937513/Product.aspx",
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1937513/Product.aspx",
+    "preview_image": "img/mp3-placeholder.png"
+  },
+  {
+    "id": "st-louis-blues-arr-brian-streckfus-bass-tab",
+    "title": "St. Louis Blues (arr. Brian Streckfus)",
+    "composer": "W. C. Handy",
+    "difficulty": "Intermediate",
+    "category": "jazz blues",
+    "price": "$6.49",
+    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1932925/Product.aspx",
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1932925/Product.aspx"
+  },
+  {
+    "id": "all-12-keys-for-guitar-scale-chart-tab-sheet-music-letter-names",
+    "title": "All 12 Keys for Guitar - Scale Chart, TAB, Sheet Music, Letter Names",
+    "composer": "Brian Streckfus",
+    "difficulty": "Beginner",
+    "category": "theory",
+    "price": "$4.49",
+    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1924139/Product.aspx",
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1924139/Product.aspx"
+  },
+  {
+    "id": "the-practical-guitarists-guide-to-music-theory",
+    "title": "The Practical Guitarist's Guide to Music Theory",
+    "composer": "Brian Streckfus",
+    "difficulty": "Beginner",
+    "category": "theory",
+    "price": "$21.99",
+    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1921901/Product.aspx",
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1921901/Product.aspx"
+  },
+  {
+    "id": "all-12-harmonic-minor-scales-for-guitar",
+    "title": "All 12 Harmonic Minor Scales for Guitar",
+    "composer": "Brian Streckfus",
+    "difficulty": "Intermediate",
+    "category": "theory",
+    "price": "$4.99",
+    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1921661/Product.aspx",
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1921661/Product.aspx"
+  }
+  ,
+  {
+    "id": "the-essential-beginner-s-guitar-songbook-a-progressive-collection-arr-brian-streckfus",
+    "title": "The Essential Beginner's Guitar Songbook - A Progressive Collection (arr. Brian Streckfus)",
+    "composer": "Traditional Anon",
+    "difficulty": "Beginner",
+    "category": "traditional folk",
+    "price": "$19.99",
+    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1921418/Product.aspx",
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1921418/Product.aspx"
+  },
+  {
+    "id": "she-will-be-loved-arr-brian-streckfus",
+    "title": "She Will Be Loved (arr. Brian Streckfus)",
+    "composer": "James Valentine, Adam Levine",
+    "difficulty": "Beginner",
+    "category": "popular",
+    "price": "$2.99",
+    "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1914633/Product.aspx",
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1914633/Product.aspx"
   }
 ]
