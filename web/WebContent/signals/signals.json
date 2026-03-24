@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.0471138,
+    "price": 2118.27496,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-03-24T19:35:34.163989Z",
+    "received_at": "2026-03-24T19:35:34.164011Z",
+    "id": "2026-03-24T19:35:34.164011Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "FET/USD",
     "quantity": 426.9854824935952,
     "price": 0.234,
@@ -885,30 +896,6 @@
     "sell_conviction": 0.7,
     "sell_persistence": 16,
     "sell_position_multiplier": 1.5,
-    "buy_signal_raw": true,
-    "buy_blocked_rsi_bear_div": false,
-    "rsi_bear_div_block_timer": 0
-  },
-  {
-    "action": "buy",
-    "symbol": "XLV",
-    "price": 153.91000366210938,
-    "quantity": null,
-    "source": "MAIN_stock_strat14",
-    "note": "buy 16/41 | sell 11/40 | Strength=2/10 | MTF:D-only (no higher timeframe confirmation)",
-    "timestamp": "2026-03-10T19:12:42.399512Z",
-    "received_at": "2026-03-10T19:12:42.399512Z",
-    "id": "2026-03-10T19:12:42.399512Z-XLV-buy",
-    "buy_score": 16,
-    "sell_score": 11,
-    "total_buy_components": 41,
-    "total_sell_components": 40,
-    "buy_conviction": 0.42024390243902443,
-    "buy_persistence": 1,
-    "buy_position_multiplier": 1.0,
-    "sell_conviction": 0.275,
-    "sell_persistence": 0,
-    "sell_position_multiplier": 0.5,
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
