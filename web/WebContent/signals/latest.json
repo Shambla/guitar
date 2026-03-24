@@ -2,10 +2,10 @@
   "action": "sell",
   "symbol": "SUI/USD",
   "quantity": 0.1,
-  "price": 0.9406,
+  "price": 0.9404,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-03-24T02:00:20.674367Z",
-  "received_at": "2026-03-24T02:00:20.674385Z",
-  "id": "2026-03-24T02:00:20.674385Z-SUI/USD-sell"
+  "timestamp": "2026-03-24T14:00:24.276110Z",
+  "received_at": "2026-03-24T14:00:24.277225Z",
+  "id": "2026-03-24T14:00:24.277225Z-SUI/USD-sell"
 }
