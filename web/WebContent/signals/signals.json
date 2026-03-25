@@ -1,5 +1,27 @@
 [
   {
+    "action": "buy",
+    "symbol": "SUI/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-03-25T06:00:16.811671Z",
+    "received_at": "2026-03-25T06:00:16.811787Z",
+    "id": "2026-03-25T06:00:16.811787Z-SUI/USD-buy"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.1,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-03-25T04:56:32.863107Z",
+    "received_at": "2026-03-25T04:56:32.863150Z",
+    "id": "2026-03-25T04:56:32.863150Z-ETH/USD-sell"
+  },
+  {
     "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.04711379,
