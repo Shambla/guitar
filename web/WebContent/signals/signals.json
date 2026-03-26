@@ -175,13 +175,13 @@
   {
     "action": "info",
     "symbol": "XLRE",
-    "price": 40.35,
+    "price": 40.4199,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 13/16 | sell 15/13",
-    "timestamp": "2026-03-25T16:06:44.601028Z",
-    "received_at": "2026-03-25T16:06:44.601028Z",
-    "id": "2026-03-25T16:06:44.601028Z-XLRE-info",
+    "timestamp": "2026-03-26T16:10:45.732106Z",
+    "received_at": "2026-03-26T16:10:45.732106Z",
+    "id": "2026-03-26T16:10:45.732106Z-XLRE-info",
     "threshold_met": true,
     "buy_score": 13,
     "sell_score": 15,
@@ -193,8 +193,8 @@
     "buy_conviction": 0.3170731707317073,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.5549999999999999,
-    "sell_persistence": 6,
+    "sell_conviction": 0.585,
+    "sell_persistence": 7,
     "sell_position_multiplier": 1.0
   },
   {
