@@ -234,6 +234,122 @@
 				line-height: 1.3;
 				margin-top: 5px;
 			}
+			/* 72h giveaway box */
+			@keyframes giveawayFloat {
+				0%, 100% { transform: translateY(0); }
+				50% { transform: translateY(-6px); }
+			}
+			@keyframes giveawayGlow {
+				0%, 100% { box-shadow: 0 0 20px rgba(255, 180, 100, 0.35), 0 8px 32px rgba(0, 0, 0, 0.45); }
+				50% { box-shadow: 0 0 36px rgba(255, 200, 120, 0.55), 0 12px 40px rgba(0, 0, 0, 0.5); }
+			}
+			@keyframes giveawayShimmer {
+				0% { background-position: 0% 50%; }
+				100% { background-position: 200% 50%; }
+			}
+			#giveaway-box {
+				position: relative;
+				margin: 0 0 40px 0;
+				padding: 22px 24px 24px;
+				border-radius: 14px;
+				overflow: hidden;
+				background: linear-gradient(145deg, rgba(40, 28, 18, 0.95) 0%, rgba(22, 18, 28, 0.98) 100%);
+				border: 2px solid transparent;
+				background-clip: padding-box;
+				animation: giveawayFloat 4.5s ease-in-out infinite, giveawayGlow 3s ease-in-out infinite;
+			}
+			#giveaway-box::before {
+				content: '';
+				position: absolute;
+				inset: -2px;
+				border-radius: 16px;
+				padding: 2px;
+				background: linear-gradient(120deg, #c9a227, #f5e6a8, #b8860b, #f5e6a8, #c9a227);
+				background-size: 200% 200%;
+				animation: giveawayShimmer 4s linear infinite;
+				-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+				mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+				-webkit-mask-composite: xor;
+				mask-composite: exclude;
+				pointer-events: none;
+				z-index: 0;
+			}
+			#giveaway-box .giveaway-inner {
+				position: relative;
+				z-index: 1;
+			}
+			#giveaway-box h2 {
+				margin: 0 0 8px 0;
+				font-size: 24px;
+				color: #fff;
+				letter-spacing: 0.03em;
+			}
+			#giveaway-box .giveaway-sub {
+				color: rgba(255, 255, 255, 0.88);
+				font-size: 15px;
+				line-height: 1.5;
+				margin: 0 0 14px 0;
+			}
+			#giveaway-countdown {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px;
+				margin-bottom: 16px;
+				font-variant-numeric: tabular-nums;
+			}
+			#giveaway-countdown span {
+				display: inline-block;
+				min-width: 3.2em;
+				padding: 8px 12px;
+				background: rgba(0, 0, 0, 0.45);
+				border-radius: 8px;
+				color: #f5e6c8;
+				font-size: 18px;
+				font-weight: bold;
+				border: 1px solid rgba(255, 200, 120, 0.35);
+			}
+			#giveaway-countdown .cd-label {
+				font-size: 11px;
+				font-weight: 600;
+				color: rgba(255, 255, 255, 0.65);
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+				min-width: auto;
+				border: none;
+				background: transparent;
+				padding: 0 0 0 4px;
+				width: 100%;
+				flex-basis: 100%;
+			}
+			#giveaway-box a.giveaway-btn {
+				display: inline-block;
+				padding: 12px 22px;
+				background: linear-gradient(135deg, #d4a017 0%, #b8860b 100%);
+				color: #1a1208;
+				font-weight: bold;
+				font-size: 15px;
+				text-decoration: none;
+				border-radius: 8px;
+				box-shadow: 0 4px 14px rgba(212, 160, 23, 0.45);
+				transition: transform 0.2s, box-shadow 0.2s;
+			}
+			#giveaway-box a.giveaway-btn:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(212, 160, 23, 0.55);
+			}
+			#giveaway-expired-msg {
+				display: none;
+				color: rgba(255, 255, 255, 0.75);
+				font-size: 15px;
+				margin: 0;
+			}
+			#giveaway-box.giveaway-ended #giveaway-active,
+			#giveaway-box.giveaway-ended #giveaway-countdown-wrap {
+				display: none;
+			}
+			#giveaway-box.giveaway-ended #giveaway-expired-msg {
+				display: block;
+			}
 		</style>
 	</head>
 	<body>
@@ -362,6 +478,76 @@
 					No spam. Unsubscribe anytime.
 				</div>
 			</div>
+
+			<!-- 72h giveaway: set data-giveaway-start to when the offer goes live (ISO UTC). Download ends 72 hours after that moment for everyone. -->
+			<section id="giveaway-box" class="fade-in-up" data-giveaway-start="2026-03-27T12:00:00Z" aria-labelledby="giveaway-heading">
+				<div class="giveaway-inner">
+					<h2 id="giveaway-heading">&#127873; Limited free download</h2>
+					<p class="giveaway-sub">Get <strong>12_keys.pdf</strong> free — available only during this window.</p>
+					<div id="giveaway-countdown-wrap">
+						<p class="giveaway-sub" style="margin-bottom: 8px; font-size: 13px; opacity: 0.9;">Time left:</p>
+						<div id="giveaway-countdown" aria-live="polite"></div>
+					</div>
+					<div id="giveaway-active">
+						<a id="giveaway-download-link" class="giveaway-btn" href="giveaway/12_keys.pdf" download="12_keys.pdf">Download PDF</a>
+					</div>
+					<p id="giveaway-expired-msg">This limited giveaway has ended. Thanks for visiting!</p>
+				</div>
+			</section>
+			<script>
+				(function () {
+					var box = document.getElementById('giveaway-box');
+					var el = document.getElementById('giveaway-countdown');
+					var link = document.getElementById('giveaway-download-link');
+					if (!box || !el) return;
+					var H72 = 72 * 60 * 60 * 1000;
+					var startStr = (box.getAttribute('data-giveaway-start') || '').trim();
+					var START_MS = Date.parse(startStr);
+					var END_MS = !isNaN(START_MS) ? START_MS + H72 : NaN;
+					function pad(n) { return n < 10 ? '0' + n : String(n); }
+					function endGiveaway() {
+						box.classList.add('giveaway-ended');
+						if (link) {
+							link.removeAttribute('href');
+							link.classList.remove('giveaway-btn');
+							link.style.pointerEvents = 'none';
+							link.style.opacity = '0.5';
+							link.textContent = 'Ended';
+						}
+						el.innerHTML = '';
+					}
+					function tick() {
+						if (isNaN(END_MS)) {
+							el.innerHTML = '<span style="color:#e8b4b4;font-size:12px;">Set <code style="font-size:11px;">data-giveaway-start</code> on #giveaway-box (ISO UTC).</span>';
+							if (link) {
+								link.removeAttribute('href');
+								link.style.pointerEvents = 'none';
+								link.style.opacity = '0.6';
+							}
+							return;
+						}
+						var now = Date.now();
+						var ms = Math.max(0, END_MS - now);
+						if (ms <= 0) {
+							endGiveaway();
+							return;
+						}
+						var s = Math.floor(ms / 1000);
+						var d = Math.floor(s / 86400);
+						var h = Math.floor((s % 86400) / 3600);
+						var m = Math.floor((s % 3600) / 60);
+						var sec = s % 60;
+						el.innerHTML =
+							'<span class="cd-label">Time left</span>' +
+							'<span title="Days">' + d + '<small style="display:block;font-size:10px;font-weight:600;opacity:0.75">days</small></span>' +
+							'<span title="Hours">' + pad(h) + '<small style="display:block;font-size:10px;font-weight:600;opacity:0.75">hrs</small></span>' +
+							'<span title="Minutes">' + pad(m) + '<small style="display:block;font-size:10px;font-weight:600;opacity:0.75">min</small></span>' +
+							'<span title="Seconds">' + pad(sec) + '<small style="display:block;font-size:10px;font-weight:600;opacity:0.75">sec</small></span>';
+					}
+					tick();
+					setInterval(tick, 1000);
+				})();
+			</script>
 
 			<div id="media-section">
 				<h1 id="media" class="fade-in-up">Media</h1>
