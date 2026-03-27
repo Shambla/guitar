@@ -247,9 +247,10 @@
 				0% { background-position: 0% 50%; }
 				100% { background-position: 200% 50%; }
 			}
-			#giveaway-box {
+			#gift {
 				position: relative;
 				margin: 0 0 40px 0;
+				scroll-margin-top: 5.5rem;
 				padding: 22px 24px 24px;
 				border-radius: 14px;
 				overflow: hidden;
@@ -258,7 +259,7 @@
 				background-clip: padding-box;
 				animation: giveawayFloat 4.5s ease-in-out infinite, giveawayGlow 3s ease-in-out infinite;
 			}
-			#giveaway-box::before {
+			#gift::before {
 				content: '';
 				position: absolute;
 				inset: -2px;
@@ -274,17 +275,17 @@
 				pointer-events: none;
 				z-index: 0;
 			}
-			#giveaway-box .giveaway-inner {
+			#gift .giveaway-inner {
 				position: relative;
 				z-index: 1;
 			}
-			#giveaway-box h2 {
+			#gift h2 {
 				margin: 0 0 8px 0;
 				font-size: 24px;
 				color: #fff;
 				letter-spacing: 0.03em;
 			}
-			#giveaway-box .giveaway-sub {
+			#gift .giveaway-sub {
 				color: rgba(255, 255, 255, 0.88);
 				font-size: 15px;
 				line-height: 1.5;
@@ -321,7 +322,7 @@
 				width: 100%;
 				flex-basis: 100%;
 			}
-			#giveaway-box a.giveaway-btn {
+			#gift a.giveaway-btn {
 				display: inline-block;
 				padding: 12px 22px;
 				background: linear-gradient(135deg, #d4a017 0%, #b8860b 100%);
@@ -333,7 +334,7 @@
 				box-shadow: 0 4px 14px rgba(212, 160, 23, 0.45);
 				transition: transform 0.2s, box-shadow 0.2s;
 			}
-			#giveaway-box a.giveaway-btn:hover {
+			#gift a.giveaway-btn:hover {
 				transform: translateY(-2px);
 				box-shadow: 0 6px 20px rgba(212, 160, 23, 0.55);
 			}
@@ -343,11 +344,11 @@
 				font-size: 15px;
 				margin: 0;
 			}
-			#giveaway-box.giveaway-ended #giveaway-active,
-			#giveaway-box.giveaway-ended #giveaway-countdown-wrap {
+			#gift.giveaway-ended #giveaway-active,
+			#gift.giveaway-ended #giveaway-countdown-wrap {
 				display: none;
 			}
-			#giveaway-box.giveaway-ended #giveaway-expired-msg {
+			#gift.giveaway-ended #giveaway-expired-msg {
 				display: block;
 			}
 		</style>
@@ -480,7 +481,7 @@
 			</div>
 
 			<!-- 72h giveaway: set data-giveaway-start to when the offer goes live (ISO UTC). Download ends 72 hours after that moment for everyone. -->
-			<section id="giveaway-box" class="fade-in-up" data-giveaway-start="2026-03-27T12:00:00Z" aria-labelledby="giveaway-heading">
+			<section id="gift" class="fade-in-up" data-giveaway-start="2026-03-27T12:00:00Z" aria-labelledby="giveaway-heading">
 				<div class="giveaway-inner">
 					<h2 id="giveaway-heading">&#127873; Free download</h2>
 					<p class="giveaway-sub">No sign up, no email, no credit card. My gift to you for visiting my site.</p>
@@ -497,7 +498,7 @@
 			</section>
 			<script>
 				(function () {
-					var box = document.getElementById('giveaway-box');
+					var box = document.getElementById('gift');
 					var el = document.getElementById('giveaway-countdown');
 					var link = document.getElementById('giveaway-download-link');
 					if (!box || !el) return;
@@ -519,7 +520,7 @@
 					}
 					function tick() {
 						if (isNaN(END_MS)) {
-							el.innerHTML = '<span style="color:#e8b4b4;font-size:12px;">Set <code style="font-size:11px;">data-giveaway-start</code> on #giveaway-box (ISO UTC).</span>';
+							el.innerHTML = '<span style="color:#e8b4b4;font-size:12px;">Set <code style="font-size:11px;">data-giveaway-start</code> on #gift (ISO UTC).</span>';
 							if (link) {
 								link.removeAttribute('href');
 								link.style.pointerEvents = 'none';
