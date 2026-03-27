@@ -1,5 +1,16 @@
 /* Catalog Page Styles */
 
+/*
+ * index.css applies .content > div { opacity: 0 } for homepage scroll-in animations.
+ * catalog.js never toggles .animate on those divs, so intro row, grid, and license body stay invisible.
+ */
+body.catalog-page .catalog-content > div,
+body.catalog-page #mp3-audio-license > div {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+}
+
 /* Ensure top nav and its links stay clickable (above modal z-index 1000 and any overlays) */
 body.catalog-page nav {
     z-index: 1001;
@@ -13,13 +24,27 @@ body.catalog-page nav .content {
 body.catalog-page {
     /* Fallback only — JS will override this to match the real nav height */
     padding-top: 110px;
+    /* Decorative background (add WebContent/img/songwriting.png to the repo or server) */
+    background-color: #f4efe6;
+    background-image:
+        linear-gradient(
+            160deg,
+            rgba(255, 252, 247, 0.88) 0%,
+            rgba(245, 236, 224, 0.78) 45%,
+            rgba(255, 252, 247, 0.9) 100%
+        ),
+        url(../img/songwriting.png);
+    background-position: center top, center 35%;
+    background-size: auto, cover;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: scroll, fixed;
 }
 
 .catalog-content {
     margin-top: 0;
 }
 
-/* Intro: text + songwriting illustration (img/songwriting.png) */
+/* Intro: text; page mood comes from body background (img/songwriting.png) */
 .catalog-intro-row {
     display: flex;
     flex-wrap: wrap;
@@ -29,25 +54,8 @@ body.catalog-page {
 }
 
 .catalog-intro-main {
-    flex: 1 1 280px;
+    flex: 1 1 100%;
     min-width: 0;
-}
-
-.catalog-intro-figure {
-    flex: 0 1 300px;
-    margin: 0;
-    max-width: 100%;
-}
-
-.catalog-intro-figure img {
-    display: block;
-    width: 100%;
-    max-width: 340px;
-    height: auto;
-    margin: 0 auto;
-    border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
 }
 
 /* Search + Sort wrapper */
