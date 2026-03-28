@@ -38,6 +38,84 @@ body.catalog-page {
     background-size: auto, cover;
     background-repeat: no-repeat, no-repeat;
     background-attachment: scroll, fixed;
+    /* Dark text site-wide on this page (light background image) */
+    color: #111;
+}
+
+/* Nav links: were white for dark homepage hero */
+body.catalog-page nav a,
+body.catalog-page nav a:visited {
+    color: #111 !important;
+}
+
+body.catalog-page nav a:hover {
+    color: #000 !important;
+}
+
+/* Scrolled nav used dark bar + white text on index; use light bar here so links stay black */
+body.catalog-page nav.scrolled {
+    background-color: rgba(255, 255, 255, 0.96) !important;
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.1) !important;
+}
+
+body.catalog-page #backing.scrolled {
+    opacity: 0 !important;
+}
+
+body.catalog-page .catalog-content h1,
+body.catalog-page .catalog-content p,
+body.catalog-page .catalog-content li,
+body.catalog-page .catalog-content strong {
+    color: #111;
+}
+
+body.catalog-page .catalog-content h1 {
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+}
+
+/* In-page text links (not styled buttons) */
+body.catalog-page .catalog-content a:not(.link-button) {
+    color: #111 !important;
+}
+
+body.catalog-page .catalog-content a:not(.link-button):visited {
+    color: #111 !important;
+}
+
+/* MP3 license panel (HTML may use inline colors; these win for the section) */
+body.catalog-page #mp3-audio-license {
+    background: rgba(255, 255, 255, 0.94) !important;
+    border: 1px solid rgba(0, 0, 0, 0.12) !important;
+}
+
+body.catalog-page #mp3-audio-license h2,
+body.catalog-page #mp3-audio-license h3,
+body.catalog-page #mp3-audio-license p,
+body.catalog-page #mp3-audio-license li,
+body.catalog-page #mp3-audio-license ul,
+body.catalog-page #mp3-audio-license .license-attrib-block,
+body.catalog-page #mp3-audio-license .license-attrib-block span {
+    color: #111 !important;
+}
+
+body.catalog-page #mp3-audio-license a,
+body.catalog-page #mp3-audio-license a:visited {
+    color: #111 !important;
+}
+
+body.catalog-page #mp3-audio-license .license-attrib-block {
+    background: rgba(0, 0, 0, 0.06) !important;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Footer block directly after license */
+body.catalog-page #mp3-audio-license + div {
+    color: #111;
+}
+
+body.catalog-page #mp3-audio-license + div a,
+body.catalog-page #mp3-audio-license + div a:visited {
+    color: #111 !important;
 }
 
 .catalog-content {
