@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "SUI/USD",
-  "quantity": 100.0,
+  "action": "buy",
+  "symbol": "SOL/USD",
+  "quantity": 10.0,
   "price": null,
   "source": "TradingView JSON",
   "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-03-28T23:00:05.293450Z",
-  "received_at": "2026-03-28T23:00:05.293894Z",
-  "id": "2026-03-28T23:00:05.293894Z-SUI/USD-sell"
+  "timestamp": "2026-03-28T23:10:28.718357Z",
+  "received_at": "2026-03-28T23:10:28.718429Z",
+  "id": "2026-03-28T23:10:28.718429Z-SOL/USD-buy"
 }
