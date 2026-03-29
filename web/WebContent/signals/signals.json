@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "RENDER/USD",
+    "quantity": 59.9880023995201,
+    "price": 1.665,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-03-29T03:05:57.872640Z",
+    "received_at": "2026-03-29T03:05:57.872670Z",
+    "id": "2026-03-29T03:05:57.872670Z-RENDER/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "RENDER/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2242,16 +2253,5 @@
     "timestamp": "2026-03-22T04:45:41.074845Z",
     "received_at": "2026-03-22T04:45:41.075250Z",
     "id": "2026-03-22T04:45:41.075250Z-ETH/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "SUI/USD",
-    "quantity": 106.72358591248666,
-    "price": 0.9361,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-03-22T03:05:35.354485Z",
-    "received_at": "2026-03-22T03:05:35.354497Z",
-    "id": "2026-03-22T03:05:35.354497Z-SUI/USD-buy"
   }
 ]
