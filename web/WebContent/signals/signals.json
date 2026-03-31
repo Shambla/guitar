@@ -676,13 +676,13 @@
   {
     "action": "info",
     "symbol": "EWT",
-    "price": 70.1,
+    "price": 69.48999786376953,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 11/16 | sell 13/13",
-    "timestamp": "2026-03-27T11:35:36.073953Z",
-    "received_at": "2026-03-27T11:35:36.073953Z",
-    "id": "2026-03-27T11:35:36.073953Z-EWT-info",
+    "timestamp": "2026-03-31T10:02:21.964403Z",
+    "received_at": "2026-03-31T10:02:21.964403Z",
+    "id": "2026-03-31T10:02:21.964403Z-EWT-info",
     "threshold_met": true,
     "buy_score": 11,
     "sell_score": 13,
@@ -1010,6 +1010,17 @@
     "buy_signal_raw": false,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "sell",
+    "symbol": "SUI/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-03-31T10:00:06.751035Z",
+    "received_at": "2026-03-31T10:00:06.751302Z",
+    "id": "2026-03-31T10:00:06.751302Z-SUI/USD-sell"
   },
   {
     "action": "sell",
