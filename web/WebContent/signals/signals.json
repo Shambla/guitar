@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-04-03T21:00:07.865210Z",
+    "received_at": "2026-04-03T21:00:07.865310Z",
+    "id": "2026-04-03T21:00:07.865310Z-RENDER/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "USO",
     "price": 137.9199981689453,
     "quantity": null,
