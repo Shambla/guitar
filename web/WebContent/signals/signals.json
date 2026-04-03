@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2052.72,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-04-03T18:19:09.124969Z",
-    "received_at": "2026-04-03T18:19:09.125031Z",
-    "id": "2026-04-03T18:19:09.125031Z-ETH/USD-sell"
-  },
-  {
     "action": "buy",
     "symbol": "USO",
     "price": 137.9199981689453,
@@ -512,27 +501,27 @@
   {
     "action": "info",
     "symbol": "EEM",
-    "price": 57.22999954223633,
+    "price": 56.59000015258789,
     "quantity": null,
     "source": "MAIN_stock_strat12",
-    "note": "Below thresholds | buy 11/16 | sell 12/13",
-    "timestamp": "2026-04-03T05:39:28.476016Z",
-    "received_at": "2026-04-03T05:39:28.476016Z",
-    "id": "2026-04-03T05:39:28.476016Z-EEM-info",
-    "threshold_met": false,
-    "buy_score": 11,
-    "sell_score": 12,
+    "note": "Above thresholds | buy 13/16 | sell 15/13",
+    "timestamp": "2026-04-03T18:20:16.888802Z",
+    "received_at": "2026-04-03T18:20:16.888802Z",
+    "id": "2026-04-03T18:20:16.888802Z-EEM-info",
+    "threshold_met": true,
+    "buy_score": 13,
+    "sell_score": 15,
     "total_buy_components": 41,
     "total_sell_components": 40,
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0,
-    "buy_conviction": 0.2682926829268293,
+    "buy_conviction": 0.3170731707317073,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.3,
-    "sell_persistence": 0,
-    "sell_position_multiplier": 0.5
+    "sell_conviction": 0.405,
+    "sell_persistence": 1,
+    "sell_position_multiplier": 1.0
   },
   {
     "action": "info",
@@ -1021,6 +1010,17 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2052.72,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-04-03T18:19:09.124969Z",
+    "received_at": "2026-04-03T18:19:09.125031Z",
+    "id": "2026-04-03T18:19:09.125031Z-ETH/USD-sell"
   },
   {
     "action": "sell",
