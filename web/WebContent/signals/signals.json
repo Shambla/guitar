@@ -2,6 +2,17 @@
   {
     "action": "sell",
     "symbol": "RENDER/USD",
+    "quantity": 3.18999999,
+    "price": 1.904,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-04-04T02:03:41.040138Z",
+    "received_at": "2026-04-04T02:03:41.040159Z",
+    "id": "2026-04-04T02:03:41.040159Z-RENDER/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "RENDER/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2055,27 +2066,5 @@
     "timestamp": "2026-03-28T02:28:24.102743Z",
     "received_at": "2026-03-28T02:28:24.103025Z",
     "id": "2026-03-28T02:28:24.103025Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.05031902260330495,
-    "price": 1985.33,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-03-28T02:02:27.935315Z",
-    "received_at": "2026-03-28T02:02:27.935341Z",
-    "id": "2026-03-28T02:02:27.935341Z-ETH/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 1988.89,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-03-28T02:00:11.820002Z",
-    "received_at": "2026-03-28T02:00:11.820024Z",
-    "id": "2026-03-28T02:00:11.820024Z-ETH/USD-sell"
   }
 ]
