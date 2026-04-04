@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "ETH/USD",
+    "quantity": 0.04865067356857556,
+    "price": 2053.41,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-04-04T07:08:25.499382Z",
+    "received_at": "2026-04-04T07:08:25.499405Z",
+    "id": "2026-04-04T07:08:25.499405Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2110,16 +2121,5 @@
     "timestamp": "2026-03-28T08:00:19.990592Z",
     "received_at": "2026-03-28T08:00:19.990619Z",
     "id": "2026-03-28T08:00:19.990619Z-RENDER/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.05000425036128071,
-    "price": 1997.83,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-03-28T07:05:42.975123Z",
-    "received_at": "2026-03-28T07:05:42.975142Z",
-    "id": "2026-03-28T07:05:42.975142Z-ETH/USD-buy"
   }
 ]
