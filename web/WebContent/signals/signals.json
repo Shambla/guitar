@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2076.41,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-04-07T15:27:00.426252Z",
+    "received_at": "2026-04-07T15:27:00.426280Z",
+    "id": "2026-04-07T15:27:00.426280Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "FET/USD",
     "quantity": 0.03850811,
     "price": 0.2286,
@@ -821,30 +832,6 @@
     "sell_persistence": 0,
     "sell_position_multiplier": 0.5,
     "buy_signal_raw": false,
-    "buy_blocked_rsi_bear_div": false,
-    "rsi_bear_div_block_timer": 0
-  },
-  {
-    "action": "buy",
-    "symbol": "EWG",
-    "price": 38.20000076293945,
-    "quantity": null,
-    "source": "MAIN_stock_strat14",
-    "note": "buy 16/41 | sell 15/40 | Strength=1/10 | MTF:D-only (no higher timeframe confirmation)",
-    "timestamp": "2026-03-24T15:18:15.627770Z",
-    "received_at": "2026-03-24T15:18:15.627770Z",
-    "id": "2026-03-24T15:18:15.627770Z-EWG-buy",
-    "buy_score": 16,
-    "sell_score": 15,
-    "total_buy_components": 41,
-    "total_sell_components": 40,
-    "buy_conviction": 0.4502439024390244,
-    "buy_persistence": 2,
-    "buy_position_multiplier": 1.0,
-    "sell_conviction": 0.675,
-    "sell_persistence": 14,
-    "sell_position_multiplier": 1.0,
-    "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
   },
