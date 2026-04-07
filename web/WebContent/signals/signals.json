@@ -1,50 +1,6 @@
 [
   {
     "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.0618385,
-    "price": 2102.19,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
-    "timestamp": "2026-04-07T02:19:27.969446Z",
-    "received_at": "2026-04-07T02:19:27.969463Z",
-    "id": "2026-04-07T02:19:27.969463Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.04756943,
-    "price": 2097.98562,
-    "source": "MASTER_BOT_162",
-    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-    "timestamp": "2026-04-07T02:19:26.209123Z",
-    "received_at": "2026-04-07T02:19:26.209140Z",
-    "id": "2026-04-07T02:19:26.209140Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "SUI/USD",
-    "quantity": 115.38017768547364,
-    "price": 0.8658,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-04-07T02:05:48.920907Z",
-    "received_at": "2026-04-07T02:05:48.920924Z",
-    "id": "2026-04-07T02:05:48.920924Z-SUI/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "SUI/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-04-07T02:00:16.018398Z",
-    "received_at": "2026-04-07T02:00:16.018526Z",
-    "id": "2026-04-07T02:00:16.018526Z-SUI/USD-buy"
-  },
-  {
-    "action": "buy",
     "symbol": "USO",
     "price": 137.9199981689453,
     "quantity": null,
@@ -74,9 +30,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 13/16 | sell 13/13",
-    "timestamp": "2026-04-06T23:02:51.077049Z",
-    "received_at": "2026-04-06T23:02:51.077049Z",
-    "id": "2026-04-06T23:02:51.077049Z-XLK-info",
+    "timestamp": "2026-04-07T11:12:18.321918Z",
+    "received_at": "2026-04-07T11:12:18.321918Z",
+    "id": "2026-04-07T11:12:18.321918Z-XLK-info",
     "threshold_met": true,
     "buy_score": 13,
     "sell_score": 13,
@@ -1030,6 +986,50 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.0618385,
+    "price": 2102.19,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
+    "timestamp": "2026-04-07T02:19:27.969446Z",
+    "received_at": "2026-04-07T02:19:27.969463Z",
+    "id": "2026-04-07T02:19:27.969463Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.04756943,
+    "price": 2097.98562,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-04-07T02:19:26.209123Z",
+    "received_at": "2026-04-07T02:19:26.209140Z",
+    "id": "2026-04-07T02:19:26.209140Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "SUI/USD",
+    "quantity": 115.38017768547364,
+    "price": 0.8658,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-04-07T02:05:48.920907Z",
+    "received_at": "2026-04-07T02:05:48.920924Z",
+    "id": "2026-04-07T02:05:48.920924Z-SUI/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "SUI/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-04-07T02:00:16.018398Z",
+    "received_at": "2026-04-07T02:00:16.018526Z",
+    "id": "2026-04-07T02:00:16.018526Z-SUI/USD-buy"
   },
   {
     "action": "buy",
