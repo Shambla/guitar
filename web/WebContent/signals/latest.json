@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "ETH/USD",
-  "quantity": 0.0,
-  "price": 2080.1,
-  "source": "MASTER_BOT_162",
-  "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-  "timestamp": "2026-04-07T15:57:06.522514Z",
-  "received_at": "2026-04-07T15:57:06.522531Z",
-  "id": "2026-04-07T15:57:06.522531Z-ETH/USD-sell"
+  "symbol": "TAO/USD",
+  "quantity": 100.0,
+  "price": null,
+  "source": "TradingView JSON",
+  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+  "timestamp": "2026-04-07T18:00:16.575334Z",
+  "received_at": "2026-04-07T18:00:16.575351Z",
+  "id": "2026-04-07T18:00:16.575351Z-TAO/USD-sell"
 }
