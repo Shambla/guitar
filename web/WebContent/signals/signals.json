@@ -1,6 +1,28 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.0618385,
+    "price": 2102.19,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
+    "timestamp": "2026-04-07T02:19:27.969446Z",
+    "received_at": "2026-04-07T02:19:27.969463Z",
+    "id": "2026-04-07T02:19:27.969463Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.04756943,
+    "price": 2097.98562,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-04-07T02:19:26.209123Z",
+    "received_at": "2026-04-07T02:19:26.209140Z",
+    "id": "2026-04-07T02:19:26.209140Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "SUI/USD",
     "quantity": 115.38017768547364,
     "price": 0.8658,
@@ -2108,16 +2130,5 @@
     "timestamp": "2026-03-31T03:00:15.200966Z",
     "received_at": "2026-03-31T03:00:15.201040Z",
     "id": "2026-03-31T03:00:15.201040Z-TAO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "RENDER/USD",
-    "quantity": 58.41121495327103,
-    "price": 1.71,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-03-31T02:07:13.619142Z",
-    "received_at": "2026-03-31T02:07:13.619158Z",
-    "id": "2026-03-31T02:07:13.619158Z-RENDER/USD-buy"
   }
 ]
