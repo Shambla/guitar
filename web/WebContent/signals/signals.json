@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-04-10T02:00:09.851441Z",
+    "received_at": "2026-04-10T02:00:09.851749Z",
+    "id": "2026-04-10T02:00:09.851749Z-RENDER/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "USO",
     "price": 138.0800018310547,
     "quantity": null,
@@ -724,30 +735,6 @@
     "sell_position_multiplier": 1.0
   },
   {
-    "action": "sell",
-    "symbol": "NVDA",
-    "price": 172.6999969482422,
-    "quantity": null,
-    "source": "MAIN_stock_strat14",
-    "note": "buy 10/41 | sell 9/40 | Strength=1/10 | MTF:W",
-    "timestamp": "2026-03-25T03:54:05.431953Z",
-    "received_at": "2026-03-25T03:54:05.431953Z",
-    "id": "2026-03-25T03:54:05.431953Z-NVDA-sell",
-    "buy_score": 10,
-    "sell_score": 9,
-    "total_buy_components": 41,
-    "total_sell_components": 40,
-    "buy_conviction": 0.24390243902439024,
-    "buy_persistence": 0,
-    "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.225,
-    "sell_persistence": 0,
-    "sell_position_multiplier": 0.5,
-    "buy_signal_raw": false,
-    "buy_blocked_rsi_bear_div": false,
-    "rsi_bear_div_block_timer": 0
-  },
-  {
     "action": "buy",
     "symbol": "GLD",
     "price": 400.64,
@@ -768,30 +755,6 @@
     "sell_persistence": 6,
     "sell_position_multiplier": 1.0,
     "buy_signal_raw": true,
-    "buy_blocked_rsi_bear_div": false,
-    "rsi_bear_div_block_timer": 0
-  },
-  {
-    "action": "sell",
-    "symbol": "XLU",
-    "price": 44.650001525878906,
-    "quantity": null,
-    "source": "MAIN_stock_strat14",
-    "note": "buy 14/41 | sell 12/40 | Strength=1/10 | MTF:M",
-    "timestamp": "2026-03-25T03:37:06.559280Z",
-    "received_at": "2026-03-25T03:37:06.559280Z",
-    "id": "2026-03-25T03:37:06.559280Z-XLU-sell",
-    "buy_score": 14,
-    "sell_score": 12,
-    "total_buy_components": 41,
-    "total_sell_components": 40,
-    "buy_conviction": 0.34146341463414637,
-    "buy_persistence": 0,
-    "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.3,
-    "sell_persistence": 0,
-    "sell_position_multiplier": 0.5,
-    "buy_signal_raw": false,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
   },
@@ -2277,82 +2240,5 @@
     "timestamp": "2026-04-03T08:00:16.901748Z",
     "received_at": "2026-04-03T08:00:16.901828Z",
     "id": "2026-04-03T08:00:16.901828Z-SUI/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2055.03,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-04-03T00:47:56.220250Z",
-    "received_at": "2026-04-03T00:47:56.220278Z",
-    "id": "2026-04-03T00:47:56.220278Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2057.11,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-04-03T00:07:56.151017Z",
-    "received_at": "2026-04-03T00:07:56.151031Z",
-    "id": "2026-04-03T00:07:56.151031Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "DASH/USD",
-    "quantity": 3.13151285,
-    "price": 30.16,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-04-03T00:07:19.224066Z",
-    "received_at": "2026-04-03T00:07:19.224110Z",
-    "id": "2026-04-03T00:07:19.224110Z-DASH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "DASH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-04-03T00:00:23.185131Z",
-    "received_at": "2026-04-03T00:00:23.185476Z",
-    "id": "2026-04-03T00:00:23.185476Z-DASH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2148.66,
-    "source": "MASTER_BOT_162",
-    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
-    "timestamp": "2026-04-01T16:50:44.077599Z",
-    "received_at": "2026-04-01T16:50:44.077675Z",
-    "id": "2026-04-01T16:50:44.077675Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 0.03850811,
-    "price": 0.2426,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-04-01T14:00:24.112685Z",
-    "received_at": "2026-04-01T14:00:24.112713Z",
-    "id": "2026-04-01T14:00:24.112713Z-FET/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-04-01T14:00:23.403677Z",
-    "received_at": "2026-04-01T14:00:23.404076Z",
-    "id": "2026-04-01T14:00:23.404076Z-FET/USD-sell"
   }
 ]
