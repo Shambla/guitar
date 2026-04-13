@@ -2,6 +2,50 @@
   {
     "action": "buy",
     "symbol": "TAO/USD",
+    "quantity": 0.3768465480856195,
+    "price": 265.09,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-04-13T02:05:24.981334Z",
+    "received_at": "2026-04-13T02:05:24.981358Z",
+    "id": "2026-04-13T02:05:24.981358Z-TAO/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 428.2655246252677,
+    "price": 0.2333,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-04-13T02:05:24.963449Z",
+    "received_at": "2026-04-13T02:05:24.963471Z",
+    "id": "2026-04-13T02:05:24.963471Z-FET/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-04-13T02:00:20.257466Z",
+    "received_at": "2026-04-13T02:00:20.257490Z",
+    "id": "2026-04-13T02:00:20.257490Z-FET/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-04-13T02:00:20.236771Z",
+    "received_at": "2026-04-13T02:00:20.236787Z",
+    "id": "2026-04-13T02:00:20.236787Z-RENDER/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "TAO/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2412,27 +2456,5 @@
     "timestamp": "2026-04-06T02:07:34.770350Z",
     "received_at": "2026-04-06T02:07:34.770361Z",
     "id": "2026-04-06T02:07:34.770361Z-TAO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "RENDER/USD",
-    "quantity": 53.54999999,
-    "price": 1.924,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-04-06T02:00:53.817834Z",
-    "received_at": "2026-04-06T02:00:53.817852Z",
-    "id": "2026-04-06T02:00:53.817852Z-RENDER/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "RENDER/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-04-06T02:00:32.117289Z",
-    "received_at": "2026-04-06T02:00:32.117304Z",
-    "id": "2026-04-06T02:00:32.117304Z-RENDER/USD-sell"
   }
 ]
