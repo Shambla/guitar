@@ -201,13 +201,13 @@
   {
     "action": "info",
     "symbol": "XLC",
-    "price": 113.80999755859375,
+    "price": 114.2699966430664,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 15/16 | sell 13/13",
-    "timestamp": "2026-04-10T09:42:16.798621Z",
-    "received_at": "2026-04-10T09:42:16.798621Z",
-    "id": "2026-04-10T09:42:16.798621Z-XLC-info",
+    "timestamp": "2026-04-13T02:35:30.728959Z",
+    "received_at": "2026-04-13T02:35:30.728959Z",
+    "id": "2026-04-13T02:35:30.728959Z-XLC-info",
     "threshold_met": true,
     "buy_score": 15,
     "sell_score": 13,
@@ -219,9 +219,9 @@
     "buy_conviction": 0.36585365853658536,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.385,
-    "sell_persistence": 2,
-    "sell_position_multiplier": 0.5
+    "sell_conviction": 0.41500000000000004,
+    "sell_persistence": 3,
+    "sell_position_multiplier": 1.0
   },
   {
     "action": "info",
