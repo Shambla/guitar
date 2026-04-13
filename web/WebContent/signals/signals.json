@@ -551,13 +551,13 @@
   {
     "action": "info",
     "symbol": "HYG",
-    "price": 80.19000244140625,
+    "price": 80.27999877929688,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 13/16 | sell 15/13",
-    "timestamp": "2026-04-10T10:18:11.098528Z",
-    "received_at": "2026-04-10T10:18:11.098528Z",
-    "id": "2026-04-10T10:18:11.098528Z-HYG-info",
+    "timestamp": "2026-04-13T03:09:30.741307Z",
+    "received_at": "2026-04-13T03:09:30.741307Z",
+    "id": "2026-04-13T03:09:30.741307Z-HYG-info",
     "threshold_met": true,
     "buy_score": 13,
     "sell_score": 15,
@@ -570,7 +570,7 @@
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
     "sell_conviction": 0.675,
-    "sell_persistence": 25,
+    "sell_persistence": 32,
     "sell_position_multiplier": 1.0
   },
   {
