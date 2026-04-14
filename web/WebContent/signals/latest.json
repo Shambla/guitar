@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "RENDER/USD",
+  "action": "buy",
+  "symbol": "ETH/USD",
   "quantity": 100.0,
   "price": null,
   "source": "TradingView JSON",
   "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-04-14T06:00:23.380528Z",
-  "received_at": "2026-04-14T06:00:23.380618Z",
-  "id": "2026-04-14T06:00:23.380618Z-RENDER/USD-sell"
+  "timestamp": "2026-04-14T08:00:29.189023Z",
+  "received_at": "2026-04-14T08:00:29.189974Z",
+  "id": "2026-04-14T08:00:29.189974Z-ETH/USD-buy"
 }
