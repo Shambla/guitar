@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 53.908355795148246,
+    "price": 1.853,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-04-17T11:05:48.156168Z",
+    "received_at": "2026-04-17T11:05:48.156190Z",
+    "id": "2026-04-17T11:05:48.156190Z-RENDER/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "USO",
     "price": 138.0800018310547,
     "quantity": null,
@@ -2918,16 +2929,5 @@
     "timestamp": "2026-04-11T10:00:15.585924Z",
     "received_at": "2026-04-11T10:00:15.586058Z",
     "id": "2026-04-11T10:00:15.586058Z-RENDER/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.04469413568245711,
-    "price": 2235.19,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-04-11T04:06:53.598665Z",
-    "received_at": "2026-04-11T04:06:53.598679Z",
-    "id": "2026-04-11T04:06:53.598679Z-ETH/USD-buy"
   }
 ]
