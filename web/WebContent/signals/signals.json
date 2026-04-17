@@ -1,82 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "SUI/USD",
-    "quantity": 0.0,
-    "price": 0.9869,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-04-17T03:00:14.921623Z",
-    "received_at": "2026-04-17T03:00:14.921652Z",
-    "id": "2026-04-17T03:00:14.921652Z-SUI/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "SUI/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-04-17T03:00:12.282944Z",
-    "received_at": "2026-04-17T03:00:12.282956Z",
-    "id": "2026-04-17T03:00:12.282956Z-SUI/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 1e-08,
-    "price": 2333.47,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-04-17T02:12:29.881472Z",
-    "received_at": "2026-04-17T02:12:29.881487Z",
-    "id": "2026-04-17T02:12:29.881487Z-ETH/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "RENDER/USD",
-    "quantity": 52.79831045406547,
-    "price": 1.892,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-04-17T02:05:45.673004Z",
-    "received_at": "2026-04-17T02:05:45.673018Z",
-    "id": "2026-04-17T02:05:45.673018Z-RENDER/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 0.03850811,
-    "price": 0.236,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-04-17T02:00:19.030856Z",
-    "received_at": "2026-04-17T02:00:19.030869Z",
-    "id": "2026-04-17T02:00:19.030869Z-FET/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-04-17T02:00:18.495152Z",
-    "received_at": "2026-04-17T02:00:18.495166Z",
-    "id": "2026-04-17T02:00:18.495166Z-FET/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "RENDER/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-04-17T02:00:12.538946Z",
-    "received_at": "2026-04-17T02:00:12.539339Z",
-    "id": "2026-04-17T02:00:12.539339Z-RENDER/USD-buy"
-  },
-  {
     "action": "buy",
     "symbol": "USO",
     "price": 138.0800018310547,
@@ -103,13 +26,13 @@
   {
     "action": "info",
     "symbol": "XLK",
-    "price": 147.94000244140625,
+    "price": 150.3000030517578,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 15/16 | sell 13/13",
-    "timestamp": "2026-04-16T21:24:44.793414Z",
-    "received_at": "2026-04-16T21:24:44.793414Z",
-    "id": "2026-04-16T21:24:44.793414Z-XLK-info",
+    "timestamp": "2026-04-17T09:39:34.678762Z",
+    "received_at": "2026-04-17T09:39:34.678762Z",
+    "id": "2026-04-17T09:39:34.678762Z-XLK-info",
     "threshold_met": true,
     "buy_score": 15,
     "sell_score": 13,
@@ -122,7 +45,7 @@
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
     "sell_conviction": 0.625,
-    "sell_persistence": 13,
+    "sell_persistence": 14,
     "sell_position_multiplier": 1.0
   },
   {
@@ -1303,6 +1226,83 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "sell",
+    "symbol": "SUI/USD",
+    "quantity": 0.0,
+    "price": 0.9869,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-04-17T03:00:14.921623Z",
+    "received_at": "2026-04-17T03:00:14.921652Z",
+    "id": "2026-04-17T03:00:14.921652Z-SUI/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "SUI/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-04-17T03:00:12.282944Z",
+    "received_at": "2026-04-17T03:00:12.282956Z",
+    "id": "2026-04-17T03:00:12.282956Z-SUI/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 1e-08,
+    "price": 2333.47,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-04-17T02:12:29.881472Z",
+    "received_at": "2026-04-17T02:12:29.881487Z",
+    "id": "2026-04-17T02:12:29.881487Z-ETH/USD-sell"
+  },
+  {
+    "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 52.79831045406547,
+    "price": 1.892,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-04-17T02:05:45.673004Z",
+    "received_at": "2026-04-17T02:05:45.673018Z",
+    "id": "2026-04-17T02:05:45.673018Z-RENDER/USD-buy"
+  },
+  {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 0.03850811,
+    "price": 0.236,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-04-17T02:00:19.030856Z",
+    "received_at": "2026-04-17T02:00:19.030869Z",
+    "id": "2026-04-17T02:00:19.030869Z-FET/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-04-17T02:00:18.495152Z",
+    "received_at": "2026-04-17T02:00:18.495166Z",
+    "id": "2026-04-17T02:00:18.495166Z-FET/USD-sell"
+  },
+  {
+    "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-04-17T02:00:12.538946Z",
+    "received_at": "2026-04-17T02:00:12.539339Z",
+    "id": "2026-04-17T02:00:12.539339Z-RENDER/USD-buy"
   },
   {
     "action": "sell",
