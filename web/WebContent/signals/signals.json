@@ -1,5 +1,38 @@
 [
   {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 0.03850811,
+    "price": 0.236,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-04-17T02:00:19.030856Z",
+    "received_at": "2026-04-17T02:00:19.030869Z",
+    "id": "2026-04-17T02:00:19.030869Z-FET/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-04-17T02:00:18.495152Z",
+    "received_at": "2026-04-17T02:00:18.495166Z",
+    "id": "2026-04-17T02:00:18.495166Z-FET/USD-sell"
+  },
+  {
+    "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-04-17T02:00:12.538946Z",
+    "received_at": "2026-04-17T02:00:12.539339Z",
+    "id": "2026-04-17T02:00:12.539339Z-RENDER/USD-buy"
+  },
+  {
     "action": "buy",
     "symbol": "USO",
     "price": 138.0800018310547,
@@ -722,54 +755,6 @@
     "sell_conviction": 0.405,
     "sell_persistence": 1,
     "sell_position_multiplier": 1.0
-  },
-  {
-    "action": "sell",
-    "symbol": "EWT",
-    "price": 68.95999908447266,
-    "quantity": null,
-    "source": "MAIN_stock_strat14",
-    "note": "buy 10/41 | sell 14/40 | Strength=2/10 | MTF:W",
-    "timestamp": "2026-04-02T12:20:35.252378Z",
-    "received_at": "2026-04-02T12:20:35.252378Z",
-    "id": "2026-04-02T12:20:35.252378Z-EWT-sell",
-    "buy_score": 10,
-    "sell_score": 14,
-    "total_buy_components": 41,
-    "total_sell_components": 40,
-    "buy_conviction": 0.24390243902439024,
-    "buy_persistence": 0,
-    "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.41,
-    "sell_persistence": 2,
-    "sell_position_multiplier": 1.0,
-    "buy_signal_raw": false,
-    "buy_blocked_rsi_bear_div": false,
-    "rsi_bear_div_block_timer": 0
-  },
-  {
-    "action": "sell",
-    "symbol": "SOXX",
-    "price": 309.7900085449219,
-    "quantity": null,
-    "source": "MAIN_stock_strat14",
-    "note": "buy 14/41 | sell 14/40 | Strength=2/10 | MTF:M",
-    "timestamp": "2026-04-02T11:41:33.051489Z",
-    "received_at": "2026-04-02T11:41:33.051489Z",
-    "id": "2026-04-02T11:41:33.051489Z-SOXX-sell",
-    "buy_score": 14,
-    "sell_score": 14,
-    "total_buy_components": 41,
-    "total_sell_components": 40,
-    "buy_conviction": 0.34146341463414637,
-    "buy_persistence": 0,
-    "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.43999999999999995,
-    "sell_persistence": 3,
-    "sell_position_multiplier": 1.0,
-    "buy_signal_raw": false,
-    "buy_blocked_rsi_bear_div": false,
-    "rsi_bear_div_block_timer": 0
   },
   {
     "action": "buy",
@@ -2891,16 +2876,5 @@
     "timestamp": "2026-04-11T02:00:11.566628Z",
     "received_at": "2026-04-11T02:00:11.566756Z",
     "id": "2026-04-11T02:00:11.566756Z-SUI/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "TAO/USD",
-    "quantity": 0.36609999,
-    "price": 264.35,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-04-10T22:07:15.258717Z",
-    "received_at": "2026-04-10T22:07:15.258734Z",
-    "id": "2026-04-10T22:07:15.258734Z-TAO/USD-sell"
   }
 ]
