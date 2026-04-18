@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2361.7,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-04-18T17:09:21.004837Z",
+    "received_at": "2026-04-18T17:09:21.004859Z",
+    "id": "2026-04-18T17:09:21.004859Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "FET/USD",
     "quantity": 0.03850811,
     "price": 0.2207,
@@ -2931,16 +2942,5 @@
     "timestamp": "2026-04-12T19:06:29.111909Z",
     "received_at": "2026-04-12T19:06:29.111926Z",
     "id": "2026-04-12T19:06:29.111926Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-04-12T19:00:54.970234Z",
-    "received_at": "2026-04-12T19:00:54.970343Z",
-    "id": "2026-04-12T19:00:54.970343Z-FET/USD-buy"
   }
 ]
