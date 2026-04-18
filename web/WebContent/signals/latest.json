@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "RENDER/USD",
-  "quantity": 53.447354355959384,
-  "price": 1.869,
+  "symbol": "FET/USD",
+  "quantity": 431.77892918825563,
+  "price": 0.2314,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-04-18T07:00:11.963993Z",
-  "received_at": "2026-04-18T07:00:11.964006Z",
-  "id": "2026-04-18T07:00:11.964006Z-RENDER/USD-buy"
+  "timestamp": "2026-04-18T08:00:18.540338Z",
+  "received_at": "2026-04-18T08:00:18.540349Z",
+  "id": "2026-04-18T08:00:18.540349Z-FET/USD-buy"
 }
