@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "FET/USD",
+  "symbol": "RENDER/USD",
   "quantity": 100.0,
   "price": null,
   "source": "TradingView JSON",
   "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-04-19T13:00:20.290383Z",
-  "received_at": "2026-04-19T13:00:20.290590Z",
-  "id": "2026-04-19T13:00:20.290590Z-FET/USD-buy"
+  "timestamp": "2026-04-19T13:01:30.949159Z",
+  "received_at": "2026-04-19T13:01:30.949191Z",
+  "id": "2026-04-19T13:01:30.949191Z-RENDER/USD-buy"
 }
