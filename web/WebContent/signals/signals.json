@@ -2,6 +2,28 @@
   {
     "action": "sell",
     "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2348.32,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-04-19T01:13:36.968281Z",
+    "received_at": "2026-04-19T01:13:36.969449Z",
+    "id": "2026-04-19T01:13:36.969449Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.04245923,
+    "price": 2350.79,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-04-19T01:00:41.851696Z",
+    "received_at": "2026-04-19T01:00:41.851715Z",
+    "id": "2026-04-19T01:00:41.851715Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2920,27 +2942,5 @@
     "timestamp": "2026-04-13T02:09:21.017644Z",
     "received_at": "2026-04-13T02:09:21.017657Z",
     "id": "2026-04-13T02:09:21.017657Z-RENDER/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "TAO/USD",
-    "quantity": 0.3768465480856195,
-    "price": 265.09,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-04-13T02:05:24.981334Z",
-    "received_at": "2026-04-13T02:05:24.981358Z",
-    "id": "2026-04-13T02:05:24.981358Z-TAO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 428.2655246252677,
-    "price": 0.2333,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-04-13T02:05:24.963449Z",
-    "received_at": "2026-04-13T02:05:24.963471Z",
-    "id": "2026-04-13T02:05:24.963471Z-FET/USD-buy"
   }
 ]
