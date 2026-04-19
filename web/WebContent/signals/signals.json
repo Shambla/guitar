@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-04-19T01:00:09.912197Z",
+    "received_at": "2026-04-19T01:00:09.912266Z",
+    "id": "2026-04-19T01:00:09.912266Z-ETH/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "SUI/USD",
     "quantity": 104.47137484329293,
@@ -2931,16 +2942,5 @@
     "timestamp": "2026-04-13T02:05:24.963449Z",
     "received_at": "2026-04-13T02:05:24.963471Z",
     "id": "2026-04-13T02:05:24.963471Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-04-13T02:00:20.257466Z",
-    "received_at": "2026-04-13T02:00:20.257490Z",
-    "id": "2026-04-13T02:00:20.257490Z-FET/USD-buy"
   }
 ]
