@@ -2,10 +2,10 @@
   "action": "sell",
   "symbol": "ETH/USD",
   "quantity": 0.0,
-  "price": 2295.36,
+  "price": 2298.33,
   "source": "MASTER_BOT_162",
   "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-  "timestamp": "2026-04-19T18:33:20.398619Z",
-  "received_at": "2026-04-19T18:33:20.398735Z",
-  "id": "2026-04-19T18:33:20.398735Z-ETH/USD-sell"
+  "timestamp": "2026-04-19T19:04:38.913899Z",
+  "received_at": "2026-04-19T19:04:38.914009Z",
+  "id": "2026-04-19T19:04:38.914009Z-ETH/USD-sell"
 }
