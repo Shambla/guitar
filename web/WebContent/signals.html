@@ -2389,6 +2389,7 @@
 						<h4>Benchmarks</h4>
 						<ul>
 							<li data-symbol="SPY"><strong>SPY</strong> - SPDR S&P 500 ETF Trust <span class="asset-signal-status"></span></li>
+							<li data-symbol="IBIT"><strong>IBIT</strong> - iShares Bitcoin Trust ETF <span class="asset-signal-status"></span></li>
 						</ul>
 						<h4>Precious Metals</h4>
 						<ul>
@@ -3682,6 +3683,7 @@
 				{ symbol: 'DASH/USD', isStock: false },
 				{ symbol: 'AERO/USD', isStock: false },
 				{ symbol: 'SPY', isStock: true },
+				{ symbol: 'IBIT', isStock: true },
 				{ symbol: 'NVDA', isStock: true },
 				{ symbol: 'F', isStock: true },
 				{ symbol: 'XLK', isStock: true },
@@ -3832,6 +3834,9 @@
 				
 				// Broad Market (SPY, VTI)
 				if (sym === 'SPY' || sym === 'VTI') return '🌍';
+				
+				// Spot Bitcoin ETF
+				if (sym === 'IBIT') return '₿';
 				
 				// Small Cap (IWM)
 				if (sym === 'IWM') return '🐣';

@@ -1,0 +1,77 @@
+/Users/olivia2/Documents/GitHub/guitar/web/WebContent/venv_youtube/lib/python3.9/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+/Users/olivia2/Documents/GitHub/guitar/web/WebContent/venv_youtube/lib/python3.9/site-packages/google/api_core/_python_version_support.py:237: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+  warnings.warn(message, FutureWarning)
+YouTube API Manager ready!
+============================================================
+NOTE: The YouTube Data API v3 does NOT support pinning comments.
+      This script can only post TOP-LEVEL comments.
+
+⚠️  Refresh token expired or revoked. Starting new OAuth flow...
+🌐 Starting OAuth authentication...
+   If your browser does NOT open automatically, the script will still print a URL.
+   Copy/paste that URL into your browser and complete the flow.
+Please visit this URL to authorize this application: https://accounts.google.com/o/oauth2/auth?response_type=code&client_id=949023114760-fm45tuc5kb2i9u61il5e2otitlhb35cn.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A64636%2F&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.force-ssl+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fyoutube.upload&state=tLPHf6LgjrWIU2A7bRmP94yRpGRHtC&access_type=offline
+
+Backend tags (API keywords) for last 10 video(s) — merge (capped; proposed first)
+
+  1. Bach – Goldberg Variations Aria (Classical Guitar Arrangement)
+     id=rmFpZPLf6iI
+     tags: 0 now → 25 after (merge (capped; proposed first))
+     sample: aria, aria guitar, arrangement, arrangement guitar, bach, bach guitar, brian streckfus, brian streckfus guitar, classical, classical guitar, …
+
+✓ Updated tags for video: Bach – Goldberg Variations Aria (Classical Guitar Arrangement)
+  2. My Old Kentucky Home – You’ve Never Heard It Like This (Solo Guitar)
+     id=BZvl9zK1ujI
+     tags: 0 now → 25 after (merge (capped; proposed first))
+     sample: brian streckfus, brian streckfus guitar, classical guitar, classical guitar performance, country guitar, crypto, cryptocurrency, fingerstyle guitar, folk guitar, guitar, …
+
+✓ Updated tags for video: My Old Kentucky Home – You’ve Never Heard It Like This (Solo Guitar)
+  3. Summertime Unique Guitar Cover | Solo Classical Arrangement
+     id=MPJt25MvJCA
+     tags: 0 now → 25 after (merge (capped; proposed first))
+     sample: arrangement guitar, blues, blues guitar, brian streckfus, brian streckfus guitar, classical, classical guitar, classical guitar performance, classical music, cover guitar, …
+
+✓ Updated tags for video: Summertime Unique Guitar Cover | Solo Classical Arrangement
+  4. Guitar Chord Diagrams that Save Time
+     id=jVWVOz238DU
+     tags: 36 now → 25 after (merge (capped; proposed first))
+     sample: brian streckfus, brian streckfus guitar, chord, chord guitar, crypto, crypto music, cryptocurrency, diagrams, diagrams guitar, guitar, …
+
+✓ Updated tags for video: Guitar Chord Diagrams that Save Time
+  5. How Well Do You Know These Chords?
+     id=_Goj1-JjFkk
+     tags: 36 now → 25 after (merge (capped; proposed first))
+     sample: brian streckfus, brian streckfus guitar, chords guitar, crypto, crypto music, cryptocurrency, do guitar, guitar, guitar lesson, guitar practice, …
+
+✓ Updated tags for video: How Well Do You Know These Chords?
+  6. Learn Guitar Chords Faster with this Method
+     id=lZw-hsUgvW8
+     tags: 36 now → 25 after (merge (capped; proposed first))
+     sample: brian streckfus, brian streckfus guitar, chords, chords guitar, crypto, crypto music, cryptocurrency, faster, faster guitar, guitar, …
+
+✓ Updated tags for video: Learn Guitar Chords Faster with this Method
+  7. How to Master being a Rhythm Guitarist - Excerpt from Full Lesson
+     id=TObhWzAbfjk
+     tags: 36 now → 25 after (merge (capped; proposed first))
+     sample: being, brian streckfus, brian streckfus guitar, c guitar, composition, d guitar, e guitar, excerpt, excerpt guitar, f guitar, …
+
+✓ Updated tags for video: How to Master being a Rhythm Guitarist - Excerpt from Full Lesson
+  8. Free 200-year-old Guitar Exercise? Carcassi No 1 📖 🎵 Sheet Music & TAB scroll
+     id=ZFpcrbGXQJo
+     tags: 36 now → 23 after (merge (capped; proposed first))
+     sample: backing track guitar, brian streckfus, brian streckfus guitar, c guitar, carcassi guitar, classical guitar, classical guitar etude, classical guitar performance, exercise guitar, fingerstyle guitar, …
+
+✓ Updated tags for video: Free 200-year-old Guitar Exercise? Carcassi No 1 📖 🎵 Sheet Music & TAB scroll
+  9. Stuck on Guitar? Stop Guessing What to Practice | Guitar Lessons That Improve Talent
+     id=cgmfRX6n5pI
+     tags: 36 now → 24 after (merge (capped; proposed first))
+     sample: backing track guitar, blues, blues guitar, brian streckfus, brian streckfus guitar, classical guitar, classical guitar performance, fingerstyle guitar, guessing guitar, guitar, …
+
+✓ Updated tags for video: Stuck on Guitar? Stop Guessing What to Practice | Guitar Lessons That Improve Talent
+  10. Love Guitar? Take Lessons from a Conservatory Grad
+     id=rgamIP1USPA
+     tags: 36 now → 24 after (merge (capped; proposed first))
+     sample: backing track guitar, brian streckfus, brian streckfus guitar, c guitar, classical guitar, classical guitar performance, conservatory guitar, fingerstyle guitar, from, grad guitar, …
+
+✓ Updated tags for video: Love Guitar? Take Lessons from a Conservatory Grad

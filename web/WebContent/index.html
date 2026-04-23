@@ -16,7 +16,7 @@
 			/* Creator tools side panel - right, collapsible */
 			#creator-tools-panel {
 				position: fixed;
-				right: 0;
+				right: env(safe-area-inset-right, 0px);
 				top: 50%;
 				transform: translateY(-50%);
 				z-index: 9000;
@@ -24,12 +24,27 @@
 				flex-direction: row-reverse;
 				align-items: stretch;
 				width: 36px;
+				max-width: calc(100vw - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+				box-sizing: border-box;
 				overflow: hidden;
 				box-shadow: -4px 0 20px rgba(0,0,0,0.35);
 				transition: width 0.3s ease;
 			}
+			/* Cap width so the drawer never extends past the left edge (iPad split view, safe areas, zoom). */
 			#creator-tools-panel.open {
-				width: 316px;
+				width: min(
+					316px,
+					calc(100vw - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) - 12px)
+				);
+			}
+			/* Dynamic viewport: avoids iOS Safari clipping when toolbars resize the layout */
+			@supports (width: 1dvw) {
+				#creator-tools-panel.open {
+					width: min(
+						316px,
+						calc(100dvw - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) - 12px)
+					);
+				}
 			}
 			#creator-tools-tab {
 				width: 36px;
@@ -61,15 +76,19 @@
 				content: '';
 			}
 			#creator-tools-content {
-				width: 280px;
-				min-width: 280px;
+				flex: 1 1 auto;
+				min-width: 0;
+				width: auto;
+				max-height: 85dvh;
 				max-height: 85vh;
 				overflow-y: auto;
+				-webkit-overflow-scrolling: touch;
 				background: rgba(0, 0, 0, 0.92);
 				border: 1px solid rgba(255, 255, 255, 0.2);
 				border-right: none;
 				border-radius: 12px 0 0 12px;
 				padding: 16px;
+				box-sizing: border-box;
 			}
 			#creator-tools-content h3 {
 				color: #2196f3;
@@ -140,7 +159,6 @@
 			}
 			@media (max-width: 768px) {
 				#creator-tools-panel.collapsed { left: -260px; }
-				#creator-tools-content { width: 260px; }
 				#guitar-branding-logo {
 					max-width: 70px;
 					top: 68px;
@@ -363,12 +381,12 @@
 				<div class="creator-tool-card">
 					<h4>YouTube API Manager</h4>
 					<p>Edit descriptions, tags, thumbnails, and more across all your videos in minutes. Add one link or hashtags to hundreds of videos at once.</p>
-					<a href="signals.html#code-download-section">Get it</a>
+					<a href="creator-downloads.html#youtube-api-manager">Get it</a>
 				</div>
 				<div class="creator-tool-card">
 					<h4>MIDI Tools</h4>
-					<p>Command-line scripts for .mid and MusicXML: merge tracks, quantize, transpose, clean chords, add fingerings. For arrangers and producers.</p>
-					<a href="signals.html#code-download-section">Get it</a>
+					<p>Command-line script for .mid files: merge tracks, quantize, lift low notes by octaves, clean chords, add fingerings. For arrangers and producers.</p>
+					<a href="creator-downloads.html#midi-tools">Get it</a>
 				</div>
 			</div>
 		</div>
@@ -382,6 +400,11 @@
 				var el = document.getElementById('creator-tools-panel');
 				el.classList.remove('open');
 				try { localStorage.setItem('creator-tools-panel-open', '0'); } catch (e) {}
+			}
+			function toggleCreatorToolsPanel() {
+				var el = document.getElementById('creator-tools-panel');
+				if (el.classList.contains('open')) closeCreatorToolsPanel();
+				else openCreatorToolsPanel();
 			}
 			(function() {
 				try {

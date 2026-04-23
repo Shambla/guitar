@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="style/montserrat.css">
+		<link type="text/css" rel="stylesheet" href="style/font-awesome.css">
+		<link type="text/css" rel="stylesheet" href="style/index.css">
+		<link rel="shortcut icon" href="img/favico.ico" type="image/x-icon">
+		<title>Creator tools — Downloads | Brian Streckfus</title>
+		<style>
+			body.creator-downloads-page {
+				background: linear-gradient(160deg, #0f1419 0%, #1a2332 50%, #121820 100%);
+				color: rgba(255, 255, 255, 0.92);
+				min-height: 100vh;
+			}
+			.creator-downloads-wrap {
+				max-width: 760px;
+				margin: 0 auto;
+				padding: 28px 20px 80px;
+			}
+			.creator-downloads-wrap h1 {
+				font-size: 2rem;
+				margin: 0 0 10px 0;
+				color: #fff;
+			}
+			.creator-downloads-wrap .lede {
+				color: rgba(255, 255, 255, 0.78);
+				font-size: 1.05rem;
+				line-height: 1.55;
+				margin: 0 0 28px 0;
+			}
+			.creator-downloads-wrap .not-trading {
+				background: rgba(33, 150, 243, 0.12);
+				border: 1px solid rgba(33, 150, 243, 0.45);
+				border-radius: 10px;
+				padding: 14px 16px;
+				margin-bottom: 28px;
+				font-size: 0.95rem;
+				line-height: 1.5;
+			}
+			.creator-downloads-wrap section {
+				scroll-margin-top: 5.5rem;
+				background: rgba(0, 0, 0, 0.35);
+				border: 1px solid rgba(255, 255, 255, 0.12);
+				border-radius: 12px;
+				padding: 22px 20px;
+				margin-bottom: 20px;
+			}
+			.creator-downloads-wrap section h2 {
+				margin: 0 0 10px 0;
+				font-size: 1.35rem;
+				color: #64b5f6;
+			}
+			.creator-downloads-wrap section p {
+				margin: 0 0 14px 0;
+				color: rgba(255, 255, 255, 0.8);
+				font-size: 0.95rem;
+				line-height: 1.55;
+			}
+			.creator-downloads-wrap section p:last-child { margin-bottom: 0; }
+			.creator-downloads-wrap code {
+				background: rgba(0, 0, 0, 0.45);
+				padding: 2px 6px;
+				border-radius: 4px;
+				font-size: 0.88em;
+			}
+			.creator-downloads-wrap .dl-row {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px;
+				align-items: center;
+				margin: 16px 0 12px 0;
+			}
+			.creator-downloads-wrap a.dl-btn {
+				display: inline-block;
+				background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+				color: #fff !important;
+				padding: 12px 20px;
+				border-radius: 8px;
+				font-weight: bold;
+				font-size: 0.95rem;
+				text-decoration: none;
+				box-shadow: 0 4px 14px rgba(33, 150, 243, 0.35);
+				transition: transform 0.2s, box-shadow 0.2s;
+			}
+			.creator-downloads-wrap a.dl-btn:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(33, 150, 243, 0.5);
+			}
+			.creator-downloads-wrap .hint {
+				font-size: 0.88rem;
+				color: rgba(255, 255, 255, 0.65);
+				margin-top: 8px;
+			}
+		</style>
+	</head>
+	<body class="creator-downloads-page">
+		<nav>
+			<div id="backing"></div>
+			<div class="content">
+				<a href="index.html">&#127968; Home</a>
+				<a href="catalog.html" class="catalog-nav-link">&#128220; CATALOG</a>
+				<a href="signals.html">&#128201; Trading Signals</a>
+				<a href="index.html#contact">&#128236; CONTACT</a>
+			</div>
+		</nav>
+
+		<div class="creator-downloads-wrap">
+			<h1><i class="fa fa-wrench" aria-hidden="true"></i> Creator tools — downloads</h1>
+			<p class="lede">
+				Direct downloads for the utilities listed in the blue <strong>Creator tools</strong> tab on the homepage.
+				No trading content here — just Python scripts you run on your own computer.
+			</p>
+			<div class="not-trading" role="note">
+				<strong>Why this page exists:</strong> The old links pointed at <code>signals.html</code>, which is built for
+				<strong>optional TradingView / subscription downloads</strong> and loads different content depending on your session.
+				That was confusing. Use this page instead for YouTube + MIDI tools.
+			</div>
+
+			<section id="youtube-api-manager">
+				<h2>YouTube API Manager</h2>
+				<p>
+					Python script to help manage YouTube uploads in bulk: descriptions, tags, comments, backups, and related workflows.
+					You supply your own Google Cloud OAuth client JSON and token (never committed to git).
+				</p>
+				<div class="dl-row">
+					<a class="dl-btn" href="youtube_api.py" download="youtube_api.py"><i class="fa fa-download" aria-hidden="true"></i> Download youtube_api.py</a>
+				</div>
+				<p class="hint">
+					Requires Python 3 and <code>pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib</code>.
+					Follow the setup comments at the top of the file. Optional companion: <a href="youtube_api_public.py" download="youtube_api_public.py" style="color:#90caf9;">youtube_api_public.py</a>
+				</p>
+			</section>
+
+			<section id="midi-tools">
+				<h2>MIDI tools</h2>
+				<p>
+					Command-line MIDI helper for <code>.mid</code> files: merge tracks, quantize, lift low notes by octaves, clean chords, optional 4-bar rubato humanization, and more.
+				</p>
+				<div class="dl-row">
+					<a class="dl-btn" href="creator-tools/MIDI_manipulator_MASTER.py" download="MIDI_manipulator_MASTER.py"><i class="fa fa-download" aria-hidden="true"></i> Download MIDI_manipulator_MASTER.py</a>
+				</div>
+				<p class="hint">
+					Requires <code>pip install mido</code>. Run <code>python3 MIDI_manipulator_MASTER.py --help</code> for flags.
+				</p>
+			</section>
+
+			<p class="hint" style="margin-top: 24px;">
+				<a href="index.html" style="color:#90caf9;">&larr; Back to home</a>
+			</p>
+		</div>
+
+		<script>
+			(function () {
+				var h = window.location.hash;
+				if (!h || h.length < 2) return;
+				var id = h.slice(1);
+				function go() {
+					var el = document.getElementById(id);
+					if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				}
+				if (document.readyState === 'complete') go();
+				else window.addEventListener('load', go);
+			})();
+		</script>
+	</body>
+</html>

@@ -132,6 +132,10 @@ TOKEN_FILE = os.getenv("YT_TOKEN_FILE", os.path.join(SECRETS_DIR, "youtube_token
 CHANGE_LOG_FILE = "youtube_change_log.jsonl"
 ENABLE_CHANGE_LOG = True
 
+# When using --update-recent-tags: skip videos that already have more than this many
+# tags (leave manual / legacy keyword sets untouched).
+UPDATE_RECENT_TAGS_SKIP_IF_EXISTING_COUNT_GT = 20
+
 # =============================================================================
 # COMMENT POSTING (TOP-LEVEL)
 # =============================================================================
@@ -139,8 +143,35 @@ ENABLE_CHANGE_LOG = True
 # The YouTube Data API v3 does NOT provide an endpoint to "pin" a comment.
 # We can POST a top-level comment across your videos, but pinning must be done
 # manually in YouTube Studio (or via unsupported automation).
+#
+# If commentThreads.insert fails with 403 "insufficient permissions", a frequent cause
+# (for this channel’s workflow) is the video is still private / not yet public—YouTube
+# won’t create comment threads until the video is open for public viewing. Re-run after
+# publishing, or paste the comment manually in Studio.
 ENABLE_BULK_COMMENT_POSTING = False
 DEFAULT_BULK_COMMENT_TEXT = "Thanks for watching! If you'd like tabs/sheet music or backing tracks, check the description."
+
+# Reusable Kit.co / Amazon affiliate top-level comment for --bulk-comment --comment-kitco
+# (keep in sync with commented snippet below for quick copy-paste outside Python)
+BULK_COMMENT_KITCO_AFFILIATE = """Curious about the gear I use for music or plan on making audio/video purchases? https://kit.co/WoodenBoxEngineer
+
+Kit.co is simply a curated list of products I personally use and recommend, and you can see my product reviews there.
+
+If you'd prefer to go directly to Amazon's website, here's a portable Bluetooth speaker I use and like: Anker Portable Bluetooth Speaker https://amzn.to/4bWj9q
+
+Links are affiliate, which helps support the channel at no extra cost. Thanks!"""
+
+# Commented copy of the same text (easy to grab for Studio / another tool next time):
+# Curious about the gear I use for music or plan on making audio/video purchases? https://kit.co/WoodenBoxEngineer
+#
+# Kit.co is simply a curated list of products I personally use and recommend, and you can see my product reviews there.
+#
+# If you'd prefer to go directly to Amazon's website, here's a portable Bluetooth speaker I use and like: Anker Portable Bluetooth Speaker https://amzn.to/4bWj9q
+#
+# Links are affiliate, which helps support the channel at no extra cost. Thanks!
+#
+# Example CLI (10 newest uploads from API, live post):
+#   python3 youtube_api.py --bulk-comment --from-recent --last-n 10 --comment-kitco --live
 
 def _json_dumps_safe(obj) -> str:
     """JSON dump helper that won't crash on non-serializable objects."""
@@ -245,6 +276,8 @@ def post_top_level_comment(service, video_id: str, text: str) -> bool:
     Catalogs results to youtube_change_log.jsonl.
 
     IMPORTANT: Pinning is not supported by the YouTube Data API.
+    403 forbidden on insert often means the video is not publicly viewable yet (e.g. still
+    private); publish first, then retry or comment manually in Studio.
     """
     action = "post_comment"
     applied = _load_applied_fingerprints()
@@ -355,6 +388,45 @@ def run_bulk_comment_plan_from_backup(backup_file: str,
 
     print(f"✓ Wrote comment plan: {plan_file}")
     print("  Review this before running live updates (it makes no API calls).")
+    return plan_file
+
+
+def run_bulk_comment_plan_from_recent_api(service,
+                                          comment_text: str,
+                                          n: int = 10) -> str:
+    """
+    Build the same comment plan JSON as the backup workflow, but video IDs come from
+    the channel uploads playlist (newest first), via get_recent_videos.
+    Requires an authenticated service (small read quota).
+    """
+    n = max(1, min(int(n), 50))
+    videos = get_recent_videos(service, n=n)
+    if not videos:
+        raise RuntimeError("No videos returned from get_recent_videos; check auth and channel.")
+
+    plan = {
+        "created_at": datetime.now().isoformat(timespec="seconds"),
+        "source": "recent_api_playlist",
+        "last_n": n,
+        "comment_text": comment_text,
+        "comment_text_sha256": _sha256_text(comment_text),
+        "total_videos": len(videos),
+        "videos": [],
+    }
+
+    for v in videos:
+        plan["videos"].append({
+            "id": v.get("id"),
+            "title": v.get("title", ""),
+            "publishedAt": v.get("publishedAt"),
+        })
+
+    plan_file = f"youtube_comment_plan_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+    with open(plan_file, "w", encoding="utf-8") as f:
+        json.dump(plan, f, indent=2, ensure_ascii=False)
+
+    print(f"✓ Wrote comment plan (from-recent, n={n}): {plan_file}")
+    print("  Review this before running live updates.")
     return plan_file
 
 
@@ -1288,6 +1360,123 @@ def generate_seo_tags(title: str, description: str, current_tags: List[str] = No
     return final_tags
 
 
+def _merge_tags_capped(
+    existing: List[str],
+    proposed: List[str],
+    max_tags: int = 25,
+    max_chars: int = 380,
+) -> List[str]:
+    """
+    Merge existing + proposed tags with the same size limits as generate_seo_tags.
+    Prioritizes ``proposed`` order, then adds prior tags not already included.
+    """
+    seen: set[str] = set()
+    out: List[str] = []
+    for t in list(proposed) + list(existing):
+        t = str(t).strip().lower()
+        if not t or t in seen:
+            continue
+        seen.add(t)
+        candidate = out + [t]
+        if len(candidate) > max_tags:
+            break
+        char_count = sum(len(x) for x in candidate) + max(len(candidate) - 1, 0)
+        if char_count > max_chars:
+            break
+        out.append(t)
+    return out
+
+
+def update_recent_videos_backend_tags(
+    service,
+    n: int = 5,
+    dry_run: bool = True,
+    replace: bool = False,
+) -> Dict[str, bool]:
+    """
+    Apply YouTube API snippet tags (Studio "tags" / backend keywords) to the N most recent uploads.
+
+    Uses ``generate_seo_tags(title, description)`` from each video's current metadata.
+    By default merges with existing tags (capped to API-safe size; proposed tags first).
+    Set replace=True to use only the generated tag set (still capped inside generate_seo_tags).
+
+    If a video already has tags and the count is **greater than**
+    ``UPDATE_RECENT_TAGS_SKIP_IF_EXISTING_COUNT_GT`` (default 20), that video is skipped
+    (no API update) to preserve existing keyword sets.
+
+    Args:
+        service: Authenticated YouTube API client
+        n: How many recent videos (max 50)
+        dry_run: If True, only print planned tag sets (no videos.update)
+        replace: If True, replace existing tags; if False, merge with existing (capped)
+
+    Returns:
+        video_id -> success (dry_run counts as True if processed)
+    """
+    results: Dict[str, bool] = {}
+    n = max(1, min(int(n), 50))
+    recent = get_recent_videos(service, n=n)
+    if not recent:
+        print("No recent videos found.")
+        return results
+
+    prefix = "[DRY RUN] " if dry_run else ""
+    mode = "replace with generated set" if replace else "merge (capped; proposed first)"
+    print(f"\n{prefix}Backend tags (API keywords) for last {len(recent)} video(s) — {mode}\n")
+
+    for i, meta in enumerate(recent, 1):
+        vid = str(meta.get("id") or "").strip()
+        if not vid:
+            results[vid] = False
+            continue
+
+        video = get_video_info(service, vid)
+        if not video:
+            print(f"  {i}. ✗ Could not load video {vid}\n")
+            results[vid] = False
+            continue
+
+        sn = video.get("snippet", {})
+        title = sn.get("title", "") or ""
+        desc = sn.get("description", "") or ""
+        before = sn.get("tags") or []
+        n_existing = len(before)
+        if n_existing > UPDATE_RECENT_TAGS_SKIP_IF_EXISTING_COUNT_GT:
+            print(f"  {i}. {title}")
+            print(f"     id={vid}")
+            print(
+                f"     ↩︎ Skipping: already has {n_existing} tags "
+                f"(>{UPDATE_RECENT_TAGS_SKIP_IF_EXISTING_COUNT_GT}); not updating.\n"
+            )
+            results[vid] = True
+            continue
+
+        proposed = generate_seo_tags(title, desc, current_tags=before)
+
+        if replace:
+            final_tags = proposed
+        else:
+            final_tags = _merge_tags_capped(before, proposed)
+
+        print(f"  {i}. {title}")
+        print(f"     id={vid}")
+        print(f"     tags: {len(before)} now → {len(final_tags)} after ({mode})")
+        sample = ", ".join(final_tags[:10])
+        if len(final_tags) > 10:
+            sample += ", …"
+        print(f"     sample: {sample}\n")
+
+        if dry_run:
+            results[vid] = True
+            continue
+
+        # Always replace with computed final_tags (merge already applied in final_tags when replace=False)
+        ok = update_video_tags(service, vid, final_tags, replace=True)
+        results[vid] = bool(ok)
+
+    return results
+
+
 def check_quota_status(service) -> Dict[str, any]:
     """
     Check YouTube API quota usage (approximate).
@@ -2003,6 +2192,16 @@ if __name__ == "__main__":
 
     # Bulk top-level comments (pinning not supported by API)
     parser.add_argument("--bulk-comment", action="store_true", help="Enable bulk TOP-LEVEL comment posting workflow (pinning not supported by API)")
+    parser.add_argument(
+        "--from-recent",
+        action="store_true",
+        help="With --bulk-comment: use the last --last-n uploads from the API (newest first) instead of sorting videos from --backup-file.",
+    )
+    parser.add_argument(
+        "--comment-kitco",
+        action="store_true",
+        help="With --bulk-comment: post BULK_COMMENT_KITCO_AFFILIATE (Kit.co / Amazon affiliate blurb). Overrides default text.",
+    )
     parser.add_argument("--comment-text", default=None, help="Comment text to post (if omitted, uses DEFAULT_BULK_COMMENT_TEXT)")
     parser.add_argument("--comment-text-file", default=None, help="Path to a UTF-8 text file containing the comment to post")
     parser.add_argument("--oldest-first", action="store_true", help="Post comments oldest->newest (default).")
@@ -2020,6 +2219,27 @@ if __name__ == "__main__":
     # Fix trading videos: update tags + append description for the two "Forward Testing a Trading Bot" ETH videos
     parser.add_argument("--fix-trading-videos", action="store_true", help="Update tags and append description for the two ETH/USD trading bot videos (quant/crypto emphasis).")
     parser.add_argument("--dry-run-trading", action="store_true", help="With --fix-trading-videos: print what would be updated, no API writes.")
+
+    # Recent uploads: Studio/API tags (backend keywords) via generate_seo_tags
+    parser.add_argument(
+        "--update-recent-tags",
+        action="store_true",
+        help=(
+            "Set YouTube snippet tags for the last --last-n uploads using generate_seo_tags "
+            "(default dry-run; use --apply-recent-tags to write). "
+            f"Skips videos that already have more than {UPDATE_RECENT_TAGS_SKIP_IF_EXISTING_COUNT_GT} tags."
+        ),
+    )
+    parser.add_argument(
+        "--apply-recent-tags",
+        action="store_true",
+        help="With --update-recent-tags: call videos.update (otherwise only prints the plan).",
+    )
+    parser.add_argument(
+        "--replace-recent-tags",
+        action="store_true",
+        help="With --update-recent-tags: replace all tags instead of merging with existing.",
+    )
 
     parser.add_argument("--export", "--create-backup", dest="create_backup", action="store_true", help="Export all channel videos to a new backup JSON (youtube_backup_<timestamp>.json).")
     parser.add_argument("--export-output", default=None, help="Optional output path for --export.")
@@ -2068,6 +2288,17 @@ if __name__ == "__main__":
             print("\n Run without --dry-run-trading to apply changes.")
         raise SystemExit(0)
 
+    # --update-recent-tags: API/backend tags for last N uploads (SEO generator)
+    if args.update_recent_tags:
+        svc = get_authenticated_service()
+        n = max(1, min(int(args.last_n), 50))
+        dry = not bool(args.apply_recent_tags)
+        replace = bool(args.replace_recent_tags)
+        if dry:
+            print("Dry run only. Re-run with --apply-recent-tags to write tags to YouTube.\n")
+        update_recent_videos_backend_tags(svc, n=n, dry_run=dry, replace=replace)
+        raise SystemExit(0)
+
     # If no explicit workflow flags were provided, just print guidance and exit.
     if not args.bulk_comment:
         print("Bulk comment posting is available but OFF by default.")
@@ -2075,6 +2306,9 @@ if __name__ == "__main__":
         print("  python3 youtube_api.py --bulk-comment --dry-run --backup-file youtube_backup_20251227_032322.json")
         print("\nExample (LIVE posting; will authenticate and post comments):")
         print("  python3 youtube_api.py --bulk-comment --live --backup-file youtube_backup_20251227_032322.json --batch-size 10 --delay-seconds 2")
+        print("\nExample (10 newest uploads via API + Kit.co affiliate comment; no backup file):")
+        print("  python3 youtube_api.py --bulk-comment --from-recent --last-n 10 --comment-kitco --dry-run   # plan only")
+        print("  python3 youtube_api.py --bulk-comment --from-recent --last-n 10 --comment-kitco --live")
         print("\nTip: Provide your promotional comment with --comment-text-file promo.txt (recommended) or --comment-text \"...\"")
         print("\nSee your last 5 videos (for prompt context):")
         print("  python3 youtube_api.py --list-recent")
@@ -2082,20 +2316,27 @@ if __name__ == "__main__":
         print("\nUpdate tags + description for the two ETH trading bot videos:")
         print("  python3 youtube_api.py --fix-trading-videos --dry-run-trading   # preview")
         print("  python3 youtube_api.py --fix-trading-videos                   # apply")
+        print("\nBackend tags (Studio keywords) for latest uploads (default last 5; merge with existing):")
+        print("  python3 youtube_api.py --update-recent-tags --last-n 5              # dry-run")
+        print("  python3 youtube_api.py --update-recent-tags --last-n 5 --apply-recent-tags")
+        print("  python3 youtube_api.py --update-recent-tags --apply-recent-tags --replace-recent-tags")
         raise SystemExit(0)
 
-    # Resolve comment text
-    comment_text = args.comment_text
-    if args.comment_text_file:
-        with open(args.comment_text_file, "r", encoding="utf-8") as f:
-            comment_text = f.read().strip()
-    if not comment_text:
-        comment_text = DEFAULT_BULK_COMMENT_TEXT
+    # Resolve comment text (--comment-kitco wins over file / inline / default)
+    if args.comment_kitco:
+        comment_text = BULK_COMMENT_KITCO_AFFILIATE
+    else:
+        comment_text = args.comment_text
+        if args.comment_text_file:
+            with open(args.comment_text_file, "r", encoding="utf-8") as f:
+                comment_text = f.read().strip()
+        if not comment_text:
+            comment_text = DEFAULT_BULK_COMMENT_TEXT
 
     if not comment_text.strip():
-        raise SystemExit("Comment text is empty. Provide --comment-text or --comment-text-file.")
+        raise SystemExit("Comment text is empty. Provide --comment-text, --comment-text-file, or --comment-kitco.")
 
-    # Ordering
+    # Ordering (only used with --backup-file)
     oldest_first = True
     if args.newest_first:
         oldest_first = False
@@ -2109,13 +2350,22 @@ if __name__ == "__main__":
     if args.dry_run:
         dry_run = True
 
-    # 1) Always generate a plan first (no API calls)
-    plan_file = run_bulk_comment_plan_from_backup(
-        backup_file=args.backup_file,
-        comment_text=comment_text,
-        oldest_first=oldest_first,
-        limit=int(args.limit) if args.limit and args.limit > 0 else None,
-    )
+    # 1) Plan: from API recent uploads, or from backup JSON
+    if args.from_recent:
+        n_recent = max(1, min(int(args.last_n), 50))
+        svc_plan = get_authenticated_service()
+        plan_file = run_bulk_comment_plan_from_recent_api(
+            svc_plan,
+            comment_text=comment_text,
+            n=n_recent,
+        )
+    else:
+        plan_file = run_bulk_comment_plan_from_backup(
+            backup_file=args.backup_file,
+            comment_text=comment_text,
+            oldest_first=oldest_first,
+            limit=int(args.limit) if args.limit and args.limit > 0 else None,
+        )
 
     # 2) Apply plan (only in live mode)
     if dry_run:
@@ -2123,8 +2373,8 @@ if __name__ == "__main__":
         print(f"Review plan file: {plan_file}")
         raise SystemExit(0)
 
-    # LIVE mode: authenticate + post comments
-    svc = get_authenticated_service()
+    # LIVE mode: post comments (reuse service if we already authenticated for from-recent)
+    svc = svc_plan if args.from_recent else get_authenticated_service()
     apply_bulk_comment_plan(
         service=svc,
         plan_file=plan_file,
