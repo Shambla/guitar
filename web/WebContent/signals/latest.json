@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "RENDER/USD",
-  "quantity": 100.0,
-  "price": null,
-  "source": "TradingView JSON",
-  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-04-26T02:01:04.678065Z",
-  "received_at": "2026-04-26T02:01:04.678156Z",
-  "id": "2026-04-26T02:01:04.678156Z-RENDER/USD-sell"
+  "symbol": "ETH/USD",
+  "quantity": 1e-08,
+  "price": 2318.15,
+  "source": "MASTER_BOT_162",
+  "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+  "timestamp": "2026-04-26T02:30:32.997610Z",
+  "received_at": "2026-04-26T02:30:32.997628Z",
+  "id": "2026-04-26T02:30:32.997628Z-ETH/USD-sell"
 }
