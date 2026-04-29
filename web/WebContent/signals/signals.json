@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2286.03,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-04-29T02:44:19.640981Z",
+    "received_at": "2026-04-29T02:44:19.640999Z",
+    "id": "2026-04-29T02:44:19.640999Z-ETH/USD-sell"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 160.57000732421875,
