@@ -1,11 +1,11 @@
 {
-  "action": "sell",
+  "action": "buy",
   "symbol": "FET/USD",
-  "quantity": 1049.93850812,
-  "price": 0.1984,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-05-02T00:08:49.372599Z",
-  "received_at": "2026-05-02T00:08:49.372614Z",
-  "id": "2026-05-02T00:08:49.372614Z-FET/USD-sell"
+  "quantity": 100.0,
+  "price": null,
+  "source": "TradingView JSON",
+  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+  "timestamp": "2026-05-02T02:00:10.725260Z",
+  "received_at": "2026-05-02T02:00:10.725274Z",
+  "id": "2026-05-02T02:00:10.725274Z-FET/USD-buy"
 }

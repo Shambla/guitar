@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-05-02T02:00:10.725260Z",
+    "received_at": "2026-05-02T02:00:10.725274Z",
+    "id": "2026-05-02T02:00:10.725274Z-FET/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "FET/USD",
     "quantity": 1049.93850812,
