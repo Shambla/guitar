@@ -2,6 +2,39 @@
   {
     "action": "buy",
     "symbol": "FET/USD",
+    "quantity": 501.00200400801606,
+    "price": 0.1994,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-05-02T02:05:45.280516Z",
+    "received_at": "2026-05-02T02:05:45.281729Z",
+    "id": "2026-05-02T02:05:45.281729Z-FET/USD-buy"
+  },
+  {
+    "action": "sell",
+    "symbol": "SUI/USD",
+    "quantity": 0.0,
+    "price": 0.9201,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-05-02T02:00:18.543539Z",
+    "received_at": "2026-05-02T02:00:18.543557Z",
+    "id": "2026-05-02T02:00:18.543557Z-SUI/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "SUI/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-05-02T02:00:16.999128Z",
+    "received_at": "2026-05-02T02:00:16.999142Z",
+    "id": "2026-05-02T02:00:16.999142Z-SUI/USD-sell"
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
