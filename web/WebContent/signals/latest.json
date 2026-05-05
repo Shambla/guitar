@@ -1,11 +1,11 @@
 {
-  "action": "sell",
+  "action": "buy",
   "symbol": "RENDER/USD",
-  "quantity": 0.0,
-  "price": 1.841,
+  "quantity": 54.91488193300384,
+  "price": 1.819,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-05-04T22:02:38.523116Z",
-  "received_at": "2026-05-04T22:02:38.523131Z",
-  "id": "2026-05-04T22:02:38.523131Z-RENDER/USD-sell"
+  "timestamp": "2026-05-05T02:01:18.527022Z",
+  "received_at": "2026-05-05T02:01:18.527035Z",
+  "id": "2026-05-05T02:01:18.527035Z-RENDER/USD-buy"
 }
