@@ -102,13 +102,13 @@
   {
     "action": "info",
     "symbol": "XLB",
-    "price": 49.040000915527344,
+    "price": 50.290000915527344,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 11/16 | sell 13/13",
-    "timestamp": "2026-05-22T17:21:45.504010Z",
-    "received_at": "2026-05-22T17:21:45.504010Z",
-    "id": "2026-05-22T17:21:45.504010Z-XLB-info",
+    "timestamp": "2026-05-25T04:17:30.709353Z",
+    "received_at": "2026-05-25T04:17:30.709353Z",
+    "id": "2026-05-25T04:17:30.709353Z-XLB-info",
     "threshold_met": true,
     "buy_score": 11,
     "sell_score": 13,
@@ -120,9 +120,9 @@
     "buy_conviction": 0.2682926829268293,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.385,
-    "sell_persistence": 2,
-    "sell_position_multiplier": 0.5
+    "sell_conviction": 0.475,
+    "sell_persistence": 5,
+    "sell_position_multiplier": 1.0
   },
   {
     "action": "info",
