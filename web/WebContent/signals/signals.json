@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2081.97,
+    "source": "MASTER_BOT_162",
+    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+    "timestamp": "2026-05-26T16:43:22.169898Z",
+    "received_at": "2026-05-26T16:43:22.169970Z",
+    "id": "2026-05-26T16:43:22.169970Z-ETH/USD-sell"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 180.38999938964844,
@@ -1238,16 +1249,5 @@
     "timestamp": "2026-05-24T22:34:33.650893Z",
     "received_at": "2026-05-24T22:34:33.652285Z",
     "id": "2026-05-24T22:34:33.652285Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2117.0,
-    "source": "MASTER_BOT_162",
-    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
-    "timestamp": "2026-05-18T08:49:33.555788Z",
-    "received_at": "2026-05-18T08:49:33.555853Z",
-    "id": "2026-05-18T08:49:33.555853Z-ETH/USD-sell"
   }
 ]
