@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "BNB/USD",
-  "quantity": 0.17155895623531026,
-  "price": 582.31,
+  "action": "sell",
+  "symbol": "ETH/USD",
+  "quantity": 0.0,
+  "price": 1586.03,
   "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-06-05T14:07:12.211970Z",
-  "received_at": "2026-06-05T14:07:12.211985Z",
-  "id": "2026-06-05T14:07:12.211985Z-BNB/USD-buy"
+  "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+  "timestamp": "2026-06-05T16:23:40.914886Z",
+  "received_at": "2026-06-05T16:23:40.914945Z",
+  "id": "2026-06-05T16:23:40.914945Z-ETH/USD-sell"
 }
