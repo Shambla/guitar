@@ -2,6 +2,28 @@
   {
     "action": "buy",
     "symbol": "TAO/USD",
+    "quantity": 0.5069965524234435,
+    "price": 197.04,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-05T22:05:38.961712Z",
+    "received_at": "2026-06-05T22:05:38.961732Z",
+    "id": "2026-06-05T22:05:38.961732Z-TAO/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "SUI/USD",
+    "quantity": 140.01680201624194,
+    "price": 0.7135,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-05T22:05:35.697369Z",
+    "received_at": "2026-06-05T22:05:35.697382Z",
+    "id": "2026-06-05T22:05:35.697382Z-SUI/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "TAO/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
