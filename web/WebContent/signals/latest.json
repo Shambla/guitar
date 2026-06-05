@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "BTC/USD",
-  "quantity": 1.3599415877889212e-05,
-  "price": 73459.04,
+  "action": "sell",
+  "symbol": "ETH/USD",
+  "quantity": 0.07376916,
+  "price": 1730.23,
   "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-05-31T18:16:31.199042Z",
-  "received_at": "2026-05-31T18:16:31.199066Z",
-  "id": "2026-05-31T18:16:31.199066Z-BTC/USD-buy"
+  "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+  "timestamp": "2026-06-05T03:30:27.932574Z",
+  "received_at": "2026-06-05T03:30:27.932890Z",
+  "id": "2026-06-05T03:30:27.932890Z-ETH/USD-sell"
 }
