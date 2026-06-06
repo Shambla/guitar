@@ -1,6 +1,50 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 1567.42,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-06-06T04:10:09.470831Z",
+    "received_at": "2026-06-06T04:10:09.470844Z",
+    "id": "2026-06-06T04:10:09.470844Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "SUI/USD",
+    "quantity": 140.0,
+    "price": 0.6955,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-06T04:00:49.565401Z",
+    "received_at": "2026-06-06T04:00:49.565422Z",
+    "id": "2026-06-06T04:00:49.565422Z-SUI/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "TAO/USD",
+    "quantity": 0.507,
+    "price": 191.82,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-06T04:00:27.945199Z",
+    "received_at": "2026-06-06T04:00:27.945220Z",
+    "id": "2026-06-06T04:00:27.945220Z-TAO/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "SUI/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-06-06T04:00:16.479748Z",
+    "received_at": "2026-06-06T04:00:16.479763Z",
+    "id": "2026-06-06T04:00:16.479763Z-SUI/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "TAO/USD",
     "quantity": 100.0,
     "price": null,
