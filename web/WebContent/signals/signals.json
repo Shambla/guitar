@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "HYPE/USD",
+    "quantity": 1.6686133822793259,
+    "price": 59.87,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-06T09:05:42.993100Z",
+    "received_at": "2026-06-06T09:05:42.993121Z",
+    "id": "2026-06-06T09:05:42.993121Z-HYPE/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "HYPE/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
