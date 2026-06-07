@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "HYPE/USD",
-  "quantity": 1.7102787754403967,
-  "price": 58.41,
+  "symbol": "ETH/USD",
+  "quantity": 0.061360233659769774,
+  "price": 1628.09,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-06-07T16:05:00.533428Z",
-  "received_at": "2026-06-07T16:05:00.533442Z",
-  "id": "2026-06-07T16:05:00.533442Z-HYPE/USD-buy"
+  "timestamp": "2026-06-07T19:00:07.845963Z",
+  "received_at": "2026-06-07T19:00:07.845978Z",
+  "id": "2026-06-07T19:00:07.845978Z-ETH/USD-buy"
 }
