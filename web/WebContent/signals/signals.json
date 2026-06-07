@@ -1,6 +1,61 @@
 [
   {
     "action": "buy",
+    "symbol": "HYPE/USD",
+    "quantity": 1.7102787754403967,
+    "price": 58.41,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-07T16:05:00.533428Z",
+    "received_at": "2026-06-07T16:05:00.533442Z",
+    "id": "2026-06-07T16:05:00.533442Z-HYPE/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 464.6840148698885,
+    "price": 0.215,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-07T16:05:00.513107Z",
+    "received_at": "2026-06-07T16:05:00.513127Z",
+    "id": "2026-06-07T16:05:00.513127Z-FET/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 59.594755661501786,
+    "price": 1.676,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-07T16:05:00.488857Z",
+    "received_at": "2026-06-07T16:05:00.488875Z",
+    "id": "2026-06-07T16:05:00.488875Z-RENDER/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.11681955,
+    "price": 1626.89,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
+    "timestamp": "2026-06-07T16:04:59.425909Z",
+    "received_at": "2026-06-07T16:04:59.425938Z",
+    "id": "2026-06-07T16:04:59.425938Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 0.4729474082482028,
+    "price": 211.23,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-07T16:04:57.177482Z",
+    "received_at": "2026-06-07T16:04:57.177512Z",
+    "id": "2026-06-07T16:04:57.177512Z-TAO/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "ETH/USD",
     "quantity": 0.06146697,
     "price": 1623.63622,
