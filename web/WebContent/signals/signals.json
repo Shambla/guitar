@@ -1,6 +1,28 @@
 [
   {
     "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 469.9248120300752,
+    "price": 0.2126,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-08T00:05:56.143661Z",
+    "received_at": "2026-06-08T00:05:56.145349Z",
+    "id": "2026-06-08T00:05:56.145349Z-FET/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "HYPE/USD",
+    "quantity": 1.6739203213927016,
+    "price": 59.68,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-08T00:00:45.105000Z",
+    "received_at": "2026-06-08T00:00:45.105026Z",
+    "id": "2026-06-08T00:00:45.105026Z-HYPE/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "HYPE/USD",
     "quantity": 100.0,
     "price": null,
