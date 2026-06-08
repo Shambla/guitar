@@ -1,16 +1,5 @@
 [
   {
-    "action": "buy",
-    "symbol": "SUI/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-06-08T09:00:18.028148Z",
-    "received_at": "2026-06-08T09:00:18.028215Z",
-    "id": "2026-06-08T09:00:18.028215Z-SUI/USD-buy"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 198.2100067138672,
@@ -392,9 +381,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 8/16 | sell 9/13",
-    "timestamp": "2026-06-06T00:12:48.396492Z",
-    "received_at": "2026-06-06T00:12:48.396492Z",
-    "id": "2026-06-06T00:12:48.396492Z-SLV-info",
+    "timestamp": "2026-06-08T09:00:40.954404Z",
+    "received_at": "2026-06-08T09:00:40.954404Z",
+    "id": "2026-06-08T09:00:40.954404Z-SLV-info",
     "threshold_met": false,
     "buy_score": 8,
     "sell_score": 9,
@@ -417,9 +406,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 8/16 | sell 8/13",
-    "timestamp": "2026-06-06T00:18:55.314286Z",
-    "received_at": "2026-06-06T00:18:55.314286Z",
-    "id": "2026-06-06T00:18:55.314286Z-PPLT-info",
+    "timestamp": "2026-06-08T09:02:49.935616Z",
+    "received_at": "2026-06-08T09:02:49.935616Z",
+    "id": "2026-06-08T09:02:49.935616Z-PPLT-info",
     "threshold_met": false,
     "buy_score": 8,
     "sell_score": 8,
@@ -998,6 +987,17 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "buy",
+    "symbol": "SUI/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-06-08T09:00:18.028148Z",
+    "received_at": "2026-06-08T09:00:18.028215Z",
+    "id": "2026-06-08T09:00:18.028215Z-SUI/USD-buy"
   },
   {
     "action": "sell",
