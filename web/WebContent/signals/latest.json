@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "RENDER/USD",
-  "quantity": 60.679611650485434,
-  "price": 1.646,
+  "action": "sell",
+  "symbol": "ETH/USD",
+  "quantity": 0.0,
+  "price": 1670.8,
   "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-06-09T08:00:36.233141Z",
-  "received_at": "2026-06-09T08:00:36.233157Z",
-  "id": "2026-06-09T08:00:36.233157Z-RENDER/USD-buy"
+  "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+  "timestamp": "2026-06-09T13:51:51.695058Z",
+  "received_at": "2026-06-09T13:51:51.695082Z",
+  "id": "2026-06-09T13:51:51.695082Z-ETH/USD-sell"
 }
