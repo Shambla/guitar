@@ -1,16 +1,5 @@
 [
   {
-    "action": "buy",
-    "symbol": "BNB/USD",
-    "quantity": 0.16505190882532556,
-    "price": 605.26,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-06-12T10:14:28.785172Z",
-    "received_at": "2026-06-12T10:14:28.785249Z",
-    "id": "2026-06-12T10:14:28.785249Z-BNB/USD-buy"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": NaN,
@@ -67,9 +56,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 8/16 | sell 7/13",
-    "timestamp": "2026-06-11T20:32:56.522488Z",
-    "received_at": "2026-06-11T20:32:56.522488Z",
-    "id": "2026-06-11T20:32:56.522488Z-XLP-info",
+    "timestamp": "2026-06-12T10:18:42.999684Z",
+    "received_at": "2026-06-12T10:18:42.999684Z",
+    "id": "2026-06-12T10:18:42.999684Z-XLP-info",
     "threshold_met": false,
     "buy_score": 8,
     "sell_score": 7,
@@ -950,6 +939,17 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "buy",
+    "symbol": "BNB/USD",
+    "quantity": 0.16505190882532556,
+    "price": 605.26,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-12T10:14:28.785172Z",
+    "received_at": "2026-06-12T10:14:28.785249Z",
+    "id": "2026-06-12T10:14:28.785249Z-BNB/USD-buy"
   },
   {
     "action": "buy",
