@@ -1,16 +1,5 @@
 [
   {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.05971254,
-    "price": 1671.34062,
-    "source": "MASTER_BOT_162",
-    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-    "timestamp": "2026-06-12T10:47:21.944152Z",
-    "received_at": "2026-06-12T10:47:21.944172Z",
-    "id": "2026-06-12T10:47:21.944172Z-ETH/USD-buy"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": NaN,
@@ -217,9 +206,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 12/16 | sell 8/13",
-    "timestamp": "2026-06-11T21:08:15.042155Z",
-    "received_at": "2026-06-11T21:08:15.042155Z",
-    "id": "2026-06-11T21:08:15.042155Z-XLF-info",
+    "timestamp": "2026-06-12T10:51:13.138054Z",
+    "received_at": "2026-06-12T10:51:13.138054Z",
+    "id": "2026-06-12T10:51:13.138054Z-XLF-info",
     "threshold_met": false,
     "buy_score": 12,
     "sell_score": 8,
@@ -950,6 +939,17 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.05971254,
+    "price": 1671.34062,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-06-12T10:47:21.944152Z",
+    "received_at": "2026-06-12T10:47:21.944172Z",
+    "id": "2026-06-12T10:47:21.944172Z-ETH/USD-buy"
   },
   {
     "action": "buy",
