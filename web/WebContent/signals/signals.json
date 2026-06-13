@@ -1,16 +1,5 @@
 [
   {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.05978465567027567,
-    "price": 1671.0,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-06-13T02:06:02.656411Z",
-    "received_at": "2026-06-13T02:06:02.656430Z",
-    "id": "2026-06-13T02:06:02.656430Z-ETH/USD-buy"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": NaN,
@@ -592,9 +581,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 10/16 | sell 7/13",
-    "timestamp": "2026-06-12T12:25:38.602650Z",
-    "received_at": "2026-06-12T12:25:38.602650Z",
-    "id": "2026-06-12T12:25:38.602650Z-INDA-info",
+    "timestamp": "2026-06-13T02:08:35.781731Z",
+    "received_at": "2026-06-13T02:08:35.781731Z",
+    "id": "2026-06-13T02:08:35.781731Z-INDA-info",
     "threshold_met": false,
     "buy_score": 10,
     "sell_score": 7,
@@ -950,6 +939,28 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.05974786,
+    "price": 1670.3526,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-06-13T02:06:25.741793Z",
+    "received_at": "2026-06-13T02:06:25.741813Z",
+    "id": "2026-06-13T02:06:25.741813Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.05978465567027567,
+    "price": 1671.0,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-13T02:06:02.656411Z",
+    "received_at": "2026-06-13T02:06:02.656430Z",
+    "id": "2026-06-13T02:06:02.656430Z-ETH/USD-buy"
   },
   {
     "action": "buy",
@@ -2710,16 +2721,5 @@
     "timestamp": "2026-06-07T14:00:14.403724Z",
     "received_at": "2026-06-07T14:00:14.403745Z",
     "id": "2026-06-07T14:00:14.403745Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "HYPE/USD",
-    "quantity": 1.669,
-    "price": 59.02,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-06-07T10:00:50.428324Z",
-    "received_at": "2026-06-07T10:00:50.428348Z",
-    "id": "2026-06-07T10:00:50.428348Z-HYPE/USD-sell"
   }
 ]
