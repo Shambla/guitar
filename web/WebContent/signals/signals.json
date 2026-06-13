@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-06-13T05:00:16.478630Z",
+    "received_at": "2026-06-13T05:00:16.478647Z",
+    "id": "2026-06-13T05:00:16.478647Z-ETH/USD-sell"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": NaN,
@@ -2710,16 +2721,5 @@
     "timestamp": "2026-06-07T14:00:20.525924Z",
     "received_at": "2026-06-07T14:00:20.525941Z",
     "id": "2026-06-07T14:00:20.525941Z-SUI/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-06-07T14:00:14.403724Z",
-    "received_at": "2026-06-07T14:00:14.403745Z",
-    "id": "2026-06-07T14:00:14.403745Z-ETH/USD-sell"
   }
 ]
