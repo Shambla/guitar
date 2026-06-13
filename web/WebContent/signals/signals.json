@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-06-13T08:00:06.472905Z",
+    "received_at": "2026-06-13T08:00:06.472927Z",
+    "id": "2026-06-13T08:00:06.472927Z-RENDER/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.11930092,
@@ -2710,16 +2721,5 @@
     "timestamp": "2026-06-07T14:00:21.494280Z",
     "received_at": "2026-06-07T14:00:21.495744Z",
     "id": "2026-06-07T14:00:21.495744Z-TAO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "TAO/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-06-07T14:00:21.228332Z",
-    "received_at": "2026-06-07T14:00:21.228346Z",
-    "id": "2026-06-07T14:00:21.228346Z-TAO/USD-sell"
   }
 ]
