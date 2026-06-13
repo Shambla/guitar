@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "RENDER/USD",
-  "quantity": 100.0,
-  "price": null,
-  "source": "TradingView JSON",
-  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-06-13T08:00:06.472905Z",
-  "received_at": "2026-06-13T08:00:06.472927Z",
-  "id": "2026-06-13T08:00:06.472927Z-RENDER/USD-buy"
+  "symbol": "ETH/USD",
+  "quantity": 0.059717892675003284,
+  "price": 1672.87,
+  "source": "MASTER_BOT_162",
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-06-13T08:01:06.731640Z",
+  "received_at": "2026-06-13T08:01:06.731652Z",
+  "id": "2026-06-13T08:01:06.731652Z-ETH/USD-buy"
 }
