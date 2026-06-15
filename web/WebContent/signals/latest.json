@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "RENDER/USD",
-  "quantity": 3.41999999,
-  "price": 1.839,
+  "symbol": "HYPE/USD",
+  "quantity": 0.0,
+  "price": 67.77,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-06-15T14:08:11.223582Z",
-  "received_at": "2026-06-15T14:08:11.223602Z",
-  "id": "2026-06-15T14:08:11.223602Z-RENDER/USD-sell"
+  "timestamp": "2026-06-15T16:00:25.389985Z",
+  "received_at": "2026-06-15T16:00:25.390000Z",
+  "id": "2026-06-15T16:00:25.390000Z-HYPE/USD-sell"
 }
