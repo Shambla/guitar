@@ -1,16 +1,5 @@
 [
   {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-06-16T10:00:22.480548Z",
-    "received_at": "2026-06-16T10:00:22.480577Z",
-    "id": "2026-06-16T10:00:22.480577Z-ETH/USD-buy"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 184.8000030517578,
@@ -442,9 +431,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 8/16 | sell 16/13",
-    "timestamp": "2026-06-15T22:01:03.324169Z",
-    "received_at": "2026-06-15T22:01:03.324169Z",
-    "id": "2026-06-15T22:01:03.324169Z-PALL-info",
+    "timestamp": "2026-06-16T10:01:06.315666Z",
+    "received_at": "2026-06-16T10:01:06.315666Z",
+    "id": "2026-06-16T10:01:06.315666Z-PALL-info",
     "threshold_met": true,
     "buy_score": 8,
     "sell_score": 16,
@@ -467,9 +456,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 12/16 | sell 14/13",
-    "timestamp": "2026-06-15T22:03:16.188415Z",
-    "received_at": "2026-06-15T22:03:16.188415Z",
-    "id": "2026-06-15T22:03:16.188415Z-USO-info",
+    "timestamp": "2026-06-16T10:03:10.158550Z",
+    "received_at": "2026-06-16T10:03:10.158550Z",
+    "id": "2026-06-16T10:03:10.158550Z-USO-info",
     "threshold_met": true,
     "buy_score": 12,
     "sell_score": 14,
@@ -1046,6 +1035,17 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-06-16T10:00:22.480548Z",
+    "received_at": "2026-06-16T10:00:22.480577Z",
+    "id": "2026-06-16T10:00:22.480577Z-ETH/USD-buy"
   },
   {
     "action": "buy",
