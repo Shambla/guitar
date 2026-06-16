@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-06-16T10:00:22.480548Z",
+    "received_at": "2026-06-16T10:00:22.480577Z",
+    "id": "2026-06-16T10:00:22.480577Z-ETH/USD-buy"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 184.8000030517578,
@@ -2454,27 +2465,5 @@
     "timestamp": "2026-06-09T13:51:51.695058Z",
     "received_at": "2026-06-09T13:51:51.695082Z",
     "id": "2026-06-09T13:51:51.695082Z-ETH/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "RENDER/USD",
-    "quantity": 60.679611650485434,
-    "price": 1.646,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-06-09T08:00:36.233141Z",
-    "received_at": "2026-06-09T08:00:36.233157Z",
-    "id": "2026-06-09T08:00:36.233157Z-RENDER/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "RENDER/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-06-09T08:00:33.474583Z",
-    "received_at": "2026-06-09T08:00:33.474595Z",
-    "id": "2026-06-09T08:00:33.474595Z-RENDER/USD-buy"
   }
 ]
