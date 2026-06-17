@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "BNB/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-06-17T10:22:09.345403Z",
+    "received_at": "2026-06-17T10:22:09.345424Z",
+    "id": "2026-06-17T10:22:09.345424Z-BNB/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "RENDER/USD",
     "quantity": 0.01,
     "price": 1.697,
