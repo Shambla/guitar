@@ -1,6 +1,28 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 1749.62,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-06-18T13:18:39.543412Z",
+    "received_at": "2026-06-18T13:18:39.543426Z",
+    "id": "2026-06-18T13:18:39.543426Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "HYPE/USD",
+    "quantity": 2.769,
+    "price": 71.69,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-18T13:00:52.599511Z",
+    "received_at": "2026-06-18T13:00:52.599585Z",
+    "id": "2026-06-18T13:00:52.599585Z-HYPE/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "HYPE/USD",
     "quantity": 100.0,
     "price": null,
