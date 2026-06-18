@@ -1,16 +1,5 @@
 [
   {
-    "action": "buy",
-    "symbol": "HYPE/USD",
-    "quantity": 1.3815971262779774,
-    "price": 72.31,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-06-18T01:05:59.413789Z",
-    "received_at": "2026-06-18T01:05:59.413811Z",
-    "id": "2026-06-18T01:05:59.413811Z-HYPE/USD-buy"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 184.8000030517578,
@@ -92,9 +81,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 15/16 | sell 11/13",
-    "timestamp": "2026-06-17T11:10:01.845519Z",
-    "received_at": "2026-06-17T11:10:01.845519Z",
-    "id": "2026-06-17T11:10:01.845519Z-XLI-info",
+    "timestamp": "2026-06-18T01:12:42.087581Z",
+    "received_at": "2026-06-18T01:12:42.087581Z",
+    "id": "2026-06-18T01:12:42.087581Z-XLI-info",
     "threshold_met": false,
     "buy_score": 15,
     "sell_score": 11,
@@ -1046,6 +1035,17 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "buy",
+    "symbol": "HYPE/USD",
+    "quantity": 1.3815971262779774,
+    "price": 72.31,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-18T01:05:59.413789Z",
+    "received_at": "2026-06-18T01:05:59.413811Z",
+    "id": "2026-06-18T01:05:59.413811Z-HYPE/USD-buy"
   },
   {
     "action": "buy",
