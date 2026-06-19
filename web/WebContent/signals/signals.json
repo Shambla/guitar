@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "BNB/USD",
+    "quantity": 0.17337933665065797,
+    "price": 576.19,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-19T15:08:12.794687Z",
+    "received_at": "2026-06-19T15:08:12.794702Z",
+    "id": "2026-06-19T15:08:12.794702Z-BNB/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "BNB/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
