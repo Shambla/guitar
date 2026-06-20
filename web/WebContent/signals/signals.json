@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "BNB/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-06-20T05:02:07.677486Z",
+    "received_at": "2026-06-20T05:02:07.677506Z",
+    "id": "2026-06-20T05:02:07.677506Z-BNB/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
     "price": 1703.2,
@@ -2641,16 +2652,5 @@
     "timestamp": "2026-06-13T05:07:20.989330Z",
     "received_at": "2026-06-13T05:07:20.989353Z",
     "id": "2026-06-13T05:07:20.989353Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-06-13T05:00:16.478630Z",
-    "received_at": "2026-06-13T05:00:16.478647Z",
-    "id": "2026-06-13T05:00:16.478647Z-ETH/USD-sell"
   }
 ]
