@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.05802012,
+    "price": 1720.09292,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-06-20T07:29:03.723914Z",
+    "received_at": "2026-06-20T07:29:03.723934Z",
+    "id": "2026-06-20T07:29:03.723934Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "BNB/USD",
     "quantity": 0.17091095539224063,
     "price": 584.51,
