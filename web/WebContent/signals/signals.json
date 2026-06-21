@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "FET/USD",
+    "quantity": 531.3496280552604,
+    "price": 0.188,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-21T20:06:54.677761Z",
+    "received_at": "2026-06-21T20:06:54.677775Z",
+    "id": "2026-06-21T20:06:54.677775Z-FET/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2762,16 +2773,5 @@
     "timestamp": "2026-06-15T06:01:52.748772Z",
     "received_at": "2026-06-15T06:01:52.748794Z",
     "id": "2026-06-15T06:01:52.748794Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "TAO/USD",
-    "quantity": 0.3614283648980772,
-    "price": 276.4,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-06-15T05:53:48.193427Z",
-    "received_at": "2026-06-15T05:53:48.193439Z",
-    "id": "2026-06-15T05:53:48.193439Z-TAO/USD-buy"
   }
 ]
