@@ -1,16 +1,5 @@
 [
   {
-    "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 574.052812858783,
-    "price": 0.174,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-06-23T22:05:50.210763Z",
-    "received_at": "2026-06-23T22:05:50.211724Z",
-    "id": "2026-06-23T22:05:50.211724Z-FET/USD-buy"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 191.44000244140625,
@@ -692,9 +681,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 13/16 | sell 10/13",
-    "timestamp": "2026-06-23T07:59:20.795638Z",
-    "received_at": "2026-06-23T07:59:20.795638Z",
-    "id": "2026-06-23T07:59:20.795638Z-F-info",
+    "timestamp": "2026-06-23T22:07:34.963884Z",
+    "received_at": "2026-06-23T22:07:34.963884Z",
+    "id": "2026-06-23T22:07:34.963884Z-F-info",
     "threshold_met": false,
     "buy_score": 13,
     "sell_score": 10,
@@ -1118,6 +1107,17 @@
     "buy_signal_raw": false,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 574.052812858783,
+    "price": 0.174,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-23T22:05:50.210763Z",
+    "received_at": "2026-06-23T22:05:50.211724Z",
+    "id": "2026-06-23T22:05:50.211724Z-FET/USD-buy"
   },
   {
     "action": "buy",
