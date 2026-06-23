@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.05780647,
-    "price": 1691.89,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-06-23T07:33:08.683767Z",
-    "received_at": "2026-06-23T07:33:08.683779Z",
-    "id": "2026-06-23T07:33:08.683779Z-ETH/USD-sell"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 191.44000244140625,
@@ -242,9 +231,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 12/16 | sell 12/13",
-    "timestamp": "2026-06-22T17:42:23.767892Z",
-    "received_at": "2026-06-22T17:42:23.767892Z",
-    "id": "2026-06-22T17:42:23.767892Z-XLV-info",
+    "timestamp": "2026-06-23T07:34:16.567027Z",
+    "received_at": "2026-06-23T07:34:16.567027Z",
+    "id": "2026-06-23T07:34:16.567027Z-XLV-info",
     "threshold_met": false,
     "buy_score": 12,
     "sell_score": 12,
@@ -910,9 +899,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat14",
     "note": "buy 12/41 | sell 12/40 | Strength=2/10 | MTF:D-only (no higher timeframe confirmation)",
-    "timestamp": "2026-06-22T17:42:23.738669Z",
-    "received_at": "2026-06-22T17:42:23.738669Z",
-    "id": "2026-06-22T17:42:23.738669Z-XLV-sell",
+    "timestamp": "2026-06-23T07:34:16.517289Z",
+    "received_at": "2026-06-23T07:34:16.517289Z",
+    "id": "2026-06-23T07:34:16.517289Z-XLV-sell",
     "buy_score": 12,
     "sell_score": 12,
     "total_buy_components": 41,
@@ -1118,6 +1107,17 @@
     "buy_signal_raw": false,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.05780647,
+    "price": 1691.89,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-06-23T07:33:08.683767Z",
+    "received_at": "2026-06-23T07:33:08.683779Z",
+    "id": "2026-06-23T07:33:08.683779Z-ETH/USD-sell"
   },
   {
     "action": "sell",
