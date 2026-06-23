@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 1681.48,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-06-23T08:01:24.548758Z",
-    "received_at": "2026-06-23T08:01:24.548777Z",
-    "id": "2026-06-23T08:01:24.548777Z-ETH/USD-sell"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 191.44000244140625,
@@ -342,9 +331,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 15/16 | sell 12/13",
-    "timestamp": "2026-06-22T18:12:52.958766Z",
-    "received_at": "2026-06-22T18:12:52.958766Z",
-    "id": "2026-06-22T18:12:52.958766Z-SPY-info",
+    "timestamp": "2026-06-23T08:05:44.898367Z",
+    "received_at": "2026-06-23T08:05:44.898367Z",
+    "id": "2026-06-23T08:05:44.898367Z-SPY-info",
     "threshold_met": false,
     "buy_score": 15,
     "sell_score": 12,
@@ -1118,6 +1107,17 @@
     "buy_signal_raw": false,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 1681.48,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-06-23T08:01:24.548758Z",
+    "received_at": "2026-06-23T08:01:24.548777Z",
+    "id": "2026-06-23T08:01:24.548777Z-ETH/USD-sell"
   },
   {
     "action": "sell",
