@@ -1,6 +1,39 @@
 [
   {
     "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-06-23T15:02:24.837479Z",
+    "received_at": "2026-06-23T15:02:24.837518Z",
+    "id": "2026-06-23T15:02:24.837518Z-RENDER/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "HYPE/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-06-23T15:00:29.623625Z",
+    "received_at": "2026-06-23T15:00:29.623649Z",
+    "id": "2026-06-23T15:00:29.623649Z-HYPE/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-06-23T15:00:27.155784Z",
+    "received_at": "2026-06-23T15:00:27.155800Z",
+    "id": "2026-06-23T15:00:27.155800Z-FET/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "ETH/USD",
     "quantity": 100.0,
     "price": null,
