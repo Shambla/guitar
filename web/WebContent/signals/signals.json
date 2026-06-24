@@ -2,6 +2,17 @@
   {
     "action": "sell",
     "symbol": "ETH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-06-24T04:00:22.723512Z",
+    "received_at": "2026-06-24T04:00:22.723558Z",
+    "id": "2026-06-24T04:00:22.723558Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
     "quantity": 0.12017088,
     "price": 1665.86,
     "source": "MASTER_BOT_162",
@@ -2801,16 +2812,5 @@
     "timestamp": "2026-06-17T08:00:31.164563Z",
     "received_at": "2026-06-17T08:00:31.164579Z",
     "id": "2026-06-17T08:00:31.164579Z-HYPE/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "BNB/USD",
-    "quantity": 0.16515276630883569,
-    "price": 604.89,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-06-17T07:38:03.772556Z",
-    "received_at": "2026-06-17T07:38:03.772573Z",
-    "id": "2026-06-17T07:38:03.772573Z-BNB/USD-buy"
   }
 ]
