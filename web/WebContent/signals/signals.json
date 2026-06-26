@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "HYPE/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-06-26T14:00:27.537804Z",
+    "received_at": "2026-06-26T14:00:27.537818Z",
+    "id": "2026-06-26T14:00:27.537818Z-HYPE/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
@@ -2468,49 +2479,5 @@
     "timestamp": "2026-06-19T14:00:34.367029Z",
     "received_at": "2026-06-19T14:00:34.367052Z",
     "id": "2026-06-19T14:00:34.367052Z-HYPE/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-06-19T14:00:24.263379Z",
-    "received_at": "2026-06-19T14:00:24.263400Z",
-    "id": "2026-06-19T14:00:24.263400Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "TAO/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-06-19T14:00:19.651738Z",
-    "received_at": "2026-06-19T14:00:19.651760Z",
-    "id": "2026-06-19T14:00:19.651760Z-TAO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "HYPE/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-06-19T14:00:17.184459Z",
-    "received_at": "2026-06-19T14:00:17.185357Z",
-    "id": "2026-06-19T14:00:17.185357Z-HYPE/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-06-19T14:00:15.391464Z",
-    "received_at": "2026-06-19T14:00:15.391501Z",
-    "id": "2026-06-19T14:00:15.391501Z-FET/USD-buy"
   }
 ]
