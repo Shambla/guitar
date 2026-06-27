@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-06-27T14:01:32.654127Z",
+    "received_at": "2026-06-27T14:01:32.655553Z",
+    "id": "2026-06-27T14:01:32.655553Z-RENDER/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "TAO/USD",
     "quantity": 100.0,
