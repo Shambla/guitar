@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "RENDER/USD",
+    "quantity": 66.48936170212765,
+    "price": 1.502,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-30T18:06:58.739923Z",
+    "received_at": "2026-06-30T18:06:58.739944Z",
+    "id": "2026-06-30T18:06:58.739944Z-RENDER/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "RENDER/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
