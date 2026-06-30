@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.22397158,
+    "price": 1591.11,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-06-30T02:09:01.346993Z",
+    "received_at": "2026-06-30T02:09:01.347005Z",
+    "id": "2026-06-30T02:09:01.347005Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "RENDER/USD",
     "quantity": 100.0,
     "price": null,
@@ -2468,49 +2479,5 @@
     "timestamp": "2026-06-23T04:00:14.435538Z",
     "received_at": "2026-06-23T04:00:14.435556Z",
     "id": "2026-06-23T04:00:14.435556Z-HYPE/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "HYPE/USD",
-    "quantity": 1.5076134479119554,
-    "price": 66.26,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-06-23T02:08:40.330290Z",
-    "received_at": "2026-06-23T02:08:40.330317Z",
-    "id": "2026-06-23T02:08:40.330317Z-HYPE/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "TAO/USD",
-    "quantity": 0.4418132013784572,
-    "price": 226.11,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-06-23T02:06:01.563166Z",
-    "received_at": "2026-06-23T02:06:01.563187Z",
-    "id": "2026-06-23T02:06:01.563187Z-TAO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 543.773790103317,
-    "price": 0.1837,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-06-23T02:05:02.216662Z",
-    "received_at": "2026-06-23T02:05:02.216683Z",
-    "id": "2026-06-23T02:05:02.216683Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.05780647548138342,
-    "price": 1728.18,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-06-23T02:05:02.174258Z",
-    "received_at": "2026-06-23T02:05:02.174278Z",
-    "id": "2026-06-23T02:05:02.174278Z-ETH/USD-buy"
   }
 ]
