@@ -1,27 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "RENDER/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-07-01T00:00:48.315120Z",
-    "received_at": "2026-07-01T00:00:48.315135Z",
-    "id": "2026-07-01T00:00:48.315135Z-RENDER/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "DASH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-07-01T00:00:46.700119Z",
-    "received_at": "2026-07-01T00:00:46.700217Z",
-    "id": "2026-07-01T00:00:46.700217Z-DASH/USD-buy"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 191.44000244140625,
@@ -328,9 +306,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 10/16 | sell 10/13",
-    "timestamp": "2026-06-30T11:41:08.702558Z",
-    "received_at": "2026-06-30T11:41:08.702558Z",
-    "id": "2026-06-30T11:41:08.702558Z-NVDA-info",
+    "timestamp": "2026-07-01T00:02:04.314984Z",
+    "received_at": "2026-07-01T00:02:04.314984Z",
+    "id": "2026-07-01T00:02:04.314984Z-NVDA-info",
     "threshold_met": false,
     "buy_score": 10,
     "sell_score": 10,
@@ -961,6 +939,28 @@
     "buy_signal_raw": false,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "sell",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-07-01T00:00:48.315120Z",
+    "received_at": "2026-07-01T00:00:48.315135Z",
+    "id": "2026-07-01T00:00:48.315135Z-RENDER/USD-sell"
+  },
+  {
+    "action": "buy",
+    "symbol": "DASH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-07-01T00:00:46.700119Z",
+    "received_at": "2026-07-01T00:00:46.700217Z",
+    "id": "2026-07-01T00:00:46.700217Z-DASH/USD-buy"
   },
   {
     "action": "buy",
