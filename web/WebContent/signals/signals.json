@@ -1,6 +1,50 @@
 [
   {
     "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 0.4985790497083313,
+    "price": 200.37,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-07-01T14:08:17.925488Z",
+    "received_at": "2026-07-01T14:08:17.925505Z",
+    "id": "2026-07-01T14:08:17.925505Z-TAO/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.06273447008193121,
+    "price": 1592.43,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-07-01T14:08:17.886548Z",
+    "received_at": "2026-07-01T14:08:17.886570Z",
+    "id": "2026-07-01T14:08:17.886570Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-07-01T14:00:26.609132Z",
+    "received_at": "2026-07-01T14:00:26.609164Z",
+    "id": "2026-07-01T14:00:26.609164Z-TAO/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "HYPE/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-07-01T14:00:17.895122Z",
+    "received_at": "2026-07-01T14:00:17.895145Z",
+    "id": "2026-07-01T14:00:17.895145Z-HYPE/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "ETH/USD",
     "quantity": 100.0,
     "price": null,
@@ -2182,71 +2226,5 @@
     "timestamp": "2026-06-24T14:24:11.996966Z",
     "received_at": "2026-06-24T14:24:11.997001Z",
     "id": "2026-06-24T14:24:11.997001Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "TAO/USD",
-    "quantity": 0.8719,
-    "price": 216.94,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-06-24T14:08:14.922138Z",
-    "received_at": "2026-06-24T14:08:14.922157Z",
-    "id": "2026-06-24T14:08:14.922157Z-TAO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "RENDER/USD",
-    "quantity": 123.26999999,
-    "price": 1.556,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-06-24T14:08:07.911257Z",
-    "received_at": "2026-06-24T14:08:07.911278Z",
-    "id": "2026-06-24T14:08:07.911278Z-RENDER/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 1e-08,
-    "price": 1642.7,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-06-24T14:00:53.641431Z",
-    "received_at": "2026-06-24T14:00:53.641450Z",
-    "id": "2026-06-24T14:00:53.641450Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-06-24T14:00:47.550199Z",
-    "received_at": "2026-06-24T14:00:47.550213Z",
-    "id": "2026-06-24T14:00:47.550213Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "RENDER/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-06-24T14:00:38.157869Z",
-    "received_at": "2026-06-24T14:00:38.157899Z",
-    "id": "2026-06-24T14:00:38.157899Z-RENDER/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "TAO/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-06-24T14:00:27.566137Z",
-    "received_at": "2026-06-24T14:00:27.566258Z",
-    "id": "2026-06-24T14:00:27.566258Z-TAO/USD-sell"
   }
 ]
