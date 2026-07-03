@@ -1,16 +1,5 @@
 [
   {
-    "action": "buy",
-    "symbol": "TAO/USD",
-    "quantity": 0.46827440880355886,
-    "price": 213.34,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-07-03T02:05:48.351729Z",
-    "received_at": "2026-07-03T02:05:48.351744Z",
-    "id": "2026-07-03T02:05:48.351744Z-TAO/USD-buy"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 191.44000244140625,
@@ -467,9 +456,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 12/16 | sell 15/13",
-    "timestamp": "2026-07-02T13:32:46.606248Z",
-    "received_at": "2026-07-02T13:32:46.606248Z",
-    "id": "2026-07-02T13:32:46.606248Z-USO-info",
+    "timestamp": "2026-07-03T02:06:06.616542Z",
+    "received_at": "2026-07-03T02:06:06.616542Z",
+    "id": "2026-07-03T02:06:06.616542Z-USO-info",
     "threshold_met": true,
     "buy_score": 12,
     "sell_score": 15,
@@ -492,9 +481,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 13/16 | sell 11/13",
-    "timestamp": "2026-07-02T13:35:00.897490Z",
-    "received_at": "2026-07-02T13:35:00.897490Z",
-    "id": "2026-07-02T13:35:00.897490Z-EEM-info",
+    "timestamp": "2026-07-03T02:08:17.917866Z",
+    "received_at": "2026-07-03T02:08:17.917866Z",
+    "id": "2026-07-03T02:08:17.917866Z-EEM-info",
     "threshold_met": false,
     "buy_score": 13,
     "sell_score": 11,
@@ -950,6 +939,17 @@
     "buy_signal_raw": false,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 0.46827440880355886,
+    "price": 213.34,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-07-03T02:05:48.351729Z",
+    "received_at": "2026-07-03T02:05:48.351744Z",
+    "id": "2026-07-03T02:05:48.351744Z-TAO/USD-buy"
   },
   {
     "action": "buy",
