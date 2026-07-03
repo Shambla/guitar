@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-07-03T02:00:13.048685Z",
+    "received_at": "2026-07-03T02:00:13.048786Z",
+    "id": "2026-07-03T02:00:13.048786Z-TAO/USD-buy"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 191.44000244140625,
