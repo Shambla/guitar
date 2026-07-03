@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.05885399,
+    "price": 1695.72176,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-07-03T02:44:21.545204Z",
+    "received_at": "2026-07-03T02:44:21.545225Z",
+    "id": "2026-07-03T02:44:21.545225Z-ETH/USD-buy"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 191.44000244140625,
