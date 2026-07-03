@@ -1,11 +1,11 @@
 {
   "action": "buy",
   "symbol": "TAO/USD",
-  "quantity": 100.0,
-  "price": null,
-  "source": "TradingView JSON",
-  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-07-03T02:00:13.048685Z",
-  "received_at": "2026-07-03T02:00:13.048786Z",
-  "id": "2026-07-03T02:00:13.048786Z-TAO/USD-buy"
+  "quantity": 0.46827440880355886,
+  "price": 213.34,
+  "source": "MASTER_BOT_162",
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-07-03T02:05:48.351729Z",
+  "received_at": "2026-07-03T02:05:48.351744Z",
+  "id": "2026-07-03T02:05:48.351744Z-TAO/USD-buy"
 }
