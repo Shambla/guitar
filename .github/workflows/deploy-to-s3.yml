@@ -22,7 +22,24 @@ jobs:
 
       - name: Sync Files to S3
         run: |
-          aws s3 sync ./web/WebContent s3://${{ secrets.S3_BUCKET }} --delete
+          aws s3 sync ./web/WebContent s3://${{ secrets.S3_BUCKET }} --delete --size-only \
+            --exclude "venv_*/*" \
+            --exclude "pdfs/*" \
+            --exclude "img/uploading_folder/*" \
+            --exclude "*.md" \
+            --exclude "*.csv" \
+            --exclude "*.backup" \
+            --exclude "*backup*" \
+            --exclude "*OBSOLETE*" \
+            --exclude "*obsolete*" \
+            --exclude "*old_broken*" \
+            --exclude "Website_HTML_*" \
+            --exclude "email_list*" \
+            --exclude "__pycache__/*" \
+            --exclude "*.py" \
+            --include "scripts/*.py" \
+            --include "creator-tools/*.py" \
+            --include "youtube_api*.py"
 
       - name: Invalidate CloudFront Cache
         run: |
