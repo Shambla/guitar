@@ -1,0 +1,56 @@
+//@version=5
+// Super Engulfing (bullish): one bullish candle whose real body fully engulfs the combined
+// body span of the previous three candles, and those three must each be bearish (red).
+
+indicator("Super Engulfing — Bullish", shorttitle="SE Bull", overlay=true, max_labels_count=500)
+
+bodyLow(i) =>
+    math.min(open[i], close[i])
+
+bodyHigh(i) =>
+    math.max(open[i], close[i])
+
+strictBear(i) =>
+    close[i] < open[i]
+
+strictBull(i) =>
+    close[i] > open[i]
+
+threeRed = strictBear(1) and strictBear(2) and strictBear(3)
+oneGreen = strictBull(0)
+
+// Union of the three prior bodies (vertical span covered by their real bodies)
+unionLow = math.min(bodyLow(1), bodyLow(2), bodyLow(3))
+unionHigh = math.max(bodyHigh(1), bodyHigh(2), bodyHigh(3))
+
+// Current bullish body must fully cover that union (open = body low, close = body high)
+bodyEngulfsUnion = bodyLow(0) <= unionLow and bodyHigh(0) >= unionHigh
+
+superEngulfBull = threeRed and oneGreen and bodyEngulfsUnion
+
+// --- visuals
+showShape = input.bool(true, "Show marker below bar")
+showLabel = input.bool(true, "Show label")
+bullColor = input.color(color.new(#26a69a, 0), "Marker color")
+
+plotshape(
+     showShape and superEngulfBull,
+     title="Super Engulfing Bullish",
+     style=shape.triangleup,
+     location=location.belowbar,
+     color=bullColor,
+     size=size.small,
+     text="SE+")
+
+if showLabel and superEngulfBull
+    label.new(
+         bar_index,
+         low,
+         "Super Engulfing",
+         style=label.style_label_up,
+         color=color.new(#26a69a, 20),
+         textcolor=color.white,
+         size=size.tiny,
+         yloc=yloc.belowbar)
+
+alertcondition(superEngulfBull, title="Super Engulfing Bullish", message="Super Engulfing (bullish): green candle engulfing 3 red bodies on {{ticker}}")

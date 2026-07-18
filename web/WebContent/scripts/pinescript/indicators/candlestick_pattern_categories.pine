@@ -1,0 +1,180 @@
+//@version=5
+// =============================================================================
+// Candlestick pattern categories (planning / registry)
+// =============================================================================
+// Goal: collapse many named patterns into two booleans your bot can branch on:
+//   - bullish_pattern  → any enabled bullish / reversal-up pattern on this bar
+//   - bearish_pattern  → any enabled bearish / reversal-down pattern on this bar
+// Optional: pattern_bias = 1 (bull only), -1 (bear only), 0 (none or both)
+//
+// This is a reference indicator: copy the bool expressions into a strategy, or
+// use plot* as visual QA. Toggle groups under inputs to reduce noise.
+//
+// Notes:
+// - Most rules use strict OHLC (no high/low) unless the classic definition needs wicks.
+// - Dojis (close == open) are excluded from strict bull/bear roles where noted.
+// - Enable "Confirm on bar close" for non-repainting signals (recommended for bots).
+// =============================================================================
+
+indicator("Candlestick categories — bull vs bear", shorttitle="Candles B/B", overlay=true, max_labels_count=500)
+
+// --- inputs
+grpCore = "Core"
+confirmClose = input.bool(true, "Confirm on bar close", group=grpCore, tooltip="If true, patterns only fire when the bar closes (safer for automation).")
+mutualExclusiveBias = input.bool(true, "Bias: exclude overlap", group=grpCore, tooltip="If both bull and bear fire, clear pattern_bias to 0. If false, both flags can stay true.")
+
+grpTog = "Pattern groups"
+useEngulfing = input.bool(true, "Engulfing (1-bar)", group=grpTog)
+useHammerStar = input.bool(true, "Hammer / shooting star / inverted hammer", group=grpTog)
+useStarsLines = input.bool(true, "Morning / evening star, piercing, dark cloud", group=grpTog)
+useHarami = input.bool(true, "Harami (bull & bear)", group=grpTog)
+useThree = input.bool(true, "Three soldiers / three crows", group=grpTog)
+useTweezer = input.bool(true, "Tweezer top / bottom", group=grpTog)
+useMarubozu = input.bool(true, "Marubozu (near full body)", group=grpTog)
+useSuperEngulf = input.bool(false, "Super engulfing (3 prior + engulf)", group=grpTog)
+
+wickTolPct = input.float(5.0, "Marubozu max wick % of range", minval=0.5, maxval=40, step=0.5, group=grpTog)
+tweezerEpsPct = input.float(8.0, "Tweezer equality tolerance % of range", minval=0.5, maxval=25, step=0.5, group=grpTog)
+trendLen = input.int(20, "Trend context length (SMA)", minval=5, maxval=200, group=grpTog, tooltip="Hammer vs hanging man, shooting star vs weak inversion: classify using price vs this SMA.")
+
+// --- helpers (index 0 = current bar)
+body(i) =>
+    math.abs(close[i] - open[i])
+
+bodyHigh(i) =>
+    math.max(open[i], close[i])
+
+bodyLow(i) =>
+    math.min(open[i], close[i])
+
+rng(i) =>
+    high[i] - low[i]
+
+upWick(i) =>
+    high[i] - bodyHigh(i)
+
+loWick(i) =>
+    bodyLow(i) - low[i]
+
+bull(i) =>
+    close[i] > open[i]
+
+bear(i) =>
+    close[i] < open[i]
+
+midBody(i) =>
+    (open[i] + close[i]) * 0.5
+
+okRange(i) =>
+    rng(i) > syminfo.mintick * 2
+
+// Simple context: "lower half" of recent range → favor bullish reversal shapes; upper → bearish
+upTrendCtx = close >= ta.sma(close, trendLen)
+dnTrendCtx = close <= ta.sma(close, trendLen)
+
+// --- single-candle shape (split by context so hammer ≠ hanging man bucket)
+hammerShape() =>
+    okRange(0) and body(0) > 0 and loWick(0) >= 2.0 * body(0) and upWick(0) <= body(0) * 1.25
+
+hammerBull() =>
+    hammerShape() and dnTrendCtx
+
+hangingManBear() =>
+    hammerShape() and upTrendCtx
+
+shootingStarShape() =>
+    okRange(0) and body(0) > 0 and upWick(0) >= 2.0 * body(0) and loWick(0) <= body(0) * 1.25
+
+shootingBear() =>
+    shootingStarShape() and upTrendCtx
+
+invertedHammerBull() =>
+    okRange(0) and body(0) > 0 and loWick(0) <= body(0) * 0.75 and upWick(0) >= 2.0 * body(0) and dnTrendCtx
+
+// --- Engulfing (classic, 2 candles, bodies only)
+bullEngulf() =>
+    bear(1) and bull(0) and bodyLow(0) <= bodyLow(1) and bodyHigh(0) >= bodyHigh(1)
+
+bearEngulf() =>
+    bull(1) and bear(0) and bodyHigh(0) >= bodyHigh(1) and bodyLow(0) <= bodyLow(1)
+
+// --- Piercing / dark cloud (2 candles)
+piercingLine() =>
+    bear(1) and bull(0) and open(0) < close(1) and close(0) > midBody(1) and close(0) < open(1)
+
+darkCloud() =>
+    bull(1) and bear(0) and open(0) > close(1) and close(0) < midBody(1) and close(0) > open(1)
+
+// --- Morning / evening star (3-candle, simplified)
+morningStar() =>
+    bear(2) and okRange(2) and rng(1) < rng(2) * 0.65 and rng(1) < body(2) * 0.8 and bull(0) and close(0) > midBody(2)
+
+eveningStar() =>
+    bull(2) and okRange(2) and rng(1) < rng(2) * 0.65 and rng(1) < body(2) * 0.8 and bear(0) and close(0) < midBody(2)
+
+// --- Harami (body inside prior body)
+bullHarami() =>
+    bear(1) and bull(0) and bodyHigh(0) <= bodyHigh(1) and bodyLow(0) >= bodyLow(1) and body(0) < body(1) * 0.95
+
+bearHarami() =>
+    bull(1) and bear(0) and bodyHigh(0) <= bodyHigh(1) and bodyLow(0) >= bodyLow(1) and body(0) < body(1) * 0.95
+
+// --- Three soldiers / crows
+threeWhiteSoldiers() =>
+    bull(0) and bull(1) and bull(2) and close(0) > close(1) and close(1) > close(2) and body(0) > rng(0) * 0.35 and body(1) > rng(1) * 0.35 and body(2) > rng(2) * 0.35
+
+threeBlackCrows() =>
+    bear(0) and bear(1) and bear(2) and close(0) < close(1) and close(1) < close(2) and body(0) > rng(0) * 0.35 and body(1) > rng(1) * 0.35 and body(2) > rng(2) * 0.35
+
+// --- Tweezer
+tweezerBottom() =>
+    okRange(0) and okRange(1) and math.abs(low(0) - low(1)) <= math.max(rng(0), rng(1)) * (tweezerEpsPct / 100.0)
+
+tweezerTop() =>
+    okRange(0) and okRange(1) and math.abs(high(0) - high(1)) <= math.max(rng(0), rng(1)) * (tweezerEpsPct / 100.0)
+
+// --- Marubozu (wicks negligible vs range)
+marubozuBull() =>
+    bull(0) and okRange(0) and upWick(0) <= rng(0) * (wickTolPct / 100.0) and loWick(0) <= rng(0) * (wickTolPct / 100.0)
+
+marubozuBear() =>
+    bear(0) and okRange(0) and upWick(0) <= rng(0) * (wickTolPct / 100.0) and loWick(0) <= rng(0) * (wickTolPct / 100.0)
+
+// --- Super engulfing (matches standalone SE scripts — body union of 3 prior)
+unionLow3() =>
+    math.min(bodyLow(1), bodyLow(2), bodyLow(3))
+
+unionHigh3() =>
+    math.max(bodyHigh(1), bodyHigh(2), bodyHigh(3))
+
+superEngulfBull() =>
+    bear(1) and bear(2) and bear(3) and bull(0) and bodyLow(0) <= unionLow3() and bodyHigh(0) >= unionHigh3()
+
+superEngulfBear() =>
+    bull(1) and bull(2) and bull(3) and bear(0) and bodyHigh(0) >= unionHigh3() and bodyLow(0) <= unionLow3()
+
+// --- Aggregate (per-group toggles)
+rawBull = (useEngulfing and bullEngulf()) or (useHammerStar and (hammerBull() or invertedHammerBull())) or (useStarsLines and (morningStar() or piercingLine())) or (useHarami and bullHarami()) or (useThree and threeWhiteSoldiers()) or (useTweezer and tweezerBottom()) or (useMarubozu and marubozuBull()) or (useSuperEngulf and superEngulfBull())
+
+rawBear = (useEngulfing and bearEngulf()) or (useHammerStar and (shootingBear() or hangingManBear())) or (useStarsLines and (eveningStar() or darkCloud())) or (useHarami and bearHarami()) or (useThree and threeBlackCrows()) or (useTweezer and tweezerTop()) or (useMarubozu and marubozuBear()) or (useSuperEngulf and superEngulfBear())
+
+gate = not confirmClose or barstate.isconfirmed
+
+bullish_pattern = gate and rawBull and (not mutualExclusiveBias or not rawBear)
+bearish_pattern = gate and rawBear and (not mutualExclusiveBias or not rawBull)
+
+// +1 bull, -1 bear, 0 none or ambiguous (both categories true when overlap allowed)
+pattern_bias = bullish_pattern and bearish_pattern ? 0 : bullish_pattern ? 1 : bearish_pattern ? -1 : 0
+
+// --- Plots (optional visual QA)
+plotshape(bullish_pattern, title="Bullish category", style=shape.triangleup, location=location.belowbar, size=size.tiny, color=color.new(color.teal, 20), text="B")
+plotshape(bearish_pattern, title="Bearish category", style=shape.triangledown, location=location.abovebar, size=size.tiny, color=color.new(color.red, 20), text="S")
+
+// --- Strategy-friendly exports (Data Window)
+plot(bullish_pattern ? 1 : 0, title="bullish_pattern", display=display.data_window)
+plot(bearish_pattern ? 1 : 0, title="bearish_pattern", display=display.data_window)
+plot(pattern_bias, title="pattern_bias (+1 bull, -1 bear, 0 none)", display=display.data_window)
+
+// Alerts
+alertcondition(bullish_pattern, title="Any bullish pattern (category)", message="bullish_pattern on {{ticker}}")
+alertcondition(bearish_pattern, title="Any bearish pattern (category)", message="bearish_pattern on {{ticker}}")
