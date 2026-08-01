@@ -1,11 +1,11 @@
 {
   "action": "sell",
   "symbol": "ETH/USD",
-  "quantity": 0.0,
-  "price": 1776.58,
-  "source": "MASTER_BOT_162",
-  "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
-  "timestamp": "2026-07-13T04:04:53.033750Z",
-  "received_at": "2026-07-13T04:04:53.034050Z",
-  "id": "2026-07-13T04:04:53.034050Z-ETH/USD-sell"
+  "quantity": 100.0,
+  "price": null,
+  "source": "TradingView JSON",
+  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+  "timestamp": "2026-08-01T18:55:28.413699Z",
+  "received_at": "2026-08-01T18:55:28.413960Z",
+  "id": "2026-08-01T18:55:28.413960Z-ETH/USD-sell"
 }
