@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-08-03T14:00:48.674982Z",
+    "received_at": "2026-08-03T14:00:48.675195Z",
+    "id": "2026-08-03T14:00:48.675195Z-ETH/USD-buy"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 175.35000610351562,
