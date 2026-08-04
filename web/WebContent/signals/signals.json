@@ -1,16 +1,5 @@
 [
   {
-    "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-04T20:00:27.128267Z",
-    "received_at": "2026-08-04T20:00:27.128806Z",
-    "id": "2026-08-04T20:00:27.128806Z-FET/USD-buy"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 178.0399932861328,
@@ -586,27 +575,27 @@
   {
     "action": "info",
     "symbol": "EEM",
-    "price": 64.08999633789062,
+    "price": 64.31999969482422,
     "quantity": null,
     "source": "MAIN_stock_strat12",
-    "note": "Above thresholds | buy 13/16 | sell 15/13",
-    "timestamp": "2026-08-04T06:42:12.709022Z",
-    "received_at": "2026-08-04T06:42:12.709022Z",
-    "id": "2026-08-04T06:42:12.709022Z-EEM-info",
-    "threshold_met": true,
-    "buy_score": 13,
-    "sell_score": 15,
+    "note": "Below thresholds | buy 15/16 | sell 12/13",
+    "timestamp": "2026-08-04T20:02:40.384837Z",
+    "received_at": "2026-08-04T20:02:40.384837Z",
+    "id": "2026-08-04T20:02:40.384837Z-EEM-info",
+    "threshold_met": false,
+    "buy_score": 15,
+    "sell_score": 12,
     "total_buy_components": 41,
     "total_sell_components": 40,
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0,
-    "buy_conviction": 0.3170731707317073,
+    "buy_conviction": 0.36585365853658536,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.675,
-    "sell_persistence": 13,
-    "sell_position_multiplier": 1.0
+    "sell_conviction": 0.3,
+    "sell_persistence": 0,
+    "sell_position_multiplier": 0.5
   },
   {
     "action": "info",
@@ -998,6 +987,17 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-08-04T20:00:27.128267Z",
+    "received_at": "2026-08-04T20:00:27.128806Z",
+    "id": "2026-08-04T20:00:27.128806Z-FET/USD-buy"
   },
   {
     "action": "buy",
