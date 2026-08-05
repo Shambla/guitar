@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "FET/USD",
-  "quantity": 0.03850811,
-  "price": 0.14946,
+  "symbol": "BNB/USD",
+  "quantity": 1e-05,
+  "price": 591.47,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-08-05T14:00:20.661795Z",
-  "received_at": "2026-08-05T14:00:20.661831Z",
-  "id": "2026-08-05T14:00:20.661831Z-FET/USD-sell"
+  "timestamp": "2026-08-05T23:00:27.267593Z",
+  "received_at": "2026-08-05T23:00:27.267611Z",
+  "id": "2026-08-05T23:00:27.267611Z-BNB/USD-sell"
 }
