@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "BNB/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-08-06T12:00:33.795981Z",
+    "received_at": "2026-08-06T12:00:33.795994Z",
+    "id": "2026-08-06T12:00:33.795994Z-BNB/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
     "price": 1899.27,
