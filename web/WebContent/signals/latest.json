@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "LXFR",
+  "action": "buy",
+  "symbol": "ETH/USD",
   "quantity": 100.0,
   "price": null,
   "source": "TradingView JSON",
   "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-08-06T15:12:10.204346Z",
-  "received_at": "2026-08-06T15:12:10.204361Z",
-  "id": "2026-08-06T15:12:10.204361Z-LXFR-sell"
+  "timestamp": "2026-08-07T13:00:28.862919Z",
+  "received_at": "2026-08-07T13:00:28.863333Z",
+  "id": "2026-08-07T13:00:28.863333Z-ETH/USD-buy"
 }
