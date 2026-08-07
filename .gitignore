@@ -60,3 +60,8 @@ client_secrets.json
 # OAuth tokens (YouTube / Google) - never commit
 web/WebContent/youtube_token.json
 web/WebContent/token*.json
+
+# Full paid MP3s — host via AWS/deploy; keep previews in git if small
+web/WebContent/audio/fulldownloads/*.mp3
+!web/WebContent/audio/fulldownloads/.gitkeep
+!web/WebContent/audio/fulldownloads/README.md

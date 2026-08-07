@@ -621,9 +621,18 @@
     "composer": "Traditional",
     "difficulty": "Intermediate",
     "category": "mp3 audio",
+    "tags": ["mp3", "rap", "hip hop"],
     "price": "$1.99",
     "preview_url": "",
-    "sheet_music_direct_url": ""
+    "sheet_music_direct_url": "",
+    "direct_sale": {
+      "enabled": true,
+      "canonical_id": "off-kiltergrit-120-bpm-a-minor",
+      "preview_audio": "audio/previews/off-kilter-grit-120-bpm-a-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/off-kilter-grit-120-bpm-a-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=off-kiltergrit-120-bpm-a-minor"
+    }
   },
   {
     "id": "a-harmonic-minor-chord-progression-generator-for-guitar",
@@ -1931,9 +1940,17 @@
     "composer": "Traditional",
     "difficulty": "Intermediate",
     "category": "mp3 audio",
+    "tags": ["mp3", "rap", "hip hop"],
     "price": "$3.99",
     "preview_url": "https://www.sheetmusicdirect.com/se/ID_No/1233991/Product.aspx",
-    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1233991/Product.aspx"
+    "sheet_music_direct_url": "https://www.sheetmusicdirect.com/se/ID_No/1233991/Product.aspx",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/off-kilter-grit-120-bpm-a-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/off-kilter-grit-120-bpm-a-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=off-kiltergrit-120-bpm-a-minor"
+    }
   },
   {
     "id": "a-harmonic-minor-chord-progression-generator-for-guitars-sma",

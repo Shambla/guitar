@@ -1,0 +1,202 @@
+[
+  {
+    "id": "gritty-rap-90-bpm",
+    "title": "Gritty Rap 90 BPM",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "price": "$3.99",
+    "bpm": 90,
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/gritty-rap-90-bpm-30s.mp3",
+      "full_audio": "audio/fulldownloads/gritty-rap-90-bpm.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=gritty-rap-90-bpm&from=mp3"
+    }
+  },
+  {
+    "id": "off-kiltergrit-120-bpm-a-minor",
+    "title": "Off Kilter Grit 120 BPM A minor",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "price": "$3.99",
+    "bpm": 120,
+    "key": "A minor",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/off-kilter-grit-120-bpm-a-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/off-kilter-grit-120-bpm-a-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=off-kiltergrit-120-bpm-a-minor&from=mp3"
+    }
+  },
+  {
+    "id": "rap-1-may-2026",
+    "title": "Rap 1 — May 2026",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "price": "$3.99",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/rap-1-may-2026-30s.mp3",
+      "full_audio": "audio/fulldownloads/rap-1-may-2026.mp3",
+      "stripe_product_id": "prod_V1wVOuSkqREdYb",
+      "stripe_payment_link": "https://buy.stripe.com/aFa5kF7Sw5SU7F1beV8og01",
+      "purchase_page": "audio-purchase.html?track=rap-1-may-2026&from=mp3"
+    }
+  },
+  {
+    "id": "rap-2-may-2026",
+    "title": "Rap 2 — May 2026",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "price": "$3.99",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/rap-2-may-2026-30s.mp3",
+      "full_audio": "audio/fulldownloads/rap-2-may-2026.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=rap-2-may-2026&from=mp3"
+    }
+  },
+  {
+    "id": "rap-3-may-2026",
+    "title": "Rap 3 — May 2026",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "price": "$3.99",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/rap-3-may-2026-30s.mp3",
+      "full_audio": "audio/fulldownloads/rap-3-may-2026.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=rap-3-may-2026&from=mp3"
+    }
+  },
+  {
+    "id": "rap-4-may-2026",
+    "title": "Rap 4 — May 2026",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "price": "$3.99",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/rap-4-may-2026-30s.mp3",
+      "full_audio": "audio/fulldownloads/rap-4-may-2026.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=rap-4-may-2026&from=mp3"
+    }
+  },
+  {
+    "id": "rap-5-may-2026",
+    "title": "Rap 5 — May 2026",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "price": "$3.99",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/rap-5-may-2026-30s.mp3",
+      "full_audio": "audio/fulldownloads/rap-5-may-2026.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=rap-5-may-2026&from=mp3"
+    }
+  },
+  {
+    "id": "rap-6-may-2026",
+    "title": "Rap 6 — May 2026",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "price": "$3.99",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/rap-6-may-2026-30s.mp3",
+      "full_audio": "audio/fulldownloads/rap-6-may-2026.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=rap-6-may-2026&from=mp3"
+    }
+  },
+  {
+    "id": "rap-7-may-2026",
+    "title": "Rap 7 — May 2026",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "price": "$3.99",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/rap-7-may-2026-30s.mp3",
+      "full_audio": "audio/fulldownloads/rap-7-may-2026.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=rap-7-may-2026&from=mp3"
+    }
+  },
+  {
+    "id": "rap-8-may-2026",
+    "title": "Rap 8 — May 2026",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "price": "$3.99",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/rap-8-may-2026-30s.mp3",
+      "full_audio": "audio/fulldownloads/rap-8-may-2026.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=rap-8-may-2026&from=mp3"
+    }
+  },
+  {
+    "id": "rap-9-may-2026",
+    "title": "Rap 9 — May 2026",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "price": "$3.99",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/rap-9-may-2026-30s.mp3",
+      "full_audio": "audio/fulldownloads/rap-9-may-2026.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=rap-9-may-2026&from=mp3"
+    }
+  },
+  {
+    "id": "rap-10-may-2026",
+    "title": "Rap 10 — May 2026",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "price": "$3.99",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/rap-10-may-2026-30s.mp3",
+      "full_audio": "audio/fulldownloads/rap-10-may-2026.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=rap-10-may-2026&from=mp3"
+    }
+  },
+  {
+    "id": "rap-11-may-2026",
+    "title": "Rap 11 — May 2026",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "price": "$3.99",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/rap-11-may-2026-30s.mp3",
+      "full_audio": "audio/fulldownloads/rap-11-may-2026.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=rap-11-may-2026&from=mp3"
+    }
+  },
+  {
+    "id": "rap-12-may-2026",
+    "title": "Rap 12 — May 2026",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "price": "$3.99",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/rap-12-may-2026-30s.mp3",
+      "full_audio": "audio/fulldownloads/rap-12-may-2026.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=rap-12-may-2026&from=mp3"
+    }
+  }
+]

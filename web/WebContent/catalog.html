@@ -34,6 +34,7 @@
 				<a href="index.html#media">&#128247; &#9654; MEDIA</a>
 				<a href="index.html#contact">&#128236; CONTACT</a>
 				<a href="catalog.html" class="catalog-nav-link" style="font-weight: bold;">&#128220; &#127925; &#128722; CATALOG &#127911; &#127925; &#127928;</a>
+				<a href="mp3-downloads.html">&#127911; MP3 Downloads</a>
 				<a href="signals.html">&#128201; Trading Signals</a>
 			</div>
 		</nav>
@@ -43,7 +44,10 @@
 			<div class="catalog-intro-row">
 				<div class="catalog-intro-main">
 					<p>Browse my complete collection of arrangements that span a vast amount of genres. My publications include playable, intuitive and visual music theory. My publications also include visually beautiful and efficient scales and chord diagrams. Each tile pulls a fresh snapshot directly from the live listing, so you can confirm the piece before jumping to Sheet Music Direct. <strong>MP3 purchases include a commercial-use license (YouTube, podcasts, client work, ads, etc.) with proof of purchase + attribution</strong> (details at the bottom of this page).</p>
-					<div style="margin: 8px 0 18px 0;">
+					<div style="margin: 8px 0 18px 0; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+						<a href="mp3-downloads.html" style="display: inline-block; font-size: 14px; padding: 10px 16px; border-radius: 8px; background: #111; border: 1px solid #111; color: #fff; text-decoration: none; font-weight: 700;">
+							🎧 MP3 Downloads
+						</a>
 						<a href="#mp3-audio-license" style="display: inline-block; font-size: 13px; padding: 8px 12px; border-radius: 999px; background: rgba(0, 0, 0, 0.06); border: 1px solid rgba(0, 0, 0, 0.15); color: #111; text-decoration: none;">
 							View MP3 Audio License
 						</a>
@@ -100,9 +104,21 @@
 					<button class="filter-btn" onclick="filterBy('intermediate', event)">Intermediate</button>
 					<button class="filter-btn" onclick="filterBy('advanced', event)">Advanced</button>
 					<!--
-					Planned category: Rap / Hip Hop backing tracks — licensed MP3 instrumentals in that genre (for creators, practice, etc.).
-					To enable: uncomment the button below and tag matching items in catalog-data.json so category includes this substring (e.g. "rap hip hop backing tracks" or "mp3 audio rap hip hop backing tracks").
-					<button class="filter-btn" onclick="filterBy('rap hip hop backing tracks', event)">Rap / Hip Hop Backing Tracks</button>
+					Rap / Hip Hop filters — NOT LIVE yet (buttons stay commented).
+					Data model: keep category "mp3 audio", plus separate tags[] on items, e.g.
+					  "tags": ["mp3", "rap", "hip hop"]
+					Practice item tagged so far: Off Kilter (both catalog rows).
+
+					Deep links (also not public yet):
+					  - Code lives in script/catalog.js with CATALOG_DEEP_LINKS_LIVE = false
+					  - Local/preview only: catalog.html?catalog_preview=1&filter=rap
+					  - Also: ...&filter=hip-hop   or   ...&filter=mp3
+					  - When ready for YouTube: set CATALOG_DEEP_LINKS_LIVE = true, then
+					    https://brianstreckfus.com/catalog.html?filter=rap
+
+					<button class="filter-btn" onclick="filterBy('rap', event)">Rap</button>
+					<button class="filter-btn" onclick="filterBy('hip hop', event)">Hip Hop</button>
+					<button class="filter-btn" onclick="filterBy('rap', event)">Rap / Hip Hop Backing Tracks</button>
 					-->
 				</div>
 			</div>
@@ -125,7 +141,7 @@
 			<div style="line-height: 1.65;">
 				<h3 style="margin: 18px 0 8px 0;">1) Grant of License</h3>
 				<p style="margin: 0 0 10px 0;">
-					Upon purchase, Licensor grants you (“Licensee”) a non-exclusive, non-transferable, worldwide license to use the purchased Audio in commercial and non-commercial projects, including <strong>monetized YouTube</strong>, videos, podcasts, livestreams, advertisements, games, and client work. You may synchronize the Audio with visual media and make minor edits needed for your project (trimming, looping, fades, timing, volume).
+					Upon purchase, Licensor grants you (“Licensee”) a non-exclusive, non-transferable, worldwide license to use the purchased Audio in commercial and non-commercial projects, including <strong>monetized YouTube</strong>, other online video, film, television, soundtracks and sync placements, podcasts, livestreams, advertisements, games, teaching materials, and client work. You may synchronize the Audio with visual media and make minor edits needed for your project (trimming, looping, fades, timing, volume).
 				</p>
 
 				<h3 style="margin: 18px 0 8px 0;">2) Proof of Purchase Required</h3>

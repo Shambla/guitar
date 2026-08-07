@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MP3 Downloads — Brian Streckfus</title>
+	<link type="text/css" rel="stylesheet" href="style/montserrat.css">
+	<link type="text/css" rel="stylesheet" href="style/index.css">
+	<link rel="shortcut icon" href="img/favico.ico" type="image/x-icon">
+	<style>
+		:root {
+			--mp3-bg: #0c0f12;
+			--mp3-surface: #161b22;
+			--mp3-line: rgba(232, 220, 200, 0.14);
+			--mp3-text: #f3efe6;
+			--mp3-muted: rgba(243, 239, 230, 0.68);
+			--mp3-accent: #d4a24c;
+			--mp3-accent-ink: #1a1208;
+			--mp3-green: #6fbf73;
+		}
+
+		body.mp3-downloads-page {
+			background:
+				radial-gradient(ellipse 80% 50% at 10% -10%, rgba(212, 162, 76, 0.12), transparent 55%),
+				radial-gradient(ellipse 60% 40% at 100% 0%, rgba(80, 120, 140, 0.18), transparent 50%),
+				var(--mp3-bg);
+			color: var(--mp3-text);
+			min-height: 100vh;
+			margin: 0;
+			font-family: Montserrat, system-ui, sans-serif;
+		}
+
+		body.mp3-downloads-page nav .content a {
+			color: var(--mp3-text);
+		}
+
+		.mp3-wrap {
+			max-width: 1100px;
+			margin: 0 auto;
+			padding: 100px 20px 80px;
+		}
+
+		.mp3-hero {
+			margin-bottom: 36px;
+			max-width: 640px;
+		}
+
+		.mp3-hero-kicker {
+			font-size: 0.75rem;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			color: var(--mp3-accent);
+			margin: 0 0 10px;
+		}
+
+		.mp3-hero h1 {
+			margin: 0 0 12px;
+			font-size: clamp(1.8rem, 4vw, 2.6rem);
+			line-height: 1.15;
+			font-weight: 700;
+		}
+
+		.mp3-hero p {
+			margin: 0;
+			color: var(--mp3-muted);
+			line-height: 1.55;
+			font-size: 1.02rem;
+		}
+
+		.mp3-hero-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 10px;
+			margin-top: 20px;
+		}
+
+		.mp3-toolbar {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 14px;
+			align-items: center;
+			justify-content: space-between;
+			margin: 0 0 22px;
+			padding: 14px 16px;
+			background: rgba(255, 255, 255, 0.03);
+			border: 1px solid var(--mp3-line);
+			border-radius: 10px;
+		}
+
+		.mp3-toolbar input {
+			flex: 1;
+			min-width: 200px;
+			padding: 11px 14px;
+			border-radius: 6px;
+			border: 1px solid var(--mp3-line);
+			background: var(--mp3-surface);
+			color: var(--mp3-text);
+			font-size: 15px;
+			font-family: inherit;
+		}
+
+		.mp3-toolbar input::placeholder {
+			color: rgba(243, 239, 230, 0.4);
+		}
+
+		#mp3-status {
+			font-size: 0.85rem;
+			color: var(--mp3-muted);
+			white-space: nowrap;
+		}
+
+		.mp3-collection {
+			margin: 8px 0 18px;
+			font-size: 0.9rem;
+			color: var(--mp3-muted);
+		}
+
+		.mp3-collection strong {
+			color: var(--mp3-text);
+			font-weight: 600;
+		}
+
+		.mp3-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+			gap: 18px;
+		}
+
+		.mp3-card {
+			display: flex;
+			flex-direction: column;
+			background: var(--mp3-surface);
+			border: 1px solid var(--mp3-line);
+			border-radius: 12px;
+			overflow: hidden;
+		}
+
+		.mp3-card-art {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 120px;
+			background:
+				linear-gradient(135deg, rgba(212, 162, 76, 0.15), transparent 60%),
+				#0f1318;
+			border-bottom: 1px solid var(--mp3-line);
+		}
+
+		.mp3-card-art img {
+			width: 72px;
+			height: 72px;
+			object-fit: contain;
+			opacity: 0.95;
+		}
+
+		.mp3-card-body {
+			padding: 18px 18px 20px;
+			display: flex;
+			flex-direction: column;
+			flex: 1;
+		}
+
+		.mp3-card-title {
+			margin: 0 0 6px;
+			font-size: 1.05rem;
+			line-height: 1.3;
+		}
+
+		.mp3-card-meta {
+			margin: 0 0 14px;
+			font-size: 0.82rem;
+			color: var(--mp3-muted);
+		}
+
+		.mp3-preview-label {
+			font-size: 0.7rem;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: var(--mp3-muted);
+			margin-bottom: 6px;
+		}
+
+		.mp3-card audio {
+			width: 100%;
+			margin-bottom: 14px;
+			height: 36px;
+		}
+
+		.mp3-card-actions {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+			margin-top: auto;
+		}
+
+		.mp3-btn {
+			display: inline-block;
+			text-align: center;
+			padding: 11px 14px;
+			border-radius: 8px;
+			text-decoration: none;
+			font-weight: 700;
+			font-size: 0.9rem;
+			border: none;
+			cursor: pointer;
+		}
+
+		.mp3-btn-buy {
+			background: var(--mp3-accent);
+			color: var(--mp3-accent-ink);
+		}
+
+		.mp3-btn-buy.mp3-btn-soft {
+			background: rgba(212, 162, 76, 0.22);
+			color: var(--mp3-text);
+			border: 1px solid rgba(212, 162, 76, 0.45);
+		}
+
+		.mp3-btn-ghost {
+			background: transparent;
+			color: var(--mp3-text);
+			border: 1px solid var(--mp3-line);
+			font-weight: 600;
+		}
+
+		.mp3-btn-outline {
+			display: inline-block;
+			padding: 10px 16px;
+			border-radius: 8px;
+			text-decoration: none;
+			font-weight: 600;
+			font-size: 0.9rem;
+			color: var(--mp3-text);
+			border: 1px solid var(--mp3-line);
+			background: rgba(255, 255, 255, 0.04);
+		}
+
+		.mp3-btn-outline-accent {
+			border-color: rgba(212, 162, 76, 0.5);
+			color: var(--mp3-accent);
+		}
+
+		.mp3-stripe-hint {
+			margin: 0;
+			font-size: 0.75rem;
+			line-height: 1.4;
+			color: var(--mp3-muted);
+		}
+
+		.mp3-empty {
+			grid-column: 1 / -1;
+			text-align: center;
+			padding: 40px 16px;
+			color: var(--mp3-muted);
+		}
+
+		.mp3-error { color: #ff8a80; }
+
+		.mp3-license-summary {
+			margin: 0 0 28px;
+			padding: 18px 20px;
+			max-width: 720px;
+			background: rgba(212, 162, 76, 0.1);
+			border: 1px solid rgba(212, 162, 76, 0.35);
+			border-radius: 10px;
+		}
+
+		.mp3-license-summary h2 {
+			margin: 0 0 10px;
+			font-size: 1.05rem;
+			color: var(--mp3-accent);
+		}
+
+		.mp3-license-summary p {
+			margin: 0 0 10px;
+			color: var(--mp3-text);
+			line-height: 1.55;
+			font-size: 0.95rem;
+		}
+
+		.mp3-license-summary p:last-child { margin-bottom: 0; }
+
+		.mp3-license-summary ul {
+			margin: 0 0 10px;
+			padding-left: 1.2em;
+			color: var(--mp3-text);
+			line-height: 1.5;
+			font-size: 0.92rem;
+		}
+
+		.mp3-license-summary a { color: #9ec5e8; }
+
+		.mp3-license {
+			margin-top: 56px;
+			padding-top: 24px;
+			border-top: 1px solid var(--mp3-line);
+			max-width: 720px;
+			color: var(--mp3-muted);
+			font-size: 0.75rem;
+			line-height: 1.45;
+		}
+
+		.mp3-license h2 {
+			margin: 0 0 8px;
+			font-size: 0.95rem;
+			color: var(--mp3-muted);
+			font-weight: 600;
+		}
+
+		.mp3-license h3 {
+			margin: 12px 0 4px;
+			font-size: 0.78rem;
+			color: var(--mp3-muted);
+			font-weight: 600;
+		}
+
+		.mp3-license p,
+		.mp3-license li { margin: 0 0 6px; }
+
+		.mp3-license ul {
+			margin: 0 0 6px;
+			padding-left: 1.2em;
+		}
+
+		.mp3-license .license-attrib-block {
+			font-family: monospace;
+			font-size: 0.72rem;
+			padding: 6px 8px;
+			border-radius: 6px;
+			background: rgba(255, 255, 255, 0.04);
+			border: 1px solid var(--mp3-line);
+			display: inline-block;
+			margin: 0 0 6px;
+			color: var(--mp3-text);
+		}
+
+		.mp3-license a { color: #9ec5e8; }
+
+		.mp3-back {
+			margin-bottom: 18px;
+		}
+
+		.mp3-back a { color: #9ec5e8; }
+	</style>
+</head>
+<body class="mp3-downloads-page">
+	<nav>
+		<div id="backing"></div>
+		<div class="content">
+			<a href="catalog.html">&#128220; CATALOG</a>
+			<a href="mp3-downloads.html" style="font-weight: bold;">&#127911; MP3 DOWNLOADS</a>
+			<a href="index.html#contact">CONTACT</a>
+		</div>
+	</nav>
+
+	<div class="mp3-wrap">
+		<div class="mp3-back"><a href="catalog.html">← Sheet music catalog</a></div>
+
+		<header class="mp3-hero">
+			<p class="mp3-hero-kicker">Direct downloads · commercial license</p>
+			<h1>MP3 Downloads</h1>
+			<p>
+				Beats and backing tracks meant for creators — preview 30 seconds free,
+				then buy the full MP3 here with Stripe. Purchase includes permission to
+				use the track commercially (details below).
+			</p>
+			<div class="mp3-hero-actions">
+				<a class="mp3-btn-outline mp3-btn-outline-accent" href="#mp3-grid">Browse tracks</a>
+				<a class="mp3-btn-outline" href="#mp3-license-summary">License summary</a>
+				<a class="mp3-btn-outline" href="catalog.html">Sheet music catalog</a>
+			</div>
+		</header>
+
+		<section class="mp3-license-summary" id="mp3-license-summary">
+			<h2>License summary — what you can do</h2>
+			<p>
+				<strong>Buy the MP3 on this site</strong> (Stripe receipt = proof of purchase),
+				and you may use that track in:
+			</p>
+			<ul>
+				<li>Monetized YouTube and other online video</li>
+				<li>Film, TV, and soundtrack / sync placements</li>
+				<li>Podcasts, livestreams, ads, games, and client projects</li>
+				<li>Teaching / practice use (e.g. music teachers)</li>
+			</ul>
+			<p>
+				Give credit where credits are normal (YouTube description, end titles, etc.).
+				Don’t resell or reupload the standalone MP3 as your own product.
+				<a href="#mp3-license">Full license terms ↓</a>
+			</p>
+		</section>
+
+		<!-- TODO: more memorable names for MP3 tracks (see website_todo.md) — e.g. replace “Rap 1 — May 2026” placeholders -->
+		<p class="mp3-collection"><strong>Rap May 2026</strong> · hip-hop / rap beats</p>
+
+		<div class="mp3-toolbar">
+			<input type="search" id="mp3-search" placeholder="Search by title, BPM, key…" aria-label="Search MP3 downloads">
+			<span id="mp3-status">Loading…</span>
+		</div>
+
+		<div class="mp3-grid" id="mp3-grid">
+			<p class="mp3-empty">Loading tracks…</p>
+		</div>
+
+		<section class="mp3-license" id="mp3-license">
+			<h2>Full MP3 Audio License (Commercial Use)</h2>
+			<p>
+				This license applies to MP3 audio files (“Audio”) sold by Brian Streckfus (“Licensor”)
+				through brianstreckfus.com and/or authorized storefronts. If you have proof of purchase,
+				you may use the purchased Audio commercially as described below.
+			</p>
+
+			<h3>1) Grant of License</h3>
+			<p>
+				Upon purchase, Licensor grants you (“Licensee”) a non-exclusive, non-transferable, worldwide
+				license to use the purchased Audio in commercial and non-commercial projects, including
+				<strong>monetized YouTube</strong>, other online video, film, television, soundtracks and
+				sync placements, podcasts, livestreams, advertisements, games, teaching materials, and
+				client work. You may synchronize the Audio with visual media and make minor edits needed
+				for your project (trimming, looping, fades, timing, volume).
+			</p>
+
+			<h3>2) Proof of Purchase Required</h3>
+			<p>
+				This license is valid only if you can provide proof of purchase (receipt, order confirmation,
+				or other verifiable record) for the specific Audio purchased from this site or an authorized storefront.
+			</p>
+
+			<h3>3) Attribution Required (Where Reasonably Possible)</h3>
+			<p>Where credits are customary/available (e.g., YouTube description, film/TV credits, podcast show notes), include:</p>
+			<div class="license-attrib-block">Music: [Track Title] — Brian Streckfus — brianstreckfus.com</div>
+			<p>If space is limited: <span style="font-family:monospace;">Music: Brian Streckfus (brianstreckfus.com)</span></p>
+
+			<h3>4) Restrictions (What You May NOT Do)</h3>
+			<ul>
+				<li>You may NOT resell, redistribute, or share the Audio files as standalone files (including sample packs or music libraries).</li>
+				<li>You may NOT claim authorship/ownership of the Audio.</li>
+				<li>You may NOT upload the Audio to rights-management/content-ID systems or stock-music platforms as your own.</li>
+			</ul>
+
+			<h3>5) Client Work</h3>
+			<p>
+				If you use the Audio in paid client work, the client may use it only as part of the delivered end product.
+				The Audio file itself may not be transferred to the client for reuse in new projects unless the client
+				purchases their own license.
+			</p>
+
+			<h3>6) Termination</h3>
+			<p>If you breach this license, your rights end automatically and you must stop using the Audio.</p>
+
+			<h3>7) Ownership</h3>
+			<p>Licensor retains all ownership and copyright in the Audio. This license grants usage rights only.</p>
+
+			<h3>8) Contact</h3>
+			<p>Questions and licensing requests: <a href="index.html#contact">Contact Brian</a></p>
+			<p style="margin-top:10px;opacity:0.85;">
+				Same terms also appear on the <a href="catalog.html#mp3-audio-license">sheet music catalog</a>.
+				Checkout uses Stripe; after payment you return to a download page for that track.
+			</p>
+		</section>
+	</div>
+
+	<script src="script/mp3-downloads.js"></script>
+</body>
+</html>

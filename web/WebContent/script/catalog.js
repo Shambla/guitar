@@ -4,6 +4,184 @@ let catalogData = [];
 let currentFilter = 'all';
 let currentSort = 'default';
 
+/**
+ * Deep-link filters (e.g. ?filter=rap) are NOT live on production yet.
+ * Set CATALOG_DEEP_LINKS_LIVE = true when ready for YouTube / public share URLs.
+ * Until then, practice locally with: catalog.html?catalog_preview=1&filter=rap
+ */
+const CATALOG_DEEP_LINKS_LIVE = false;
+
+/**
+ * Direct MP3 sales (Stripe + hosted preview/full files). OFF by default so catalog
+ * behavior stays unchanged until you set a real Payment Link and flip this to true.
+ * Practice UI: catalog.html?catalog_preview=1  (shows "Listen / Buy" → audio-purchase.html)
+ * See DIRECT_AUDIO_SALES.md
+ */
+const DIRECT_AUDIO_SALES_LIVE = false;
+
+function catalogPreviewModeEnabled() {
+    try {
+        return new URLSearchParams(window.location.search).get('catalog_preview') === '1';
+    } catch (e) {
+        return false;
+    }
+}
+
+function escapeHtmlAttr(s) {
+    return String(s || '')
+        .replace(/&/g, '&amp;')
+        .replace(/"/g, '&quot;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+}
+
+function paymentLinkConfigured(url) {
+    return !!(url && !String(url).includes('YOUR_PAYMENT_LINK'));
+}
+
+function getDirectSale(item) {
+    if (!item || !item.direct_sale || item.direct_sale.enabled === false) return null;
+    return item.direct_sale;
+}
+
+/** Build CTA HTML for a catalog card — sheet music unchanged unless direct_sale applies. */
+function buildCatalogCtaHtml(item) {
+    const ds = getDirectSale(item);
+    const smd = (item.sheet_music_direct_url || '').trim();
+    const purchasePage = ds && (ds.purchase_page || `audio-purchase.html?track=${encodeURIComponent(item.id)}`);
+    const showDirectUi =
+        ds &&
+        (DIRECT_AUDIO_SALES_LIVE || catalogPreviewModeEnabled()) &&
+        purchasePage;
+
+    if (showDirectUi) {
+        const buyReady = DIRECT_AUDIO_SALES_LIVE && paymentLinkConfigured(ds.stripe_payment_link);
+        let html =
+            `<a class="link-button" href="${escapeHtmlAttr(purchasePage)}">Listen / Buy (direct)</a>`;
+        if (smd) {
+            html +=
+                `<a class="link-button" href="${escapeHtmlAttr(smd)}" target="_blank" rel="noopener" style="margin-top:8px;opacity:0.85;font-size:0.9em;">Sheet Music Direct</a>`;
+        }
+        if (!buyReady && DIRECT_AUDIO_SALES_LIVE) {
+            html +=
+                `<p style="font-size:12px;margin:8px 0 0;opacity:0.7;">Stripe Payment Link not configured yet.</p>`;
+        }
+        return html;
+    }
+
+    // Default: existing sheet-music / listing behavior
+    if (smd) {
+        return `<a class="link-button" href="${escapeHtmlAttr(smd)}" target="_blank" rel="noopener">Open Listing</a>`;
+    }
+
+    // Direct-sale track without SMD and sales not live yet — soft placeholder (no broken link)
+    if (ds && purchasePage) {
+        return `<a class="link-button" href="${escapeHtmlAttr(purchasePage)}" style="opacity:0.9;">Preview page</a>`;
+    }
+
+    return `<span class="link-button" style="opacity:0.5;cursor:default;">Listing coming soon</span>`;
+}
+
+function catalogDeepLinksEnabled() {
+    if (CATALOG_DEEP_LINKS_LIVE) return true;
+    try {
+        return new URLSearchParams(window.location.search).get('catalog_preview') === '1';
+    } catch (e) {
+        return false;
+    }
+}
+
+/** Optional tags[] on catalog items — separate from category (e.g. tags: ["mp3","rap","hip hop"]). */
+function getItemTags(item) {
+    if (!item || !Array.isArray(item.tags)) return [];
+    return item.tags
+        .map((t) => (t || '').toString().trim())
+        .filter(Boolean);
+}
+
+function getItemCategoriesList(item) {
+    const cat = item && item.category;
+    if (Array.isArray(cat)) {
+        return cat.map((c) => (c || '').toString().trim()).filter(Boolean);
+    }
+    if (cat) return [(cat || '').toString().trim()];
+    return [];
+}
+
+/** Text blob used by filterBy / data-category (category + tags + difficulty). */
+function buildItemFilterText(item) {
+    const parts = [
+        ...getItemCategoriesList(item),
+        ...getItemTags(item),
+        (item.difficulty || '').toString().toLowerCase(),
+    ];
+    return normalizeSearchText(parts.join(' '));
+}
+
+function formatCategoryTagLabel(item) {
+    const cats = getItemCategoriesList(item);
+    const tags = getItemTags(item);
+    const labelParts = [...cats];
+    tags.forEach((t) => {
+        if (!labelParts.some((c) => c.toLowerCase() === t.toLowerCase())) {
+            labelParts.push(t);
+        }
+    });
+    return labelParts.join(' · ') || '';
+}
+
+function isMp3AudioItem(item) {
+    const cats = getItemCategoriesList(item).map((c) => c.toLowerCase());
+    if (cats.some((c) => c.includes('mp3'))) return true;
+    return getItemTags(item).some((t) => t.toLowerCase() === 'mp3');
+}
+
+/** Map short URL aliases → filter substring used by filterBy. */
+function resolveDeepLinkFilter(raw) {
+    const key = normalizeSearchText(raw).replace(/\s+/g, '-');
+    const aliases = {
+        rap: 'rap',
+        'hip-hop': 'hip hop',
+        hiphop: 'hip hop',
+        'hip-hop-backing': 'hip hop',
+        mp3: 'mp3',
+        'mp3-audio': 'mp3',
+        'rap-hip-hop': 'rap',
+    };
+    if (aliases[key]) return aliases[key];
+    return normalizeSearchText(raw);
+}
+
+function applyDeepLinkFilterFromUrl() {
+    if (!catalogDeepLinksEnabled()) return;
+
+    let params;
+    try {
+        params = new URLSearchParams(window.location.search);
+    } catch (e) {
+        return;
+    }
+
+    const raw = params.get('filter') || params.get('tag');
+    if (!raw) return;
+
+    const filterKey = resolveDeepLinkFilter(raw);
+    if (!filterKey || filterKey === 'all') return;
+
+    filterBy(filterKey, null);
+
+    // Highlight a matching filter button if present (including commented-out ones once enabled)
+    document.querySelectorAll('.filter-btn').forEach((btn) => {
+        const onclick = btn.getAttribute('onclick') || '';
+        const match = onclick.match(/filterBy\(['"]([^'"]+)['"]/);
+        if (match && normalizeSearchText(match[1]).includes(filterKey)) {
+            btn.classList.add('active');
+        } else if (onclick.includes("filterBy('all'") || onclick.includes('filterBy("all"')) {
+            btn.classList.remove('active');
+        }
+    });
+}
+
 function parsePriceToNumber(priceStr) {
     const cleaned = (priceStr || '')
         .toString()
@@ -114,6 +292,7 @@ function loadCatalog() {
             catalogData = data;
             displayCatalog(catalogData);
             sortCatalog();
+            applyDeepLinkFilterFromUrl();
         })
         .catch(error => {
             console.error('Error loading catalog:', error);
@@ -146,7 +325,8 @@ function displayCatalog(items) {
             const itemDiv = document.createElement('div');
             itemDiv.className = 'catalog-item';
 
-            itemDiv.setAttribute('data-category', `${item.category} ${(item.difficulty || '').toString().toLowerCase()}`);
+            const filterText = buildItemFilterText(item);
+            itemDiv.setAttribute('data-category', filterText);
             itemDiv.setAttribute('data-title', normalizeSearchText(item.title));
             itemDiv.setAttribute('data-composer', normalizeSearchText(item.composer));
             itemDiv.setAttribute('data-difficulty-rank', String(difficultyRank(item.difficulty)));
@@ -154,14 +334,17 @@ function displayCatalog(items) {
 
             itemDiv.setAttribute(
                 'data-search',
-                normalizeSearchText(`${item.title} ${item.composer} ${item.category} ${item.difficulty}`)
+                normalizeSearchText(
+                    `${item.title} ${item.composer} ${getItemCategoriesList(item).join(' ')} ${getItemTags(item).join(' ')} ${item.difficulty}`
+                )
             );
 
             const difficultyClass = (item.difficulty || '').toString().toLowerCase();
+            const categoryTagLabel = formatCategoryTagLabel(item);
 
             // Base path from current page location
             const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
-            const isMp3Audio = (item.category || '').toString().toLowerCase().includes('mp3');
+            const isMp3Audio = isMp3AudioItem(item);
             let previewImageSrc = isMp3Audio ? 'img/mp3_logo.png' : (item.preview_image || 'img/sheet.png');
 
             /*
@@ -194,10 +377,10 @@ function displayCatalog(items) {
                 </div>
                 <div class="composer">${item.composer}</div>
                 <h3>${item.title}</h3>
-                <span class="category-tag">${item.category}</span>
+                <span class="category-tag">${categoryTagLabel}</span>
                 ${difficultyHtml}
                 <p class="price">${item.price}</p>
-                <a class="link-button" href="${item.sheet_music_direct_url}" target="_blank" rel="noopener">Open Listing</a>
+                ${buildCatalogCtaHtml(item)}
             `;
 
             itemDiv.style.display = 'flex';
@@ -268,9 +451,10 @@ function sortCatalog() {
     nodes.forEach(n => grid.appendChild(n));
 }
 
-// Filter catalog by category
+// Filter catalog by category or tag (substring match on data-category)
 function filterBy(category, evt) {
-    currentFilter = category;
+    const needle = normalizeSearchText(category);
+    currentFilter = needle || 'all';
 
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.classList.remove('active');
@@ -282,8 +466,8 @@ function filterBy(category, evt) {
 
     const items = document.querySelectorAll('.catalog-item');
     items.forEach(item => {
-        const itemCategory = item.getAttribute('data-category') || '';
-        if (category === 'all' || itemCategory.includes(category)) {
+        const itemCategory = normalizeSearchText(item.getAttribute('data-category') || '');
+        if (currentFilter === 'all' || itemCategory.includes(currentFilter)) {
             item.style.display = 'flex';
         } else {
             item.style.display = 'none';

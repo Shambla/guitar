@@ -2,6 +2,9 @@
 
 1. Watch 3 YouTube videos all the way through, get a free PDF.
 
+## MP3 Downloads — memorable track names
+**TODO:** Rename Rap May 2026 / beat catalog titles to more memorable names (current labels like “Rap 1 — May 2026” are placeholders). Update `mp3-downloads-data.json` titles (and filenames/ids only if needed for Stripe + URLs).
+
 ## 🔄 Subscription Section (For signals.html)
 
 **Status:** Ready to implement when Stripe account is set up
