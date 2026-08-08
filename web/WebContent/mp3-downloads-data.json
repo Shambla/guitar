@@ -10,7 +10,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/gritty-rap-90-bpm-30s.mp3",
       "full_audio": "audio/fulldownloads/gritty-rap-90-bpm.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/bJe28tc8M4OQ2kH82J8og0e",
       "purchase_page": "audio-purchase.html?track=gritty-rap-90-bpm&from=mp3"
     }
   },
@@ -26,7 +26,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/off-kilter-grit-120-bpm-a-minor-30s.mp3",
       "full_audio": "audio/fulldownloads/off-kilter-grit-120-bpm-a-minor.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/3cI8wRgp2ftue3p5UB8og0d",
       "purchase_page": "audio-purchase.html?track=off-kiltergrit-120-bpm-a-minor&from=mp3"
     }
   },
@@ -55,7 +55,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/rap-2-may-2026-30s.mp3",
       "full_audio": "audio/fulldownloads/rap-2-may-2026.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/00w6oJa0E0yA0cz1El8og02",
       "purchase_page": "audio-purchase.html?track=rap-2-may-2026&from=mp3"
     }
   },
@@ -69,7 +69,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/rap-3-may-2026-30s.mp3",
       "full_audio": "audio/fulldownloads/rap-3-may-2026.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/8x2eVf8WAftu8J5dn38og03",
       "purchase_page": "audio-purchase.html?track=rap-3-may-2026&from=mp3"
     }
   },
@@ -83,7 +83,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/rap-4-may-2026-30s.mp3",
       "full_audio": "audio/fulldownloads/rap-4-may-2026.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/5kQ14p7Swftuf7t6YF8og04",
       "purchase_page": "audio-purchase.html?track=rap-4-may-2026&from=mp3"
     }
   },
@@ -97,7 +97,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/rap-5-may-2026-30s.mp3",
       "full_audio": "audio/fulldownloads/rap-5-may-2026.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/14AfZjb4I2GI5wTgzf8og05",
       "purchase_page": "audio-purchase.html?track=rap-5-may-2026&from=mp3"
     }
   },
@@ -111,7 +111,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/rap-6-may-2026-30s.mp3",
       "full_audio": "audio/fulldownloads/rap-6-may-2026.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/4gM00l5Ko3KM3oL1El8og06",
       "purchase_page": "audio-purchase.html?track=rap-6-may-2026&from=mp3"
     }
   },
@@ -125,7 +125,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/rap-7-may-2026-30s.mp3",
       "full_audio": "audio/fulldownloads/rap-7-may-2026.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/cNi00ldcQdlmcZl1El8og07",
       "purchase_page": "audio-purchase.html?track=rap-7-may-2026&from=mp3"
     }
   },
@@ -139,7 +139,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/rap-8-may-2026-30s.mp3",
       "full_audio": "audio/fulldownloads/rap-8-may-2026.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/3cIcN7dcQ0yAbVhfvb8og08",
       "purchase_page": "audio-purchase.html?track=rap-8-may-2026&from=mp3"
     }
   },
@@ -153,7 +153,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/rap-9-may-2026-30s.mp3",
       "full_audio": "audio/fulldownloads/rap-9-may-2026.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/aFa5kF2yc1CE6AXfvb8og09",
       "purchase_page": "audio-purchase.html?track=rap-9-may-2026&from=mp3"
     }
   },
@@ -167,7 +167,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/rap-10-may-2026-30s.mp3",
       "full_audio": "audio/fulldownloads/rap-10-may-2026.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/28E6oJegUftu5wT1El8og0a",
       "purchase_page": "audio-purchase.html?track=rap-10-may-2026&from=mp3"
     }
   },
@@ -181,7 +181,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/rap-11-may-2026-30s.mp3",
       "full_audio": "audio/fulldownloads/rap-11-may-2026.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/dRm5kFa0E3KM9N94Qx8og0b",
       "purchase_page": "audio-purchase.html?track=rap-11-may-2026&from=mp3"
     }
   },
@@ -195,7 +195,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/rap-12-may-2026-30s.mp3",
       "full_audio": "audio/fulldownloads/rap-12-may-2026.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/eVqfZj2yc5SUf7tciZ8og0c",
       "purchase_page": "audio-purchase.html?track=rap-12-may-2026&from=mp3"
     }
   }
