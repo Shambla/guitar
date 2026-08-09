@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "ETH/USD",
-  "quantity": 0.0,
-  "price": 1915.55,
-  "source": "MASTER_BOT_162",
-  "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-  "timestamp": "2026-08-09T06:29:40.685048Z",
-  "received_at": "2026-08-09T06:29:40.685071Z",
-  "id": "2026-08-09T06:29:40.685071Z-ETH/USD-sell"
+  "action": "buy",
+  "symbol": "SOL/USD",
+  "quantity": 100.0,
+  "price": null,
+  "source": "TradingView JSON",
+  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+  "timestamp": "2026-08-09T07:00:20.641065Z",
+  "received_at": "2026-08-09T07:00:20.641091Z",
+  "id": "2026-08-09T07:00:20.641091Z-SOL/USD-buy"
 }
