@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "AERO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-08-09T20:00:22.278687Z",
+    "received_at": "2026-08-09T20:00:22.278779Z",
+    "id": "2026-08-09T20:00:22.278779Z-AERO/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "FET/USD",
     "quantity": 728.7036362311447,
