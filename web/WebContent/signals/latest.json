@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "TAO/USD",
-  "quantity": 0.48911714355588165,
-  "price": 204.25,
+  "symbol": "AERO/USD",
+  "quantity": 237.28733122938567,
+  "price": 0.42101,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-08-10T02:05:28.677285Z",
-  "received_at": "2026-08-10T02:05:28.677302Z",
-  "id": "2026-08-10T02:05:28.677302Z-TAO/USD-buy"
+  "timestamp": "2026-08-10T02:06:41.996323Z",
+  "received_at": "2026-08-10T02:06:41.996346Z",
+  "id": "2026-08-10T02:06:41.996346Z-AERO/USD-buy"
 }

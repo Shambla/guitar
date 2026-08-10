@@ -1,6 +1,28 @@
 [
   {
     "action": "buy",
+    "symbol": "AERO/USD",
+    "quantity": 237.28733122938567,
+    "price": 0.42101,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-10T02:06:41.996323Z",
+    "received_at": "2026-08-10T02:06:41.996346Z",
+    "id": "2026-08-10T02:06:41.996346Z-AERO/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 734.9158521349306,
+    "price": 0.13593,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-10T02:06:41.967582Z",
+    "received_at": "2026-08-10T02:06:41.967605Z",
+    "id": "2026-08-10T02:06:41.967605Z-FET/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "TAO/USD",
     "quantity": 0.48911714355588165,
     "price": 204.25,
@@ -2816,27 +2838,5 @@
     "timestamp": "2026-08-04T02:09:40.969479Z",
     "received_at": "2026-08-04T02:09:40.969493Z",
     "id": "2026-08-04T02:09:40.969493Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "SOL/USD",
-    "quantity": 1.35666802,
-    "price": 73.75,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-04T02:00:34.380771Z",
-    "received_at": "2026-08-04T02:00:34.380784Z",
-    "id": "2026-08-04T02:00:34.380784Z-SOL/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "BNB/USD",
-    "quantity": 1e-05,
-    "price": 591.66,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-04T02:00:34.131050Z",
-    "received_at": "2026-08-04T02:00:34.131075Z",
-    "id": "2026-08-04T02:00:34.131075Z-BNB/USD-sell"
   }
 ]
