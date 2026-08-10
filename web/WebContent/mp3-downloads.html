@@ -89,6 +89,29 @@
 			margin-top: 20px;
 		}
 
+		.mp3-why {
+			margin: 0 0 32px;
+			max-width: 640px;
+		}
+
+		.mp3-why h2 {
+			margin: 0 0 10px;
+			font-size: 1.05rem;
+			font-weight: 600;
+			color: var(--mp3-text);
+		}
+
+		.mp3-why p {
+			margin: 0 0 12px;
+			color: var(--mp3-muted);
+			line-height: 1.55;
+			font-size: 0.95rem;
+		}
+
+		.mp3-why p:last-child { margin-bottom: 0; }
+
+		.mp3-why a { color: #9ec5e8; }
+
 		.mp3-toolbar {
 			display: flex;
 			flex-wrap: wrap;
@@ -133,6 +156,31 @@
 		.mp3-collection strong {
 			color: var(--mp3-text);
 			font-weight: 600;
+		}
+
+		.mp3-filters {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			margin: 0 0 14px;
+		}
+
+		.mp3-filter-btn {
+			padding: 8px 14px;
+			border-radius: 8px;
+			border: 1px solid var(--mp3-line);
+			background: rgba(255, 255, 255, 0.04);
+			color: var(--mp3-text);
+			font-family: inherit;
+			font-size: 0.85rem;
+			font-weight: 600;
+			cursor: pointer;
+		}
+
+		.mp3-filter-btn.active {
+			background: rgba(212, 162, 76, 0.22);
+			border-color: rgba(212, 162, 76, 0.55);
+			color: var(--mp3-accent);
 		}
 
 		.mp3-grid {
@@ -356,6 +404,113 @@
 		}
 
 		.mp3-back a { color: #9ec5e8; }
+
+		.mp3-scales-free {
+			margin-top: 48px;
+			padding-top: 36px;
+			border-top: 1px solid var(--mp3-line);
+			max-width: 900px;
+		}
+
+		.mp3-scales-free h2 {
+			margin: 0 0 8px;
+			font-size: 1.35rem;
+			font-weight: 700;
+		}
+
+		.mp3-scales-free > p {
+			margin: 0 0 18px;
+			color: var(--mp3-muted);
+			line-height: 1.55;
+			font-size: 0.95rem;
+			max-width: 640px;
+		}
+
+		.mp3-scales-free > p a { color: #9ec5e8; }
+
+		.mp3-pdf-toolbar {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 10px;
+			margin-bottom: 12px;
+		}
+
+		.mp3-pdf-toolbar button {
+			padding: 10px 14px;
+			border-radius: 8px;
+			border: 1px solid var(--mp3-line);
+			background: rgba(255, 255, 255, 0.06);
+			color: var(--mp3-text);
+			font-family: inherit;
+			font-size: 0.9rem;
+			font-weight: 700;
+			cursor: pointer;
+		}
+
+		.mp3-pdf-toolbar button:hover:not(:disabled) {
+			border-color: rgba(212, 162, 76, 0.55);
+			background: rgba(212, 162, 76, 0.12);
+		}
+
+		.mp3-pdf-toolbar button:disabled {
+			opacity: 0.35;
+			cursor: not-allowed;
+		}
+
+		.mp3-pdf-page-label {
+			font-size: 0.9rem;
+			color: var(--mp3-muted);
+			min-width: 7.5rem;
+			text-align: center;
+		}
+
+		.mp3-pdf-download {
+			margin-left: auto;
+			display: inline-block;
+			padding: 10px 14px;
+			border-radius: 8px;
+			background: var(--mp3-accent);
+			color: var(--mp3-accent-ink);
+			text-decoration: none;
+			font-weight: 700;
+			font-size: 0.9rem;
+		}
+
+		.mp3-pdf-download:hover {
+			filter: brightness(1.06);
+		}
+
+		.mp3-pdf-stage {
+			width: 100%;
+			overflow: auto;
+			background: rgba(0, 0, 0, 0.35);
+			border: 1px solid var(--mp3-line);
+			border-radius: 10px;
+			padding: 12px;
+			min-height: 320px;
+			text-align: center;
+		}
+
+		.mp3-pdf-stage canvas {
+			max-width: 100%;
+			height: auto;
+			display: block;
+			margin: 0 auto;
+			box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+		}
+
+		.mp3-pdf-status {
+			margin-top: 10px;
+			font-size: 0.85rem;
+			color: var(--mp3-muted);
+		}
+
+		.mp3-pdf-status.mp3-error { color: #ff8a80; }
+
+		@media (max-width: 600px) {
+			.mp3-pdf-download { margin-left: 0; width: 100%; text-align: center; }
+		}
 	</style>
 </head>
 <body class="mp3-downloads-page">
@@ -382,9 +537,32 @@
 			<div class="mp3-hero-actions">
 				<a class="mp3-btn-outline mp3-btn-outline-accent" href="#mp3-grid">Browse tracks</a>
 				<a class="mp3-btn-outline" href="#mp3-license-summary">License summary</a>
+				<a class="mp3-btn-outline" href="#mp3-why">Why buy here</a>
+				<a class="mp3-btn-outline" href="#free-scales">Free scales PDF</a>
 				<a class="mp3-btn-outline" href="catalog.html">Sheet music catalog</a>
 			</div>
 		</header>
+
+		<section class="mp3-why" id="mp3-why">
+			<h2>Why buy here</h2>
+			<p>
+				If you’d rather support the music directly — and walk away with a track you can
+				actually use — this is that. I keep most of the sale instead of handing a big cut
+				to a platform tip jar, and you get a full MP3 with commercial-use rights.
+			</p>
+			<p>
+				I use these myself when I teach so lessons don’t sound like stock karaoke.
+				They’re built as serious backing tracks — also useful for YouTube, film/TV-style
+				scoring, and creator beds. Almost none of this library has been floating around
+				the internet as “that one stock cue,” so your project is less likely to sound
+				like everyone else’s background music.
+			</p>
+			<p>
+				Prefer sheet music? That’s still on the <a href="catalog.html">catalog</a>.
+				Prefer to just chip in? Grab a track anyway — the download is real; the support
+				is the point.
+			</p>
+		</section>
 
 		<section class="mp3-license-summary" id="mp3-license-summary">
 			<h2>License summary — what you can do</h2>
@@ -405,11 +583,18 @@
 			</p>
 		</section>
 
-		<!-- TODO: more memorable names for MP3 tracks (see website_todo.md) — e.g. replace “Rap 1 — May 2026” placeholders -->
-		<p class="mp3-collection"><strong>Rap May 2026</strong> · hip-hop / rap beats</p>
+		<!-- TODO: more memorable names for MP3 tracks (see website_todo.md) — Rap + Reggae placeholders -->
+		<p class="mp3-collection">
+			<strong>Collections</strong> · Rap May 2026 · Reggae / Ska (Stripe links pending for Reggae)
+		</p>
+		<div class="mp3-filters" role="group" aria-label="Filter by collection">
+			<button type="button" class="mp3-filter-btn active" data-collection="all">All</button>
+			<button type="button" class="mp3-filter-btn" data-collection="rap">Rap</button>
+			<button type="button" class="mp3-filter-btn" data-collection="reggae">Reggae</button>
+		</div>
 
 		<div class="mp3-toolbar">
-			<input type="search" id="mp3-search" placeholder="Search by title, BPM, key…" aria-label="Search MP3 downloads">
+			<input type="search" id="mp3-search" placeholder="Search by title, BPM, key, reggae, ska…" aria-label="Search MP3 downloads">
 			<span id="mp3-status">Loading…</span>
 		</div>
 
@@ -467,14 +652,43 @@
 			<p>Licensor retains all ownership and copyright in the Audio. This license grants usage rights only.</p>
 
 			<h3>8) Contact</h3>
-			<p>Questions and licensing requests: <a href="index.html#contact">Contact Brian</a></p>
+			<p>Questions and licensing requests: <a href="mailto:brianstreckfus@gmail.com">brianstreckfus@gmail.com</a>
+				· <a href="index.html#contact">Contact page</a></p>
 			<p style="margin-top:10px;opacity:0.85;">
 				Same terms also appear on the <a href="catalog.html#mp3-audio-license">sheet music catalog</a>.
 				Checkout uses Stripe; after payment you return to a download page for that track.
+				If you paid but the download fails, email
+				<a href="mailto:brianstreckfus@gmail.com?subject=MP3%20download%20help">brianstreckfus@gmail.com</a>
+				with your Stripe receipt and which track you bought.
 			</p>
+		</section>
+
+		<section class="mp3-scales-free" id="free-scales" aria-labelledby="free-scales-heading">
+			<h2 id="free-scales-heading">Free gift — All Beauty Scales</h2>
+			<p>
+				Browse the full guitar scales PDF here (arrow buttons or ← → keys change pages),
+				or download it free — no signup. Same PDF as the mailing-list gift on the
+				<a href="success.html">thank-you page</a>.
+			</p>
+
+			<div class="mp3-pdf-toolbar" role="group" aria-label="PDF page controls">
+				<button type="button" id="pdf-prev" aria-label="Previous page">← Prev</button>
+				<span class="mp3-pdf-page-label" id="pdf-page-label" aria-live="polite">Page — / —</span>
+				<button type="button" id="pdf-next" aria-label="Next page">Next →</button>
+				<a class="mp3-pdf-download" href="img/all_beauty_scales.pdf" download="All_Beauty_Scales.pdf">
+					Download PDF
+				</a>
+			</div>
+
+			<div class="mp3-pdf-stage" id="pdf-stage">
+				<canvas id="pdf-canvas" aria-label="All Beauty Scales PDF page"></canvas>
+			</div>
+			<p class="mp3-pdf-status" id="pdf-status">Loading PDF…</p>
 		</section>
 	</div>
 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 	<script src="script/mp3-downloads.js"></script>
+	<script src="script/beauty-scales-viewer.js"></script>
 </body>
 </html>

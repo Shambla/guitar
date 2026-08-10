@@ -36,7 +36,16 @@ A Product is the name/price/description in Stripe. A **Payment Link** is the sha
 
 Until step 4 is done, the site still shows “Stripe link not configured.”
 
-**TODO:** Give MP3 tracks more memorable names (placeholders like “Rap 1 — May 2026” → distinctive titles). Tracked in `website_todo.md`.
+**TODO:** Give MP3 tracks more memorable names (placeholders like “Rap 1 — May 2026” / “Reggae 1 D minor” → distinctive titles). Tracked in `website_todo.md`.
+
+### Reggae collection (Stripe pending)
+15 tracks under `audio/fulldownloads/Reggae/` are scaffolded in `mp3-downloads-data.json` with `YOUR_PAYMENT_LINK_HERE`. Success URL pattern:
+
+```
+https://brianstreckfus.com/audio-purchase.html?track=reggae-1-d-minor&from=mp3&paid=true
+```
+
+IDs: `reggae-1-d-minor` … `reggae-12-e-minor`, `reggae-ska-1-c-major`, `reggae-ska-2-c-major`, `traditional-african-1-e-minor`.
 
 Success URL pattern:
 

@@ -105,6 +105,7 @@
 		 * Resolves tracks from mp3-downloads-data.json first, then catalog-data.json.
 		 */
 		(function () {
+			const SUPPORT_EMAIL = 'brianstreckfus@gmail.com';
 			const params = new URLSearchParams(window.location.search);
 			const trackId = (params.get('track') || params.get('id') || '').trim();
 			const paid = params.get('paid') === 'true';
@@ -126,6 +127,19 @@
 					.replace(/</g, '&lt;')
 					.replace(/>/g, '&gt;')
 					.replace(/"/g, '&quot;');
+			}
+
+			function supportMailto(subject) {
+				const subj = encodeURIComponent(subject || 'MP3 download help');
+				return 'mailto:' + SUPPORT_EMAIL + '?subject=' + subj;
+			}
+
+			function supportLine(extra) {
+				const hint = extra ? ' ' + extra : '';
+				return '<p class="ap-note">Questions or paid but no download?' + hint +
+					' Email <a href="' + supportMailto('MP3 download help' + (trackId ? ' — ' + trackId : '')) +
+					'" style="color:#90caf9;">' + escapeHtml(SUPPORT_EMAIL) +
+					'</a> with your Stripe receipt and which track you bought.</p>';
 			}
 
 			function paymentLinkConfigured(url) {
@@ -150,8 +164,20 @@
 				}
 			}
 
+			function showFail(msg) {
+				let html = '';
+				if (paid) {
+					html += '<div class="ap-success" style="background:rgba(255,138,128,0.12);border-color:rgba(255,138,128,0.45);">' +
+						'<strong>Payment received, but this download page looks wrong.</strong> ' +
+						'Don’t worry — reply with your Stripe receipt and I’ll send the file.</div>';
+				}
+				html += '<p class="ap-error">' + msg + '</p>';
+				html += supportLine();
+				root.innerHTML = html;
+			}
+
 			if (!trackId) {
-				root.innerHTML = '<p class="ap-error">Missing track id. Use <code>?track=rap-1-may-2026</code> or open a track from <a href="mp3-downloads.html" style="color:#90caf9;">MP3 Downloads</a>.</p>';
+				showFail('Missing track id. Open a track from <a href="mp3-downloads.html" style="color:#90caf9;">MP3 Downloads</a>, or email me if you just paid.');
 				return;
 			}
 
@@ -180,8 +206,7 @@
 					setBackLink(preferMp3Nav);
 
 					if (!item || !item.direct_sale) {
-						root.innerHTML = '<p class="ap-error">No direct-sale config for track <code>' +
-							escapeHtml(trackId) + '</code>. See DIRECT_AUDIO_SALES.md.</p>';
+						showFail('No download config for track <code>' + escapeHtml(trackId) + '</code>.');
 						return;
 					}
 
@@ -196,6 +221,11 @@
 					const browseLabel = preferMp3Nav ? 'Back to MP3 downloads' : 'Back to catalog';
 
 					document.title = title + ' — Brian Streckfus';
+
+					if (paid && !full) {
+						showFail('This track is missing a full MP3 path (<code>' + escapeHtml(title) + '</code>).');
+						return;
+					}
 
 					let html = '';
 					if (paid) {
@@ -217,7 +247,7 @@
 
 					html += '<div class="ap-actions">';
 					if (paid && full) {
-						html += '<a class="ap-btn ap-btn-primary" href="' + escapeHtml(full) + '" download>Download full MP3</a>';
+						html += '<a class="ap-btn ap-btn-primary" id="ap-download-btn" href="' + escapeHtml(full) + '" download>Download full MP3</a>';
 					} else if (canBuy) {
 						html += '<a class="ap-btn ap-btn-primary" href="' + escapeHtml(buyUrl) + '">Buy with Stripe — ' +
 							escapeHtml(price) + '</a>';
@@ -228,15 +258,47 @@
 						escapeHtml(browseLabel) + '</a>';
 					html += '</div>';
 
-					if (!paid) {
-						html += '<p class="ap-note">After checkout, Stripe sends you back here with download access. ' +
-							'Set each Payment Link success URL to this page with <code>&amp;paid=true</code> (see DIRECT_AUDIO_SALES.md).</p>';
+					html += '<div id="ap-file-check"></div>';
+
+					if (paid) {
+						html += supportLine('If the button fails,');
+					} else {
+						html += '<p class="ap-note">After checkout, Stripe sends you back here with download access.</p>';
+						html += supportLine();
 					}
 
 					root.innerHTML = html;
+
+					/* Detect missing full file on the server (404 / bad path) after paid redirect */
+					if (paid && full) {
+						fetch(full, { method: 'HEAD', cache: 'no-store' })
+							.then(function (r) {
+								if (r.ok) return;
+								const box = document.getElementById('ap-file-check');
+								const btn = document.getElementById('ap-download-btn');
+								if (btn) {
+									btn.classList.remove('ap-btn-primary');
+									btn.classList.add('ap-btn-disabled');
+									btn.removeAttribute('href');
+									btn.removeAttribute('download');
+									btn.textContent = 'File not found on server';
+								}
+								if (box) {
+									box.innerHTML =
+										'<div class="ap-success" style="background:rgba(255,138,128,0.12);border-color:rgba(255,138,128,0.45);margin-top:16px;">' +
+										'<strong>Download file missing.</strong> The page is correct, but the MP3 isn’t on the server yet. ' +
+										'Email <a href="' + supportMailto('Missing MP3 — ' + title) +
+										'" style="color:#90caf9;">' + escapeHtml(SUPPORT_EMAIL) +
+										'</a> with your Stripe receipt — I’ll send it right away.</div>';
+								}
+							})
+							.catch(function () {
+								/* Network/CORS oddities — leave the download button; support line still visible */
+							});
+					}
 				})
 				.catch(function (err) {
-					root.innerHTML = '<p class="ap-error">' + escapeHtml(err.message || String(err)) + '</p>';
+					showFail(escapeHtml(err.message || String(err)));
 				});
 		})();
 	</script>

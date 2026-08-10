@@ -12,8 +12,10 @@
 	const grid = document.getElementById('mp3-grid');
 	const statusEl = document.getElementById('mp3-status');
 	const searchInput = document.getElementById('mp3-search');
+	const filterBtns = document.querySelectorAll('.mp3-filter-btn');
 
 	let tracks = [];
+	let activeCollection = 'all';
 
 	function escapeHtml(s) {
 		return String(s || '')
@@ -33,12 +35,23 @@
 		return 'audio-purchase.html?track=' + encodeURIComponent(item.id) + '&from=mp3';
 	}
 
+	function itemCollection(item) {
+		if (item && item.collection) return String(item.collection).toLowerCase();
+		const tags = (item && item.tags ? item.tags : []).map(function (t) {
+			return String(t || '').toLowerCase();
+		});
+		if (tags.indexOf('reggae') !== -1 || tags.indexOf('ska') !== -1) return 'reggae';
+		if (tags.indexOf('rap') !== -1 || tags.indexOf('hip hop') !== -1) return 'rap';
+		return '';
+	}
+
 	function matchesSearch(item, q) {
 		if (!q) return true;
 		const hay = [
 			item.title,
 			item.composer,
 			item.id,
+			item.collection || '',
 			(item.tags || []).join(' '),
 			item.key || '',
 			item.bpm != null ? String(item.bpm) : '',
@@ -46,6 +59,11 @@
 			.join(' ')
 			.toLowerCase();
 		return hay.indexOf(q) !== -1;
+	}
+
+	function matchesCollection(item) {
+		if (activeCollection === 'all') return true;
+		return itemCollection(item) === activeCollection;
 	}
 
 	function render(list) {
@@ -128,14 +146,15 @@
 			.trim()
 			.toLowerCase();
 		const filtered = tracks.filter(function (t) {
-			return matchesSearch(t, q);
+			return matchesCollection(t) && matchesSearch(t, q);
 		});
 		if (statusEl) {
-			statusEl.textContent =
-				filtered.length +
-				' track' +
-				(filtered.length === 1 ? '' : 's') +
-				(q ? ' matching “' + q + '”' : '');
+			const bits = [
+				filtered.length + ' track' + (filtered.length === 1 ? '' : 's'),
+			];
+			if (activeCollection !== 'all') bits.push(activeCollection);
+			if (q) bits.push('matching “' + q + '”');
+			statusEl.textContent = bits.join(' · ');
 		}
 		render(filtered);
 	}
@@ -143,6 +162,16 @@
 	if (searchInput) {
 		searchInput.addEventListener('input', applyFilter);
 	}
+
+	filterBtns.forEach(function (btn) {
+		btn.addEventListener('click', function () {
+			activeCollection = btn.getAttribute('data-collection') || 'all';
+			filterBtns.forEach(function (b) {
+				b.classList.toggle('active', b === btn);
+			});
+			applyFilter();
+		});
+	});
 
 	fetch(DATA_URL)
 		.then(function (r) {

@@ -3,7 +3,10 @@
 1. Watch 3 YouTube videos all the way through, get a free PDF.
 
 ## MP3 Downloads — memorable track names
-**TODO:** Rename Rap May 2026 / beat catalog titles to more memorable names (current labels like “Rap 1 — May 2026” are placeholders). Update `mp3-downloads-data.json` titles (and filenames/ids only if needed for Stripe + URLs).
+**TODO:** Rename Rap May 2026 / Reggae / beat catalog titles to more memorable names (current labels like “Rap 1 — May 2026” and “Reggae 1 D minor” are placeholders). Update `mp3-downloads-data.json` titles (and filenames/ids only if needed for Stripe + URLs).
+
+## MP3 Downloads — Reggae Stripe Payment Links
+**TODO:** Create Stripe Payment Links for all Reggae collection tracks and paste `buy.stripe.com` URLs into `mp3-downloads-data.json` (`collection: "reggae"`). Success URLs use `?track=<id>&from=mp3&paid=true` (see DIRECT_AUDIO_SALES.md).
 
 ## 🔄 Subscription Section (For signals.html)
 

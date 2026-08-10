@@ -3,7 +3,12 @@
     "id": "gritty-rap-90-bpm",
     "title": "Gritty Rap 90 BPM",
     "composer": "Brian Streckfus",
-    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "tags": [
+      "mp3",
+      "rap",
+      "hip hop",
+      "beat"
+    ],
     "price": "$3.99",
     "bpm": 90,
     "direct_sale": {
@@ -12,13 +17,19 @@
       "full_audio": "audio/fulldownloads/gritty-rap-90-bpm.mp3",
       "stripe_payment_link": "https://buy.stripe.com/bJe28tc8M4OQ2kH82J8og0e",
       "purchase_page": "audio-purchase.html?track=gritty-rap-90-bpm&from=mp3"
-    }
+    },
+    "collection": "rap"
   },
   {
     "id": "off-kiltergrit-120-bpm-a-minor",
     "title": "Off Kilter Grit 120 BPM A minor",
     "composer": "Brian Streckfus",
-    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "tags": [
+      "mp3",
+      "rap",
+      "hip hop",
+      "beat"
+    ],
     "price": "$3.99",
     "bpm": 120,
     "key": "A minor",
@@ -28,13 +39,19 @@
       "full_audio": "audio/fulldownloads/off-kilter-grit-120-bpm-a-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/3cI8wRgp2ftue3p5UB8og0d",
       "purchase_page": "audio-purchase.html?track=off-kiltergrit-120-bpm-a-minor&from=mp3"
-    }
+    },
+    "collection": "rap"
   },
   {
     "id": "rap-1-may-2026",
-    "title": "Rap 1 — May 2026",
+    "title": "Rap 1 \u2014 May 2026",
     "composer": "Brian Streckfus",
-    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "tags": [
+      "mp3",
+      "rap",
+      "hip hop",
+      "beat"
+    ],
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
@@ -43,13 +60,19 @@
       "stripe_product_id": "prod_V1wVOuSkqREdYb",
       "stripe_payment_link": "https://buy.stripe.com/aFa5kF7Sw5SU7F1beV8og01",
       "purchase_page": "audio-purchase.html?track=rap-1-may-2026&from=mp3"
-    }
+    },
+    "collection": "rap"
   },
   {
     "id": "rap-2-may-2026",
-    "title": "Rap 2 — May 2026",
+    "title": "Rap 2 \u2014 May 2026",
     "composer": "Brian Streckfus",
-    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "tags": [
+      "mp3",
+      "rap",
+      "hip hop",
+      "beat"
+    ],
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
@@ -57,13 +80,19 @@
       "full_audio": "audio/fulldownloads/rap-2-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/00w6oJa0E0yA0cz1El8og02",
       "purchase_page": "audio-purchase.html?track=rap-2-may-2026&from=mp3"
-    }
+    },
+    "collection": "rap"
   },
   {
     "id": "rap-3-may-2026",
-    "title": "Rap 3 — May 2026",
+    "title": "Rap 3 \u2014 May 2026",
     "composer": "Brian Streckfus",
-    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "tags": [
+      "mp3",
+      "rap",
+      "hip hop",
+      "beat"
+    ],
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
@@ -71,13 +100,19 @@
       "full_audio": "audio/fulldownloads/rap-3-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/8x2eVf8WAftu8J5dn38og03",
       "purchase_page": "audio-purchase.html?track=rap-3-may-2026&from=mp3"
-    }
+    },
+    "collection": "rap"
   },
   {
     "id": "rap-4-may-2026",
-    "title": "Rap 4 — May 2026",
+    "title": "Rap 4 \u2014 May 2026",
     "composer": "Brian Streckfus",
-    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "tags": [
+      "mp3",
+      "rap",
+      "hip hop",
+      "beat"
+    ],
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
@@ -85,13 +120,19 @@
       "full_audio": "audio/fulldownloads/rap-4-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/5kQ14p7Swftuf7t6YF8og04",
       "purchase_page": "audio-purchase.html?track=rap-4-may-2026&from=mp3"
-    }
+    },
+    "collection": "rap"
   },
   {
     "id": "rap-5-may-2026",
-    "title": "Rap 5 — May 2026",
+    "title": "Rap 5 \u2014 May 2026",
     "composer": "Brian Streckfus",
-    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "tags": [
+      "mp3",
+      "rap",
+      "hip hop",
+      "beat"
+    ],
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
@@ -99,13 +140,19 @@
       "full_audio": "audio/fulldownloads/rap-5-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/14AfZjb4I2GI5wTgzf8og05",
       "purchase_page": "audio-purchase.html?track=rap-5-may-2026&from=mp3"
-    }
+    },
+    "collection": "rap"
   },
   {
     "id": "rap-6-may-2026",
-    "title": "Rap 6 — May 2026",
+    "title": "Rap 6 \u2014 May 2026",
     "composer": "Brian Streckfus",
-    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "tags": [
+      "mp3",
+      "rap",
+      "hip hop",
+      "beat"
+    ],
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
@@ -113,13 +160,19 @@
       "full_audio": "audio/fulldownloads/rap-6-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/4gM00l5Ko3KM3oL1El8og06",
       "purchase_page": "audio-purchase.html?track=rap-6-may-2026&from=mp3"
-    }
+    },
+    "collection": "rap"
   },
   {
     "id": "rap-7-may-2026",
-    "title": "Rap 7 — May 2026",
+    "title": "Rap 7 \u2014 May 2026",
     "composer": "Brian Streckfus",
-    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "tags": [
+      "mp3",
+      "rap",
+      "hip hop",
+      "beat"
+    ],
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
@@ -127,13 +180,19 @@
       "full_audio": "audio/fulldownloads/rap-7-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/cNi00ldcQdlmcZl1El8og07",
       "purchase_page": "audio-purchase.html?track=rap-7-may-2026&from=mp3"
-    }
+    },
+    "collection": "rap"
   },
   {
     "id": "rap-8-may-2026",
-    "title": "Rap 8 — May 2026",
+    "title": "Rap 8 \u2014 May 2026",
     "composer": "Brian Streckfus",
-    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "tags": [
+      "mp3",
+      "rap",
+      "hip hop",
+      "beat"
+    ],
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
@@ -141,13 +200,19 @@
       "full_audio": "audio/fulldownloads/rap-8-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/3cIcN7dcQ0yAbVhfvb8og08",
       "purchase_page": "audio-purchase.html?track=rap-8-may-2026&from=mp3"
-    }
+    },
+    "collection": "rap"
   },
   {
     "id": "rap-9-may-2026",
-    "title": "Rap 9 — May 2026",
+    "title": "Rap 9 \u2014 May 2026",
     "composer": "Brian Streckfus",
-    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "tags": [
+      "mp3",
+      "rap",
+      "hip hop",
+      "beat"
+    ],
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
@@ -155,13 +220,19 @@
       "full_audio": "audio/fulldownloads/rap-9-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/aFa5kF2yc1CE6AXfvb8og09",
       "purchase_page": "audio-purchase.html?track=rap-9-may-2026&from=mp3"
-    }
+    },
+    "collection": "rap"
   },
   {
     "id": "rap-10-may-2026",
-    "title": "Rap 10 — May 2026",
+    "title": "Rap 10 \u2014 May 2026",
     "composer": "Brian Streckfus",
-    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "tags": [
+      "mp3",
+      "rap",
+      "hip hop",
+      "beat"
+    ],
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
@@ -169,13 +240,19 @@
       "full_audio": "audio/fulldownloads/rap-10-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/28E6oJegUftu5wT1El8og0a",
       "purchase_page": "audio-purchase.html?track=rap-10-may-2026&from=mp3"
-    }
+    },
+    "collection": "rap"
   },
   {
     "id": "rap-11-may-2026",
-    "title": "Rap 11 — May 2026",
+    "title": "Rap 11 \u2014 May 2026",
     "composer": "Brian Streckfus",
-    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "tags": [
+      "mp3",
+      "rap",
+      "hip hop",
+      "beat"
+    ],
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
@@ -183,13 +260,19 @@
       "full_audio": "audio/fulldownloads/rap-11-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/dRm5kFa0E3KM9N94Qx8og0b",
       "purchase_page": "audio-purchase.html?track=rap-11-may-2026&from=mp3"
-    }
+    },
+    "collection": "rap"
   },
   {
     "id": "rap-12-may-2026",
-    "title": "Rap 12 — May 2026",
+    "title": "Rap 12 \u2014 May 2026",
     "composer": "Brian Streckfus",
-    "tags": ["mp3", "rap", "hip hop", "beat"],
+    "tags": [
+      "mp3",
+      "rap",
+      "hip hop",
+      "beat"
+    ],
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
@@ -197,6 +280,310 @@
       "full_audio": "audio/fulldownloads/rap-12-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/eVqfZj2yc5SUf7tciZ8og0c",
       "purchase_page": "audio-purchase.html?track=rap-12-may-2026&from=mp3"
-    }
+    },
+    "collection": "rap"
+  },
+  {
+    "id": "reggae-1-d-minor",
+    "title": "Reggae 1 D minor",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "reggae",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "reggae",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/reggae-1-d-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/reggae-1-d-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/cNi28tb4Ia9a8J5beV8og0f",
+      "purchase_page": "audio-purchase.html?track=reggae-1-d-minor&from=mp3"
+    },
+    "key": "D minor"
+  },
+  {
+    "id": "reggae-2-d-minor",
+    "title": "Reggae 2 D minor",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "reggae",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "reggae",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/reggae-2-d-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/reggae-2-d-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/00wbJ3b4I2GI1gD1El8og0g",
+      "purchase_page": "audio-purchase.html?track=reggae-2-d-minor&from=mp3"
+    },
+    "key": "D minor"
+  },
+  {
+    "id": "reggae-3-a-harmonic-minor",
+    "title": "Reggae 3 A Harmonic minor",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "reggae",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "reggae",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/reggae-3-a-harmonic-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/reggae-3-a-harmonic-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/aFabJ36Os956gbx0Ah8og0h",
+      "purchase_page": "audio-purchase.html?track=reggae-3-a-harmonic-minor&from=mp3"
+    },
+    "key": "A Harmonic minor"
+  },
+  {
+    "id": "reggae-4-g-harmonic-minor",
+    "title": "Reggae 4 G Harmonic minor",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "reggae",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "reggae",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/reggae-4-g-harmonic-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/reggae-4-g-harmonic-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/aFa5kF0q4gxy0cz1El8og0i",
+      "purchase_page": "audio-purchase.html?track=reggae-4-g-harmonic-minor&from=mp3"
+    },
+    "key": "G Harmonic minor"
+  },
+  {
+    "id": "reggae-5-g-harmonic-minor",
+    "title": "Reggae 5 G Harmonic minor",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "reggae",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "reggae",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/reggae-5-g-harmonic-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/reggae-5-g-harmonic-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/aFacN7c8Mdlm8J5ciZ8og0j",
+      "purchase_page": "audio-purchase.html?track=reggae-5-g-harmonic-minor&from=mp3"
+    },
+    "key": "G Harmonic minor"
+  },
+  {
+    "id": "reggae-6-g-harmonic-minor",
+    "title": "Reggae 6 G Harmonic minor",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "reggae",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "reggae",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/reggae-6-g-harmonic-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/reggae-6-g-harmonic-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/aFa00lfkYchiaRd96N8og0k",
+      "purchase_page": "audio-purchase.html?track=reggae-6-g-harmonic-minor&from=mp3"
+    },
+    "key": "G Harmonic minor"
+  },
+  {
+    "id": "reggae-7-a-major-f-sharp-minor",
+    "title": "Reggae 7 A Major \u2014 F# minor",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "reggae",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "reggae",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/reggae-7-a-major-f-sharp-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/reggae-7-a-major-f-sharp-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/7sY8wRgp24OQcZl2Ip8og0l",
+      "purchase_page": "audio-purchase.html?track=reggae-7-a-major-f-sharp-minor&from=mp3"
+    },
+    "key": "A Major - F# minor"
+  },
+  {
+    "id": "reggae-8-e-harmonic-minor",
+    "title": "Reggae 8 E Harmonic minor",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "reggae",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "reggae",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/reggae-8-e-harmonic-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/reggae-8-e-harmonic-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/eVq9AVfkY3KMf7t5UB8og0m",
+      "purchase_page": "audio-purchase.html?track=reggae-8-e-harmonic-minor&from=mp3"
+    },
+    "key": "E Harmonic minor"
+  },
+  {
+    "id": "reggae-9-e-minor",
+    "title": "Reggae 9 E minor",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "reggae",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "reggae",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/reggae-9-e-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/reggae-9-e-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/dRm00l1u82GIf7tdn38og0n",
+      "purchase_page": "audio-purchase.html?track=reggae-9-e-minor&from=mp3"
+    },
+    "key": "E minor"
+  },
+  {
+    "id": "reggae-10-e-minor",
+    "title": "Reggae 10 E minor",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "reggae",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "reggae",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/reggae-10-e-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/reggae-10-e-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/28E6oJfkY956f7tdn38og0o",
+      "purchase_page": "audio-purchase.html?track=reggae-10-e-minor&from=mp3"
+    },
+    "key": "E minor"
+  },
+  {
+    "id": "reggae-11-e-minor",
+    "title": "Reggae 11 E minor",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "reggae",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "reggae",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/reggae-11-e-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/reggae-11-e-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/aFafZjc8Mepq7F182J8og0p",
+      "purchase_page": "audio-purchase.html?track=reggae-11-e-minor&from=mp3"
+    },
+    "key": "E minor"
+  },
+  {
+    "id": "reggae-12-e-minor",
+    "title": "Reggae 12 E minor",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "reggae",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "reggae",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/reggae-12-e-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/reggae-12-e-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/eVqeVfa0Ea9a7F182J8og0q",
+      "purchase_page": "audio-purchase.html?track=reggae-12-e-minor&from=mp3"
+    },
+    "key": "E minor"
+  },
+  {
+    "id": "reggae-ska-1-c-major",
+    "title": "Reggae Ska 1 \u2014 C Major",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "reggae",
+      "ska",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "reggae",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/reggae-ska-1-c-major-30s.mp3",
+      "full_audio": "audio/fulldownloads/reggae-ska-1-c-major.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/7sY14p4Gk6WY4sP3Mt8og0r",
+      "purchase_page": "audio-purchase.html?track=reggae-ska-1-c-major&from=mp3"
+    },
+    "key": "C Major"
+  },
+  {
+    "id": "reggae-ska-2-c-major",
+    "title": "Reggae Ska 2 \u2014 C Major",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "reggae",
+      "ska",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "reggae",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/reggae-ska-2-c-major-30s.mp3",
+      "full_audio": "audio/fulldownloads/reggae-ska-2-c-major.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/dRm3cxc8M0yAcZl4Qx8og0s",
+      "purchase_page": "audio-purchase.html?track=reggae-ska-2-c-major&from=mp3"
+    },
+    "key": "C Major"
+  },
+  {
+    "id": "traditional-african-1-e-minor",
+    "title": "Traditional African 1 \u2014 E minor",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "reggae",
+      "world",
+      "african"
+    ],
+    "price": "$3.99",
+    "collection": "reggae",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/traditional-african-1-e-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/traditional-african-1-e-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/dRmcN74GkftucZl0Ah8og0t",
+      "purchase_page": "audio-purchase.html?track=traditional-african-1-e-minor&from=mp3"
+    },
+    "key": "E minor"
   }
 ]
