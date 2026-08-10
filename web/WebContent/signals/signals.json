@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "HYPE/USD",
+    "quantity": 1.8487705675725643,
+    "price": 54.04,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-10T04:05:55.331887Z",
+    "received_at": "2026-08-10T04:05:55.331904Z",
+    "id": "2026-08-10T04:05:55.331904Z-HYPE/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "HYPE/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2827,16 +2838,5 @@
     "timestamp": "2026-08-04T05:00:27.113055Z",
     "received_at": "2026-08-04T05:00:27.113101Z",
     "id": "2026-08-04T05:00:27.113101Z-FET/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 707.63850811,
-    "price": 0.1451,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-04T02:09:40.998100Z",
-    "received_at": "2026-08-04T02:09:40.998112Z",
-    "id": "2026-08-04T02:09:40.998112Z-FET/USD-sell"
   }
 ]
