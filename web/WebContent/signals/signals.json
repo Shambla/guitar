@@ -3,6 +3,28 @@
     "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
+    "price": 1882.51,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-08-11T14:30:16.764743Z",
+    "received_at": "2026-08-11T14:30:16.764760Z",
+    "id": "2026-08-11T14:30:16.764760Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "AERO/USD",
+    "quantity": 237.40713397,
+    "price": 0.42082,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-11T14:01:36.007135Z",
+    "received_at": "2026-08-11T14:01:36.007150Z",
+    "id": "2026-08-11T14:01:36.007150Z-AERO/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
     "price": 1887.79,
     "source": "MASTER_BOT_162",
     "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
@@ -2829,27 +2851,5 @@
     "timestamp": "2026-08-05T06:00:07.217164Z",
     "received_at": "2026-08-05T06:00:07.217196Z",
     "id": "2026-08-05T06:00:07.217196Z-AERO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "SOL/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-05T06:00:06.450284Z",
-    "received_at": "2026-08-05T06:00:06.450361Z",
-    "id": "2026-08-05T06:00:06.450361Z-SOL/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "HYPE/USD",
-    "quantity": 1.81899999,
-    "price": 56.21,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-05T04:57:37.670684Z",
-    "received_at": "2026-08-05T04:57:37.670701Z",
-    "id": "2026-08-05T04:57:37.670701Z-HYPE/USD-sell"
   }
 ]
