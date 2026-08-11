@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "BNB/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-08-11T09:00:15.683402Z",
+    "received_at": "2026-08-11T09:00:15.683416Z",
+    "id": "2026-08-11T09:00:15.683416Z-BNB/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
@@ -2840,16 +2851,5 @@
     "timestamp": "2026-08-04T21:00:17.122703Z",
     "received_at": "2026-08-04T21:00:17.122720Z",
     "id": "2026-08-04T21:00:17.122720Z-AERO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "AERO/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-04T21:00:15.354721Z",
-    "received_at": "2026-08-04T21:00:15.354736Z",
-    "id": "2026-08-04T21:00:15.354736Z-AERO/USD-buy"
   }
 ]
