@@ -1,11 +1,11 @@
 /**
- * In-page PDF viewer for All Beauty Scales (free giveaway on mp3-downloads.html).
+ * In-page PDF viewer for free 12 Keys scales gift on mp3-downloads.html.
  * Uses Mozilla PDF.js — prev/next buttons + keyboard arrows.
  */
 (function () {
 	'use strict';
 
-	var PDF_URL = 'img/all_beauty_scales.pdf';
+	var PDF_URL = 'img/12%20Keys%20Beautiful%20%26%20Print%20Friendly.pdf';
 	var canvas = document.getElementById('pdf-canvas');
 	var statusEl = document.getElementById('pdf-status');
 	var pageLabel = document.getElementById('pdf-page-label');

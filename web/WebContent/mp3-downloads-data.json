@@ -585,5 +585,183 @@
       "purchase_page": "audio-purchase.html?track=traditional-african-1-e-minor&from=mp3"
     },
     "key": "E minor"
+  },
+  {
+    "id": "bossa-1-c-sharp-minor",
+    "title": "Bossa 1 C# minor",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "bossa",
+      "bossa nova",
+      "brazilian",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "bossa",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/bossa-1-c-sharp-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/bossa-1-c-sharp-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=bossa-1-c-sharp-minor&from=mp3"
+    },
+    "key": "C# minor"
+  },
+  {
+    "id": "bossa-2-c-sharp-minor",
+    "title": "Bossa 2 C# minor",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "bossa",
+      "bossa nova",
+      "brazilian",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "bossa",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/bossa-2-c-sharp-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/bossa-2-c-sharp-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=bossa-2-c-sharp-minor&from=mp3"
+    },
+    "key": "C# minor"
+  },
+  {
+    "id": "bossa-3-c-sharp-minor",
+    "title": "Bossa 3 C# minor",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "bossa",
+      "bossa nova",
+      "brazilian",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "bossa",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/bossa-3-c-sharp-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/bossa-3-c-sharp-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=bossa-3-c-sharp-minor&from=mp3"
+    },
+    "key": "C# minor"
+  },
+  {
+    "id": "bossa-nova-g-sharp-harmonic-minor",
+    "title": "Bossa Nova G# Harmonic minor",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "bossa",
+      "bossa nova",
+      "brazilian",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "bossa",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/bossa-nova-g-sharp-harmonic-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/bossa-nova-g-sharp-harmonic-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=bossa-nova-g-sharp-harmonic-minor&from=mp3"
+    },
+    "key": "G# Harmonic minor"
+  },
+  {
+    "id": "choro-1-e-minor",
+    "title": "Choro 1 \u2014 E minor",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "bossa",
+      "choro",
+      "brazilian",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "bossa",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/choro-1-e-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/choro-1-e-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=choro-1-e-minor&from=mp3"
+    },
+    "key": "E minor"
+  },
+  {
+    "id": "choro-2-e-minor",
+    "title": "Choro 2 \u2014 E minor",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "bossa",
+      "choro",
+      "brazilian",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "bossa",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/choro-2-e-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/choro-2-e-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=choro-2-e-minor&from=mp3"
+    },
+    "key": "E minor"
+  },
+  {
+    "id": "choro-3-f-minor-c-phrygian",
+    "title": "Choro 3 \u2014 F minor (C Phrygian)",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "bossa",
+      "choro",
+      "brazilian",
+      "phrygian",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "bossa",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/choro-3-f-minor-c-phrygian-30s.mp3",
+      "full_audio": "audio/fulldownloads/choro-3-f-minor-c-phrygian.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=choro-3-f-minor-c-phrygian&from=mp3"
+    },
+    "key": "F minor (C Phrygian)"
+  },
+  {
+    "id": "choro-4-f-minor-c-phrygian",
+    "title": "Choro 4 \u2014 F minor (C Phrygian)",
+    "composer": "Brian Streckfus",
+    "tags": [
+      "mp3",
+      "bossa",
+      "choro",
+      "brazilian",
+      "phrygian",
+      "backing track"
+    ],
+    "price": "$3.99",
+    "collection": "bossa",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/choro-4-f-minor-c-phrygian-30s.mp3",
+      "full_audio": "audio/fulldownloads/choro-4-f-minor-c-phrygian.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "purchase_page": "audio-purchase.html?track=choro-4-f-minor-c-phrygian&from=mp3"
+    },
+    "key": "F minor (C Phrygian)"
   }
 ]
