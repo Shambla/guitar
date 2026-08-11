@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.05328246633880189,
+    "price": 1874.91,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-11T02:07:32.697092Z",
+    "received_at": "2026-08-11T02:07:32.697105Z",
+    "id": "2026-08-11T02:07:32.697105Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "AERO/USD",
     "quantity": 238.83448770002389,
     "price": 0.41828,
@@ -2840,16 +2851,5 @@
     "timestamp": "2026-08-04T20:00:27.128267Z",
     "received_at": "2026-08-04T20:00:27.128806Z",
     "id": "2026-08-04T20:00:27.128806Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "SOL/USD",
-    "quantity": 1.3577732518669383,
-    "price": 73.58,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-04T17:05:48.126974Z",
-    "received_at": "2026-08-04T17:05:48.126987Z",
-    "id": "2026-08-04T17:05:48.126987Z-SOL/USD-buy"
   }
 ]
