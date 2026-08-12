@@ -1,5 +1,27 @@
 [
   {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.06814202,
+    "price": 1907.59,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
+    "timestamp": "2026-08-12T11:16:12.487248Z",
+    "received_at": "2026-08-12T11:16:12.487266Z",
+    "id": "2026-08-12T11:16:12.487266Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.05242216,
+    "price": 1903.7748199999999,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-08-12T11:16:10.738519Z",
+    "received_at": "2026-08-12T11:16:10.738541Z",
+    "id": "2026-08-12T11:16:10.738541Z-ETH/USD-buy"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 185.91000366210938,
@@ -56,9 +78,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 15/16 | sell 10/13",
-    "timestamp": "2026-08-11T23:02:27.901061Z",
-    "received_at": "2026-08-11T23:02:27.901061Z",
-    "id": "2026-08-11T23:02:27.901061Z-XLP-info",
+    "timestamp": "2026-08-12T11:16:10.074258Z",
+    "received_at": "2026-08-12T11:16:10.074258Z",
+    "id": "2026-08-12T11:16:10.074258Z-XLP-info",
     "threshold_met": false,
     "buy_score": 15,
     "sell_score": 10,
@@ -2829,27 +2851,5 @@
     "timestamp": "2026-08-06T03:00:21.435418Z",
     "received_at": "2026-08-06T03:00:21.435444Z",
     "id": "2026-08-06T03:00:21.435444Z-AERO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-06T03:00:20.761106Z",
-    "received_at": "2026-08-06T03:00:20.761130Z",
-    "id": "2026-08-06T03:00:20.761130Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "SOL/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-06T03:00:08.915482Z",
-    "received_at": "2026-08-06T03:00:08.915602Z",
-    "id": "2026-08-06T03:00:08.915602Z-SOL/USD-sell"
   }
 ]
