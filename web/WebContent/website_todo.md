@@ -8,6 +8,9 @@
 ## MP3 Downloads — Reggae Stripe Payment Links
 **TODO:** Create Stripe Payment Links for all Reggae collection tracks and paste `buy.stripe.com` URLs into `mp3-downloads-data.json` (`collection: "reggae"`). Success URLs use `?track=<id>&from=mp3&paid=true` (see DIRECT_AUDIO_SALES.md).
 
+## MP3 Downloads — teacher / dev unlock
+**Done (convenience gate):** `mp3-downloads.html?dev=<secret>` unlocks full MP3 download buttons for lesson prep (sessionStorage; also works on `audio-purchase.html`). Secret lives in `script/mp3-downloads.js` + `audio-purchase.html`. Not real DRM — change secret if it leaks. Full files still must be on the live host under `audio/fulldownloads/`.
+
 ## 🔄 Subscription Section (For signals.html)
 
 **Status:** Ready to implement when Stripe account is set up

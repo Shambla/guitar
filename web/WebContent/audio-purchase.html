@@ -100,15 +100,33 @@
 	<script>
 		/**
 		 * Lightweight direct-sale page.
-		 * Preview is always public. Full download shown after Stripe success redirect (?paid=true).
-		 * This paid flag is a low-traffic convenience gate — not cryptographic security.
+		 * Preview is always public. Full download after Stripe (?paid=true) or teacher unlock (?dev=…).
+		 * Both flags are low-traffic convenience gates — not cryptographic security.
 		 * Resolves tracks from mp3-downloads-data.json first, then catalog-data.json.
 		 */
 		(function () {
 			const SUPPORT_EMAIL = 'brianstreckfus@gmail.com';
+			const MP3_DEV_SECRET = 'RichardHeartIsTheGoat';
 			const params = new URLSearchParams(window.location.search);
 			const trackId = (params.get('track') || params.get('id') || '').trim();
-			const paid = params.get('paid') === 'true';
+			const paidStripe = params.get('paid') === 'true';
+			function mp3DevUnlocked() {
+				try {
+					if (params.get('dev') === MP3_DEV_SECRET) {
+						try {
+							sessionStorage.setItem('mp3_dev', '1');
+						} catch (e) {
+							/* ignore */
+						}
+						return true;
+					}
+					return sessionStorage.getItem('mp3_dev') === '1';
+				} catch (e) {
+					return false;
+				}
+			}
+			const teacherUnlock = mp3DevUnlocked();
+			const paid = paidStripe || teacherUnlock;
 			const fromMp3 = params.get('from') === 'mp3';
 			const root = document.getElementById('ap-root');
 			const backEl = document.getElementById('ap-back');
@@ -168,7 +186,10 @@
 				let html = '';
 				if (paid) {
 					html += '<div class="ap-success" style="background:rgba(255,138,128,0.12);border-color:rgba(255,138,128,0.45);">' +
-						'<strong>Payment received, but this download page looks wrong.</strong> ' +
+						'<strong>' + (teacherUnlock && !paidStripe
+							? 'Teacher unlock is on, but this download page looks wrong.'
+							: 'Payment received, but this download page looks wrong.') +
+						'</strong> ' +
 						'Don’t worry — reply with your Stripe receipt and I’ll send the file.</div>';
 				}
 				html += '<p class="ap-error">' + msg + '</p>';
@@ -228,8 +249,10 @@
 					}
 
 					let html = '';
-					if (paid) {
+					if (paidStripe) {
 						html += '<div class="ap-success"><strong>Thank you for your purchase.</strong> Your download is below. Keep this page or your Stripe receipt as proof of purchase.</div>';
+					} else if (teacherUnlock) {
+						html += '<div class="ap-success"><strong>Teacher unlock.</strong> Full download for lesson prep — not a customer purchase.</div>';
 					}
 
 					html += '<h1>' + escapeHtml(title) + '</h1>';

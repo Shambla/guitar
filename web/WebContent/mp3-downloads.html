@@ -112,17 +112,19 @@
 
 		.mp3-why a { color: #9ec5e8; }
 
-		.mp3-toolbar {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 14px;
-			align-items: center;
-			justify-content: space-between;
+		.mp3-controls {
 			margin: 0 0 22px;
-			padding: 14px 16px;
+			padding: 18px 18px 16px;
 			background: rgba(255, 255, 255, 0.03);
 			border: 1px solid var(--mp3-line);
 			border-radius: 10px;
+		}
+
+		.mp3-toolbar {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 12px;
+			align-items: center;
 		}
 
 		.mp3-toolbar input {
@@ -141,28 +143,38 @@
 			color: rgba(243, 239, 230, 0.4);
 		}
 
+		.mp3-sort-control {
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			flex-shrink: 0;
+			color: var(--mp3-muted);
+			font-size: 0.85rem;
+		}
+
+		.mp3-sort-control select {
+			padding: 10px 12px;
+			border-radius: 6px;
+			border: 1px solid var(--mp3-line);
+			background: var(--mp3-surface);
+			color: var(--mp3-text);
+			font-family: inherit;
+			font-size: 0.9rem;
+		}
+
 		#mp3-status {
 			font-size: 0.85rem;
 			color: var(--mp3-muted);
 			white-space: nowrap;
 		}
 
-		.mp3-collection {
-			margin: 8px 0 18px;
-			font-size: 0.9rem;
-			color: var(--mp3-muted);
-		}
-
-		.mp3-collection strong {
-			color: var(--mp3-text);
-			font-weight: 600;
-		}
-
 		.mp3-filters {
 			display: flex;
 			flex-wrap: wrap;
 			gap: 8px;
-			margin: 0 0 14px;
+			margin: 14px 0 0;
+			padding-top: 14px;
+			border-top: 1px solid var(--mp3-line);
 		}
 
 		.mp3-filter-btn {
@@ -181,6 +193,13 @@
 			background: rgba(212, 162, 76, 0.22);
 			border-color: rgba(212, 162, 76, 0.55);
 			color: var(--mp3-accent);
+		}
+
+		.mp3-filter-hint {
+			margin: 10px 0 0;
+			font-size: 0.8rem;
+			color: var(--mp3-muted);
+			line-height: 1.45;
 		}
 
 		.mp3-grid {
@@ -536,7 +555,7 @@
 				use the track commercially (details below).
 			</p>
 			<div class="mp3-hero-actions">
-				<a class="mp3-btn-outline mp3-btn-outline-accent" href="#mp3-grid">Browse tracks</a>
+				<a class="mp3-btn-outline mp3-btn-outline-accent" href="#mp3-browse">Browse tracks</a>
 				<a class="mp3-btn-outline mp3-btn-outline-accent" href="#free-scales">Free scales PDF ↓</a>
 				<a class="mp3-btn-outline" href="#mp3-license-summary">License summary</a>
 				<a class="mp3-btn-outline" href="#mp3-why">Why buy here</a>
@@ -584,20 +603,41 @@
 			</p>
 		</section>
 
-		<!-- TODO: more memorable names for MP3 tracks (see website_todo.md) — Rap + Reggae placeholders -->
-		<p class="mp3-collection">
-			<strong>Collections</strong> · Rap May 2026 · Reggae / Ska · Bossa / Choro
-		</p>
-		<div class="mp3-filters" role="group" aria-label="Filter by collection">
-			<button type="button" class="mp3-filter-btn active" data-collection="all">All</button>
-			<button type="button" class="mp3-filter-btn" data-collection="rap">Rap</button>
-			<button type="button" class="mp3-filter-btn" data-collection="reggae">Reggae</button>
-			<button type="button" class="mp3-filter-btn" data-collection="bossa">Bossa</button>
-		</div>
-
-		<div class="mp3-toolbar">
-			<input type="search" id="mp3-search" placeholder="Search by title, BPM, key, reggae, ska…" aria-label="Search MP3 downloads">
-			<span id="mp3-status">Loading…</span>
+		<!--
+			Teacher / lesson-prep unlock (live): open mp3-downloads.html?dev=… (secret in script).
+			Convenience gate only — fulls must exist under audio/fulldownloads/ on the host.
+		-->
+		<div class="mp3-controls" id="mp3-browse">
+			<div class="mp3-toolbar">
+				<input type="search" id="mp3-search" placeholder="Search by title, composer, key, BPM, or keyword…" aria-label="Search MP3 downloads">
+				<div class="mp3-sort-control">
+					<label for="mp3-sort">Sort:</label>
+					<select id="mp3-sort">
+						<option value="default" selected>Default</option>
+						<option value="title_asc">Title (A to Z)</option>
+						<option value="title_desc">Title (Z to A)</option>
+						<option value="key_asc">Key (A to Z)</option>
+						<option value="bpm_asc">BPM (Low to High)</option>
+					</select>
+				</div>
+				<span id="mp3-status">Loading…</span>
+			</div>
+			<div class="mp3-filters" role="group" aria-label="Filter by style">
+				<button type="button" class="mp3-filter-btn active" data-filter="all">All Tracks</button>
+				<button type="button" class="mp3-filter-btn" data-filter="rap">Rap / Hip Hop</button>
+				<button type="button" class="mp3-filter-btn" data-filter="jazz">Jazz</button>
+				<button type="button" class="mp3-filter-btn" data-filter="bossa">Bossa Nova</button>
+				<button type="button" class="mp3-filter-btn" data-filter="reggae">Reggae</button>
+				<button type="button" class="mp3-filter-btn" data-filter="ska">Ska</button>
+				<button type="button" class="mp3-filter-btn" data-filter="world">World</button>
+				<button type="button" class="mp3-filter-btn" data-filter="choro">Choro</button>
+				<button type="button" class="mp3-filter-btn" data-filter="african">African</button>
+			</div>
+			<p class="mp3-filter-hint">
+				Same idea as the sheet music catalog: type to search, or tap a button to jump to a style.
+				You can combine both (Reggae + “E minor”). Shareable:
+				<code style="opacity:0.85;">?filter=bossa</code>
+			</p>
 		</div>
 
 		<div class="mp3-grid" id="mp3-grid">
