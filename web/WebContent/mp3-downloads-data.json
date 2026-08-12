@@ -603,7 +603,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/bossa-1-c-sharp-minor-30s.mp3",
       "full_audio": "audio/fulldownloads/bossa-1-c-sharp-minor.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/6oUcN72yc2GI2kHer78og0u",
       "purchase_page": "audio-purchase.html?track=bossa-1-c-sharp-minor&from=mp3"
     },
     "key": "C# minor"
@@ -625,7 +625,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/bossa-2-c-sharp-minor-30s.mp3",
       "full_audio": "audio/fulldownloads/bossa-2-c-sharp-minor.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/fZu3cxc8M4OQ4sP4Qx8og0v",
       "purchase_page": "audio-purchase.html?track=bossa-2-c-sharp-minor&from=mp3"
     },
     "key": "C# minor"
@@ -647,7 +647,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/bossa-3-c-sharp-minor-30s.mp3",
       "full_audio": "audio/fulldownloads/bossa-3-c-sharp-minor.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/cNi00l3Cgbde8J53Mt8og0w",
       "purchase_page": "audio-purchase.html?track=bossa-3-c-sharp-minor&from=mp3"
     },
     "key": "C# minor"
@@ -669,7 +669,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/bossa-nova-g-sharp-harmonic-minor-30s.mp3",
       "full_audio": "audio/fulldownloads/bossa-nova-g-sharp-harmonic-minor.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/3cI6oJ7Sw5SU4sP4Qx8og0x",
       "purchase_page": "audio-purchase.html?track=bossa-nova-g-sharp-harmonic-minor&from=mp3"
     },
     "key": "G# Harmonic minor"
@@ -691,7 +691,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/choro-1-e-minor-30s.mp3",
       "full_audio": "audio/fulldownloads/choro-1-e-minor.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/28EaEZb4I0yA2kHer78og0y",
       "purchase_page": "audio-purchase.html?track=choro-1-e-minor&from=mp3"
     },
     "key": "E minor"
@@ -713,7 +713,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/choro-2-e-minor-30s.mp3",
       "full_audio": "audio/fulldownloads/choro-2-e-minor.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/28E9AV8WAchiaRd0Ah8og0z",
       "purchase_page": "audio-purchase.html?track=choro-2-e-minor&from=mp3"
     },
     "key": "E minor"
@@ -736,7 +736,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/choro-3-f-minor-c-phrygian-30s.mp3",
       "full_audio": "audio/fulldownloads/choro-3-f-minor-c-phrygian.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/14AfZj7Sw2GIaRd2Ip8og0A",
       "purchase_page": "audio-purchase.html?track=choro-3-f-minor-c-phrygian&from=mp3"
     },
     "key": "F minor (C Phrygian)"
@@ -759,7 +759,7 @@
       "enabled": true,
       "preview_audio": "audio/previews/choro-4-f-minor-c-phrygian-30s.mp3",
       "full_audio": "audio/fulldownloads/choro-4-f-minor-c-phrygian.mp3",
-      "stripe_payment_link": "https://buy.stripe.com/YOUR_PAYMENT_LINK_HERE",
+      "stripe_payment_link": "https://buy.stripe.com/fZu8wR8WAftugbxdn38og0B",
       "purchase_page": "audio-purchase.html?track=choro-4-f-minor-c-phrygian&from=mp3"
     },
     "key": "F minor (C Phrygian)"
