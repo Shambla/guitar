@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "AERO/USD",
+    "quantity": 249.15908807773764,
+    "price": 0.40095,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-14T17:05:54.995559Z",
+    "received_at": "2026-08-14T17:05:54.995579Z",
+    "id": "2026-08-14T17:05:54.995579Z-AERO/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "AERO/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
