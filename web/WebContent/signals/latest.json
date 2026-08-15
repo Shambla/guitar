@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "ETH/USD",
+  "symbol": "HYPE/USD",
   "quantity": 100.0,
   "price": null,
   "source": "TradingView JSON",
   "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-08-14T21:00:17.711842Z",
-  "received_at": "2026-08-14T21:00:17.711917Z",
-  "id": "2026-08-14T21:00:17.711917Z-ETH/USD-buy"
+  "timestamp": "2026-08-15T00:00:41.737201Z",
+  "received_at": "2026-08-15T00:00:41.737312Z",
+  "id": "2026-08-15T00:00:41.737312Z-HYPE/USD-buy"
 }
