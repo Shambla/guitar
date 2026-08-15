@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "TAO/USD",
+    "quantity": 0.501002004008016,
+    "price": 199.4,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-15T01:05:43.193529Z",
+    "received_at": "2026-08-15T01:05:43.193542Z",
+    "id": "2026-08-15T01:05:43.193542Z-TAO/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "TAO/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
