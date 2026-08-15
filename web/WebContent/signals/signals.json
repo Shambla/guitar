@@ -1,5 +1,27 @@
 [
   {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-08-15T05:00:14.115991Z",
+    "received_at": "2026-08-15T05:00:14.116626Z",
+    "id": "2026-08-15T05:00:14.116626Z-FET/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "TAO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-08-15T05:00:12.219447Z",
+    "received_at": "2026-08-15T05:00:12.219623Z",
+    "id": "2026-08-15T05:00:12.219623Z-TAO/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "SOL/USD",
     "quantity": 1.3229263130043656,
