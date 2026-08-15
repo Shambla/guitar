@@ -1,6 +1,39 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.09556676,
+    "price": 1883.9,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
+    "timestamp": "2026-08-15T02:39:28.791237Z",
+    "received_at": "2026-08-15T02:39:28.791248Z",
+    "id": "2026-08-15T02:39:28.791248Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.05308137,
+    "price": 1880.1322,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-08-15T02:39:26.993681Z",
+    "received_at": "2026-08-15T02:39:26.993764Z",
+    "id": "2026-08-15T02:39:26.993764Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 746.9375560203167,
+    "price": 0.13375,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-15T02:06:31.142243Z",
+    "received_at": "2026-08-15T02:06:31.142256Z",
+    "id": "2026-08-15T02:06:31.142256Z-FET/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "AERO/USD",
     "quantity": 249.42009827151873,
     "price": 0.40053,
@@ -2815,16 +2848,5 @@
     "timestamp": "2026-08-08T14:00:12.160865Z",
     "received_at": "2026-08-08T14:00:12.160887Z",
     "id": "2026-08-08T14:00:12.160887Z-FET/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.052251517906595185,
-    "price": 1911.91,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-08T02:06:06.217352Z",
-    "received_at": "2026-08-08T02:06:06.217367Z",
-    "id": "2026-08-08T02:06:06.217367Z-ETH/USD-buy"
   }
 ]
