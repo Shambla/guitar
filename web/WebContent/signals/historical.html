@@ -83,12 +83,18 @@
 	</nav>
 	<div class="container">
 		<h1>Historical Signals</h1>
-		<p class="subtitle">Archived crypto (1+ day) and stock/ETF (7+ days) signals for transparency and backtesting.</p>
+		<p class="subtitle">Archived crypto (1+ day), PulseChain DeFi (1+ day), and stock/ETF (7+ days) signals for transparency and backtesting.</p>
 
 		<div id="crypto-section" class="section">
 			<h2>Historical Crypto Signals (1+ Days Old)</h2>
 			<p class="meta" id="crypto-meta">Loading…</p>
 			<div id="crypto-grid" class="signals-grid"></div>
+		</div>
+
+		<div id="defi-section" class="section">
+			<h2>Historical PulseChain DeFi Signals (1+ Days Old)</h2>
+			<p class="meta" id="defi-meta">Loading…</p>
+			<div id="defi-grid" class="signals-grid"></div>
 		</div>
 
 		<div id="stock-section" class="section">
@@ -99,7 +105,18 @@
 	</div>
 
 	<script>
+		function isDefiSignal(signal) {
+			if (!signal) return false;
+			const source = (signal.source || '').toString();
+			if (/pulsechain/i.test(source)) return true;
+			const raw = (signal.symbol || '').toString().trim().toUpperCase().replace(/[-_]/g, '/');
+			if (!raw) return false;
+			if (raw.endsWith('/DAI')) return true;
+			const base = raw.includes('/') ? raw.split('/')[0] : raw;
+			return ['PLS', 'WPLS', 'PLSX', 'HEX', 'EHEX', 'INC', 'PRVX'].indexOf(base) !== -1;
+		}
 		function isStockSignal(signal) {
+			if (isDefiSignal(signal)) return false;
 			const raw = (signal.symbol || '').trim();
 			if (!raw) return false;
 			const sym = raw.toUpperCase();
@@ -158,10 +175,13 @@
 		}
 		function load() {
 			const cryptoGrid = document.getElementById('crypto-grid');
+			const defiGrid = document.getElementById('defi-grid');
 			const stockGrid = document.getElementById('stock-grid');
 			const cryptoMeta = document.getElementById('crypto-meta');
+			const defiMeta = document.getElementById('defi-meta');
 			const stockMeta = document.getElementById('stock-meta');
 			cryptoGrid.innerHTML = '<div class="loading">Loading…</div>';
+			if (defiGrid) defiGrid.innerHTML = '<div class="loading">Loading…</div>';
 			stockGrid.innerHTML = '<div class="loading">Loading…</div>';
 			fetch('signals.json')
 				.then(function(r) {
@@ -171,13 +191,20 @@
 				.then(function(data) {
 					const signals = Array.isArray(data) ? data : [data];
 					const stockSignals = [];
+					const defiSignals = [];
 					const cryptoSignals = [];
 					signals.forEach(function(s) {
-						if (isStockSignal(s)) stockSignals.push(s); else cryptoSignals.push(s);
+						if (isStockSignal(s)) stockSignals.push(s);
+						else if (isDefiSignal(s)) defiSignals.push(s);
+						else cryptoSignals.push(s);
 					});
 					const oneDayAgo = Date.now() - 24 * 60 * 60 * 1000;
 					const sevenDaysAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
 					const oldCrypto = cryptoSignals.filter(function(s) {
+						const t = new Date(s.timestamp || s.received_at).getTime();
+						return t <= oneDayAgo;
+					});
+					const oldDefi = defiSignals.filter(function(s) {
 						const t = new Date(s.timestamp || s.received_at).getTime();
 						return t <= oneDayAgo;
 					});
@@ -186,12 +213,15 @@
 						return t <= sevenDaysAgo;
 					});
 					renderCards(oldCrypto, cryptoGrid, cryptoMeta);
+					if (defiGrid && defiMeta) renderCards(oldDefi, defiGrid, defiMeta);
 					renderCards(oldStocks, stockGrid, stockMeta);
 				})
 				.catch(function(err) {
 					cryptoGrid.innerHTML = '<div class="error">Could not load signals. ' + err.message + '</div>';
+					if (defiGrid) defiGrid.innerHTML = '';
 					stockGrid.innerHTML = '';
 					cryptoMeta.textContent = '';
+					if (defiMeta) defiMeta.textContent = '';
 					stockMeta.textContent = '';
 				});
 		}

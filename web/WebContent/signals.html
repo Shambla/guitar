@@ -1655,8 +1655,10 @@
 			}
 			
 			#crypto-signals-container,
+			#defi-signals-container,
 			#stock-signals-container,
 			#signals-grid,
+			#defi-signals-grid,
 			#stock-signals-grid,
 			.asset-list-grid {
 				visibility: visible !important;
@@ -1782,6 +1784,7 @@
 				<a href="index.html">HOME</a>
 				<a href="catalog.html">🎵 CATALOG</a>
 				<a href="signals.html">🚀 Crypto Signals</a>
+				<a href="#" onclick="event.preventDefault(); switchToDefi(); return false;">🟣 DeFi Signals</a>
 				<a href="#" onclick="event.preventDefault(); showStockSignals(); return false;">📈 Stock Signals</a>
 				<a href="signals/historical.html">📜 Historical Signals</a>
 				<a href="#code-download-section" onclick="event.preventDefault(); showCodeForSale(); return false;">📥 Downloadable Code (optional)</a>
@@ -1797,6 +1800,7 @@
 			<button class="floating-nav-toggle" onclick="toggleFloatingNav()" title="Show menu" aria-label="Show menu">☰</button>
 			<div class="floating-nav-content">
 				<a href="#" onclick="event.preventDefault(); switchToCrypto(); return false;">🚀 Crypto</a>
+				<a href="#" onclick="event.preventDefault(); switchToDefi(); return false;">🟣 DeFi</a>
 				<a href="#" onclick="event.preventDefault(); showStockSignals(); return false;">📈 Stocks</a>
 				<a href="#" onclick="event.preventDefault(); showHistoricalSignals(); return false;">📜 Historical</a>
 				<a href="#asset-list" onclick="event.preventDefault(); showAssetList(); return false;">📋 Assets</a>
@@ -2011,6 +2015,17 @@
 				</div>
 			</div>
 			
+			<!-- PulseChain DeFi Signals - Hidden by default -->
+			<div id="defi-signals-container" style="margin: 40px 0; padding: 0; display: none;">
+				<h2 style="color: var(--primary-color); font-size: 28px; margin: 40px 0 20px; text-align: center;">🟣 PulseChain DeFi Signals</h2>
+				<p style="color: rgba(255, 255, 255, 0.6); font-size: 14px; text-align: center; margin-bottom: 20px; max-width: 800px; margin-left: auto; margin-right: auto;">
+					HEX, PLS, PLSX, INC, PRVX and other PulseChain pairs (usually quoted in DAI). Prices come from CoinGecko when listed, otherwise DexScreener.
+				</p>
+				<div id="defi-signals-grid" class="signals-grid" style="background: rgba(156, 39, 176, 0.1); border: 2px dashed rgba(156, 39, 176, 0.4); padding: 20px; min-height: 50px; margin-bottom: 0 !important;">
+					<div class="loading">⏳ Waiting for DeFi signals...</div>
+				</div>
+			</div>
+			
 			<!-- Stock Signals (Recent - Last 7 Days) - Hidden by default -->
 			<div id="stock-signals-container" style="margin: 40px 0; padding: 0; display: none;">
 				<h2 style="color: var(--primary-color); font-size: 28px; margin: 40px 0 20px; text-align: center;">📊 Stock Signals</h2>
@@ -2109,6 +2124,14 @@
 					<h3 style="color: var(--primary-color); font-size: 24px; margin-bottom: 20px; text-align: center;">💎 Cryptocurrencies</h3>
 					<div id="crypto-asset-list" class="asset-list-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; margin-bottom: 30px;">
 						<div class="loading">⏳ Loading crypto assets...</div>
+					</div>
+				</div>
+				
+				<!-- PulseChain DeFi Assets List -->
+				<div style="margin-bottom: 40px;">
+					<h3 style="color: var(--primary-color); font-size: 24px; margin-bottom: 20px; text-align: center;">🟣 PulseChain DeFi</h3>
+					<div id="defi-asset-list" class="asset-list-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; margin-bottom: 30px;">
+						<div class="loading">⏳ Loading DeFi assets...</div>
 					</div>
 				</div>
 				
@@ -3006,7 +3029,12 @@
 			
 			function formatPrice(price) {
 				if (price === null || price === undefined) return 'N/A';
-				return '$' + parseFloat(price).toFixed(4);
+				const n = parseFloat(price);
+				if (Number.isNaN(n)) return 'N/A';
+				if (n >= 1) return '$' + n.toFixed(4);
+				if (n >= 0.01) return '$' + n.toFixed(4);
+				if (n >= 0.0001) return '$' + n.toFixed(6);
+				return '$' + Number(n.toPrecision(4));
 			}
 
 			// Helper: pick the first available numeric price field from a signal
@@ -3401,8 +3429,83 @@
 				'AERO/USD': 'aerodrome-finance',
 				'FET/USD': 'fetch-ai',
 				'RNDR/USD': 'render-token',
-				'AAVE/USD': 'aave'
+				'AAVE/USD': 'aave',
+				'HEX/USD': 'hex',
+				'HEX/DAI': 'hex',
+				'PLS/USD': 'pulsechain',
+				'PLS/DAI': 'pulsechain',
+				'WPLS/USD': 'pulsechain',
+				'WPLS/DAI': 'pulsechain',
+				'PLSX/USD': 'pulsex',
+				'PLSX/DAI': 'pulsex',
+				'INC/USD': 'pulsex-incentive-token',
+				'INC/DAI': 'pulsex-incentive-token',
+				'DAI/USD': 'dai',
+				'DAI/DAI': 'dai'
 			};
+			
+			const PULSECHAIN_BASES = new Set(['PLS', 'WPLS', 'PLSX', 'HEX', 'EHEX', 'INC', 'PRVX']);
+			const PULSECHAIN_TOKEN_ADDRESSES = {
+				HEX: '0x2b591e99afe9f32eaa6214f7b7629768c40eeb39',
+				EHEX: '0x57fde0a71132198BBeC939B98976993d8D89D225',
+				PLSX: '0x95B303987A60C71504D99Aa1b13B4DA07b0790ab',
+				WPLS: '0xA1077a294dDE1B09bB078844df40758a5D0f9a27',
+				PLS: '0xA1077a294dDE1B09bB078844df40758a5D0f9a27',
+				PRVX: '0xF6f8Db0aBa00007681F8fAF16A0FDa1c9B030b11',
+				INC: '0x2fa878Ab3F87CC1C9737Fc071108F904c0B0C95d',
+				DAI: '0xefD766cCb38EaF1dfd701853BFCe31359239F305'
+			};
+			
+			function getPulseBase(symbol) {
+				const base = _normalizeSymbolForPrice(symbol);
+				return PULSECHAIN_BASES.has(base) ? base : '';
+			}
+			
+			function isDefiSignal(signal) {
+				if (!signal) return false;
+				const source = (signal.source || '').toString();
+				if (/pulsechain/i.test(source)) return true;
+				const raw = (signal.symbol || '').toString().trim().toUpperCase().replace(/[-_]/g, '/');
+				if (!raw) return false;
+				if (raw.endsWith('/DAI')) return true;
+				const base = raw.includes('/') ? raw.split('/')[0] : raw;
+				return PULSECHAIN_BASES.has(base);
+			}
+			
+			function resolveCoinGeckoId(symbol) {
+				if (!symbol) return '';
+				const upper = symbol.toString().trim().toUpperCase().replace(/[-_]/g, '/');
+				const base = upper.split('/')[0];
+				return coinGeckoSymbolMap[upper]
+					|| coinGeckoSymbolMap[symbol]
+					|| coinGeckoSymbolMap[`${base}/USD`]
+					|| coinGeckoSymbolMap[`${base}/DAI`]
+					|| base.toLowerCase();
+			}
+			
+			async function fetchPriceFromDexScreener(symbol) {
+				const base = _normalizeSymbolForPrice(symbol);
+				const addr = PULSECHAIN_TOKEN_ADDRESSES[base];
+				if (!addr) return null;
+				try {
+					const url = `https://api.dexscreener.com/latest/dex/tokens/${addr}`;
+					const data = await fetchJsonWithRetry(url, {}, { retries: 2, baseDelayMs: 700 });
+					const pairs = (data && Array.isArray(data.pairs)) ? data.pairs : [];
+					if (!pairs.length) return null;
+					const pulse = pairs.filter(p => String(p.chainId || '').toLowerCase() === 'pulsechain');
+					const pool = (pulse.length ? pulse : pairs)
+						.slice()
+						.sort((a, b) => (parseFloat(b.liquidity && b.liquidity.usd) || 0) - (parseFloat(a.liquidity && a.liquidity.usd) || 0))[0];
+					const price = parseFloat(pool && pool.priceUsd);
+					if (!Number.isNaN(price) && price > 0) {
+						setCachedPriceEntry(symbol, false, price, 'dexscreener');
+						return price;
+					}
+				} catch (e) {
+					console.error(`DexScreener price failed for ${symbol}:`, e);
+				}
+				return null;
+			}
 			
 			async function fetchPriceFromCoinGecko(symbol) {
 				if (!symbol) return null;
@@ -3413,8 +3516,8 @@
 					return cachedEntry.price;
 				}
 				
-				// Get CoinGecko ID
-				const coinId = coinGeckoSymbolMap[symbol] || symbol.split('/')[0].toLowerCase();
+				const isPulse = !!getPulseBase(symbol) || /\/DAI$/i.test(String(symbol));
+				const coinId = resolveCoinGeckoId(symbol);
 				
 				try {
 					const url = `https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=usd`;
@@ -3426,25 +3529,32 @@
 						return price;
 					}
 				} catch (error) {
-					// Fallback: Binance (often avoids CoinGecko rate limits for major coins). Note: Binance can trigger CORS in browser if blocked or when not served from same origin.
-					try {
-						const base = _normalizeSymbolForPrice(symbol);
-						if (base) {
-							const pair = `${base}USDT`;
-							const binanceUrl = `https://api.binance.com/api/v3/ticker/price?symbol=${pair}`;
-							const data = await fetchJsonWithRetry(binanceUrl, {}, { retries: 2, baseDelayMs: 700 });
-							if (data && data.price) {
-								const price = parseFloat(data.price);
-								if (!Number.isNaN(price) && price > 0) {
-									setCachedPriceEntry(symbol, false, price, 'binance');
-									return price;
+					if (!isPulse) {
+						// Fallback: Binance (often avoids CoinGecko rate limits for major coins). Note: Binance can trigger CORS in browser if blocked or when not served from same origin.
+						try {
+							const base = _normalizeSymbolForPrice(symbol);
+							if (base) {
+								const pair = `${base}USDT`;
+								const binanceUrl = `https://api.binance.com/api/v3/ticker/price?symbol=${pair}`;
+								const data = await fetchJsonWithRetry(binanceUrl, {}, { retries: 2, baseDelayMs: 700 });
+								if (data && data.price) {
+									const price = parseFloat(data.price);
+									if (!Number.isNaN(price) && price > 0) {
+										setCachedPriceEntry(symbol, false, price, 'binance');
+										return price;
+									}
 								}
 							}
+						} catch (e2) {
+							// ignore fallback
 						}
-					} catch (e2) {
-						// ignore fallback
 					}
 					console.error(`Error fetching price for ${symbol} from CoinGecko/Binance:`, error);
+				}
+				
+				if (isPulse) {
+					const dexPrice = await fetchPriceFromDexScreener(symbol);
+					if (dexPrice != null) return dexPrice;
 				}
 				
 				return null;
@@ -3859,6 +3969,9 @@
 				// Crypto / Digital Assets
 				if (sym.includes('BTC') || sym === 'BITCOIN') return '₿';
 				if (sym.includes('ETH') || sym === 'ETHEREUM') return '🔷';
+				if (sym.includes('HEX')) return '🔶';
+				if (sym.includes('PLS') || sym.includes('PLSX') || sym.includes('WPLS')) return '💜';
+				if (sym.includes('PRVX') || sym.includes('INC')) return '🟣';
 				
 				// Semiconductor (SOXX)
 				if (sym === 'SOXX') return '💻 🖥️ 📱 🤖 ⚙️';
@@ -3883,6 +3996,7 @@
 			
 			// Function to identify if a signal is a stock/ETF (not crypto)
 			function isStockSignal(signal) {
+				if (isDefiSignal(signal)) return false;
 				const raw = (signal.symbol || '').trim();
 				if (!raw) return false;
 				const sym = raw.toUpperCase();
@@ -3913,17 +4027,30 @@
 				return false;
 			}
 			
-			function switchToCrypto() {
+			function _setSignalsHeader(title, subtitle) {
+				const h1 = document.querySelector('.signals-header h1');
+				const p = document.querySelector('.signals-header p');
+				if (h1) h1.textContent = title;
+				if (p) p.textContent = subtitle;
+			}
+			
+			function _setVisibleSignalsSection(name) {
 				const cryptoContainer = document.getElementById('crypto-signals-container');
+				const defiContainer = document.getElementById('defi-signals-container');
 				const stockContainer = document.getElementById('stock-signals-container');
 				const assetListContainer = document.getElementById('asset-list-container');
-				
-				// Show crypto, hide stocks and asset list
-				if (cryptoContainer) cryptoContainer.style.display = 'block';
-				if (stockContainer) stockContainer.style.display = 'none';
-				if (assetListContainer) assetListContainer.style.display = 'none';
-				
-				// Scroll to crypto section
+				const stockHistoricalContainer = document.getElementById('stock-historical-container');
+				if (cryptoContainer) cryptoContainer.style.display = name === 'crypto' ? 'block' : 'none';
+				if (defiContainer) defiContainer.style.display = name === 'defi' ? 'block' : 'none';
+				if (stockContainer) stockContainer.style.display = name === 'stocks' ? 'block' : 'none';
+				if (stockHistoricalContainer) stockHistoricalContainer.style.display = name === 'stocks' ? 'block' : 'none';
+				if (assetListContainer) assetListContainer.style.display = name === 'assets' ? 'block' : 'none';
+			}
+			
+			function switchToCrypto() {
+				_setVisibleSignalsSection('crypto');
+				_setSignalsHeader('🚀 Crypto Signals', 'Live feed of buy and sell signals from trading strategies');
+				const cryptoContainer = document.getElementById('crypto-signals-container');
 				setTimeout(() => {
 					if (cryptoContainer) {
 						cryptoContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -3931,19 +4058,21 @@
 				}, 100);
 			}
 			
+			function switchToDefi() {
+				_setVisibleSignalsSection('defi');
+				_setSignalsHeader('🟣 PulseChain DeFi Signals', 'Live HEX / PLS / PLSX / INC / PRVX buy and sell signals');
+				const defiContainer = document.getElementById('defi-signals-container');
+				setTimeout(() => {
+					if (defiContainer) {
+						defiContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+					}
+				}, 100);
+			}
+			
 			function switchToStocks() {
-				const cryptoContainer = document.getElementById('crypto-signals-container');
+				_setVisibleSignalsSection('stocks');
+				_setSignalsHeader('📈 Stock Signals', 'Stocks and ETFs — longer-horizon signals from the Python scanner');
 				const stockContainer = document.getElementById('stock-signals-container');
-				const assetListContainer = document.getElementById('asset-list-container');
-				const stockHistoricalContainer = document.getElementById('stock-historical-container');
-				
-				// Hide crypto and asset list, show stocks
-				if (cryptoContainer) cryptoContainer.style.display = 'none';
-				if (stockContainer) stockContainer.style.display = 'block';
-				if (stockHistoricalContainer) stockHistoricalContainer.style.display = 'block';
-				if (assetListContainer) assetListContainer.style.display = 'none';
-				
-				// Scroll to stock signals section
 				setTimeout(() => {
 					if (stockContainer) {
 						stockContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -3963,17 +4092,9 @@
 			function showAssetList() {
 				const assetsTradedSection = document.getElementById('assets-traded-section');
 				const assetListContainer = document.getElementById('asset-list-container');
-				const cryptoContainer = document.getElementById('crypto-signals-container');
-				const stockContainer = document.getElementById('stock-signals-container');
 				
-				// Hide other sections
-				if (cryptoContainer) cryptoContainer.style.display = 'none';
-				if (stockContainer) stockContainer.style.display = 'none';
-				
-				// Show asset list container if it exists
-				if (assetListContainer) {
-					assetListContainer.style.display = 'block';
-				}
+				_setVisibleSignalsSection('assets');
+				_setSignalsHeader('📋 Asset List', 'Latest signal per ticker across crypto, PulseChain DeFi, and stocks');
 				
 				// Scroll to Assets Traded section
 				if (assetsTradedSection) {
@@ -4022,6 +4143,8 @@
 			function renderAssetList(signals) {
 				if (!signals || signals.length === 0) {
 					document.getElementById('crypto-asset-list').innerHTML = '<div class="empty-state"><p>No signals available</p></div>';
+					const defiListEmpty = document.getElementById('defi-asset-list');
+					if (defiListEmpty) defiListEmpty.innerHTML = '<div class="empty-state"><p>No signals available</p></div>';
 					document.getElementById('stock-asset-list').innerHTML = '<div class="empty-state"><p>No signals available</p></div>';
 					return;
 				}
@@ -4048,13 +4171,16 @@
 					}
 				});
 				
-				// Separate crypto and stocks
+				// Separate crypto, DeFi, and stocks
 				const cryptoAssets = [];
+				const defiAssets = [];
 				const stockAssets = [];
 				
 				assetMap.forEach((assetData, symbol) => {
-					if (isStockSignal({ symbol: symbol })) {
+					if (isStockSignal({ symbol: symbol, source: assetData.source })) {
 						stockAssets.push(assetData);
+					} else if (isDefiSignal({ symbol: symbol, source: assetData.source })) {
+						defiAssets.push(assetData);
 					} else {
 						cryptoAssets.push(assetData);
 					}
@@ -4062,6 +4188,7 @@
 				
 				// Sort alphabetically
 				cryptoAssets.sort((a, b) => a.symbol.localeCompare(b.symbol));
+				defiAssets.sort((a, b) => a.symbol.localeCompare(b.symbol));
 				stockAssets.sort((a, b) => a.symbol.localeCompare(b.symbol));
 				
 				// Render crypto assets
@@ -4070,6 +4197,15 @@
 					cryptoList.innerHTML = '<div class="empty-state"><p>No cryptocurrency signals available</p></div>';
 				} else {
 					cryptoList.innerHTML = cryptoAssets.map(asset => renderAssetItem(asset)).join('');
+				}
+				
+				const defiList = document.getElementById('defi-asset-list');
+				if (defiList) {
+					if (defiAssets.length === 0) {
+						defiList.innerHTML = '<div class="empty-state"><p>No PulseChain DeFi signals available</p></div>';
+					} else {
+						defiList.innerHTML = defiAssets.map(asset => renderAssetItem(asset)).join('');
+					}
 				}
 				
 				// Render stock assets
@@ -4665,6 +4801,7 @@
 				window.allSignals = signals;
 				
 				const grid = document.getElementById('signals-grid'); // Crypto recent
+				const defiGrid = document.getElementById('defi-signals-grid');
 				const stockGrid = document.getElementById('stock-signals-grid'); // Stock recent
 				const stockContainer = document.getElementById('stock-signals-container'); // Stock recent container
 				
@@ -4672,17 +4809,21 @@
 				
 				if (!signals || signals.length === 0) {
 					grid.innerHTML = '<div class="empty-state"><h3>⏳ Waiting for signals...</h3><p>Signals will appear here automatically when your trading bots generate them</p></div>';
+					if (defiGrid) defiGrid.innerHTML = '<div class="empty-state"><h3>⏳ Waiting for DeFi signals...</h3><p>PulseChain buy/sell alerts will appear here.</p></div>';
 					stockContainer.style.display = 'none';
 					return;
 				}
 				
-				// Separate stocks from crypto
+				// Separate stocks, PulseChain DeFi, and CEX crypto
 				const stockSignals = [];
+				const defiSignals = [];
 				const cryptoSignals = [];
 				
 				signals.forEach(signal => {
 					if (isStockSignal(signal)) {
 						stockSignals.push(signal);
+					} else if (isDefiSignal(signal)) {
+						defiSignals.push(signal);
 					} else {
 						cryptoSignals.push(signal);
 					}
@@ -4699,6 +4840,17 @@
 						recentCrypto.push(signal);
 					} else {
 						oldCrypto.push(signal);
+					}
+				});
+				
+				const recentDefi = [];
+				const oldDefi = [];
+				defiSignals.forEach(signal => {
+					const timestamp = new Date(signal.timestamp || signal.received_at);
+					if (timestamp.getTime() > oneDayAgo) {
+						recentDefi.push(signal);
+					} else {
+						oldDefi.push(signal);
 					}
 				});
 				
@@ -4719,6 +4871,7 @@
 				});
 				
 				console.log('Crypto - Recent:', recentCrypto.length, 'Old:', oldCrypto.length);
+				console.log('DeFi - Recent:', recentDefi.length, 'Old:', oldDefi.length);
 				console.log('Stocks - Recent:', recentStocks.length, 'Historical (7+ days):', oldStocks.length);
 				
 				// Render CRYPTO signals
@@ -4726,6 +4879,14 @@
 					grid.innerHTML = '<div class="empty-state"><h3>⏳ No recent crypto signals</h3><p>Check historical signals or wait for new signals</p></div>';
 				} else {
 					renderSignalCards(recentCrypto, grid);
+				}
+				
+				if (defiGrid) {
+					if (recentDefi.length === 0) {
+						defiGrid.innerHTML = '<div class="empty-state"><h3>⏳ No recent PulseChain DeFi signals</h3><p>HEX/DAI, PRVX/DAI and other Pulse pairs will show here when the DeFi bot posts them.</p></div>';
+					} else {
+						renderSignalCards(recentDefi, defiGrid);
+					}
 				}
 				
 				// Historical crypto: see signals/historical.html
@@ -4817,6 +4978,9 @@
 					} else if (note.includes('HMM Extreme') || note.includes('AI Extreme')) {
 						signalBadge = '⭐⭐⭐ ULTRA HIGH CONVICTION';
 						signalClass = 'confluence-extreme';
+					} else if (isDefiSignal(signal) || /pulsechain/i.test(signal.source || '')) {
+						signalBadge = '🟣 PULSECHAIN DEFI';
+						signalClass = 'confluence-pure';
 					}
 						// Skip "Raw JSON signal" - internal only, not shown to users
 						
@@ -5427,8 +5591,10 @@
 			function hideAllSignals() {
 				const grids = [
 					document.getElementById('signals-grid'),
+					document.getElementById('defi-signals-grid'),
 					document.getElementById('stock-signals-grid'),
 					document.getElementById('crypto-asset-list'),
+					document.getElementById('defi-asset-list'),
 					document.getElementById('stock-asset-list'),
 					document.getElementById('top-signals-section'),
 					document.getElementById('watchlist-section')
