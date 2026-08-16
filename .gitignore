@@ -61,10 +61,8 @@ client_secrets.json
 web/WebContent/youtube_token.json
 web/WebContent/token*.json
 
-# Full paid MP3s — host via AWS/deploy; keep previews in git if small
-web/WebContent/audio/fulldownloads/*.mp3
-web/WebContent/audio/fulldownloads/**/*.mp3
-!web/WebContent/audio/fulldownloads/.gitkeep
-!web/WebContent/audio/fulldownloads/README.md
-!web/WebContent/audio/fulldownloads/**/.gitkeep
-!web/WebContent/audio/fulldownloads/**/README.md
+# Full MP3s at audio/fulldownloads/*.mp3 are tracked (private repo backup + S3 deploy).
+# Keep messy DAW/export subfolders local only.
+web/WebContent/audio/fulldownloads/Rap May 2026/
+web/WebContent/audio/fulldownloads/Reggae/
+web/WebContent/audio/fulldownloads/Bossa/

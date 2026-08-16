@@ -1,9 +1,7 @@
 # Full MP3 downloads (after payment)
 
-Place full tracks here. Filenames are referenced from `catalog-data.json` → `direct_sale.full_audio`.
+Kebab-case files in this folder (e.g. `reggae-9-e-minor.mp3`) are what the live site serves. Paths are in `mp3-downloads-data.json` → `direct_sale.full_audio`.
 
-Example:
+They are tracked in git so a push to `master` deploys them to S3 with the rest of the site.
 
-`off-kilter-grit-120-bpm-a-minor.mp3`
-
-These `*.mp3` files are gitignored — upload with your normal website/AWS deploy so buyers can download after Stripe redirects to `audio-purchase.html?…&paid=true`.
+Human-named DAW export folders (`Rap May 2026/`, `Reggae/`, `Bossa/`) stay local and are gitignored.
