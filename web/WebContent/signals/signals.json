@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 819.7393228953193,
+    "price": 0.12187,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-17T02:05:44.538108Z",
+    "received_at": "2026-08-17T02:05:44.538129Z",
+    "id": "2026-08-17T02:05:44.538129Z-FET/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "PRVX/DAI",
     "quantity": 100.0,
     "price": null,
@@ -2606,27 +2617,5 @@
     "timestamp": "2026-08-10T02:06:41.967582Z",
     "received_at": "2026-08-10T02:06:41.967605Z",
     "id": "2026-08-10T02:06:41.967605Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "TAO/USD",
-    "quantity": 0.48911714355588165,
-    "price": 204.25,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-10T02:05:28.677285Z",
-    "received_at": "2026-08-10T02:05:28.677302Z",
-    "id": "2026-08-10T02:05:28.677302Z-TAO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "SOL/USD",
-    "quantity": 1.3020833333333333,
-    "price": 76.72,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-10T02:05:26.390431Z",
-    "received_at": "2026-08-10T02:05:26.392003Z",
-    "id": "2026-08-10T02:05:26.392003Z-SOL/USD-buy"
   }
 ]
