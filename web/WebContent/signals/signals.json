@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "PLSX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-08-17T20:00:44.487565Z",
+    "received_at": "2026-08-17T20:00:44.487673Z",
+    "id": "2026-08-17T20:00:44.487673Z-PLSX/DAI-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "TAO/USD",
     "quantity": 0.5094762584063582,
     "price": 196.08,
