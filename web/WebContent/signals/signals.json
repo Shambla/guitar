@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.13067839,
-    "price": 1907.67,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-18T01:07:36.485856Z",
-    "received_at": "2026-08-18T01:07:36.486758Z",
-    "id": "2026-08-18T01:07:36.486758Z-ETH/USD-sell"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 190.00999450683594,
@@ -665,9 +654,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 13/16 | sell 16/13",
-    "timestamp": "2026-08-17T11:45:25.804930Z",
-    "received_at": "2026-08-17T11:45:25.804930Z",
-    "id": "2026-08-17T11:45:25.804930Z-MCHI-info",
+    "timestamp": "2026-08-18T01:10:13.008788Z",
+    "received_at": "2026-08-18T01:10:13.008788Z",
+    "id": "2026-08-18T01:10:13.008788Z-MCHI-info",
     "threshold_met": true,
     "buy_score": 13,
     "sell_score": 16,
@@ -1310,6 +1299,17 @@
     "buy_signal_raw": false,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.13067839,
+    "price": 1907.67,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-18T01:07:36.485856Z",
+    "received_at": "2026-08-18T01:07:36.486758Z",
+    "id": "2026-08-18T01:07:36.486758Z-ETH/USD-sell"
   },
   {
     "action": "sell",
