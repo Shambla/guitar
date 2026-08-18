@@ -1,16 +1,5 @@
 [
   {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.05230125,
-    "price": 1908.176,
-    "source": "MASTER_BOT_162",
-    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-    "timestamp": "2026-08-18T16:44:09.666074Z",
-    "received_at": "2026-08-18T16:44:09.666148Z",
-    "id": "2026-08-18T16:44:09.666148Z-ETH/USD-buy"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 190.32000732421875,
@@ -336,26 +325,26 @@
   {
     "action": "info",
     "symbol": "SOXX",
-    "price": 550.4199829101562,
+    "price": 559.1199951171875,
     "quantity": null,
     "source": "MAIN_stock_strat12",
-    "note": "Below thresholds | buy 9/16 | sell 11/13",
-    "timestamp": "2026-08-17T23:58:05.593514Z",
-    "received_at": "2026-08-17T23:58:05.593514Z",
-    "id": "2026-08-17T23:58:05.593514Z-SOXX-info",
-    "threshold_met": false,
-    "buy_score": 9,
-    "sell_score": 11,
+    "note": "Above thresholds | buy 11/16 | sell 13/13",
+    "timestamp": "2026-08-18T16:45:46.277185Z",
+    "received_at": "2026-08-18T16:45:46.277185Z",
+    "id": "2026-08-18T16:45:46.277185Z-SOXX-info",
+    "threshold_met": true,
+    "buy_score": 11,
+    "sell_score": 13,
     "total_buy_components": 41,
     "total_sell_components": 40,
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0,
-    "buy_conviction": 0.21951219512195122,
+    "buy_conviction": 0.2682926829268293,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.275,
-    "sell_persistence": 0,
+    "sell_conviction": 0.355,
+    "sell_persistence": 1,
     "sell_position_multiplier": 0.5
   },
   {
@@ -1310,6 +1299,17 @@
     "buy_signal_raw": false,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.05230125,
+    "price": 1908.176,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-08-18T16:44:09.666074Z",
+    "received_at": "2026-08-18T16:44:09.666148Z",
+    "id": "2026-08-18T16:44:09.666148Z-ETH/USD-buy"
   },
   {
     "action": "buy",
