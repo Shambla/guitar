@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "SOL/USD",
+    "quantity": 1.3147515119642388,
+    "price": 75.98,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-18T09:05:48.024972Z",
+    "received_at": "2026-08-18T09:05:48.025133Z",
+    "id": "2026-08-18T09:05:48.025133Z-SOL/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "SOL/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2619,38 +2630,5 @@
     "timestamp": "2026-08-11T09:05:50.044646Z",
     "received_at": "2026-08-11T09:05:50.044661Z",
     "id": "2026-08-11T09:05:50.044661Z-BNB/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "HYPE/USD",
-    "quantity": 0.0,
-    "price": 55.14,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-11T09:00:34.984126Z",
-    "received_at": "2026-08-11T09:00:34.984180Z",
-    "id": "2026-08-11T09:00:34.984180Z-HYPE/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "HYPE/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-11T09:00:29.844135Z",
-    "received_at": "2026-08-11T09:00:29.844177Z",
-    "id": "2026-08-11T09:00:29.844177Z-HYPE/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "BNB/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-11T09:00:15.683402Z",
-    "received_at": "2026-08-11T09:00:15.683416Z",
-    "id": "2026-08-11T09:00:15.683416Z-BNB/USD-buy"
   }
 ]
