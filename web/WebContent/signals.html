@@ -1015,6 +1015,29 @@
 				font-size: 24px;
 				font-weight: bold;
 				color: #ffffff !important; /* force visible on dark bg */
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+			}
+			.token-logo-wrap {
+				display: inline-flex;
+				width: 24px;
+				height: 24px;
+				flex-shrink: 0;
+				align-items: center;
+				justify-content: center;
+				vertical-align: middle;
+			}
+			.token-logo-wrap.logo-missing {
+				display: none !important;
+			}
+			img.token-logo {
+				width: 24px;
+				height: 24px;
+				border-radius: 50%;
+				object-fit: cover;
+				background: rgba(255, 255, 255, 0.08);
+				text-shadow: none;
 			}
 			.signal-details {
 				margin-top: 15px;
@@ -1343,6 +1366,9 @@
 				font-weight: bold;
 				color: #00ffff;
 				text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
 			}
 			.asset-signal {
 				display: flex;
@@ -1682,6 +1708,10 @@
 				backdrop-filter: blur(2px);
 				position: relative;
 				z-index: 2;
+			}
+			.signal-card img.token-logo {
+				mix-blend-mode: normal !important;
+				text-shadow: none !important;
 			}
 		</style>
 	</head>
@@ -3456,6 +3486,68 @@
 				DAI: '0xefD766cCb38EaF1dfd701853BFCe31359239F305'
 			};
 			
+			// CoinGecko thumbs as a second try if DexScreener CDN 404s
+			const TOKEN_LOGO_FALLBACKS = {
+				HEX: 'https://assets.coingecko.com/coins/images/10103/small/HEX-logo.png',
+				EHEX: 'https://assets.coingecko.com/coins/images/10103/small/HEX-logo.png',
+				PLS: 'https://assets.coingecko.com/coins/images/27223/small/Pulsechain.jpg',
+				WPLS: 'https://assets.coingecko.com/coins/images/27223/small/Pulsechain.jpg',
+				PLSX: 'https://assets.coingecko.com/coins/images/28113/small/pulsex.jpg',
+				INC: 'https://assets.coingecko.com/coins/images/29814/small/inc.png',
+				DAI: 'https://assets.coingecko.com/coins/images/9956/small/Badge_Dai.png'
+			};
+			const tokenLogoCache = new Map();
+			
+			function getDexScreenerLogoUrl(address) {
+				if (!address) return '';
+				return `https://dd.dexscreener.com/ds-data/tokens/pulsechain/${String(address).toLowerCase()}.png`;
+			}
+			
+			function rememberTokenLogo(base, url) {
+				if (!base || !url) return;
+				tokenLogoCache.set(base, url);
+				document.querySelectorAll(`img.token-logo[data-base="${base}"]`).forEach(img => {
+					if (img.getAttribute('src') === url) return;
+					img.dataset.triedFallback = '';
+					img.style.display = '';
+					if (img.parentElement) img.parentElement.classList.remove('logo-missing');
+					img.src = url;
+				});
+			}
+			
+			function handleTokenLogoError(img) {
+				if (!img) return;
+				const fallback = img.getAttribute('data-fallback');
+				if (fallback && img.dataset.triedFallback !== '1') {
+					img.dataset.triedFallback = '1';
+					img.src = fallback;
+					return;
+				}
+				img.onerror = null;
+				img.style.display = 'none';
+				if (img.parentElement) img.parentElement.classList.add('logo-missing');
+			}
+			window.handleTokenLogoError = handleTokenLogoError;
+			
+			function getTokenLogoHtml(symbol) {
+				const base = _normalizeSymbolForPrice(symbol);
+				if (!base) return '';
+				const addr = PULSECHAIN_TOKEN_ADDRESSES[base];
+				const primary = tokenLogoCache.get(base) || (addr ? getDexScreenerLogoUrl(addr) : '') || TOKEN_LOGO_FALLBACKS[base] || '';
+				if (!primary) return '';
+				const fallback = TOKEN_LOGO_FALLBACKS[base] || '';
+				const fallbackAttr = (fallback && fallback !== primary) ? fallback : '';
+				return `<span class="token-logo-wrap"><img class="token-logo" data-base="${base}" src="${primary}" data-fallback="${fallbackAttr}" alt="" width="24" height="24" onerror="handleTokenLogoError(this)"></span>`;
+			}
+			
+			function getSymbolDisplayHtml(symbol) {
+				const ticker = symbol || 'N/A';
+				const logo = getTokenLogoHtml(symbol);
+				if (logo) return `${logo}${ticker}`;
+				const emojis = getSymbolEmojis(symbol);
+				return emojis ? `${emojis} ${ticker}` : ticker;
+			}
+			
 			function getPulseBase(symbol) {
 				const base = _normalizeSymbolForPrice(symbol);
 				return PULSECHAIN_BASES.has(base) ? base : '';
@@ -3497,6 +3589,8 @@
 						.slice()
 						.sort((a, b) => (parseFloat(b.liquidity && b.liquidity.usd) || 0) - (parseFloat(a.liquidity && a.liquidity.usd) || 0))[0];
 					const price = parseFloat(pool && pool.priceUsd);
+					const imageUrl = (pool && pool.info && pool.info.imageUrl) || (pool && pool.baseToken && pool.baseToken.icon);
+					if (imageUrl) rememberTokenLogo(base, imageUrl);
 					if (!Number.isNaN(price) && price > 0) {
 						setCachedPriceEntry(symbol, false, price, 'dexscreener');
 						return price;
@@ -4222,9 +4316,7 @@
 				const actionClass = isBuy ? 'buy' : 'sell';
 				const actionEmoji = isBuy ? '🟢 📈' : '🔴 📉';
 				
-				// Get emojis for this symbol
-				const symbolEmojis = getSymbolEmojis(asset.symbol);
-				const symbolDisplay = symbolEmojis ? `${symbolEmojis} ${asset.symbol}` : asset.symbol;
+				const symbolDisplay = getSymbolDisplayHtml(asset.symbol);
 				
 				// Determine conviction badge
 				let signalBadge = '';
@@ -4696,8 +4788,7 @@
 							? `<span style="color: #4caf50; font-weight: bold;">✅ Met (≥${BUY_THRESHOLD})</span>`
 							: `<span style="color: #ffc107; font-weight: bold;">⚠️ Need ${BUY_THRESHOLD - signal.buyScore} more (threshold: ≥${BUY_THRESHOLD})</span>`;
 						
-						const symbolEmojis = getSymbolEmojis(signal.symbol);
-						const symbolDisplay = symbolEmojis ? `${symbolEmojis} ${signal.symbol}` : signal.symbol;
+						const symbolDisplay = getSymbolDisplayHtml(signal.symbol);
 						
 						// Format timestamp
 						let timestampDisplay = '';
@@ -4751,8 +4842,7 @@
 							? `<span style="color: #4caf50; font-weight: bold;">✅ Met (≥${SELL_THRESHOLD})</span>`
 							: `<span style="color: #ffc107; font-weight: bold;">⚠️ Need ${SELL_THRESHOLD - signal.sellScore} more (threshold: ≥${SELL_THRESHOLD})</span>`;
 						
-						const symbolEmojis = getSymbolEmojis(signal.symbol);
-						const symbolDisplay = symbolEmojis ? `${symbolEmojis} ${signal.symbol}` : signal.symbol;
+						const symbolDisplay = getSymbolDisplayHtml(signal.symbol);
 						
 						// Format timestamp
 						let timestampDisplay = '';
@@ -4987,8 +5077,7 @@
 						// Check if this is a crypto signal (not stock)
 						const isCrypto = !isStockSignal(signal);
 						
-						const symbolEmojis = getSymbolEmojis(signal.symbol);
-						const symbolDisplay = symbolEmojis ? `${symbolEmojis} ${signal.symbol || 'N/A'}` : (signal.symbol || 'N/A');
+						const symbolDisplay = getSymbolDisplayHtml(signal.symbol);
 						
 						const isWatched = isInWatchlist(signal.symbol);
 						const watchButtonHtml = `

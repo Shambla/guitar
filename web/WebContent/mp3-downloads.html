@@ -431,6 +431,10 @@
 			max-width: 900px;
 		}
 
+		.mp3-scales-free + .mp3-scales-free {
+			margin-top: 56px;
+		}
+
 		.mp3-scales-free h2 {
 			margin: 0 0 8px;
 			font-size: 1.35rem;
@@ -728,6 +732,31 @@
 				<canvas id="pdf-canvas" aria-label="12 Keys Beautiful and Print Friendly PDF page"></canvas>
 			</div>
 			<p class="mp3-pdf-status" id="pdf-status">Loading PDF…</p>
+		</section>
+
+		<section class="mp3-scales-free" id="free-scales-harmonic" aria-labelledby="free-scales-harmonic-heading">
+			<h2 id="free-scales-harmonic-heading">Free gift — All 12 Harmonic Minor (Published)</h2>
+			<p>
+				Same format as the chart above, for harmonic minor in all 12 keys. Browse with the
+				arrow buttons (or ← → keys — they follow the last chart you clicked), or download
+				it free — no signup.
+			</p>
+
+			<div class="mp3-pdf-toolbar" role="group" aria-label="Harmonic minor PDF page controls">
+				<button type="button" id="pdf-prev-harmonic" aria-label="Previous page">← Prev</button>
+				<span class="mp3-pdf-page-label" id="pdf-page-label-harmonic" aria-live="polite">Page — / —</span>
+				<button type="button" id="pdf-next-harmonic" aria-label="Next page">Next →</button>
+				<a class="mp3-pdf-download"
+					href="img/All%2012%20Harmonic%20minor%20Published.pdf"
+					download="All 12 Harmonic minor Published.pdf">
+					Download PDF
+				</a>
+			</div>
+
+			<div class="mp3-pdf-stage" id="pdf-stage-harmonic">
+				<canvas id="pdf-canvas-harmonic" aria-label="All 12 Harmonic Minor Published PDF page"></canvas>
+			</div>
+			<p class="mp3-pdf-status" id="pdf-status-harmonic">Loading PDF…</p>
 		</section>
 	</div>
 
