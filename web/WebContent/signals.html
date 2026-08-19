@@ -3245,8 +3245,11 @@
 			// ============================================================================
 			// PnL TRACKING FUNCTIONS (FIFO-based for DCA accounting)
 			// ============================================================================
-			// NOTE: This PnL tracking is completely standalone - uses only localStorage
-			// It does not interact with the backend Python bot
+			// Stock % PnL (2026-08-18/19): server lots in signals/stock_pnl_lots.json
+			// (website_signals.py + MAIN_stock_strat17.py) then localStorage FIFO (crypto).
+			// loadSignals must NOT wait on the lots file — a hung fetch left the page on
+			// "Loading stock signals...". See BOT_TODO.md "Stock signal % PnL".
+			// Rollback HTML: drop getServerPnlPct / lots fetch; restore localStorage-only path.
 			
 			/**
 			 * Calculate PnL percentage from entry price and current price
@@ -5396,64 +5399,95 @@
 				}
 			}
 			
-			function loadSignals() {
-				console.log('Loading signals...');
-				const signalsFetch = fetch('signals/signals.json')
-					.then(response => {
-						console.log('Response status:', response.status);
-						if (!response.ok) {
-							// If signals.json doesn't exist, try latest.json
-							return fetch('signals/latest.json')
-								.then(res => {
-									if (!res.ok) throw new Error('No signals file found');
-									return res.json();
-								})
-								.then(data => [data]); // Wrap single signal in array
+			function emptyPnlLots() {
+				return { open: {}, closed: [] };
+			}
+
+			function normalizePnlLots(lots) {
+				if (!lots || typeof lots !== 'object' || Array.isArray(lots)) return emptyPnlLots();
+				if (!lots.open || typeof lots.open !== 'object') lots.open = {};
+				if (!Array.isArray(lots.closed)) lots.closed = [];
+				return lots;
+			}
+
+			/** Lots file is optional. Never block the page on it (hung fetch = infinite Loading). */
+			function fetchPnlLots(timeoutMs) {
+				const ms = Number.isFinite(timeoutMs) ? timeoutMs : 2500;
+				return new Promise((resolve) => {
+					let settled = false;
+					const finish = (lots) => {
+						const normalized = normalizePnlLots(lots);
+						window.__pnlLots = normalized;
+						if (settled) {
+							if (window.allSignals && signalsVisible) {
+								applyLoadedSignals(window.allSignals);
+							}
+							return;
 						}
-						return response.json();
-					});
-				const lotsFetch = fetch('signals/stock_pnl_lots.json')
-					.then(res => (res.ok ? res.json() : { open: {}, closed: [] }))
-					.catch(() => ({ open: {}, closed: [] }));
-				Promise.all([signalsFetch, lotsFetch])
-					.then(([data, lots]) => {
-						window.__pnlLots = lots && typeof lots === 'object' ? lots : { open: {}, closed: [] };
-						console.log('Received data:', data);
-				// Only block if trial truly expired
+						settled = true;
+						resolve(normalized);
+					};
+					const timer = setTimeout(() => finish(emptyPnlLots()), ms);
+					fetch('signals/stock_pnl_lots.json')
+						.then(res => (res.ok ? res.json() : emptyPnlLots()))
+						.then(lots => {
+							clearTimeout(timer);
+							finish(lots);
+						})
+						.catch(() => {
+							clearTimeout(timer);
+							finish(emptyPnlLots());
+						});
+				});
+			}
+
+			function applyLoadedSignals(data) {
+				console.log('Received data:', data);
 				if (!signalsVisible) {
 					console.log('Trial expired: hiding signals');
 					hideAllSignals();
 					return;
 				}
-						// Ensure data is an array
-						const signals = Array.isArray(data) ? data : [data];
-						console.log('Rendering', signals.length, 'signals');
-						
-						// Check for watchlist changes BEFORE rendering (to catch changes)
-						checkWatchlistChanges(signals);
-						
-						renderSignals(signals);
-						
-						// Update asset list if it's currently visible
-						const assetListContainer = document.getElementById('asset-list-container');
-						if (assetListContainer && assetListContainer.style.display !== 'none') {
-							renderAssetList(signals);
+				const signals = Array.isArray(data) ? data : [data];
+				console.log('Rendering', signals.length, 'signals');
+				checkWatchlistChanges(signals);
+				renderSignals(signals);
+				const assetListContainer = document.getElementById('asset-list-container');
+				if (assetListContainer && assetListContainer.style.display !== 'none') {
+					renderAssetList(signals);
+				}
+				updateAssetSignalStatus(signals);
+				updateWatchlistDisplay();
+				document.getElementById('status-indicator').className = 'status-indicator active';
+				document.getElementById('status-text').textContent = 'Connected';
+				const now = new Date();
+				const utcHours = String(now.getUTCHours()).padStart(2, '0');
+				const utcMinutes = String(now.getUTCMinutes()).padStart(2, '0');
+				const utcSeconds = String(now.getUTCSeconds()).padStart(2, '0');
+				document.getElementById('last-update').textContent = `Last updated: ${utcHours}:${utcMinutes}:${utcSeconds} UTC`;
+			}
+
+			function loadSignals() {
+				console.log('Loading signals...');
+				if (!window.__pnlLots) window.__pnlLots = emptyPnlLots();
+				// Start lots in parallel but do not wait — cards render from signals.json alone.
+				fetchPnlLots(2500).then(() => {
+					if (window.allSignals && signalsVisible) applyLoadedSignals(window.allSignals);
+				});
+				fetch('signals/signals.json')
+					.then(response => {
+						console.log('Response status:', response.status);
+						if (!response.ok) {
+							return fetch('signals/latest.json')
+								.then(res => {
+									if (!res.ok) throw new Error('No signals file found');
+									return res.json();
+								})
+								.then(data => [data]);
 						}
-						
-						// Update signal status in asset list
-						updateAssetSignalStatus(signals);
-						
-						// Update watchlist display
-						updateWatchlistDisplay();
-						
-						document.getElementById('status-indicator').className = 'status-indicator active';
-						document.getElementById('status-text').textContent = 'Connected';
-						const now = new Date();
-						const utcHours = String(now.getUTCHours()).padStart(2, '0');
-						const utcMinutes = String(now.getUTCMinutes()).padStart(2, '0');
-						const utcSeconds = String(now.getUTCSeconds()).padStart(2, '0');
-						document.getElementById('last-update').textContent = `Last updated: ${utcHours}:${utcMinutes}:${utcSeconds} UTC`;
+						return response.json();
 					})
+					.then(data => applyLoadedSignals(data))
 					.catch(error => {
 						console.error('Error loading signals:', error);
 						document.getElementById('signals-grid').innerHTML = 
