@@ -3275,6 +3275,84 @@
 				const emoji = pnl >= 0 ? '📈' : '📉';
 				return `<span style="color: ${color}; font-weight: bold;">${emoji} ${sign}${pnl.toFixed(2)}%</span>`;
 			}
+
+			function normalizePnlSymbol(symbol) {
+				const raw = (symbol || '').toString().trim().toUpperCase().replace(/[-_]/g, '/');
+				return raw.split('/')[0];
+			}
+
+			function pnlRowHtml(pnl, note) {
+				if (typeof pnl === 'number' && !Number.isNaN(pnl)) {
+					return `
+						<div class="signal-detail-row">
+							<span class="signal-detail-label">PnL:</span>
+							<span class="signal-detail-value">${formatPnL(pnl)}</span>
+						</div>
+					`;
+				}
+				return `
+					<div class="signal-detail-row">
+						<span class="signal-detail-label">PnL:</span>
+						<span class="signal-detail-value" style="color: rgba(255, 165, 0, 0.8); font-style: italic;">⚠️ ${note || 'No entry data'}</span>
+					</div>
+				`;
+			}
+
+			/**
+			 * Percent PnL for a SELL: signal.pnl_pct (server) → stock_pnl_lots.json →
+			 * matching BUY card in the same feed (stocks only) → localStorage FIFO.
+			 */
+			function getServerPnlPct(signal) {
+				if (!signal) return null;
+				const direct = parseFloat(signal.pnl_pct);
+				if (!Number.isNaN(direct)) return direct;
+
+				const key = normalizePnlSymbol(signal.symbol);
+				if (!key) return null;
+
+				const lots = window.__pnlLots;
+				const closed = lots && Array.isArray(lots.closed) ? lots.closed : [];
+				const sellTs = Date.parse(signal.timestamp || signal.received_at || '') || 0;
+				let best = null;
+				let bestDelta = Infinity;
+				for (let i = 0; i < closed.length; i++) {
+					const rec = closed[i];
+					if (normalizePnlSymbol(rec && rec.symbol) !== key) continue;
+					const pnl = parseFloat(rec && rec.pnl_pct);
+					if (Number.isNaN(pnl)) continue;
+					const closedTs = Date.parse(rec.closed_at || '') || 0;
+					const delta = (sellTs && closedTs) ? Math.abs(sellTs - closedTs) : Number.MAX_SAFE_INTEGER;
+					if (delta < bestDelta) {
+						bestDelta = delta;
+						best = pnl;
+					}
+				}
+				const twoWeeksMs = 14 * 24 * 60 * 60 * 1000;
+				if (best !== null && (bestDelta === Number.MAX_SAFE_INTEGER || bestDelta <= twoWeeksMs)) {
+					return best;
+				}
+
+				if (typeof isStockSignal === 'function' && !isStockSignal(signal)) return null;
+				const sellPx = getSignalPrice(signal);
+				const all = window.allSignals || [];
+				let buyPx = null;
+				let buyTsBest = -1;
+				for (let i = 0; i < all.length; i++) {
+					const s = all[i];
+					if (!s || (s.action || '').toLowerCase() !== 'buy') continue;
+					if (normalizePnlSymbol(s.symbol) !== key) continue;
+					const ts = Date.parse(s.timestamp || s.received_at || '') || 0;
+					const px = getSignalPrice(s);
+					if (!px || px <= 0) continue;
+					if (sellTs && ts > sellTs) continue;
+					if (ts >= buyTsBest) {
+						buyTsBest = ts;
+						buyPx = px;
+					}
+				}
+				if (buyPx && sellPx) return calculatePnL(buyPx, sellPx);
+				return null;
+			}
 			
 			// ============================================================================
 			// PnL De-duplication + persistence (prevents intermittent PnL due to re-renders)
@@ -3799,12 +3877,16 @@
 										markPnLSignalProcessed(domKey);
 									}
 								} else if (isSell && pnlElement) {
+									const serverPnl = getServerPnlPct(Object.assign({}, signal, { price: signal.price || price }));
+									if (typeof serverPnl === 'number' && !Number.isNaN(serverPnl)) {
+										setStoredSellPnL(domKey, serverPnl, '');
+										pnlElement.innerHTML = formatPnL(serverPnl);
+									} else {
 									const stored = getStoredSellPnL(domKey);
-									if (stored && (stored.pnl === null || typeof stored.pnl === 'number')) {
-										if (typeof stored.pnl === 'number') pnlElement.innerHTML = formatPnL(stored.pnl);
-										else pnlElement.innerHTML = '<span style="color: rgba(255, 165, 0, 0.8); font-style: italic;">⚠️ No entry data</span>';
+									if (stored && typeof stored.pnl === 'number') {
+										pnlElement.innerHTML = formatPnL(stored.pnl);
 									} else if (!wasPnLSignalProcessed(domKey)) {
-										const position = getFirstBuyPosition(signal.symbol);
+										const position = getFirstBuyPosition(signal.symbol) || getFirstBuyPosition(normalizePnlSymbol(signal.symbol));
 										if (position && position.entryPrice) {
 											const pnl = calculatePnL(position.entryPrice, price);
 											if (pnl !== null) {
@@ -3820,6 +3902,9 @@
 											pnlElement.innerHTML = '<span style="color: rgba(255, 165, 0, 0.8); font-style: italic;">⚠️ No entry data</span>';
 										}
 										markPnLSignalProcessed(domKey);
+									} else if (stored && stored.note) {
+										pnlElement.innerHTML = '<span style="color: rgba(255, 165, 0, 0.8); font-style: italic;">⚠️ ' + (stored.note || 'No entry data') + '</span>';
+									}
 									}
 								}
 							} else if (priceElement) {
@@ -5096,14 +5181,16 @@
 							</button>
 						`;
 						
-						// Handle PnL tracking for crypto and stock signals (FIFO-based for DCA)
-						// NOTE: PnL tracking is standalone - uses localStorage only
+						// Percent PnL: server lots first (stocks), then localStorage FIFO (crypto)
 						const currentPrice = getSignalPrice(signal);
 						const domKey = getSignalDomKey(signal);
 						let pnlDisplay = '';
-						
-						// Enable PnL for both crypto and stocks
-						if (currentPrice !== null && currentPrice !== undefined && currentPrice > 0) {
+						const serverPnl = !isBuy ? getServerPnlPct(signal) : null;
+
+						if (!isBuy && typeof serverPnl === 'number' && !Number.isNaN(serverPnl)) {
+							setStoredSellPnL(domKey, serverPnl, '');
+							pnlDisplay = pnlRowHtml(serverPnl);
+						} else if (currentPrice !== null && currentPrice !== undefined && currentPrice > 0) {
 							if (isBuy) {
 								// Store buy position only once per BUY signal (prevents duplicates on auto-refresh)
 								if (!wasPnLSignalProcessed(domKey)) {
@@ -5112,56 +5199,34 @@
 									markPnLSignalProcessed(domKey);
 								}
 							} else {
-								// For sells, persist the computed result so it doesn't disappear on rerender.
 								const stored = getStoredSellPnL(domKey);
-								if (stored && (stored.pnl === null || typeof stored.pnl === 'number')) {
-									if (typeof stored.pnl === 'number') {
-										pnlDisplay = `
-											<div class="signal-detail-row">
-												<span class="signal-detail-label">PnL:</span>
-												<span class="signal-detail-value">${formatPnL(stored.pnl)}</span>
-											</div>
-										`;
-									} else {
-										pnlDisplay = `
-											<div class="signal-detail-row">
-												<span class="signal-detail-label">PnL:</span>
-												<span class="signal-detail-value" style="color: rgba(255, 165, 0, 0.8); font-style: italic;">⚠️ ${stored.note || 'No entry data'}</span>
-											</div>
-										`;
-									}
+								if (stored && typeof stored.pnl === 'number') {
+									pnlDisplay = pnlRowHtml(stored.pnl);
 								} else if (!wasPnLSignalProcessed(domKey)) {
-									const position = getFirstBuyPosition(signal.symbol);
+									const position = getFirstBuyPosition(signal.symbol) || getFirstBuyPosition(normalizePnlSymbol(signal.symbol));
 									if (position && position.entryPrice) {
 										const pnl = calculatePnL(position.entryPrice, currentPrice);
 										if (pnl !== null) {
 											setStoredSellPnL(domKey, pnl, '');
-											pnlDisplay = `
-												<div class="signal-detail-row">
-													<span class="signal-detail-label">PnL:</span>
-													<span class="signal-detail-value">${formatPnL(pnl)}</span>
-												</div>
-											`;
+											pnlDisplay = pnlRowHtml(pnl);
 										} else {
 											setStoredSellPnL(domKey, null, 'Invalid price');
 										}
 										removeFirstBuyPosition(signal.symbol);
+									} else if (isStockSignal(signal)) {
+										// Don't poison localStorage — server lots may arrive on the next refresh
+										pnlDisplay = pnlRowHtml(null, 'No entry data');
 									} else {
 										console.warn(`[PnL] No entry price found for ${signal.symbol} sell signal - may be mid-run start or backup sell signal`);
 										setStoredSellPnL(domKey, null, 'No entry data');
-										pnlDisplay = `
-											<div class="signal-detail-row">
-												<span class="signal-detail-label">PnL:</span>
-												<span class="signal-detail-value" style="color: rgba(255, 165, 0, 0.8); font-style: italic;">⚠️ No entry data</span>
-											</div>
-										`;
+										pnlDisplay = pnlRowHtml(null, 'No entry data');
 									}
 									markPnLSignalProcessed(domKey);
+								} else if (stored && stored.note) {
+									pnlDisplay = pnlRowHtml(null, stored.note);
 								}
 							}
-						}
-						// If price is missing, create a PnL placeholder for SELL so we can fill it asynchronously
-						else if (!isBuy && signal.symbol) {
+						} else if (!isBuy && signal.symbol) {
 							pnlDisplay = `
 								<div class="signal-detail-row">
 									<span class="signal-detail-label">PnL:</span>
@@ -5333,8 +5398,7 @@
 			
 			function loadSignals() {
 				console.log('Loading signals...');
-				// Try to load signals.json (list of all signals)
-				fetch('signals/signals.json')
+				const signalsFetch = fetch('signals/signals.json')
 					.then(response => {
 						console.log('Response status:', response.status);
 						if (!response.ok) {
@@ -5347,8 +5411,13 @@
 								.then(data => [data]); // Wrap single signal in array
 						}
 						return response.json();
-					})
-					.then(data => {
+					});
+				const lotsFetch = fetch('signals/stock_pnl_lots.json')
+					.then(res => (res.ok ? res.json() : { open: {}, closed: [] }))
+					.catch(() => ({ open: {}, closed: [] }));
+				Promise.all([signalsFetch, lotsFetch])
+					.then(([data, lots]) => {
+						window.__pnlLots = lots && typeof lots === 'object' ? lots : { open: {}, closed: [] };
 						console.log('Received data:', data);
 				// Only block if trial truly expired
 				if (!signalsVisible) {

@@ -1,0 +1,113 @@
+{
+  "open": {
+    "XLY": {
+      "symbol": "XLY",
+      "entry_price": 118.20999908447266,
+      "opened_at": "2026-08-06T07:24:40.850043Z"
+    },
+    "XLP": {
+      "symbol": "XLP",
+      "entry_price": 84.86000061035156,
+      "opened_at": "2026-08-06T07:27:04.577805Z"
+    },
+    "XLE": {
+      "symbol": "XLE",
+      "entry_price": 58.790000915527344,
+      "opened_at": "2026-08-06T07:44:46.586475Z"
+    },
+    "USO": {
+      "symbol": "USO",
+      "entry_price": 122.12000274658203,
+      "opened_at": "2026-08-06T08:06:24.018221Z"
+    },
+    "XLI": {
+      "symbol": "XLI",
+      "entry_price": 186.35000610351562,
+      "opened_at": "2026-08-12T23:27:23.099297Z"
+    },
+    "SPY": {
+      "symbol": "SPY",
+      "entry_price": 769.7899780273438,
+      "opened_at": "2026-08-12T23:55:27.894731Z"
+    },
+    "XLV": {
+      "symbol": "XLV",
+      "entry_price": 168.44000244140625,
+      "opened_at": "2026-08-14T21:59:54.206448Z"
+    },
+    "XLB": {
+      "symbol": "XLB",
+      "entry_price": 52.2400016784668,
+      "opened_at": "2026-08-18T16:19:05.537315Z"
+    },
+    "XLC": {
+      "symbol": "XLC",
+      "entry_price": 110.81999969482422,
+      "opened_at": "2026-08-18T16:29:34.932430Z"
+    },
+    "XLF": {
+      "symbol": "XLF",
+      "entry_price": 57.58000183105469,
+      "opened_at": "2026-08-18T16:33:32.965423Z"
+    },
+    "GLD": {
+      "symbol": "GLD",
+      "entry_price": 405.489990234375,
+      "opened_at": "2026-08-18T17:02:29.360103Z"
+    },
+    "EEM": {
+      "symbol": "EEM",
+      "entry_price": 67.31999969482422,
+      "opened_at": "2026-08-18T17:22:32.730798Z"
+    },
+    "MCHI": {
+      "symbol": "MCHI",
+      "entry_price": 55.060001373291016,
+      "opened_at": "2026-08-18T17:34:10.655883Z"
+    },
+    "EWJ": {
+      "symbol": "EWJ",
+      "entry_price": 98.16999816894531,
+      "opened_at": "2026-08-18T17:41:59.730017Z"
+    },
+    "EWG": {
+      "symbol": "EWG",
+      "entry_price": 43.959999084472656,
+      "opened_at": "2026-08-18T17:45:56.283544Z"
+    }
+  },
+  "closed": [
+    {
+      "symbol": "XLRE",
+      "entry_price": 45.20000076293945,
+      "exit_price": 44.4900016784668,
+      "pnl_pct": -1.5708,
+      "opened_at": "2026-08-12T23:33:39.735904Z",
+      "closed_at": "2026-08-14T21:51:34.853524Z"
+    },
+    {
+      "symbol": "PCEF",
+      "entry_price": 20.270000457763672,
+      "exit_price": 20.479999542236328,
+      "pnl_pct": 1.036,
+      "opened_at": "2026-08-13T00:12:18.282347Z",
+      "closed_at": "2026-08-14T22:28:23.849771Z"
+    },
+    {
+      "symbol": "SLV",
+      "entry_price": 59.060001373291016,
+      "exit_price": 59.56999969482422,
+      "pnl_pct": 0.8635,
+      "opened_at": "2026-08-14T22:16:38.371024Z",
+      "closed_at": "2026-08-18T17:06:23.803902Z"
+    },
+    {
+      "symbol": "INDA",
+      "entry_price": 50.310001373291016,
+      "exit_price": 49.58000183105469,
+      "pnl_pct": -1.451,
+      "opened_at": "2026-08-13T00:18:51.005569Z",
+      "closed_at": "2026-08-18T17:38:05.869250Z"
+    }
+  ]
+}
