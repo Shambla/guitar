@@ -239,7 +239,7 @@
   {
     "action": "info",
     "symbol": "XLP",
-    "price": NaN,
+    "price": null,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 10/16 | sell 7/13",
@@ -338,7 +338,7 @@
   {
     "action": "info",
     "symbol": "XLRE",
-    "price": NaN,
+    "price": null,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 10/16 | sell 8/13",
@@ -388,7 +388,7 @@
   {
     "action": "info",
     "symbol": "XLC",
-    "price": NaN,
+    "price": null,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 11/16 | sell 9/13",
