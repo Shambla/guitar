@@ -5403,6 +5403,14 @@
 				return { open: {}, closed: [] };
 			}
 
+			/** Python json.dump writes NaN; JSON.parse rejects it and left the page stuck loading. */
+			function parseSignalsJsonText(text) {
+				const cleaned = String(text || '')
+					.replace(/\bNaN\b/g, 'null')
+					.replace(/\b-?Infinity\b/g, 'null');
+				return JSON.parse(cleaned);
+			}
+
 			function normalizePnlLots(lots) {
 				if (!lots || typeof lots !== 'object' || Array.isArray(lots)) return emptyPnlLots();
 				if (!lots.open || typeof lots.open !== 'object') lots.open = {};
@@ -5481,17 +5489,23 @@
 							return fetch('signals/latest.json')
 								.then(res => {
 									if (!res.ok) throw new Error('No signals file found');
-									return res.json();
+									return res.text();
 								})
-								.then(data => [data]);
+								.then(text => {
+									const parsed = parseSignalsJsonText(text);
+									return Array.isArray(parsed) ? parsed : [parsed];
+								});
 						}
-						return response.json();
+						return response.text().then(parseSignalsJsonText);
 					})
 					.then(data => applyLoadedSignals(data))
 					.catch(error => {
 						console.error('Error loading signals:', error);
-						document.getElementById('signals-grid').innerHTML = 
-							'<div class="empty-state"><h3>⏳ Waiting for signals...</h3><p>Servers are restarting. Signals are stale. Please check back in a few minutes.</p></div>';
+						const msg = '<div class="empty-state"><h3>⏳ Waiting for signals...</h3><p>Servers are restarting. Signals are stale. Please check back in a few minutes.</p></div>';
+						['signals-grid', 'defi-signals-grid', 'stock-signals-grid'].forEach(id => {
+							const el = document.getElementById(id);
+							if (el) el.innerHTML = msg;
+						});
 						document.getElementById('status-indicator').className = 'status-indicator inactive';
 						document.getElementById('status-text').textContent = 'Servers Restarting';
 						showServerRestartBanner();
