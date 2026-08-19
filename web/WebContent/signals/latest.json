@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "ETH/USD",
-  "quantity": 0.06787767,
-  "price": 1914.51,
+  "action": "sell",
+  "symbol": "AERO/USD",
+  "quantity": 0.00713397,
+  "price": 0.40584,
   "source": "MASTER_BOT_162",
-  "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
-  "timestamp": "2026-08-19T08:26:33.294462Z",
-  "received_at": "2026-08-19T08:26:33.294476Z",
-  "id": "2026-08-19T08:26:33.294476Z-ETH/USD-buy"
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-08-19T14:01:07.503829Z",
+  "received_at": "2026-08-19T14:01:07.503849Z",
+  "id": "2026-08-19T14:01:07.503849Z-AERO/USD-sell"
 }
