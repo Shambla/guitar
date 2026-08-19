@@ -2,6 +2,17 @@
   {
     "action": "sell",
     "symbol": "LINK/USD",
+    "quantity": 2.58999999,
+    "price": 10.014,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-19T18:53:40.510032Z",
+    "received_at": "2026-08-19T18:53:40.510046Z",
+    "id": "2026-08-19T18:53:40.510046Z-LINK/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "LINK/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
