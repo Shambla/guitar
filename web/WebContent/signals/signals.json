@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "TAO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-08-19T15:00:43.837774Z",
+    "received_at": "2026-08-19T15:00:43.837799Z",
+    "id": "2026-08-19T15:00:43.837799Z-TAO/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "PRVX/DAI",
     "quantity": 100.0,
     "price": null,
@@ -2678,16 +2689,5 @@
     "timestamp": "2026-08-12T15:06:55.275310Z",
     "received_at": "2026-08-12T15:06:55.275328Z",
     "id": "2026-08-12T15:06:55.275328Z-AERO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "AERO/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-12T15:00:26.769283Z",
-    "received_at": "2026-08-12T15:00:26.769327Z",
-    "id": "2026-08-12T15:00:26.769327Z-AERO/USD-sell"
   }
 ]
