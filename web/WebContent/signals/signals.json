@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "PRVX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-08-19T14:02:31.908361Z",
+    "received_at": "2026-08-19T14:02:31.908384Z",
+    "id": "2026-08-19T14:02:31.908384Z-PRVX/DAI-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "AERO/USD",
     "quantity": 0.00713397,
     "price": 0.40584,
