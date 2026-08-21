@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "PRVX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-08-21T02:01:41.050967Z",
+    "received_at": "2026-08-21T02:01:41.051290Z",
+    "id": "2026-08-21T02:01:41.051290Z-PRVX/DAI-sell"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 185.6199951171875,
