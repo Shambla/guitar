@@ -1,28 +1,17 @@
 [
   {
-    "action": "sell",
-    "symbol": "PRVX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-08-21T02:01:41.050967Z",
-    "received_at": "2026-08-21T02:01:41.051290Z",
-    "id": "2026-08-21T02:01:41.051290Z-PRVX/DAI-sell"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
-    "price": 185.6199951171875,
+    "price": 183.63999938964844,
     "quantity": null,
     "source": "MAIN_stock_strat12",
-    "note": "Below thresholds | buy 9/16 | sell 7/13",
-    "timestamp": "2026-08-20T12:56:50.971531Z",
-    "received_at": "2026-08-20T12:56:50.971531Z",
-    "id": "2026-08-20T12:56:50.971531Z-XLK-info",
+    "note": "Below thresholds | buy 9/16 | sell 8/13",
+    "timestamp": "2026-08-21T04:02:25.047386Z",
+    "received_at": "2026-08-21T04:02:25.047386Z",
+    "id": "2026-08-21T04:02:25.047386Z-XLK-info",
     "threshold_met": false,
     "buy_score": 9,
-    "sell_score": 7,
+    "sell_score": 8,
     "total_buy_components": 41,
     "total_sell_components": 40,
     "buy_threshold": 16,
@@ -31,7 +20,7 @@
     "buy_conviction": 0.21951219512195122,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.175,
+    "sell_conviction": 0.2,
     "sell_persistence": 0,
     "sell_position_multiplier": 0.5
   },
@@ -1314,6 +1303,17 @@
     "rsi_bear_div_block_timer": 0,
     "pnl_pct": -0.304,
     "entry_price": 769.7899780273438
+  },
+  {
+    "action": "sell",
+    "symbol": "PRVX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-08-21T02:01:41.050967Z",
+    "received_at": "2026-08-21T02:01:41.051290Z",
+    "id": "2026-08-21T02:01:41.051290Z-PRVX/DAI-sell"
   },
   {
     "action": "sell",
