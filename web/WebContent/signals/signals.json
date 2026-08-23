@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "SOL/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-08-23T13:00:11.272786Z",
+    "received_at": "2026-08-23T13:00:11.272890Z",
+    "id": "2026-08-23T13:00:11.272890Z-SOL/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "HEX/DAI",
     "quantity": 100.0,
     "price": null,
@@ -2978,16 +2989,5 @@
     "timestamp": "2026-08-16T23:00:10.976035Z",
     "received_at": "2026-08-16T23:00:10.976117Z",
     "id": "2026-08-16T23:00:10.976117Z-ETH/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.07974396,
-    "price": 1880.48,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
-    "timestamp": "2026-08-16T21:13:22.659962Z",
-    "received_at": "2026-08-16T21:13:22.660817Z",
-    "id": "2026-08-16T21:13:22.660817Z-ETH/USD-buy"
   }
 ]
