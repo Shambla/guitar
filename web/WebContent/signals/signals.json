@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "PLSX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-08-23T16:00:51.631493Z",
+    "received_at": "2026-08-23T16:00:51.631515Z",
+    "id": "2026-08-23T16:00:51.631515Z-PLSX/DAI-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "ETH/USD",
     "quantity": 0.077736,
     "price": 2437.09,
@@ -2978,16 +2989,5 @@
     "timestamp": "2026-08-17T16:11:14.072233Z",
     "received_at": "2026-08-17T16:11:14.072246Z",
     "id": "2026-08-17T16:11:14.072246Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 809.6510404015869,
-    "price": 0.12339,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-17T16:06:05.102595Z",
-    "received_at": "2026-08-17T16:06:05.103546Z",
-    "id": "2026-08-17T16:06:05.103546Z-FET/USD-buy"
   }
 ]

@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "ETH/USD",
-  "quantity": 0.077736,
-  "price": 2437.09,
-  "source": "MASTER_BOT_162",
-  "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
-  "timestamp": "2026-08-23T15:42:29.244294Z",
-  "received_at": "2026-08-23T15:42:29.244312Z",
-  "id": "2026-08-23T15:42:29.244312Z-ETH/USD-buy"
+  "symbol": "PLSX/DAI",
+  "quantity": 100.0,
+  "price": null,
+  "source": "PulseChain DeFi",
+  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+  "timestamp": "2026-08-23T16:00:51.631493Z",
+  "received_at": "2026-08-23T16:00:51.631515Z",
+  "id": "2026-08-23T16:00:51.631515Z-PLSX/DAI-buy"
 }
