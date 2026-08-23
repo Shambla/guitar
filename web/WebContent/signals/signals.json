@@ -1,6 +1,28 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.077736,
+    "price": 2437.09,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
+    "timestamp": "2026-08-23T15:42:29.244294Z",
+    "received_at": "2026-08-23T15:42:29.244312Z",
+    "id": "2026-08-23T15:42:29.244312Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.04103254,
+    "price": 2432.2158200000003,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-08-23T15:42:27.229624Z",
+    "received_at": "2026-08-23T15:42:27.229637Z",
+    "id": "2026-08-23T15:42:27.229637Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "RENDER/USD",
     "quantity": 67.34006734006734,
     "price": 1.4835,
@@ -2967,27 +2989,5 @@
     "timestamp": "2026-08-17T16:06:05.102595Z",
     "received_at": "2026-08-17T16:06:05.103546Z",
     "id": "2026-08-17T16:06:05.103546Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-17T16:00:33.330766Z",
-    "received_at": "2026-08-17T16:00:33.330834Z",
-    "id": "2026-08-17T16:00:33.330834Z-FET/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.06792531,
-    "price": 1901.81,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-17T14:07:43.211600Z",
-    "received_at": "2026-08-17T14:07:43.211614Z",
-    "id": "2026-08-17T14:07:43.211614Z-ETH/USD-sell"
   }
 ]
