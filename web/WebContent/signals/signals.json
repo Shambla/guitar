@@ -1,6 +1,39 @@
 [
   {
     "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 67.34006734006734,
+    "price": 1.4835,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-23T15:05:41.925301Z",
+    "received_at": "2026-08-23T15:05:41.925322Z",
+    "id": "2026-08-23T15:05:41.925322Z-RENDER/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "AERO/USD",
+    "quantity": 211.26463007563274,
+    "price": 0.47287,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-23T15:05:41.857169Z",
+    "received_at": "2026-08-23T15:05:41.857187Z",
+    "id": "2026-08-23T15:05:41.857187Z-AERO/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "BNB/USD",
+    "quantity": 0.14387454139989928,
+    "price": 694.35,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-23T15:01:01.049174Z",
+    "received_at": "2026-08-23T15:01:01.049189Z",
+    "id": "2026-08-23T15:01:01.049189Z-BNB/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "BNB/USD",
     "quantity": 100.0,
     "price": null,
@@ -2956,38 +2989,5 @@
     "timestamp": "2026-08-17T14:07:43.211600Z",
     "received_at": "2026-08-17T14:07:43.211614Z",
     "id": "2026-08-17T14:07:43.211614Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "SOL/USD",
-    "quantity": 1.3190872,
-    "price": 75.55,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-17T14:00:44.875430Z",
-    "received_at": "2026-08-17T14:00:44.875452Z",
-    "id": "2026-08-17T14:00:44.875452Z-SOL/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-17T14:00:40.270278Z",
-    "received_at": "2026-08-17T14:00:40.270317Z",
-    "id": "2026-08-17T14:00:40.270317Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "SOL/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-17T14:00:13.540287Z",
-    "received_at": "2026-08-17T14:00:13.540956Z",
-    "id": "2026-08-17T14:00:13.540956Z-SOL/USD-sell"
   }
 ]
