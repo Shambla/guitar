@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 1e-08,
-    "price": 2457.83,
-    "source": "MASTER_BOT_162",
-    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
-    "timestamp": "2026-08-24T17:32:34.485683Z",
-    "received_at": "2026-08-24T17:32:34.486622Z",
-    "id": "2026-08-24T17:32:34.486622Z-ETH/USD-sell"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 183.30999755859375,
@@ -411,26 +400,26 @@
   {
     "action": "info",
     "symbol": "SPY",
-    "price": 762.5999755859375,
+    "price": 765.719970703125,
     "quantity": null,
     "source": "MAIN_stock_strat12",
-    "note": "Above thresholds | buy 16/18 | sell 12/9",
-    "timestamp": "2026-08-21T17:01:44.246230Z",
-    "received_at": "2026-08-21T17:01:44.246230Z",
-    "id": "2026-08-21T17:01:44.246230Z-SPY-info",
+    "note": "Above thresholds | buy 14/18 | sell 12/9",
+    "timestamp": "2026-08-24T17:37:46.528768Z",
+    "received_at": "2026-08-24T17:37:46.528768Z",
+    "id": "2026-08-24T17:37:46.528768Z-SPY-info",
     "threshold_met": true,
-    "buy_score": 16,
+    "buy_score": 14,
     "sell_score": 12,
     "total_buy_components": 41,
     "total_sell_components": 40,
     "buy_threshold": 18,
     "sell_threshold": 9,
     "strength_1_10": 0,
-    "buy_conviction": 0.3902439024390244,
+    "buy_conviction": 0.34146341463414637,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
     "sell_conviction": 0.6,
-    "sell_persistence": 191,
+    "sell_persistence": 192,
     "sell_position_multiplier": 1.0
   },
   {
@@ -1438,6 +1427,17 @@
     "rsi_bear_div_block_timer": 0,
     "pnl_pct": 0.8173,
     "entry_price": 55.060001373291016
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 1e-08,
+    "price": 2457.83,
+    "source": "MASTER_BOT_162",
+    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+    "timestamp": "2026-08-24T17:32:34.485683Z",
+    "received_at": "2026-08-24T17:32:34.486622Z",
+    "id": "2026-08-24T17:32:34.486622Z-ETH/USD-sell"
   },
   {
     "action": "sell",
