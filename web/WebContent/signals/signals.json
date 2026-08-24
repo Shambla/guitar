@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "ENS/USD",
+    "quantity": 17.035775127768314,
+    "price": 5.86,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-24T00:06:23.969451Z",
+    "received_at": "2026-08-24T00:06:23.969465Z",
+    "id": "2026-08-24T00:06:23.969465Z-ENS/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ENS/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2978,16 +2989,5 @@
     "timestamp": "2026-08-18T01:07:36.485856Z",
     "received_at": "2026-08-18T01:07:36.486758Z",
     "id": "2026-08-18T01:07:36.486758Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-18T01:00:23.645472Z",
-    "received_at": "2026-08-18T01:00:23.646649Z",
-    "id": "2026-08-18T01:00:23.646649Z-ETH/USD-sell"
   }
 ]
