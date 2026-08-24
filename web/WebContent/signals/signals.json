@@ -2,6 +2,28 @@
   {
     "action": "sell",
     "symbol": "BNB/USD",
+    "quantity": 0.14178999,
+    "price": 702.48,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-24T20:07:35.794526Z",
+    "received_at": "2026-08-24T20:07:35.794543Z",
+    "id": "2026-08-24T20:07:35.794543Z-BNB/USD-sell"
+  },
+  {
+    "action": "buy",
+    "symbol": "PLSX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-08-24T20:01:08.090710Z",
+    "received_at": "2026-08-24T20:01:08.090746Z",
+    "id": "2026-08-24T20:01:08.090746Z-PLSX/DAI-buy"
+  },
+  {
+    "action": "sell",
+    "symbol": "BNB/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2967,27 +2989,5 @@
     "timestamp": "2026-08-19T15:01:38.332815Z",
     "received_at": "2026-08-19T15:01:38.332830Z",
     "id": "2026-08-19T15:01:38.332830Z-AERO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "AERO/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-19T15:01:10.956744Z",
-    "received_at": "2026-08-19T15:01:10.956771Z",
-    "id": "2026-08-19T15:01:10.956771Z-AERO/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "TAO/USD",
-    "quantity": 0.24249999,
-    "price": 195.01,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-19T15:01:07.991749Z",
-    "received_at": "2026-08-19T15:01:07.991775Z",
-    "id": "2026-08-19T15:01:07.991775Z-TAO/USD-sell"
   }
 ]
