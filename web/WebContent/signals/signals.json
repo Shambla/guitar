@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "PRVX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-08-24T05:09:34.400688Z",
+    "received_at": "2026-08-24T05:09:34.401512Z",
+    "id": "2026-08-24T05:09:34.401512Z-PRVX/DAI-buy"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 183.30999755859375,
@@ -2978,16 +2989,5 @@
     "timestamp": "2026-08-18T14:08:54.951994Z",
     "received_at": "2026-08-18T14:08:54.952007Z",
     "id": "2026-08-18T14:08:54.952007Z-SOL/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "HYPE/USD",
-    "quantity": 1.67999999,
-    "price": 59.2,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-18T14:08:19.865413Z",
-    "received_at": "2026-08-18T14:08:19.865426Z",
-    "id": "2026-08-18T14:08:19.865426Z-HYPE/USD-sell"
   }
 ]
