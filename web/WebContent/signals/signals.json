@@ -1,5 +1,27 @@
 [
   {
+    "action": "sell",
+    "symbol": "AERO/USD",
+    "quantity": 0.00713397,
+    "price": 0.51843,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-25T20:00:21.825252Z",
+    "received_at": "2026-08-25T20:00:21.825270Z",
+    "id": "2026-08-25T20:00:21.825270Z-AERO/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "AERO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-08-25T20:00:19.840836Z",
+    "received_at": "2026-08-25T20:00:19.842187Z",
+    "id": "2026-08-25T20:00:19.842187Z-AERO/USD-sell"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 183.30999755859375,
@@ -2980,38 +3002,5 @@
     "timestamp": "2026-08-20T02:00:47.301138Z",
     "received_at": "2026-08-20T02:00:47.301154Z",
     "id": "2026-08-20T02:00:47.301154Z-SOL/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "SOL/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-20T02:00:11.305178Z",
-    "received_at": "2026-08-20T02:00:11.305463Z",
-    "id": "2026-08-20T02:00:11.305463Z-SOL/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "LINK/USD",
-    "quantity": 2.58999999,
-    "price": 10.014,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-19T18:53:40.510032Z",
-    "received_at": "2026-08-19T18:53:40.510046Z",
-    "id": "2026-08-19T18:53:40.510046Z-LINK/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "LINK/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-19T18:46:31.036555Z",
-    "received_at": "2026-08-19T18:46:31.036861Z",
-    "id": "2026-08-19T18:46:31.036861Z-LINK/USD-sell"
   }
 ]
