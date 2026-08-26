@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "LINK/USD",
+    "quantity": 8.951750067138125,
+    "price": 11.16,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-26T15:05:57.047771Z",
+    "received_at": "2026-08-26T15:05:57.047788Z",
+    "id": "2026-08-26T15:05:57.047788Z-LINK/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "LINK/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2991,16 +3002,5 @@
     "timestamp": "2026-08-22T22:49:44.476107Z",
     "received_at": "2026-08-22T22:49:44.476183Z",
     "id": "2026-08-22T22:49:44.476183Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2419.32,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-08-22T22:08:35.145587Z",
-    "received_at": "2026-08-22T22:08:35.145601Z",
-    "id": "2026-08-22T22:08:35.145601Z-ETH/USD-sell"
   }
 ]
