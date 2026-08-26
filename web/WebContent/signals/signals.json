@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2449.04,
+    "source": "MASTER_BOT_162",
+    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+    "timestamp": "2026-08-26T15:47:36.761780Z",
+    "received_at": "2026-08-26T15:47:36.761896Z",
+    "id": "2026-08-26T15:47:36.761896Z-ETH/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "LINK/USD",
     "quantity": 8.951750067138125,
@@ -2991,16 +3002,5 @@
     "timestamp": "2026-08-22T23:00:09.202484Z",
     "received_at": "2026-08-22T23:00:09.202499Z",
     "id": "2026-08-22T23:00:09.202499Z-BNB/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2413.29,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-08-22T22:49:44.476107Z",
-    "received_at": "2026-08-22T22:49:44.476183Z",
-    "id": "2026-08-22T22:49:44.476183Z-ETH/USD-sell"
   }
 ]
