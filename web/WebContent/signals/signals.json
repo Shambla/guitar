@@ -1,5 +1,27 @@
 [
   {
+    "action": "sell",
+    "symbol": "AERO/USD",
+    "quantity": 0.00713397,
+    "price": 0.51398,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-26T10:01:01.704615Z",
+    "received_at": "2026-08-26T10:01:01.704629Z",
+    "id": "2026-08-26T10:01:01.704629Z-AERO/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "AERO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-08-26T10:01:00.624653Z",
+    "received_at": "2026-08-26T10:01:00.624925Z",
+    "id": "2026-08-26T10:01:00.624925Z-AERO/USD-sell"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 180.0500030517578,
@@ -2980,27 +3002,5 @@
     "timestamp": "2026-08-21T02:01:41.050967Z",
     "received_at": "2026-08-21T02:01:41.051290Z",
     "id": "2026-08-21T02:01:41.051290Z-PRVX/DAI-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "PRVX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-08-20T14:02:47.914160Z",
-    "received_at": "2026-08-20T14:02:47.914178Z",
-    "id": "2026-08-20T14:02:47.914178Z-PRVX/DAI-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 1e-08,
-    "price": 2276.03,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-20T14:00:41.422791Z",
-    "received_at": "2026-08-20T14:00:41.422810Z",
-    "id": "2026-08-20T14:00:41.422810Z-ETH/USD-sell"
   }
 ]
