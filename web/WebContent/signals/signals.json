@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-08-26T00:01:28.167466Z",
+    "received_at": "2026-08-26T00:01:28.168238Z",
+    "id": "2026-08-26T00:01:28.168238Z-HEX/DAI-buy"
+  },
+  {
     "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 1e-08,
@@ -2991,16 +3002,5 @@
     "timestamp": "2026-08-20T14:00:22.100686Z",
     "received_at": "2026-08-20T14:00:22.100790Z",
     "id": "2026-08-20T14:00:22.100790Z-SOL/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "PLSX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-08-20T08:01:48.920218Z",
-    "received_at": "2026-08-20T08:01:48.920311Z",
-    "id": "2026-08-20T08:01:48.920311Z-PLSX/DAI-sell"
   }
 ]
