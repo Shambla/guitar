@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "TAO/USD",
-  "quantity": 0.0,
-  "price": 254.02,
+  "symbol": "SOL/USD",
+  "quantity": 1e-08,
+  "price": 106.59,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-08-27T16:00:39.358174Z",
-  "received_at": "2026-08-27T16:00:39.358207Z",
-  "id": "2026-08-27T16:00:39.358207Z-TAO/USD-sell"
+  "timestamp": "2026-08-28T03:00:24.127198Z",
+  "received_at": "2026-08-28T03:00:24.127220Z",
+  "id": "2026-08-28T03:00:24.127220Z-SOL/USD-sell"
 }
