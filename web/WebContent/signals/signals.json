@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "PRVX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-08-29T23:05:26.464752Z",
+    "received_at": "2026-08-29T23:05:26.464801Z",
+    "id": "2026-08-29T23:05:26.464801Z-PRVX/DAI-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "HEX/DAI",
     "quantity": 100.0,
     "price": null,
@@ -2941,16 +2952,5 @@
     "timestamp": "2026-08-23T15:05:41.857169Z",
     "received_at": "2026-08-23T15:05:41.857187Z",
     "id": "2026-08-23T15:05:41.857187Z-AERO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "BNB/USD",
-    "quantity": 0.14387454139989928,
-    "price": 694.35,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-23T15:01:01.049174Z",
-    "received_at": "2026-08-23T15:01:01.049189Z",
-    "id": "2026-08-23T15:01:01.049189Z-BNB/USD-buy"
   }
 ]
