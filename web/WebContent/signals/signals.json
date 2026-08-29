@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "CRV/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-08-29T15:01:15.367995Z",
+    "received_at": "2026-08-29T15:01:15.368087Z",
+    "id": "2026-08-29T15:01:15.368087Z-CRV/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "PRVX/DAI",
     "quantity": 100.0,
@@ -2941,16 +2952,5 @@
     "timestamp": "2026-08-23T14:00:45.732644Z",
     "received_at": "2026-08-23T14:00:45.732695Z",
     "id": "2026-08-23T14:00:45.732695Z-FET/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-23T14:00:23.097878Z",
-    "received_at": "2026-08-23T14:00:23.097900Z",
-    "id": "2026-08-23T14:00:23.097900Z-CRV/USD-buy"
   }
 ]
