@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "AERO/USD",
+    "quantity": 203.14880650076182,
+    "price": 0.49176,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-29T18:05:44.880530Z",
+    "received_at": "2026-08-29T18:05:44.880545Z",
+    "id": "2026-08-29T18:05:44.880545Z-AERO/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "AERO/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2941,16 +2952,5 @@
     "timestamp": "2026-08-23T15:00:21.606691Z",
     "received_at": "2026-08-23T15:00:21.606713Z",
     "id": "2026-08-23T15:00:21.606713Z-AERO/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2454.24,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-08-23T14:42:20.024152Z",
-    "received_at": "2026-08-23T14:42:20.024178Z",
-    "id": "2026-08-23T14:42:20.024178Z-ETH/USD-sell"
   }
 ]
