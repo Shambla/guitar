@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "BNB/USD",
-  "quantity": 0.14417739586787584,
-  "price": 692.9,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-08-29T19:06:17.036258Z",
-  "received_at": "2026-08-29T19:06:17.036280Z",
-  "id": "2026-08-29T19:06:17.036280Z-BNB/USD-buy"
+  "symbol": "HEX/DAI",
+  "quantity": 100.0,
+  "price": null,
+  "source": "PulseChain DeFi",
+  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+  "timestamp": "2026-08-29T20:07:46.163553Z",
+  "received_at": "2026-08-29T20:07:46.163964Z",
+  "id": "2026-08-29T20:07:46.163964Z-HEX/DAI-buy"
 }
