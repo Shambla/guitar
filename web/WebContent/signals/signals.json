@@ -2,6 +2,39 @@
   {
     "action": "buy",
     "symbol": "ETH/USD",
+    "quantity": 0.06068132,
+    "price": 2468.04,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
+    "timestamp": "2026-08-30T13:45:56.165724Z",
+    "received_at": "2026-08-30T13:45:56.165741Z",
+    "id": "2026-08-30T13:45:56.165741Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.04051798,
+    "price": 2463.10392,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-08-30T13:45:54.266169Z",
+    "received_at": "2026-08-30T13:45:54.266181Z",
+    "id": "2026-08-30T13:45:54.266181Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.04049747093294024,
+    "price": 2466.82,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-30T13:00:33.442732Z",
+    "received_at": "2026-08-30T13:00:33.442745Z",
+    "id": "2026-08-30T13:00:33.442745Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2919,38 +2952,5 @@
     "timestamp": "2026-08-24T05:09:34.400688Z",
     "received_at": "2026-08-24T05:09:34.401512Z",
     "id": "2026-08-24T05:09:34.401512Z-PRVX/DAI-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "PRVX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-08-24T03:05:17.887921Z",
-    "received_at": "2026-08-24T03:05:17.887937Z",
-    "id": "2026-08-24T03:05:17.887937Z-PRVX/DAI-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "BNB/USD",
-    "quantity": 0.14386999,
-    "price": 699.96,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-24T03:01:10.433699Z",
-    "received_at": "2026-08-24T03:01:10.433720Z",
-    "id": "2026-08-24T03:01:10.433720Z-BNB/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "TAO/USD",
-    "quantity": 0.0001,
-    "price": 236.4,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-24T03:00:34.304721Z",
-    "received_at": "2026-08-24T03:00:34.304751Z",
-    "id": "2026-08-24T03:00:34.304751Z-TAO/USD-sell"
   }
 ]
