@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "BNB/USD",
+  "symbol": "HEX/DAI",
   "quantity": 100.0,
   "price": null,
-  "source": "TradingView JSON",
-  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-08-30T11:01:01.393359Z",
-  "received_at": "2026-08-30T11:01:01.393377Z",
-  "id": "2026-08-30T11:01:01.393377Z-BNB/USD-sell"
+  "source": "PulseChain DeFi",
+  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+  "timestamp": "2026-08-30T11:07:22.007014Z",
+  "received_at": "2026-08-30T11:07:22.007029Z",
+  "id": "2026-08-30T11:07:22.007029Z-HEX/DAI-sell"
 }
