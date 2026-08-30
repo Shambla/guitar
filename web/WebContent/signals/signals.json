@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "BNB/USD",
+    "quantity": 0.14358999,
+    "price": 691.6,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-30T02:12:06.728090Z",
+    "received_at": "2026-08-30T02:12:06.728114Z",
+    "id": "2026-08-30T02:12:06.728114Z-BNB/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "FET/USD",
     "quantity": 615.73850812,
     "price": 0.14924,
@@ -2941,16 +2952,5 @@
     "timestamp": "2026-08-24T02:00:53.322483Z",
     "received_at": "2026-08-24T02:00:53.322506Z",
     "id": "2026-08-24T02:00:53.322506Z-AERO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "LINK/USD",
-    "quantity": 0.01,
-    "price": 11.34,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-24T02:00:35.347170Z",
-    "received_at": "2026-08-24T02:00:35.347192Z",
-    "id": "2026-08-24T02:00:35.347192Z-LINK/USD-sell"
   }
 ]
