@@ -1,5 +1,27 @@
 [
   {
+    "action": "buy",
+    "symbol": "CRV/USD",
+    "quantity": 319.79533098816756,
+    "price": 0.3124,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-31T16:08:53.238264Z",
+    "received_at": "2026-08-31T16:08:53.238311Z",
+    "id": "2026-08-31T16:08:53.238311Z-CRV/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "SOL/USD",
+    "quantity": 0.9730466089325679,
+    "price": 102.67,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-08-31T16:08:52.729523Z",
+    "received_at": "2026-08-31T16:08:52.729549Z",
+    "id": "2026-08-31T16:08:52.729549Z-SOL/USD-buy"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 185.69000244140625,
@@ -2945,27 +2967,5 @@
     "timestamp": "2026-08-26T02:00:26.732625Z",
     "received_at": "2026-08-26T02:00:26.732644Z",
     "id": "2026-08-26T02:00:26.732644Z-TAO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-26T02:00:25.046143Z",
-    "received_at": "2026-08-26T02:00:25.046162Z",
-    "id": "2026-08-26T02:00:25.046162Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-26T02:00:21.719565Z",
-    "received_at": "2026-08-26T02:00:21.719686Z",
-    "id": "2026-08-26T02:00:21.719686Z-ETH/USD-buy"
   }
 ]
