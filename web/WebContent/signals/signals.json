@@ -1,14 +1,14 @@
 [
   {
-    "action": "buy",
-    "symbol": "CRV/USD",
+    "action": "sell",
+    "symbol": "PRVX/DAI",
     "quantity": 100.0,
     "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-01T20:00:40.288121Z",
-    "received_at": "2026-09-01T20:00:40.288134Z",
-    "id": "2026-09-01T20:00:40.288134Z-CRV/USD-buy"
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-09-01T20:02:27.973157Z",
+    "received_at": "2026-09-01T20:02:27.973170Z",
+    "id": "2026-09-01T20:02:27.973170Z-PRVX/DAI-sell"
   },
   {
     "action": "info",
@@ -142,9 +142,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 11/16 | sell 14/13",
-    "timestamp": "2026-09-01T07:45:34.811489Z",
-    "received_at": "2026-09-01T07:45:34.811489Z",
-    "id": "2026-09-01T07:45:34.811489Z-XLRE-info",
+    "timestamp": "2026-09-01T20:00:50.145324Z",
+    "received_at": "2026-09-01T20:00:50.145324Z",
+    "id": "2026-09-01T20:00:50.145324Z-XLRE-info",
     "threshold_met": true,
     "buy_score": 11,
     "sell_score": 14,
@@ -1422,6 +1422,43 @@
     "rsi_bear_div_block_timer": 9,
     "pnl_pct": -2.5779,
     "entry_price": 16.68000030517578
+  },
+  {
+    "action": "sell",
+    "symbol": "XLRE",
+    "price": 44.11000061035156,
+    "quantity": null,
+    "source": "MAIN_stock_strat14",
+    "note": "buy 11/41 | sell 14/40 | Strength=3/10 | MTF:W+M",
+    "timestamp": "2026-09-01T20:00:50.102296Z",
+    "received_at": "2026-09-01T20:00:50.102296Z",
+    "id": "2026-09-01T20:00:50.102296Z-XLRE-sell",
+    "buy_score": 11,
+    "sell_score": 14,
+    "total_buy_components": 41,
+    "total_sell_components": 40,
+    "buy_conviction": 0.2682926829268293,
+    "buy_persistence": 0,
+    "buy_position_multiplier": 0.5,
+    "sell_conviction": 0.5,
+    "sell_persistence": 5,
+    "sell_position_multiplier": 1.0,
+    "buy_signal_raw": false,
+    "buy_blocked_rsi_bear_div": false,
+    "rsi_bear_div_block_timer": 0,
+    "pnl_pct": -2.1734,
+    "entry_price": 45.09000015258789
+  },
+  {
+    "action": "buy",
+    "symbol": "CRV/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-01T20:00:40.288121Z",
+    "received_at": "2026-09-01T20:00:40.288134Z",
+    "id": "2026-09-01T20:00:40.288134Z-CRV/USD-buy"
   },
   {
     "action": "buy",
@@ -2962,27 +2999,5 @@
     "timestamp": "2026-08-26T15:00:21.358091Z",
     "received_at": "2026-08-26T15:00:21.358111Z",
     "id": "2026-08-26T15:00:21.358111Z-LINK/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2452.45,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-08-26T14:44:32.847255Z",
-    "received_at": "2026-08-26T14:44:32.847343Z",
-    "id": "2026-08-26T14:44:32.847343Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2460.4,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-08-26T14:09:26.297380Z",
-    "received_at": "2026-08-26T14:09:26.297394Z",
-    "id": "2026-08-26T14:09:26.297394Z-ETH/USD-sell"
   }
 ]
