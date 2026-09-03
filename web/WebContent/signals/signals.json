@@ -2,6 +2,17 @@
   {
     "action": "sell",
     "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2404.24,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-09-03T08:35:15.830699Z",
+    "received_at": "2026-09-03T08:35:15.830716Z",
+    "id": "2026-09-03T08:35:15.830716Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
     "quantity": 0.04159258,
     "price": 2406.78,
     "source": "MASTER_BOT_162",
@@ -2988,16 +2999,5 @@
     "timestamp": "2026-08-29T10:00:44.482946Z",
     "received_at": "2026-08-29T10:00:44.483007Z",
     "id": "2026-08-29T10:00:44.483007Z-CRV/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "HEX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-08-29T07:06:42.059721Z",
-    "received_at": "2026-08-29T07:06:42.059740Z",
-    "id": "2026-08-29T07:06:42.059740Z-HEX/DAI-sell"
   }
 ]
