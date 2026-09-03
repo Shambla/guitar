@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "CRV/USD",
-  "quantity": 0.01,
-  "price": 0.3562,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-09-03T14:00:23.429756Z",
-  "received_at": "2026-09-03T14:00:23.429770Z",
-  "id": "2026-09-03T14:00:23.429770Z-CRV/USD-sell"
+  "symbol": "PRVX/DAI",
+  "quantity": 100.0,
+  "price": null,
+  "source": "PulseChain DeFi",
+  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+  "timestamp": "2026-09-03T18:10:24.504321Z",
+  "received_at": "2026-09-03T18:10:24.504340Z",
+  "id": "2026-09-03T18:10:24.504340Z-PRVX/DAI-sell"
 }
