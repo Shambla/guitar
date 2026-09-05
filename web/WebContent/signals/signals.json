@@ -1,6 +1,39 @@
 [
   {
     "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 284.33999999,
+    "price": 0.3623,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-05T15:07:55.427415Z",
+    "received_at": "2026-09-05T15:07:55.427429Z",
+    "id": "2026-09-05T15:07:55.427429Z-CRV/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "AERO/USD",
+    "quantity": 0.00713397,
+    "price": 0.52034,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-05T15:03:28.660669Z",
+    "received_at": "2026-09-05T15:03:28.660682Z",
+    "id": "2026-09-05T15:03:28.660682Z-AERO/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "AERO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-05T15:03:28.024702Z",
+    "received_at": "2026-09-05T15:03:28.024718Z",
+    "id": "2026-09-05T15:03:28.024718Z-AERO/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
     "price": 2457.97,
@@ -2921,38 +2954,5 @@
     "timestamp": "2026-08-30T13:00:33.442732Z",
     "received_at": "2026-08-30T13:00:33.442745Z",
     "id": "2026-08-30T13:00:33.442745Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-30T13:00:04.305303Z",
-    "received_at": "2026-08-30T13:00:04.305319Z",
-    "id": "2026-08-30T13:00:04.305319Z-ETH/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "BNB/USD",
-    "quantity": 0.03216,
-    "price": 692.32,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-30T11:08:04.012355Z",
-    "received_at": "2026-08-30T11:08:04.012369Z",
-    "id": "2026-08-30T11:08:04.012369Z-BNB/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "HEX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-08-30T11:07:22.007014Z",
-    "received_at": "2026-08-30T11:07:22.007029Z",
-    "id": "2026-08-30T11:07:22.007029Z-HEX/DAI-sell"
   }
 ]
