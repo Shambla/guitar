@@ -1,11 +1,11 @@
 {
   "action": "buy",
   "symbol": "ETH/USD",
-  "quantity": 0.04032957,
-  "price": 2474.6108600000002,
+  "quantity": 0.0605405,
+  "price": 2479.57,
   "source": "MASTER_BOT_162",
-  "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-  "timestamp": "2026-09-05T18:17:33.907548Z",
-  "received_at": "2026-09-05T18:17:33.907568Z",
-  "id": "2026-09-05T18:17:33.907568Z-ETH/USD-buy"
+  "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
+  "timestamp": "2026-09-05T18:22:45.338063Z",
+  "received_at": "2026-09-05T18:22:45.338076Z",
+  "id": "2026-09-05T18:22:45.338076Z-ETH/USD-buy"
 }
