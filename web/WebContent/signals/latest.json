@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "CRV/USD",
-  "quantity": 100.0,
-  "price": null,
-  "source": "TradingView JSON",
-  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-09-05T15:00:39.864351Z",
-  "received_at": "2026-09-05T15:00:39.864369Z",
-  "id": "2026-09-05T15:00:39.864369Z-CRV/USD-sell"
+  "symbol": "ETH/USD",
+  "quantity": 0.0,
+  "price": 2457.97,
+  "source": "MASTER_BOT_162",
+  "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+  "timestamp": "2026-09-05T15:02:53.875203Z",
+  "received_at": "2026-09-05T15:02:53.875223Z",
+  "id": "2026-09-05T15:02:53.875223Z-ETH/USD-sell"
 }
