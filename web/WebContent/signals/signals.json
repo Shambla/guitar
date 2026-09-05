@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-09-05T06:01:51.234022Z",
+    "received_at": "2026-09-05T06:01:51.234038Z",
+    "id": "2026-09-05T06:01:51.234038Z-HEX/DAI-buy"
+  },
+  {
     "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
@@ -2943,16 +2954,5 @@
     "timestamp": "2026-08-30T02:00:05.956120Z",
     "received_at": "2026-08-30T02:00:05.956400Z",
     "id": "2026-08-30T02:00:05.956400Z-SOL/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "PRVX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-08-29T23:05:26.464752Z",
-    "received_at": "2026-08-29T23:05:26.464801Z",
-    "id": "2026-08-29T23:05:26.464801Z-PRVX/DAI-buy"
   }
 ]
