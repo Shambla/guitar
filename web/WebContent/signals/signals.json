@@ -1,5 +1,38 @@
 [
   {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 0.03850811,
+    "price": 0.16551,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-05T14:00:09.596839Z",
+    "received_at": "2026-09-05T14:00:09.596852Z",
+    "id": "2026-09-05T14:00:09.596852Z-FET/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-05T14:00:09.071640Z",
+    "received_at": "2026-09-05T14:00:09.071658Z",
+    "id": "2026-09-05T14:00:09.071658Z-FET/USD-sell"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-05T14:00:05.289387Z",
+    "received_at": "2026-09-05T14:00:05.289403Z",
+    "id": "2026-09-05T14:00:05.289403Z-ETH/USD-buy"
+  },
+  {
     "action": "buy",
     "symbol": "SOL/USD",
     "quantity": 0.9682416731216111,
@@ -2921,38 +2954,5 @@
     "timestamp": "2026-08-30T02:12:15.605271Z",
     "received_at": "2026-08-30T02:12:15.605285Z",
     "id": "2026-08-30T02:12:15.605285Z-LINK/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "BNB/USD",
-    "quantity": 0.14358999,
-    "price": 691.6,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-30T02:12:06.728090Z",
-    "received_at": "2026-08-30T02:12:06.728114Z",
-    "id": "2026-08-30T02:12:06.728114Z-BNB/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 615.73850812,
-    "price": 0.14924,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-30T02:10:40.615203Z",
-    "received_at": "2026-08-30T02:10:40.615217Z",
-    "id": "2026-08-30T02:10:40.615217Z-FET/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 328.50999999,
-    "price": 0.2978,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-30T02:08:40.292346Z",
-    "received_at": "2026-08-30T02:08:40.292362Z",
-    "id": "2026-08-30T02:08:40.292362Z-CRV/USD-sell"
   }
 ]
