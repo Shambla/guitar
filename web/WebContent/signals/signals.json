@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2458.69,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-09-05T15:30:33.091421Z",
+    "received_at": "2026-09-05T15:30:33.091438Z",
+    "id": "2026-09-05T15:30:33.091438Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "CRV/USD",
     "quantity": 284.33999999,
     "price": 0.3623,
@@ -2943,16 +2954,5 @@
     "timestamp": "2026-08-30T13:45:54.266169Z",
     "received_at": "2026-08-30T13:45:54.266181Z",
     "id": "2026-08-30T13:45:54.266181Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.04049747093294024,
-    "price": 2466.82,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-08-30T13:00:33.442732Z",
-    "received_at": "2026-08-30T13:00:33.442745Z",
-    "id": "2026-08-30T13:00:33.442745Z-ETH/USD-buy"
   }
 ]
