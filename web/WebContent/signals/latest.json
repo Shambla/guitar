@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "CRV/USD",
-  "quantity": 534.00999999,
-  "price": 0.3878,
+  "symbol": "AERO/USD",
+  "quantity": 0.00713397,
+  "price": 0.54566,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-09-06T01:09:27.471231Z",
-  "received_at": "2026-09-06T01:09:27.471249Z",
-  "id": "2026-09-06T01:09:27.471249Z-CRV/USD-sell"
+  "timestamp": "2026-09-06T03:00:21.779262Z",
+  "received_at": "2026-09-06T03:00:21.779281Z",
+  "id": "2026-09-06T03:00:21.779281Z-AERO/USD-sell"
 }
