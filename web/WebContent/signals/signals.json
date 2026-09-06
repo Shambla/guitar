@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "AERO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-06T11:00:18.637582Z",
+    "received_at": "2026-09-06T11:00:18.637838Z",
+    "id": "2026-09-06T11:00:18.637838Z-AERO/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "HEX/DAI",
     "quantity": 100.0,
@@ -2943,16 +2954,5 @@
     "timestamp": "2026-08-31T06:00:49.676509Z",
     "received_at": "2026-08-31T06:00:49.676972Z",
     "id": "2026-08-31T06:00:49.676972Z-TAO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "HEX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-08-31T01:15:10.727333Z",
-    "received_at": "2026-08-31T01:15:10.727740Z",
-    "id": "2026-08-31T01:15:10.727740Z-HEX/DAI-buy"
   }
 ]
