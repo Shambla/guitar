@@ -1,6 +1,28 @@
 [
   {
     "action": "buy",
+    "symbol": "CRV/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-06T21:00:06.046725Z",
+    "received_at": "2026-09-06T21:00:06.046744Z",
+    "id": "2026-09-06T21:00:06.046744Z-CRV/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "LINK/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-06T21:00:06.014900Z",
+    "received_at": "2026-09-06T21:00:06.014918Z",
+    "id": "2026-09-06T21:00:06.014918Z-LINK/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "ETH/USD",
     "quantity": 0.06007641,
     "price": 2492.41,
@@ -2932,27 +2954,5 @@
     "timestamp": "2026-08-31T15:00:10.680177Z",
     "received_at": "2026-08-31T15:00:10.680188Z",
     "id": "2026-08-31T15:00:10.680188Z-LINK/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-31T15:00:09.425669Z",
-    "received_at": "2026-08-31T15:00:09.425684Z",
-    "id": "2026-08-31T15:00:09.425684Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 9.267e-05,
-    "price": 2444.23,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-08-31T14:39:20.515919Z",
-    "received_at": "2026-08-31T14:39:20.515933Z",
-    "id": "2026-08-31T14:39:20.515933Z-ETH/USD-sell"
   }
 ]
