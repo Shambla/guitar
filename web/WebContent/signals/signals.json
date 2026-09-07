@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2472.01,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-09-07T16:39:19.276862Z",
-    "received_at": "2026-09-07T16:39:19.276881Z",
-    "id": "2026-09-07T16:39:19.276881Z-ETH/USD-sell"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 187.27999877929688,
@@ -462,16 +451,16 @@
   {
     "action": "info",
     "symbol": "SLV",
-    "price": 57.91999816894531,
+    "price": 59.81999969482422,
     "quantity": null,
     "source": "MAIN_stock_strat12",
-    "note": "Below thresholds | buy 12/16 | sell 12/13",
-    "timestamp": "2026-09-03T14:36:27.134103Z",
-    "received_at": "2026-09-03T14:36:27.134103Z",
-    "id": "2026-09-03T14:36:27.134103Z-SLV-info",
+    "note": "Below thresholds | buy 12/16 | sell 10/13",
+    "timestamp": "2026-09-07T16:41:32.198193Z",
+    "received_at": "2026-09-07T16:41:32.198193Z",
+    "id": "2026-09-07T16:41:32.198193Z-SLV-info",
     "threshold_met": false,
     "buy_score": 12,
-    "sell_score": 12,
+    "sell_score": 10,
     "total_buy_components": 41,
     "total_sell_components": 40,
     "buy_threshold": 16,
@@ -480,7 +469,7 @@
     "buy_conviction": 0.2926829268292683,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.3,
+    "sell_conviction": 0.25,
     "sell_persistence": 0,
     "sell_position_multiplier": 0.5
   },
@@ -1420,6 +1409,17 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2472.01,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-09-07T16:39:19.276862Z",
+    "received_at": "2026-09-07T16:39:19.276881Z",
+    "id": "2026-09-07T16:39:19.276881Z-ETH/USD-sell"
   },
   {
     "action": "sell",
