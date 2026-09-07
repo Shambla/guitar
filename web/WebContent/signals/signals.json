@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.05222393,
+    "price": 2489.22,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
+    "timestamp": "2026-09-07T10:22:52.093647Z",
+    "received_at": "2026-09-07T10:22:52.093680Z",
+    "id": "2026-09-07T10:22:52.093680Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "TAO/USD",
     "quantity": 0.37467216185837393,
     "price": 266.63,
@@ -2971,16 +2982,5 @@
     "timestamp": "2026-09-01T16:00:40.659488Z",
     "received_at": "2026-09-01T16:00:40.659507Z",
     "id": "2026-09-01T16:00:40.659507Z-FET/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "PRVX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-09-01T15:01:10.810224Z",
-    "received_at": "2026-09-01T15:01:10.810239Z",
-    "id": "2026-09-01T15:01:10.810239Z-PRVX/DAI-sell"
   }
 ]
