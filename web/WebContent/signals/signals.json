@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "AERO/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-07T16:11:22.756048Z",
-    "received_at": "2026-09-07T16:11:22.756067Z",
-    "id": "2026-09-07T16:11:22.756067Z-AERO/USD-sell"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 187.27999877929688,
@@ -341,9 +330,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 12/16 | sell 14/13",
-    "timestamp": "2026-09-07T02:19:06.217875Z",
-    "received_at": "2026-09-07T02:19:06.217875Z",
-    "id": "2026-09-07T02:19:06.217875Z-NVDA-info",
+    "timestamp": "2026-09-07T16:13:06.751658Z",
+    "received_at": "2026-09-07T16:13:06.751658Z",
+    "id": "2026-09-07T16:13:06.751658Z-NVDA-info",
     "threshold_met": true,
     "buy_score": 12,
     "sell_score": 14,
@@ -1420,6 +1409,17 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "sell",
+    "symbol": "AERO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-07T16:11:22.756048Z",
+    "received_at": "2026-09-07T16:11:22.756067Z",
+    "id": "2026-09-07T16:11:22.756067Z-AERO/USD-sell"
   },
   {
     "action": "buy",
