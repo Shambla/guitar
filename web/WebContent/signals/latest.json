@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "AERO/USD",
-  "quantity": 179.27572606669057,
-  "price": 0.55724,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-09-06T23:06:11.440298Z",
-  "received_at": "2026-09-06T23:06:11.440314Z",
-  "id": "2026-09-06T23:06:11.440314Z-AERO/USD-buy"
+  "action": "sell",
+  "symbol": "PRVX/DAI",
+  "quantity": 100.0,
+  "price": null,
+  "source": "PulseChain DeFi",
+  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+  "timestamp": "2026-09-07T00:17:06.537146Z",
+  "received_at": "2026-09-07T00:17:06.537159Z",
+  "id": "2026-09-07T00:17:06.537159Z-PRVX/DAI-sell"
 }
