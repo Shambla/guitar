@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-09-07T11:03:44.926373Z",
+    "received_at": "2026-09-07T11:03:44.926396Z",
+    "id": "2026-09-07T11:03:44.926396Z-HEX/DAI-sell"
+  },
+  {
     "action": "buy",
     "symbol": "FET/USD",
     "quantity": 567.0220004536176,
@@ -2971,16 +2982,5 @@
     "timestamp": "2026-09-01T19:00:14.995728Z",
     "received_at": "2026-09-01T19:00:14.995829Z",
     "id": "2026-09-01T19:00:14.995829Z-FET/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "HEX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-09-01T18:00:33.647490Z",
-    "received_at": "2026-09-01T18:00:33.647607Z",
-    "id": "2026-09-01T18:00:33.647607Z-HEX/DAI-sell"
   }
 ]
