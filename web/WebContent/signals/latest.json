@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "SOL/USD",
-  "quantity": 0.9521995810321844,
-  "price": 104.91,
+  "symbol": "AERO/USD",
+  "quantity": 185.56662769767485,
+  "price": 0.53835,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-09-07T14:05:49.726650Z",
-  "received_at": "2026-09-07T14:05:49.726671Z",
-  "id": "2026-09-07T14:05:49.726671Z-SOL/USD-buy"
+  "timestamp": "2026-09-07T14:08:28.503296Z",
+  "received_at": "2026-09-07T14:08:28.503317Z",
+  "id": "2026-09-07T14:08:28.503317Z-AERO/USD-buy"
 }
