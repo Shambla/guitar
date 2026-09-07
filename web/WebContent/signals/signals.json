@@ -1,16 +1,5 @@
 [
   {
-    "action": "buy",
-    "symbol": "PSLX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-09-07T01:43:49.928162Z",
-    "received_at": "2026-09-07T01:43:49.928183Z",
-    "id": "2026-09-07T01:43:49.928183Z-PSLX/DAI-buy"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 187.27999877929688,
@@ -188,26 +177,26 @@
   {
     "action": "info",
     "symbol": "XLC",
-    "price": 110.87999725341797,
+    "price": 112.02999877929688,
     "quantity": null,
     "source": "MAIN_stock_strat12",
-    "note": "Above thresholds | buy 14/16 | sell 14/13",
-    "timestamp": "2026-09-03T14:13:54.439270Z",
-    "received_at": "2026-09-03T14:13:54.439270Z",
-    "id": "2026-09-03T14:13:54.439270Z-XLC-info",
+    "note": "Above thresholds | buy 16/16 | sell 9/13",
+    "timestamp": "2026-09-07T01:45:49.309265Z",
+    "received_at": "2026-09-07T01:45:49.309265Z",
+    "id": "2026-09-07T01:45:49.309265Z-XLC-info",
     "threshold_met": true,
-    "buy_score": 14,
-    "sell_score": 14,
+    "buy_score": 16,
+    "sell_score": 9,
     "total_buy_components": 41,
     "total_sell_components": 40,
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0,
-    "buy_conviction": 0.34146341463414637,
-    "buy_persistence": 0,
-    "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.38,
-    "sell_persistence": 1,
+    "buy_conviction": 0.4802439024390244,
+    "buy_persistence": 3,
+    "buy_position_multiplier": 1.0,
+    "sell_conviction": 0.225,
+    "sell_persistence": 0,
     "sell_position_multiplier": 0.5
   },
   {
@@ -1370,6 +1359,17 @@
     "rsi_bear_div_block_timer": 0,
     "pnl_pct": -0.5782,
     "entry_price": 79.55999755859375
+  },
+  {
+    "action": "buy",
+    "symbol": "PSLX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-09-07T01:43:49.928162Z",
+    "received_at": "2026-09-07T01:43:49.928183Z",
+    "id": "2026-09-07T01:43:49.928183Z-PSLX/DAI-buy"
   },
   {
     "action": "buy",
