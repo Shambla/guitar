@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "PSLX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-09-07T01:43:49.928162Z",
+    "received_at": "2026-09-07T01:43:49.928183Z",
+    "id": "2026-09-07T01:43:49.928183Z-PSLX/DAI-buy"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 187.27999877929688,
@@ -2943,16 +2954,5 @@
     "timestamp": "2026-08-31T16:00:28.387008Z",
     "received_at": "2026-08-31T16:00:28.387021Z",
     "id": "2026-08-31T16:00:28.387021Z-CRV/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-08-31T16:00:19.125705Z",
-    "received_at": "2026-08-31T16:00:19.125723Z",
-    "id": "2026-08-31T16:00:19.125723Z-FET/USD-buy"
   }
 ]
