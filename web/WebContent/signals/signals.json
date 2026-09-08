@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "PLSX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-09-08T20:07:56.866695Z",
+    "received_at": "2026-09-08T20:07:56.866735Z",
+    "id": "2026-09-08T20:07:56.866735Z-PLSX/DAI-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "PRVX/DAI",
     "quantity": 100.0,
     "price": null,
@@ -2986,16 +2997,5 @@
     "timestamp": "2026-09-05T09:00:28.114002Z",
     "received_at": "2026-09-05T09:00:28.114018Z",
     "id": "2026-09-05T09:00:28.114018Z-HYPE/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "PRVX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-09-05T08:02:14.672468Z",
-    "received_at": "2026-09-05T08:02:14.672486Z",
-    "id": "2026-09-05T08:02:14.672486Z-PRVX/DAI-buy"
   }
 ]
