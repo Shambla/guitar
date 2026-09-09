@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-09T09:00:40.484869Z",
+    "received_at": "2026-09-09T09:00:40.484893Z",
+    "id": "2026-09-09T09:00:40.484893Z-FET/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "ETH/USD",
     "quantity": 0.0519871,
     "price": 2500.18,
@@ -2973,16 +2984,5 @@
     "timestamp": "2026-09-05T14:06:43.073118Z",
     "received_at": "2026-09-05T14:06:43.073131Z",
     "id": "2026-09-05T14:06:43.073131Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "HEX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-09-05T14:02:59.787414Z",
-    "received_at": "2026-09-05T14:02:59.787430Z",
-    "id": "2026-09-05T14:02:59.787430Z-HEX/DAI-buy"
   }
 ]
