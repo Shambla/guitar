@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "FET/USD",
+  "symbol": "AERO/USD",
   "quantity": 100.0,
   "price": null,
   "source": "TradingView JSON",
   "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-09-09T09:00:40.484869Z",
-  "received_at": "2026-09-09T09:00:40.484893Z",
-  "id": "2026-09-09T09:00:40.484893Z-FET/USD-buy"
+  "timestamp": "2026-09-09T10:01:16.631640Z",
+  "received_at": "2026-09-09T10:01:16.631654Z",
+  "id": "2026-09-09T10:01:16.631654Z-AERO/USD-buy"
 }
