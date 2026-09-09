@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.0519871,
+    "price": 2500.18,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
+    "timestamp": "2026-09-09T06:44:36.933653Z",
+    "received_at": "2026-09-09T06:44:36.933671Z",
+    "id": "2026-09-09T06:44:36.933671Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "CRV/USD",
     "quantity": 275.178866263071,
     "price": 0.363,
@@ -2973,16 +2984,5 @@
     "timestamp": "2026-09-05T14:02:59.787414Z",
     "received_at": "2026-09-05T14:02:59.787430Z",
     "id": "2026-09-05T14:02:59.787430Z-HEX/DAI-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "PRVX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-09-05T14:00:40.007243Z",
-    "received_at": "2026-09-05T14:00:40.007259Z",
-    "id": "2026-09-05T14:00:40.007259Z-PRVX/DAI-sell"
   }
 ]
