@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "HEX/DAI",
-  "quantity": 100.0,
-  "price": null,
-  "source": "PulseChain DeFi",
-  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-  "timestamp": "2026-09-10T03:00:48.696613Z",
-  "received_at": "2026-09-10T03:00:48.696690Z",
-  "id": "2026-09-10T03:00:48.696690Z-HEX/DAI-sell"
+  "symbol": "ETH/USD",
+  "quantity": 0.05207039,
+  "price": 2411.06,
+  "source": "MASTER_BOT_162",
+  "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+  "timestamp": "2026-09-10T13:15:34.030904Z",
+  "received_at": "2026-09-10T13:15:34.030948Z",
+  "id": "2026-09-10T13:15:34.030948Z-ETH/USD-sell"
 }
