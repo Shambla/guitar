@@ -1,58 +1,14 @@
 [
   {
-    "action": "sell",
-    "symbol": "HEX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-09-10T14:00:49.813084Z",
-    "received_at": "2026-09-10T14:00:49.813099Z",
-    "id": "2026-09-10T14:00:49.813099Z-HEX/DAI-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2426.98,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-09-10T13:50:20.969848Z",
-    "received_at": "2026-09-10T13:50:20.969863Z",
-    "id": "2026-09-10T13:50:20.969863Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2411.07,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-09-10T13:15:37.324216Z",
-    "received_at": "2026-09-10T13:15:37.324243Z",
-    "id": "2026-09-10T13:15:37.324243Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.05207039,
-    "price": 2411.06,
-    "source": "MASTER_BOT_162",
-    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
-    "timestamp": "2026-09-10T13:15:34.030904Z",
-    "received_at": "2026-09-10T13:15:34.030948Z",
-    "id": "2026-09-10T13:15:34.030948Z-ETH/USD-sell"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 187.27999877929688,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 13/16 | sell 9/13",
-    "timestamp": "2026-09-10T03:26:51.265648Z",
-    "received_at": "2026-09-10T03:26:51.265648Z",
-    "id": "2026-09-10T03:26:51.265648Z-XLK-info",
+    "timestamp": "2026-09-10T15:34:48.588976Z",
+    "received_at": "2026-09-10T15:34:48.588976Z",
+    "id": "2026-09-10T15:34:48.588976Z-XLK-info",
     "threshold_met": false,
     "buy_score": 13,
     "sell_score": 9,
@@ -1383,6 +1339,50 @@
     "rsi_bear_div_block_timer": 0,
     "pnl_pct": 0.1121,
     "entry_price": 98.16999816894531
+  },
+  {
+    "action": "sell",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-09-10T14:00:49.813084Z",
+    "received_at": "2026-09-10T14:00:49.813099Z",
+    "id": "2026-09-10T14:00:49.813099Z-HEX/DAI-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2426.98,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-09-10T13:50:20.969848Z",
+    "received_at": "2026-09-10T13:50:20.969863Z",
+    "id": "2026-09-10T13:50:20.969863Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2411.07,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-09-10T13:15:37.324216Z",
+    "received_at": "2026-09-10T13:15:37.324243Z",
+    "id": "2026-09-10T13:15:37.324243Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.05207039,
+    "price": 2411.06,
+    "source": "MASTER_BOT_162",
+    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+    "timestamp": "2026-09-10T13:15:34.030904Z",
+    "received_at": "2026-09-10T13:15:34.030948Z",
+    "id": "2026-09-10T13:15:34.030948Z-ETH/USD-sell"
   },
   {
     "action": "sell",
