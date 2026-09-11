@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "ETH/USD",
+    "quantity": 0.05989099,
+    "price": 2510.57,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
+    "timestamp": "2026-09-11T13:13:08.951077Z",
+    "received_at": "2026-09-11T13:13:08.951101Z",
+    "id": "2026-09-11T13:13:08.951101Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
     "quantity": 0.03983159,
     "price": 2505.5488600000003,
     "source": "MASTER_BOT_162",
@@ -2934,16 +2945,5 @@
     "timestamp": "2026-09-06T21:00:06.046725Z",
     "received_at": "2026-09-06T21:00:06.046744Z",
     "id": "2026-09-06T21:00:06.046744Z-CRV/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "LINK/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-06T21:00:06.014900Z",
-    "received_at": "2026-09-06T21:00:06.014918Z",
-    "id": "2026-09-06T21:00:06.014918Z-LINK/USD-buy"
   }
 ]
