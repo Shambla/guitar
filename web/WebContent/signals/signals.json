@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-09-11T14:00:49.753700Z",
+    "received_at": "2026-09-11T14:00:49.753714Z",
+    "id": "2026-09-11T14:00:49.753714Z-HEX/DAI-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "ETH/USD",
     "quantity": 0.05989099,
     "price": 2510.57,
@@ -2934,16 +2945,5 @@
     "timestamp": "2026-09-06T21:00:38.096108Z",
     "received_at": "2026-09-06T21:00:38.096126Z",
     "id": "2026-09-06T21:00:38.096126Z-LINK/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-06T21:00:06.046725Z",
-    "received_at": "2026-09-06T21:00:06.046744Z",
-    "id": "2026-09-06T21:00:06.046744Z-CRV/USD-buy"
   }
 ]
