@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "HEX/DAI",
+  "symbol": "PRVX/DAI",
   "quantity": 100.0,
   "price": null,
   "source": "PulseChain DeFi",
   "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-  "timestamp": "2026-09-11T14:00:49.753700Z",
-  "received_at": "2026-09-11T14:00:49.753714Z",
-  "id": "2026-09-11T14:00:49.753714Z-HEX/DAI-buy"
+  "timestamp": "2026-09-11T14:01:49.379570Z",
+  "received_at": "2026-09-11T14:01:49.379591Z",
+  "id": "2026-09-11T14:01:49.379591Z-PRVX/DAI-buy"
 }
