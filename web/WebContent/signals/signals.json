@@ -1,5 +1,38 @@
 [
   {
+    "action": "buy",
+    "symbol": "SOL/USD",
+    "quantity": 1.0070493454179255,
+    "price": 99.2,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-11T04:00:43.998587Z",
+    "received_at": "2026-09-11T04:00:43.998620Z",
+    "id": "2026-09-11T04:00:43.998620Z-SOL/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "SOL/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-11T04:00:34.092444Z",
+    "received_at": "2026-09-11T04:00:34.092468Z",
+    "id": "2026-09-11T04:00:34.092468Z-SOL/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-11T04:00:33.584640Z",
+    "received_at": "2026-09-11T04:00:33.584660Z",
+    "id": "2026-09-11T04:00:33.584660Z-FET/USD-buy"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 187.27999877929688,
@@ -2912,38 +2945,5 @@
     "timestamp": "2026-09-06T17:00:20.147611Z",
     "received_at": "2026-09-06T17:00:20.147626Z",
     "id": "2026-09-06T17:00:20.147626Z-HYPE/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "HYPE/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-06T17:00:17.957553Z",
-    "received_at": "2026-09-06T17:00:17.957571Z",
-    "id": "2026-09-06T17:00:17.957571Z-HYPE/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "SOL/USD",
-    "quantity": 0.96824167,
-    "price": 105.76,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-06T16:00:47.593552Z",
-    "received_at": "2026-09-06T16:00:47.593569Z",
-    "id": "2026-09-06T16:00:47.593569Z-SOL/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "LINK/USD",
-    "quantity": 0.0,
-    "price": 12.218,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-06T16:00:21.588166Z",
-    "received_at": "2026-09-06T16:00:21.588179Z",
-    "id": "2026-09-06T16:00:21.588179Z-LINK/USD-sell"
   }
 ]
