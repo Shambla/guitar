@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "SOL/USD",
-  "quantity": 1.0070493454179255,
-  "price": 99.2,
+  "symbol": "FET/USD",
+  "quantity": 599.4125756758377,
+  "price": 0.16666,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-09-11T04:00:43.998587Z",
-  "received_at": "2026-09-11T04:00:43.998620Z",
-  "id": "2026-09-11T04:00:43.998620Z-SOL/USD-buy"
+  "timestamp": "2026-09-11T04:06:07.773987Z",
+  "received_at": "2026-09-11T04:06:07.774005Z",
+  "id": "2026-09-11T04:06:07.774005Z-FET/USD-buy"
 }
