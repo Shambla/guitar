@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "FET/USD",
-  "quantity": 599.43850812,
-  "price": 0.16901,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-09-12T14:01:19.379741Z",
-  "received_at": "2026-09-12T14:01:19.379759Z",
-  "id": "2026-09-12T14:01:19.379759Z-FET/USD-sell"
+  "action": "buy",
+  "symbol": "PRVX/DAI",
+  "quantity": 100.0,
+  "price": null,
+  "source": "PulseChain DeFi",
+  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+  "timestamp": "2026-09-12T14:03:54.837065Z",
+  "received_at": "2026-09-12T14:03:54.837083Z",
+  "id": "2026-09-12T14:03:54.837083Z-PRVX/DAI-buy"
 }
