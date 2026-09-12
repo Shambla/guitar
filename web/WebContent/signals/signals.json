@@ -1,6 +1,28 @@
 [
   {
     "action": "sell",
+    "symbol": "PRVX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-09-12T23:05:56.905691Z",
+    "received_at": "2026-09-12T23:05:56.905704Z",
+    "id": "2026-09-12T23:05:56.905704Z-PRVX/DAI-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 293.68,
+    "price": 0.3348,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-12T20:01:55.991319Z",
+    "received_at": "2026-09-12T20:01:55.991337Z",
+    "id": "2026-09-12T20:01:55.991337Z-CRV/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "PLSX/DAI",
     "quantity": 100.0,
     "price": null,
@@ -2869,27 +2891,5 @@
     "timestamp": "2026-09-07T16:18:26.957134Z",
     "received_at": "2026-09-07T16:18:26.957156Z",
     "id": "2026-09-07T16:18:26.957156Z-AERO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "AERO/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-07T16:11:22.756048Z",
-    "received_at": "2026-09-07T16:11:22.756067Z",
-    "id": "2026-09-07T16:11:22.756067Z-AERO/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "CRV/USD",
-    "quantity": 263.2964718272775,
-    "price": 0.3794,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-07T15:00:57.625743Z",
-    "received_at": "2026-09-07T15:00:57.625764Z",
-    "id": "2026-09-07T15:00:57.625764Z-CRV/USD-buy"
   }
 ]
