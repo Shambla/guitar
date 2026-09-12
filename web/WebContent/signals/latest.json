@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "SOL/USD",
-  "quantity": 1e-08,
-  "price": 101.94,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-09-12T02:00:23.356513Z",
-  "received_at": "2026-09-12T02:00:23.356534Z",
-  "id": "2026-09-12T02:00:23.356534Z-SOL/USD-sell"
+  "symbol": "PRVX/DAI",
+  "quantity": 100.0,
+  "price": null,
+  "source": "PulseChain DeFi",
+  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+  "timestamp": "2026-09-12T02:04:05.017108Z",
+  "received_at": "2026-09-12T02:04:05.017130Z",
+  "id": "2026-09-12T02:04:05.017130Z-PRVX/DAI-sell"
 }
