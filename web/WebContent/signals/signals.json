@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "ETH/USD",
+    "quantity": 0.039635511833182056,
+    "price": 2520.47,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-12T08:07:15.653703Z",
+    "received_at": "2026-09-12T08:07:15.653734Z",
+    "id": "2026-09-12T08:07:15.653734Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2880,16 +2891,5 @@
     "timestamp": "2026-09-07T04:36:20.053494Z",
     "received_at": "2026-09-07T04:36:20.053534Z",
     "id": "2026-09-07T04:36:20.053534Z-PLSX/DAI-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "PSLX/DAI",
-    "quantity": 50.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-09-07T03:56:50.366961Z",
-    "received_at": "2026-09-07T03:56:50.367208Z",
-    "id": "2026-09-07T03:56:50.367208Z-PSLX/DAI-buy"
   }
 ]
