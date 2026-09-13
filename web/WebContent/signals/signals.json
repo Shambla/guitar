@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "SOL/USD",
+    "quantity": 0.998003992015968,
+    "price": 100.1,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-13T16:05:43.813625Z",
+    "received_at": "2026-09-13T16:05:43.813642Z",
+    "id": "2026-09-13T16:05:43.813642Z-SOL/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "SOL/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2880,16 +2891,5 @@
     "timestamp": "2026-09-08T16:09:15.804934Z",
     "received_at": "2026-09-08T16:09:15.804951Z",
     "id": "2026-09-08T16:09:15.804951Z-TAO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "SOL/USD",
-    "quantity": 0.9599692809830085,
-    "price": 104.07,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-08T16:09:14.914990Z",
-    "received_at": "2026-09-08T16:09:14.915001Z",
-    "id": "2026-09-08T16:09:14.915001Z-SOL/USD-buy"
   }
 ]
