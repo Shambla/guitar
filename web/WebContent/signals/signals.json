@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "HYPE/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-13T23:00:34.465061Z",
+    "received_at": "2026-09-13T23:00:34.465405Z",
+    "id": "2026-09-13T23:00:34.465405Z-HYPE/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "PLSX/DAI",
     "quantity": 100.0,
     "price": null,
@@ -2880,16 +2891,5 @@
     "timestamp": "2026-09-08T20:07:56.866695Z",
     "received_at": "2026-09-08T20:07:56.866735Z",
     "id": "2026-09-08T20:07:56.866735Z-PLSX/DAI-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "PRVX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-09-08T19:02:06.399564Z",
-    "received_at": "2026-09-08T19:02:06.399673Z",
-    "id": "2026-09-08T19:02:06.399673Z-PRVX/DAI-buy"
   }
 ]
