@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2494.97,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-09-13T09:09:13.812550Z",
+    "received_at": "2026-09-13T09:09:13.812567Z",
+    "id": "2026-09-13T09:09:13.812567Z-ETH/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "LINK/USD",
     "quantity": 8.839388314328648,
@@ -2880,16 +2891,5 @@
     "timestamp": "2026-09-08T02:05:45.682760Z",
     "received_at": "2026-09-08T02:05:45.682774Z",
     "id": "2026-09-08T02:05:45.682774Z-BNB/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "HEX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-09-08T02:01:32.633496Z",
-    "received_at": "2026-09-08T02:01:32.633509Z",
-    "id": "2026-09-08T02:01:32.633509Z-HEX/DAI-sell"
   }
 ]
