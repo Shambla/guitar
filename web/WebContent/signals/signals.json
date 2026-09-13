@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "HYPE/USD",
+    "quantity": 1.2909888974954815,
+    "price": 77.38,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-13T23:06:06.307099Z",
+    "received_at": "2026-09-13T23:06:06.307112Z",
+    "id": "2026-09-13T23:06:06.307112Z-HYPE/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "HYPE/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2880,16 +2891,5 @@
     "timestamp": "2026-09-09T02:00:09.941794Z",
     "received_at": "2026-09-09T02:00:09.942115Z",
     "id": "2026-09-09T02:00:09.942115Z-TAO/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "PLSX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-09-08T20:07:56.866695Z",
-    "received_at": "2026-09-08T20:07:56.866735Z",
-    "id": "2026-09-08T20:07:56.866735Z-PLSX/DAI-buy"
   }
 ]
