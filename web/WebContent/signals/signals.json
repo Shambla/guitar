@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "PRVX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-09-13T08:03:38.131965Z",
+    "received_at": "2026-09-13T08:03:38.131983Z",
+    "id": "2026-09-13T08:03:38.131983Z-PRVX/DAI-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "SOL/USD",
     "quantity": 100.0,
     "price": null,
@@ -2880,16 +2891,5 @@
     "timestamp": "2026-09-08T02:00:38.176464Z",
     "received_at": "2026-09-08T02:00:38.176476Z",
     "id": "2026-09-08T02:00:38.176476Z-SOL/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "LINK/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-08T02:00:26.387784Z",
-    "received_at": "2026-09-08T02:00:26.387804Z",
-    "id": "2026-09-08T02:00:26.387804Z-LINK/USD-buy"
   }
 ]
