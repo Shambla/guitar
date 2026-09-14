@@ -1,5 +1,27 @@
 [
   {
+    "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-14T18:00:31.093800Z",
+    "received_at": "2026-09-14T18:00:31.093813Z",
+    "id": "2026-09-14T18:00:31.093813Z-TAO/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-14T18:00:26.446788Z",
+    "received_at": "2026-09-14T18:00:26.446865Z",
+    "id": "2026-09-14T18:00:26.446865Z-ETH/USD-buy"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 187.27999877929688,
@@ -891,32 +913,6 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
-  },
-  {
-    "action": "sell",
-    "symbol": "SLV",
-    "price": 60.02000045776367,
-    "quantity": null,
-    "source": "MAIN_stock_strat14",
-    "note": "buy 15/41 | sell 11/40 | Strength=1/10 | MTF:D-only (no higher timeframe confirmation)",
-    "timestamp": "2026-08-31T16:55:32.448211Z",
-    "received_at": "2026-08-31T16:55:32.448211Z",
-    "id": "2026-08-31T16:55:32.448211Z-SLV-sell",
-    "buy_score": 15,
-    "sell_score": 11,
-    "total_buy_components": 41,
-    "total_sell_components": 40,
-    "buy_conviction": 0.36585365853658536,
-    "buy_persistence": 0,
-    "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.275,
-    "sell_persistence": 0,
-    "sell_position_multiplier": 0.5,
-    "buy_signal_raw": false,
-    "buy_blocked_rsi_bear_div": false,
-    "rsi_bear_div_block_timer": 0,
-    "pnl_pct": -2.6597,
-    "entry_price": 61.65999984741211
   },
   {
     "action": "buy",
@@ -2880,16 +2876,5 @@
     "timestamp": "2026-09-10T13:15:34.030904Z",
     "received_at": "2026-09-10T13:15:34.030948Z",
     "id": "2026-09-10T13:15:34.030948Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "HEX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-09-10T03:00:48.696613Z",
-    "received_at": "2026-09-10T03:00:48.696690Z",
-    "id": "2026-09-10T03:00:48.696690Z-HEX/DAI-sell"
   }
 ]
