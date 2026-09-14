@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "PRVX/DAI",
-  "quantity": 100.0,
-  "price": null,
-  "source": "PulseChain DeFi",
-  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-  "timestamp": "2026-09-14T05:04:45.305942Z",
-  "received_at": "2026-09-14T05:04:45.305963Z",
-  "id": "2026-09-14T05:04:45.305963Z-PRVX/DAI-buy"
+  "symbol": "TAO/USD",
+  "quantity": 0.42642104814293635,
+  "price": 234.28,
+  "source": "MASTER_BOT_162",
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-09-14T05:06:14.647935Z",
+  "received_at": "2026-09-14T05:06:14.647950Z",
+  "id": "2026-09-14T05:06:14.647950Z-TAO/USD-buy"
 }
