@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-09-14T18:04:47.442365Z",
+    "received_at": "2026-09-14T18:04:47.442427Z",
+    "id": "2026-09-14T18:04:47.442427Z-HEX/DAI-sell"
+  },
+  {
     "action": "buy",
     "symbol": "TAO/USD",
     "quantity": 0.42260068461310907,
@@ -2865,16 +2876,5 @@
     "timestamp": "2026-09-10T13:50:20.969848Z",
     "received_at": "2026-09-10T13:50:20.969863Z",
     "id": "2026-09-10T13:50:20.969863Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2411.07,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-09-10T13:15:37.324216Z",
-    "received_at": "2026-09-10T13:15:37.324243Z",
-    "id": "2026-09-10T13:15:37.324243Z-ETH/USD-sell"
   }
 ]
