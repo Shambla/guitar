@@ -1,16 +1,5 @@
 [
   {
-    "action": "buy",
-    "symbol": "LINK/USD",
-    "quantity": 8.846426043878273,
-    "price": 11.293,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-14T02:06:05.695411Z",
-    "received_at": "2026-09-14T02:06:05.695438Z",
-    "id": "2026-09-14T02:06:05.695438Z-LINK/USD-buy"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 187.27999877929688,
@@ -192,9 +181,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 16/16 | sell 9/13",
-    "timestamp": "2026-09-11T16:18:36.787207Z",
-    "received_at": "2026-09-11T16:18:36.787207Z",
-    "id": "2026-09-11T16:18:36.787207Z-XLC-info",
+    "timestamp": "2026-09-14T02:09:18.872652Z",
+    "received_at": "2026-09-14T02:09:18.872652Z",
+    "id": "2026-09-14T02:09:18.872652Z-XLC-info",
     "threshold_met": true,
     "buy_score": 16,
     "sell_score": 9,
@@ -886,9 +875,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat14",
     "note": "buy 16/41 | sell 9/40 | Strength=1/10 | MTF:D-only (no higher timeframe confirmation)",
-    "timestamp": "2026-09-11T16:18:36.764841Z",
-    "received_at": "2026-09-11T16:18:36.764841Z",
-    "id": "2026-09-11T16:18:36.764841Z-XLC-buy",
+    "timestamp": "2026-09-14T02:09:18.818381Z",
+    "received_at": "2026-09-14T02:09:18.818381Z",
+    "id": "2026-09-14T02:09:18.818381Z-XLC-buy",
     "buy_score": 16,
     "sell_score": 9,
     "total_buy_components": 41,
@@ -1252,6 +1241,28 @@
     "rsi_bear_div_block_timer": 0,
     "pnl_pct": 0.1121,
     "entry_price": 98.16999816894531
+  },
+  {
+    "action": "buy",
+    "symbol": "SOL/USD",
+    "quantity": 0.9996001599360256,
+    "price": 99.94,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-14T02:06:18.365347Z",
+    "received_at": "2026-09-14T02:06:18.365377Z",
+    "id": "2026-09-14T02:06:18.365377Z-SOL/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "LINK/USD",
+    "quantity": 8.846426043878273,
+    "price": 11.293,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-14T02:06:05.695411Z",
+    "received_at": "2026-09-14T02:06:05.695438Z",
+    "id": "2026-09-14T02:06:05.695438Z-LINK/USD-buy"
   },
   {
     "action": "buy",
@@ -2880,16 +2891,5 @@
     "timestamp": "2026-09-09T06:00:56.234908Z",
     "received_at": "2026-09-09T06:00:56.234929Z",
     "id": "2026-09-09T06:00:56.234929Z-CRV/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "SOL/USD",
-    "quantity": 1.90951881,
-    "price": 104.28,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-09T05:07:43.936623Z",
-    "received_at": "2026-09-09T05:07:43.936645Z",
-    "id": "2026-09-09T05:07:43.936645Z-SOL/USD-sell"
   }
 ]
