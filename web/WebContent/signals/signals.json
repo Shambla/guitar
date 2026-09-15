@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-09-15T20:01:31.503634Z",
+    "received_at": "2026-09-15T20:01:31.503661Z",
+    "id": "2026-09-15T20:01:31.503661Z-HEX/DAI-sell"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 184.27999877929688,
@@ -1063,32 +1074,6 @@
     "rsi_bear_div_block_timer": 9,
     "pnl_pct": -2.5779,
     "entry_price": 16.68000030517578
-  },
-  {
-    "action": "sell",
-    "symbol": "XLRE",
-    "price": 44.11000061035156,
-    "quantity": null,
-    "source": "MAIN_stock_strat14",
-    "note": "buy 11/41 | sell 14/40 | Strength=3/10 | MTF:W+M",
-    "timestamp": "2026-09-01T20:00:50.102296Z",
-    "received_at": "2026-09-01T20:00:50.102296Z",
-    "id": "2026-09-01T20:00:50.102296Z-XLRE-sell",
-    "buy_score": 11,
-    "sell_score": 14,
-    "total_buy_components": 41,
-    "total_sell_components": 40,
-    "buy_conviction": 0.2682926829268293,
-    "buy_persistence": 0,
-    "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.5,
-    "sell_persistence": 5,
-    "sell_position_multiplier": 1.0,
-    "buy_signal_raw": false,
-    "buy_blocked_rsi_bear_div": false,
-    "rsi_bear_div_block_timer": 0,
-    "pnl_pct": -2.1734,
-    "entry_price": 45.09000015258789
   },
   {
     "action": "buy",
