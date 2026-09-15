@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.03979988,
+    "price": 2507.54486,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-09-15T01:19:46.919827Z",
+    "received_at": "2026-09-15T01:19:46.919840Z",
+    "id": "2026-09-15T01:19:46.919840Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "AERO/USD",
     "quantity": 176.73465059559578,
     "price": 0.56525,
@@ -2865,16 +2876,5 @@
     "timestamp": "2026-09-11T04:00:43.998587Z",
     "received_at": "2026-09-11T04:00:43.998620Z",
     "id": "2026-09-11T04:00:43.998620Z-SOL/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "SOL/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-11T04:00:34.092444Z",
-    "received_at": "2026-09-11T04:00:34.092468Z",
-    "id": "2026-09-11T04:00:34.092468Z-SOL/USD-buy"
   }
 ]
