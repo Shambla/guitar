@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "LINK/USD",
+    "quantity": 9.106638739641198,
+    "price": 10.97,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-16T21:02:51.109021Z",
+    "received_at": "2026-09-16T21:02:51.109927Z",
+    "id": "2026-09-16T21:02:51.109927Z-LINK/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "LINK/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2768,16 +2779,5 @@
     "timestamp": "2026-09-13T02:00:21.880206Z",
     "received_at": "2026-09-13T02:00:21.880257Z",
     "id": "2026-09-13T02:00:21.880257Z-AERO/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "PRVX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-09-12T23:05:56.905691Z",
-    "received_at": "2026-09-12T23:05:56.905704Z",
-    "id": "2026-09-12T23:05:56.905704Z-PRVX/DAI-sell"
   }
 ]
