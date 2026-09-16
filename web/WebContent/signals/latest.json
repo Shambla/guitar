@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "HEX/DAI",
-  "quantity": 100.0,
-  "price": null,
-  "source": "PulseChain DeFi",
-  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-  "timestamp": "2026-09-16T03:10:58.501816Z",
-  "received_at": "2026-09-16T03:10:58.502472Z",
-  "id": "2026-09-16T03:10:58.502472Z-HEX/DAI-buy"
+  "symbol": "TAO/USD",
+  "quantity": 0.4575193301917006,
+  "price": 218.35,
+  "source": "MASTER_BOT_162",
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-09-16T04:00:41.429054Z",
+  "received_at": "2026-09-16T04:00:41.429072Z",
+  "id": "2026-09-16T04:00:41.429072Z-TAO/USD-buy"
 }
