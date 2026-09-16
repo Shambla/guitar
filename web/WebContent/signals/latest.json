@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "LINK/USD",
-  "quantity": 9.106638739641198,
-  "price": 10.97,
+  "symbol": "SOL/USD",
+  "quantity": 1.0138902970698571,
+  "price": 98.53,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-09-16T21:02:51.109021Z",
-  "received_at": "2026-09-16T21:02:51.109927Z",
-  "id": "2026-09-16T21:02:51.109927Z-LINK/USD-buy"
+  "timestamp": "2026-09-16T21:07:48.757052Z",
+  "received_at": "2026-09-16T21:07:48.757065Z",
+  "id": "2026-09-16T21:07:48.757065Z-SOL/USD-buy"
 }
