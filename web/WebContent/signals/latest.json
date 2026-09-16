@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "HYPE/USD",
+  "symbol": "AERO/USD",
   "quantity": 100.0,
   "price": null,
   "source": "TradingView JSON",
   "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-09-16T02:00:10.852077Z",
-  "received_at": "2026-09-16T02:00:10.852519Z",
-  "id": "2026-09-16T02:00:10.852519Z-HYPE/USD-buy"
+  "timestamp": "2026-09-16T02:01:46.337650Z",
+  "received_at": "2026-09-16T02:01:46.337673Z",
+  "id": "2026-09-16T02:01:46.337673Z-AERO/USD-buy"
 }
