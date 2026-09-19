@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "SOL/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-19T18:00:15.071154Z",
+    "received_at": "2026-09-19T18:00:15.071168Z",
+    "id": "2026-09-19T18:00:15.071168Z-SOL/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "TAO/USD",
     "quantity": 0.3693716987404425,
     "price": 270.46,
@@ -2727,16 +2738,5 @@
     "timestamp": "2026-09-13T23:06:06.307099Z",
     "received_at": "2026-09-13T23:06:06.307112Z",
     "id": "2026-09-13T23:06:06.307112Z-HYPE/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "HYPE/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-13T23:00:34.465061Z",
-    "received_at": "2026-09-13T23:00:34.465405Z",
-    "id": "2026-09-13T23:00:34.465405Z-HYPE/USD-buy"
   }
 ]
