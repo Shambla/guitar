@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-09-19T15:04:27.686373Z",
+    "received_at": "2026-09-19T15:04:27.686389Z",
+    "id": "2026-09-19T15:04:27.686389Z-HEX/DAI-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "LINK/USD",
     "quantity": 0.01,
     "price": 12.536,
@@ -2727,16 +2738,5 @@
     "timestamp": "2026-09-13T17:37:28.345713Z",
     "received_at": "2026-09-13T17:37:28.345729Z",
     "id": "2026-09-13T17:37:28.345729Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2505.53,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-09-13T17:02:41.398294Z",
-    "received_at": "2026-09-13T17:02:41.398306Z",
-    "id": "2026-09-13T17:02:41.398306Z-ETH/USD-sell"
   }
 ]
