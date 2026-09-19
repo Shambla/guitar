@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "ETH/USD",
+    "quantity": 0.0380858,
+    "price": 2620.3987,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-09-19T01:05:00.277624Z",
+    "received_at": "2026-09-19T01:05:00.277639Z",
+    "id": "2026-09-19T01:05:00.277639Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
     "quantity": 0.04972098,
     "price": 2613.77,
     "source": "MASTER_BOT_162",
@@ -2727,16 +2738,5 @@
     "timestamp": "2026-09-13T10:00:39.761772Z",
     "received_at": "2026-09-13T10:00:39.761786Z",
     "id": "2026-09-13T10:00:39.761786Z-TAO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-13T10:00:27.665180Z",
-    "received_at": "2026-09-13T10:00:27.665196Z",
-    "id": "2026-09-13T10:00:27.665196Z-FET/USD-sell"
   }
 ]
