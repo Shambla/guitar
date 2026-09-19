@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "HEX/DAI",
+  "action": "buy",
+  "symbol": "TAO/USD",
   "quantity": 100.0,
   "price": null,
-  "source": "PulseChain DeFi",
-  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-  "timestamp": "2026-09-19T15:04:27.686373Z",
-  "received_at": "2026-09-19T15:04:27.686389Z",
-  "id": "2026-09-19T15:04:27.686389Z-HEX/DAI-sell"
+  "source": "TradingView JSON",
+  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+  "timestamp": "2026-09-19T16:00:09.804372Z",
+  "received_at": "2026-09-19T16:00:09.804386Z",
+  "id": "2026-09-19T16:00:09.804386Z-TAO/USD-buy"
 }
