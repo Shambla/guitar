@@ -1,6 +1,28 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.04534273,
+    "price": 2644.78,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
+    "timestamp": "2026-09-19T18:01:41.143922Z",
+    "received_at": "2026-09-19T18:01:41.143937Z",
+    "id": "2026-09-19T18:01:41.143937Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.03781032,
+    "price": 2639.49044,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-09-19T18:01:39.379954Z",
+    "received_at": "2026-09-19T18:01:39.379985Z",
+    "id": "2026-09-19T18:01:39.379985Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "SOL/USD",
     "quantity": 100.0,
     "price": null,
@@ -2716,27 +2738,5 @@
     "timestamp": "2026-09-14T00:00:26.377588Z",
     "received_at": "2026-09-14T00:00:26.377603Z",
     "id": "2026-09-14T00:00:26.377603Z-SOL/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "HEX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-09-13T23:47:34.178711Z",
-    "received_at": "2026-09-13T23:47:34.178730Z",
-    "id": "2026-09-13T23:47:34.178730Z-HEX/DAI-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "HYPE/USD",
-    "quantity": 1.2909888974954815,
-    "price": 77.38,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-13T23:06:06.307099Z",
-    "received_at": "2026-09-13T23:06:06.307112Z",
-    "id": "2026-09-13T23:06:06.307112Z-HYPE/USD-buy"
   }
 ]
