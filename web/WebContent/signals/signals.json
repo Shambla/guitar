@@ -455,9 +455,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 9/16 | sell 7/13",
-    "timestamp": "2026-09-21T02:01:59.505968Z",
-    "received_at": "2026-09-21T02:01:59.505968Z",
-    "id": "2026-09-21T02:01:59.505968Z-SLV-info",
+    "timestamp": "2026-09-21T14:03:52.252568Z",
+    "received_at": "2026-09-21T14:03:52.252568Z",
+    "id": "2026-09-21T14:03:52.252568Z-SLV-info",
     "threshold_met": false,
     "buy_score": 9,
     "sell_score": 7,
@@ -1041,6 +1041,17 @@
     "rsi_bear_div_block_timer": 0,
     "pnl_pct": -1.3444,
     "entry_price": 112.31999969482422
+  },
+  {
+    "action": "sell",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-09-21T14:01:57.405247Z",
+    "received_at": "2026-09-21T14:01:57.405264Z",
+    "id": "2026-09-21T14:01:57.405264Z-HEX/DAI-sell"
   },
   {
     "action": "sell",
@@ -2768,16 +2779,5 @@
     "timestamp": "2026-09-14T23:00:31.196539Z",
     "received_at": "2026-09-14T23:00:31.196552Z",
     "id": "2026-09-14T23:00:31.196552Z-FET/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-14T23:00:30.587760Z",
-    "received_at": "2026-09-14T23:00:30.587781Z",
-    "id": "2026-09-14T23:00:30.587781Z-FET/USD-sell"
   }
 ]
