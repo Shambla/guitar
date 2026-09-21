@@ -1,27 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 0.0,
-    "price": 0.3585,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-21T14:00:24.942523Z",
-    "received_at": "2026-09-21T14:00:24.942536Z",
-    "id": "2026-09-21T14:00:24.942536Z-CRV/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-21T14:00:24.786656Z",
-    "received_at": "2026-09-21T14:00:24.786745Z",
-    "id": "2026-09-21T14:00:24.786745Z-CRV/USD-sell"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 189.60000610351562,
@@ -452,9 +430,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 9/16 | sell 10/13",
-    "timestamp": "2026-09-21T01:59:41.967532Z",
-    "received_at": "2026-09-21T01:59:41.967532Z",
-    "id": "2026-09-21T01:59:41.967532Z-GLD-info",
+    "timestamp": "2026-09-21T14:01:38.118680Z",
+    "received_at": "2026-09-21T14:01:38.118680Z",
+    "id": "2026-09-21T14:01:38.118680Z-GLD-info",
     "threshold_met": false,
     "buy_score": 9,
     "sell_score": 10,
@@ -1063,6 +1041,28 @@
     "rsi_bear_div_block_timer": 0,
     "pnl_pct": -1.3444,
     "entry_price": 112.31999969482422
+  },
+  {
+    "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 0.0,
+    "price": 0.3585,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-21T14:00:24.942523Z",
+    "received_at": "2026-09-21T14:00:24.942536Z",
+    "id": "2026-09-21T14:00:24.942536Z-CRV/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-21T14:00:24.786656Z",
+    "received_at": "2026-09-21T14:00:24.786745Z",
+    "id": "2026-09-21T14:00:24.786745Z-CRV/USD-sell"
   },
   {
     "action": "buy",
