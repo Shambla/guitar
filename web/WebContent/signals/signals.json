@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 582.08,
+    "price": 0.3446,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-21T02:03:20.255964Z",
+    "received_at": "2026-09-21T02:03:20.255984Z",
+    "id": "2026-09-21T02:03:20.255984Z-CRV/USD-sell"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 189.60000610351562,
@@ -2740,16 +2751,5 @@
     "timestamp": "2026-09-14T14:01:02.358785Z",
     "received_at": "2026-09-14T14:01:02.358808Z",
     "id": "2026-09-14T14:01:02.358808Z-CRV/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "PRVX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-09-14T14:00:58.439474Z",
-    "received_at": "2026-09-14T14:00:58.439495Z",
-    "id": "2026-09-14T14:00:58.439495Z-PRVX/DAI-buy"
   }
 ]
