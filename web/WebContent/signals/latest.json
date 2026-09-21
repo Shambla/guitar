@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "LINK/USD",
-  "quantity": 8.13,
-  "price": 12.608,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-09-21T03:05:23.820067Z",
-  "received_at": "2026-09-21T03:05:23.820079Z",
-  "id": "2026-09-21T03:05:23.820079Z-LINK/USD-sell"
+  "action": "buy",
+  "symbol": "HEX/DAI",
+  "quantity": 100.0,
+  "price": null,
+  "source": "PulseChain DeFi",
+  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+  "timestamp": "2026-09-21T05:04:27.122381Z",
+  "received_at": "2026-09-21T05:04:27.122398Z",
+  "id": "2026-09-21T05:04:27.122398Z-HEX/DAI-buy"
 }
