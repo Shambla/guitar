@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "HEX/DAI",
+  "action": "buy",
+  "symbol": "AERO/USD",
   "quantity": 100.0,
   "price": null,
-  "source": "PulseChain DeFi",
-  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-  "timestamp": "2026-09-21T17:01:37.297676Z",
-  "received_at": "2026-09-21T17:01:37.298186Z",
-  "id": "2026-09-21T17:01:37.298186Z-HEX/DAI-sell"
+  "source": "TradingView JSON",
+  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+  "timestamp": "2026-09-21T18:00:23.560376Z",
+  "received_at": "2026-09-21T18:00:23.560395Z",
+  "id": "2026-09-21T18:00:23.560395Z-AERO/USD-buy"
 }
