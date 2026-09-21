@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "PLSX/DAI",
-  "quantity": 100.0,
-  "price": null,
-  "source": "PulseChain DeFi",
-  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-  "timestamp": "2026-09-21T00:02:26.448381Z",
-  "received_at": "2026-09-21T00:02:26.448466Z",
-  "id": "2026-09-21T00:02:26.448466Z-PLSX/DAI-buy"
+  "action": "sell",
+  "symbol": "ENS/USD",
+  "quantity": 0.0,
+  "price": 6.507,
+  "source": "MASTER_BOT_162",
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-09-21T00:02:36.565935Z",
+  "received_at": "2026-09-21T00:02:36.565958Z",
+  "id": "2026-09-21T00:02:36.565958Z-ENS/USD-sell"
 }
