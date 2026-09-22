@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "AERO/USD",
+    "quantity": 296.80713398,
+    "price": 0.69058,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-22T02:09:17.586778Z",
+    "received_at": "2026-09-22T02:09:17.608906Z",
+    "id": "2026-09-22T02:09:17.608906Z-AERO/USD-sell"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 189.60000610351562,
@@ -2768,16 +2779,5 @@
     "timestamp": "2026-09-15T10:28:25.373391Z",
     "received_at": "2026-09-15T10:28:25.373416Z",
     "id": "2026-09-15T10:28:25.373416Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 0.01,
-    "price": 0.3419,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-15T10:02:18.453745Z",
-    "received_at": "2026-09-15T10:02:18.453762Z",
-    "id": "2026-09-15T10:02:18.453762Z-CRV/USD-sell"
   }
 ]
