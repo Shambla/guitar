@@ -1,11 +1,11 @@
 {
   "action": "sell",
   "symbol": "HYPE/USD",
-  "quantity": 100.0,
-  "price": null,
-  "source": "TradingView JSON",
-  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-09-22T16:00:14.417249Z",
-  "received_at": "2026-09-22T16:00:14.418319Z",
-  "id": "2026-09-22T16:00:14.418319Z-HYPE/USD-sell"
+  "quantity": 1.09099999,
+  "price": 94.91,
+  "source": "MASTER_BOT_162",
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-09-22T16:00:44.303476Z",
+  "received_at": "2026-09-22T16:00:44.303502Z",
+  "id": "2026-09-22T16:00:44.303502Z-HYPE/USD-sell"
 }

@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "HYPE/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-22T16:00:14.417249Z",
-    "received_at": "2026-09-22T16:00:14.418319Z",
-    "id": "2026-09-22T16:00:14.418319Z-HYPE/USD-sell"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 189.60000610351562,
@@ -192,9 +181,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 13/16 | sell 13/13",
-    "timestamp": "2026-09-22T02:19:28.547384Z",
-    "received_at": "2026-09-22T02:19:28.547384Z",
-    "id": "2026-09-22T02:19:28.547384Z-XLC-info",
+    "timestamp": "2026-09-22T16:02:38.008081Z",
+    "received_at": "2026-09-22T16:02:38.008081Z",
+    "id": "2026-09-22T16:02:38.008081Z-XLC-info",
     "threshold_met": true,
     "buy_score": 13,
     "sell_score": 13,
@@ -1034,9 +1023,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat14",
     "note": "buy 13/41 | sell 13/40 | Strength=3/10 | MTF:M",
-    "timestamp": "2026-09-22T02:19:28.427452Z",
-    "received_at": "2026-09-22T02:19:28.427452Z",
-    "id": "2026-09-22T02:19:28.427452Z-XLC-sell",
+    "timestamp": "2026-09-22T16:02:37.950308Z",
+    "received_at": "2026-09-22T16:02:37.950308Z",
+    "id": "2026-09-22T16:02:37.950308Z-XLC-sell",
     "buy_score": 13,
     "sell_score": 13,
     "total_buy_components": 41,
@@ -1052,6 +1041,28 @@
     "rsi_bear_div_block_timer": 0,
     "pnl_pct": -1.3444,
     "entry_price": 112.31999969482422
+  },
+  {
+    "action": "sell",
+    "symbol": "HYPE/USD",
+    "quantity": 1.09099999,
+    "price": 94.91,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-22T16:00:44.303476Z",
+    "received_at": "2026-09-22T16:00:44.303502Z",
+    "id": "2026-09-22T16:00:44.303502Z-HYPE/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "HYPE/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-22T16:00:14.417249Z",
+    "received_at": "2026-09-22T16:00:14.418319Z",
+    "id": "2026-09-22T16:00:14.418319Z-HYPE/USD-sell"
   },
   {
     "action": "buy",
@@ -2768,16 +2779,5 @@
     "timestamp": "2026-09-16T20:00:24.183688Z",
     "received_at": "2026-09-16T20:00:24.183717Z",
     "id": "2026-09-16T20:00:24.183717Z-AERO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "PRVX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-09-16T19:02:30.784436Z",
-    "received_at": "2026-09-16T19:02:30.784542Z",
-    "id": "2026-09-16T19:02:30.784542Z-PRVX/DAI-buy"
   }
 ]
