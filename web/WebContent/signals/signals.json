@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "AERO/USD",
-    "quantity": 296.80713398,
-    "price": 0.69058,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-22T02:09:17.586778Z",
-    "received_at": "2026-09-22T02:09:17.608906Z",
-    "id": "2026-09-22T02:09:17.608906Z-AERO/USD-sell"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 189.60000610351562,
@@ -167,9 +156,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 9/16 | sell 13/13",
-    "timestamp": "2026-09-21T13:41:45.146038Z",
-    "received_at": "2026-09-21T13:41:45.146038Z",
-    "id": "2026-09-21T13:41:45.146038Z-XLU-info",
+    "timestamp": "2026-09-22T02:13:35.444934Z",
+    "received_at": "2026-09-22T02:13:35.444934Z",
+    "id": "2026-09-22T02:13:35.444934Z-XLU-info",
     "threshold_met": true,
     "buy_score": 9,
     "sell_score": 13,
@@ -1052,6 +1041,28 @@
     "rsi_bear_div_block_timer": 0,
     "pnl_pct": -1.3444,
     "entry_price": 112.31999969482422
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.09001989,
+    "price": 2747.59,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-22T02:09:43.416814Z",
+    "received_at": "2026-09-22T02:09:43.416827Z",
+    "id": "2026-09-22T02:09:43.416827Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "AERO/USD",
+    "quantity": 296.80713398,
+    "price": 0.69058,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-22T02:09:17.586778Z",
+    "received_at": "2026-09-22T02:09:17.608906Z",
+    "id": "2026-09-22T02:09:17.608906Z-AERO/USD-sell"
   },
   {
     "action": "sell",
@@ -2768,16 +2779,5 @@
     "timestamp": "2026-09-15T11:00:26.305447Z",
     "received_at": "2026-09-15T11:00:26.305474Z",
     "id": "2026-09-15T11:00:26.305474Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2475.39,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-09-15T10:28:25.373391Z",
-    "received_at": "2026-09-15T10:28:25.373416Z",
-    "id": "2026-09-15T10:28:25.373416Z-ETH/USD-sell"
   }
 ]
