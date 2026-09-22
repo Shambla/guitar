@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "HYPE/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-22T16:00:14.417249Z",
+    "received_at": "2026-09-22T16:00:14.418319Z",
+    "id": "2026-09-22T16:00:14.418319Z-HYPE/USD-sell"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 189.60000610351562,
@@ -2768,16 +2779,5 @@
     "timestamp": "2026-09-16T19:02:30.784436Z",
     "received_at": "2026-09-16T19:02:30.784542Z",
     "id": "2026-09-16T19:02:30.784542Z-PRVX/DAI-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2382.6,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-09-16T14:59:52.985050Z",
-    "received_at": "2026-09-16T14:59:52.985083Z",
-    "id": "2026-09-16T14:59:52.985083Z-ETH/USD-sell"
   }
 ]
