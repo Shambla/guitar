@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "XRP/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-22T16:10:55.357920Z",
-    "received_at": "2026-09-22T16:10:55.358773Z",
-    "id": "2026-09-22T16:10:55.358773Z-XRP/USD-sell"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 189.60000610351562,
@@ -266,9 +255,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 13/16 | sell 11/13",
-    "timestamp": "2026-09-22T02:34:19.605406Z",
-    "received_at": "2026-09-22T02:34:19.605406Z",
-    "id": "2026-09-22T02:34:19.605406Z-XLV-info",
+    "timestamp": "2026-09-22T16:15:45.981811Z",
+    "received_at": "2026-09-22T16:15:45.981811Z",
+    "id": "2026-09-22T16:15:45.981811Z-XLV-info",
     "threshold_met": false,
     "buy_score": 13,
     "sell_score": 11,
@@ -1052,6 +1041,17 @@
     "rsi_bear_div_block_timer": 0,
     "pnl_pct": -1.3444,
     "entry_price": 112.31999969482422
+  },
+  {
+    "action": "sell",
+    "symbol": "XRP/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-22T16:10:55.357920Z",
+    "received_at": "2026-09-22T16:10:55.358773Z",
+    "id": "2026-09-22T16:10:55.358773Z-XRP/USD-sell"
   },
   {
     "action": "sell",
