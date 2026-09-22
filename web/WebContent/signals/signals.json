@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "PLSX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-09-22T00:08:46.548805Z",
+    "received_at": "2026-09-22T00:08:46.548972Z",
+    "id": "2026-09-22T00:08:46.548972Z-PLSX/DAI-sell"
+  },
+  {
     "action": "buy",
     "symbol": "LINK/USD",
     "quantity": 7.614986293024672,
@@ -2768,16 +2779,5 @@
     "timestamp": "2026-09-15T02:00:33.353760Z",
     "received_at": "2026-09-15T02:00:33.353778Z",
     "id": "2026-09-15T02:00:33.353778Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "HYPE/USD",
-    "quantity": 0.0,
-    "price": 80.23,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-15T02:00:20.344692Z",
-    "received_at": "2026-09-15T02:00:20.344706Z",
-    "id": "2026-09-15T02:00:20.344706Z-HYPE/USD-sell"
   }
 ]
