@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "DASH/USD",
-  "quantity": 3.24912474,
-  "price": 63.67,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-09-22T17:15:12.129371Z",
-  "received_at": "2026-09-22T17:15:12.129395Z",
-  "id": "2026-09-22T17:15:12.129395Z-DASH/USD-sell"
+  "action": "buy",
+  "symbol": "PLSX/DAI",
+  "quantity": 100.0,
+  "price": null,
+  "source": "PulseChain DeFi",
+  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+  "timestamp": "2026-09-24T00:01:35.008184Z",
+  "received_at": "2026-09-24T00:01:35.008642Z",
+  "id": "2026-09-24T00:01:35.008642Z-PLSX/DAI-buy"
 }
