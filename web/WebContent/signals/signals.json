@@ -226,13 +226,13 @@
   {
     "action": "info",
     "symbol": "XLF",
-    "price": 54.79999923706055,
+    "price": 54.540000915527344,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 14/16 | sell 15/13",
-    "timestamp": "2026-09-24T13:34:33.922050Z",
-    "received_at": "2026-09-24T13:34:33.922050Z",
-    "id": "2026-09-24T13:34:33.922050Z-XLF-info",
+    "timestamp": "2026-09-25T09:27:50.582537Z",
+    "received_at": "2026-09-25T09:27:50.582537Z",
+    "id": "2026-09-25T09:27:50.582537Z-XLF-info",
     "threshold_met": true,
     "buy_score": 14,
     "sell_score": 15,
@@ -244,8 +244,8 @@
     "buy_conviction": 0.34146341463414637,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.5549999999999999,
-    "sell_persistence": 6,
+    "sell_conviction": 0.585,
+    "sell_persistence": 7,
     "sell_position_multiplier": 1.0
   },
   {
