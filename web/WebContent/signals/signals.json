@@ -1,6 +1,28 @@
 [
   {
     "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-26T09:00:05.969370Z",
+    "received_at": "2026-09-26T09:00:05.969383Z",
+    "id": "2026-09-26T09:00:05.969383Z-RENDER/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-26T09:00:05.444552Z",
+    "received_at": "2026-09-26T09:00:05.453655Z",
+    "id": "2026-09-26T09:00:05.453655Z-RENDER/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "UNI/USD",
     "quantity": 10.284997274475723,
     "price": 9.7132,
