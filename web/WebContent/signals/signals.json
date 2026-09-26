@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "SOL/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-26T17:00:21.218091Z",
+    "received_at": "2026-09-26T17:00:21.218104Z",
+    "id": "2026-09-26T17:00:21.218104Z-SOL/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "RENDER/USD",
     "quantity": 48.86391399951136,
     "price": 2.0445,
@@ -2807,16 +2818,5 @@
     "timestamp": "2026-09-19T19:00:38.983999Z",
     "received_at": "2026-09-19T19:00:38.984027Z",
     "id": "2026-09-19T19:00:38.984027Z-HYPE/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "HYPE/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-19T19:00:15.507006Z",
-    "received_at": "2026-09-19T19:00:15.507023Z",
-    "id": "2026-09-19T19:00:15.507023Z-HYPE/USD-sell"
   }
 ]
