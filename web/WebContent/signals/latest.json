@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "DOGE/USD",
-  "quantity": 1032.0982557539478,
-  "price": 0.09679,
+  "action": "sell",
+  "symbol": "CRV/USD",
+  "quantity": 280.97,
+  "price": 0.3481,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-09-26T20:07:21.228644Z",
-  "received_at": "2026-09-26T20:07:21.228658Z",
-  "id": "2026-09-26T20:07:21.228658Z-DOGE/USD-buy"
+  "timestamp": "2026-09-26T20:09:12.970357Z",
+  "received_at": "2026-09-26T20:09:12.970371Z",
+  "id": "2026-09-26T20:09:12.970371Z-CRV/USD-sell"
 }
