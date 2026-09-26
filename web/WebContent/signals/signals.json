@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "TAO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-26T04:30:22.015170Z",
+    "received_at": "2026-09-26T04:30:22.015195Z",
+    "id": "2026-09-26T04:30:22.015195Z-TAO/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "AAVE/USD",
     "quantity": 0.64862765,
     "price": 154.3,
