@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "SOL/USD",
+  "symbol": "CRV/USD",
   "quantity": 100.0,
   "price": null,
   "source": "TradingView JSON",
   "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-09-26T20:00:06.273684Z",
-  "received_at": "2026-09-26T20:00:06.273699Z",
-  "id": "2026-09-26T20:00:06.273699Z-SOL/USD-sell"
+  "timestamp": "2026-09-26T20:01:13.271737Z",
+  "received_at": "2026-09-26T20:01:13.271750Z",
+  "id": "2026-09-26T20:01:13.271750Z-CRV/USD-sell"
 }
