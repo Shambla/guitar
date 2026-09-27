@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "UNI/USD",
-  "quantity": 10.39965899,
-  "price": 9.8626,
+  "symbol": "TAO/USD",
+  "quantity": 0.0,
+  "price": 323.81,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-09-27T14:09:04.816374Z",
-  "received_at": "2026-09-27T14:09:04.816386Z",
-  "id": "2026-09-27T14:09:04.816386Z-UNI/USD-sell"
+  "timestamp": "2026-09-27T15:00:04.361024Z",
+  "received_at": "2026-09-27T15:00:04.361037Z",
+  "id": "2026-09-27T15:00:04.361037Z-TAO/USD-sell"
 }
