@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "SOL/USD",
+  "symbol": "PLSX/DAI",
   "quantity": 100.0,
   "price": null,
-  "source": "TradingView JSON",
-  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-09-27T08:00:07.940135Z",
-  "received_at": "2026-09-27T08:00:07.940149Z",
-  "id": "2026-09-27T08:00:07.940149Z-SOL/USD-buy"
+  "source": "PulseChain DeFi",
+  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+  "timestamp": "2026-09-27T08:01:18.044378Z",
+  "received_at": "2026-09-27T08:01:18.044398Z",
+  "id": "2026-09-27T08:01:18.044398Z-PLSX/DAI-buy"
 }
