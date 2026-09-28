@@ -1,6 +1,28 @@
 [
   {
     "action": "buy",
+    "symbol": "NEAR/USD",
+    "quantity": 19.211926764135175,
+    "price": 5.1999,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-28T14:09:05.833786Z",
+    "received_at": "2026-09-28T14:09:05.833797Z",
+    "id": "2026-09-28T14:09:05.833797Z-NEAR/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 0.32718230598089254,
+    "price": 305.33,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-28T14:05:53.527444Z",
+    "received_at": "2026-09-28T14:05:53.527461Z",
+    "id": "2026-09-28T14:05:53.527461Z-TAO/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "UNI/USD",
     "quantity": 11.195575508559017,
     "price": 8.9232,
@@ -2825,27 +2847,5 @@
     "timestamp": "2026-09-22T15:00:16.011287Z",
     "received_at": "2026-09-22T15:00:16.011306Z",
     "id": "2026-09-22T15:00:16.011306Z-SOL/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.06177033,
-    "price": 2752.0,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
-    "timestamp": "2026-09-22T14:07:35.489158Z",
-    "received_at": "2026-09-22T14:07:35.489172Z",
-    "id": "2026-09-22T14:07:35.489172Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.0363372,
-    "price": 2746.496,
-    "source": "MASTER_BOT_162",
-    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-    "timestamp": "2026-09-22T14:07:33.527467Z",
-    "received_at": "2026-09-22T14:07:33.529975Z",
-    "id": "2026-09-22T14:07:33.529975Z-ETH/USD-buy"
   }
 ]
