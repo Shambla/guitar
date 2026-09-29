@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "HEX/DAI",
-  "quantity": 100.0,
-  "price": null,
-  "source": "PulseChain DeFi",
-  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-  "timestamp": "2026-09-29T17:11:27.429930Z",
-  "received_at": "2026-09-29T17:11:27.431365Z",
-  "id": "2026-09-29T17:11:27.431365Z-HEX/DAI-sell"
+  "symbol": "DOGE/USD",
+  "quantity": 0.02689768,
+  "price": 0.09358,
+  "source": "MASTER_BOT_162",
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-09-29T20:00:41.085521Z",
+  "received_at": "2026-09-29T20:00:41.085559Z",
+  "id": "2026-09-29T20:00:41.085559Z-DOGE/USD-sell"
 }
