@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "SOL/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-29T08:00:32.402878Z",
+    "received_at": "2026-09-29T08:00:32.403656Z",
+    "id": "2026-09-29T08:00:32.403656Z-SOL/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "EWT",
     "price": 113.08000183105469,
     "quantity": null,
@@ -891,32 +902,6 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": true,
     "rsi_bear_div_block_timer": 4
-  },
-  {
-    "action": "sell",
-    "symbol": "XLF",
-    "price": 58.099998474121094,
-    "quantity": null,
-    "source": "MAIN_stock_strat14",
-    "note": "buy 15/41 | sell 11/40 | Strength=1/10 | MTF:D-only (no higher timeframe confirmation)",
-    "timestamp": "2026-09-15T04:54:43.967116Z",
-    "received_at": "2026-09-15T04:54:43.967116Z",
-    "id": "2026-09-15T04:54:43.967116Z-XLF-sell",
-    "buy_score": 15,
-    "sell_score": 11,
-    "total_buy_components": 41,
-    "total_sell_components": 40,
-    "buy_conviction": 0.36585365853658536,
-    "buy_persistence": 0,
-    "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.275,
-    "sell_persistence": 0,
-    "sell_position_multiplier": 0.5,
-    "buy_signal_raw": false,
-    "buy_blocked_rsi_bear_div": false,
-    "rsi_bear_div_block_timer": 0,
-    "pnl_pct": 0.9031,
-    "entry_price": 57.58000183105469
   },
   {
     "action": "buy",
