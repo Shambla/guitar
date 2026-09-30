@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2668.32,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-09-30T09:00:03.760737Z",
-    "received_at": "2026-09-30T09:00:03.760769Z",
-    "id": "2026-09-30T09:00:03.760769Z-ETH/USD-sell"
-  },
-  {
     "action": "buy",
     "symbol": "EWT",
     "price": 113.08000183105469,
@@ -141,9 +130,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 9/16 | sell 15/13",
-    "timestamp": "2026-09-29T18:35:13.642732Z",
-    "received_at": "2026-09-29T18:35:13.642732Z",
-    "id": "2026-09-29T18:35:13.642732Z-XLB-info",
+    "timestamp": "2026-09-30T09:00:39.995318Z",
+    "received_at": "2026-09-30T09:00:39.995318Z",
+    "id": "2026-09-30T09:00:39.995318Z-XLB-info",
     "threshold_met": true,
     "buy_score": 9,
     "sell_score": 15,
@@ -166,9 +155,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 13/16 | sell 15/13",
-    "timestamp": "2026-09-29T18:44:02.463825Z",
-    "received_at": "2026-09-29T18:44:02.463825Z",
-    "id": "2026-09-29T18:44:02.463825Z-XLRE-info",
+    "timestamp": "2026-09-30T09:06:33.225526Z",
+    "received_at": "2026-09-30T09:06:33.225526Z",
+    "id": "2026-09-30T09:06:33.225526Z-XLRE-info",
     "threshold_met": true,
     "buy_score": 13,
     "sell_score": 15,
@@ -1149,6 +1138,17 @@
     "rsi_bear_div_block_timer": 14,
     "pnl_pct": 6.3763,
     "entry_price": 107.9000015258789
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2668.32,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-09-30T09:00:03.760737Z",
+    "received_at": "2026-09-30T09:00:03.760769Z",
+    "id": "2026-09-30T09:00:03.760769Z-ETH/USD-sell"
   },
   {
     "action": "sell",
