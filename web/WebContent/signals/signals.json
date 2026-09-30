@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-30T11:00:45.941650Z",
+    "received_at": "2026-09-30T11:00:45.941676Z",
+    "id": "2026-09-30T11:00:45.941676Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "EWT",
     "price": 113.08000183105469,
     "quantity": null,
@@ -2821,16 +2832,5 @@
     "timestamp": "2026-09-26T20:00:33.256238Z",
     "received_at": "2026-09-26T20:00:33.257255Z",
     "id": "2026-09-26T20:00:33.257255Z-SOL/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "DOGE/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-26T20:00:24.884814Z",
-    "received_at": "2026-09-26T20:00:24.884833Z",
-    "id": "2026-09-26T20:00:24.884833Z-DOGE/USD-buy"
   }
 ]
