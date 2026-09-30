@@ -1,17 +1,6 @@
 [
   {
     "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.03715414138636963,
-    "price": 2688.8,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-30T11:06:25.434664Z",
-    "received_at": "2026-09-30T11:06:25.434688Z",
-    "id": "2026-09-30T11:06:25.434688Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
     "symbol": "EWT",
     "price": 113.08000183105469,
     "quantity": null,
@@ -690,9 +679,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 8/16 | sell 16/13",
-    "timestamp": "2026-09-29T21:09:41.583389Z",
-    "received_at": "2026-09-29T21:09:41.583389Z",
-    "id": "2026-09-29T21:09:41.583389Z-INDA-info",
+    "timestamp": "2026-09-30T11:10:58.586100Z",
+    "received_at": "2026-09-30T11:10:58.586100Z",
+    "id": "2026-09-30T11:10:58.586100Z-INDA-info",
     "threshold_met": true,
     "buy_score": 8,
     "sell_score": 16,
@@ -1149,6 +1138,17 @@
     "rsi_bear_div_block_timer": 14,
     "pnl_pct": 6.3763,
     "entry_price": 107.9000015258789
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.03715414138636963,
+    "price": 2688.8,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-09-30T11:06:25.434664Z",
+    "received_at": "2026-09-30T11:06:25.434688Z",
+    "id": "2026-09-30T11:06:25.434688Z-ETH/USD-buy"
   },
   {
     "action": "buy",
