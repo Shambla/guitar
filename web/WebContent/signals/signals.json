@@ -1,17 +1,6 @@
 [
   {
     "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-30T11:00:45.941650Z",
-    "received_at": "2026-09-30T11:00:45.941676Z",
-    "id": "2026-09-30T11:00:45.941676Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
     "symbol": "EWT",
     "price": 113.08000183105469,
     "quantity": null,
@@ -665,9 +654,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 10/16 | sell 15/13",
-    "timestamp": "2026-09-29T21:03:16.982897Z",
-    "received_at": "2026-09-29T21:03:16.982897Z",
-    "id": "2026-09-29T21:03:16.982897Z-MCHI-info",
+    "timestamp": "2026-09-30T11:04:32.472778Z",
+    "received_at": "2026-09-30T11:04:32.472778Z",
+    "id": "2026-09-30T11:04:32.472778Z-MCHI-info",
     "threshold_met": true,
     "buy_score": 10,
     "sell_score": 15,
@@ -1149,6 +1138,17 @@
     "rsi_bear_div_block_timer": 14,
     "pnl_pct": 6.3763,
     "entry_price": 107.9000015258789
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-09-30T11:00:45.941650Z",
+    "received_at": "2026-09-30T11:00:45.941676Z",
+    "id": "2026-09-30T11:00:45.941676Z-ETH/USD-buy"
   },
   {
     "action": "buy",
