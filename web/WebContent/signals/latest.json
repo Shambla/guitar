@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "SOL/USD",
-  "quantity": 1e-08,
-  "price": 117.87,
+  "symbol": "ETH/USD",
+  "quantity": 0.0,
+  "price": 2690.63,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-01T09:00:32.388007Z",
-  "received_at": "2026-10-01T09:00:32.388023Z",
-  "id": "2026-10-01T09:00:32.388023Z-SOL/USD-sell"
+  "timestamp": "2026-10-01T14:00:45.276403Z",
+  "received_at": "2026-10-01T14:00:45.276418Z",
+  "id": "2026-10-01T14:00:45.276418Z-ETH/USD-sell"
 }
