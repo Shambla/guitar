@@ -1,5 +1,27 @@
 [
   {
+    "action": "sell",
+    "symbol": "NEAR/USD",
+    "quantity": 0.00019505,
+    "price": 5.2279,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-01T02:00:09.232638Z",
+    "received_at": "2026-10-01T02:00:09.232653Z",
+    "id": "2026-10-01T02:00:09.232653Z-NEAR/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "NEAR/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-01T02:00:06.474197Z",
+    "received_at": "2026-10-01T02:00:06.474669Z",
+    "id": "2026-10-01T02:00:06.474669Z-NEAR/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "EWT",
     "price": 114.11000061035156,
@@ -2838,49 +2860,5 @@
     "timestamp": "2026-09-27T06:00:34.097745Z",
     "received_at": "2026-09-27T06:00:34.097759Z",
     "id": "2026-09-27T06:00:34.097759Z-RENDER/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "RENDER/USD",
-    "quantity": 0.01,
-    "price": 2.0366,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-27T06:00:33.625671Z",
-    "received_at": "2026-09-27T06:00:33.625684Z",
-    "id": "2026-09-27T06:00:33.625684Z-RENDER/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "RENDER/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-27T06:00:33.269983Z",
-    "received_at": "2026-09-27T06:00:33.270258Z",
-    "id": "2026-09-27T06:00:33.270258Z-RENDER/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "HYPE/USD",
-    "quantity": 1.0877841836179702,
-    "price": 91.84,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-26T23:06:20.689985Z",
-    "received_at": "2026-09-26T23:06:20.691254Z",
-    "id": "2026-09-26T23:06:20.691254Z-HYPE/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "HYPE/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-26T23:00:43.419657Z",
-    "received_at": "2026-09-26T23:00:43.419677Z",
-    "id": "2026-09-26T23:00:43.419677Z-HYPE/USD-buy"
   }
 ]
