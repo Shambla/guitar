@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "FET/USD",
-  "quantity": 0.03850811,
-  "price": 0.23281,
+  "symbol": "HYPE/USD",
+  "quantity": 0.0,
+  "price": 90.56,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-02T13:00:32.055685Z",
-  "received_at": "2026-10-02T13:00:32.055698Z",
-  "id": "2026-10-02T13:00:32.055698Z-FET/USD-sell"
+  "timestamp": "2026-10-02T14:00:16.794656Z",
+  "received_at": "2026-10-02T14:00:16.794675Z",
+  "id": "2026-10-02T14:00:16.794675Z-HYPE/USD-sell"
 }
