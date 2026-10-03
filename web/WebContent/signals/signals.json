@@ -1,6 +1,50 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2684.11,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-10-03T12:02:43.956917Z",
+    "received_at": "2026-10-03T12:02:43.962598Z",
+    "id": "2026-10-03T12:02:43.962598Z-ETH/USD-sell"
+  },
+  {
+    "action": "buy",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-10-03T12:01:07.484650Z",
+    "received_at": "2026-10-03T12:01:07.484674Z",
+    "id": "2026-10-03T12:01:07.484674Z-HEX/DAI-buy"
+  },
+  {
+    "action": "sell",
+    "symbol": "DOGE/USD",
+    "quantity": 1027.42689769,
+    "price": 0.09275,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-03T12:01:03.456535Z",
+    "received_at": "2026-10-03T12:01:03.456562Z",
+    "id": "2026-10-03T12:01:03.456562Z-DOGE/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "PLSX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-10-03T12:00:57.870288Z",
+    "received_at": "2026-10-03T12:00:57.870303Z",
+    "id": "2026-10-03T12:00:57.870303Z-PLSX/DAI-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "DOGE/USD",
     "quantity": 100.0,
     "price": null,
@@ -2751,49 +2795,5 @@
     "timestamp": "2026-09-28T14:00:24.868269Z",
     "received_at": "2026-09-28T14:00:24.868287Z",
     "id": "2026-09-28T14:00:24.868287Z-HYPE/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "PLSX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-09-28T08:01:04.688386Z",
-    "received_at": "2026-09-28T08:01:04.688409Z",
-    "id": "2026-09-28T08:01:04.688409Z-PLSX/DAI-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2652.22,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-09-28T02:56:24.179017Z",
-    "received_at": "2026-09-28T02:56:24.179040Z",
-    "id": "2026-09-28T02:56:24.179040Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.12889986,
-    "price": 2658.91,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-09-28T02:24:04.577495Z",
-    "received_at": "2026-09-28T02:24:04.577510Z",
-    "id": "2026-09-28T02:24:04.577510Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "NEAR/USD",
-    "quantity": 18.37919505,
-    "price": 5.2783,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-28T02:11:44.440411Z",
-    "received_at": "2026-09-28T02:11:44.440424Z",
-    "id": "2026-09-28T02:11:44.440424Z-NEAR/USD-sell"
   }
 ]
