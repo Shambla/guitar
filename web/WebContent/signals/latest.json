@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "ETH/USD",
-  "quantity": 0.03732554971203338,
-  "price": 2676.45,
+  "symbol": "LINK/USD",
+  "quantity": 7.175660160734788,
+  "price": 13.922,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-03T02:05:32.121514Z",
-  "received_at": "2026-10-03T02:05:32.121530Z",
-  "id": "2026-10-03T02:05:32.121530Z-ETH/USD-buy"
+  "timestamp": "2026-10-03T02:10:05.782030Z",
+  "received_at": "2026-10-03T02:10:05.782045Z",
+  "id": "2026-10-03T02:10:05.782045Z-LINK/USD-buy"
 }
