@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "TAO/USD",
+  "symbol": "ETH/USD",
   "quantity": 0.0,
-  "price": 290.64,
+  "price": 2675.33,
   "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-03T05:00:13.145894Z",
-  "received_at": "2026-10-03T05:00:13.147237Z",
-  "id": "2026-10-03T05:00:13.147237Z-TAO/USD-sell"
+  "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+  "timestamp": "2026-10-03T05:03:40.864939Z",
+  "received_at": "2026-10-03T05:03:40.864964Z",
+  "id": "2026-10-03T05:03:40.864964Z-ETH/USD-sell"
 }
