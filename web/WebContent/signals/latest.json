@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "ETH/USD",
-  "quantity": 0.0,
-  "price": 2681.82,
+  "action": "buy",
+  "symbol": "NEAR/USD",
+  "quantity": 21.538262723728703,
+  "price": 4.6383,
   "source": "MASTER_BOT_162",
-  "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-  "timestamp": "2026-10-03T14:02:41.333352Z",
-  "received_at": "2026-10-03T14:02:41.333374Z",
-  "id": "2026-10-03T14:02:41.333374Z-ETH/USD-sell"
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-10-03T14:05:52.772011Z",
+  "received_at": "2026-10-03T14:05:52.772031Z",
+  "id": "2026-10-03T14:05:52.772031Z-NEAR/USD-buy"
 }
