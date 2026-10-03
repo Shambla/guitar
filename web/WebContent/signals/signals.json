@@ -1,6 +1,61 @@
 [
   {
     "action": "buy",
+    "symbol": "CRV/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-03T02:02:37.720050Z",
+    "received_at": "2026-10-03T02:02:37.721292Z",
+    "id": "2026-10-03T02:02:37.721292Z-CRV/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-03T02:02:37.677333Z",
+    "received_at": "2026-10-03T02:02:37.677351Z",
+    "id": "2026-10-03T02:02:37.677351Z-FET/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "HYPE/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-03T02:02:37.622691Z",
+    "received_at": "2026-10-03T02:02:37.622713Z",
+    "id": "2026-10-03T02:02:37.622713Z-HYPE/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-03T02:02:37.381379Z",
+    "received_at": "2026-10-03T02:02:37.381408Z",
+    "id": "2026-10-03T02:02:37.381408Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-03T02:00:19.406694Z",
+    "received_at": "2026-10-03T02:00:19.406713Z",
+    "id": "2026-10-03T02:00:19.406713Z-RENDER/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "LINK/USD",
     "quantity": 100.0,
     "price": null,
@@ -2740,60 +2795,5 @@
     "timestamp": "2026-09-27T15:00:04.225372Z",
     "received_at": "2026-09-27T15:00:04.225386Z",
     "id": "2026-09-27T15:00:04.225386Z-TAO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "UNI/USD",
-    "quantity": 10.39965899,
-    "price": 9.8626,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-27T14:09:04.816374Z",
-    "received_at": "2026-09-27T14:09:04.816386Z",
-    "id": "2026-09-27T14:09:04.816386Z-UNI/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "HEX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-09-27T14:01:09.678656Z",
-    "received_at": "2026-09-27T14:01:09.678669Z",
-    "id": "2026-09-27T14:01:09.678669Z-HEX/DAI-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "HYPE/USD",
-    "quantity": 1.072,
-    "price": 92.5,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-27T14:00:57.701769Z",
-    "received_at": "2026-09-27T14:00:57.701790Z",
-    "id": "2026-09-27T14:00:57.701790Z-HYPE/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "LINK/USD",
-    "quantity": 7.41999999,
-    "price": 14.185,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-27T14:00:52.823830Z",
-    "received_at": "2026-09-27T14:00:52.823847Z",
-    "id": "2026-09-27T14:00:52.823847Z-LINK/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 400.53850812,
-    "price": 0.24325,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-27T14:00:38.260762Z",
-    "received_at": "2026-09-27T14:00:38.260776Z",
-    "id": "2026-09-27T14:00:38.260776Z-FET/USD-sell"
   }
 ]
