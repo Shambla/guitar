@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "LINK/USD",
+    "quantity": 7.013606396409034,
+    "price": 14.244,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-04T23:06:16.033633Z",
+    "received_at": "2026-10-04T23:06:16.033649Z",
+    "id": "2026-10-04T23:06:16.033649Z-LINK/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "LINK/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2784,16 +2795,5 @@
     "timestamp": "2026-09-30T15:00:21.375991Z",
     "received_at": "2026-09-30T15:00:21.376011Z",
     "id": "2026-09-30T15:00:21.376011Z-RENDER/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "LINK/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-30T15:00:20.345430Z",
-    "received_at": "2026-09-30T15:00:20.345450Z",
-    "id": "2026-09-30T15:00:20.345450Z-LINK/USD-buy"
   }
 ]
