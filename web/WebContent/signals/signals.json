@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "UNI/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-04T05:00:23.125786Z",
+    "received_at": "2026-10-04T05:00:23.125806Z",
+    "id": "2026-10-04T05:00:23.125806Z-UNI/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "NEAR/USD",
     "quantity": 0.00019505,
     "price": 4.805,
@@ -2784,16 +2795,5 @@
     "timestamp": "2026-09-29T17:00:19.925183Z",
     "received_at": "2026-09-29T17:00:19.925259Z",
     "id": "2026-09-29T17:00:19.925259Z-SOL/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2670.61,
-    "source": "MASTER_BOT_162",
-    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
-    "timestamp": "2026-09-29T16:06:30.560114Z",
-    "received_at": "2026-09-29T16:06:30.561553Z",
-    "id": "2026-09-29T16:06:30.561553Z-ETH/USD-sell"
   }
 ]
