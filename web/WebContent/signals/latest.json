@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "LINK/USD",
-  "quantity": 7.013606396409034,
-  "price": 14.244,
+  "symbol": "ETH/USD",
+  "quantity": 0.04770799,
+  "price": 2724.85,
   "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-04T23:06:16.033633Z",
-  "received_at": "2026-10-04T23:06:16.033649Z",
-  "id": "2026-10-04T23:06:16.033649Z-LINK/USD-buy"
+  "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
+  "timestamp": "2026-10-04T23:39:24.888227Z",
+  "received_at": "2026-10-04T23:39:24.888242Z",
+  "id": "2026-10-04T23:39:24.888242Z-ETH/USD-buy"
 }
