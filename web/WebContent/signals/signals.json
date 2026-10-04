@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-10-04T08:03:11.813255Z",
+    "received_at": "2026-10-04T08:03:11.813272Z",
+    "id": "2026-10-04T08:03:11.813272Z-HEX/DAI-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "PLSX/DAI",
     "quantity": 100.0,
     "price": null,
@@ -2784,16 +2795,5 @@
     "timestamp": "2026-09-30T02:00:39.199259Z",
     "received_at": "2026-09-30T02:00:39.199274Z",
     "id": "2026-09-30T02:00:39.199274Z-BNB/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-09-30T02:00:36.773629Z",
-    "received_at": "2026-09-30T02:00:36.773641Z",
-    "id": "2026-09-30T02:00:36.773641Z-FET/USD-buy"
   }
 ]
