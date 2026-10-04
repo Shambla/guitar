@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "TAO/USD",
-  "quantity": 0.3290014805066623,
-  "price": 303.65,
+  "action": "sell",
+  "symbol": "HYPE/USD",
+  "quantity": 1.122,
+  "price": 90.12,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-04T14:05:58.255107Z",
-  "received_at": "2026-10-04T14:05:58.257054Z",
-  "id": "2026-10-04T14:05:58.257054Z-TAO/USD-buy"
+  "timestamp": "2026-10-04T14:07:09.499681Z",
+  "received_at": "2026-10-04T14:07:09.499695Z",
+  "id": "2026-10-04T14:07:09.499695Z-HYPE/USD-sell"
 }
