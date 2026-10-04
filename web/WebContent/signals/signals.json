@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.03704938,
+    "price": 2693.7018,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-10-04T15:47:46.883077Z",
+    "received_at": "2026-10-04T15:47:46.883095Z",
+    "id": "2026-10-04T15:47:46.883095Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "RENDER/USD",
     "quantity": 50.72794602546543,
     "price": 1.9693,
@@ -2784,16 +2795,5 @@
     "timestamp": "2026-09-30T08:00:21.320005Z",
     "received_at": "2026-09-30T08:00:21.320035Z",
     "id": "2026-09-30T08:00:21.320035Z-NEAR/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "BNB/USD",
-    "quantity": 1e-05,
-    "price": 758.88,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-09-30T08:00:15.689483Z",
-    "received_at": "2026-09-30T08:00:15.689509Z",
-    "id": "2026-09-30T08:00:15.689509Z-BNB/USD-sell"
   }
 ]
