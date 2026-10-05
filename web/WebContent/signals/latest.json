@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "ETH/USD",
-  "quantity": 0.05510309,
-  "price": 2725.41,
+  "action": "sell",
+  "symbol": "DOGE/USD",
+  "quantity": 0.02689768,
+  "price": 0.09646,
   "source": "MASTER_BOT_162",
-  "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
-  "timestamp": "2026-10-05T07:28:28.023958Z",
-  "received_at": "2026-10-05T07:28:28.023975Z",
-  "id": "2026-10-05T07:28:28.023975Z-ETH/USD-buy"
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-10-05T08:01:20.749852Z",
+  "received_at": "2026-10-05T08:01:20.749866Z",
+  "id": "2026-10-05T08:01:20.749866Z-DOGE/USD-sell"
 }
