@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "NEAR/USD",
+    "quantity": 19.807471378203857,
+    "price": 5.0436,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-05T07:06:38.623925Z",
+    "received_at": "2026-10-05T07:06:38.623966Z",
+    "id": "2026-10-05T07:06:38.623966Z-NEAR/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "NEAR/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2784,16 +2795,5 @@
     "timestamp": "2026-10-02T08:13:26.803196Z",
     "received_at": "2026-10-02T08:13:26.803210Z",
     "id": "2026-10-02T08:13:26.803210Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "DOGE/USD",
-    "quantity": 1037.2368011617052,
-    "price": 0.09631,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-02T08:06:43.550996Z",
-    "received_at": "2026-10-02T08:06:43.551006Z",
-    "id": "2026-10-02T08:06:43.551006Z-DOGE/USD-buy"
   }
 ]
