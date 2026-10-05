@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-05T10:00:51.704288Z",
-    "received_at": "2026-10-05T10:00:51.704306Z",
-    "id": "2026-10-05T10:00:51.704306Z-CRV/USD-sell"
-  },
-  {
     "action": "buy",
     "symbol": "EWT",
     "price": 114.11000061035156,
@@ -237,26 +226,26 @@
   {
     "action": "info",
     "symbol": "XLF",
-    "price": 53.400001525878906,
+    "price": 53.4900016784668,
     "quantity": null,
     "source": "MAIN_stock_strat12",
-    "note": "Above thresholds | buy 14/16 | sell 14/13",
-    "timestamp": "2026-10-02T14:59:26.591794Z",
-    "received_at": "2026-10-02T14:59:26.591794Z",
-    "id": "2026-10-02T14:59:26.591794Z-XLF-info",
+    "note": "Above thresholds | buy 12/16 | sell 15/13",
+    "timestamp": "2026-10-05T10:02:01.441645Z",
+    "received_at": "2026-10-05T10:02:01.441645Z",
+    "id": "2026-10-05T10:02:01.441645Z-XLF-info",
     "threshold_met": true,
-    "buy_score": 14,
-    "sell_score": 14,
+    "buy_score": 12,
+    "sell_score": 15,
     "total_buy_components": 41,
     "total_sell_components": 40,
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0,
-    "buy_conviction": 0.34146341463414637,
+    "buy_conviction": 0.2926829268292683,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.6499999999999999,
-    "sell_persistence": 12,
+    "sell_conviction": 0.675,
+    "sell_persistence": 14,
     "sell_position_multiplier": 1.0
   },
   {
@@ -1079,6 +1068,17 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-05T10:00:51.704288Z",
+    "received_at": "2026-10-05T10:00:51.704306Z",
+    "id": "2026-10-05T10:00:51.704306Z-CRV/USD-sell"
   },
   {
     "action": "buy",
