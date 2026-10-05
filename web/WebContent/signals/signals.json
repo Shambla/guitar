@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "NEAR/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-05T07:01:03.861249Z",
+    "received_at": "2026-10-05T07:01:03.861265Z",
+    "id": "2026-10-05T07:01:03.861265Z-NEAR/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "RENDER/USD",
     "quantity": 50.14,
@@ -2784,16 +2795,5 @@
     "timestamp": "2026-10-02T08:06:43.550996Z",
     "received_at": "2026-10-02T08:06:43.551006Z",
     "id": "2026-10-02T08:06:43.551006Z-DOGE/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "DOGE/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-02T08:01:09.762082Z",
-    "received_at": "2026-10-02T08:01:09.762104Z",
-    "id": "2026-10-02T08:01:09.762104Z-DOGE/USD-buy"
   }
 ]
