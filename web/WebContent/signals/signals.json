@@ -2,6 +2,17 @@
   {
     "action": "sell",
     "symbol": "RENDER/USD",
+    "quantity": 50.14,
+    "price": 1.9873,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-05T06:02:10.283848Z",
+    "received_at": "2026-10-05T06:02:10.283879Z",
+    "id": "2026-10-05T06:02:10.283879Z-RENDER/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "RENDER/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2784,16 +2795,5 @@
     "timestamp": "2026-10-02T08:01:09.762082Z",
     "received_at": "2026-10-02T08:01:09.762104Z",
     "id": "2026-10-02T08:01:09.762104Z-DOGE/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "HEX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-10-02T06:04:12.243509Z",
-    "received_at": "2026-10-02T06:04:12.243666Z",
-    "id": "2026-10-02T06:04:12.243666Z-HEX/DAI-buy"
   }
 ]
