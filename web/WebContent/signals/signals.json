@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-06T00:01:43.750213Z",
+    "received_at": "2026-10-06T00:01:43.750226Z",
+    "id": "2026-10-06T00:01:43.750226Z-ETH/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "EWT",
     "price": 114.11000061035156,
@@ -2799,27 +2810,5 @@
     "timestamp": "2026-10-03T09:00:06.940584Z",
     "received_at": "2026-10-03T09:00:06.940634Z",
     "id": "2026-10-03T09:00:06.940634Z-NEAR/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "HEX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-10-03T07:03:27.365697Z",
-    "received_at": "2026-10-03T07:03:27.365718Z",
-    "id": "2026-10-03T07:03:27.365718Z-HEX/DAI-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2676.82,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-10-03T05:38:12.525076Z",
-    "received_at": "2026-10-03T05:38:12.525097Z",
-    "id": "2026-10-03T05:38:12.525097Z-ETH/USD-sell"
   }
 ]
