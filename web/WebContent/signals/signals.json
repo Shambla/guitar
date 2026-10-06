@@ -1,6 +1,28 @@
 [
   {
     "action": "sell",
+    "symbol": "TAO/USD",
+    "quantity": 0.32479999,
+    "price": 303.66,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-06T20:07:38.571831Z",
+    "received_at": "2026-10-06T20:07:38.571851Z",
+    "id": "2026-10-06T20:07:38.571851Z-TAO/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "DOGE/USD",
+    "quantity": 2064.02689769,
+    "price": 0.09378,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-06T20:01:19.827596Z",
+    "received_at": "2026-10-06T20:01:19.827613Z",
+    "id": "2026-10-06T20:01:19.827613Z-DOGE/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "DOGE/USD",
     "quantity": 100.0,
     "price": null,
@@ -2788,27 +2810,5 @@
     "timestamp": "2026-10-03T21:00:03.908340Z",
     "received_at": "2026-10-03T21:00:03.908374Z",
     "id": "2026-10-03T21:00:03.908374Z-LINK/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2687.77,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-10-03T20:41:20.899885Z",
-    "received_at": "2026-10-03T20:41:20.900094Z",
-    "id": "2026-10-03T20:41:20.900094Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 436.83850811,
-    "price": 0.22659,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-03T20:01:44.638314Z",
-    "received_at": "2026-10-03T20:01:44.638345Z",
-    "id": "2026-10-03T20:01:44.638345Z-FET/USD-sell"
   }
 ]
