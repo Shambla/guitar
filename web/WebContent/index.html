@@ -776,28 +776,29 @@
 				<div style="clear: both"></div>
 			</div>
 			<div id="editing-portfolio">
-				<h2>Hear the edit</h2>
-				<p>A clip of <strong>Long Wait Back Home</strong>. Red is the raw recording. Green is Master 7, the finished mix.</p>
+				<h2>Drag</h2>
+				<p class="edit-credit">The Long Wait</p>
+				<p>An edited excerpt. Selected sections were shaped to show the original recording beside the finished master. Please support the artist.</p>
 				<div class="edit-lane edit-lane-raw">
 					<div class="edit-lane-head">
-						<span class="edit-lane-title">Raw</span>
-						<span class="edit-lane-tag">Before</span>
+						<span class="edit-lane-title">Drag <span class="edit-lane-artist">The Long Wait</span></span>
+						<span class="edit-lane-tag">Original</span>
 					</div>
 					<div class="edit-controls">
 						<button type="button" class="edit-play">Play</button>
-						<input type="range" class="edit-seek" min="0" max="1000" value="0" aria-label="Raw playback position">
+						<input type="range" class="edit-seek" min="0" max="1000" value="0" aria-label="Drag by The Long Wait, original recording">
 						<span class="edit-time">0:00</span>
 					</div>
 					<audio preload="none" src="audio/editing-portfolio/Long%20Wait%20Back%20Home%20MP3%20RAW%20SHORT.mp3"></audio>
 				</div>
 				<div class="edit-lane edit-lane-master">
 					<div class="edit-lane-head">
-						<span class="edit-lane-title">Master 7</span>
-						<span class="edit-lane-tag">After</span>
+						<span class="edit-lane-title">Drag <span class="edit-lane-artist">The Long Wait</span></span>
+						<span class="edit-lane-tag">Finished master</span>
 					</div>
 					<div class="edit-controls">
 						<button type="button" class="edit-play">Play</button>
-						<input type="range" class="edit-seek" min="0" max="1000" value="0" aria-label="Master 7 playback position">
+						<input type="range" class="edit-seek" min="0" max="1000" value="0" aria-label="Drag by The Long Wait, finished master">
 						<span class="edit-time">0:00</span>
 					</div>
 					<audio preload="none" src="audio/editing-portfolio/Long%20Wait%20Back%20Home%20MP3%20MASTER%207%20SHORT.mp3"></audio>
@@ -936,12 +937,16 @@
 						var pct = (Number(seek.value) / 1000) * 100;
 						seek.style.setProperty('--pct', pct + '%');
 					}
+					function stopBackground() {
+						if (!bg) return;
+						bg.pause();
+					}
 					btn.addEventListener('click', function () {
 						if (audio.paused) {
 							audios.forEach(function (other) {
 								if (other !== audio) other.pause();
 							});
-							if (bg && !bg.paused) bg.pause();
+							stopBackground();
 							var playPromise = audio.play();
 							if (playPromise && playPromise.catch) playPromise.catch(function () {});
 						} else {
@@ -973,6 +978,15 @@
 					seek.addEventListener('change', function () { seeking = false; });
 					paint();
 				});
+				if (bg) {
+					bg.addEventListener('play', function () {
+						var excerptPlaying = false;
+						audios.forEach(function (clip) {
+							if (!clip.paused) excerptPlaying = true;
+						});
+						if (excerptPlaying) bg.pause();
+					});
+				}
 			})();
 		</script>
 		<script>

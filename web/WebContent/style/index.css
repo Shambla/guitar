@@ -1288,10 +1288,19 @@ footer.animate {
 }
 
 #editing-portfolio h2 {
-	margin:			0 0 8px;
+	margin:			0;
 	color:			#fff;
 	font-size:		1.7em;
 	font-weight:	400;
+	letter-spacing:	0.02em;
+}
+
+#editing-portfolio .edit-credit {
+	margin:			2px 0 10px;
+	color:			var(--primary-color);
+	font-size:		0.95em;
+	letter-spacing:	0.08em;
+	text-transform:	uppercase;
 }
 
 #editing-portfolio p {
@@ -1327,6 +1336,16 @@ footer.animate {
 .edit-lane-title {
 	font-weight:	500;
 	font-size:		1.05em;
+}
+
+.edit-lane-artist {
+	display:		inline-block;
+	margin-left:	8px;
+	font-weight:	300;
+	font-size:		0.82em;
+	letter-spacing:	0.06em;
+	text-transform:	uppercase;
+	opacity:		0.9;
 }
 
 .edit-lane-raw .edit-lane-title,
