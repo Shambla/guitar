@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-10-07T09:24:36.365780Z",
+    "received_at": "2026-10-07T09:24:36.369185Z",
+    "id": "2026-10-07T09:24:36.369185Z-HEX/DAI-sell"
+  },
+  {
     "action": "buy",
     "symbol": "EWT",
     "price": 114.11000061035156,
@@ -2799,16 +2810,5 @@
     "timestamp": "2026-10-04T08:00:30.317475Z",
     "received_at": "2026-10-04T08:00:30.317499Z",
     "id": "2026-10-04T08:00:30.317499Z-DOGE/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "NEAR/USD",
-    "quantity": 20.798668885191347,
-    "price": 4.8032,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-04T07:05:59.911575Z",
-    "received_at": "2026-10-04T07:05:59.911591Z",
-    "id": "2026-10-04T07:05:59.911591Z-NEAR/USD-buy"
   }
 ]
