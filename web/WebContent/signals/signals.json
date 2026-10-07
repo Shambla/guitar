@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "HYPE/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-07T15:00:17.043411Z",
+    "received_at": "2026-10-07T15:00:17.045514Z",
+    "id": "2026-10-07T15:00:17.045514Z-HYPE/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "EWT",
     "price": 114.11000061035156,
@@ -2799,16 +2810,5 @@
     "timestamp": "2026-10-04T08:06:12.664860Z",
     "received_at": "2026-10-04T08:06:12.664879Z",
     "id": "2026-10-04T08:06:12.664879Z-BNB/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "HEX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-10-04T08:03:11.813255Z",
-    "received_at": "2026-10-04T08:03:11.813272Z",
-    "id": "2026-10-04T08:03:11.813272Z-HEX/DAI-buy"
   }
 ]
