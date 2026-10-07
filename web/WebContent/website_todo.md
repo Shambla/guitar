@@ -11,7 +11,9 @@
 ## MP3 Downloads — teacher / dev unlock
 **Done (convenience gate):** `mp3-downloads.html?dev=<secret>` unlocks full MP3 download buttons for lesson prep (sessionStorage; also works on `audio-purchase.html`). Secret lives in `script/mp3-downloads.js` + `audio-purchase.html`. Not real DRM — change secret if it leaks.
 
-**Full MP3s:** kebab-case files under `audio/fulldownloads/` are tracked in git (private repo) so `master` deploys them to S3. Teacher + Stripe both use those paths.
+**Full MP3s:** kebab-case files under `web/WebContent/audio/fulldownloads/` (paired with `audio/previews/*-30s.mp3`). Tracked in git (private repo) so `master` deploys to S3. Teacher + Stripe both use those paths.
+
+**Catalog tail (2026-09-28):** Last file in `fulldownloads` / last JSON row = **Choro 4** (`choro-4-f-minor-c-phrygian`). Next work = export next MP3 → both audio folders → new `mp3-downloads-data.json` entry → Stripe Payment Link.
 
 ## 🔄 Subscription Section (For signals.html)
 

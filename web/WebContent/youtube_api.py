@@ -573,6 +573,59 @@ def summarize_change_log(action_filter: str = "update_tags",
 # AUTHENTICATION
 # =============================================================================
 
+# Fixed loopback port for Desktop OAuth (client_secrets redirect_uris includes http://localhost).
+OAUTH_LOOPBACK_HOST = "127.0.0.1"
+OAUTH_LOOPBACK_PORT = 8765
+
+
+def _extract_oauth_code_from_user_input(raw: str) -> str:
+    """Parse code= from a pasted redirect URL or return raw code string."""
+    import re
+    from urllib.parse import unquote
+
+    raw = (raw or "").strip().strip("'\"")
+    if not raw:
+        raise ValueError("Empty input.")
+    m = re.search(r"[?&]code=([^&\s#]+)", raw)
+    if m:
+        return unquote(m.group(1))
+    return raw
+
+
+def _oauth_paste_from_browser_url(flow: InstalledAppFlow):
+    """
+    Manual OAuth when localhost callback fails (google-auth-oauthlib 1.2+ has no run_console).
+    User copies the redirect URL from the browser address bar after Google redirects.
+    """
+    flow.redirect_uri = f"http://{OAUTH_LOOPBACK_HOST}:{OAUTH_LOOPBACK_PORT}/"
+    auth_url, _ = flow.authorization_url(access_type="offline", prompt="consent")
+    print("\n① Open this URL in Chrome or Safari:\n")
+    print(auth_url)
+    print(
+        f"\n② Sign in and allow YouTube access.\n"
+        f"③ Safari may say it can't connect to localhost — that's OK.\n"
+        f"④ Copy the **entire URL** from the address bar "
+        f"(starts with http://{OAUTH_LOOPBACK_HOST}:{OAUTH_LOOPBACK_PORT}/?code=...).\n"
+        "   Paste it below (or paste only the code value after code=).\n"
+    )
+    raw = input("Paste redirect URL or authorization code: ").strip()
+    code = _extract_oauth_code_from_user_input(raw)
+    flow.fetch_token(code=code)
+    return flow.credentials
+
+
+def _oauth_run_local_server(flow: InstalledAppFlow):
+    """Try automatic localhost callback on a fixed 127.0.0.1 port."""
+    print("🌐 Starting OAuth (browser + local server on 127.0.0.1)...")
+    print("   If the browser can't connect after sign-in, stop (Ctrl+C) and re-run with --oauth-console")
+    return flow.run_local_server(
+        host=OAUTH_LOOPBACK_HOST,
+        port=OAUTH_LOOPBACK_PORT,
+        open_browser=True,
+        authorization_prompt_message="If the browser did not open, visit:\n{url}\n",
+    )
+
+
 def get_authenticated_service():
     """Authenticate and return YouTube API service object."""
     creds = None
@@ -608,17 +661,21 @@ def get_authenticated_service():
             # Example (commented out): if you stored your client secrets elsewhere:
             # client_secrets_path = "/absolute/path/to/client_secrets.json"
             # flow = InstalledAppFlow.from_client_secrets_file(client_secrets_path, SCOPES)
-            print("🌐 Starting OAuth authentication...")
-            print("   If your browser does NOT open automatically, the script will still print a URL.")
-            print("   Copy/paste that URL into your browser and complete the flow.")
             flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRETS_FILE, SCOPES)
-            # Try local server (recommended). If the environment can't open a browser,
-            # fall back to console-based flow.
-            try:
-                creds = flow.run_local_server(port=0, open_browser=True)
-            except Exception as e:
-                print(f"⚠️  run_local_server failed ({e}). Falling back to console OAuth flow...")
-                creds = flow.run_console()
+            use_console_oauth = os.environ.get("YT_OAUTH_CONSOLE", "").strip().lower() in (
+                "1", "true", "yes",
+            )
+            if use_console_oauth:
+                print("📋 Manual OAuth (--oauth-console): paste redirect URL from the browser bar.\n")
+                creds = _oauth_paste_from_browser_url(flow)
+            else:
+                try:
+                    creds = _oauth_run_local_server(flow)
+                except Exception as e:
+                    print(f"⚠️  Local OAuth server failed ({e}).")
+                    print("   Falling back to paste-URL flow...\n")
+                    flow = InstalledAppFlow.from_client_secrets_file(CLIENT_SECRETS_FILE, SCOPES)
+                    creds = _oauth_paste_from_browser_url(flow)
         
         # Save credentials for next run
         with open(TOKEN_FILE, 'w') as token:
@@ -752,6 +809,248 @@ def get_video_info(service, video_id: str) -> Dict:
         return None
     except HttpError as e:
         raise Exception(f"Error getting video info: {e}")
+
+
+# =============================================================================
+# SHORTS: find newest short + generated description / tags
+# =============================================================================
+
+# YouTube Shorts can be up to 3 minutes; treat anything at or below this as a "short" candidate.
+SHORT_MAX_DURATION_SEC = 180
+
+
+def _parse_iso8601_duration(duration: str) -> int:
+    """Parse YouTube contentDetails.duration (e.g. PT54S, PT2M30S) to total seconds."""
+    import re
+    m = re.match(r"^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$", (duration or "").strip())
+    if not m:
+        return 999_999
+    h, mi, s = m.groups()
+    return int(h or 0) * 3600 + int(mi or 0) * 60 + int(s or 0)
+
+
+def get_recent_upload_video_ids(service, n: int = 50, channel_id: Optional[str] = None) -> List[str]:
+    """Upload playlist order (newest first), up to n video IDs."""
+    if not channel_id:
+        channel_id = get_channel_id(service)
+    n = max(1, min(int(n), 200))
+    ids: List[str] = []
+    next_page_token = None
+    while len(ids) < n:
+        request = service.channels().list(part="contentDetails", id=channel_id)
+        response = request.execute()
+        if not response.get("items"):
+            break
+        uploads_playlist_id = response["items"][0]["contentDetails"]["relatedPlaylists"]["uploads"]
+        page_size = min(50, n - len(ids))
+        request = service.playlistItems().list(
+            part="contentDetails",
+            playlistId=uploads_playlist_id,
+            maxResults=page_size,
+            pageToken=next_page_token,
+        )
+        response = request.execute()
+        for item in response.get("items", []):
+            vid = item.get("contentDetails", {}).get("videoId")
+            if vid:
+                ids.append(vid)
+        next_page_token = response.get("nextPageToken")
+        if not next_page_token:
+            break
+    return ids
+
+
+def find_most_recent_short_video(service, scan_n: int = 50) -> Optional[Dict]:
+    """Return the newest upload with duration <= SHORT_MAX_DURATION_SEC, or None."""
+    ids = get_recent_upload_video_ids(service, scan_n)
+    for start in range(0, len(ids), 50):
+        chunk = ids[start : start + 50]
+        if not chunk:
+            break
+        resp = service.videos().list(part="snippet,contentDetails", id=",".join(chunk)).execute()
+        by_id = {it["id"]: it for it in resp.get("items", [])}
+        for vid in chunk:
+            item = by_id.get(vid)
+            if not item:
+                continue
+            dur = _parse_iso8601_duration(item.get("contentDetails", {}).get("duration", ""))
+            if dur <= SHORT_MAX_DURATION_SEC:
+                return item
+    return None
+
+
+def _is_egyptian_middle_eastern_jam(title: str) -> bool:
+    t = (title or "").lower()
+    return any(
+        k in t
+        for k in (
+            "egyptian",
+            "egypt",
+            "middle eastern",
+            "harmonic minor",
+            "phrygian",
+            "oriental",
+            "maqam",
+        )
+    )
+
+
+def _cap_youtube_tag_list(priority: List[str], max_tags: int = 25) -> List[str]:
+    """Dedupe, enforce per-tag length, cap count (YouTube rejects oversized keyword sets)."""
+    seen = set()
+    out: List[str] = []
+    for t in priority:
+        tl = (t or "").strip().lower()
+        if not tl or tl in seen:
+            continue
+        if len(tl) > 30:
+            continue
+        if not all(c.isalnum() or c in (" ", "-", "_") for c in tl):
+            continue
+        out.append(tl)
+        seen.add(tl)
+        if len(out) >= max_tags:
+            break
+    return out
+
+
+def _augment_short_subject_tags(title: str, tags: List[str]) -> List[str]:
+    """Pin subject-matter tags for Shorts; drop finance tags unless the title is finance-related."""
+    title_l = (title or "").lower()
+    finance_in_title = any(
+        w in title_l
+        for w in ("crypto", "bitcoin", "ethereum", "stock", "trading", "invest", "futures", "forex")
+    )
+    out = list(tags)
+    if not finance_in_title:
+        out = [
+            t
+            for t in out
+            if t not in ("trading", "investing", "crypto", "cryptocurrency", "crypto music", "stocks", "stock market")
+        ]
+    pinned: List[str] = []
+    if _is_egyptian_middle_eastern_jam(title):
+        pinned = [
+            "egyptian guitar",
+            "middle eastern music",
+            "middle eastern guitar",
+            "harmonic minor",
+            "g harmonic minor",
+            "exotic guitar",
+            "exotic scales",
+            "modal guitar",
+            "music theory",
+            "guitar scales",
+            "scale practice",
+            "guitar improvisation",
+            "improvisation",
+            "backing track",
+            "guitar jam",
+            "guitar short",
+            "youtube shorts",
+            "world music guitar",
+            "oriental guitar",
+            "nylon string guitar",
+            "brian streckfus",
+            "brian streckfus guitar",
+            "classical guitar",
+            "fingerstyle guitar",
+            "guitar",
+        ]
+    rest = [t for t in out if (t or "").strip().lower() not in {p.lower() for p in pinned}]
+    return _cap_youtube_tag_list(pinned + rest, max_tags=25)
+
+
+def generate_short_description(title: str) -> str:
+    """SEO-friendly description block for a new Short (links + hashtags)."""
+    title = (title or "").strip()
+    title_lower = title.lower()
+    hashtags = "#Shorts #GuitarShorts #ClassicalGuitar #Guitar #MusicShorts"
+    if "lesson" in title_lower or "tutorial" in title_lower:
+        hashtags += " #GuitarLesson"
+    if "cover" in title_lower:
+        hashtags += " #GuitarCover"
+    if "reggae" in title_lower or "marley" in title_lower:
+        hashtags += " #Reggae #BobMarley"
+    if _is_egyptian_middle_eastern_jam(title):
+        hashtags += (
+            " #EgyptianGuitar #MiddleEasternMusic #HarmonicMinor #MusicTheory"
+            " #GuitarImprovisation #BackingTrack #ModalGuitar #ExoticScales"
+        )
+        intro = (
+            f"{title}\n\n"
+            "Short improvisation (~55 sec) over an Egyptian / Middle Eastern backing track — "
+            "G harmonic minor, exotic modal color, and straight-ahead jamming.\n\n"
+            f"{hashtags}\n"
+        )
+    else:
+        intro = (
+            f"{title}\n\n"
+            "Short guitar video from Brian Streckfus — performances, lessons, tabs, and sheet music.\n\n"
+            f"{hashtags}\n"
+        )
+    footer = """
+🎼 Get My Intuitive Sheet Music, Tabs, and other music resources:
+📄 Sheet Music Direct: https://www.sheetmusicdirect.com/en-US/Search.aspx?query=Brian%2BStreckfus
+
+🖥️  Online Lessons (Trial):  https://belairmusicstudios.com/faculty/brian-streckfus/
+
+🌐 Website (catalog, sheet music, MP3 downloads)
+https://www.brianstreckfus.com
+
+► All My Links (everything in one place): https://allmylinks.com/brianstreckfus
+
+📱 Follow Me on Social Media
+Instagram: https://www.instagram.com/brianstreckfus/
+Twitter / X: https://twitter.com/BrianStreckfus
+YouTube (main): https://www.youtube.com/user/woodenboxengineer
+"""
+    return (intro + footer).strip()
+
+
+def update_last_short_metadata(
+    service,
+    scan_n: int = 50,
+    dry_run: bool = True,
+) -> bool:
+    """
+    Find the newest Short on the channel; generate description + SEO tags.
+    dry_run=True prints the plan only; False writes via videos.update.
+    """
+    item = find_most_recent_short_video(service, scan_n=scan_n)
+    if not item:
+        print(f"✗ No upload ≤ {SHORT_MAX_DURATION_SEC}s found in the last {scan_n} videos.")
+        return False
+
+    vid = item["id"]
+    snippet = item.get("snippet", {}) or {}
+    title = snippet.get("title", "") or ""
+    before_desc = snippet.get("description", "") or ""
+    before_tags = snippet.get("tags") or []
+    dur = _parse_iso8601_duration(item.get("contentDetails", {}).get("duration", ""))
+
+    new_desc = generate_short_description(title)
+    new_tags = generate_seo_tags(title, new_desc, current_tags=before_tags)
+    new_tags = _augment_short_subject_tags(title, new_tags)
+
+    print(f"\n{'[DRY RUN] ' if dry_run else ''}Last Short (newest upload ≤ {SHORT_MAX_DURATION_SEC}s):\n")
+    print(f"  Title:    {title}")
+    print(f"  id:       {vid}")
+    print(f"  duration: {dur}s")
+    print(f"  url:      https://www.youtube.com/watch?v={vid}")
+    print(f"\n--- Generated description ({len(new_desc)} chars) ---\n")
+    print(new_desc)
+    print(f"\n--- Generated tags ({len(new_tags)}) ---\n")
+    print(", ".join(new_tags))
+
+    if dry_run:
+        print("\nRe-run with --apply-last-short to write description + tags to YouTube.")
+        return True
+
+    ok_desc = update_video_description(service, vid, new_desc, append=False, prepend=False)
+    ok_tags = update_video_tags(service, vid, new_tags, replace=True)
+    print(f"\nApply result: description={'✓' if ok_desc else '✗'}  tags={'✓' if ok_tags else '✗'}")
+    return bool(ok_desc and ok_tags)
 
 
 # =============================================================================
@@ -1112,14 +1411,12 @@ def generate_seo_tags(title: str, description: str, current_tags: List[str] = No
     # Build tag list
     tags = set(base_tags)
 
-    # Detect finance intent from title/description and seed a few finance tags.
-    # (We keep these limited so they don't crowd out the music keywords.)
+    # Finance tags only when the *title* signals finance (ignore channel footer boilerplate).
     title_l = title.lower()
-    combined = (title_l + " " + desc_clean).lower()
     finance_hits = set()
     for group, terms in finance_terms.items():
         for t in terms:
-            if t in combined:
+            if t in title_l:
                 finance_hits.add(group)
                 break
 
@@ -2244,7 +2541,34 @@ if __name__ == "__main__":
     parser.add_argument("--export", "--create-backup", dest="create_backup", action="store_true", help="Export all channel videos to a new backup JSON (youtube_backup_<timestamp>.json).")
     parser.add_argument("--export-output", default=None, help="Optional output path for --export.")
 
+    parser.add_argument(
+        "--update-last-short",
+        action="store_true",
+        help=(
+            "Find the newest upload ≤3 min; print generated description + SEO tags "
+            f"(scans last --scan-n uploads, default 50). Use --apply-last-short to write."
+        ),
+    )
+    parser.add_argument(
+        "--apply-last-short",
+        action="store_true",
+        help="With --update-last-short: update description and tags on YouTube (not dry-run).",
+    )
+    parser.add_argument(
+        "--scan-n",
+        type=int,
+        default=50,
+        help="With --update-last-short: how many recent uploads to scan for a Short (default: 50).",
+    )
+    parser.add_argument(
+        "--oauth-console",
+        action="store_true",
+        help="Sign in via copy-paste code (no localhost redirect). Use if the browser cannot connect to localhost.",
+    )
+
     args = parser.parse_args()
+    if args.oauth_console:
+        os.environ["YT_OAUTH_CONSOLE"] = "1"
 
     print("YouTube API Manager ready!")
     print("=" * 60)
@@ -2299,6 +2623,13 @@ if __name__ == "__main__":
         update_recent_videos_backend_tags(svc, n=n, dry_run=dry, replace=replace)
         raise SystemExit(0)
 
+    if args.update_last_short:
+        svc = get_authenticated_service()
+        scan_n = max(5, min(int(args.scan_n), 200))
+        dry = not bool(args.apply_last_short)
+        ok = update_last_short_metadata(svc, scan_n=scan_n, dry_run=dry)
+        raise SystemExit(0 if ok else 1)
+
     # If no explicit workflow flags were provided, just print guidance and exit.
     if not args.bulk_comment:
         print("Bulk comment posting is available but OFF by default.")
@@ -2320,6 +2651,9 @@ if __name__ == "__main__":
         print("  python3 youtube_api.py --update-recent-tags --last-n 5              # dry-run")
         print("  python3 youtube_api.py --update-recent-tags --last-n 5 --apply-recent-tags")
         print("  python3 youtube_api.py --update-recent-tags --apply-recent-tags --replace-recent-tags")
+        print("\nLast Short only — generated description + tags:")
+        print("  python3 youtube_api.py --update-last-short                    # preview")
+        print("  python3 youtube_api.py --update-last-short --apply-last-short   # upload to YouTube")
         raise SystemExit(0)
 
     # Resolve comment text (--comment-kitco wins over file / inline / default)

@@ -1273,3 +1273,176 @@ footer.animate {
 		font-size:		3em !important;
 	}
 }
+
+/* Editing portfolio — before/after players under Book a Gig */
+#editing-portfolio {
+	clear:			both;
+	max-width:		920px;
+	margin:			28px auto 10px;
+	padding:		22px 22px 8px;
+	text-align:		left;
+	background:		rgba(0, 0, 0, 0.35);
+	border:			1px solid rgba(255, 255, 255, 0.18);
+	border-radius:	12px;
+	box-sizing:		border-box;
+}
+
+#editing-portfolio h2 {
+	margin:			0 0 8px;
+	color:			#fff;
+	font-size:		1.7em;
+	font-weight:	400;
+}
+
+#editing-portfolio p {
+	margin:			0 0 16px;
+	color:			rgba(255, 255, 255, 0.82);
+	font-size:		1em;
+	line-height:	1.5em;
+}
+
+.edit-lane {
+	margin:			0 0 16px;
+	padding:		12px 14px;
+	border-radius:	10px;
+	background:		rgba(0, 0, 0, 0.28);
+}
+
+.edit-lane-raw {
+	border:			1px solid rgba(229, 57, 53, 0.85);
+}
+
+.edit-lane-master {
+	border:			1px solid rgba(67, 160, 71, 0.9);
+}
+
+.edit-lane-head {
+	display:		flex;
+	align-items:	baseline;
+	justify-content: space-between;
+	gap:			12px;
+	margin-bottom:	8px;
+}
+
+.edit-lane-title {
+	font-weight:	500;
+	font-size:		1.05em;
+}
+
+.edit-lane-raw .edit-lane-title,
+.edit-lane-raw .edit-lane-tag {
+	color:			#ff8a80;
+}
+
+.edit-lane-master .edit-lane-title,
+.edit-lane-master .edit-lane-tag {
+	color:			#81c784;
+}
+
+.edit-lane-tag {
+	font-size:		0.85em;
+	letter-spacing:	0.04em;
+	text-transform:	uppercase;
+}
+
+.edit-controls {
+	display:		flex;
+	align-items:	center;
+	gap:			12px;
+}
+
+.edit-play {
+	flex:			0 0 auto;
+	min-width:		76px;
+	padding:		8px 12px;
+	border:			none;
+	border-radius:	6px;
+	font-family:	Montserrat, sans-serif;
+	font-size:		0.95em;
+	cursor:			pointer;
+}
+
+.edit-lane-raw .edit-play {
+	background:		#e53935;
+	color:			#fff;
+}
+
+.edit-lane-master .edit-play {
+	background:		#2e7d32;
+	color:			#fff;
+}
+
+.edit-seek {
+	flex:			1 1 auto;
+	width:			100%;
+	height:			10px;
+	margin:			0;
+	appearance:		none;
+	-webkit-appearance: none;
+	background:		transparent;
+	cursor:			pointer;
+}
+
+.edit-seek::-webkit-slider-runnable-track {
+	height:			8px;
+	border-radius:	999px;
+	background:		linear-gradient(90deg, var(--bar, #e53935) var(--pct, 0%), rgba(255, 255, 255, 0.22) var(--pct, 0%));
+}
+
+.edit-seek::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width:			14px;
+	height:			14px;
+	margin-top:		-3px;
+	border-radius:	50%;
+	background:		#fff;
+	border:			2px solid var(--bar, #e53935);
+}
+
+.edit-seek::-moz-range-track {
+	height:			8px;
+	border-radius:	999px;
+	background:		rgba(255, 255, 255, 0.22);
+}
+
+.edit-seek::-moz-range-progress {
+	height:			8px;
+	border-radius:	999px;
+	background:		var(--bar, #e53935);
+}
+
+.edit-seek::-moz-range-thumb {
+	width:			14px;
+	height:			14px;
+	border-radius:	50%;
+	background:		#fff;
+	border:			2px solid var(--bar, #e53935);
+}
+
+.edit-lane-raw .edit-seek {
+	--bar:			#e53935;
+}
+
+.edit-lane-master .edit-seek {
+	--bar:			#43a047;
+}
+
+.edit-time {
+	flex:			0 0 auto;
+	min-width:		42px;
+	font-variant-numeric: tabular-nums;
+	color:			rgba(255, 255, 255, 0.85);
+	font-size:		0.9em;
+}
+
+#editing-portfolio audio {
+	display:		none;
+}
+
+@media (max-width: 768px) {
+	#editing-portfolio {
+		margin-left:	12px;
+		margin-right:	12px;
+		padding:		16px 14px 4px;
+	}
+}

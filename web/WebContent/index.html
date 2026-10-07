@@ -775,6 +775,34 @@
 				</div>
 				<div style="clear: both"></div>
 			</div>
+			<div id="editing-portfolio">
+				<h2>Hear the edit</h2>
+				<p>A clip of <strong>Long Wait Back Home</strong>. Red is the raw recording. Green is Master 7, the finished mix.</p>
+				<div class="edit-lane edit-lane-raw">
+					<div class="edit-lane-head">
+						<span class="edit-lane-title">Raw</span>
+						<span class="edit-lane-tag">Before</span>
+					</div>
+					<div class="edit-controls">
+						<button type="button" class="edit-play">Play</button>
+						<input type="range" class="edit-seek" min="0" max="1000" value="0" aria-label="Raw playback position">
+						<span class="edit-time">0:00</span>
+					</div>
+					<audio preload="none" src="audio/editing-portfolio/Long%20Wait%20Back%20Home%20MP3%20RAW%20SHORT.mp3"></audio>
+				</div>
+				<div class="edit-lane edit-lane-master">
+					<div class="edit-lane-head">
+						<span class="edit-lane-title">Master 7</span>
+						<span class="edit-lane-tag">After</span>
+					</div>
+					<div class="edit-controls">
+						<button type="button" class="edit-play">Play</button>
+						<input type="range" class="edit-seek" min="0" max="1000" value="0" aria-label="Master 7 playback position">
+						<span class="edit-time">0:00</span>
+					</div>
+					<audio preload="none" src="audio/editing-portfolio/Long%20Wait%20Back%20Home%20MP3%20MASTER%207%20SHORT.mp3"></audio>
+				</div>
+			</div>
 			<div class="right" style="position: relative;">
 				<img id="contact-pic" src="img/contact.png" class="scale-in"/>
 				<div id="contact-details" class="right-half fade-in-right" style="position: relative; z-index: 2;">
@@ -881,9 +909,72 @@
 		<footer class="fade-in" style="text-align: center; padding: 40px 20px; margin-top: 60px; background: #f5f5f5; border-top: 1px solid #ddd;">
 			<p>&copy; 2024 Brian Streckfus</p>
 		</footer>
-		<audio autoplay loop>
+		<audio id="site-bg-audio" autoplay loop>
 			<source src="audio/audio2.mp3" type="audio/mpeg"/>
 		</audio>
+		<script>
+			(function () {
+				var root = document.getElementById('editing-portfolio');
+				if (!root) return;
+				var bg = document.getElementById('site-bg-audio');
+				function fmt(t) {
+					if (!isFinite(t) || t < 0) return '0:00';
+					var s = Math.floor(t % 60);
+					var m = Math.floor(t / 60);
+					return m + ':' + (s < 10 ? '0' : '') + s;
+				}
+				var lanes = root.querySelectorAll('.edit-lane');
+				var audios = [];
+				lanes.forEach(function (lane) {
+					var audio = lane.querySelector('audio');
+					var btn = lane.querySelector('.edit-play');
+					var seek = lane.querySelector('.edit-seek');
+					var time = lane.querySelector('.edit-time');
+					var seeking = false;
+					audios.push(audio);
+					function paint() {
+						var pct = (Number(seek.value) / 1000) * 100;
+						seek.style.setProperty('--pct', pct + '%');
+					}
+					btn.addEventListener('click', function () {
+						if (audio.paused) {
+							audios.forEach(function (other) {
+								if (other !== audio) other.pause();
+							});
+							if (bg && !bg.paused) bg.pause();
+							var playPromise = audio.play();
+							if (playPromise && playPromise.catch) playPromise.catch(function () {});
+						} else {
+							audio.pause();
+						}
+					});
+					audio.addEventListener('play', function () { btn.textContent = 'Pause'; });
+					audio.addEventListener('pause', function () { btn.textContent = 'Play'; });
+					audio.addEventListener('ended', function () {
+						btn.textContent = 'Play';
+						seek.value = '0';
+						paint();
+						time.textContent = '0:00';
+					});
+					audio.addEventListener('timeupdate', function () {
+						if (seeking || !audio.duration) return;
+						seek.value = String(Math.round((audio.currentTime / audio.duration) * 1000));
+						time.textContent = fmt(audio.currentTime);
+						paint();
+					});
+					seek.addEventListener('input', function () {
+						seeking = true;
+						if (audio.duration) {
+							audio.currentTime = (Number(seek.value) / 1000) * audio.duration;
+							time.textContent = fmt(audio.currentTime);
+						}
+						paint();
+					});
+					seek.addEventListener('change', function () { seeking = false; });
+					paint();
+				});
+			})();
+		</script>
 		<script>
 			// Email List Signup Handler
 			(function() {
