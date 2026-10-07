@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "NEAR/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-07T11:00:50.852765Z",
-    "received_at": "2026-10-07T11:00:50.852791Z",
-    "id": "2026-10-07T11:00:50.852791Z-NEAR/USD-sell"
-  },
-  {
     "action": "buy",
     "symbol": "EWT",
     "price": 114.11000061035156,
@@ -237,26 +226,26 @@
   {
     "action": "info",
     "symbol": "XLF",
-    "price": 53.4900016784668,
+    "price": 53.880001068115234,
     "quantity": null,
     "source": "MAIN_stock_strat12",
-    "note": "Above thresholds | buy 12/16 | sell 15/13",
-    "timestamp": "2026-10-06T12:18:44.248796Z",
-    "received_at": "2026-10-06T12:18:44.248796Z",
-    "id": "2026-10-06T12:18:44.248796Z-XLF-info",
+    "note": "Above thresholds | buy 11/16 | sell 14/13",
+    "timestamp": "2026-10-07T11:05:47.232559Z",
+    "received_at": "2026-10-07T11:05:47.232559Z",
+    "id": "2026-10-07T11:05:47.232559Z-XLF-info",
     "threshold_met": true,
-    "buy_score": 12,
-    "sell_score": 15,
+    "buy_score": 11,
+    "sell_score": 14,
     "total_buy_components": 41,
     "total_sell_components": 40,
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0,
-    "buy_conviction": 0.2926829268292683,
+    "buy_conviction": 0.2682926829268293,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.675,
-    "sell_persistence": 14,
+    "sell_conviction": 0.6499999999999999,
+    "sell_persistence": 15,
     "sell_position_multiplier": 1.0
   },
   {
@@ -1105,6 +1094,28 @@
     "rsi_bear_div_block_timer": 0,
     "pnl_pct": 2.8143,
     "entry_price": 572.780029296875
+  },
+  {
+    "action": "sell",
+    "symbol": "NEAR/USD",
+    "quantity": 19.86919505,
+    "price": 5.0348,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-07T11:01:31.294594Z",
+    "received_at": "2026-10-07T11:01:31.294618Z",
+    "id": "2026-10-07T11:01:31.294618Z-NEAR/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "NEAR/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-07T11:00:50.852765Z",
+    "received_at": "2026-10-07T11:00:50.852791Z",
+    "id": "2026-10-07T11:00:50.852791Z-NEAR/USD-sell"
   },
   {
     "action": "sell",
@@ -2799,16 +2810,5 @@
     "timestamp": "2026-10-04T08:00:35.964761Z",
     "received_at": "2026-10-04T08:00:35.964780Z",
     "id": "2026-10-04T08:00:35.964780Z-DOGE/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "BNB/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-04T08:00:35.358387Z",
-    "received_at": "2026-10-04T08:00:35.358401Z",
-    "id": "2026-10-04T08:00:35.358401Z-BNB/USD-buy"
   }
 ]
