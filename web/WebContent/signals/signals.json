@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2417.57,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-10-08T17:47:14.834240Z",
+    "received_at": "2026-10-08T17:47:14.834269Z",
+    "id": "2026-10-08T17:47:14.834269Z-ETH/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "EWT",
     "price": 114.11000061035156,
@@ -2799,16 +2810,5 @@
     "timestamp": "2026-10-05T00:00:38.281425Z",
     "received_at": "2026-10-05T00:00:38.281442Z",
     "id": "2026-10-05T00:00:38.281442Z-SOL/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.04770799,
-    "price": 2724.85,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
-    "timestamp": "2026-10-04T23:39:24.888227Z",
-    "received_at": "2026-10-04T23:39:24.888242Z",
-    "id": "2026-10-04T23:39:24.888242Z-ETH/USD-buy"
   }
 ]
