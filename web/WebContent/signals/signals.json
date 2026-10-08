@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2565.68,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-10-08T03:50:40.372504Z",
-    "received_at": "2026-10-08T03:50:40.372603Z",
-    "id": "2026-10-08T03:50:40.372603Z-ETH/USD-sell"
-  },
-  {
     "action": "buy",
     "symbol": "EWT",
     "price": 114.11000061035156,
@@ -487,26 +476,26 @@
   {
     "action": "info",
     "symbol": "PPLT",
-    "price": 15.430000305175781,
+    "price": 15.470000267028809,
     "quantity": null,
     "source": "MAIN_stock_strat12",
-    "note": "Above thresholds | buy 9/16 | sell 13/13",
-    "timestamp": "2026-10-06T12:57:08.966711Z",
-    "received_at": "2026-10-06T12:57:08.966711Z",
-    "id": "2026-10-06T12:57:08.966711Z-PPLT-info",
-    "threshold_met": true,
-    "buy_score": 9,
-    "sell_score": 13,
+    "note": "Below thresholds | buy 8/16 | sell 12/13",
+    "timestamp": "2026-10-08T03:53:53.214819Z",
+    "received_at": "2026-10-08T03:53:53.214819Z",
+    "id": "2026-10-08T03:53:53.214819Z-PPLT-info",
+    "threshold_met": false,
+    "buy_score": 8,
+    "sell_score": 12,
     "total_buy_components": 41,
     "total_sell_components": 40,
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0,
-    "buy_conviction": 0.21951219512195122,
+    "buy_conviction": 0.1951219512195122,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.385,
-    "sell_persistence": 2,
+    "sell_conviction": 0.3,
+    "sell_persistence": 0,
     "sell_position_multiplier": 0.5
   },
   {
@@ -1105,6 +1094,17 @@
     "rsi_bear_div_block_timer": 0,
     "pnl_pct": 2.8143,
     "entry_price": 572.780029296875
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2565.68,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-10-08T03:50:40.372504Z",
+    "received_at": "2026-10-08T03:50:40.372603Z",
+    "id": "2026-10-08T03:50:40.372603Z-ETH/USD-sell"
   },
   {
     "action": "sell",
