@@ -1,5 +1,38 @@
 [
   {
+    "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 0.3629500580720093,
+    "price": 275.24,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-09T18:06:16.065425Z",
+    "received_at": "2026-10-09T18:06:16.065439Z",
+    "id": "2026-10-09T18:06:16.065439Z-TAO/USD-buy"
+  },
+  {
+    "action": "sell",
+    "symbol": "UNI/USD",
+    "quantity": 13.70876999,
+    "price": 7.3248,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-09T18:00:56.130570Z",
+    "received_at": "2026-10-09T18:00:56.130581Z",
+    "id": "2026-10-09T18:00:56.130581Z-UNI/USD-sell"
+  },
+  {
+    "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-09T18:00:44.368050Z",
+    "received_at": "2026-10-09T18:00:44.368136Z",
+    "id": "2026-10-09T18:00:44.368136Z-TAO/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "UNI/USD",
     "quantity": 100.0,
@@ -2751,38 +2784,5 @@
     "timestamp": "2026-10-05T10:00:51.704288Z",
     "received_at": "2026-10-05T10:00:51.704306Z",
     "id": "2026-10-05T10:00:51.704306Z-CRV/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "TAO/USD",
-    "quantity": 0.3279763857002296,
-    "price": 304.6,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-05T09:05:00.909623Z",
-    "received_at": "2026-10-05T09:05:00.909925Z",
-    "id": "2026-10-05T09:05:00.909925Z-TAO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "SOL/USD",
-    "quantity": 0.8263779852904719,
-    "price": 120.89,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-05T09:05:00.669221Z",
-    "received_at": "2026-10-05T09:05:00.669239Z",
-    "id": "2026-10-05T09:05:00.669239Z-SOL/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "SOL/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-05T09:04:58.699885Z",
-    "received_at": "2026-10-05T09:04:58.699906Z",
-    "id": "2026-10-05T09:04:58.699906Z-SOL/USD-buy"
   }
 ]
