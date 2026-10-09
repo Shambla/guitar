@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "LINK/USD",
+  "symbol": "FET/USD",
   "quantity": 100.0,
   "price": null,
   "source": "TradingView JSON",
   "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-10-09T02:00:13.661575Z",
-  "received_at": "2026-10-09T02:00:13.661722Z",
-  "id": "2026-10-09T02:00:13.661722Z-LINK/USD-buy"
+  "timestamp": "2026-10-09T02:02:39.259046Z",
+  "received_at": "2026-10-09T02:02:39.259071Z",
+  "id": "2026-10-09T02:02:39.259071Z-FET/USD-buy"
 }
