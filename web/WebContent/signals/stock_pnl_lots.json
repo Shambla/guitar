@@ -84,6 +84,11 @@
       "symbol": "F",
       "entry_price": 12.0600004196167,
       "opened_at": "2026-10-02T15:13:44.117823Z"
+    },
+    "SOXX": {
+      "symbol": "SOXX",
+      "entry_price": 589.510009765625,
+      "opened_at": "2026-10-07T13:02:32.641646Z"
     }
   },
   "closed": [

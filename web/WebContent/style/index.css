@@ -1295,6 +1295,10 @@ footer.animate {
 	letter-spacing:	0.02em;
 }
 
+#editing-portfolio h2.edit-next {
+	margin-top:		28px;
+}
+
 #editing-portfolio .edit-credit {
 	margin:			2px 0 10px;
 	color:			var(--primary-color);
