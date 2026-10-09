@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "SOL/USD",
-  "quantity": 0.9063717937097797,
-  "price": 110.22,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-09T04:06:29.107532Z",
-  "received_at": "2026-10-09T04:06:29.107565Z",
-  "id": "2026-10-09T04:06:29.107565Z-SOL/USD-buy"
+  "symbol": "PLSX/DAI",
+  "quantity": 100.0,
+  "price": null,
+  "source": "PulseChain DeFi",
+  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+  "timestamp": "2026-10-09T08:00:48.422013Z",
+  "received_at": "2026-10-09T08:00:48.422032Z",
+  "id": "2026-10-09T08:00:48.422032Z-PLSX/DAI-buy"
 }
