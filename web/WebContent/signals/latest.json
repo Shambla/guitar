@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "LINK/USD",
-  "quantity": 7.81372089388967,
-  "price": 12.785,
+  "symbol": "UNI/USD",
+  "quantity": 13.708770871603653,
+  "price": 7.2873,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-09T02:06:12.275118Z",
-  "received_at": "2026-10-09T02:06:12.275140Z",
-  "id": "2026-10-09T02:06:12.275140Z-LINK/USD-buy"
+  "timestamp": "2026-10-09T02:07:53.477388Z",
+  "received_at": "2026-10-09T02:07:53.477404Z",
+  "id": "2026-10-09T02:07:53.477404Z-UNI/USD-buy"
 }
