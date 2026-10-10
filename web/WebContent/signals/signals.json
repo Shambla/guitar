@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2493.69,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-10-10T06:11:50.933504Z",
+    "received_at": "2026-10-10T06:11:50.933520Z",
+    "id": "2026-10-10T06:11:50.933520Z-ETH/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "UNI/USD",
     "quantity": 13.332089005026198,
@@ -2758,16 +2769,5 @@
     "timestamp": "2026-10-05T22:00:11.491853Z",
     "received_at": "2026-10-05T22:00:11.491867Z",
     "id": "2026-10-05T22:00:11.491867Z-TAO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "RENDER/USD",
-    "quantity": 49.63271788763153,
-    "price": 2.0128,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-05T20:06:10.625461Z",
-    "received_at": "2026-10-05T20:06:10.626401Z",
-    "id": "2026-10-05T20:06:10.626401Z-RENDER/USD-buy"
   }
 ]
