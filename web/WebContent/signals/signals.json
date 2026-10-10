@@ -1,6 +1,28 @@
 [
   {
     "action": "sell",
+    "symbol": "SOL/USD",
+    "quantity": 0.89850476,
+    "price": 109.84,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-10T14:12:20.874246Z",
+    "received_at": "2026-10-10T14:12:20.874258Z",
+    "id": "2026-10-10T14:12:20.874258Z-SOL/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "TAO/USD",
+    "quantity": 0.7254,
+    "price": 281.69,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-10T14:12:20.533940Z",
+    "received_at": "2026-10-10T14:12:20.533951Z",
+    "id": "2026-10-10T14:12:20.533951Z-TAO/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "NEAR/USD",
     "quantity": 21.42119505,
     "price": 5.3586,
@@ -2747,27 +2769,5 @@
     "timestamp": "2026-10-06T08:01:14.503007Z",
     "received_at": "2026-10-06T08:01:14.503023Z",
     "id": "2026-10-06T08:01:14.503023Z-RENDER/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2702.41,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-10-06T04:39:45.110340Z",
-    "received_at": "2026-10-06T04:39:45.111315Z",
-    "id": "2026-10-06T04:39:45.111315Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2699.23,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-10-06T04:12:00.314240Z",
-    "received_at": "2026-10-06T04:12:00.314269Z",
-    "id": "2026-10-06T04:12:00.314269Z-ETH/USD-sell"
   }
 ]

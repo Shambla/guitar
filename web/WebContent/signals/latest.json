@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "NEAR/USD",
-  "quantity": 21.42119505,
-  "price": 5.3586,
+  "symbol": "SOL/USD",
+  "quantity": 0.89850476,
+  "price": 109.84,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-10T14:10:10.191115Z",
-  "received_at": "2026-10-10T14:10:10.191125Z",
-  "id": "2026-10-10T14:10:10.191125Z-NEAR/USD-sell"
+  "timestamp": "2026-10-10T14:12:20.874246Z",
+  "received_at": "2026-10-10T14:12:20.874258Z",
+  "id": "2026-10-10T14:12:20.874258Z-SOL/USD-sell"
 }
