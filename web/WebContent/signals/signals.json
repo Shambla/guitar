@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "BNB/USD",
+    "quantity": 0.1329928715820832,
+    "price": 751.17,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-10T15:06:02.217000Z",
+    "received_at": "2026-10-10T15:06:02.217013Z",
+    "id": "2026-10-10T15:06:02.217013Z-BNB/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "BNB/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2758,16 +2769,5 @@
     "timestamp": "2026-10-06T08:25:17.547517Z",
     "received_at": "2026-10-06T08:25:17.547562Z",
     "id": "2026-10-06T08:25:17.547562Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "RENDER/USD",
-    "quantity": 0.0,
-    "price": 2.0848,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-06T08:01:14.704196Z",
-    "received_at": "2026-10-06T08:01:14.704214Z",
-    "id": "2026-10-06T08:01:14.704214Z-RENDER/USD-sell"
   }
 ]
