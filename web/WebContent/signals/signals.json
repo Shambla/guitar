@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "HYPE/USD",
+    "quantity": 1.17399999,
+    "price": 84.33,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-10T08:07:51.518382Z",
+    "received_at": "2026-10-10T08:07:51.518394Z",
+    "id": "2026-10-10T08:07:51.518394Z-HYPE/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "PLSX/DAI",
     "quantity": 100.0,
     "price": null,
@@ -2758,16 +2769,5 @@
     "timestamp": "2026-10-06T01:00:24.945334Z",
     "received_at": "2026-10-06T01:00:24.945352Z",
     "id": "2026-10-06T01:00:24.945352Z-SOL/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2713.24,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-10-06T00:43:17.417970Z",
-    "received_at": "2026-10-06T00:43:17.417998Z",
-    "id": "2026-10-06T00:43:17.417998Z-ETH/USD-sell"
   }
 ]

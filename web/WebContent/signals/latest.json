@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "PLSX/DAI",
-  "quantity": 100.0,
-  "price": null,
-  "source": "PulseChain DeFi",
-  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-  "timestamp": "2026-10-10T08:03:26.662830Z",
-  "received_at": "2026-10-10T08:03:26.662844Z",
-  "id": "2026-10-10T08:03:26.662844Z-PLSX/DAI-sell"
+  "symbol": "HYPE/USD",
+  "quantity": 1.17399999,
+  "price": 84.33,
+  "source": "MASTER_BOT_162",
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-10-10T08:07:51.518382Z",
+  "received_at": "2026-10-10T08:07:51.518394Z",
+  "id": "2026-10-10T08:07:51.518394Z-HYPE/USD-sell"
 }
