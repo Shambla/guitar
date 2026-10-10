@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "PLSX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-10-10T16:28:46.221752Z",
+    "received_at": "2026-10-10T16:28:46.221765Z",
+    "id": "2026-10-10T16:28:46.221765Z-PLSX/DAI-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "FET/USD",
     "quantity": 439.96656254124684,
     "price": 0.22706,
@@ -2758,16 +2769,5 @@
     "timestamp": "2026-10-06T15:00:17.122609Z",
     "received_at": "2026-10-06T15:00:17.122649Z",
     "id": "2026-10-06T15:00:17.122649Z-SOL/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2709.5,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-10-06T14:11:33.418947Z",
-    "received_at": "2026-10-06T14:11:33.418960Z",
-    "id": "2026-10-06T14:11:33.418960Z-ETH/USD-sell"
   }
 ]
