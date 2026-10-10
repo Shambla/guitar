@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "BNB/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-10T15:00:28.557235Z",
+    "received_at": "2026-10-10T15:00:28.557249Z",
+    "id": "2026-10-10T15:00:28.557249Z-BNB/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "SOL/USD",
     "quantity": 0.89850476,
@@ -2758,16 +2769,5 @@
     "timestamp": "2026-10-06T08:01:14.704196Z",
     "received_at": "2026-10-06T08:01:14.704214Z",
     "id": "2026-10-06T08:01:14.704214Z-RENDER/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "RENDER/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-06T08:01:14.503007Z",
-    "received_at": "2026-10-06T08:01:14.503023Z",
-    "id": "2026-10-06T08:01:14.503023Z-RENDER/USD-sell"
   }
 ]
