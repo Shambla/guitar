@@ -1,6 +1,28 @@
 [
   {
     "action": "buy",
+    "symbol": "RENDER/USD",
+    "quantity": 52.584529631382445,
+    "price": 1.8998,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-11T14:07:34.523059Z",
+    "received_at": "2026-10-11T14:07:34.523071Z",
+    "id": "2026-10-11T14:07:34.523071Z-RENDER/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 0.34982159098859583,
+    "price": 285.57,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-11T14:06:00.422165Z",
+    "received_at": "2026-10-11T14:06:00.422177Z",
+    "id": "2026-10-11T14:06:00.422177Z-TAO/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "LINK/USD",
     "quantity": 7.719027402547279,
     "price": 12.942,
@@ -2747,27 +2769,5 @@
     "timestamp": "2026-10-07T03:30:27.409281Z",
     "received_at": "2026-10-07T03:30:27.409320Z",
     "id": "2026-10-07T03:30:27.409320Z-ETH/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "LINK/USD",
-    "quantity": 7.372456502506635,
-    "price": 13.55,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-07T03:06:11.325670Z",
-    "received_at": "2026-10-07T03:06:11.327617Z",
-    "id": "2026-10-07T03:06:11.327617Z-LINK/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "HYPE/USD",
-    "quantity": 0.001,
-    "price": 90.84,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-07T03:00:39.881207Z",
-    "received_at": "2026-10-07T03:00:39.881225Z",
-    "id": "2026-10-07T03:00:39.881225Z-HYPE/USD-sell"
   }
 ]

@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "LINK/USD",
-  "quantity": 7.719027402547279,
-  "price": 12.942,
+  "symbol": "RENDER/USD",
+  "quantity": 52.584529631382445,
+  "price": 1.8998,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-11T14:05:42.597470Z",
-  "received_at": "2026-10-11T14:05:42.597489Z",
-  "id": "2026-10-11T14:05:42.597489Z-LINK/USD-buy"
+  "timestamp": "2026-10-11T14:07:34.523059Z",
+  "received_at": "2026-10-11T14:07:34.523071Z",
+  "id": "2026-10-11T14:07:34.523071Z-RENDER/USD-buy"
 }
