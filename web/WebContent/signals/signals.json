@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.03986906997420471,
+    "price": 2505.7,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-11T03:08:17.295910Z",
+    "received_at": "2026-10-11T03:08:17.295925Z",
+    "id": "2026-10-11T03:08:17.295925Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "NEAR/USD",
     "quantity": 18.89966169605564,
     "price": 5.2858,
@@ -2758,16 +2769,5 @@
     "timestamp": "2026-10-07T02:00:09.134608Z",
     "received_at": "2026-10-07T02:00:09.134627Z",
     "id": "2026-10-07T02:00:09.134627Z-CRV/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.037086485684616526,
-    "price": 2693.7,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-07T00:07:45.010729Z",
-    "received_at": "2026-10-07T00:07:45.010752Z",
-    "id": "2026-10-07T00:07:45.010752Z-ETH/USD-buy"
   }
 ]
