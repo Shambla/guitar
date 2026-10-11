@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "CRV/USD",
-  "quantity": 283.12570781426956,
-  "price": 0.3528,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-11T04:06:12.943346Z",
-  "received_at": "2026-10-11T04:06:12.943359Z",
-  "id": "2026-10-11T04:06:12.943359Z-CRV/USD-buy"
+  "action": "sell",
+  "symbol": "HEX/DAI",
+  "quantity": 100.0,
+  "price": null,
+  "source": "PulseChain DeFi",
+  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+  "timestamp": "2026-10-11T04:07:16.673993Z",
+  "received_at": "2026-10-11T04:07:16.674005Z",
+  "id": "2026-10-11T04:07:16.674005Z-HEX/DAI-sell"
 }
