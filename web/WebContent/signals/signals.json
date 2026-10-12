@@ -1,6 +1,39 @@
 [
   {
     "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 0.34894270360806756,
+    "price": 286.29,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-12T15:06:49.798485Z",
+    "received_at": "2026-10-12T15:06:49.798521Z",
+    "id": "2026-10-12T15:06:49.798521Z-TAO/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "NEAR/USD",
+    "quantity": 17.906385417039715,
+    "price": 5.579,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-12T15:06:47.002868Z",
+    "received_at": "2026-10-12T15:06:47.002993Z",
+    "id": "2026-10-12T15:06:47.002993Z-NEAR/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-12T15:00:42.727885Z",
+    "received_at": "2026-10-12T15:00:42.727900Z",
+    "id": "2026-10-12T15:00:42.727900Z-TAO/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "NEAR/USD",
     "quantity": 100.0,
     "price": null,
@@ -2736,38 +2769,5 @@
     "timestamp": "2026-10-09T18:10:44.944414Z",
     "received_at": "2026-10-09T18:10:44.944429Z",
     "id": "2026-10-09T18:10:44.944429Z-ETH/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "TAO/USD",
-    "quantity": 0.3629500580720093,
-    "price": 275.24,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-09T18:06:16.065425Z",
-    "received_at": "2026-10-09T18:06:16.065439Z",
-    "id": "2026-10-09T18:06:16.065439Z-TAO/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "UNI/USD",
-    "quantity": 13.70876999,
-    "price": 7.3248,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-09T18:00:56.130570Z",
-    "received_at": "2026-10-09T18:00:56.130581Z",
-    "id": "2026-10-09T18:00:56.130581Z-UNI/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "TAO/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-09T18:00:44.368050Z",
-    "received_at": "2026-10-09T18:00:44.368136Z",
-    "id": "2026-10-09T18:00:44.368136Z-TAO/USD-buy"
   }
 ]
