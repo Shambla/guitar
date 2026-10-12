@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "LINK/USD",
+    "quantity": 7.71999999,
+    "price": 13.441,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-12T05:08:16.816162Z",
+    "received_at": "2026-10-12T05:08:16.816173Z",
+    "id": "2026-10-12T05:08:16.816173Z-LINK/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "BNB/USD",
     "quantity": 0.1326559038510009,
@@ -2758,16 +2769,5 @@
     "timestamp": "2026-10-08T17:47:14.834240Z",
     "received_at": "2026-10-08T17:47:14.834269Z",
     "id": "2026-10-08T17:47:14.834269Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "CDEOIL/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-08T17:15:29.839215Z",
-    "received_at": "2026-10-08T17:15:29.839238Z",
-    "id": "2026-10-08T17:15:29.839238Z-CDEOIL/USD-sell"
   }
 ]
