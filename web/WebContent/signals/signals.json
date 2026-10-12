@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "NEAR/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-12T15:00:31.590456Z",
+    "received_at": "2026-10-12T15:00:31.590469Z",
+    "id": "2026-10-12T15:00:31.590469Z-NEAR/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "ETH/USD",
     "quantity": 0.05936338,
     "price": 2533.43,
@@ -2758,16 +2769,5 @@
     "timestamp": "2026-10-09T18:00:44.368050Z",
     "received_at": "2026-10-09T18:00:44.368136Z",
     "id": "2026-10-09T18:00:44.368136Z-TAO/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "UNI/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-09T18:00:34.336302Z",
-    "received_at": "2026-10-09T18:00:34.336652Z",
-    "id": "2026-10-09T18:00:34.336652Z-UNI/USD-sell"
   }
 ]
