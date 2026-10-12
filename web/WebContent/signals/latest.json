@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "CRV/USD",
-  "quantity": 272.47956403269757,
-  "price": 0.3666,
+  "action": "sell",
+  "symbol": "RENDER/USD",
+  "quantity": 49.96999999,
+  "price": 2.0968,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-12T14:06:17.315296Z",
-  "received_at": "2026-10-12T14:06:17.315336Z",
-  "id": "2026-10-12T14:06:17.315336Z-CRV/USD-buy"
+  "timestamp": "2026-10-12T14:09:16.587659Z",
+  "received_at": "2026-10-12T14:09:16.587673Z",
+  "id": "2026-10-12T14:09:16.587673Z-RENDER/USD-sell"
 }
