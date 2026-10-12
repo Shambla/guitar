@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "UNI/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-12T06:00:13.700675Z",
+    "received_at": "2026-10-12T06:00:13.700691Z",
+    "id": "2026-10-12T06:00:13.700691Z-UNI/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "LINK/USD",
     "quantity": 7.71999999,
@@ -2758,16 +2769,5 @@
     "timestamp": "2026-10-08T18:02:08.526629Z",
     "received_at": "2026-10-08T18:02:08.526658Z",
     "id": "2026-10-08T18:02:08.526658Z-CDEOIL/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2417.57,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-10-08T17:47:14.834240Z",
-    "received_at": "2026-10-08T17:47:14.834269Z",
-    "id": "2026-10-08T17:47:14.834269Z-ETH/USD-sell"
   }
 ]
