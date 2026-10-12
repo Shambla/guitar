@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "FET/USD",
-  "quantity": 439.93850811,
-  "price": 0.23563,
+  "symbol": "RENDER/USD",
+  "quantity": 0.0,
+  "price": 1.9804,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-11T21:21:15.985961Z",
-  "received_at": "2026-10-11T21:21:15.985973Z",
-  "id": "2026-10-11T21:21:15.985973Z-FET/USD-sell"
+  "timestamp": "2026-10-12T02:00:20.800792Z",
+  "received_at": "2026-10-12T02:00:20.800817Z",
+  "id": "2026-10-12T02:00:20.800817Z-RENDER/USD-sell"
 }
