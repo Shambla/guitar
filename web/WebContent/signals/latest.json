@@ -1,11 +1,11 @@
 {
   "action": "sell",
   "symbol": "NEAR/USD",
-  "quantity": 100.0,
-  "price": null,
-  "source": "TradingView JSON",
-  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-10-13T21:00:20.228934Z",
-  "received_at": "2026-10-13T21:00:20.229419Z",
-  "id": "2026-10-13T21:00:20.229419Z-NEAR/USD-sell"
+  "quantity": 17.90719505,
+  "price": 5.061,
+  "source": "MASTER_BOT_162",
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-10-13T21:07:08.272856Z",
+  "received_at": "2026-10-13T21:07:08.272874Z",
+  "id": "2026-10-13T21:07:08.272874Z-NEAR/USD-sell"
 }
