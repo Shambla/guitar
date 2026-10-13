@@ -1,6 +1,39 @@
 [
   {
     "action": "buy",
+    "symbol": "HYPE/USD",
+    "quantity": 1.214329083181542,
+    "price": 82.27,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-13T03:03:26.089698Z",
+    "received_at": "2026-10-13T03:03:26.089714Z",
+    "id": "2026-10-13T03:03:26.089714Z-HYPE/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-10-13T03:03:22.990558Z",
+    "received_at": "2026-10-13T03:03:22.990609Z",
+    "id": "2026-10-13T03:03:22.990609Z-HEX/DAI-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "HYPE/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-13T03:00:41.010753Z",
+    "received_at": "2026-10-13T03:00:41.010767Z",
+    "id": "2026-10-13T03:00:41.010767Z-HYPE/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "UNI/USD",
     "quantity": 100.0,
     "price": null,
@@ -2736,38 +2769,5 @@
     "timestamp": "2026-10-10T02:07:40.944918Z",
     "received_at": "2026-10-10T02:07:40.944930Z",
     "id": "2026-10-10T02:07:40.944930Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "HYPE/USD",
-    "quantity": 1.1838522552385462,
-    "price": 84.39,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-10T02:00:59.097673Z",
-    "received_at": "2026-10-10T02:00:59.097683Z",
-    "id": "2026-10-10T02:00:59.097683Z-HYPE/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-10T02:00:23.306490Z",
-    "received_at": "2026-10-10T02:00:23.306503Z",
-    "id": "2026-10-10T02:00:23.306503Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "HYPE/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-10T02:00:12.041644Z",
-    "received_at": "2026-10-10T02:00:12.041658Z",
-    "id": "2026-10-10T02:00:12.041658Z-HYPE/USD-buy"
   }
 ]
