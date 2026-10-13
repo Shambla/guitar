@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "LINK/USD",
+    "quantity": 7.8125,
+    "price": 12.787,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-13T03:06:04.743282Z",
+    "received_at": "2026-10-13T03:06:04.743649Z",
+    "id": "2026-10-13T03:06:04.743649Z-LINK/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "HYPE/USD",
     "quantity": 1.214329083181542,
     "price": 82.27,
@@ -2758,16 +2769,5 @@
     "timestamp": "2026-10-10T03:00:18.171216Z",
     "received_at": "2026-10-10T03:00:18.171229Z",
     "id": "2026-10-10T03:00:18.171229Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.04010041143022127,
-    "price": 2491.25,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-10T02:07:40.944918Z",
-    "received_at": "2026-10-10T02:07:40.944930Z",
-    "id": "2026-10-10T02:07:40.944930Z-ETH/USD-buy"
   }
 ]
