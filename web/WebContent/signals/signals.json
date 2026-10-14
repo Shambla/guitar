@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "UNI/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-14T03:00:38.747105Z",
+    "received_at": "2026-10-14T03:00:38.747124Z",
+    "id": "2026-10-14T03:00:38.747124Z-UNI/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "HYPE/USD",
     "quantity": 1.217878455730118,
@@ -2758,16 +2769,5 @@
     "timestamp": "2026-10-10T14:00:45.359997Z",
     "received_at": "2026-10-10T14:00:45.360008Z",
     "id": "2026-10-10T14:00:45.360008Z-FET/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-10T14:00:23.657108Z",
-    "received_at": "2026-10-10T14:00:23.657124Z",
-    "id": "2026-10-10T14:00:23.657124Z-FET/USD-sell"
   }
 ]
