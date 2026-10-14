@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-10-14T20:00:49.309523Z",
+    "received_at": "2026-10-14T20:00:49.310084Z",
+    "id": "2026-10-14T20:00:49.310084Z-HEX/DAI-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "EWT",
     "price": 113.45999908447266,
     "quantity": null,
@@ -844,32 +855,6 @@
     "sell_conviction": 0.675,
     "sell_persistence": 34,
     "sell_position_multiplier": 1.0
-  },
-  {
-    "action": "sell",
-    "symbol": "EWT",
-    "price": 114.77999877929688,
-    "quantity": null,
-    "source": "MAIN_stock_strat14",
-    "note": "buy 16/41 | sell 18/40 | Strength=1/10 | MTF:M | BUY threshold met but HIGH divergences detected (RSI bearish divergence block active: 14d remaining, events≈6). Proceed with caution.",
-    "timestamp": "2026-09-30T11:29:31.137467Z",
-    "received_at": "2026-09-30T11:29:31.137467Z",
-    "id": "2026-09-30T11:29:31.137467Z-EWT-sell",
-    "buy_score": 16,
-    "sell_score": 18,
-    "total_buy_components": 41,
-    "total_sell_components": 40,
-    "buy_conviction": 0.3902439024390244,
-    "buy_persistence": 0,
-    "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.51,
-    "sell_persistence": 2,
-    "sell_position_multiplier": 1.0,
-    "buy_signal_raw": true,
-    "buy_blocked_rsi_bear_div": true,
-    "rsi_bear_div_block_timer": 14,
-    "pnl_pct": 6.3763,
-    "entry_price": 107.9000015258789
   },
   {
     "action": "sell",
@@ -2767,16 +2752,5 @@
     "timestamp": "2026-10-10T18:02:04.510381Z",
     "received_at": "2026-10-10T18:02:04.510396Z",
     "id": "2026-10-10T18:02:04.510396Z-RENDER/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "RENDER/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-10T18:02:02.659898Z",
-    "received_at": "2026-10-10T18:02:02.659913Z",
-    "id": "2026-10-10T18:02:02.659913Z-RENDER/USD-buy"
   }
 ]
