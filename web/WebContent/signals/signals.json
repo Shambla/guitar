@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "PLSX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-10-15T08:02:38.065092Z",
-    "received_at": "2026-10-15T08:02:38.065115Z",
-    "id": "2026-10-15T08:02:38.065115Z-PLSX/DAI-sell"
-  },
-  {
     "action": "buy",
     "symbol": "EWT",
     "price": 113.45999908447266,
@@ -591,9 +580,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 10/16 | sell 17/13",
-    "timestamp": "2026-10-14T16:54:04.196420Z",
-    "received_at": "2026-10-14T16:54:04.196420Z",
-    "id": "2026-10-14T16:54:04.196420Z-PCEF-info",
+    "timestamp": "2026-10-15T08:09:46.357877Z",
+    "received_at": "2026-10-15T08:09:46.357877Z",
+    "id": "2026-10-15T08:09:46.357877Z-PCEF-info",
     "threshold_met": true,
     "buy_score": 10,
     "sell_score": 17,
@@ -1027,6 +1016,17 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "sell",
+    "symbol": "PLSX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-10-15T08:02:38.065092Z",
+    "received_at": "2026-10-15T08:02:38.065115Z",
+    "id": "2026-10-15T08:02:38.065115Z-PLSX/DAI-sell"
   },
   {
     "action": "buy",
