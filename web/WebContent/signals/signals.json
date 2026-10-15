@@ -1,17 +1,6 @@
 [
   {
     "action": "buy",
-    "symbol": "PRVX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-10-15T06:22:24.534211Z",
-    "received_at": "2026-10-15T06:22:24.534380Z",
-    "id": "2026-10-15T06:22:24.534380Z-PRVX/DAI-buy"
-  },
-  {
-    "action": "buy",
     "symbol": "EWT",
     "price": 113.45999908447266,
     "quantity": null,
@@ -366,9 +355,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 12/16 | sell 15/13",
-    "timestamp": "2026-10-14T16:10:04.712649Z",
-    "received_at": "2026-10-14T16:10:04.712649Z",
-    "id": "2026-10-14T16:10:04.712649Z-F-info",
+    "timestamp": "2026-10-15T06:27:26.800594Z",
+    "received_at": "2026-10-15T06:27:26.800594Z",
+    "id": "2026-10-15T06:27:26.800594Z-F-info",
     "threshold_met": true,
     "buy_score": 12,
     "sell_score": 15,
@@ -1027,6 +1016,17 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "buy",
+    "symbol": "PRVX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-10-15T06:22:24.534211Z",
+    "received_at": "2026-10-15T06:22:24.534380Z",
+    "id": "2026-10-15T06:22:24.534380Z-PRVX/DAI-buy"
   },
   {
     "action": "buy",
