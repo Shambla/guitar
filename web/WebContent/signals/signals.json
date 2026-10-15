@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "PRVX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-10-15T06:22:24.534211Z",
+    "received_at": "2026-10-15T06:22:24.534380Z",
+    "id": "2026-10-15T06:22:24.534380Z-PRVX/DAI-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "EWT",
     "price": 113.45999908447266,
     "quantity": null,
@@ -2754,27 +2765,5 @@
     "timestamp": "2026-10-11T02:00:24.896280Z",
     "received_at": "2026-10-11T02:00:24.896300Z",
     "id": "2026-10-11T02:00:24.896300Z-BNB/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "TAO/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-11T02:00:21.237010Z",
-    "received_at": "2026-10-11T02:00:21.237036Z",
-    "id": "2026-10-11T02:00:21.237036Z-TAO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "LINK/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-11T02:00:20.838447Z",
-    "received_at": "2026-10-11T02:00:20.838460Z",
-    "id": "2026-10-11T02:00:20.838460Z-LINK/USD-sell"
   }
 ]
