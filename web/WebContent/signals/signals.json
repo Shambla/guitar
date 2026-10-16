@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-10-16T03:56:57.886493Z",
+    "received_at": "2026-10-16T03:56:57.887235Z",
+    "id": "2026-10-16T03:56:57.887235Z-HEX/DAI-sell"
+  },
+  {
     "action": "buy",
     "symbol": "EWT",
     "price": 113.45999908447266,
@@ -2741,38 +2752,5 @@
     "timestamp": "2026-10-11T02:10:16.353011Z",
     "received_at": "2026-10-11T02:10:16.353024Z",
     "id": "2026-10-11T02:10:16.353024Z-LINK/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "BNB/USD",
-    "quantity": 0.3916,
-    "price": 747.5,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-11T02:10:07.764444Z",
-    "received_at": "2026-10-11T02:10:07.764458Z",
-    "id": "2026-10-11T02:10:07.764458Z-BNB/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "TAO/USD",
-    "quantity": 0.34949999,
-    "price": 284.66,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-11T02:00:52.402646Z",
-    "received_at": "2026-10-11T02:00:52.402668Z",
-    "id": "2026-10-11T02:00:52.402668Z-TAO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "RENDER/USD",
-    "quantity": 0.01,
-    "price": 1.9298,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-11T02:00:49.645809Z",
-    "received_at": "2026-10-11T02:00:49.645823Z",
-    "id": "2026-10-11T02:00:49.645823Z-RENDER/USD-sell"
   }
 ]
