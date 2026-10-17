@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "TAO/USD",
-  "quantity": 0.36338529743086595,
-  "price": 274.91,
+  "action": "sell",
+  "symbol": "NEAR/USD",
+  "quantity": 0.00019505,
+  "price": 5.0943,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-17T07:06:08.700936Z",
-  "received_at": "2026-10-17T07:06:08.700949Z",
-  "id": "2026-10-17T07:06:08.700949Z-TAO/USD-buy"
+  "timestamp": "2026-10-17T08:00:26.355832Z",
+  "received_at": "2026-10-17T08:00:26.355846Z",
+  "id": "2026-10-17T08:00:26.355846Z-NEAR/USD-sell"
 }
