@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-10-17T09:01:11.187423Z",
+    "received_at": "2026-10-17T09:01:11.187438Z",
+    "id": "2026-10-17T09:01:11.187438Z-HEX/DAI-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
     "price": 2430.26,
@@ -2741,16 +2752,5 @@
     "timestamp": "2026-10-12T03:00:09.320583Z",
     "received_at": "2026-10-12T03:00:09.320598Z",
     "id": "2026-10-12T03:00:09.320598Z-NEAR/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "NEAR/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-12T03:00:08.080948Z",
-    "received_at": "2026-10-12T03:00:08.080975Z",
-    "id": "2026-10-12T03:00:08.080975Z-NEAR/USD-sell"
   }
 ]
