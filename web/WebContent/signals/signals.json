@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "PLSX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-10-18T08:02:27.757095Z",
+    "received_at": "2026-10-18T08:02:27.757109Z",
+    "id": "2026-10-18T08:02:27.757109Z-PLSX/DAI-buy"
+  },
+  {
     "action": "sell",
     "symbol": "HEX/DAI",
     "quantity": 100.0,
@@ -2741,16 +2752,5 @@
     "timestamp": "2026-10-13T03:00:41.010753Z",
     "received_at": "2026-10-13T03:00:41.010767Z",
     "id": "2026-10-13T03:00:41.010767Z-HYPE/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "UNI/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-13T03:00:22.057075Z",
-    "received_at": "2026-10-13T03:00:22.057113Z",
-    "id": "2026-10-13T03:00:22.057113Z-UNI/USD-buy"
   }
 ]
