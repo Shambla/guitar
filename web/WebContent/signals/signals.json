@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "TAO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-18T12:00:28.038901Z",
+    "received_at": "2026-10-18T12:00:28.038917Z",
+    "id": "2026-10-18T12:00:28.038917Z-TAO/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "PLSX/DAI",
     "quantity": 100.0,
@@ -2741,16 +2752,5 @@
     "timestamp": "2026-10-13T03:03:22.990558Z",
     "received_at": "2026-10-13T03:03:22.990609Z",
     "id": "2026-10-13T03:03:22.990609Z-HEX/DAI-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "HYPE/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-13T03:00:41.010753Z",
-    "received_at": "2026-10-13T03:00:41.010767Z",
-    "id": "2026-10-13T03:00:41.010767Z-HYPE/USD-buy"
   }
 ]
