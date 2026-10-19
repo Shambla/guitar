@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-19T03:00:54.724654Z",
+    "received_at": "2026-10-19T03:00:54.724670Z",
+    "id": "2026-10-19T03:00:54.724670Z-FET/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
@@ -2741,16 +2752,5 @@
     "timestamp": "2026-10-14T03:01:01.218792Z",
     "received_at": "2026-10-14T03:01:01.218805Z",
     "id": "2026-10-14T03:01:01.218805Z-UNI/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-14T03:00:50.358908Z",
-    "received_at": "2026-10-14T03:00:50.358944Z",
-    "id": "2026-10-14T03:00:50.358944Z-CRV/USD-buy"
   }
 ]
