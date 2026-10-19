@@ -376,13 +376,13 @@
   {
     "action": "info",
     "symbol": "SPY",
-    "price": 769.5999755859375,
+    "price": 763.25,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 14/18 | sell 12/9",
-    "timestamp": "2026-10-16T21:43:27.851400Z",
-    "received_at": "2026-10-16T21:43:27.851400Z",
-    "id": "2026-10-16T21:43:27.851400Z-SPY-info",
+    "timestamp": "2026-10-19T11:34:28.045146Z",
+    "received_at": "2026-10-19T11:34:28.045146Z",
+    "id": "2026-10-19T11:34:28.045146Z-SPY-info",
     "threshold_met": true,
     "buy_score": 14,
     "sell_score": 12,
@@ -395,7 +395,7 @@
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
     "sell_conviction": 0.6,
-    "sell_persistence": 229,
+    "sell_persistence": 231,
     "sell_position_multiplier": 1.0
   },
   {
