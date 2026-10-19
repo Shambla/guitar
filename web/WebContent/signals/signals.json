@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "LINK/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-19T13:00:36.629607Z",
+    "received_at": "2026-10-19T13:00:36.629659Z",
+    "id": "2026-10-19T13:00:36.629659Z-LINK/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "EWT",
     "price": 110.94000244140625,
@@ -2786,16 +2797,5 @@
     "timestamp": "2026-10-15T17:03:51.037560Z",
     "received_at": "2026-10-15T17:03:51.037584Z",
     "id": "2026-10-15T17:03:51.037584Z-CRV/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 1e-08,
-    "price": 2431.79,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-10-15T16:46:36.254092Z",
-    "received_at": "2026-10-15T16:46:36.257636Z",
-    "id": "2026-10-15T16:46:36.257636Z-ETH/USD-sell"
   }
 ]
