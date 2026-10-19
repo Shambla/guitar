@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "NEAR/USD",
-  "quantity": 19.979620786797465,
-  "price": 5.0001,
+  "symbol": "ENS/USD",
+  "quantity": 18.331805682859763,
+  "price": 5.45,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-19T00:06:32.626926Z",
-  "received_at": "2026-10-19T00:06:32.626939Z",
-  "id": "2026-10-19T00:06:32.626939Z-NEAR/USD-buy"
+  "timestamp": "2026-10-19T00:10:16.504004Z",
+  "received_at": "2026-10-19T00:10:16.504019Z",
+  "id": "2026-10-19T00:10:16.504019Z-ENS/USD-buy"
 }

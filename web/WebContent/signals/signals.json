@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "ENS/USD",
+    "quantity": 18.331805682859763,
+    "price": 5.45,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-19T00:10:16.504004Z",
+    "received_at": "2026-10-19T00:10:16.504019Z",
+    "id": "2026-10-19T00:10:16.504019Z-ENS/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "NEAR/USD",
     "quantity": 19.979620786797465,
     "price": 5.0001,
@@ -2741,16 +2752,5 @@
     "timestamp": "2026-10-14T01:07:50.393726Z",
     "received_at": "2026-10-14T01:07:50.393752Z",
     "id": "2026-10-14T01:07:50.393752Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "RENDER/USD",
-    "quantity": 47.7,
-    "price": 2.0247,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-14T01:01:13.744704Z",
-    "received_at": "2026-10-14T01:01:13.744716Z",
-    "id": "2026-10-14T01:01:13.744716Z-RENDER/USD-sell"
   }
 ]
