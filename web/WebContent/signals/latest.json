@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "DOGE/USD",
-  "quantity": 1264.3823492224049,
-  "price": 0.07901,
+  "symbol": "SOL/USD",
+  "quantity": 0.9517464547444561,
+  "price": 104.96,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-19T20:06:05.918245Z",
-  "received_at": "2026-10-19T20:06:05.918259Z",
-  "id": "2026-10-19T20:06:05.918259Z-DOGE/USD-buy"
+  "timestamp": "2026-10-19T23:00:30.412891Z",
+  "received_at": "2026-10-19T23:00:30.412911Z",
+  "id": "2026-10-19T23:00:30.412911Z-SOL/USD-buy"
 }
