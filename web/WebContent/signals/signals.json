@@ -1,6 +1,28 @@
 [
   {
     "action": "sell",
+    "symbol": "PLSX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-10-20T08:05:20.240439Z",
+    "received_at": "2026-10-20T08:05:20.240450Z",
+    "id": "2026-10-20T08:05:20.240450Z-PLSX/DAI-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "DOGE/USD",
+    "quantity": 2543.12689769,
+    "price": 0.07912,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-20T08:01:22.972732Z",
+    "received_at": "2026-10-20T08:01:22.972763Z",
+    "id": "2026-10-20T08:01:22.972763Z-DOGE/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "DOGE/USD",
     "quantity": 100.0,
     "price": null,
@@ -2775,27 +2797,5 @@
     "timestamp": "2026-10-17T02:01:45.642838Z",
     "received_at": "2026-10-17T02:01:45.642857Z",
     "id": "2026-10-17T02:01:45.642857Z-CRV/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-17T02:01:22.923248Z",
-    "received_at": "2026-10-17T02:01:22.923333Z",
-    "id": "2026-10-17T02:01:22.923333Z-CRV/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2405.58,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-10-16T20:10:36.229550Z",
-    "received_at": "2026-10-16T20:10:36.229767Z",
-    "id": "2026-10-16T20:10:36.229767Z-ETH/USD-sell"
   }
 ]
