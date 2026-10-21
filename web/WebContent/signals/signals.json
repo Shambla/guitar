@@ -1,6 +1,28 @@
 [
   {
     "action": "sell",
+    "symbol": "DOGE/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-21T08:00:42.685230Z",
+    "received_at": "2026-10-21T08:00:42.685246Z",
+    "id": "2026-10-21T08:00:42.685246Z-DOGE/USD-sell"
+  },
+  {
+    "action": "buy",
+    "symbol": "UNI/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-21T08:00:38.457276Z",
+    "received_at": "2026-10-21T08:00:38.457315Z",
+    "id": "2026-10-21T08:00:38.457315Z-UNI/USD-buy"
+  },
+  {
+    "action": "sell",
     "symbol": "CRV/USD",
     "quantity": 0.0,
     "price": 0.3877,
@@ -2786,27 +2808,5 @@
     "timestamp": "2026-10-18T04:06:22.634379Z",
     "received_at": "2026-10-18T04:06:22.634392Z",
     "id": "2026-10-18T04:06:22.634392Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "HEX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-10-18T04:01:13.379817Z",
-    "received_at": "2026-10-18T04:01:13.380559Z",
-    "id": "2026-10-18T04:01:13.380559Z-HEX/DAI-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "LINK/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-18T04:00:24.232605Z",
-    "received_at": "2026-10-18T04:00:24.232622Z",
-    "id": "2026-10-18T04:00:24.232622Z-LINK/USD-buy"
   }
 ]
