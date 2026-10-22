@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "NEAR/USD",
-  "quantity": 0.00019505,
-  "price": 5.1456,
+  "symbol": "RENDER/USD",
+  "quantity": 0.01,
+  "price": 1.8748,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-22T03:00:09.387832Z",
-  "received_at": "2026-10-22T03:00:09.387851Z",
-  "id": "2026-10-22T03:00:09.387851Z-NEAR/USD-sell"
+  "timestamp": "2026-10-22T03:00:54.117631Z",
+  "received_at": "2026-10-22T03:00:54.117645Z",
+  "id": "2026-10-22T03:00:54.117645Z-RENDER/USD-sell"
 }
