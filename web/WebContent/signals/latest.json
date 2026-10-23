@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "HYPE/USD",
-  "quantity": 1.28299999,
-  "price": 78.28,
+  "symbol": "ETH/USD",
+  "quantity": 0.0,
+  "price": 2409.11,
   "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-23T14:08:48.733628Z",
-  "received_at": "2026-10-23T14:08:48.733642Z",
-  "id": "2026-10-23T14:08:48.733642Z-HYPE/USD-sell"
+  "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+  "timestamp": "2026-10-23T14:47:18.675852Z",
+  "received_at": "2026-10-23T14:47:18.675865Z",
+  "id": "2026-10-23T14:47:18.675865Z-ETH/USD-sell"
 }
