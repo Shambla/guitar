@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "PLSX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-10-23T08:03:56.029376Z",
+    "received_at": "2026-10-23T08:03:56.029393Z",
+    "id": "2026-10-23T08:03:56.029393Z-PLSX/DAI-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "DOGE/USD",
     "quantity": 1254.075746175069,
     "price": 0.07966,
@@ -2784,16 +2795,5 @@
     "timestamp": "2026-10-19T12:00:42.273814Z",
     "received_at": "2026-10-19T12:00:42.273831Z",
     "id": "2026-10-19T12:00:42.273831Z-FET/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-19T12:00:37.702421Z",
-    "received_at": "2026-10-19T12:00:37.702433Z",
-    "id": "2026-10-19T12:00:37.702433Z-CRV/USD-sell"
   }
 ]
