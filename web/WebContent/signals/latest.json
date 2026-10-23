@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "NEAR/USD",
-  "quantity": 20.329748521010796,
-  "price": 4.914,
+  "symbol": "FET/USD",
+  "quantity": 538.0104374024856,
+  "price": 0.18568,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-23T02:07:06.672596Z",
-  "received_at": "2026-10-23T02:07:06.672613Z",
-  "id": "2026-10-23T02:07:06.672613Z-NEAR/USD-buy"
+  "timestamp": "2026-10-23T02:08:16.295568Z",
+  "received_at": "2026-10-23T02:08:16.295581Z",
+  "id": "2026-10-23T02:08:16.295581Z-FET/USD-buy"
 }
