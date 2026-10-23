@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "NEAR/USD",
+    "quantity": 20.329748521010796,
+    "price": 4.914,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-23T02:07:06.672596Z",
+    "received_at": "2026-10-23T02:07:06.672613Z",
+    "id": "2026-10-23T02:07:06.672613Z-NEAR/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "HEX/DAI",
     "quantity": 100.0,
     "price": null,
@@ -2771,16 +2782,5 @@
     "timestamp": "2026-10-19T02:06:10.078665Z",
     "received_at": "2026-10-19T02:06:10.078679Z",
     "id": "2026-10-19T02:06:10.078679Z-BNB/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "TAO/USD",
-    "quantity": 0.3779,
-    "price": 271.46,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-19T02:00:50.946404Z",
-    "received_at": "2026-10-19T02:00:50.946420Z",
-    "id": "2026-10-19T02:00:50.946420Z-TAO/USD-sell"
   }
 ]
