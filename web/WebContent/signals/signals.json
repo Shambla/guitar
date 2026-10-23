@@ -526,26 +526,26 @@
   {
     "action": "info",
     "symbol": "USO",
-    "price": 160.80999755859375,
+    "price": 159.8000030517578,
     "quantity": null,
     "source": "MAIN_stock_strat12",
-    "note": "Above thresholds | buy 17/16 | sell 17/13",
-    "timestamp": "2026-10-22T17:49:03.217149Z",
-    "received_at": "2026-10-22T17:49:03.217149Z",
-    "id": "2026-10-22T17:49:03.217149Z-USO-info",
+    "note": "Above thresholds | buy 14/16 | sell 16/13",
+    "timestamp": "2026-10-23T05:03:17.495021Z",
+    "received_at": "2026-10-23T05:03:17.495021Z",
+    "id": "2026-10-23T05:03:17.495021Z-USO-info",
     "threshold_met": true,
-    "buy_score": 17,
-    "sell_score": 17,
+    "buy_score": 14,
+    "sell_score": 16,
     "total_buy_components": 41,
     "total_sell_components": 40,
     "buy_threshold": 16,
     "sell_threshold": 13,
     "strength_1_10": 0,
-    "buy_conviction": 0.4146341463414634,
+    "buy_conviction": 0.34146341463414637,
     "buy_persistence": 0,
-    "buy_position_multiplier": 1.0,
-    "sell_conviction": 0.5449999999999999,
-    "sell_persistence": 4,
+    "buy_position_multiplier": 0.5,
+    "sell_conviction": 0.43000000000000005,
+    "sell_persistence": 1,
     "sell_position_multiplier": 1.0
   },
   {
@@ -1068,6 +1068,28 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": false,
     "rsi_bear_div_block_timer": 0
+  },
+  {
+    "action": "buy",
+    "symbol": "CRV/USD",
+    "quantity": 276.16680475006905,
+    "price": 0.3617,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-23T05:01:01.679692Z",
+    "received_at": "2026-10-23T05:01:01.679705Z",
+    "id": "2026-10-23T05:01:01.679705Z-CRV/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "CRV/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-23T05:00:59.718293Z",
+    "received_at": "2026-10-23T05:00:59.718708Z",
+    "id": "2026-10-23T05:00:59.718708Z-CRV/USD-buy"
   },
   {
     "action": "buy",
@@ -2773,38 +2795,5 @@
     "timestamp": "2026-10-19T06:06:27.232704Z",
     "received_at": "2026-10-19T06:06:27.232716Z",
     "id": "2026-10-19T06:06:27.232716Z-CRV/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "RENDER/USD",
-    "quantity": 55.41701302299806,
-    "price": 1.8027,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-19T06:01:03.729472Z",
-    "received_at": "2026-10-19T06:01:03.729487Z",
-    "id": "2026-10-19T06:01:03.729487Z-RENDER/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "RENDER/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-19T06:00:54.674300Z",
-    "received_at": "2026-10-19T06:00:54.674313Z",
-    "id": "2026-10-19T06:00:54.674313Z-RENDER/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-19T06:00:53.355970Z",
-    "received_at": "2026-10-19T06:00:53.355983Z",
-    "id": "2026-10-19T06:00:53.355983Z-CRV/USD-buy"
   }
 ]

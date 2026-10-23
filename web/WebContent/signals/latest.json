@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "HYPE/USD",
-  "quantity": 1.2823800974608874,
-  "price": 77.9,
+  "symbol": "CRV/USD",
+  "quantity": 276.16680475006905,
+  "price": 0.3617,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-23T03:06:18.568902Z",
-  "received_at": "2026-10-23T03:06:18.568915Z",
-  "id": "2026-10-23T03:06:18.568915Z-HYPE/USD-buy"
+  "timestamp": "2026-10-23T05:01:01.679692Z",
+  "received_at": "2026-10-23T05:01:01.679705Z",
+  "id": "2026-10-23T05:01:01.679705Z-CRV/USD-buy"
 }
