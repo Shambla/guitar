@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "HEX/DAI",
+  "action": "buy",
+  "symbol": "FET/USD",
   "quantity": 100.0,
   "price": null,
-  "source": "PulseChain DeFi",
-  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-  "timestamp": "2026-10-24T17:00:37.884591Z",
-  "received_at": "2026-10-24T17:00:37.884604Z",
-  "id": "2026-10-24T17:00:37.884604Z-HEX/DAI-sell"
+  "source": "TradingView JSON",
+  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+  "timestamp": "2026-10-24T19:00:20.655492Z",
+  "received_at": "2026-10-24T19:00:20.655503Z",
+  "id": "2026-10-24T19:00:20.655503Z-FET/USD-buy"
 }
