@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2369.04,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-10-24T08:05:06.869815Z",
+    "received_at": "2026-10-24T08:05:06.869837Z",
+    "id": "2026-10-24T08:05:06.869837Z-ETH/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "DOGE/USD",
     "quantity": 100.0,
@@ -2853,16 +2864,5 @@
     "timestamp": "2026-10-20T08:51:36.726908Z",
     "received_at": "2026-10-20T08:51:36.726921Z",
     "id": "2026-10-20T08:51:36.726921Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "PLSX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-10-20T08:05:20.240439Z",
-    "received_at": "2026-10-20T08:05:20.240450Z",
-    "id": "2026-10-20T08:05:20.240450Z-PLSX/DAI-sell"
   }
 ]
