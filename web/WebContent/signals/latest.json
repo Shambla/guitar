@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "HYPE/USD",
-  "quantity": 1.3301409949454641,
-  "price": 75.1,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-24T16:07:59.053567Z",
-  "received_at": "2026-10-24T16:07:59.053578Z",
-  "id": "2026-10-24T16:07:59.053578Z-HYPE/USD-buy"
+  "action": "sell",
+  "symbol": "HEX/DAI",
+  "quantity": 100.0,
+  "price": null,
+  "source": "PulseChain DeFi",
+  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+  "timestamp": "2026-10-24T17:00:37.884591Z",
+  "received_at": "2026-10-24T17:00:37.884604Z",
+  "id": "2026-10-24T17:00:37.884604Z-HEX/DAI-sell"
 }
