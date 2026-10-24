@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "TAO/USD",
-  "quantity": 0.4013163175214704,
-  "price": 248.93,
+  "symbol": "LINK/USD",
+  "quantity": 8.634832915983075,
+  "price": 11.569,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-24T14:05:50.243739Z",
-  "received_at": "2026-10-24T14:05:50.243750Z",
-  "id": "2026-10-24T14:05:50.243750Z-TAO/USD-buy"
+  "timestamp": "2026-10-24T14:07:00.335206Z",
+  "received_at": "2026-10-24T14:07:00.335217Z",
+  "id": "2026-10-24T14:07:00.335217Z-LINK/USD-buy"
 }
