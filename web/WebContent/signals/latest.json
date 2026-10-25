@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "BNB/USD",
-  "quantity": 0.13523999,
-  "price": 736.68,
+  "symbol": "ETH/USD",
+  "quantity": 0.0,
+  "price": 2326.93,
   "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-25T10:07:17.040048Z",
-  "received_at": "2026-10-25T10:07:17.040060Z",
-  "id": "2026-10-25T10:07:17.040060Z-BNB/USD-sell"
+  "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+  "timestamp": "2026-10-25T10:18:03.866515Z",
+  "received_at": "2026-10-25T10:18:03.866531Z",
+  "id": "2026-10-25T10:18:03.866531Z-ETH/USD-sell"
 }
