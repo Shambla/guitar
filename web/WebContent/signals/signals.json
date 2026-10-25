@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "NEAR/USD",
+    "quantity": 22.066774058300417,
+    "price": 4.5272,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-25T16:03:44.550041Z",
+    "received_at": "2026-10-25T16:03:44.550052Z",
+    "id": "2026-10-25T16:03:44.550052Z-NEAR/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "UNI/USD",
     "quantity": 14.599392665265125,
     "price": 6.8428,
@@ -2853,16 +2864,5 @@
     "timestamp": "2026-10-21T20:00:24.632927Z",
     "received_at": "2026-10-21T20:00:24.632950Z",
     "id": "2026-10-21T20:00:24.632950Z-HYPE/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "HYPE/USD",
-    "quantity": 0.001,
-    "price": 81.62,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-21T18:00:45.851241Z",
-    "received_at": "2026-10-21T18:00:45.851277Z",
-    "id": "2026-10-21T18:00:45.851277Z-HYPE/USD-sell"
   }
 ]
