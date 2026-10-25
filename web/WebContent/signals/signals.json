@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 0.3985810514568137,
+    "price": 250.64,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-25T16:08:51.509138Z",
+    "received_at": "2026-10-25T16:08:51.509151Z",
+    "id": "2026-10-25T16:08:51.509151Z-TAO/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "SOL/USD",
     "quantity": 0.9852216748768473,
     "price": 101.4,
@@ -2853,16 +2864,5 @@
     "timestamp": "2026-10-22T02:00:43.814918Z",
     "received_at": "2026-10-22T02:00:43.814981Z",
     "id": "2026-10-22T02:00:43.814981Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "PLSX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-10-21T20:00:47.313064Z",
-    "received_at": "2026-10-21T20:00:47.313077Z",
-    "id": "2026-10-21T20:00:47.313077Z-PLSX/DAI-sell"
   }
 ]
