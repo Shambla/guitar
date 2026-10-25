@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "PLSX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-10-25T20:02:58.378961Z",
+    "received_at": "2026-10-25T20:02:58.378976Z",
+    "id": "2026-10-25T20:02:58.378976Z-PLSX/DAI-sell"
+  },
+  {
     "action": "buy",
     "symbol": "DOGE/USD",
     "quantity": 100.0,
@@ -2853,16 +2864,5 @@
     "timestamp": "2026-10-22T03:00:24.044807Z",
     "received_at": "2026-10-22T03:00:24.044822Z",
     "id": "2026-10-22T03:00:24.044822Z-SOL/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "SOL/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-22T03:00:22.794943Z",
-    "received_at": "2026-10-22T03:00:22.794954Z",
-    "id": "2026-10-22T03:00:22.794954Z-SOL/USD-sell"
   }
 ]
