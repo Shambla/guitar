@@ -1,6 +1,28 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2326.09,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-10-25T23:43:35.358999Z",
+    "received_at": "2026-10-25T23:43:35.359015Z",
+    "id": "2026-10-25T23:43:35.359015Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2336.52,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-10-25T23:10:52.162591Z",
+    "received_at": "2026-10-25T23:10:52.162606Z",
+    "id": "2026-10-25T23:10:52.162606Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "HYPE/USD",
     "quantity": 1.312,
     "price": 76.68,
@@ -2842,27 +2864,5 @@
     "timestamp": "2026-10-23T02:07:06.672596Z",
     "received_at": "2026-10-23T02:07:06.672613Z",
     "id": "2026-10-23T02:07:06.672613Z-NEAR/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "HEX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-10-23T02:03:55.713173Z",
-    "received_at": "2026-10-23T02:03:55.713190Z",
-    "id": "2026-10-23T02:03:55.713190Z-HEX/DAI-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "TAO/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-23T02:00:55.909214Z",
-    "received_at": "2026-10-23T02:00:55.909225Z",
-    "id": "2026-10-23T02:00:55.909225Z-TAO/USD-buy"
   }
 ]
