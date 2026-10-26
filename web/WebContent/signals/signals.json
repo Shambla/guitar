@@ -1,27 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "UNI/USD",
-    "quantity": 25.59762299,
-    "price": 6.9543,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-26T14:10:26.003835Z",
-    "received_at": "2026-10-26T14:10:26.003851Z",
-    "id": "2026-10-26T14:10:26.003851Z-UNI/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 276.32999999,
-    "price": 0.3483,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-26T14:10:25.826320Z",
-    "received_at": "2026-10-26T14:10:25.826332Z",
-    "id": "2026-10-26T14:10:25.826332Z-CRV/USD-sell"
-  },
-  {
     "action": "buy",
     "symbol": "EWT",
     "price": 110.94000244140625,
@@ -552,9 +530,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 17/16 | sell 15/13",
-    "timestamp": "2026-10-26T01:42:09.442816Z",
-    "received_at": "2026-10-26T01:42:09.442816Z",
-    "id": "2026-10-26T01:42:09.442816Z-USO-info",
+    "timestamp": "2026-10-26T14:11:23.023879Z",
+    "received_at": "2026-10-26T14:11:23.023879Z",
+    "id": "2026-10-26T14:11:23.023879Z-USO-info",
     "threshold_met": true,
     "buy_score": 17,
     "sell_score": 15,
@@ -826,9 +804,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat14",
     "note": "buy 17/41 | sell 15/40 | BUY threshold met but HIGH divergences detected (RSI bearish divergence block active: 9d remaining, events≈4). Proceed with caution.",
-    "timestamp": "2026-10-26T01:42:09.427356Z",
-    "received_at": "2026-10-26T01:42:09.427356Z",
-    "id": "2026-10-26T01:42:09.427356Z-USO-buy",
+    "timestamp": "2026-10-26T14:11:23.006912Z",
+    "received_at": "2026-10-26T14:11:23.006912Z",
+    "id": "2026-10-26T14:11:23.006912Z-USO-buy",
     "buy_score": 17,
     "sell_score": 15,
     "total_buy_components": 41,
@@ -1214,6 +1192,28 @@
     "rsi_bear_div_block_timer": 0,
     "pnl_pct": -4.4198,
     "entry_price": 49.54999923706055
+  },
+  {
+    "action": "sell",
+    "symbol": "UNI/USD",
+    "quantity": 25.59762299,
+    "price": 6.9543,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-26T14:10:26.003835Z",
+    "received_at": "2026-10-26T14:10:26.003851Z",
+    "id": "2026-10-26T14:10:26.003851Z-UNI/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 276.32999999,
+    "price": 0.3483,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-26T14:10:25.826320Z",
+    "received_at": "2026-10-26T14:10:25.826332Z",
+    "id": "2026-10-26T14:10:25.826332Z-CRV/USD-sell"
   },
   {
     "action": "buy",
