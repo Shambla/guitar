@@ -53,6 +53,10 @@ Success URL pattern:
 https://brianstreckfus.com/audio-purchase.html?track=rap-1-may-2026&from=mp3&paid=true
 ```
 
+## Length rule
+
+Do not sell a track shorter than 2 minutes (120 seconds). A short file is an unfair surprise after someone pays. Leave it out of `audio/fulldownloads/`, `audio/previews/`, and `mp3-downloads-data.json`. Check the length before a track is renamed into the store folders.
+
 ## What we are intentionally *not* doing (for now)
 
 | Idea | Verdict |

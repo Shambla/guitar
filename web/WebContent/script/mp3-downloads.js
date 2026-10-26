@@ -63,6 +63,7 @@
 		world: ['world'],
 		choro: ['choro'],
 		african: ['african'],
+		egypt: ['egypt'],
 	};
 
 	const URL_ALIASES = {

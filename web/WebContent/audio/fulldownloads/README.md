@@ -6,6 +6,6 @@ Kebab-case files in this folder (e.g. `reggae-9-e-minor.mp3`) are what the live 
 
 They are tracked in git so a push to `master` deploys them to S3 with the rest of the site.
 
-**Catalog tail (2026-09-28):** Last full file added here matches the last row in `mp3-downloads-data.json`: `choro-4-f-minor-c-phrygian.mp3` (Choro 4 — F minor / C Phrygian). Next track = new MP3 in this folder + 30s preview + JSON row + Stripe Payment Link (see `DIRECT_AUDIO_SALES.md`).
+**Catalog tail (2026-10-26):** Last full files added here are the Egypt tracks in `mp3-downloads-data.json`, through `egypt-13-f-sharp-harmonic-minor.mp3`. Tracks under 2 minutes stay out of this folder. Next track = new MP3 in this folder + 30s preview + JSON row + Stripe Payment Link (see `DIRECT_AUDIO_SALES.md`).
 
 Human-named DAW export folders (`Rap May 2026/`, `Reggae/`, `Bossa/`) may stay local for organization; **site filenames** must match the kebab-case names above when copied into `fulldownloads/`.

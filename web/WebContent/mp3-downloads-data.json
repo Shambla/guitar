@@ -767,5 +767,149 @@
       "purchase_page": "audio-purchase.html?track=choro-4-f-minor-c-phrygian&from=mp3"
     },
     "key": "F minor (C Phrygian)"
+  },
+  {
+    "id": "egypt-1-c-sharp-harmonic-minor",
+    "title": "Egypt 1 — C# harmonic minor",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "world", "egypt", "backing track"],
+    "price": "$3.99",
+    "collection": "egypt",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/egypt-1-c-sharp-harmonic-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/egypt-1-c-sharp-harmonic-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/7sY9AVa0E1CEcZl2Ip8og0C",
+      "purchase_page": "audio-purchase.html?track=egypt-1-c-sharp-harmonic-minor&from=mp3"
+    },
+    "key": "C# harmonic minor"
+  },
+  {
+    "id": "egypt-5-d-harmonic-minor",
+    "title": "Egypt 5 — D harmonic minor",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "world", "egypt", "backing track"],
+    "price": "$3.99",
+    "collection": "egypt",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/egypt-5-d-harmonic-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/egypt-5-d-harmonic-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/eVqaEZ3Cg4OQ0czdn38og0D",
+      "purchase_page": "audio-purchase.html?track=egypt-5-d-harmonic-minor&from=mp3"
+    },
+    "key": "D harmonic minor"
+  },
+  {
+    "id": "egypt-6-f-harmonic-minor",
+    "title": "Egypt 6 — F harmonic minor",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "world", "egypt", "backing track"],
+    "price": "$3.99",
+    "collection": "egypt",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/egypt-6-f-harmonic-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/egypt-6-f-harmonic-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/bJeeVf5Ko6WY2kH4Qx8og0E",
+      "purchase_page": "audio-purchase.html?track=egypt-6-f-harmonic-minor&from=mp3"
+    },
+    "key": "F harmonic minor"
+  },
+  {
+    "id": "egypt-7-f-harmonic-minor",
+    "title": "Egypt 7 — F harmonic minor",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "world", "egypt", "backing track"],
+    "price": "$3.99",
+    "collection": "egypt",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/egypt-7-f-harmonic-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/egypt-7-f-harmonic-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/aFadRbegUepqe3p82J8og0F",
+      "purchase_page": "audio-purchase.html?track=egypt-7-f-harmonic-minor&from=mp3"
+    },
+    "key": "F harmonic minor"
+  },
+  {
+    "id": "egypt-9-f-sharp-harmonic-minor",
+    "title": "Egypt 9 — F# harmonic minor",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "world", "egypt", "backing track"],
+    "price": "$3.99",
+    "collection": "egypt",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/egypt-9-f-sharp-harmonic-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/egypt-9-f-sharp-harmonic-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/14A8wRfkYbdecZl6YF8og0G",
+      "purchase_page": "audio-purchase.html?track=egypt-9-f-sharp-harmonic-minor&from=mp3"
+    },
+    "key": "F# harmonic minor"
+  },
+  {
+    "id": "egypt-10-f-sharp-harmonic-minor",
+    "title": "Egypt 10 — F# harmonic minor",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "world", "egypt", "backing track"],
+    "price": "$3.99",
+    "collection": "egypt",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/egypt-10-f-sharp-harmonic-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/egypt-10-f-sharp-harmonic-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/14A4gB4Gk2GIe3pbeV8og0H",
+      "purchase_page": "audio-purchase.html?track=egypt-10-f-sharp-harmonic-minor&from=mp3"
+    },
+    "key": "F# harmonic minor"
+  },
+  {
+    "id": "egypt-11-f-sharp-harmonic-minor",
+    "title": "Egypt 11 — F# harmonic minor",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "world", "egypt", "backing track"],
+    "price": "$3.99",
+    "collection": "egypt",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/egypt-11-f-sharp-harmonic-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/egypt-11-f-sharp-harmonic-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/cNi00l0q41CE9N9aaR8og0I",
+      "purchase_page": "audio-purchase.html?track=egypt-11-f-sharp-harmonic-minor&from=mp3"
+    },
+    "key": "F# harmonic minor"
+  },
+  {
+    "id": "egypt-12-f-sharp-harmonic-minor",
+    "title": "Egypt 12 — F# harmonic minor",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "world", "egypt", "backing track"],
+    "price": "$3.99",
+    "collection": "egypt",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/egypt-12-f-sharp-harmonic-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/egypt-12-f-sharp-harmonic-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/28E7sNc8MdlmaRd96N8og0J",
+      "purchase_page": "audio-purchase.html?track=egypt-12-f-sharp-harmonic-minor&from=mp3"
+    },
+    "key": "F# harmonic minor"
+  },
+  {
+    "id": "egypt-13-f-sharp-harmonic-minor",
+    "title": "Egypt 13 — F# harmonic minor",
+    "composer": "Brian Streckfus",
+    "tags": ["mp3", "world", "egypt", "backing track"],
+    "price": "$3.99",
+    "collection": "egypt",
+    "direct_sale": {
+      "enabled": true,
+      "preview_audio": "audio/previews/egypt-13-f-sharp-harmonic-minor-30s.mp3",
+      "full_audio": "audio/fulldownloads/egypt-13-f-sharp-harmonic-minor.mp3",
+      "stripe_payment_link": "https://buy.stripe.com/aFa14pa0E6WY9N96YF8og0K",
+      "purchase_page": "audio-purchase.html?track=egypt-13-f-sharp-harmonic-minor&from=mp3"
+    },
+    "key": "F# harmonic minor"
   }
 ]
