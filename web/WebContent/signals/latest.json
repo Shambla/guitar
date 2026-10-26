@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "NEAR/USD",
-  "quantity": 22.06619505,
-  "price": 4.5031,
+  "action": "buy",
+  "symbol": "HYPE/USD",
+  "quantity": 1.3133701076963489,
+  "price": 76.06,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-26T02:06:32.685073Z",
-  "received_at": "2026-10-26T02:06:32.685087Z",
-  "id": "2026-10-26T02:06:32.685087Z-NEAR/USD-sell"
+  "timestamp": "2026-10-26T02:07:36.303231Z",
+  "received_at": "2026-10-26T02:07:36.303244Z",
+  "id": "2026-10-26T02:07:36.303244Z-HYPE/USD-buy"
 }

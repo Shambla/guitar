@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "HYPE/USD",
+    "quantity": 1.3133701076963489,
+    "price": 76.06,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-26T02:07:36.303231Z",
+    "received_at": "2026-10-26T02:07:36.303244Z",
+    "id": "2026-10-26T02:07:36.303244Z-HYPE/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "NEAR/USD",
     "quantity": 22.06619505,
@@ -2853,16 +2864,5 @@
     "timestamp": "2026-10-23T08:00:54.880711Z",
     "received_at": "2026-10-23T08:00:54.880729Z",
     "id": "2026-10-23T08:00:54.880729Z-DOGE/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "CRV/USD",
-    "quantity": 276.16680475006905,
-    "price": 0.3617,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-23T05:01:01.679692Z",
-    "received_at": "2026-10-23T05:01:01.679705Z",
-    "id": "2026-10-23T05:01:01.679705Z-CRV/USD-buy"
   }
 ]
