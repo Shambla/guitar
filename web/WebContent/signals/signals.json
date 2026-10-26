@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-26T11:00:38.003765Z",
+    "received_at": "2026-10-26T11:00:38.003778Z",
+    "id": "2026-10-26T11:00:38.003778Z-FET/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "PLSX/DAI",
     "quantity": 100.0,
     "price": null,
@@ -2853,16 +2864,5 @@
     "timestamp": "2026-10-23T14:00:44.523707Z",
     "received_at": "2026-10-23T14:00:44.523719Z",
     "id": "2026-10-23T14:00:44.523719Z-TAO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "UNI/USD",
-    "quantity": 14.05196499,
-    "price": 7.1525,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-23T14:00:38.030442Z",
-    "received_at": "2026-10-23T14:00:38.030454Z",
-    "id": "2026-10-23T14:00:38.030454Z-UNI/USD-sell"
   }
 ]
