@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "FET/USD",
-  "quantity": 573.9539688916949,
-  "price": 0.17406,
+  "action": "sell",
+  "symbol": "LINK/USD",
+  "quantity": 0.01,
+  "price": 11.451,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-26T11:06:11.553802Z",
-  "received_at": "2026-10-26T11:06:11.553814Z",
-  "id": "2026-10-26T11:06:11.553814Z-FET/USD-buy"
+  "timestamp": "2026-10-26T12:00:39.179303Z",
+  "received_at": "2026-10-26T12:00:39.179318Z",
+  "id": "2026-10-26T12:00:39.179318Z-LINK/USD-sell"
 }
