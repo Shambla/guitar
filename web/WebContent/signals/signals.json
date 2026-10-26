@@ -2,6 +2,39 @@
   {
     "action": "sell",
     "symbol": "ETH/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-26T19:00:14.949246Z",
+    "received_at": "2026-10-26T19:00:14.949263Z",
+    "id": "2026-10-26T19:00:14.949263Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "SOL/USD",
+    "quantity": 0.0,
+    "price": 100.26,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-26T19:00:10.474740Z",
+    "received_at": "2026-10-26T19:00:10.474756Z",
+    "id": "2026-10-26T19:00:10.474756Z-SOL/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "SOL/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-26T19:00:09.496846Z",
+    "received_at": "2026-10-26T19:00:09.496958Z",
+    "id": "2026-10-26T19:00:09.496958Z-SOL/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
     "quantity": 0.0,
     "price": 2334.06,
     "source": "MASTER_BOT_162",
@@ -2831,38 +2864,5 @@
     "timestamp": "2026-10-24T07:00:21.403842Z",
     "received_at": "2026-10-24T07:00:21.403858Z",
     "id": "2026-10-24T07:00:21.403858Z-UNI/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "BNB/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-24T07:00:20.806560Z",
-    "received_at": "2026-10-24T07:00:20.806572Z",
-    "id": "2026-10-24T07:00:20.806572Z-BNB/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "HYPE/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-24T07:00:20.404375Z",
-    "received_at": "2026-10-24T07:00:20.404387Z",
-    "id": "2026-10-24T07:00:20.404387Z-HYPE/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "LINK/USD",
-    "quantity": 0.0,
-    "price": 11.776,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-24T07:00:19.266504Z",
-    "received_at": "2026-10-24T07:00:19.266514Z",
-    "id": "2026-10-24T07:00:19.266514Z-LINK/USD-sell"
   }
 ]
