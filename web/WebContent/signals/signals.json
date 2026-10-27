@@ -1,17 +1,6 @@
 [
   {
     "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 580.6863712908658,
-    "price": 0.17204,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-27T03:06:10.331989Z",
-    "received_at": "2026-10-27T03:06:10.332002Z",
-    "id": "2026-10-27T03:06:10.332002Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
     "symbol": "EWT",
     "price": 110.94000244140625,
     "quantity": null,
@@ -666,9 +655,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 11/16 | sell 16/13",
-    "timestamp": "2026-10-26T14:30:22.216503Z",
-    "received_at": "2026-10-26T14:30:22.216503Z",
-    "id": "2026-10-26T14:30:22.216503Z-INDA-info",
+    "timestamp": "2026-10-27T03:06:28.843990Z",
+    "received_at": "2026-10-27T03:06:28.843990Z",
+    "id": "2026-10-27T03:06:28.843990Z-INDA-info",
     "threshold_met": true,
     "buy_score": 11,
     "sell_score": 16,
@@ -691,9 +680,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 11/16 | sell 13/13",
-    "timestamp": "2026-10-26T14:33:29.883593Z",
-    "received_at": "2026-10-26T14:33:29.883593Z",
-    "id": "2026-10-26T14:33:29.883593Z-EWJ-info",
+    "timestamp": "2026-10-27T03:09:45.189724Z",
+    "received_at": "2026-10-27T03:09:45.189724Z",
+    "id": "2026-10-27T03:09:45.189724Z-EWJ-info",
     "threshold_met": true,
     "buy_score": 11,
     "sell_score": 13,
@@ -1203,6 +1192,17 @@
     "rsi_bear_div_block_timer": 0,
     "pnl_pct": -4.4198,
     "entry_price": 49.54999923706055
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 580.6863712908658,
+    "price": 0.17204,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-27T03:06:10.331989Z",
+    "received_at": "2026-10-27T03:06:10.332002Z",
+    "id": "2026-10-27T03:06:10.332002Z-FET/USD-buy"
   },
   {
     "action": "sell",
