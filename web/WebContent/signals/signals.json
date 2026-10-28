@@ -1,6 +1,28 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.06359327,
+    "price": 2361.75,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
+    "timestamp": "2026-10-28T11:11:08.567744Z",
+    "received_at": "2026-10-28T11:11:08.567762Z",
+    "id": "2026-10-28T11:11:08.567762Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.04234148,
+    "price": 2357.0265,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-10-28T11:11:06.811060Z",
+    "received_at": "2026-10-28T11:11:06.811071Z",
+    "id": "2026-10-28T11:11:06.811071Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "FET/USD",
     "quantity": 544.9591280653951,
     "price": 0.18332,
@@ -2842,27 +2864,5 @@
     "timestamp": "2026-10-25T14:00:24.469179Z",
     "received_at": "2026-10-25T14:00:24.469219Z",
     "id": "2026-10-25T14:00:24.469219Z-HYPE/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2328.31,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-10-25T12:43:28.730324Z",
-    "received_at": "2026-10-25T12:43:28.730340Z",
-    "id": "2026-10-25T12:43:28.730340Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2335.03,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-10-25T12:11:11.553649Z",
-    "received_at": "2026-10-25T12:11:11.553666Z",
-    "id": "2026-10-25T12:11:11.553666Z-ETH/USD-sell"
   }
 ]
