@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "FET/USD",
+    "quantity": 544.9591280653951,
+    "price": 0.18332,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-28T11:06:15.683976Z",
+    "received_at": "2026-10-28T11:06:15.683988Z",
+    "id": "2026-10-28T11:06:15.683988Z-FET/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -2853,16 +2864,5 @@
     "timestamp": "2026-10-25T12:11:11.553649Z",
     "received_at": "2026-10-25T12:11:11.553666Z",
     "id": "2026-10-25T12:11:11.553666Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "DOGE/USD",
-    "quantity": 1276.92689769,
-    "price": 0.07667,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-25T12:08:19.590674Z",
-    "received_at": "2026-10-25T12:08:19.590687Z",
-    "id": "2026-10-25T12:08:19.590687Z-DOGE/USD-sell"
   }
 ]
