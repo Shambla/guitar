@@ -1,5 +1,38 @@
 [
   {
+    "action": "buy",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-10-28T06:04:19.201571Z",
+    "received_at": "2026-10-28T06:04:19.201588Z",
+    "id": "2026-10-28T06:04:19.201588Z-HEX/DAI-buy"
+  },
+  {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 565.73850812,
+    "price": 0.18004,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-10-28T06:01:25.473522Z",
+    "received_at": "2026-10-28T06:01:25.473538Z",
+    "id": "2026-10-28T06:01:25.473538Z-FET/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-28T06:00:57.034090Z",
+    "received_at": "2026-10-28T06:00:57.034113Z",
+    "id": "2026-10-28T06:00:57.034113Z-FET/USD-sell"
+  },
+  {
     "action": "sell",
     "symbol": "NEAR/USD",
     "quantity": 0.00019505,
@@ -2831,38 +2864,5 @@
     "timestamp": "2026-10-25T10:07:17.040048Z",
     "received_at": "2026-10-25T10:07:17.040060Z",
     "id": "2026-10-25T10:07:17.040060Z-BNB/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "BNB/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-25T10:00:09.793926Z",
-    "received_at": "2026-10-25T10:00:09.793938Z",
-    "id": "2026-10-25T10:00:09.793938Z-BNB/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2344.68,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-10-25T07:55:01.283068Z",
-    "received_at": "2026-10-25T07:55:01.283087Z",
-    "id": "2026-10-25T07:55:01.283087Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2345.22,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-10-25T07:20:19.589896Z",
-    "received_at": "2026-10-25T07:20:19.589914Z",
-    "id": "2026-10-25T07:20:19.589914Z-ETH/USD-sell"
   }
 ]
