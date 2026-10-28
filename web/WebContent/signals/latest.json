@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "HEX/DAI",
+  "action": "sell",
+  "symbol": "HYPE/USD",
   "quantity": 100.0,
   "price": null,
-  "source": "PulseChain DeFi",
-  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-  "timestamp": "2026-10-28T06:04:19.201571Z",
-  "received_at": "2026-10-28T06:04:19.201588Z",
-  "id": "2026-10-28T06:04:19.201588Z-HEX/DAI-buy"
+  "source": "TradingView JSON",
+  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+  "timestamp": "2026-10-28T08:00:39.944720Z",
+  "received_at": "2026-10-28T08:00:39.944736Z",
+  "id": "2026-10-28T08:00:39.944736Z-HYPE/USD-sell"
 }
