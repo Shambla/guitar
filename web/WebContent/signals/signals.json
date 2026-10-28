@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.04252098,
+    "price": 2347.0764400000003,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-10-28T02:22:37.784132Z",
+    "received_at": "2026-10-28T02:22:37.784157Z",
+    "id": "2026-10-28T02:22:37.784157Z-ETH/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "NEAR/USD",
     "quantity": 22.21119505,
@@ -2853,16 +2864,5 @@
     "timestamp": "2026-10-25T07:00:50.681923Z",
     "received_at": "2026-10-25T07:00:50.681970Z",
     "id": "2026-10-25T07:00:50.681970Z-TAO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "SOL/USD",
-    "quantity": 0.95364048,
-    "price": 101.21,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-25T07:00:49.100030Z",
-    "received_at": "2026-10-25T07:00:49.100044Z",
-    "id": "2026-10-25T07:00:49.100044Z-SOL/USD-sell"
   }
 ]
