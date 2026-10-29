@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "PLSX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-10-29T08:03:16.936597Z",
+    "received_at": "2026-10-29T08:03:16.936810Z",
+    "id": "2026-10-29T08:03:16.936810Z-PLSX/DAI-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "TAO/USD",
     "quantity": 0.38019999,
     "price": 248.54,
@@ -1106,30 +1117,6 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": true,
     "rsi_bear_div_block_timer": 9
-  },
-  {
-    "action": "buy",
-    "symbol": "NVDA",
-    "price": 228.52000427246094,
-    "quantity": null,
-    "source": "MAIN_stock_strat14",
-    "note": "buy 16/41 | sell 11/40 | Strength=1/10 | MTF:D-only (no higher timeframe confirmation)",
-    "timestamp": "2026-10-15T06:16:54.810010Z",
-    "received_at": "2026-10-15T06:16:54.810010Z",
-    "id": "2026-10-15T06:16:54.810010Z-NVDA-buy",
-    "buy_score": 16,
-    "sell_score": 11,
-    "total_buy_components": 41,
-    "total_sell_components": 40,
-    "buy_conviction": 0.4502439024390244,
-    "buy_persistence": 2,
-    "buy_position_multiplier": 1.0,
-    "sell_conviction": 0.275,
-    "sell_persistence": 0,
-    "sell_position_multiplier": 0.5,
-    "buy_signal_raw": true,
-    "buy_blocked_rsi_bear_div": false,
-    "rsi_bear_div_block_timer": 0
   },
   {
     "action": "buy",
