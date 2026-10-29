@@ -476,13 +476,13 @@
   {
     "action": "info",
     "symbol": "PPLT",
-    "price": 14.050000190734863,
+    "price": 13.9399995803833,
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 14/16 | sell 15/13",
-    "timestamp": "2026-10-28T16:17:56.023433Z",
-    "received_at": "2026-10-28T16:17:56.023433Z",
-    "id": "2026-10-28T16:17:56.023433Z-PPLT-info",
+    "timestamp": "2026-10-29T13:37:04.070226Z",
+    "received_at": "2026-10-29T13:37:04.070226Z",
+    "id": "2026-10-29T13:37:04.070226Z-PPLT-info",
     "threshold_met": true,
     "buy_score": 14,
     "sell_score": 15,
@@ -494,8 +494,8 @@
     "buy_conviction": 0.34146341463414637,
     "buy_persistence": 0,
     "buy_position_multiplier": 0.5,
-    "sell_conviction": 0.435,
-    "sell_persistence": 2,
+    "sell_conviction": 0.495,
+    "sell_persistence": 4,
     "sell_position_multiplier": 1.0
   },
   {
