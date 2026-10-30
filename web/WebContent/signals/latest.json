@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "UNI/USD",
-  "quantity": 15.298707259236595,
-  "price": 6.53,
+  "symbol": "BNB/USD",
+  "quantity": 0.14255573929406398,
+  "price": 700.78,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-10-30T02:06:10.564148Z",
-  "received_at": "2026-10-30T02:06:10.564168Z",
-  "id": "2026-10-30T02:06:10.564168Z-UNI/USD-buy"
+  "timestamp": "2026-10-30T02:06:38.987571Z",
+  "received_at": "2026-10-30T02:06:38.987591Z",
+  "id": "2026-10-30T02:06:38.987591Z-BNB/USD-buy"
 }
