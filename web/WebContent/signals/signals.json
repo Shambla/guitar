@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2236.71,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-10-30T20:16:46.709447Z",
+    "received_at": "2026-10-30T20:16:46.715372Z",
+    "id": "2026-10-30T20:16:46.715372Z-ETH/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "PLSX/DAI",
     "quantity": 100.0,
@@ -2879,16 +2890,5 @@
     "timestamp": "2026-10-26T11:06:11.553802Z",
     "received_at": "2026-10-26T11:06:11.553814Z",
     "id": "2026-10-26T11:06:11.553814Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-26T11:00:38.003765Z",
-    "received_at": "2026-10-26T11:00:38.003778Z",
-    "id": "2026-10-26T11:00:38.003778Z-FET/USD-buy"
   }
 ]
