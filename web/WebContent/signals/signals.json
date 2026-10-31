@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "DOGE/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-31T04:01:51.581360Z",
+    "received_at": "2026-10-31T04:01:51.581379Z",
+    "id": "2026-10-31T04:01:51.581379Z-DOGE/USD-buy"
+  },
+  {
     "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 0.0,
@@ -2851,16 +2862,5 @@
     "timestamp": "2026-10-26T19:00:10.474740Z",
     "received_at": "2026-10-26T19:00:10.474756Z",
     "id": "2026-10-26T19:00:10.474756Z-SOL/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "SOL/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-26T19:00:09.496846Z",
-    "received_at": "2026-10-26T19:00:09.496958Z",
-    "id": "2026-10-26T19:00:09.496958Z-SOL/USD-sell"
   }
 ]
