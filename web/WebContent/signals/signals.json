@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 2240.78,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-10-31T02:34:41.303531Z",
+    "received_at": "2026-10-31T02:34:41.305285Z",
+    "id": "2026-10-31T02:34:41.305285Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "TAO/USD",
     "quantity": 0.85209999,
     "price": 237.46,
@@ -2851,16 +2862,5 @@
     "timestamp": "2026-10-26T15:00:39.236766Z",
     "received_at": "2026-10-26T15:00:39.236782Z",
     "id": "2026-10-26T15:00:39.236782Z-HYPE/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2310.25,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-10-26T14:28:58.678687Z",
-    "received_at": "2026-10-26T14:28:58.678698Z",
-    "id": "2026-10-26T14:28:58.678698Z-ETH/USD-sell"
   }
 ]
