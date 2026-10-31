@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "BNB/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-10-31T06:00:15.911050Z",
+    "received_at": "2026-10-31T06:00:15.911078Z",
+    "id": "2026-10-31T06:00:15.911078Z-BNB/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "CRV/USD",
     "quantity": 353.1073446327684,
@@ -2851,16 +2862,5 @@
     "timestamp": "2026-10-26T19:00:24.641675Z",
     "received_at": "2026-10-26T19:00:24.642664Z",
     "id": "2026-10-26T19:00:24.642664Z-FET/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-26T19:00:24.034879Z",
-    "received_at": "2026-10-26T19:00:24.034893Z",
-    "id": "2026-10-26T19:00:24.034893Z-FET/USD-sell"
   }
 ]
