@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "CRV/USD",
+  "symbol": "PLSX/DAI",
   "quantity": 100.0,
   "price": null,
-  "source": "TradingView JSON",
-  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-11-01T00:00:53.035179Z",
-  "received_at": "2026-11-01T00:00:53.035221Z",
-  "id": "2026-11-01T00:00:53.035221Z-CRV/USD-sell"
+  "source": "PulseChain DeFi",
+  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+  "timestamp": "2026-11-01T00:03:44.663001Z",
+  "received_at": "2026-11-01T00:03:44.663029Z",
+  "id": "2026-11-01T00:03:44.663029Z-PLSX/DAI-sell"
 }
