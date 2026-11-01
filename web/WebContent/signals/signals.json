@@ -1,6 +1,28 @@
 [
   {
     "action": "sell",
+    "symbol": "UNI/USD",
+    "quantity": 0.0,
+    "price": 7.0851,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-11-01T02:00:20.173966Z",
+    "received_at": "2026-11-01T02:00:20.173984Z",
+    "id": "2026-11-01T02:00:20.173984Z-UNI/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "UNI/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-11-01T02:00:20.029018Z",
+    "received_at": "2026-11-01T02:00:20.029039Z",
+    "id": "2026-11-01T02:00:20.029039Z-UNI/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "BTC/USD",
     "quantity": 0.0,
     "price": 77524.38,
@@ -2840,27 +2862,5 @@
     "timestamp": "2026-10-27T03:06:10.331989Z",
     "received_at": "2026-10-27T03:06:10.332002Z",
     "id": "2026-10-27T03:06:10.332002Z-FET/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "HYPE/USD",
-    "quantity": 0.0,
-    "price": 77.81,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-27T03:01:05.156236Z",
-    "received_at": "2026-10-27T03:01:05.156251Z",
-    "id": "2026-10-27T03:01:05.156251Z-HYPE/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "HYPE/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-27T03:01:04.167350Z",
-    "received_at": "2026-10-27T03:01:04.167362Z",
-    "id": "2026-10-27T03:01:04.167362Z-HYPE/USD-sell"
   }
 ]
