@@ -1,6 +1,28 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.06620558,
+    "price": 2264.0,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
+    "timestamp": "2026-11-01T03:30:19.798223Z",
+    "received_at": "2026-11-01T03:30:19.798243Z",
+    "id": "2026-11-01T03:30:19.798243Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.04416961,
+    "price": 2259.472,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-11-01T03:30:18.034491Z",
+    "received_at": "2026-11-01T03:30:18.034503Z",
+    "id": "2026-11-01T03:30:18.034503Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "NEAR/USD",
     "quantity": 22.654161569480312,
     "price": 4.4098,
@@ -2840,27 +2862,5 @@
     "timestamp": "2026-10-27T14:00:30.124695Z",
     "received_at": "2026-10-27T14:00:30.124710Z",
     "id": "2026-10-27T14:00:30.124710Z-HYPE/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "NEAR/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-27T14:00:19.964651Z",
-    "received_at": "2026-10-27T14:00:19.964668Z",
-    "id": "2026-10-27T14:00:19.964668Z-NEAR/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "PLSX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-10-27T12:02:23.044763Z",
-    "received_at": "2026-10-27T12:02:23.044777Z",
-    "id": "2026-10-27T12:02:23.044777Z-PLSX/DAI-buy"
   }
 ]
