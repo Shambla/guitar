@@ -1,11 +1,11 @@
 {
-  "action": "buy",
-  "symbol": "PLSX/DAI",
+  "action": "sell",
+  "symbol": "HEX/DAI",
   "quantity": 100.0,
   "price": null,
   "source": "PulseChain DeFi",
   "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-  "timestamp": "2026-11-01T20:01:53.979422Z",
-  "received_at": "2026-11-01T20:01:53.979437Z",
-  "id": "2026-11-01T20:01:53.979437Z-PLSX/DAI-buy"
+  "timestamp": "2026-11-01T21:06:05.259282Z",
+  "received_at": "2026-11-01T21:06:05.259678Z",
+  "id": "2026-11-01T21:06:05.259678Z-HEX/DAI-sell"
 }
