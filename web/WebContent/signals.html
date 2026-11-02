@@ -675,6 +675,11 @@
 				opacity: 1 !important;
 				min-height: 200px;
 			}
+			.signal-pair-grid {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 20px;
+			}
 			
 			/* Top nav must sit above fixed .signals-header (z-index 1000) so links are clickable */
 			nav {
@@ -745,6 +750,9 @@
 				.signals-grid {
 					grid-template-columns: 1fr !important;
 					gap: 15px !important;
+				}
+				.signal-pair-grid {
+					grid-template-columns: 1fr !important;
 				}
 				
 				.signal-card {
@@ -2111,7 +2119,7 @@
 						</div>
 					</div>
 					
-					<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+					<div class="signal-pair-grid" style="margin-top: 20px;">
 						<!-- Top 3 BUY Signals -->
 						<div style="background: rgba(76, 175, 80, 0.15); border: 2px solid rgba(76, 175, 80, 0.5); border-radius: 8px; padding: 20px;">
 							<h4 style="color: #4caf50; font-size: 20px; margin-bottom: 15px; text-align: center;">🟢 Top 3 BUY Signals</h4>
@@ -2131,6 +2139,26 @@
 							</div>
 							<div id="top-sell-signals" style="min-height: 100px;">
 								<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">Loading...</div>
+							</div>
+						</div>
+					</div>
+					<div id="recent-rotations" style="margin-top: 28px;">
+						<h3 style="color: #ffb74d; font-size: 22px; margin-bottom: 8px; text-align: center;">Recent rotations</h3>
+						<p id="rotation-note" style="color: rgba(255, 255, 255, 0.75); font-size: 14px; line-height: 1.5; text-align: center; max-width: 760px; margin: 0 auto 16px;">
+							Best 3 each way. A bullish rotation climbed into the top 10. A bearish rotation was a top-3 leader and has slipped. These are not buy or sell orders.
+						</p>
+						<div class="signal-pair-grid">
+							<div style="background: rgba(76, 175, 80, 0.12); border: 2px solid rgba(76, 175, 80, 0.45); border-radius: 8px; padding: 20px;">
+								<h4 style="color: #4caf50; font-size: 18px; margin-bottom: 15px; text-align: center;">3 bullish rotations</h4>
+								<div id="rotation-bullish" style="min-height: 80px;">
+									<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">Loading...</div>
+								</div>
+							</div>
+							<div style="background: rgba(244, 67, 54, 0.12); border: 2px solid rgba(244, 67, 54, 0.45); border-radius: 8px; padding: 20px;">
+								<h4 style="color: #f44336; font-size: 18px; margin-bottom: 15px; text-align: center;">3 bearish rotations</h4>
+								<div id="rotation-bearish" style="min-height: 80px;">
+									<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">Loading...</div>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -4725,6 +4753,61 @@
 				return false;
 			}
 			
+			function escapeRotationText(value) {
+				return String(value == null ? '' : value)
+					.replace(/&/g, '&amp;')
+					.replace(/</g, '&lt;')
+					.replace(/>/g, '&gt;')
+					.replace(/"/g, '&quot;');
+			}
+
+			function renderRotationCards(items, accent, emptyText) {
+				if (!items || !items.length) {
+					return '<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">' + emptyText + '</div>';
+				}
+				return items.slice(0, 3).map((item, idx) => {
+					const symbol = escapeRotationText(item.symbol || 'N/A');
+					const blurb = escapeRotationText(item.blurb || '');
+					const nowRank = escapeRotationText(item.now_rank);
+					return `
+						<div style="background: rgba(0, 0, 0, 0.3); padding: 15px; margin-bottom: 12px; border-radius: 6px; border-left: 3px solid ${accent};">
+							<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+								<span style="color: ${accent}; font-weight: bold; font-size: 18px;">#${idx + 1} ${symbol}</span>
+								<span style="color: #fff; font-weight: bold;">now #${nowRank}</span>
+							</div>
+							<div style="color: rgba(255, 255, 255, 0.85); font-size: 14px; line-height: 1.45;">${blurb}</div>
+						</div>
+					`;
+				}).join('');
+			}
+
+			function renderRecentRotations() {
+				const bullEl = document.getElementById('rotation-bullish');
+				const bearEl = document.getElementById('rotation-bearish');
+				const noteEl = document.getElementById('rotation-note');
+				if (!bullEl || !bearEl) return;
+				fetch('signals/rotations.json?v=' + Date.now())
+					.then(response => {
+						if (!response.ok) throw new Error('missing');
+						return response.json();
+					})
+					.then(data => {
+						if (noteEl && data.message) noteEl.textContent = data.message;
+						const waiting = data && data.ready === false;
+						const emptyBull = waiting ? 'Waiting for more scans.' : 'None qualified this scan.';
+						const emptyBear = waiting ? 'Waiting for more scans.' : 'None qualified this scan.';
+						bullEl.innerHTML = renderRotationCards(data.bullish, '#4caf50', emptyBull);
+						bearEl.innerHTML = renderRotationCards(data.bearish, '#f44336', emptyBear);
+					})
+					.catch(() => {
+						if (noteEl) {
+							noteEl.textContent = 'Recent rotations appear after the stock scan has a few saved rank lists.';
+						}
+						bullEl.innerHTML = '<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">Not available yet.</div>';
+						bearEl.innerHTML = '<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">Not available yet.</div>';
+					});
+			}
+
 			function renderTop3Signals(signals) {
 				// Extract stock signals only
 				const stockSignals = signals.filter(s => isStockSignal(s));
@@ -4753,6 +4836,7 @@
 				
 				// Render market breadth first (using all stock signals for context)
 				renderMarketBreadth(signals);
+				renderRecentRotations();
 				
 				if (recentStockSignals.length === 0) {
 					document.getElementById('top-buy-signals').innerHTML = '<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">No stock signals available</div>';

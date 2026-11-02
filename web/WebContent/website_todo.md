@@ -5,6 +5,19 @@
 ## MP3 Downloads — memorable track names
 **TODO:** Rename Rap May 2026 / Reggae / beat catalog titles to more memorable names (current labels like “Rap 1 — May 2026” and “Reggae 1 D minor” are placeholders). Update `mp3-downloads-data.json` titles (and filenames/ids only if needed for Stripe + URLs).
 
+## MP3 Downloads — filename has no key (2026-11-01)
+**TODO:** 31 of 177 tracks have no musical key in the MP3 filename, the title, or the JSON `key` field. The practice lab lists them as “Key not in the name” and cannot open a matching scale. Put the key in the title (and the filename if it will not break a Stripe link).
+
+Shorthand the parser does not treat as a key: `c-sharp-harm`, `c-sharp-harm-2` (“Harm”, not “harmonic”), and `shoegaze-reggae-2-am7-fm7` (Am7–Fm7 chord symbols).
+
+The other filenames with no key at all:
+
+- Rap: `gritty-rap-90-bpm`, `rap-1-may-2026` through `rap-12-may-2026`
+- 60s rock: `title-painted-sky-won-t-sit-still`, `title-painted-sky-won-t-sit-still-2`
+- Ambient: `untitled`
+- Lydian: `0-keyboard`, `1-synth`, `2-woodwinds`
+- Shoegaze reggae: `reggae-bossa-v1`, `reggae-bossa-v2`, `shoegaze-reggae-2-am7-fm7-2`, `shoegaze-reggae`, `shoegaze-reggae-v3`, `shoegaze-reggae-v4`, `shoegaze-reggae-v5`, `should-be-a-song-v3-shoegaze`, `should-be-a-song-v4`
+
 ## MP3 Downloads — Reggae Stripe Payment Links
 **TODO:** Create Stripe Payment Links for all Reggae collection tracks and paste `buy.stripe.com` URLs into `mp3-downloads-data.json` (`collection: "reggae"`). Success URLs use `?track=<id>&from=mp3&paid=true` (see DIRECT_AUDIO_SALES.md).
 

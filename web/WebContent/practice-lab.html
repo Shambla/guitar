@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	<!--
+		2026-11-01 — Experimental practice lab. Separate URL on purpose.
+		Does not replace mp3-downloads.html. The live store, Stripe links, and
+		scale PDFs on that page are untouched. This file only reads the same
+		JSON and the same PDFs.
+
+		Rebrand note, not applied to the live page:
+		"MP3 Downloads" can sound like the only point is the sale. A softer
+		name for this lab is "Free improvisation practice": the scale chart
+		and the 30-second preview are the free part, and the full MP3 is there
+		when someone wants to keep playing. Leave the live title as it is
+		until this lab feels right.
+
+		2026-11-01 — App shell (this test page only):
+		One screen, no page scroll. Scale chart on top, player docked under it,
+		on a computer and on a phone. The chart stays blank until a key or a
+		style is chosen. A portrait phone is asked to turn sideways so that
+		one screen still fits. Revert by restoring the earlier practice-lab.html
+		from git if this layout is worse.
+	-->
+	<meta name="robots" content="noindex">
+	<title>Free improvisation practice (test) — Brian Streckfus</title>
+	<link type="text/css" rel="stylesheet" href="style/montserrat.css">
+	<link rel="shortcut icon" href="img/favico.ico" type="image/x-icon">
+	<style>
+		:root {
+			--lab-bg: #07090c;
+			--lab-surface: #141a22;
+			--lab-line: rgba(232, 220, 200, 0.16);
+			--lab-text: #f4f0e8;
+			--lab-muted: rgba(244, 240, 232, 0.68);
+			--lab-accent: #e0b15a;
+			--lab-ink: #1a1208;
+			--lab-green: #7dcaa8;
+		}
+
+		html, body.practice-lab {
+			margin: 0;
+			height: 100%;
+			overflow: hidden;
+			background: var(--lab-bg);
+			color: var(--lab-text);
+			font-family: Montserrat, system-ui, sans-serif;
+		}
+
+		.lab-rotate {
+			display: none;
+			box-sizing: border-box;
+			height: 100dvh;
+			padding: 28px 22px;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.lab-rotate strong {
+			font-size: 1.35rem;
+		}
+
+		.lab-rotate p {
+			margin: 0;
+			max-width: 28ch;
+			color: var(--lab-muted);
+			line-height: 1.45;
+		}
+
+		.lab-app {
+			box-sizing: border-box;
+			height: 100dvh;
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+			padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+		}
+
+		.lab-bar {
+			display: flex;
+			flex-wrap: nowrap;
+			gap: 8px;
+			align-items: end;
+		}
+
+		.lab-field {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+			min-width: 0;
+			flex: 1;
+		}
+
+		.lab-field span {
+			font-size: 0.68rem;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: var(--lab-muted);
+		}
+
+		.lab-field select {
+			width: 100%;
+			padding: 7px 8px;
+			border-radius: 10px;
+			border: 1px solid var(--lab-line);
+			background: var(--lab-surface);
+			color: var(--lab-text);
+			font: inherit;
+			font-size: 0.92rem;
+		}
+
+		.lab-store {
+			flex: 0 0 auto;
+			align-self: center;
+			margin-bottom: 8px;
+			color: #9ec5e8;
+			font-size: 0.75rem;
+			text-decoration: none;
+		}
+
+		.lab-chart {
+			flex: 1 1 auto;
+			min-height: 0;
+			display: flex;
+			flex-direction: column;
+			border: 1px solid var(--lab-line);
+			border-radius: 16px;
+			background: #10151b;
+			overflow: hidden;
+		}
+
+		.lab-empty {
+			flex: 1;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			padding: 16px;
+		}
+
+		.lab-empty p {
+			margin: 0;
+			font-size: clamp(1.2rem, 3vw, 1.8rem);
+			color: var(--lab-muted);
+		}
+
+		.lab-chart-live {
+			flex: 1;
+			min-height: 0;
+			display: flex;
+			flex-direction: column;
+			padding: 4px 8px 6px;
+		}
+
+		.lab-chart-live[hidden],
+		.lab-empty[hidden] { display: none; }
+
+		.lab-chart-head {
+			display: flex;
+			flex-wrap: nowrap;
+			gap: 8px;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 4px;
+		}
+
+		.lab-chart-head > div:first-child {
+			display: flex;
+			align-items: baseline;
+			gap: 8px;
+			min-width: 0;
+		}
+
+		.lab-chart-head h2 {
+			margin: 0;
+			font-size: 0.95rem;
+		}
+
+		.lab-chart-head p {
+			margin: 0;
+			color: var(--lab-muted);
+			font-size: 0.72rem;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		.lab-pdf-tools {
+			display: flex;
+			gap: 6px;
+			align-items: center;
+		}
+
+		.lab-pdf-tools button,
+		.lab-pdf-tools a {
+			padding: 6px 10px;
+			border-radius: 8px;
+			border: 1px solid var(--lab-line);
+			background: rgba(255, 255, 255, 0.04);
+			color: var(--lab-text);
+			font: inherit;
+			font-size: 0.75rem;
+			text-decoration: none;
+			cursor: pointer;
+		}
+
+		.lab-pdf-tools button:disabled { opacity: 0.35; cursor: default; }
+
+		.lab-canvas-wrap {
+			flex: 1;
+			min-height: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			border-radius: 10px;
+			background: #07090c;
+		}
+
+		.lab-canvas-wrap canvas {
+			display: block;
+			max-width: 100%;
+			max-height: 100%;
+		}
+
+		.lab-player {
+			flex: 0 0 auto;
+			display: grid;
+			grid-template-columns: auto 1fr auto;
+			gap: 6px 10px;
+			align-items: center;
+			padding: 6px 10px;
+			border: 1px solid var(--lab-line);
+			border-radius: 16px;
+			background: var(--lab-surface);
+		}
+
+		.lab-player h2 {
+			margin: 0;
+			font-size: 1rem;
+			line-height: 1.25;
+		}
+
+		.lab-player .lab-meta {
+			margin: 2px 0 0;
+			color: var(--lab-muted);
+			font-size: 0.75rem;
+		}
+
+		.lab-player audio {
+			grid-column: 1 / -1;
+			width: 100%;
+			height: 32px;
+		}
+
+		.lab-transport {
+			display: flex;
+			flex-direction: row;
+			gap: 6px;
+		}
+
+		.lab-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 6px;
+			justify-content: flex-end;
+		}
+
+		.lab-actions a,
+		.lab-step {
+			padding: 8px 12px;
+			border-radius: 999px;
+			border: 1px solid var(--lab-line);
+			background: transparent;
+			color: var(--lab-text);
+			font: inherit;
+			font-size: 0.8rem;
+			text-decoration: none;
+			cursor: pointer;
+		}
+
+		.lab-actions .lab-buy {
+			background: var(--lab-green);
+			color: #062116;
+			border-color: transparent;
+			font-weight: 700;
+		}
+
+		.lab-step {
+			background: var(--lab-accent);
+			color: var(--lab-ink);
+			border: 0;
+			font-weight: 700;
+		}
+
+		.lab-step:disabled {
+			opacity: 0.4;
+			cursor: default;
+		}
+
+		@media (max-width: 720px) {
+			.lab-player {
+				grid-template-columns: 1fr auto;
+			}
+			.lab-player audio { grid-column: 1 / -1; }
+			.lab-store { display: none; }
+		}
+
+		@media (max-height: 520px) {
+			.lab-app { gap: 6px; padding: 6px 8px; }
+			.lab-field span { display: none; }
+			.lab-field select { padding: 6px 8px; }
+			.lab-chart-live { padding: 4px 8px 6px; }
+			.lab-chart-head { margin-bottom: 4px; }
+			.lab-chart-head p { display: none; }
+			.lab-player { padding: 6px 8px; gap: 6px 8px; }
+			.lab-transport { flex-direction: row; }
+			.lab-player audio { height: 28px; }
+			.lab-step, .lab-actions a { padding: 6px 10px; }
+		}
+
+		@media screen and (max-width: 540px) and (orientation: portrait) {
+			.lab-app { display: none; }
+			.lab-rotate { display: flex; }
+		}
+	</style>
+</head>
+<body class="practice-lab">
+	<div class="lab-rotate">
+		<strong>Turn your phone sideways</strong>
+		<p>The scale chart and the player share one screen. Landscape fits both.</p>
+	</div>
+
+	<div class="lab-app">
+		<div class="lab-bar">
+			<label class="lab-field">
+				<span>Key</span>
+				<select id="lab-key"></select>
+			</label>
+			<label class="lab-field">
+				<span>Genre</span>
+				<select id="lab-genre"></select>
+			</label>
+			<a class="lab-store" href="mp3-downloads.html">Store</a>
+		</div>
+
+		<section class="lab-chart" aria-label="Scale chart">
+			<div class="lab-empty" id="lab-empty">
+				<p>Select a key or genre</p>
+			</div>
+			<div class="lab-chart-live" id="lab-chart-live" hidden>
+				<div class="lab-chart-head">
+					<div>
+						<h2 id="lab-chart-title">Scale</h2>
+						<p id="lab-chart-note"></p>
+					</div>
+					<div class="lab-pdf-tools">
+						<button type="button" id="lab-pdf-prev">←</button>
+						<span id="lab-pdf-label">Page —</span>
+						<button type="button" id="lab-pdf-next">→</button>
+						<a id="lab-pdf-download" href="img/12%20Keys%20Beautiful%20%26%20Print%20Friendly.pdf" download>PDF</a>
+					</div>
+				</div>
+				<div class="lab-canvas-wrap">
+					<canvas id="lab-pdf-canvas" aria-label="Scale chart page"></canvas>
+				</div>
+			</div>
+		</section>
+
+		<section class="lab-player" aria-live="polite">
+			<div class="lab-transport">
+				<button type="button" class="lab-step" id="lab-prev" disabled>Prev</button>
+				<button type="button" class="lab-step" id="lab-next" disabled>Next</button>
+			</div>
+			<div>
+				<h2 id="lab-title">No track yet</h2>
+				<p class="lab-meta" id="lab-blurb"></p>
+				<div class="lab-badges" id="lab-badges" hidden></div>
+			</div>
+			<div class="lab-actions" id="lab-actions"></div>
+			<audio id="lab-audio" controls preload="none"></audio>
+		</section>
+	</div>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+	<script src="script/practice-lab.js?v=20261101-fit4"></script>
+</body>
+</html>

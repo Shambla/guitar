@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>MP3 Downloads — Brian Streckfus</title>
+	<title>Improv Practice — Brian Streckfus</title>
 	<link type="text/css" rel="stylesheet" href="style/montserrat.css">
 	<link type="text/css" rel="stylesheet" href="style/index.css">
 	<link rel="shortcut icon" href="img/favico.ico" type="image/x-icon">
@@ -264,8 +264,39 @@
 
 		.mp3-card audio {
 			width: 100%;
-			margin-bottom: 14px;
+			margin-bottom: 8px;
 			height: 36px;
+		}
+
+		.mp3-speed {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			gap: 6px;
+			margin: 0 0 14px;
+		}
+
+		.mp3-speed-btn {
+			padding: 4px 8px;
+			border-radius: 6px;
+			border: 1px solid var(--mp3-line);
+			background: rgba(255, 255, 255, 0.04);
+			color: var(--mp3-text);
+			font-family: inherit;
+			font-size: 0.75rem;
+			font-weight: 600;
+			cursor: pointer;
+		}
+
+		.mp3-speed-btn.active {
+			background: rgba(212, 162, 76, 0.22);
+			border-color: rgba(212, 162, 76, 0.55);
+			color: var(--mp3-accent);
+		}
+
+		.mp3-speed-note {
+			font-size: 0.72rem;
+			color: var(--mp3-muted);
 		}
 
 		.mp3-card-actions {
@@ -534,6 +565,318 @@
 		@media (max-width: 600px) {
 			.mp3-pdf-download { margin-left: 0; width: 100%; text-align: center; }
 		}
+
+		/* 2026-11-02 — Practice lab is the first screen. The old store is #browse-mp3s below. */
+		.improv-screen {
+			--lab-bg: #07090c;
+			--lab-surface: #141a22;
+			--lab-line: rgba(232, 220, 200, 0.16);
+			--lab-text: #f4f0e8;
+			--lab-muted: rgba(244, 240, 232, 0.68);
+			--lab-accent: #e0b15a;
+			--lab-ink: #1a1208;
+			--lab-green: #7dcaa8;
+			box-sizing: border-box;
+			height: 100dvh;
+			display: flex;
+			flex-direction: column;
+			padding: 78px 8px 8px;
+			background: var(--lab-bg);
+			color: var(--lab-text);
+		}
+
+		.improv-screen .lab-rotate {
+			display: none;
+			box-sizing: border-box;
+			flex: 1;
+			padding: 28px 22px;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.improv-screen .lab-rotate strong { font-size: 1.35rem; }
+
+		.improv-screen .lab-rotate p {
+			margin: 0;
+			max-width: 28ch;
+			color: var(--lab-muted);
+			line-height: 1.45;
+		}
+
+		.improv-screen .lab-rotate a {
+			color: #9ec5e8;
+			font-size: 0.85rem;
+		}
+
+		.improv-screen .lab-app {
+			box-sizing: border-box;
+			flex: 1;
+			min-height: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+		}
+
+		.improv-screen .lab-bar {
+			display: flex;
+			flex-wrap: nowrap;
+			gap: 8px;
+			align-items: end;
+		}
+
+		.improv-screen .lab-field {
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+			min-width: 0;
+			flex: 1;
+		}
+
+		.improv-screen .lab-field span {
+			font-size: 0.68rem;
+			letter-spacing: 0.08em;
+			text-transform: uppercase;
+			color: var(--lab-muted);
+		}
+
+		.improv-screen .lab-field select {
+			width: 100%;
+			padding: 7px 8px;
+			border-radius: 10px;
+			border: 1px solid var(--lab-line);
+			background: var(--lab-surface);
+			color: var(--lab-text);
+			font: inherit;
+			font-size: 0.92rem;
+		}
+
+		.improv-screen .lab-store {
+			flex: 0 0 auto;
+			align-self: center;
+			margin-bottom: 8px;
+			color: #9ec5e8;
+			font-size: 0.75rem;
+			text-decoration: none;
+			white-space: nowrap;
+		}
+
+		.improv-screen .lab-chart {
+			flex: 1 1 auto;
+			min-height: 0;
+			display: flex;
+			flex-direction: column;
+			border: 1px solid var(--lab-line);
+			border-radius: 16px;
+			background: #10151b;
+			overflow: hidden;
+		}
+
+		.improv-screen .lab-empty {
+			flex: 1;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			padding: 16px;
+		}
+
+		.improv-screen .lab-empty p {
+			margin: 0;
+			font-size: clamp(1.2rem, 3vw, 1.8rem);
+			color: var(--lab-muted);
+		}
+
+		.improv-screen .lab-chart-live {
+			flex: 1;
+			min-height: 0;
+			display: flex;
+			flex-direction: column;
+			padding: 4px 8px 6px;
+		}
+
+		.improv-screen .lab-chart-live[hidden],
+		.improv-screen .lab-empty[hidden] { display: none; }
+
+		.improv-screen .lab-chart-head {
+			display: flex;
+			flex-wrap: nowrap;
+			gap: 8px;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 4px;
+		}
+
+		.improv-screen .lab-chart-head > div:first-child {
+			display: flex;
+			align-items: baseline;
+			gap: 8px;
+			min-width: 0;
+		}
+
+		.improv-screen .lab-chart-head h2 { margin: 0; font-size: 0.95rem; }
+
+		.improv-screen .lab-chart-head p {
+			margin: 0;
+			color: var(--lab-muted);
+			font-size: 0.72rem;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		}
+
+		.improv-screen .lab-pdf-tools {
+			display: flex;
+			gap: 6px;
+			align-items: center;
+		}
+
+		.improv-screen .lab-pdf-tools button,
+		.improv-screen .lab-pdf-tools a {
+			padding: 6px 10px;
+			border-radius: 8px;
+			border: 1px solid var(--lab-line);
+			background: rgba(255, 255, 255, 0.04);
+			color: var(--lab-text);
+			font: inherit;
+			font-size: 0.75rem;
+			text-decoration: none;
+			cursor: pointer;
+		}
+
+		.improv-screen .lab-pdf-tools button:disabled { opacity: 0.35; cursor: default; }
+
+		.improv-screen .lab-canvas-wrap {
+			flex: 1;
+			min-height: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			overflow: hidden;
+			border-radius: 10px;
+			background: #07090c;
+		}
+
+		.improv-screen .lab-canvas-wrap canvas {
+			display: block;
+			max-width: 100%;
+			max-height: 100%;
+		}
+
+		.improv-screen .lab-player {
+			flex: 0 0 auto;
+			display: grid;
+			grid-template-columns: auto 1fr auto;
+			gap: 6px 10px;
+			align-items: center;
+			padding: 6px 10px;
+			border: 1px solid var(--lab-line);
+			border-radius: 16px;
+			background: var(--lab-surface);
+		}
+
+		.improv-screen .lab-player h2 {
+			margin: 0;
+			font-size: 1rem;
+			line-height: 1.25;
+		}
+
+		.improv-screen .lab-player .lab-meta {
+			margin: 2px 0 0;
+			color: var(--lab-muted);
+			font-size: 0.75rem;
+		}
+
+		.improv-screen .lab-player audio {
+			grid-column: 1 / -1;
+			width: 100%;
+			height: 32px;
+		}
+
+		.improv-screen .lab-transport { display: flex; flex-direction: row; gap: 6px; }
+
+		.improv-screen .lab-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 6px;
+			justify-content: flex-end;
+		}
+
+		.improv-screen .lab-actions a,
+		.improv-screen .lab-step {
+			padding: 8px 12px;
+			border-radius: 999px;
+			border: 1px solid var(--lab-line);
+			background: transparent;
+			color: var(--lab-text);
+			font: inherit;
+			font-size: 0.8rem;
+			text-decoration: none;
+			cursor: pointer;
+		}
+
+		.improv-screen .lab-actions .lab-buy {
+			background: var(--lab-green);
+			color: #062116;
+			border-color: transparent;
+			font-weight: 700;
+		}
+
+		.improv-screen .lab-step {
+			background: var(--lab-accent);
+			color: var(--lab-ink);
+			border: 0;
+			font-weight: 700;
+		}
+
+		.improv-screen .lab-step:disabled { opacity: 0.4; cursor: default; }
+
+		#browse-mp3s { scroll-margin-top: 72px; }
+
+		.browse-banner {
+			margin: 0 0 18px;
+			font-size: 0.75rem;
+			letter-spacing: 0.14em;
+			text-transform: uppercase;
+			color: var(--mp3-accent);
+		}
+
+		@media (max-width: 768px) {
+			body.mp3-downloads-page nav .content {
+				flex-direction: row;
+				flex-wrap: wrap;
+				justify-content: center;
+				gap: 2px 0;
+				padding: 4px 8px;
+			}
+			body.mp3-downloads-page nav a {
+				font-size: 0.72rem;
+				margin: 0 8px;
+				letter-spacing: 0.04em;
+			}
+			.improv-screen { padding-top: 92px; }
+		}
+
+		@media (max-width: 720px) {
+			.improv-screen .lab-player { grid-template-columns: 1fr auto; }
+			.improv-screen .lab-player audio { grid-column: 1 / -1; }
+		}
+
+		@media (max-height: 520px) {
+			.improv-screen { padding-top: 64px; }
+			.improv-screen .lab-field span { display: none; }
+			.improv-screen .lab-field select { padding: 6px 8px; }
+			.improv-screen .lab-player audio { height: 28px; }
+			.improv-screen .lab-step,
+			.improv-screen .lab-actions a { padding: 6px 10px; }
+		}
+
+		@media screen and (max-width: 540px) and (orientation: portrait) {
+			.improv-screen .lab-app { display: none; }
+			.improv-screen .lab-rotate { display: flex; }
+		}
 	</style>
 </head>
 <body class="mp3-downloads-page">
@@ -541,13 +884,73 @@
 		<div id="backing"></div>
 		<div class="content">
 			<a href="catalog.html">&#128220; CATALOG</a>
-			<a href="mp3-downloads.html" style="font-weight: bold;">&#127911; MP3 DOWNLOADS</a>
+			<a href="mp3-downloads.html" style="font-weight: bold;">&#127911; IMPROV PRACTICE</a>
 			<a href="#free-scales">&#127912; FREE SCALES PDF</a>
 			<a href="index.html#contact">CONTACT</a>
 		</div>
 	</nav>
 
-	<div class="mp3-wrap">
+	<section class="improv-screen" aria-label="Improv Practice">
+		<div class="lab-rotate">
+			<strong>Turn your phone sideways</strong>
+			<p>The scale chart and the player share one screen. Landscape fits both.</p>
+			<a href="#browse-mp3s">Browse MP3s</a>
+		</div>
+
+		<div class="lab-app">
+			<div class="lab-bar">
+				<label class="lab-field">
+					<span>Key</span>
+					<select id="lab-key"></select>
+				</label>
+				<label class="lab-field">
+					<span>Genre</span>
+					<select id="lab-genre"></select>
+				</label>
+				<a class="lab-store" href="#browse-mp3s">Browse MP3s</a>
+			</div>
+
+			<section class="lab-chart" aria-label="Scale chart">
+				<div class="lab-empty" id="lab-empty">
+					<p>Select a key or genre</p>
+				</div>
+				<div class="lab-chart-live" id="lab-chart-live" hidden>
+					<div class="lab-chart-head">
+						<div>
+							<h2 id="lab-chart-title">Scale</h2>
+							<p id="lab-chart-note"></p>
+						</div>
+						<div class="lab-pdf-tools">
+							<button type="button" id="lab-pdf-prev">←</button>
+							<span id="lab-pdf-label">Page —</span>
+							<button type="button" id="lab-pdf-next">→</button>
+							<a id="lab-pdf-download" href="img/12%20Keys%20Beautiful%20%26%20Print%20Friendly.pdf" download>PDF</a>
+						</div>
+					</div>
+					<div class="lab-canvas-wrap">
+						<canvas id="lab-pdf-canvas" aria-label="Scale chart page"></canvas>
+					</div>
+				</div>
+			</section>
+
+			<section class="lab-player" aria-live="polite">
+				<div class="lab-transport">
+					<button type="button" class="lab-step" id="lab-prev" disabled>Prev</button>
+					<button type="button" class="lab-step" id="lab-next" disabled>Next</button>
+				</div>
+				<div>
+					<h2 id="lab-title">No track yet</h2>
+					<p class="lab-meta" id="lab-blurb"></p>
+					<div class="lab-badges" id="lab-badges" hidden></div>
+				</div>
+				<div class="lab-actions" id="lab-actions"></div>
+				<audio id="lab-audio" controls preload="none"></audio>
+			</section>
+		</div>
+	</section>
+
+	<div class="mp3-wrap" id="browse-mp3s">
+		<p class="browse-banner">Browse MP3s</p>
 		<div class="mp3-back"><a href="catalog.html">← Sheet music catalog</a></div>
 
 		<header class="mp3-hero">
@@ -762,7 +1165,8 @@
 	</div>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-	<script src="script/mp3-downloads.js"></script>
+	<script src="script/practice-lab.js?v=20261102-improv"></script>
+	<script src="script/mp3-downloads.js?v=20261101-speed"></script>
 	<script src="script/beauty-scales-viewer.js"></script>
 </body>
 </html>

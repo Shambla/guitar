@@ -168,6 +168,29 @@
 		return out;
 	}
 
+	function speedControls() {
+		const rates = [0.75, 0.85, 1, 1.15];
+		return (
+			'<div class="mp3-speed" role="group" aria-label="Preview speed">' +
+			rates
+				.map(function (rate) {
+					const label = Math.round(rate * 100) + '%';
+					return (
+						'<button type="button" class="mp3-speed-btn' +
+						(rate === 1 ? ' active' : '') +
+						'" data-rate="' +
+						rate +
+						'">' +
+						label +
+						'</button>'
+					);
+				})
+				.join('') +
+			'<span class="mp3-speed-note">Pitch stays put when the browser can.</span>' +
+			'</div>'
+		);
+	}
+
 	function render(list) {
 		if (!grid) return;
 		if (!list.length) {
@@ -244,7 +267,8 @@
 						? '<div class="mp3-preview-label">30s preview</div>' +
 						  '<audio controls preload="none" src="' +
 						  escapeHtml(preview) +
-						  '"></audio>'
+						  '"></audio>' +
+						  speedControls()
 						: '<p class="mp3-stripe-hint">Preview file missing.</p>') +
 					'<div class="mp3-card-actions">' +
 					buyHtml +
@@ -315,6 +339,23 @@
 		} catch (e) {
 			/* ignore */
 		}
+	}
+
+	if (grid) {
+		grid.addEventListener('click', function (event) {
+			const btn = event.target.closest('.mp3-speed-btn');
+			if (!btn) return;
+			const card = btn.closest('.mp3-card');
+			const audio = card && card.querySelector('audio');
+			const rate = Number(btn.getAttribute('data-rate'));
+			if (!audio || !rate) return;
+			audio.preservesPitch = true;
+			audio.webkitPreservesPitch = true;
+			audio.playbackRate = rate;
+			card.querySelectorAll('.mp3-speed-btn').forEach(function (other) {
+				other.classList.toggle('active', other === btn);
+			});
+		});
 	}
 
 	if (searchInput) {
