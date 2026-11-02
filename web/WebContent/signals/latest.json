@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "NEAR/USD",
-  "quantity": 23.40933564305445,
-  "price": 4.2675,
+  "symbol": "BNB/USD",
+  "quantity": 0.140607424071991,
+  "price": 710.49,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-11-02T03:00:17.819084Z",
-  "received_at": "2026-11-02T03:00:17.819096Z",
-  "id": "2026-11-02T03:00:17.819096Z-NEAR/USD-buy"
+  "timestamp": "2026-11-02T03:00:41.696709Z",
+  "received_at": "2026-11-02T03:00:41.696731Z",
+  "id": "2026-11-02T03:00:41.696731Z-BNB/USD-buy"
 }
