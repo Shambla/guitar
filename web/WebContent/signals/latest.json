@@ -1,11 +1,11 @@
 {
-  "action": "sell",
-  "symbol": "UNI/USD",
-  "quantity": 0.0,
-  "price": 7.1794,
+  "action": "buy",
+  "symbol": "DOGE/USD",
+  "quantity": 1332.267519317879,
+  "price": 0.07498,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-11-02T08:00:38.971723Z",
-  "received_at": "2026-11-02T08:00:38.971749Z",
-  "id": "2026-11-02T08:00:38.971749Z-UNI/USD-sell"
+  "timestamp": "2026-11-02T08:06:16.784269Z",
+  "received_at": "2026-11-02T08:06:16.784281Z",
+  "id": "2026-11-02T08:06:16.784281Z-DOGE/USD-buy"
 }
