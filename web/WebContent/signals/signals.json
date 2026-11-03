@@ -356,9 +356,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 12/18 | sell 15/9",
-    "timestamp": "2026-11-02T14:55:51.905565Z",
-    "received_at": "2026-11-02T14:55:51.905565Z",
-    "id": "2026-11-02T14:55:51.905565Z-SPY-info",
+    "timestamp": "2026-11-03T03:03:26.836519Z",
+    "received_at": "2026-11-03T03:03:26.836519Z",
+    "id": "2026-11-03T03:03:26.836519Z-SPY-info",
     "threshold_met": true,
     "buy_score": 12,
     "sell_score": 15,
@@ -1378,9 +1378,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat14",
     "note": "buy 12/41 | sell 15/40 | Strength=2/10 | MTF:D-only (no higher timeframe confirmation)",
-    "timestamp": "2026-11-02T14:55:51.887942Z",
-    "received_at": "2026-11-02T14:55:51.887942Z",
-    "id": "2026-11-02T14:55:51.887942Z-SPY-sell",
+    "timestamp": "2026-11-03T03:03:26.813775Z",
+    "received_at": "2026-11-03T03:03:26.813775Z",
+    "id": "2026-11-03T03:03:26.813775Z-SPY-sell",
     "buy_score": 12,
     "sell_score": 15,
     "total_buy_components": 41,
@@ -1802,6 +1802,17 @@
     "buy_blocked_headwind": false,
     "buy_blocked_fomc": false,
     "fomc_sell_vote": false
+  },
+  {
+    "action": "buy",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-11-03T03:01:10.721468Z",
+    "received_at": "2026-11-03T03:01:10.721886Z",
+    "id": "2026-11-03T03:01:10.721886Z-HEX/DAI-buy"
   },
   {
     "action": "buy",
@@ -3254,16 +3265,5 @@
     "timestamp": "2026-10-31T00:47:22.766997Z",
     "received_at": "2026-10-31T00:47:22.767021Z",
     "id": "2026-10-31T00:47:22.767021Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 2241.74,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-10-31T00:14:42.490250Z",
-    "received_at": "2026-10-31T00:14:42.490267Z",
-    "id": "2026-10-31T00:14:42.490267Z-ETH/USD-sell"
   }
 ]
