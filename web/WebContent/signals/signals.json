@@ -681,9 +681,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 14/16 | sell 13/13",
-    "timestamp": "2026-11-03T03:35:18.412631Z",
-    "received_at": "2026-11-03T03:35:18.412631Z",
-    "id": "2026-11-03T03:35:18.412631Z-EWG-info",
+    "timestamp": "2026-11-03T16:02:35.161938Z",
+    "received_at": "2026-11-03T16:02:35.161938Z",
+    "id": "2026-11-03T16:02:35.161938Z-EWG-info",
     "threshold_met": true,
     "buy_score": 14,
     "sell_score": 13,
@@ -796,30 +796,6 @@
     "buy_signal_raw": true,
     "buy_blocked_rsi_bear_div": true,
     "rsi_bear_div_block_timer": 9
-  },
-  {
-    "action": "buy",
-    "symbol": "XLV",
-    "price": 176.7100067138672,
-    "quantity": null,
-    "source": "MAIN_stock_strat14",
-    "note": "buy 17/41 | sell 11/40 | Strength=2/10 | MTF:D-only (no higher timeframe confirmation)",
-    "timestamp": "2026-10-20T14:04:30.155837Z",
-    "received_at": "2026-10-20T14:04:30.155837Z",
-    "id": "2026-10-20T14:04:30.155837Z-XLV-buy",
-    "buy_score": 17,
-    "sell_score": 11,
-    "total_buy_components": 41,
-    "total_sell_components": 40,
-    "buy_conviction": 0.5046341463414634,
-    "buy_persistence": 3,
-    "buy_position_multiplier": 1.0,
-    "sell_conviction": 0.275,
-    "sell_persistence": 0,
-    "sell_position_multiplier": 0.5,
-    "buy_signal_raw": true,
-    "buy_blocked_rsi_bear_div": false,
-    "rsi_bear_div_block_timer": 0
   },
   {
     "action": "buy",
@@ -1693,9 +1669,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat14",
     "note": "buy 14/41 | sell 13/40 | Strength=2/10 | MTF:D-only (no higher timeframe confirmation)",
-    "timestamp": "2026-11-03T03:35:18.394618Z",
-    "received_at": "2026-11-03T03:35:18.394618Z",
-    "id": "2026-11-03T03:35:18.394618Z-EWG-sell",
+    "timestamp": "2026-11-03T16:02:35.138593Z",
+    "received_at": "2026-11-03T16:02:35.138593Z",
+    "id": "2026-11-03T16:02:35.138593Z-EWG-sell",
     "buy_score": 14,
     "sell_score": 13,
     "total_buy_components": 41,
@@ -1776,6 +1752,28 @@
     "buy_blocked_headwind": false,
     "buy_blocked_fomc": false,
     "fomc_sell_vote": false
+  },
+  {
+    "action": "sell",
+    "symbol": "NEAR/USD",
+    "quantity": 0.00019505,
+    "price": 3.8459,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-11-03T16:00:17.305282Z",
+    "received_at": "2026-11-03T16:00:17.305314Z",
+    "id": "2026-11-03T16:00:17.305314Z-NEAR/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "NEAR/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-11-03T16:00:10.497943Z",
+    "received_at": "2026-11-03T16:00:10.497956Z",
+    "id": "2026-11-03T16:00:10.497956Z-NEAR/USD-sell"
   },
   {
     "action": "sell",
@@ -3239,16 +3237,5 @@
     "timestamp": "2026-10-31T02:08:55.125796Z",
     "received_at": "2026-10-31T02:08:55.125810Z",
     "id": "2026-10-31T02:08:55.125810Z-TAO/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "TAO/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-31T02:01:03.222481Z",
-    "received_at": "2026-10-31T02:01:03.222494Z",
-    "id": "2026-10-31T02:01:03.222494Z-TAO/USD-sell"
   }
 ]
