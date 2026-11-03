@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "NEAR/USD",
+    "quantity": 25.987525987525988,
+    "price": 3.8442,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-11-03T23:05:57.328854Z",
+    "received_at": "2026-11-03T23:05:57.328903Z",
+    "id": "2026-11-03T23:05:57.328903Z-NEAR/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "NEAR/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -3226,16 +3237,5 @@
     "timestamp": "2026-10-31T06:00:15.911050Z",
     "received_at": "2026-10-31T06:00:15.911078Z",
     "id": "2026-10-31T06:00:15.911078Z-BNB/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "CRV/USD",
-    "quantity": 353.1073446327684,
-    "price": 0.2829,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-31T05:07:16.477500Z",
-    "received_at": "2026-10-31T05:07:16.477577Z",
-    "id": "2026-10-31T05:07:16.477577Z-CRV/USD-buy"
   }
 ]
