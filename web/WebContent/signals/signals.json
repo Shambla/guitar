@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "NEAR/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-11-03T23:00:14.199689Z",
+    "received_at": "2026-11-03T23:00:14.199921Z",
+    "id": "2026-11-03T23:00:14.199921Z-NEAR/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "BNB/USD",
     "quantity": 0.1428306171710968,
     "price": 699.43,
@@ -3226,16 +3237,5 @@
     "timestamp": "2026-10-31T05:07:16.477500Z",
     "received_at": "2026-10-31T05:07:16.477577Z",
     "id": "2026-10-31T05:07:16.477577Z-CRV/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-31T05:01:43.479405Z",
-    "received_at": "2026-10-31T05:01:43.479420Z",
-    "id": "2026-10-31T05:01:43.479420Z-CRV/USD-buy"
   }
 ]
