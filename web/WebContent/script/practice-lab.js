@@ -553,17 +553,22 @@
 				off.width = Math.max(1, Math.floor(full.width));
 				off.height = Math.max(1, Math.floor(full.height));
 				return page.render({ canvasContext: off.getContext('2d'), viewport: full }).promise.then(function () {
-					var sx = Math.floor(frame.x * off.width);
-					var sy = Math.floor(frame.y * off.height);
-					var sw = Math.max(1, Math.ceil(frame.w * off.width));
-					var sh = Math.max(1, Math.ceil(frame.h * off.height));
-					if (sx + sw > off.width) sw = off.width - sx;
-					if (sy + sh > off.height) sh = off.height - sy;
-					pdfCanvas.width = sw;
-					pdfCanvas.height = sh;
-					pdfCanvas.style.width = Math.round(sw / dpr) + 'px';
-					pdfCanvas.style.height = Math.round(sh / dpr) + 'px';
-					pdfCanvas.getContext('2d').drawImage(off, sx, sy, sw, sh, 0, 0, sw, sh);
+					// Draw the whole page at the zoom of the middle crop, then
+					// open the scroller on that crop. Wheel up for the top,
+					// wheel down for the bottom.
+					pdfCanvas.width = off.width;
+					pdfCanvas.height = off.height;
+					var cssW = Math.round(off.width / dpr);
+					var cssH = Math.round(off.height / dpr);
+					pdfCanvas.style.width = cssW + 'px';
+					pdfCanvas.style.height = cssH + 'px';
+					pdfCanvas.getContext('2d').drawImage(off, 0, 0);
+					var frameTop = frame.y * cssH;
+					var frameCssH = frame.h * cssH;
+					var viewH = wrap.clientHeight || paneH;
+					var scrollY = frameTop - Math.max(0, (viewH - frameCssH) / 2);
+					var maxScroll = Math.max(0, cssH - viewH);
+					wrap.scrollTop = Math.max(0, Math.min(maxScroll, scrollY));
 					pdfState.page = num;
 					pdfState.rendering = false;
 					pdfLabel.textContent = 'Page ' + num + ' / ' + doc.numPages;

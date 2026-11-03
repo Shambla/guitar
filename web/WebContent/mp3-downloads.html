@@ -752,17 +752,19 @@
 			flex: 1;
 			min-height: 0;
 			display: flex;
-			align-items: center;
+			align-items: flex-start;
 			justify-content: center;
-			overflow: hidden;
+			overflow-x: hidden;
+			overflow-y: auto;
+			overscroll-behavior: contain;
+			scrollbar-gutter: stable;
 			border-radius: 10px;
 			background: #07090c;
 		}
 
 		.improv-screen .lab-canvas-wrap canvas {
 			display: block;
-			max-width: 100%;
-			max-height: 100%;
+			flex: 0 0 auto;
 		}
 
 		.improv-screen .lab-player {
@@ -957,7 +959,7 @@
 			<p class="mp3-hero-kicker">Direct downloads · commercial license</p>
 			<h1>MP3 Downloads</h1>
 			<p>
-				Beats and backing tracks meant for creators — preview 30 seconds free,
+				Beats and backing tracks meant for creators — preview one minute free,
 				then buy the full MP3 here with Stripe. Purchase includes permission to
 				use the track commercially (details below).
 			</p>
@@ -1165,8 +1167,8 @@
 	</div>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-	<script src="script/practice-lab.js?v=20261102-improv"></script>
-	<script src="script/mp3-downloads.js?v=20261101-speed"></script>
+	<script src="script/practice-lab.js?v=20261102-scroll"></script>
+	<script src="script/mp3-downloads.js?v=20261102-60s"></script>
 	<script src="script/beauty-scales-viewer.js"></script>
 </body>
 </html>

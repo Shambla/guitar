@@ -2,9 +2,9 @@
 """
 Prepare Suno Backing Tracks for Stripe / mp3-downloads catalog.
 
-- Slugify to kebab-case (matches existing fulldownloads + *-30s.mp3 previews).
+- Slugify to kebab-case (matches existing fulldownloads + *-60s.mp3 previews).
 - Copy or convert masters into audio/fulldownloads/{slug}.mp3
-- Generate 30-second preview clips (same as DIRECT_AUDIO_SALES.md).
+- Generate 60-second preview clips (same as DIRECT_AUDIO_SALES.md).
 - Optionally rename sources under Suno Backing Tracks/ to the slug filename.
 - Writes suno-stripe-prep-manifest.json for bulk Stripe / JSON work.
 
@@ -30,7 +30,7 @@ MANIFEST_PATH = SCRIPT_DIR / "suno-stripe-prep-manifest.json"
 CATALOG_PATH = SCRIPT_DIR.parent / "mp3-downloads-data.json"
 
 MIN_DURATION_SEC = 120.0
-PREVIEW_SECONDS = 30
+PREVIEW_SECONDS = 60
 AUDIO_EXT = {".mp3", ".wav", ".m4a"}
 
 SKIP_DIR_NAMES = {

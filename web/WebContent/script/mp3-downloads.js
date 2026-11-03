@@ -264,7 +264,7 @@
 					escapeHtml(metaBits.join(' · ') || item.composer || '') +
 					'</p>' +
 					(preview
-						? '<div class="mp3-preview-label">30s preview</div>' +
+						? '<div class="mp3-preview-label">1 min preview</div>' +
 						  '<audio controls preload="none" src="' +
 						  escapeHtml(preview) +
 						  '"></audio>' +

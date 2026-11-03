@@ -13,7 +13,7 @@
     "bpm": 90,
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/gritty-rap-90-bpm-30s.mp3",
+      "preview_audio": "audio/previews/gritty-rap-90-bpm-60s.mp3",
       "full_audio": "audio/fulldownloads/gritty-rap-90-bpm.mp3",
       "stripe_payment_link": "https://buy.stripe.com/bJe28tc8M4OQ2kH82J8og0e",
       "purchase_page": "audio-purchase.html?track=gritty-rap-90-bpm&from=mp3"
@@ -35,7 +35,7 @@
     "key": "A minor",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/off-kilter-grit-120-bpm-a-minor-30s.mp3",
+      "preview_audio": "audio/previews/off-kilter-grit-120-bpm-a-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/off-kilter-grit-120-bpm-a-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/3cI8wRgp2ftue3p5UB8og0d",
       "purchase_page": "audio-purchase.html?track=off-kiltergrit-120-bpm-a-minor&from=mp3"
@@ -55,7 +55,7 @@
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/rap-1-may-2026-30s.mp3",
+      "preview_audio": "audio/previews/rap-1-may-2026-60s.mp3",
       "full_audio": "audio/fulldownloads/rap-1-may-2026.mp3",
       "stripe_product_id": "prod_V1wVOuSkqREdYb",
       "stripe_payment_link": "https://buy.stripe.com/aFa5kF7Sw5SU7F1beV8og01",
@@ -76,7 +76,7 @@
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/rap-2-may-2026-30s.mp3",
+      "preview_audio": "audio/previews/rap-2-may-2026-60s.mp3",
       "full_audio": "audio/fulldownloads/rap-2-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/00w6oJa0E0yA0cz1El8og02",
       "purchase_page": "audio-purchase.html?track=rap-2-may-2026&from=mp3"
@@ -96,7 +96,7 @@
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/rap-3-may-2026-30s.mp3",
+      "preview_audio": "audio/previews/rap-3-may-2026-60s.mp3",
       "full_audio": "audio/fulldownloads/rap-3-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/8x2eVf8WAftu8J5dn38og03",
       "purchase_page": "audio-purchase.html?track=rap-3-may-2026&from=mp3"
@@ -116,7 +116,7 @@
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/rap-4-may-2026-30s.mp3",
+      "preview_audio": "audio/previews/rap-4-may-2026-60s.mp3",
       "full_audio": "audio/fulldownloads/rap-4-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/5kQ14p7Swftuf7t6YF8og04",
       "purchase_page": "audio-purchase.html?track=rap-4-may-2026&from=mp3"
@@ -136,7 +136,7 @@
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/rap-5-may-2026-30s.mp3",
+      "preview_audio": "audio/previews/rap-5-may-2026-60s.mp3",
       "full_audio": "audio/fulldownloads/rap-5-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/14AfZjb4I2GI5wTgzf8og05",
       "purchase_page": "audio-purchase.html?track=rap-5-may-2026&from=mp3"
@@ -156,7 +156,7 @@
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/rap-6-may-2026-30s.mp3",
+      "preview_audio": "audio/previews/rap-6-may-2026-60s.mp3",
       "full_audio": "audio/fulldownloads/rap-6-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/4gM00l5Ko3KM3oL1El8og06",
       "purchase_page": "audio-purchase.html?track=rap-6-may-2026&from=mp3"
@@ -176,7 +176,7 @@
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/rap-7-may-2026-30s.mp3",
+      "preview_audio": "audio/previews/rap-7-may-2026-60s.mp3",
       "full_audio": "audio/fulldownloads/rap-7-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/cNi00ldcQdlmcZl1El8og07",
       "purchase_page": "audio-purchase.html?track=rap-7-may-2026&from=mp3"
@@ -196,7 +196,7 @@
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/rap-8-may-2026-30s.mp3",
+      "preview_audio": "audio/previews/rap-8-may-2026-60s.mp3",
       "full_audio": "audio/fulldownloads/rap-8-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/3cIcN7dcQ0yAbVhfvb8og08",
       "purchase_page": "audio-purchase.html?track=rap-8-may-2026&from=mp3"
@@ -216,7 +216,7 @@
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/rap-9-may-2026-30s.mp3",
+      "preview_audio": "audio/previews/rap-9-may-2026-60s.mp3",
       "full_audio": "audio/fulldownloads/rap-9-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/aFa5kF2yc1CE6AXfvb8og09",
       "purchase_page": "audio-purchase.html?track=rap-9-may-2026&from=mp3"
@@ -236,7 +236,7 @@
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/rap-10-may-2026-30s.mp3",
+      "preview_audio": "audio/previews/rap-10-may-2026-60s.mp3",
       "full_audio": "audio/fulldownloads/rap-10-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/28E6oJegUftu5wT1El8og0a",
       "purchase_page": "audio-purchase.html?track=rap-10-may-2026&from=mp3"
@@ -256,7 +256,7 @@
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/rap-11-may-2026-30s.mp3",
+      "preview_audio": "audio/previews/rap-11-may-2026-60s.mp3",
       "full_audio": "audio/fulldownloads/rap-11-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/dRm5kFa0E3KM9N94Qx8og0b",
       "purchase_page": "audio-purchase.html?track=rap-11-may-2026&from=mp3"
@@ -276,7 +276,7 @@
     "price": "$3.99",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/rap-12-may-2026-30s.mp3",
+      "preview_audio": "audio/previews/rap-12-may-2026-60s.mp3",
       "full_audio": "audio/fulldownloads/rap-12-may-2026.mp3",
       "stripe_payment_link": "https://buy.stripe.com/eVqfZj2yc5SUf7tciZ8og0c",
       "purchase_page": "audio-purchase.html?track=rap-12-may-2026&from=mp3"
@@ -296,7 +296,7 @@
     "collection": "reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/reggae-1-d-minor-30s.mp3",
+      "preview_audio": "audio/previews/reggae-1-d-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/reggae-1-d-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/cNi28tb4Ia9a8J5beV8og0f",
       "purchase_page": "audio-purchase.html?track=reggae-1-d-minor&from=mp3"
@@ -316,7 +316,7 @@
     "collection": "reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/reggae-2-d-minor-30s.mp3",
+      "preview_audio": "audio/previews/reggae-2-d-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/reggae-2-d-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/00wbJ3b4I2GI1gD1El8og0g",
       "purchase_page": "audio-purchase.html?track=reggae-2-d-minor&from=mp3"
@@ -336,7 +336,7 @@
     "collection": "reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/reggae-3-a-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/reggae-3-a-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/reggae-3-a-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/aFabJ36Os956gbx0Ah8og0h",
       "purchase_page": "audio-purchase.html?track=reggae-3-a-harmonic-minor&from=mp3"
@@ -356,7 +356,7 @@
     "collection": "reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/reggae-4-g-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/reggae-4-g-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/reggae-4-g-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/aFa5kF0q4gxy0cz1El8og0i",
       "purchase_page": "audio-purchase.html?track=reggae-4-g-harmonic-minor&from=mp3"
@@ -376,7 +376,7 @@
     "collection": "reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/reggae-5-g-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/reggae-5-g-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/reggae-5-g-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/aFacN7c8Mdlm8J5ciZ8og0j",
       "purchase_page": "audio-purchase.html?track=reggae-5-g-harmonic-minor&from=mp3"
@@ -396,7 +396,7 @@
     "collection": "reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/reggae-6-g-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/reggae-6-g-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/reggae-6-g-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/aFa00lfkYchiaRd96N8og0k",
       "purchase_page": "audio-purchase.html?track=reggae-6-g-harmonic-minor&from=mp3"
@@ -416,7 +416,7 @@
     "collection": "reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/reggae-7-a-major-f-sharp-minor-30s.mp3",
+      "preview_audio": "audio/previews/reggae-7-a-major-f-sharp-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/reggae-7-a-major-f-sharp-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/7sY8wRgp24OQcZl2Ip8og0l",
       "purchase_page": "audio-purchase.html?track=reggae-7-a-major-f-sharp-minor&from=mp3"
@@ -436,7 +436,7 @@
     "collection": "reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/reggae-8-e-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/reggae-8-e-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/reggae-8-e-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/eVq9AVfkY3KMf7t5UB8og0m",
       "purchase_page": "audio-purchase.html?track=reggae-8-e-harmonic-minor&from=mp3"
@@ -456,7 +456,7 @@
     "collection": "reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/reggae-9-e-minor-30s.mp3",
+      "preview_audio": "audio/previews/reggae-9-e-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/reggae-9-e-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/dRm00l1u82GIf7tdn38og0n",
       "purchase_page": "audio-purchase.html?track=reggae-9-e-minor&from=mp3"
@@ -476,7 +476,7 @@
     "collection": "reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/reggae-10-e-minor-30s.mp3",
+      "preview_audio": "audio/previews/reggae-10-e-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/reggae-10-e-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/28E6oJfkY956f7tdn38og0o",
       "purchase_page": "audio-purchase.html?track=reggae-10-e-minor&from=mp3"
@@ -496,7 +496,7 @@
     "collection": "reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/reggae-11-e-minor-30s.mp3",
+      "preview_audio": "audio/previews/reggae-11-e-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/reggae-11-e-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/aFafZjc8Mepq7F182J8og0p",
       "purchase_page": "audio-purchase.html?track=reggae-11-e-minor&from=mp3"
@@ -516,7 +516,7 @@
     "collection": "reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/reggae-12-e-minor-30s.mp3",
+      "preview_audio": "audio/previews/reggae-12-e-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/reggae-12-e-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/eVqeVfa0Ea9a7F182J8og0q",
       "purchase_page": "audio-purchase.html?track=reggae-12-e-minor&from=mp3"
@@ -537,7 +537,7 @@
     "collection": "reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/reggae-ska-1-c-major-30s.mp3",
+      "preview_audio": "audio/previews/reggae-ska-1-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/reggae-ska-1-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/7sY14p4Gk6WY4sP3Mt8og0r",
       "purchase_page": "audio-purchase.html?track=reggae-ska-1-c-major&from=mp3"
@@ -558,7 +558,7 @@
     "collection": "reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/reggae-ska-2-c-major-30s.mp3",
+      "preview_audio": "audio/previews/reggae-ska-2-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/reggae-ska-2-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/dRm3cxc8M0yAcZl4Qx8og0s",
       "purchase_page": "audio-purchase.html?track=reggae-ska-2-c-major&from=mp3"
@@ -579,7 +579,7 @@
     "collection": "reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/traditional-african-1-e-minor-30s.mp3",
+      "preview_audio": "audio/previews/traditional-african-1-e-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/traditional-african-1-e-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/dRmcN74GkftucZl0Ah8og0t",
       "purchase_page": "audio-purchase.html?track=traditional-african-1-e-minor&from=mp3"
@@ -602,7 +602,7 @@
     "collection": "bossa",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/bossa-1-c-sharp-minor-30s.mp3",
+      "preview_audio": "audio/previews/bossa-1-c-sharp-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/bossa-1-c-sharp-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/6oUcN72yc2GI2kHer78og0u",
       "purchase_page": "audio-purchase.html?track=bossa-1-c-sharp-minor&from=mp3"
@@ -625,7 +625,7 @@
     "collection": "bossa",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/bossa-2-c-sharp-minor-30s.mp3",
+      "preview_audio": "audio/previews/bossa-2-c-sharp-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/bossa-2-c-sharp-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/fZu3cxc8M4OQ4sP4Qx8og0v",
       "purchase_page": "audio-purchase.html?track=bossa-2-c-sharp-minor&from=mp3"
@@ -648,7 +648,7 @@
     "collection": "bossa",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/bossa-3-c-sharp-minor-30s.mp3",
+      "preview_audio": "audio/previews/bossa-3-c-sharp-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/bossa-3-c-sharp-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/cNi00l3Cgbde8J53Mt8og0w",
       "purchase_page": "audio-purchase.html?track=bossa-3-c-sharp-minor&from=mp3"
@@ -671,7 +671,7 @@
     "collection": "bossa",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/bossa-nova-g-sharp-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/bossa-nova-g-sharp-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/bossa-nova-g-sharp-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/3cI6oJ7Sw5SU4sP4Qx8og0x",
       "purchase_page": "audio-purchase.html?track=bossa-nova-g-sharp-harmonic-minor&from=mp3"
@@ -693,7 +693,7 @@
     "collection": "bossa",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/choro-1-e-minor-30s.mp3",
+      "preview_audio": "audio/previews/choro-1-e-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/choro-1-e-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/28EaEZb4I0yA2kHer78og0y",
       "purchase_page": "audio-purchase.html?track=choro-1-e-minor&from=mp3"
@@ -715,7 +715,7 @@
     "collection": "bossa",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/choro-2-e-minor-30s.mp3",
+      "preview_audio": "audio/previews/choro-2-e-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/choro-2-e-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/28E9AV8WAchiaRd0Ah8og0z",
       "purchase_page": "audio-purchase.html?track=choro-2-e-minor&from=mp3"
@@ -738,7 +738,7 @@
     "collection": "bossa",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/choro-3-f-minor-c-phrygian-30s.mp3",
+      "preview_audio": "audio/previews/choro-3-f-minor-c-phrygian-60s.mp3",
       "full_audio": "audio/fulldownloads/choro-3-f-minor-c-phrygian.mp3",
       "stripe_payment_link": "https://buy.stripe.com/14AfZj7Sw2GIaRd2Ip8og0A",
       "purchase_page": "audio-purchase.html?track=choro-3-f-minor-c-phrygian&from=mp3"
@@ -761,7 +761,7 @@
     "collection": "bossa",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/choro-4-f-minor-c-phrygian-30s.mp3",
+      "preview_audio": "audio/previews/choro-4-f-minor-c-phrygian-60s.mp3",
       "full_audio": "audio/fulldownloads/choro-4-f-minor-c-phrygian.mp3",
       "stripe_payment_link": "https://buy.stripe.com/fZu8wR8WAftugbxdn38og0B",
       "purchase_page": "audio-purchase.html?track=choro-4-f-minor-c-phrygian&from=mp3"
@@ -782,7 +782,7 @@
     "collection": "egypt",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/egypt-1-c-sharp-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/egypt-1-c-sharp-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/egypt-1-c-sharp-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/7sY9AVa0E1CEcZl2Ip8og0C",
       "purchase_page": "audio-purchase.html?track=egypt-1-c-sharp-harmonic-minor&from=mp3"
@@ -803,7 +803,7 @@
     "collection": "egypt",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/egypt-5-d-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/egypt-5-d-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/egypt-5-d-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/eVqaEZ3Cg4OQ0czdn38og0D",
       "purchase_page": "audio-purchase.html?track=egypt-5-d-harmonic-minor&from=mp3"
@@ -824,7 +824,7 @@
     "collection": "egypt",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/egypt-6-f-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/egypt-6-f-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/egypt-6-f-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/bJeeVf5Ko6WY2kH4Qx8og0E",
       "purchase_page": "audio-purchase.html?track=egypt-6-f-harmonic-minor&from=mp3"
@@ -845,7 +845,7 @@
     "collection": "egypt",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/egypt-7-f-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/egypt-7-f-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/egypt-7-f-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/aFadRbegUepqe3p82J8og0F",
       "purchase_page": "audio-purchase.html?track=egypt-7-f-harmonic-minor&from=mp3"
@@ -866,7 +866,7 @@
     "collection": "egypt",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/egypt-9-f-sharp-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/egypt-9-f-sharp-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/egypt-9-f-sharp-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/14A8wRfkYbdecZl6YF8og0G",
       "purchase_page": "audio-purchase.html?track=egypt-9-f-sharp-harmonic-minor&from=mp3"
@@ -887,7 +887,7 @@
     "collection": "egypt",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/egypt-10-f-sharp-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/egypt-10-f-sharp-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/egypt-10-f-sharp-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/14A4gB4Gk2GIe3pbeV8og0H",
       "purchase_page": "audio-purchase.html?track=egypt-10-f-sharp-harmonic-minor&from=mp3"
@@ -908,7 +908,7 @@
     "collection": "egypt",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/egypt-11-f-sharp-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/egypt-11-f-sharp-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/egypt-11-f-sharp-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/cNi00l0q41CE9N9aaR8og0I",
       "purchase_page": "audio-purchase.html?track=egypt-11-f-sharp-harmonic-minor&from=mp3"
@@ -929,7 +929,7 @@
     "collection": "egypt",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/egypt-12-f-sharp-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/egypt-12-f-sharp-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/egypt-12-f-sharp-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/28E7sNc8MdlmaRd96N8og0J",
       "purchase_page": "audio-purchase.html?track=egypt-12-f-sharp-harmonic-minor&from=mp3"
@@ -950,7 +950,7 @@
     "collection": "egypt",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/egypt-13-f-sharp-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/egypt-13-f-sharp-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/egypt-13-f-sharp-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/aFa14pa0E6WY9N96YF8og0K",
       "purchase_page": "audio-purchase.html?track=egypt-13-f-sharp-harmonic-minor&from=mp3"
@@ -973,7 +973,7 @@
     "collection": "60s-rock",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/60s-phyche-rock-1-c-sharp-dorian-30s.mp3",
+      "preview_audio": "audio/previews/60s-phyche-rock-1-c-sharp-dorian-60s.mp3",
       "full_audio": "audio/fulldownloads/60s-phyche-rock-1-c-sharp-dorian.mp3",
       "stripe_payment_link": "https://buy.stripe.com/28EeVf3Cga9acZlfvb8og0M",
       "purchase_page": "audio-purchase.html?track=60s-phyche-rock-1-c-sharp-dorian&from=mp3",
@@ -997,7 +997,7 @@
     "collection": "60s-rock",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/60s-phyche-rock-2-c-sharp-dorian-30s.mp3",
+      "preview_audio": "audio/previews/60s-phyche-rock-2-c-sharp-dorian-60s.mp3",
       "full_audio": "audio/fulldownloads/60s-phyche-rock-2-c-sharp-dorian.mp3",
       "stripe_payment_link": "https://buy.stripe.com/4gM14p7Swbde6AX2Ip8og0O",
       "purchase_page": "audio-purchase.html?track=60s-phyche-rock-2-c-sharp-dorian&from=mp3",
@@ -1021,7 +1021,7 @@
     "collection": "60s-rock",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/60s-phyche-rock-3-c-sharp-dorian-c-sharp-natural-minor-1-30s.mp3",
+      "preview_audio": "audio/previews/60s-phyche-rock-3-c-sharp-dorian-c-sharp-natural-minor-1-60s.mp3",
       "full_audio": "audio/fulldownloads/60s-phyche-rock-3-c-sharp-dorian-c-sharp-natural-minor-1.mp3",
       "stripe_payment_link": "https://buy.stripe.com/9B69AV2ycgxye3p6YF8og0P",
       "purchase_page": "audio-purchase.html?track=60s-phyche-rock-3-c-sharp-dorian-c-sharp-natural-minor-1&from=mp3",
@@ -1045,7 +1045,7 @@
     "collection": "60s-rock",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/60s-phyche-rock-3-c-sharp-dorian-c-sharp-natural-minor-30s.mp3",
+      "preview_audio": "audio/previews/60s-phyche-rock-3-c-sharp-dorian-c-sharp-natural-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/60s-phyche-rock-3-c-sharp-dorian-c-sharp-natural-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/eVq8wRgp28120cz96N8og0Q",
       "purchase_page": "audio-purchase.html?track=60s-phyche-rock-3-c-sharp-dorian-c-sharp-natural-minor&from=mp3",
@@ -1069,7 +1069,7 @@
     "collection": "60s-rock",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/60s-physche-rock-4-c-sharp-dorian-30s.mp3",
+      "preview_audio": "audio/previews/60s-physche-rock-4-c-sharp-dorian-60s.mp3",
       "full_audio": "audio/fulldownloads/60s-physche-rock-4-c-sharp-dorian.mp3",
       "stripe_payment_link": "https://buy.stripe.com/14A7sN0q41CEf7ter78og0R",
       "purchase_page": "audio-purchase.html?track=60s-physche-rock-4-c-sharp-dorian&from=mp3",
@@ -1093,7 +1093,7 @@
     "collection": "60s-rock",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/60s-rock-a-minor-1-30s.mp3",
+      "preview_audio": "audio/previews/60s-rock-a-minor-1-60s.mp3",
       "full_audio": "audio/fulldownloads/60s-rock-a-minor-1.mp3",
       "stripe_payment_link": "https://buy.stripe.com/7sY28tgp23KM6AX6YF8og0S",
       "purchase_page": "audio-purchase.html?track=60s-rock-a-minor-1&from=mp3",
@@ -1117,7 +1117,7 @@
     "collection": "60s-rock",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/60s-rock-b-minor-2-30s.mp3",
+      "preview_audio": "audio/previews/60s-rock-b-minor-2-60s.mp3",
       "full_audio": "audio/fulldownloads/60s-rock-b-minor-2.mp3",
       "stripe_payment_link": "https://buy.stripe.com/14A7sNfkYepq8J54Qx8og0T",
       "purchase_page": "audio-purchase.html?track=60s-rock-b-minor-2&from=mp3",
@@ -1141,7 +1141,7 @@
     "collection": "60s-rock",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/title-painted-sky-won-t-sit-still-2-30s.mp3",
+      "preview_audio": "audio/previews/title-painted-sky-won-t-sit-still-2-60s.mp3",
       "full_audio": "audio/fulldownloads/title-painted-sky-won-t-sit-still-2.mp3",
       "stripe_payment_link": "https://buy.stripe.com/5kQ3cx2ycgxy3oL3Mt8og0X",
       "purchase_page": "audio-purchase.html?track=title-painted-sky-won-t-sit-still-2&from=mp3",
@@ -1164,7 +1164,7 @@
     "collection": "60s-rock",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/title-painted-sky-won-t-sit-still-30s.mp3",
+      "preview_audio": "audio/previews/title-painted-sky-won-t-sit-still-60s.mp3",
       "full_audio": "audio/fulldownloads/title-painted-sky-won-t-sit-still.mp3",
       "stripe_payment_link": "https://buy.stripe.com/8x26oJ6Osdlm5wT5UB8og0Y",
       "purchase_page": "audio-purchase.html?track=title-painted-sky-won-t-sit-still&from=mp3",
@@ -1184,7 +1184,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-f-lydian-10-30s.mp3",
+      "preview_audio": "audio/previews/ambient-f-lydian-10-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-f-lydian-10.mp3",
       "stripe_payment_link": "https://buy.stripe.com/cNi6oJ8WA4OQgbx82J8og0Z",
       "purchase_page": "audio-purchase.html?track=ambient-f-lydian-10&from=mp3",
@@ -1204,7 +1204,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-f-lydian-11-30s.mp3",
+      "preview_audio": "audio/previews/ambient-f-lydian-11-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-f-lydian-11.mp3",
       "stripe_payment_link": "https://buy.stripe.com/fZu9AV1u82GIaRd82J8og10",
       "purchase_page": "audio-purchase.html?track=ambient-f-lydian-11&from=mp3",
@@ -1224,7 +1224,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-f-lydian-12-30s.mp3",
+      "preview_audio": "audio/previews/ambient-f-lydian-12-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-f-lydian-12.mp3",
       "stripe_payment_link": "https://buy.stripe.com/cNi7sNegUepq5wT4Qx8og11",
       "purchase_page": "audio-purchase.html?track=ambient-f-lydian-12&from=mp3",
@@ -1244,7 +1244,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-f-lydian-2-30s.mp3",
+      "preview_audio": "audio/previews/ambient-f-lydian-2-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-f-lydian-2.mp3",
       "stripe_payment_link": "https://buy.stripe.com/14AbJ32yc0yAgbx4Qx8og1s",
       "purchase_page": "audio-purchase.html?track=ambient-f-lydian-2&from=mp3",
@@ -1264,7 +1264,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-f-lydian-3-30s.mp3",
+      "preview_audio": "audio/previews/ambient-f-lydian-3-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-f-lydian-3.mp3",
       "stripe_payment_link": "https://buy.stripe.com/4gM7sN3Cgchi4sPer78og1u",
       "purchase_page": "audio-purchase.html?track=ambient-f-lydian-3&from=mp3",
@@ -1284,7 +1284,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-f-lydian-4-30s.mp3",
+      "preview_audio": "audio/previews/ambient-f-lydian-4-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-f-lydian-4.mp3",
       "stripe_payment_link": "https://buy.stripe.com/eVqfZja0Eftu3oL82J8og1w",
       "purchase_page": "audio-purchase.html?track=ambient-f-lydian-4&from=mp3",
@@ -1304,7 +1304,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-f-lydian-5-30s.mp3",
+      "preview_audio": "audio/previews/ambient-f-lydian-5-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-f-lydian-5.mp3",
       "stripe_payment_link": "https://buy.stripe.com/cNi3cxegU8120cz6YF8og1y",
       "purchase_page": "audio-purchase.html?track=ambient-f-lydian-5&from=mp3",
@@ -1324,7 +1324,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-f-lydian-6-30s.mp3",
+      "preview_audio": "audio/previews/ambient-f-lydian-6-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-f-lydian-6.mp3",
       "stripe_payment_link": "https://buy.stripe.com/fZu00l0q4dlmaRd1El8og1B",
       "purchase_page": "audio-purchase.html?track=ambient-f-lydian-6&from=mp3",
@@ -1344,7 +1344,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-f-lydian-7-30s.mp3",
+      "preview_audio": "audio/previews/ambient-f-lydian-7-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-f-lydian-7.mp3",
       "stripe_payment_link": "https://buy.stripe.com/8x200l0q45SU5wT5UB8og1C",
       "purchase_page": "audio-purchase.html?track=ambient-f-lydian-7&from=mp3",
@@ -1364,7 +1364,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-f-lydian-8-30s.mp3",
+      "preview_audio": "audio/previews/ambient-f-lydian-8-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-f-lydian-8.mp3",
       "stripe_payment_link": "https://buy.stripe.com/7sY6oJ7Swgxye3p2Ip8og2a",
       "purchase_page": "audio-purchase.html?track=ambient-f-lydian-8&from=mp3",
@@ -1384,7 +1384,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-f-lydian-9-30s.mp3",
+      "preview_audio": "audio/previews/ambient-f-lydian-9-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-f-lydian-9.mp3",
       "stripe_payment_link": "https://buy.stripe.com/7sY8wRegU6WYe3p3Mt8og2c",
       "purchase_page": "audio-purchase.html?track=ambient-f-lydian-9&from=mp3",
@@ -1404,7 +1404,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-f-major-13-30s.mp3",
+      "preview_audio": "audio/previews/ambient-f-major-13-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-f-major-13.mp3",
       "stripe_payment_link": "https://buy.stripe.com/8x27sN8WA956e3p1El8og2d",
       "purchase_page": "audio-purchase.html?track=ambient-f-major-13&from=mp3",
@@ -1425,7 +1425,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-f-major-14-30s.mp3",
+      "preview_audio": "audio/previews/ambient-f-major-14-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-f-major-14.mp3",
       "stripe_payment_link": "https://buy.stripe.com/3cI00l1u88123oL5UB8og2e",
       "purchase_page": "audio-purchase.html?track=ambient-f-major-14&from=mp3",
@@ -1446,7 +1446,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-f-major-15-30s.mp3",
+      "preview_audio": "audio/previews/ambient-f-major-15-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-f-major-15.mp3",
       "stripe_payment_link": "https://buy.stripe.com/28E9AV4Gk1CEaRdbeV8og3o",
       "purchase_page": "audio-purchase.html?track=ambient-f-major-15&from=mp3",
@@ -1467,7 +1467,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-f-major-16-30s.mp3",
+      "preview_audio": "audio/previews/ambient-f-major-16-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-f-major-16.mp3",
       "stripe_payment_link": "https://buy.stripe.com/3cI5kF2yc0yA3oLdn38og3p",
       "purchase_page": "audio-purchase.html?track=ambient-f-major-16&from=mp3",
@@ -1488,7 +1488,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-f-major-17-30s.mp3",
+      "preview_audio": "audio/previews/ambient-f-major-17-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-f-major-17.mp3",
       "stripe_payment_link": "https://buy.stripe.com/14A14p4Gkgxy9N95UB8og3q",
       "purchase_page": "audio-purchase.html?track=ambient-f-major-17&from=mp3",
@@ -1509,7 +1509,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-f-major-18-30s.mp3",
+      "preview_audio": "audio/previews/ambient-f-major-18-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-f-major-18.mp3",
       "stripe_payment_link": "https://buy.stripe.com/14AdRb7Sw3KM0czer78og3r",
       "purchase_page": "audio-purchase.html?track=ambient-f-major-18&from=mp3",
@@ -1530,7 +1530,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-f-major-19-30s.mp3",
+      "preview_audio": "audio/previews/ambient-f-major-19-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-f-major-19.mp3",
       "stripe_payment_link": "https://buy.stripe.com/eVq5kFa0E1CE8J52Ip8og3s",
       "purchase_page": "audio-purchase.html?track=ambient-f-major-19&from=mp3",
@@ -1551,7 +1551,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-f-major-20-30s.mp3",
+      "preview_audio": "audio/previews/ambient-f-major-20-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-f-major-20.mp3",
       "stripe_payment_link": "https://buy.stripe.com/bJe4gB0q46WY9N93Mt8og3t",
       "purchase_page": "audio-purchase.html?track=ambient-f-major-20&from=mp3",
@@ -1572,7 +1572,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-harp-1-irish-f-major-30s.mp3",
+      "preview_audio": "audio/previews/ambient-harp-1-irish-f-major-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-harp-1-irish-f-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/14AdRbdcQ4OQ2kH96N8og3u",
       "purchase_page": "audio-purchase.html?track=ambient-harp-1-irish-f-major&from=mp3",
@@ -1593,7 +1593,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-harp-2-f-major-30s.mp3",
+      "preview_audio": "audio/previews/ambient-harp-2-f-major-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-harp-2-f-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/aFabJ3a0E3KM9N96YF8og3v",
       "purchase_page": "audio-purchase.html?track=ambient-harp-2-f-major&from=mp3",
@@ -1614,7 +1614,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-synths-1-c-major-30s.mp3",
+      "preview_audio": "audio/previews/ambient-synths-1-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-synths-1-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/14A7sN0q4chi5wT0Ah8og3w",
       "purchase_page": "audio-purchase.html?track=ambient-synths-1-c-major&from=mp3",
@@ -1635,7 +1635,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-synths-2-c-major-30s.mp3",
+      "preview_audio": "audio/previews/ambient-synths-2-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-synths-2-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/4gMbJ36Os5SU3oL3Mt8og12",
       "purchase_page": "audio-purchase.html?track=ambient-synths-2-c-major&from=mp3",
@@ -1656,7 +1656,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-synths-3-c-major-30s.mp3",
+      "preview_audio": "audio/previews/ambient-synths-3-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-synths-3-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/cNi4gBfkY6WYcZl1El8og13",
       "purchase_page": "audio-purchase.html?track=ambient-synths-3-c-major&from=mp3",
@@ -1677,7 +1677,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-synths-4-c-major-30s.mp3",
+      "preview_audio": "audio/previews/ambient-synths-4-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-synths-4-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/8x29AVa0E1CE5wT96N8og14",
       "purchase_page": "audio-purchase.html?track=ambient-synths-4-c-major&from=mp3",
@@ -1698,7 +1698,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-synths-5-c-major-30s.mp3",
+      "preview_audio": "audio/previews/ambient-synths-5-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-synths-5-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/9B69AVdcQ812f7t6YF8og16",
       "purchase_page": "audio-purchase.html?track=ambient-synths-5-c-major&from=mp3",
@@ -1719,7 +1719,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-synths-6-c-major-30s.mp3",
+      "preview_audio": "audio/previews/ambient-synths-6-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-synths-6-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/dRm5kF5Ko1CE0czdn38og18",
       "purchase_page": "audio-purchase.html?track=ambient-synths-6-c-major&from=mp3",
@@ -1740,7 +1740,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-synths-7-c-major-30s.mp3",
+      "preview_audio": "audio/previews/ambient-synths-7-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-synths-7-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/5kQ6oJc8M812gbx2Ip8og1r",
       "purchase_page": "audio-purchase.html?track=ambient-synths-7-c-major&from=mp3",
@@ -1761,7 +1761,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/f-lydian-1-youtube-video-30s.mp3",
+      "preview_audio": "audio/previews/f-lydian-1-youtube-video-60s.mp3",
       "full_audio": "audio/fulldownloads/f-lydian-1-youtube-video.mp3",
       "stripe_payment_link": "https://buy.stripe.com/8x200la0E2GIbVhaaR8og1t",
       "purchase_page": "audio-purchase.html?track=f-lydian-1-youtube-video&from=mp3",
@@ -1781,7 +1781,7 @@
     "collection": "ambient",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/untitled-30s.mp3",
+      "preview_audio": "audio/previews/untitled-60s.mp3",
       "full_audio": "audio/fulldownloads/untitled.mp3",
       "stripe_payment_link": "https://buy.stripe.com/aFa14p5Ko8124sP4Qx8og1v",
       "purchase_page": "audio-purchase.html?track=untitled&from=mp3",
@@ -1802,7 +1802,7 @@
     "collection": "asian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/asian-20-g-penta-30s.mp3",
+      "preview_audio": "audio/previews/asian-20-g-penta-60s.mp3",
       "full_audio": "audio/fulldownloads/asian-20-g-penta.mp3",
       "stripe_payment_link": "https://buy.stripe.com/4gMbJ31u8epq0czgzf8og1x",
       "purchase_page": "audio-purchase.html?track=asian-20-g-penta&from=mp3",
@@ -1823,7 +1823,7 @@
     "collection": "asian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/asian-21-g-penta-30s.mp3",
+      "preview_audio": "audio/previews/asian-21-g-penta-60s.mp3",
       "full_audio": "audio/fulldownloads/asian-21-g-penta.mp3",
       "stripe_payment_link": "https://buy.stripe.com/7sY5kF6Os6WY6AXciZ8og1z",
       "purchase_page": "audio-purchase.html?track=asian-21-g-penta&from=mp3",
@@ -1844,7 +1844,7 @@
     "collection": "asian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/asian-22-g-penta-30s.mp3",
+      "preview_audio": "audio/previews/asian-22-g-penta-60s.mp3",
       "full_audio": "audio/fulldownloads/asian-22-g-penta.mp3",
       "stripe_payment_link": "https://buy.stripe.com/eVq3cx5Ko4OQ9N94Qx8og3x",
       "purchase_page": "audio-purchase.html?track=asian-22-g-penta&from=mp3",
@@ -1865,7 +1865,7 @@
     "collection": "asian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/asian-23-g-penta-30s.mp3",
+      "preview_audio": "audio/previews/asian-23-g-penta-60s.mp3",
       "full_audio": "audio/fulldownloads/asian-23-g-penta.mp3",
       "stripe_payment_link": "https://buy.stripe.com/bJe9AVb4Ibde2kH1El8og24",
       "purchase_page": "audio-purchase.html?track=asian-23-g-penta&from=mp3",
@@ -1886,7 +1886,7 @@
     "collection": "asian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/harp-3-f-minor-30s.mp3",
+      "preview_audio": "audio/previews/harp-3-f-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/harp-3-f-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/28EdRb3Cgepq8J5gzf8og27",
       "purchase_page": "audio-purchase.html?track=harp-3-f-minor&from=mp3",
@@ -1908,7 +1908,7 @@
     "collection": "asian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/tibetan-1-g-major-30s.mp3",
+      "preview_audio": "audio/previews/tibetan-1-g-major-60s.mp3",
       "full_audio": "audio/fulldownloads/tibetan-1-g-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/9B67sN7Sw5SUcZlaaR8og29",
       "purchase_page": "audio-purchase.html?track=tibetan-1-g-major&from=mp3",
@@ -1930,7 +1930,7 @@
     "collection": "asian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/tibetan-2-g-major-30s.mp3",
+      "preview_audio": "audio/previews/tibetan-2-g-major-60s.mp3",
       "full_audio": "audio/fulldownloads/tibetan-2-g-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/7sYdRb7Swa9a7F1aaR8og2b",
       "purchase_page": "audio-purchase.html?track=tibetan-2-g-major&from=mp3",
@@ -1952,7 +1952,7 @@
     "collection": "asian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/tibetan-3-g-major-30s.mp3",
+      "preview_audio": "audio/previews/tibetan-3-g-major-60s.mp3",
       "full_audio": "audio/fulldownloads/tibetan-3-g-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/00w14p1u8812e3pciZ8og2B",
       "purchase_page": "audio-purchase.html?track=tibetan-3-g-major&from=mp3",
@@ -1974,7 +1974,7 @@
     "collection": "asian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/tibetan-4-g-major-30s.mp3",
+      "preview_audio": "audio/previews/tibetan-4-g-major-60s.mp3",
       "full_audio": "audio/fulldownloads/tibetan-4-g-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/28EcN70q41CEe3p1El8og2C",
       "purchase_page": "audio-purchase.html?track=tibetan-4-g-major&from=mp3",
@@ -1996,7 +1996,7 @@
     "collection": "asian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/tibetan-5-g-major-30s.mp3",
+      "preview_audio": "audio/previews/tibetan-5-g-major-60s.mp3",
       "full_audio": "audio/fulldownloads/tibetan-5-g-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/14AeVf7Sw3KM5wT1El8og2E",
       "purchase_page": "audio-purchase.html?track=tibetan-5-g-major&from=mp3",
@@ -2018,7 +2018,7 @@
     "collection": "asian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/traditional-gagaku-1-e-minor-30s.mp3",
+      "preview_audio": "audio/previews/traditional-gagaku-1-e-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/traditional-gagaku-1-e-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/9B6dRbc8M5SU8J582J8og2G",
       "purchase_page": "audio-purchase.html?track=traditional-gagaku-1-e-minor&from=mp3",
@@ -2040,7 +2040,7 @@
     "collection": "asian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/traditional-persian-g-major-e-minor-30s.mp3",
+      "preview_audio": "audio/previews/traditional-persian-g-major-e-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/traditional-persian-g-major-e-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/aFa14p1u88127F1gzf8og2I",
       "purchase_page": "audio-purchase.html?track=traditional-persian-g-major-e-minor&from=mp3",
@@ -2062,7 +2062,7 @@
     "collection": "asian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/traditional-persian-2-g-major-e-minor-30s.mp3",
+      "preview_audio": "audio/previews/traditional-persian-2-g-major-e-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/traditional-persian-2-g-major-e-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/eVqfZja0Ebde6AX1El8og2R",
       "purchase_page": "audio-purchase.html?track=traditional-persian-2-g-major-e-minor&from=mp3",
@@ -2084,7 +2084,7 @@
     "collection": "asian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/traditional-persian-3-g-major-e-minor-30s.mp3",
+      "preview_audio": "audio/previews/traditional-persian-3-g-major-e-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/traditional-persian-3-g-major-e-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/eVq3cx7Sw4OQ5wTaaR8og2S",
       "purchase_page": "audio-purchase.html?track=traditional-persian-3-g-major-e-minor&from=mp3",
@@ -2106,7 +2106,7 @@
     "collection": "synth",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/c-sharp-harm-2-30s.mp3",
+      "preview_audio": "audio/previews/c-sharp-harm-2-60s.mp3",
       "full_audio": "audio/fulldownloads/c-sharp-harm-2.mp3",
       "stripe_payment_link": "https://buy.stripe.com/aFaeVfb4IbdebVh82J8og2T",
       "purchase_page": "audio-purchase.html?track=c-sharp-harm-2&from=mp3",
@@ -2127,7 +2127,7 @@
     "collection": "synth",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/c-sharp-harm-30s.mp3",
+      "preview_audio": "audio/previews/c-sharp-harm-60s.mp3",
       "full_audio": "audio/fulldownloads/c-sharp-harm.mp3",
       "stripe_payment_link": "https://buy.stripe.com/7sYdRbb4I4OQ7F196N8og2U",
       "purchase_page": "audio-purchase.html?track=c-sharp-harm&from=mp3",
@@ -2148,7 +2148,7 @@
     "collection": "synth",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/c-sharp-harmonic-minor-synth-3-30s.mp3",
+      "preview_audio": "audio/previews/c-sharp-harmonic-minor-synth-3-60s.mp3",
       "full_audio": "audio/fulldownloads/c-sharp-harmonic-minor-synth-3.mp3",
       "stripe_payment_link": "https://buy.stripe.com/dRm8wR6Osa9abVher78og2V",
       "purchase_page": "audio-purchase.html?track=c-sharp-harmonic-minor-synth-3&from=mp3",
@@ -2170,7 +2170,7 @@
     "collection": "synth",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/c-sharp-harmonic-minor-synth-4-30s.mp3",
+      "preview_audio": "audio/previews/c-sharp-harmonic-minor-synth-4-60s.mp3",
       "full_audio": "audio/fulldownloads/c-sharp-harmonic-minor-synth-4.mp3",
       "stripe_payment_link": "https://buy.stripe.com/28EaEZegUepqf7ter78og0W",
       "purchase_page": "audio-purchase.html?track=c-sharp-harmonic-minor-synth-4&from=mp3",
@@ -2193,7 +2193,7 @@
     "collection": "calypso",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/calypso-1-eb-major-c-minor-30s.mp3",
+      "preview_audio": "audio/previews/calypso-1-eb-major-c-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/calypso-1-eb-major-c-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/8x27sN6Os956bVh4Qx8og19",
       "purchase_page": "audio-purchase.html?track=calypso-1-eb-major-c-minor&from=mp3",
@@ -2216,7 +2216,7 @@
     "collection": "calypso",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/calypso-2-c-major-a-minor-30s.mp3",
+      "preview_audio": "audio/previews/calypso-2-c-major-a-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/calypso-2-c-major-a-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/fZueVfb4I4OQ7F1aaR8og1b",
       "purchase_page": "audio-purchase.html?track=calypso-2-c-major-a-minor&from=mp3",
@@ -2240,7 +2240,7 @@
     "collection": "chill-indian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/chill-indian-g-sharp-natural-minor-1-30s.mp3",
+      "preview_audio": "audio/previews/chill-indian-g-sharp-natural-minor-1-60s.mp3",
       "full_audio": "audio/fulldownloads/chill-indian-g-sharp-natural-minor-1.mp3",
       "stripe_payment_link": "https://buy.stripe.com/8x200l6Os6WYaRd2Ip8og1d",
       "purchase_page": "audio-purchase.html?track=chill-indian-g-sharp-natural-minor-1&from=mp3",
@@ -2263,7 +2263,7 @@
     "collection": "chill-indian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/chill-indian-g-sharp-natural-minor-2-30s.mp3",
+      "preview_audio": "audio/previews/chill-indian-g-sharp-natural-minor-2-60s.mp3",
       "full_audio": "audio/fulldownloads/chill-indian-g-sharp-natural-minor-2.mp3",
       "stripe_payment_link": "https://buy.stripe.com/14A6oJegU1CEgbx0Ah8og1f",
       "purchase_page": "audio-purchase.html?track=chill-indian-g-sharp-natural-minor-2&from=mp3",
@@ -2286,7 +2286,7 @@
     "collection": "chill-indian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/g-sharp-minor-6-30s.mp3",
+      "preview_audio": "audio/previews/g-sharp-minor-6-60s.mp3",
       "full_audio": "audio/fulldownloads/g-sharp-minor-6.mp3",
       "stripe_payment_link": "https://buy.stripe.com/4gM6oJegUgxy2kH3Mt8og1g",
       "purchase_page": "audio-purchase.html?track=g-sharp-minor-6&from=mp3",
@@ -2307,7 +2307,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-1-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-1-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-1-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/8x2dRbfkY956cZl4Qx8og1m",
       "purchase_page": "audio-purchase.html?track=country-ambient-1-c-major&from=mp3",
@@ -2328,7 +2328,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-10-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-10-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-10-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/8x214p7Swepq0cz5UB8og1n",
       "purchase_page": "audio-purchase.html?track=country-ambient-10-c-major&from=mp3",
@@ -2349,7 +2349,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-11-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-11-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-11-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/00w4gB5Ko0yA6AXfvb8og1o",
       "purchase_page": "audio-purchase.html?track=country-ambient-11-c-major&from=mp3",
@@ -2370,7 +2370,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-12-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-12-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-12-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/7sYcN7a0E2GIaRdfvb8og1p",
       "purchase_page": "audio-purchase.html?track=country-ambient-12-c-major&from=mp3",
@@ -2391,7 +2391,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-13-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-13-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-13-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/6oUcN75Ko2GI2kH2Ip8og1q",
       "purchase_page": "audio-purchase.html?track=country-ambient-13-c-major&from=mp3",
@@ -2412,7 +2412,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-14-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-14-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-14-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/fZu8wR5Ko0yA8J54Qx8og1I",
       "purchase_page": "audio-purchase.html?track=country-ambient-14-c-major&from=mp3",
@@ -2433,7 +2433,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-15-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-15-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-15-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/00waEZb4I9569N9ciZ8og1K",
       "purchase_page": "audio-purchase.html?track=country-ambient-15-c-major&from=mp3",
@@ -2454,7 +2454,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-16-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-16-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-16-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/8x2cN7dcQ956gbx1El8og1M",
       "purchase_page": "audio-purchase.html?track=country-ambient-16-c-major&from=mp3",
@@ -2475,7 +2475,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-17-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-17-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-17-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/aFa9AV0q4dlmbVhdn38og1O",
       "purchase_page": "audio-purchase.html?track=country-ambient-17-c-major&from=mp3",
@@ -2496,7 +2496,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-18-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-18-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-18-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/6oU8wRegU4OQaRd3Mt8og1Q",
       "purchase_page": "audio-purchase.html?track=country-ambient-18-c-major&from=mp3",
@@ -2517,7 +2517,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-19-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-19-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-19-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/4gMaEZ3Cg2GI4sP3Mt8og2h",
       "purchase_page": "audio-purchase.html?track=country-ambient-19-c-major&from=mp3",
@@ -2538,7 +2538,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-2-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-2-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-2-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/8x2cN70q4812aRd3Mt8og2i",
       "purchase_page": "audio-purchase.html?track=country-ambient-2-c-major&from=mp3",
@@ -2559,7 +2559,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-20-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-20-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-20-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/fZu5kF5Ko2GI5wT82J8og2j",
       "purchase_page": "audio-purchase.html?track=country-ambient-20-c-major&from=mp3",
@@ -2580,7 +2580,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-3-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-3-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-3-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/cNi4gB4Gk8129N96YF8og2k",
       "purchase_page": "audio-purchase.html?track=country-ambient-3-c-major&from=mp3",
@@ -2601,7 +2601,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-4-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-4-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-4-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/8x200ldcQbde8J5aaR8og2l",
       "purchase_page": "audio-purchase.html?track=country-ambient-4-c-major&from=mp3",
@@ -2622,7 +2622,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-5-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-5-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-5-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/14AcN70q41CE0czdn38og2r",
       "purchase_page": "audio-purchase.html?track=country-ambient-5-c-major&from=mp3",
@@ -2643,7 +2643,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-6-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-6-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-6-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/7sY8wRc8M6WYaRd6YF8og2t",
       "purchase_page": "audio-purchase.html?track=country-ambient-6-c-major&from=mp3",
@@ -2664,7 +2664,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-7-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-7-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-7-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/00w4gB7Sw2GI4sP6YF8og2w",
       "purchase_page": "audio-purchase.html?track=country-ambient-7-c-major&from=mp3",
@@ -2685,7 +2685,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-8-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-8-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-8-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/9B63cxgp21CE1gD96N8og2y",
       "purchase_page": "audio-purchase.html?track=country-ambient-8-c-major&from=mp3",
@@ -2706,7 +2706,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-ambient-9-c-major-30s.mp3",
+      "preview_audio": "audio/previews/country-ambient-9-c-major-60s.mp3",
       "full_audio": "audio/fulldownloads/country-ambient-9-c-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/00wcN7dcQa9abVhciZ8og0U",
       "purchase_page": "audio-purchase.html?track=country-ambient-9-c-major&from=mp3",
@@ -2727,7 +2727,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-f-sharp-minor-1-30s.mp3",
+      "preview_audio": "audio/previews/country-f-sharp-minor-1-60s.mp3",
       "full_audio": "audio/fulldownloads/country-f-sharp-minor-1.mp3",
       "stripe_payment_link": "https://buy.stripe.com/cNi3cx3Cg956f7ter78og1h",
       "purchase_page": "audio-purchase.html?track=country-f-sharp-minor-1&from=mp3",
@@ -2748,7 +2748,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-f-sharp-minor-2-30s.mp3",
+      "preview_audio": "audio/previews/country-f-sharp-minor-2-60s.mp3",
       "full_audio": "audio/fulldownloads/country-f-sharp-minor-2.mp3",
       "stripe_payment_link": "https://buy.stripe.com/4gM14pdcQepq0czbeV8og1i",
       "purchase_page": "audio-purchase.html?track=country-f-sharp-minor-2&from=mp3",
@@ -2769,7 +2769,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-f-sharp-minor-3-30s.mp3",
+      "preview_audio": "audio/previews/country-f-sharp-minor-3-60s.mp3",
       "full_audio": "audio/fulldownloads/country-f-sharp-minor-3.mp3",
       "stripe_payment_link": "https://buy.stripe.com/4gMfZj4Gk0yAe3p6YF8og1j",
       "purchase_page": "audio-purchase.html?track=country-f-sharp-minor-3&from=mp3",
@@ -2790,7 +2790,7 @@
     "collection": "country",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/country-f-sharp-minor-4-30s.mp3",
+      "preview_audio": "audio/previews/country-f-sharp-minor-4-60s.mp3",
       "full_audio": "audio/fulldownloads/country-f-sharp-minor-4.mp3",
       "stripe_payment_link": "https://buy.stripe.com/28E14pfkY4OQ3oL5UB8og1k",
       "purchase_page": "audio-purchase.html?track=country-f-sharp-minor-4&from=mp3",
@@ -2814,7 +2814,7 @@
     "collection": "edm-metal",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/edm-metal-c-sharp-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/edm-metal-c-sharp-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/edm-metal-c-sharp-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/3cI00l4Gk8123oLbeV8og1l",
       "purchase_page": "audio-purchase.html?track=edm-metal-c-sharp-harmonic-minor&from=mp3",
@@ -2838,7 +2838,7 @@
     "collection": "edm-metal",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/edm-metal-2-c-sharp-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/edm-metal-2-c-sharp-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/edm-metal-2-c-sharp-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/14AbJ36Os9563oL96N8og1V",
       "purchase_page": "audio-purchase.html?track=edm-metal-2-c-sharp-harmonic-minor&from=mp3",
@@ -2862,7 +2862,7 @@
     "collection": "edm-metal",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/edm-metal-3-f-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/edm-metal-3-f-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/edm-metal-3-f-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/3cI14pgp2ftu2kHdn38og1Y",
       "purchase_page": "audio-purchase.html?track=edm-metal-3-f-harmonic-minor&from=mp3",
@@ -2885,7 +2885,7 @@
     "collection": "egypt",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/ambient-rap-1-f-minor-c-phyrigian-30s.mp3",
+      "preview_audio": "audio/previews/ambient-rap-1-f-minor-c-phyrigian-60s.mp3",
       "full_audio": "audio/fulldownloads/ambient-rap-1-f-minor-c-phyrigian.mp3",
       "stripe_payment_link": "https://buy.stripe.com/bJe6oJ2yc2GI2kH1El8og22",
       "purchase_page": "audio-purchase.html?track=ambient-rap-1-f-minor-c-phyrigian&from=mp3",
@@ -2908,7 +2908,7 @@
     "collection": "egypt",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/c-sharp-harmonic-minor-egypt-30s.mp3",
+      "preview_audio": "audio/previews/c-sharp-harmonic-minor-egypt-60s.mp3",
       "full_audio": "audio/fulldownloads/c-sharp-harmonic-minor-egypt.mp3",
       "stripe_payment_link": "https://buy.stripe.com/aFa9AV4Gk3KM6AX5UB8og25",
       "purchase_page": "audio-purchase.html?track=c-sharp-harmonic-minor-egypt&from=mp3",
@@ -2931,7 +2931,7 @@
     "collection": "egypt",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/egypt-d-harmonic-minor-5-30s.mp3",
+      "preview_audio": "audio/previews/egypt-d-harmonic-minor-5-60s.mp3",
       "full_audio": "audio/fulldownloads/egypt-d-harmonic-minor-5.mp3",
       "stripe_payment_link": "https://buy.stripe.com/7sY7sN1u86WY8J5aaR8og28",
       "purchase_page": "audio-purchase.html?track=egypt-d-harmonic-minor-5&from=mp3",
@@ -2954,7 +2954,7 @@
     "collection": "egypt",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/f-harmonic-minor-best-2-30s.mp3",
+      "preview_audio": "audio/previews/f-harmonic-minor-best-2-60s.mp3",
       "full_audio": "audio/fulldownloads/f-harmonic-minor-best-2.mp3",
       "stripe_payment_link": "https://buy.stripe.com/bJe5kFgp2gxye3p0Ah8og2u",
       "purchase_page": "audio-purchase.html?track=f-harmonic-minor-best-2&from=mp3",
@@ -2977,7 +2977,7 @@
     "collection": "egypt",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/f-harmonic-minor-best-30s.mp3",
+      "preview_audio": "audio/previews/f-harmonic-minor-best-60s.mp3",
       "full_audio": "audio/fulldownloads/f-harmonic-minor-best.mp3",
       "stripe_payment_link": "https://buy.stripe.com/bJeaEZ2ycchi3oLer78og2v",
       "purchase_page": "audio-purchase.html?track=f-harmonic-minor-best&from=mp3",
@@ -3000,7 +3000,7 @@
     "collection": "egypt",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/f-sharp-harmonic-minor-egypt-30s.mp3",
+      "preview_audio": "audio/previews/f-sharp-harmonic-minor-egypt-60s.mp3",
       "full_audio": "audio/fulldownloads/f-sharp-harmonic-minor-egypt.mp3",
       "stripe_payment_link": "https://buy.stripe.com/28E6oJ5Koftue3pgzf8og2x",
       "purchase_page": "audio-purchase.html?track=f-sharp-harmonic-minor-egypt&from=mp3",
@@ -3023,7 +3023,7 @@
     "collection": "egypt",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/f-sharp-harmonic-10-30s.mp3",
+      "preview_audio": "audio/previews/f-sharp-harmonic-10-60s.mp3",
       "full_audio": "audio/fulldownloads/f-sharp-harmonic-10.mp3",
       "stripe_payment_link": "https://buy.stripe.com/6oU3cxa0Ebdef7t1El8og2z",
       "purchase_page": "audio-purchase.html?track=f-sharp-harmonic-10&from=mp3",
@@ -3045,7 +3045,7 @@
     "collection": "egypt",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/f-sharp-harmonic-9-30s.mp3",
+      "preview_audio": "audio/previews/f-sharp-harmonic-9-60s.mp3",
       "full_audio": "audio/fulldownloads/f-sharp-harmonic-9.mp3",
       "stripe_payment_link": "https://buy.stripe.com/eVq00l0q43KMbVhgzf8og2A",
       "purchase_page": "audio-purchase.html?track=f-sharp-harmonic-9&from=mp3",
@@ -3067,7 +3067,7 @@
     "collection": "egypt",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/f-sharp-harmonic-minor-11-30s.mp3",
+      "preview_audio": "audio/previews/f-sharp-harmonic-minor-11-60s.mp3",
       "full_audio": "audio/fulldownloads/f-sharp-harmonic-minor-11.mp3",
       "stripe_payment_link": "https://buy.stripe.com/cNi00lgp23KM2kH5UB8og2W",
       "purchase_page": "audio-purchase.html?track=f-sharp-harmonic-minor-11&from=mp3",
@@ -3090,7 +3090,7 @@
     "collection": "egypt",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/f-sharp-harmonic-minor-12-30s.mp3",
+      "preview_audio": "audio/previews/f-sharp-harmonic-minor-12-60s.mp3",
       "full_audio": "audio/fulldownloads/f-sharp-harmonic-minor-12.mp3",
       "stripe_payment_link": "https://buy.stripe.com/5kQ4gBgp26WY9N996N8og2X",
       "purchase_page": "audio-purchase.html?track=f-sharp-harmonic-minor-12&from=mp3",
@@ -3112,7 +3112,7 @@
     "collection": "lydian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/0-keyboard-30s.mp3",
+      "preview_audio": "audio/previews/0-keyboard-60s.mp3",
       "full_audio": "audio/fulldownloads/0-keyboard.mp3",
       "stripe_payment_link": "https://buy.stripe.com/eVq4gBfkYa9a8J5dn38og2Y",
       "purchase_page": "audio-purchase.html?track=0-keyboard&from=mp3",
@@ -3133,7 +3133,7 @@
     "collection": "lydian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/1-synth-30s.mp3",
+      "preview_audio": "audio/previews/1-synth-60s.mp3",
       "full_audio": "audio/fulldownloads/1-synth.mp3",
       "stripe_payment_link": "https://buy.stripe.com/bJeeVffkYbdee3p3Mt8og2Z",
       "purchase_page": "audio-purchase.html?track=1-synth&from=mp3",
@@ -3154,7 +3154,7 @@
     "collection": "lydian",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/2-woodwinds-30s.mp3",
+      "preview_audio": "audio/previews/2-woodwinds-60s.mp3",
       "full_audio": "audio/fulldownloads/2-woodwinds.mp3",
       "stripe_payment_link": "https://buy.stripe.com/fZu8wRegUa9af7ter78og30",
       "purchase_page": "audio-purchase.html?track=2-woodwinds&from=mp3",
@@ -3176,7 +3176,7 @@
     "collection": "funk-disco",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/70s-funk-1-a-minor-30s.mp3",
+      "preview_audio": "audio/previews/70s-funk-1-a-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/70s-funk-1-a-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/3cI4gBc8M2GIcZldn38og31",
       "purchase_page": "audio-purchase.html?track=70s-funk-1-a-minor&from=mp3",
@@ -3199,7 +3199,7 @@
     "collection": "funk-disco",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/70s-funk-2-a-minor-30s.mp3",
+      "preview_audio": "audio/previews/70s-funk-2-a-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/70s-funk-2-a-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/dRm3cxfkYgxy8J51El8og32",
       "purchase_page": "audio-purchase.html?track=70s-funk-2-a-minor&from=mp3",
@@ -3222,7 +3222,7 @@
     "collection": "funk-disco",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/instrumental-funk-disco-b-minor-2-30s.mp3",
+      "preview_audio": "audio/previews/instrumental-funk-disco-b-minor-2-60s.mp3",
       "full_audio": "audio/fulldownloads/instrumental-funk-disco-b-minor-2.mp3",
       "stripe_payment_link": "https://buy.stripe.com/5kQdRb2ycdlm2kHfvb8og33",
       "purchase_page": "audio-purchase.html?track=instrumental-funk-disco-b-minor-2&from=mp3",
@@ -3245,7 +3245,7 @@
     "collection": "funk-disco",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/instrumental-funk-disco-b-minor-3-30s.mp3",
+      "preview_audio": "audio/previews/instrumental-funk-disco-b-minor-3-60s.mp3",
       "full_audio": "audio/fulldownloads/instrumental-funk-disco-b-minor-3.mp3",
       "stripe_payment_link": "https://buy.stripe.com/14A8wRgp2bde9N91El8og34",
       "purchase_page": "audio-purchase.html?track=instrumental-funk-disco-b-minor-3&from=mp3",
@@ -3268,7 +3268,7 @@
     "collection": "funk-disco",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/instrumental-funk-disco-b-minor-4-30s.mp3",
+      "preview_audio": "audio/previews/instrumental-funk-disco-b-minor-4-60s.mp3",
       "full_audio": "audio/fulldownloads/instrumental-funk-disco-b-minor-4.mp3",
       "stripe_payment_link": "https://buy.stripe.com/9B67sN8WA8126AX82J8og0V",
       "purchase_page": "audio-purchase.html?track=instrumental-funk-disco-b-minor-4&from=mp3",
@@ -3291,7 +3291,7 @@
     "collection": "irish",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/irish-1-g-major-30s.mp3",
+      "preview_audio": "audio/previews/irish-1-g-major-60s.mp3",
       "full_audio": "audio/fulldownloads/irish-1-g-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/4gM00lgp23KM7F1fvb8og15",
       "purchase_page": "audio-purchase.html?track=irish-1-g-major&from=mp3",
@@ -3314,7 +3314,7 @@
     "collection": "irish",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/irish-2-g-major-30s.mp3",
+      "preview_audio": "audio/previews/irish-2-g-major-60s.mp3",
       "full_audio": "audio/fulldownloads/irish-2-g-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/9B68wR2yc4OQ3oL3Mt8og17",
       "purchase_page": "audio-purchase.html?track=irish-2-g-major&from=mp3",
@@ -3337,7 +3337,7 @@
     "collection": "irish",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/irish-3-g-major-30s.mp3",
+      "preview_audio": "audio/previews/irish-3-g-major-60s.mp3",
       "full_audio": "audio/fulldownloads/irish-3-g-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/cNiaEZ2ycchi2kHaaR8og1a",
       "purchase_page": "audio-purchase.html?track=irish-3-g-major&from=mp3",
@@ -3360,7 +3360,7 @@
     "collection": "irish",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/irish-4-g-major-30s.mp3",
+      "preview_audio": "audio/previews/irish-4-g-major-60s.mp3",
       "full_audio": "audio/fulldownloads/irish-4-g-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/7sY14p1u8gxyf7tbeV8og1c",
       "purchase_page": "audio-purchase.html?track=irish-4-g-major&from=mp3",
@@ -3383,7 +3383,7 @@
     "collection": "irish",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/irish-5-g-major-30s.mp3",
+      "preview_audio": "audio/previews/irish-5-g-major-60s.mp3",
       "full_audio": "audio/fulldownloads/irish-5-g-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/28EfZj6Os5SUbVhbeV8og1e",
       "purchase_page": "audio-purchase.html?track=irish-5-g-major&from=mp3",
@@ -3406,7 +3406,7 @@
     "collection": "irish",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/irish-6-g-major-30s.mp3",
+      "preview_audio": "audio/previews/irish-6-g-major-60s.mp3",
       "full_audio": "audio/fulldownloads/irish-6-g-major.mp3",
       "stripe_payment_link": "https://buy.stripe.com/3cI14pfkYftu6AXciZ8og1A",
       "purchase_page": "audio-purchase.html?track=irish-6-g-major&from=mp3",
@@ -3429,7 +3429,7 @@
     "collection": "lo-fi",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/lo-fi-c-eb-major-c-minor-30s.mp3",
+      "preview_audio": "audio/previews/lo-fi-c-eb-major-c-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/lo-fi-c-eb-major-c-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/aFa9AVb4I2GI3oLer78og1D",
       "purchase_page": "audio-purchase.html?track=lo-fi-c-eb-major-c-minor&from=mp3",
@@ -3452,7 +3452,7 @@
     "collection": "lo-fi",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/lo-fi-c-minor-2-30s.mp3",
+      "preview_audio": "audio/previews/lo-fi-c-minor-2-60s.mp3",
       "full_audio": "audio/fulldownloads/lo-fi-c-minor-2.mp3",
       "stripe_payment_link": "https://buy.stripe.com/00w8wR8WA1CEaRddn38og1E",
       "purchase_page": "audio-purchase.html?track=lo-fi-c-minor-2&from=mp3",
@@ -3475,7 +3475,7 @@
     "collection": "lo-fi",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/lo-fi-c-minor-3-30s.mp3",
+      "preview_audio": "audio/previews/lo-fi-c-minor-3-60s.mp3",
       "full_audio": "audio/fulldownloads/lo-fi-c-minor-3.mp3",
       "stripe_payment_link": "https://buy.stripe.com/28EbJ35KoftuaRdciZ8og1F",
       "purchase_page": "audio-purchase.html?track=lo-fi-c-minor-3&from=mp3",
@@ -3498,7 +3498,7 @@
     "collection": "lo-fi",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/lo-fi-c-minor-4-30s.mp3",
+      "preview_audio": "audio/previews/lo-fi-c-minor-4-60s.mp3",
       "full_audio": "audio/fulldownloads/lo-fi-c-minor-4.mp3",
       "stripe_payment_link": "https://buy.stripe.com/bJefZj3Cg8126AX4Qx8og1G",
       "purchase_page": "audio-purchase.html?track=lo-fi-c-minor-4&from=mp3",
@@ -3519,7 +3519,7 @@
     "collection": "metal",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/bali-1-c-sharp-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/bali-1-c-sharp-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/bali-1-c-sharp-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/6oUeVfdcQ4OQf7tciZ8og1U",
       "purchase_page": "audio-purchase.html?track=bali-1-c-sharp-harmonic-minor&from=mp3",
@@ -3540,7 +3540,7 @@
     "collection": "metal",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/bali-2-c-sharp-harmonic-minor-30s.mp3",
+      "preview_audio": "audio/previews/bali-2-c-sharp-harmonic-minor-60s.mp3",
       "full_audio": "audio/fulldownloads/bali-2-c-sharp-harmonic-minor.mp3",
       "stripe_payment_link": "https://buy.stripe.com/fZu5kF0q4a9abVhciZ8og1X",
       "purchase_page": "audio-purchase.html?track=bali-2-c-sharp-harmonic-minor&from=mp3",
@@ -3561,7 +3561,7 @@
     "collection": "metal",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/c-sharp-harmonic-metal-1-30s.mp3",
+      "preview_audio": "audio/previews/c-sharp-harmonic-metal-1-60s.mp3",
       "full_audio": "audio/fulldownloads/c-sharp-harmonic-metal-1.mp3",
       "stripe_payment_link": "https://buy.stripe.com/5kQ28t8WAa9a6AXer78og20",
       "purchase_page": "audio-purchase.html?track=c-sharp-harmonic-metal-1&from=mp3",
@@ -3581,7 +3581,7 @@
     "collection": "metal",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/c-sharp-harmonic-metal-2-30s.mp3",
+      "preview_audio": "audio/previews/c-sharp-harmonic-metal-2-60s.mp3",
       "full_audio": "audio/fulldownloads/c-sharp-harmonic-metal-2.mp3",
       "stripe_payment_link": "https://buy.stripe.com/14AcN78WA4OQ3oL2Ip8og23",
       "purchase_page": "audio-purchase.html?track=c-sharp-harmonic-metal-2&from=mp3",
@@ -3601,7 +3601,7 @@
     "collection": "suno",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/shoegaze-reggae-2-am7-fm7-30s.mp3",
+      "preview_audio": "audio/previews/shoegaze-reggae-2-am7-fm7-60s.mp3",
       "full_audio": "audio/fulldownloads/shoegaze-reggae-2-am7-fm7.mp3",
       "stripe_payment_link": "https://buy.stripe.com/fZudRb0q4812f7ter78og26",
       "purchase_page": "audio-purchase.html?track=shoegaze-reggae-2-am7-fm7&from=mp3",
@@ -3623,7 +3623,7 @@
     "collection": "shoegaze-reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/reggae-bossa-v1-30s.mp3",
+      "preview_audio": "audio/previews/reggae-bossa-v1-60s.mp3",
       "full_audio": "audio/fulldownloads/reggae-bossa-v1.mp3",
       "stripe_payment_link": "https://buy.stripe.com/cNifZj8WAftue3pbeV8og2n",
       "purchase_page": "audio-purchase.html?track=reggae-bossa-v1&from=mp3",
@@ -3645,7 +3645,7 @@
     "collection": "shoegaze-reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/reggae-bossa-v2-30s.mp3",
+      "preview_audio": "audio/previews/reggae-bossa-v2-60s.mp3",
       "full_audio": "audio/fulldownloads/reggae-bossa-v2.mp3",
       "stripe_payment_link": "https://buy.stripe.com/bJecN7a0Ebdee3p4Qx8og2o",
       "purchase_page": "audio-purchase.html?track=reggae-bossa-v2&from=mp3",
@@ -3667,7 +3667,7 @@
     "collection": "shoegaze-reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/shoegaze-reggae-2-am7-fm7-2-30s.mp3",
+      "preview_audio": "audio/previews/shoegaze-reggae-2-am7-fm7-2-60s.mp3",
       "full_audio": "audio/fulldownloads/shoegaze-reggae-2-am7-fm7-2.mp3",
       "stripe_payment_link": "https://buy.stripe.com/6oUcN74Gk4OQgbx4Qx8og2p",
       "purchase_page": "audio-purchase.html?track=shoegaze-reggae-2-am7-fm7-2&from=mp3",
@@ -3689,7 +3689,7 @@
     "collection": "shoegaze-reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/shoegaze-reggae-v3-30s.mp3",
+      "preview_audio": "audio/previews/shoegaze-reggae-v3-60s.mp3",
       "full_audio": "audio/fulldownloads/shoegaze-reggae-v3.mp3",
       "stripe_payment_link": "https://buy.stripe.com/7sY8wRc8M5SUcZler78og2q",
       "purchase_page": "audio-purchase.html?track=shoegaze-reggae-v3&from=mp3",
@@ -3711,7 +3711,7 @@
     "collection": "shoegaze-reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/shoegaze-reggae-v5-30s.mp3",
+      "preview_audio": "audio/previews/shoegaze-reggae-v5-60s.mp3",
       "full_audio": "audio/fulldownloads/shoegaze-reggae-v5.mp3",
       "stripe_payment_link": "https://buy.stripe.com/28EbJ36Os3KM8J5fvb8og2s",
       "purchase_page": "audio-purchase.html?track=shoegaze-reggae-v5&from=mp3",
@@ -3733,7 +3733,7 @@
     "collection": "shoegaze-reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/shoegaze-reggae-30s.mp3",
+      "preview_audio": "audio/previews/shoegaze-reggae-60s.mp3",
       "full_audio": "audio/fulldownloads/shoegaze-reggae.mp3",
       "stripe_payment_link": "https://buy.stripe.com/eVqcN70q4bdebVhbeV8og2L",
       "purchase_page": "audio-purchase.html?track=shoegaze-reggae&from=mp3",
@@ -3755,7 +3755,7 @@
     "collection": "shoegaze-reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/shoegaze-reggae-v4-30s.mp3",
+      "preview_audio": "audio/previews/shoegaze-reggae-v4-60s.mp3",
       "full_audio": "audio/fulldownloads/shoegaze-reggae-v4.mp3",
       "stripe_payment_link": "https://buy.stripe.com/6oUfZj8WA812aRd5UB8og2N",
       "purchase_page": "audio-purchase.html?track=shoegaze-reggae-v4&from=mp3",
@@ -3777,7 +3777,7 @@
     "collection": "shoegaze-reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/should-be-a-song-v3-shoegaze-30s.mp3",
+      "preview_audio": "audio/previews/should-be-a-song-v3-shoegaze-60s.mp3",
       "full_audio": "audio/fulldownloads/should-be-a-song-v3-shoegaze.mp3",
       "stripe_payment_link": "https://buy.stripe.com/cNi6oJ4Gk4OQcZl5UB8og2P",
       "purchase_page": "audio-purchase.html?track=should-be-a-song-v3-shoegaze&from=mp3",
@@ -3799,7 +3799,7 @@
     "collection": "shoegaze-reggae",
     "direct_sale": {
       "enabled": true,
-      "preview_audio": "audio/previews/should-be-a-song-v4-30s.mp3",
+      "preview_audio": "audio/previews/should-be-a-song-v4-60s.mp3",
       "full_audio": "audio/fulldownloads/should-be-a-song-v4.mp3",
       "stripe_payment_link": "https://buy.stripe.com/28EaEZgp2epqcZlfvb8og2Q",
       "purchase_page": "audio-purchase.html?track=should-be-a-song-v4&from=mp3",

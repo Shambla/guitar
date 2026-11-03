@@ -12,7 +12,7 @@
 		Rebrand note, not applied to the live page:
 		"MP3 Downloads" can sound like the only point is the sale. A softer
 		name for this lab is "Free improvisation practice": the scale chart
-		and the 30-second preview are the free part, and the full MP3 is there
+		and the 1-minute preview are the free part, and the full MP3 is there
 		when someone wants to keep playing. Leave the live title as it is
 		until this lab feels right.
 
@@ -214,17 +214,19 @@
 			flex: 1;
 			min-height: 0;
 			display: flex;
-			align-items: center;
+			align-items: flex-start;
 			justify-content: center;
-			overflow: hidden;
+			overflow-x: hidden;
+			overflow-y: auto;
+			overscroll-behavior: contain;
+			scrollbar-gutter: stable;
 			border-radius: 10px;
 			background: #07090c;
 		}
 
 		.lab-canvas-wrap canvas {
 			display: block;
-			max-width: 100%;
-			max-height: 100%;
+			flex: 0 0 auto;
 		}
 
 		.lab-player {
@@ -387,6 +389,6 @@
 	</div>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-	<script src="script/practice-lab.js?v=20261101-fit4"></script>
+	<script src="script/practice-lab.js?v=20261102-scroll"></script>
 </body>
 </html>
