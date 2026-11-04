@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-11-04T07:00:42.329245Z",
+    "received_at": "2026-11-04T07:00:42.330202Z",
+    "id": "2026-11-04T07:00:42.330202Z-FET/USD-buy"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 179.50999450683594,
@@ -3226,16 +3237,5 @@
     "timestamp": "2026-11-01T00:00:53.035179Z",
     "received_at": "2026-11-01T00:00:53.035221Z",
     "id": "2026-11-01T00:00:53.035221Z-CRV/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 621.83850812,
-    "price": 0.16099,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-10-31T22:00:41.810307Z",
-    "received_at": "2026-10-31T22:00:41.810321Z",
-    "id": "2026-10-31T22:00:41.810321Z-FET/USD-sell"
   }
 ]
