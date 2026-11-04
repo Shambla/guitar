@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "UNI/USD",
-  "quantity": 13.70671199,
-  "price": 7.3076,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-11-04T14:13:56.648791Z",
-  "received_at": "2026-11-04T14:13:56.648814Z",
-  "id": "2026-11-04T14:13:56.648814Z-UNI/USD-sell"
+  "symbol": "HEX/DAI",
+  "quantity": 100.0,
+  "price": null,
+  "source": "PulseChain DeFi",
+  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+  "timestamp": "2026-11-04T15:04:06.906281Z",
+  "received_at": "2026-11-04T15:04:06.906300Z",
+  "id": "2026-11-04T15:04:06.906300Z-HEX/DAI-sell"
 }
