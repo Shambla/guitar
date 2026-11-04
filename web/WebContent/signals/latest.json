@@ -1,11 +1,11 @@
 {
   "action": "buy",
   "symbol": "UNI/USD",
-  "quantity": 100.0,
-  "price": null,
-  "source": "TradingView JSON",
-  "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-11-04T00:01:01.435448Z",
-  "received_at": "2026-11-04T00:01:01.435561Z",
-  "id": "2026-11-04T00:01:01.435561Z-UNI/USD-buy"
+  "quantity": 13.865010260107592,
+  "price": 7.2052,
+  "source": "MASTER_BOT_162",
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-11-04T00:06:40.186231Z",
+  "received_at": "2026-11-04T00:06:40.186247Z",
+  "id": "2026-11-04T00:06:40.186247Z-UNI/USD-buy"
 }
