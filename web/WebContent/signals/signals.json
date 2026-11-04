@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "UNI/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-11-04T00:01:01.435448Z",
+    "received_at": "2026-11-04T00:01:01.435561Z",
+    "id": "2026-11-04T00:01:01.435561Z-UNI/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "NEAR/USD",
     "quantity": 25.987525987525988,
     "price": 3.8442,
@@ -3226,16 +3237,5 @@
     "timestamp": "2026-10-31T06:00:38.984712Z",
     "received_at": "2026-10-31T06:00:38.984732Z",
     "id": "2026-10-31T06:00:38.984732Z-BNB/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "BNB/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-10-31T06:00:15.911050Z",
-    "received_at": "2026-10-31T06:00:15.911078Z",
-    "id": "2026-10-31T06:00:15.911078Z-BNB/USD-sell"
   }
 ]
