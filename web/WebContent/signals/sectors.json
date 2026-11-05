@@ -1,0 +1,143 @@
+{
+  "title": "Sector rotation",
+  "as_of": "2026-11-05",
+  "benchmark": "SPY",
+  "benchmark_return_1m_pct": -5.0,
+  "benchmark_return_3m_pct": -4.3,
+  "compare_date": "2026-11-01",
+  "message": "The 11 sector funds ranked by 1-month return. Leading beats SPY over both 1 and 3 months. Improving trails over 3 months but beats it this month. Weakening is the reverse. Lagging trails on both. Not buy or sell orders.",
+  "sectors": [
+    {
+      "symbol": "XLP",
+      "name": "Consumer Staples",
+      "rank": 1,
+      "prev_rank": 2,
+      "move": 1,
+      "return_1m_pct": 13.0,
+      "return_3m_pct": 7.3,
+      "vs_spy_1m_pct": 18.0,
+      "vs_spy_3m_pct": 11.7,
+      "phase": "Leading"
+    },
+    {
+      "symbol": "XLV",
+      "name": "Health Care",
+      "rank": 2,
+      "prev_rank": 4,
+      "move": 2,
+      "return_1m_pct": 11.1,
+      "return_3m_pct": 13.3,
+      "vs_spy_1m_pct": 16.1,
+      "vs_spy_3m_pct": 17.6,
+      "phase": "Leading"
+    },
+    {
+      "symbol": "XLRE",
+      "name": "Real Estate",
+      "rank": 3,
+      "prev_rank": 8,
+      "move": 5,
+      "return_1m_pct": 8.6,
+      "return_3m_pct": -2.3,
+      "vs_spy_1m_pct": 13.6,
+      "vs_spy_3m_pct": 2.1,
+      "phase": "Leading"
+    },
+    {
+      "symbol": "XLU",
+      "name": "Utilities",
+      "rank": 4,
+      "prev_rank": 3,
+      "move": -1,
+      "return_1m_pct": 8.0,
+      "return_3m_pct": -1.2,
+      "vs_spy_1m_pct": 12.9,
+      "vs_spy_3m_pct": 3.2,
+      "phase": "Leading"
+    },
+    {
+      "symbol": "XLF",
+      "name": "Financials",
+      "rank": 5,
+      "prev_rank": 7,
+      "move": 2,
+      "return_1m_pct": 6.9,
+      "return_3m_pct": -0.7,
+      "vs_spy_1m_pct": 11.8,
+      "vs_spy_3m_pct": 3.6,
+      "phase": "Leading"
+    },
+    {
+      "symbol": "XLY",
+      "name": "Consumer Discretionary",
+      "rank": 6,
+      "prev_rank": 6,
+      "move": 0,
+      "return_1m_pct": 6.1,
+      "return_3m_pct": -1.2,
+      "vs_spy_1m_pct": 11.1,
+      "vs_spy_3m_pct": 3.1,
+      "phase": "Leading"
+    },
+    {
+      "symbol": "XLB",
+      "name": "Materials",
+      "rank": 7,
+      "prev_rank": 5,
+      "move": -2,
+      "return_1m_pct": 5.4,
+      "return_3m_pct": -0.9,
+      "vs_spy_1m_pct": 10.3,
+      "vs_spy_3m_pct": 3.4,
+      "phase": "Leading"
+    },
+    {
+      "symbol": "XLE",
+      "name": "Energy",
+      "rank": 8,
+      "prev_rank": 1,
+      "move": -7,
+      "return_1m_pct": -1.2,
+      "return_3m_pct": 9.4,
+      "vs_spy_1m_pct": 3.8,
+      "vs_spy_3m_pct": 13.8,
+      "phase": "Leading"
+    },
+    {
+      "symbol": "XLI",
+      "name": "Industrials",
+      "rank": 9,
+      "prev_rank": 9,
+      "move": 0,
+      "return_1m_pct": -4.2,
+      "return_3m_pct": -12.5,
+      "vs_spy_1m_pct": 0.8,
+      "vs_spy_3m_pct": -8.2,
+      "phase": "Improving"
+    },
+    {
+      "symbol": "XLC",
+      "name": "Communication Services",
+      "rank": 10,
+      "prev_rank": 11,
+      "move": 1,
+      "return_1m_pct": -6.6,
+      "return_3m_pct": -6.0,
+      "vs_spy_1m_pct": -1.7,
+      "vs_spy_3m_pct": -1.7,
+      "phase": "Lagging"
+    },
+    {
+      "symbol": "XLK",
+      "name": "Technology",
+      "rank": 11,
+      "prev_rank": 10,
+      "move": -1,
+      "return_1m_pct": -18.4,
+      "return_3m_pct": -11.8,
+      "vs_spy_1m_pct": -13.4,
+      "vs_spy_3m_pct": -7.5,
+      "phase": "Lagging"
+    }
+  ]
+}

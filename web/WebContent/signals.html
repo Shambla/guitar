@@ -680,6 +680,54 @@
 				grid-template-columns: 1fr 1fr;
 				gap: 20px;
 			}
+
+			.sector-table {
+				max-width: 860px;
+				margin: 0 auto;
+				background: rgba(0, 0, 0, 0.3);
+				border: 2px solid rgba(255, 183, 77, 0.35);
+				border-radius: 8px;
+				padding: 8px 12px;
+			}
+			.sector-row {
+				display: grid;
+				grid-template-columns: 34px minmax(0, 1fr) 76px 76px 76px 96px 52px;
+				gap: 8px;
+				align-items: center;
+				padding: 9px 4px;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+				color: rgba(255, 255, 255, 0.9);
+				font-size: 14px;
+			}
+			.sector-row:last-child { border-bottom: 0; }
+			.sector-row.sector-head {
+				color: rgba(255, 255, 255, 0.55);
+				font-size: 11px;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+			.sector-row .num { text-align: right; font-variant-numeric: tabular-nums; }
+			.sector-row .sector-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+			.sector-row .sector-name strong { color: #fff; margin-right: 6px; }
+			.sector-phase {
+				display: inline-block;
+				padding: 3px 8px;
+				border-radius: 999px;
+				font-size: 12px;
+				font-weight: bold;
+				text-align: center;
+			}
+			.sector-foot {
+				color: rgba(255, 255, 255, 0.55);
+				font-size: 12px;
+				text-align: center;
+				padding: 8px 4px 4px;
+			}
+			@media (max-width: 640px) {
+				.sector-row { grid-template-columns: 28px minmax(0, 1fr) 62px 86px 40px; font-size: 13px; }
+				.sector-row .sector-3m,
+				.sector-row .sector-vs { display: none; }
+			}
 			
 			/* Top nav must sit above fixed .signals-header (z-index 1000) so links are clickable */
 			nav {
@@ -2160,6 +2208,15 @@
 									<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">Loading...</div>
 								</div>
 							</div>
+						</div>
+					</div>
+					<div id="sector-rotation" style="margin-top: 28px;">
+						<h3 style="color: #ffb74d; font-size: 22px; margin-bottom: 8px; text-align: center;">Sector rotation</h3>
+						<p id="sector-note" style="color: rgba(255, 255, 255, 0.75); font-size: 14px; line-height: 1.5; text-align: center; max-width: 760px; margin: 0 auto 16px;">
+							The 11 sector funds ranked by 1-month return and compared with SPY. These are not buy or sell orders.
+						</p>
+						<div id="sector-table" class="sector-table">
+							<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">Loading...</div>
 						</div>
 					</div>
 				</div>
@@ -4808,6 +4865,73 @@
 					});
 			}
 
+			const SECTOR_PHASE_COLORS = {
+				Leading: ['rgba(76, 175, 80, 0.2)', '#81c784'],
+				Improving: ['rgba(100, 181, 246, 0.2)', '#90caf9'],
+				Weakening: ['rgba(255, 183, 77, 0.2)', '#ffb74d'],
+				Lagging: ['rgba(244, 67, 54, 0.2)', '#e57373'],
+			};
+
+			function sectorPct(value) {
+				if (value == null || !isFinite(value)) return '—';
+				const color = value > 0 ? '#81c784' : value < 0 ? '#e57373' : 'rgba(255, 255, 255, 0.8)';
+				return `<span style="color: ${color};">${value > 0 ? '+' : ''}${Number(value).toFixed(1)}%</span>`;
+			}
+
+			function sectorMove(move) {
+				if (move == null) return '<span style="color: rgba(255, 255, 255, 0.45);">new</span>';
+				if (move > 0) return `<span style="color: #81c784;">▲${move}</span>`;
+				if (move < 0) return `<span style="color: #e57373;">▼${-move}</span>`;
+				return '<span style="color: rgba(255, 255, 255, 0.45);">=</span>';
+			}
+
+			function renderSectorRotation() {
+				const tableEl = document.getElementById('sector-table');
+				const noteEl = document.getElementById('sector-note');
+				if (!tableEl) return;
+				fetch('signals/sectors.json?v=' + Date.now())
+					.then(response => {
+						if (!response.ok) throw new Error('missing');
+						return response.json();
+					})
+					.then(data => {
+						const sectors = (data && data.sectors) || [];
+						if (!sectors.length) throw new Error('empty');
+						if (noteEl && data.message) noteEl.textContent = data.message;
+						const head = `
+							<div class="sector-row sector-head">
+								<span>#</span><span>Sector</span>
+								<span class="num">1 month</span>
+								<span class="num sector-vs">vs SPY</span>
+								<span class="num sector-3m">3 months</span>
+								<span>Phase</span>
+								<span class="num">Move</span>
+							</div>`;
+						const body = sectors.map(item => {
+							const phase = escapeRotationText(item.phase || 'Unknown');
+							const colors = SECTOR_PHASE_COLORS[item.phase] || ['rgba(255, 255, 255, 0.1)', '#fff'];
+							return `
+								<div class="sector-row">
+									<span style="color: rgba(255, 255, 255, 0.6);">${escapeRotationText(item.rank)}</span>
+									<span class="sector-name"><strong>${escapeRotationText(item.symbol)}</strong>${escapeRotationText(item.name)}</span>
+									<span class="num">${sectorPct(item.return_1m_pct)}</span>
+									<span class="num sector-vs">${sectorPct(item.vs_spy_1m_pct)}</span>
+									<span class="num sector-3m">${sectorPct(item.return_3m_pct)}</span>
+									<span><span class="sector-phase" style="background: ${colors[0]}; color: ${colors[1]};">${phase}</span></span>
+									<span class="num">${sectorMove(item.move)}</span>
+								</div>`;
+						}).join('');
+						const bits = [];
+						if (data.benchmark_return_1m_pct != null) bits.push(`SPY 1 month ${data.benchmark_return_1m_pct > 0 ? '+' : ''}${Number(data.benchmark_return_1m_pct).toFixed(1)}%`);
+						if (data.compare_date) bits.push(`Move is the change in place since ${escapeRotationText(data.compare_date)}`);
+						if (data.as_of) bits.push(`As of ${escapeRotationText(data.as_of)}`);
+						tableEl.innerHTML = head + body + (bits.length ? `<div class="sector-foot">${bits.join(' · ')}</div>` : '');
+					})
+					.catch(() => {
+						tableEl.innerHTML = '<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">Sector rankings appear after the next stock scan.</div>';
+					});
+			}
+
 			function renderTop3Signals(signals) {
 				// Extract stock signals only
 				const stockSignals = signals.filter(s => isStockSignal(s));
@@ -4837,6 +4961,7 @@
 				// Render market breadth first (using all stock signals for context)
 				renderMarketBreadth(signals);
 				renderRecentRotations();
+				renderSectorRotation();
 				
 				if (recentStockSignals.length === 0) {
 					document.getElementById('top-buy-signals').innerHTML = '<div style="color: rgba(255, 255, 255, 0.6); text-align: center; padding: 20px;">No stock signals available</div>';
