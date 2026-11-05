@@ -577,6 +577,7 @@
 			--lab-ink: #1a1208;
 			--lab-green: #7dcaa8;
 			box-sizing: border-box;
+			height: 100vh;
 			height: 100dvh;
 			display: flex;
 			flex-direction: column;
@@ -879,12 +880,114 @@
 			.improv-screen .lab-app { display: none; }
 			.improv-screen .lab-rotate { display: flex; }
 		}
+
+		.nav-menu-toggle { display: none; }
+
+		/* 2026-11-04 — Sideways phone. The menu folds into one ☰ button so it no
+		   longer covers the key and genre boxes, and the player is one row pinned
+		   to the bottom of the screen. */
+		@media screen and (max-height: 520px) {
+			body.mp3-downloads-page nav {
+				left: auto;
+				right: 6px;
+				top: 6px;
+				width: auto;
+				padding: 0 !important;
+				background: none !important;
+				box-shadow: none !important;
+				backdrop-filter: none;
+				-webkit-backdrop-filter: none;
+				pointer-events: none;
+			}
+			body.mp3-downloads-page nav #backing { display: none; }
+			body.mp3-downloads-page nav .nav-menu-toggle {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 34px;
+				height: 34px;
+				padding: 0;
+				border-radius: 10px;
+				border: 1px solid var(--lab-line, rgba(232, 220, 200, 0.16));
+				background: #141a22;
+				color: #f4f0e8;
+				font-size: 18px;
+				line-height: 1;
+				cursor: pointer;
+				pointer-events: auto;
+			}
+			body.mp3-downloads-page nav .content { display: none !important; }
+			body.mp3-downloads-page nav.menu-open .content {
+				display: flex !important;
+				flex-direction: column;
+				align-items: stretch;
+				gap: 2px;
+				position: absolute;
+				top: 40px;
+				right: 0;
+				width: max-content !important;
+				max-width: 70vw;
+				padding: 6px !important;
+				border-radius: 12px;
+				border: 1px solid rgba(232, 220, 200, 0.16);
+				background: rgba(12, 15, 18, 0.97);
+				pointer-events: auto;
+			}
+			body.mp3-downloads-page nav.menu-open .content a {
+				margin: 0 !important;
+				padding: 10px 14px !important;
+				font-size: 0.85rem !important;
+				text-align: left;
+				white-space: nowrap;
+			}
+
+			.improv-screen {
+				padding: 6px 6px calc(var(--lab-player-h, 46px) + 10px);
+			}
+			.improv-screen .lab-bar { padding-right: 42px; }
+			.improv-screen .lab-chart-head { margin-bottom: 2px; }
+			.improv-screen .lab-chart-head p { display: none; }
+
+			.improv-screen .lab-player {
+				position: fixed;
+				left: 6px;
+				right: 6px;
+				bottom: 4px;
+				z-index: 90;
+				grid-template-columns: auto minmax(0, 1fr) auto minmax(150px, 30%);
+				gap: 6px;
+				padding: 4px 6px;
+				border-radius: 12px;
+			}
+			.improv-screen .lab-player h2 {
+				font-size: 0.85rem;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			.improv-screen .lab-player .lab-meta,
+			.improv-screen .lab-player .lab-badges { display: none !important; }
+			.improv-screen .lab-actions { flex-wrap: nowrap; }
+			.improv-screen .lab-step,
+			.improv-screen .lab-actions a {
+				padding: 5px 9px;
+				font-size: 0.72rem;
+				white-space: nowrap;
+			}
+			.improv-screen .lab-player audio {
+				grid-column: auto;
+				height: 30px;
+			}
+			body.lab-away .improv-screen .lab-player { display: none; }
+			#browse-mp3s { padding-bottom: 70px; }
+		}
 	</style>
 </head>
 <body class="mp3-downloads-page">
 	<nav>
 		<div id="backing"></div>
-		<div class="content">
+		<button type="button" class="nav-menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="site-nav-links">&#9776;</button>
+		<div class="content" id="site-nav-links">
 			<a href="catalog.html">&#128220; CATALOG</a>
 			<a href="mp3-downloads.html" style="font-weight: bold;">&#127911; IMPROV PRACTICE</a>
 			<a href="#free-scales">&#127912; FREE SCALES PDF</a>
@@ -1167,8 +1270,59 @@
 	</div>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-	<script src="script/practice-lab.js?v=20261102-scroll"></script>
+	<script src="script/practice-lab.js?v=20261104-phone"></script>
 	<script src="script/mp3-downloads.js?v=20261102-60s"></script>
 	<script src="script/beauty-scales-viewer.js"></script>
+	<script>
+		(function () {
+			var nav = document.querySelector('nav');
+			var toggle = nav && nav.querySelector('.nav-menu-toggle');
+			if (toggle) {
+				function setOpen(open) {
+					nav.classList.toggle('menu-open', open);
+					toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+				}
+				toggle.addEventListener('click', function (event) {
+					event.stopPropagation();
+					setOpen(!nav.classList.contains('menu-open'));
+				});
+				nav.querySelectorAll('.content a').forEach(function (link) {
+					link.addEventListener('click', function () { setOpen(false); });
+				});
+				document.addEventListener('click', function (event) {
+					if (!nav.contains(event.target)) setOpen(false);
+				});
+				document.addEventListener('keydown', function (event) {
+					if (event.key === 'Escape') setOpen(false);
+				});
+			}
+
+			var screen = document.querySelector('.improv-screen');
+			var player = screen && screen.querySelector('.lab-player');
+			var audio = document.getElementById('lab-audio');
+			if (!screen || !player) return;
+			function notePlayerHeight() {
+				screen.style.setProperty('--lab-player-h', player.offsetHeight + 'px');
+			}
+			window.addEventListener('resize', notePlayerHeight);
+			if ('ResizeObserver' in window) new ResizeObserver(notePlayerHeight).observe(player);
+			notePlayerHeight();
+			if ('IntersectionObserver' in window) {
+				var screenInView = true;
+				function updateAway() {
+					var playing = audio && !audio.paused;
+					document.body.classList.toggle('lab-away', !screenInView && !playing);
+				}
+				new IntersectionObserver(function (entries) {
+					screenInView = entries[0].isIntersecting;
+					updateAway();
+				}, { threshold: 0.15 }).observe(screen);
+				if (audio) {
+					audio.addEventListener('play', updateAway);
+					audio.addEventListener('pause', updateAway);
+				}
+			}
+		})();
+	</script>
 </body>
 </html>

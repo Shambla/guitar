@@ -525,12 +525,15 @@
 		if (!doc) return;
 		if (num < 1) num = 1;
 		if (num > doc.numPages) num = doc.numPages;
+		// A resize redraw reads this, so it must hold the page asked for,
+		// not the last page that finished drawing.
+		pdfState.which = which;
+		pdfState.page = num;
 		if (pdfState.rendering) {
 			pdfState.pending = { which: which, page: num };
 			return;
 		}
 		pdfState.rendering = true;
-		pdfState.which = which;
 		doc.getPage(num).then(function (page) {
 			var unscaled = page.getViewport({ scale: 1 });
 			var wrap = pdfCanvas.parentNode;
