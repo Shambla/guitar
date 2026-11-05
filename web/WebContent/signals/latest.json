@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "ETH/USD",
-  "quantity": 0.10162876,
-  "price": 2426.42,
-  "source": "MASTER_BOT_162",
-  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-11-05T02:09:13.481032Z",
-  "received_at": "2026-11-05T02:09:13.481055Z",
-  "id": "2026-11-05T02:09:13.481055Z-ETH/USD-sell"
+  "symbol": "HEX/DAI",
+  "quantity": 100.0,
+  "price": null,
+  "source": "PulseChain DeFi",
+  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+  "timestamp": "2026-11-05T02:14:27.092059Z",
+  "received_at": "2026-11-05T02:14:27.092087Z",
+  "id": "2026-11-05T02:14:27.092087Z-HEX/DAI-sell"
 }
