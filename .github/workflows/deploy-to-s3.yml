@@ -41,6 +41,29 @@ jobs:
             --include "creator-tools/*.py" \
             --include "youtube_api*.py"
 
+      # --size-only skips a text file whose edit kept the same byte count
+      # (-30s.mp3 -> -60s.mp3 left the live catalog pointing at deleted files).
+      # Page and data files are small, so always compare them by date too.
+      - name: Sync Page and Data Files to S3
+        run: |
+          aws s3 sync ./web/WebContent s3://${{ secrets.S3_BUCKET }} \
+            --exclude "*" \
+            --include "*.html" \
+            --include "*.js" \
+            --include "*.json" \
+            --include "*.css" \
+            --exclude "venv_*/*" \
+            --exclude "pdfs/*" \
+            --exclude "img/uploading_folder/*" \
+            --exclude "*.backup" \
+            --exclude "*backup*" \
+            --exclude "*OBSOLETE*" \
+            --exclude "*obsolete*" \
+            --exclude "*old_broken*" \
+            --exclude "Website_HTML_*" \
+            --exclude "email_list*" \
+            --exclude "__pycache__/*"
+
       - name: Invalidate CloudFront Cache
         run: |
           aws cloudfront create-invalidation \
