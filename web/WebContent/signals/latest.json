@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "HYPE/USD",
+  "symbol": "CRV/USD",
   "quantity": 100.0,
   "price": null,
   "source": "TradingView JSON",
   "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-11-06T02:00:12.603708Z",
-  "received_at": "2026-11-06T02:00:12.603804Z",
-  "id": "2026-11-06T02:00:12.603804Z-HYPE/USD-buy"
+  "timestamp": "2026-11-06T02:01:29.518390Z",
+  "received_at": "2026-11-06T02:01:29.518409Z",
+  "id": "2026-11-06T02:01:29.518409Z-CRV/USD-buy"
 }
