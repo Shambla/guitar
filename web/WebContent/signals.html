@@ -2190,6 +2190,7 @@
 							</div>
 						</div>
 					</div>
+					<p id="top-signals-mixed" style="display: none; color: rgba(255, 255, 255, 0.7); font-size: 13px; line-height: 1.5; text-align: center; max-width: 860px; margin: 14px auto 0;"></p>
 					<div id="recent-rotations" style="margin-top: 28px;">
 						<h3 style="color: #ffb74d; font-size: 22px; margin-bottom: 8px; text-align: center;">Recent rotations</h3>
 						<p id="rotation-note" style="color: rgba(255, 255, 255, 0.75); font-size: 14px; line-height: 1.5; text-align: center; max-width: 760px; margin: 0 auto 16px;">
@@ -5003,6 +5004,13 @@
 						totalSell = parseInt(sellMatch[2]);
 					}
 					
+					// Info lines read "buy 20/16 | sell 10/13": score / that symbol's bar.
+					let buyBar = null, sellBar = null;
+					if (String(signal.action || '').toLowerCase() === 'info') {
+						if (buyMatch) buyBar = parseInt(buyMatch[2]);
+						if (sellMatch) sellBar = parseInt(sellMatch[2]);
+					}
+
 					// Determine action from scores if not explicitly set
 					let action = signal.action;
 					if (!action || action === '') {
@@ -5023,16 +5031,58 @@
 						note: signal.note || '',
 						// Exclude blocked-buy candidates from Top 3, but still show them as cards below.
 						buyBlockedRsiBearDiv: !!signal.buy_blocked_rsi_bear_div || (signal.note || '').toLowerCase().includes('high divergences detected'),
-						buySignalRaw: !!signal.buy_signal_raw
+						buySignalRaw: !!signal.buy_signal_raw,
+						buyBar: buyBar,
+						sellBar: sellBar
 					};
 				});
+
+				// 2026-11-05: one row per symbol from its latest scan (the info line and the
+				// buy/sell line land seconds apart). A symbol that clears both its buy bar and
+				// its sell bar is mixed: it goes on neither Top 3 list.
+				const SCAN_GROUP_MS = 10 * 60 * 1000;
+				const latestBySymbol = new Map();
+				signalsWithScores
+					.slice()
+					.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+					.forEach(s => {
+						const t = new Date(s.timestamp).getTime();
+						const cur = latestBySymbol.get(s.symbol);
+						if (!cur) {
+							latestBySymbol.set(s.symbol, Object.assign({}, s, { latestTime: t }));
+							return;
+						}
+						if (cur.latestTime - t > SCAN_GROUP_MS) return;
+						if (cur.action === 'info' && s.action !== 'info') cur.action = s.action;
+						if (s.buyBlockedRsiBearDiv) cur.buyBlockedRsiBearDiv = true;
+						if (cur.buyBar == null && s.buyBar != null) cur.buyBar = s.buyBar;
+						if (cur.sellBar == null && s.sellBar != null) cur.sellBar = s.sellBar;
+					});
+				const latestRows = Array.from(latestBySymbol.values()).map(s => {
+					const buyBar = s.buyBar != null ? s.buyBar : BUY_THRESHOLD;
+					const sellBar = s.sellBar != null ? s.sellBar : SELL_THRESHOLD;
+					return Object.assign(s, { mixed: s.buyScore >= buyBar && s.sellScore >= sellBar, buyBarUsed: buyBar, sellBarUsed: sellBar });
+				});
+				const mixedRows = latestRows.filter(s => s.mixed);
+				const mixedEl = document.getElementById('top-signals-mixed');
+				if (mixedEl) {
+					if (mixedRows.length) {
+						mixedEl.textContent = 'Left out as mixed (cleared both the buy and the sell bar, so the signals cancel): ' +
+							mixedRows.map(s => `${s.symbol} buy ${s.buyScore}/${s.buyBarUsed}, sell ${s.sellScore}/${s.sellBarUsed}`).join(' · ');
+						mixedEl.style.display = 'block';
+					} else {
+						mixedEl.textContent = '';
+						mixedEl.style.display = 'none';
+					}
+				}
 				
 				// Sort by buy_score descending - show top 3 regardless of threshold or score value
 				// Include all signals, using buy_score to rank them (even if 0)
 				// Deduplicate by symbol to prevent same ticker appearing multiple times
 				const seenBuySymbols = new Set();
-				const topBuy = signalsWithScores
+				const topBuy = latestRows
 					.filter(s => {
+						if (s.mixed) return false;
 						// Don't show blocked buys in Top 3 BUY list (they should appear as warning cards below instead).
 						if (s.buyBlockedRsiBearDiv) return false;
 
@@ -5055,8 +5105,9 @@
 				// Include all signals, using sell_score to rank them (even if 0)
 				// Deduplicate by symbol to prevent same ticker appearing multiple times
 				const seenSellSymbols = new Set();
-				const topSell = signalsWithScores
+				const topSell = latestRows
 					.filter(s => {
+						if (s.mixed) return false;
 						// Include if explicitly marked as sell, OR if sell_score >= buy_score (best sell candidates)
 						// This ensures we show the "best" sell signals even if scores are low
 						return s.action === 'sell' || s.sellScore >= s.buyScore;
