@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-11-07T06:01:34.542508Z",
+    "received_at": "2026-11-07T06:01:34.542908Z",
+    "id": "2026-11-07T06:01:34.542908Z-FET/USD-buy"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 176.5,
@@ -3421,16 +3432,5 @@
     "timestamp": "2026-11-03T14:00:25.787226Z",
     "received_at": "2026-11-03T14:00:25.787240Z",
     "id": "2026-11-03T14:00:25.787240Z-UNI/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "UNI/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-11-03T14:00:24.987630Z",
-    "received_at": "2026-11-03T14:00:24.987670Z",
-    "id": "2026-11-03T14:00:24.987670Z-UNI/USD-sell"
   }
 ]
