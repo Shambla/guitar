@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "HYPE/USD",
+  "symbol": "TAO/USD",
   "quantity": 100.0,
   "price": null,
   "source": "TradingView JSON",
   "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-  "timestamp": "2026-11-07T01:00:16.320018Z",
-  "received_at": "2026-11-07T01:00:16.320974Z",
-  "id": "2026-11-07T01:00:16.320974Z-HYPE/USD-sell"
+  "timestamp": "2026-11-07T01:00:50.207917Z",
+  "received_at": "2026-11-07T01:00:50.207945Z",
+  "id": "2026-11-07T01:00:50.207945Z-TAO/USD-sell"
 }
