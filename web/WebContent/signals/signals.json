@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "NEAR/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-11-07T11:00:11.447870Z",
+    "received_at": "2026-11-07T11:00:11.448180Z",
+    "id": "2026-11-07T11:00:11.448180Z-NEAR/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 1e-08,
     "price": 2242.6,
@@ -3421,16 +3432,5 @@
     "timestamp": "2026-11-03T19:00:37.188388Z",
     "received_at": "2026-11-03T19:00:37.188411Z",
     "id": "2026-11-03T19:00:37.188411Z-CRV/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-11-03T19:00:36.281430Z",
-    "received_at": "2026-11-03T19:00:36.281582Z",
-    "id": "2026-11-03T19:00:36.281582Z-CRV/USD-sell"
   }
 ]
