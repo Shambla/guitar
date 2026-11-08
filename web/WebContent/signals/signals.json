@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "PLSX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-11-08T00:23:43.261954Z",
+    "received_at": "2026-11-08T00:23:43.263554Z",
+    "id": "2026-11-08T00:23:43.263554Z-PLSX/DAI-buy"
+  },
+  {
     "action": "sell",
     "symbol": "ETH/USD",
     "quantity": 1e-08,
@@ -3421,16 +3432,5 @@
     "timestamp": "2026-11-04T02:00:18.831434Z",
     "received_at": "2026-11-04T02:00:18.831594Z",
     "id": "2026-11-04T02:00:18.831594Z-HYPE/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "CRV/USD",
-    "quantity": 389.5597974289053,
-    "price": 0.2564,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-11-04T01:06:17.879176Z",
-    "received_at": "2026-11-04T01:06:17.880881Z",
-    "id": "2026-11-04T01:06:17.880881Z-CRV/USD-buy"
   }
 ]
