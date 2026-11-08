@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "NEAR/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-11-08T02:00:16.957631Z",
+    "received_at": "2026-11-08T02:00:16.958043Z",
+    "id": "2026-11-08T02:00:16.958043Z-NEAR/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "PLSX/DAI",
     "quantity": 100.0,
@@ -3421,16 +3432,5 @@
     "timestamp": "2026-11-04T02:00:35.250186Z",
     "received_at": "2026-11-04T02:00:35.250210Z",
     "id": "2026-11-04T02:00:35.250210Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "HYPE/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-11-04T02:00:18.831434Z",
-    "received_at": "2026-11-04T02:00:18.831594Z",
-    "id": "2026-11-04T02:00:18.831594Z-HYPE/USD-sell"
   }
 ]
