@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "HYPE/USD",
+    "quantity": 1.310787783457858,
+    "price": 76.21,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-11-08T21:06:01.662428Z",
+    "received_at": "2026-11-08T21:06:01.662482Z",
+    "id": "2026-11-08T21:06:01.662482Z-HYPE/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "HYPE/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -3421,16 +3432,5 @@
     "timestamp": "2026-11-04T09:11:07.985830Z",
     "received_at": "2026-11-04T09:11:07.985852Z",
     "id": "2026-11-04T09:11:07.985852Z-ETH/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "ETH/USD",
-    "quantity": 0.04312538,
-    "price": 2314.1823600000002,
-    "source": "MASTER_BOT_162",
-    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
-    "timestamp": "2026-11-04T09:11:05.936900Z",
-    "received_at": "2026-11-04T09:11:05.937848Z",
-    "id": "2026-11-04T09:11:05.937848Z-ETH/USD-buy"
   }
 ]
