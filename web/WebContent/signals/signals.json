@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "DOGE/USD",
+    "quantity": 1406.271972999578,
+    "price": 0.07104,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-11-08T20:06:01.722021Z",
+    "received_at": "2026-11-08T20:06:01.722881Z",
+    "id": "2026-11-08T20:06:01.722881Z-DOGE/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "DOGE/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -3421,16 +3432,5 @@
     "timestamp": "2026-11-04T09:06:02.666584Z",
     "received_at": "2026-11-04T09:06:02.666598Z",
     "id": "2026-11-04T09:06:02.666598Z-HYPE/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "HEX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-11-04T09:04:25.511274Z",
-    "received_at": "2026-11-04T09:04:25.511296Z",
-    "id": "2026-11-04T09:04:25.511296Z-HEX/DAI-sell"
   }
 ]
