@@ -836,6 +836,278 @@
 
 		.improv-screen .lab-step:disabled { opacity: 0.4; cursor: default; }
 
+		/* 2026-11-07 — Floating YouTube mini player (Chordify style). It floats over a
+		   corner of the chart so the neck keeps the whole screen; – shrinks it to ▶. */
+		.improv-screen { position: relative; }
+
+		.improv-screen .lab-pip {
+			position: absolute;
+			right: 16px;
+			bottom: calc(var(--lab-player-h, 56px) + 20px);
+			z-index: 80;
+			width: 240px;
+			border: 1px solid var(--lab-line);
+			border-radius: 12px;
+			background: rgba(20, 26, 34, 0.94);
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+		}
+
+		.improv-screen .lab-pip[hidden],
+		.improv-screen .lab-pip-fab[hidden],
+		.improv-screen .lab-pip-results[hidden],
+		.improv-screen .lab-pip-video[hidden] { display: none; }
+
+		.improv-screen .lab-pip-bar {
+			display: flex;
+			align-items: center;
+			gap: 4px;
+			padding: 4px;
+		}
+
+		.improv-screen .lab-pip-grip {
+			padding: 0 2px;
+			color: var(--lab-muted);
+			font-size: 13px;
+			cursor: grab;
+			touch-action: none;
+			user-select: none;
+		}
+
+		.improv-screen .lab-pip-search {
+			flex: 1;
+			min-width: 0;
+			display: flex;
+		}
+
+		.improv-screen .lab-pip-search input {
+			width: 100%;
+			min-width: 0;
+			padding: 5px 8px;
+			border-radius: 8px;
+			border: 1px solid var(--lab-line);
+			background: #0d1117;
+			color: var(--lab-text);
+			font: inherit;
+			font-size: 0.75rem;
+		}
+
+		.improv-screen .lab-pip-min {
+			flex: 0 0 auto;
+			width: 24px;
+			height: 24px;
+			padding: 0;
+			border-radius: 6px;
+			border: 1px solid var(--lab-line);
+			background: transparent;
+			color: var(--lab-text);
+			font-size: 14px;
+			line-height: 1;
+			cursor: pointer;
+		}
+
+		.improv-screen .lab-pip-video {
+			aspect-ratio: 16 / 9;
+			overflow: hidden;
+			border-radius: 0 0 11px 11px;
+			background: #000;
+		}
+
+		.improv-screen .lab-pip-video iframe {
+			display: block;
+			width: 100%;
+			height: 100%;
+			border: 0;
+		}
+
+		.improv-screen .lab-pip-results {
+			position: absolute;
+			right: 0;
+			bottom: calc(100% + 6px);
+			width: 320px;
+			max-width: calc(100vw - 32px);
+			max-height: min(60vh, 420px);
+			overflow-y: auto;
+			margin: 0;
+			padding: 4px;
+			list-style: none;
+			border: 1px solid var(--lab-line);
+			border-radius: 12px;
+			background: rgba(12, 15, 18, 0.98);
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+		}
+
+		.improv-screen .lab-pip-results.lab-pip-results-below {
+			top: calc(100% + 6px);
+			bottom: auto;
+		}
+
+		.improv-screen .lab-pip-results button {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			width: 100%;
+			padding: 4px;
+			border: 0;
+			border-radius: 8px;
+			background: none;
+			color: var(--lab-text);
+			font: inherit;
+			font-size: 0.78rem;
+			line-height: 1.3;
+			text-align: left;
+			cursor: pointer;
+		}
+
+		.improv-screen .lab-pip-results button:hover,
+		.improv-screen .lab-pip-results button:focus-visible { background: rgba(224, 177, 90, 0.14); }
+
+		.improv-screen .lab-pip-results img {
+			flex: 0 0 auto;
+			width: 80px;
+			height: 45px;
+			object-fit: cover;
+			border-radius: 4px;
+		}
+
+		.improv-screen .lab-pip-msg {
+			padding: 8px;
+			color: var(--lab-muted);
+			font-size: 0.78rem;
+		}
+
+		.improv-screen .lab-pip-fab {
+			position: absolute;
+			right: 16px;
+			bottom: calc(var(--lab-player-h, 56px) + 20px);
+			z-index: 80;
+			width: 34px;
+			height: 34px;
+			padding: 0;
+			border-radius: 50%;
+			border: 1px solid var(--lab-line);
+			background: #141a22;
+			color: var(--lab-accent);
+			font-size: 12px;
+			cursor: pointer;
+			box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+		}
+
+		@media (max-height: 520px) {
+			.improv-screen .lab-pip { width: 190px; right: 8px; bottom: calc(var(--lab-player-h, 46px) + 14px); }
+			.improv-screen .lab-pip-fab { right: 8px; bottom: calc(var(--lab-player-h, 46px) + 14px); }
+		}
+
+		@media screen and (max-width: 540px) and (orientation: portrait) {
+			.improv-screen .lab-pip,
+			.improv-screen .lab-pip-fab { display: none; }
+		}
+
+		/* 2026-11-08 — Song question box in the toolbar (same AI assistant as the home
+		   page). Answers float over the chart and close with ×; 💬 folds the box away. */
+		.improv-screen .lab-ask { flex: 1.6; }
+		.improv-screen .lab-ask.lab-ask-collapsed { flex: 0 0 auto; align-self: stretch; }
+		.improv-screen .lab-ask.lab-ask-collapsed .lab-ask-row { flex: 1; }
+		.improv-screen .lab-ask.lab-ask-collapsed > span,
+		.improv-screen .lab-ask.lab-ask-collapsed input { display: none; }
+
+		.improv-screen .lab-ask-row {
+			display: flex;
+			gap: 4px;
+		}
+
+		.improv-screen .lab-ask-row input {
+			flex: 1;
+			min-width: 0;
+			padding: 7px 8px;
+			border-radius: 10px;
+			border: 1px solid var(--lab-line);
+			background: var(--lab-surface);
+			color: var(--lab-text);
+			font: inherit;
+			font-size: 0.85rem;
+		}
+
+		.improv-screen .lab-ask-toggle {
+			flex: 0 0 auto;
+			min-height: 32px;
+			padding: 0 9px;
+			border-radius: 10px;
+			border: 1px solid var(--lab-line);
+			background: var(--lab-surface);
+			font-size: 0.9rem;
+			cursor: pointer;
+		}
+
+		.improv-screen .lab-answer {
+			position: absolute;
+			left: 12px;
+			z-index: 85;
+			width: min(460px, calc(100% - 24px));
+			max-height: 55%;
+			display: flex;
+			flex-direction: column;
+			border: 1px solid var(--lab-line);
+			border-radius: 12px;
+			background: rgba(12, 15, 18, 0.96);
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+		}
+
+		.improv-screen .lab-answer[hidden] { display: none; }
+
+		.improv-screen .lab-answer-head {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 6px 10px 0;
+			font-size: 0.8rem;
+			color: var(--lab-accent);
+		}
+
+		.improv-screen .lab-answer-head button {
+			border: 0;
+			background: none;
+			color: var(--lab-text);
+			font-size: 1.2rem;
+			line-height: 1;
+			cursor: pointer;
+		}
+
+		.improv-screen .lab-answer-body {
+			overflow-y: auto;
+			padding: 6px 10px;
+			font-size: 0.85rem;
+			line-height: 1.45;
+			white-space: pre-wrap;
+		}
+
+		.improv-screen .lab-answer-body.mp3-error { color: #ff8a80; }
+
+		.improv-screen .lab-answer-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 6px;
+			padding: 0 10px 8px;
+		}
+
+		.improv-screen .lab-answer-actions:empty { display: none; }
+
+		.improv-screen .lab-answer-actions button {
+			padding: 5px 10px;
+			border-radius: 999px;
+			border: 1px solid rgba(224, 177, 90, 0.5);
+			background: transparent;
+			color: var(--lab-accent);
+			font: inherit;
+			font-size: 0.75rem;
+			cursor: pointer;
+		}
+
+		.improv-screen .lab-answer-note {
+			align-self: center;
+			font-size: 0.72rem;
+			color: var(--lab-green);
+		}
+
 		#browse-mp3s { scroll-margin-top: 72px; }
 
 		.browse-banner {
@@ -1012,6 +1284,13 @@
 					<span>Genre</span>
 					<select id="lab-genre"></select>
 				</label>
+				<form class="lab-field lab-ask" id="lab-ask" role="search">
+					<span>Ask about a song</span>
+					<div class="lab-ask-row">
+						<input type="text" id="lab-ask-q" aria-label="Ask about a song" autocomplete="off">
+						<button type="button" class="lab-ask-toggle" id="lab-ask-toggle" aria-expanded="true" aria-controls="lab-ask-q" title="Hide or show the song question box">&#128172;</button>
+					</div>
+				</form>
 				<a class="lab-store" href="#browse-mp3s">Browse MP3s</a>
 			</div>
 
@@ -1052,6 +1331,28 @@
 				<audio id="lab-audio" controls preload="none"></audio>
 			</section>
 		</div>
+
+		<div class="lab-pip" id="lab-pip" role="region" aria-label="YouTube mini player">
+			<div class="lab-pip-bar">
+				<span class="lab-pip-grip" id="lab-pip-grip" title="Drag to move · double-click to reset">&#10303;</span>
+				<form class="lab-pip-search" id="lab-pip-search" role="search">
+					<input type="search" id="lab-pip-q" placeholder="Search YouTube to jam over…" aria-label="Search YouTube or paste a link" autocomplete="off">
+				</form>
+				<button type="button" class="lab-pip-min" id="lab-pip-min" aria-label="Hide YouTube player">&#8211;</button>
+			</div>
+			<ul class="lab-pip-results" id="lab-pip-results" hidden></ul>
+			<div class="lab-pip-video" id="lab-pip-video" hidden></div>
+		</div>
+		<button type="button" class="lab-pip-fab" id="lab-pip-fab" aria-label="Show YouTube player" hidden>&#9654;</button>
+
+		<section class="lab-answer" id="lab-answer" aria-live="polite" hidden>
+			<div class="lab-answer-head">
+				<strong>Song breakdown</strong>
+				<button type="button" id="lab-answer-close" aria-label="Close answer">&times;</button>
+			</div>
+			<div class="lab-answer-body" id="lab-answer-body"></div>
+			<div class="lab-answer-actions" id="lab-answer-actions"></div>
+		</section>
 	</section>
 
 	<div class="mp3-wrap" id="browse-mp3s">
@@ -1322,6 +1623,384 @@
 					audio.addEventListener('pause', updateAway);
 				}
 			}
+		})();
+
+
+		(function () {
+			var screen = document.querySelector('.improv-screen');
+			var pip = document.getElementById('lab-pip');
+			var fab = document.getElementById('lab-pip-fab');
+			var form = document.getElementById('lab-pip-search');
+			var input = document.getElementById('lab-pip-q');
+			var results = document.getElementById('lab-pip-results');
+			var video = document.getElementById('lab-pip-video');
+			var minBtn = document.getElementById('lab-pip-min');
+			var grip = document.getElementById('lab-pip-grip');
+			var labAudio = document.getElementById('lab-audio');
+			if (!screen || !pip) return;
+
+			// Public browser key: restrict it to brianstreckfus.com in Google Cloud Console.
+			// Each search costs 100 of the key's 10,000 daily quota units, so results are cached per session.
+			var API_KEY = 'AIzaSyCNdFVx45bBA3_402O-UUREh9MmFL0vS0I';
+			var KEYS = { video: 'labPipVideo', min: 'labPipMin', pos: 'labPipPos' };
+			var iframe = null;
+
+			function save(key, value) {
+				try { if (value == null) localStorage.removeItem(key); else localStorage.setItem(key, value); } catch (e) {}
+			}
+			function recall(key) {
+				try { return localStorage.getItem(key); } catch (e) { return null; }
+			}
+
+			function videoIdFrom(text) {
+				text = (text || '').trim();
+				if (/^[\w-]{11}$/.test(text)) return text;
+				var m = text.match(/(?:youtu\.be\/|[?&]v=|\/shorts\/|\/embed\/|\/live\/)([\w-]{11})/);
+				return m ? m[1] : null;
+			}
+
+			function send(func) {
+				if (iframe && iframe.contentWindow) {
+					iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: func, args: '' }), '*');
+				}
+			}
+
+			function loadVideo(id, autoplay) {
+				save(KEYS.video, id);
+				if (!iframe) {
+					iframe = document.createElement('iframe');
+					iframe.title = 'YouTube player';
+					iframe.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+					iframe.allowFullscreen = true;
+					iframe.addEventListener('load', function () {
+						iframe.contentWindow.postMessage(JSON.stringify({ event: 'listening', id: 'lab-pip' }), '*');
+					});
+					video.appendChild(iframe);
+				}
+				iframe.src = 'https://www.youtube-nocookie.com/embed/' + id +
+					'?enablejsapi=1&rel=0&playsinline=1' + (autoplay ? '&autoplay=1' : '') +
+					'&origin=' + encodeURIComponent(location.origin);
+				video.hidden = false;
+			}
+
+			window.addEventListener('message', function (event) {
+				if (!iframe || event.source !== iframe.contentWindow) return;
+				var data;
+				try { data = JSON.parse(event.data); } catch (e) { return; }
+				if (data && data.info && data.info.playerState === 1 && labAudio && !labAudio.paused) labAudio.pause();
+			});
+			if (labAudio) labAudio.addEventListener('play', function () { send('pauseVideo'); });
+
+			function decode(html) {
+				return new DOMParser().parseFromString(html, 'text/html').documentElement.textContent;
+			}
+
+			function showResults(items, message) {
+				results.innerHTML = '';
+				if (message) {
+					var note = document.createElement('li');
+					note.className = 'lab-pip-msg';
+					note.textContent = message;
+					results.appendChild(note);
+				}
+				items.forEach(function (item) {
+					var li = document.createElement('li');
+					var button = document.createElement('button');
+					var img = document.createElement('img');
+					var title = document.createElement('span');
+					button.type = 'button';
+					img.src = item.thumb;
+					img.alt = '';
+					img.loading = 'lazy';
+					title.textContent = item.title;
+					button.append(img, title);
+					button.addEventListener('click', function () {
+						results.hidden = true;
+						input.value = item.title;
+						loadVideo(item.id, true);
+					});
+					li.appendChild(button);
+					results.appendChild(li);
+				});
+				results.classList.toggle('lab-pip-results-below', pip.getBoundingClientRect().top < 260);
+				results.hidden = false;
+			}
+
+			function search(query) {
+				var cacheKey = 'labPipSearch:' + query.toLowerCase();
+				var cached = null;
+				try { cached = JSON.parse(sessionStorage.getItem(cacheKey)); } catch (e) {}
+				if (cached) return showResults(cached);
+				showResults([], 'Searching…');
+				var params = new URLSearchParams({
+					part: 'snippet', type: 'video', videoEmbeddable: 'true',
+					safeSearch: 'strict', maxResults: '8', q: query, key: API_KEY
+				});
+				fetch('https://www.googleapis.com/youtube/v3/search?' + params)
+					.then(function (response) { return response.json(); })
+					.then(function (data) {
+						if (!data.items) throw new Error('search failed');
+						var items = data.items.map(function (it) {
+							return {
+								id: it.id.videoId,
+								title: decode(it.snippet.title),
+								thumb: (it.snippet.thumbnails.medium || it.snippet.thumbnails.default).url
+							};
+						});
+						try { sessionStorage.setItem(cacheKey, JSON.stringify(items)); } catch (e) {}
+						showResults(items, items.length ? '' : 'No videos found.');
+					})
+					.catch(function () {
+						showResults([], 'Search is unavailable right now. Paste a YouTube link instead.');
+					});
+			}
+
+			form.addEventListener('submit', function (event) {
+				event.preventDefault();
+				var query = input.value.trim();
+				var id = videoIdFrom(query);
+				if (id) {
+					results.hidden = true;
+					loadVideo(id, true);
+				} else if (query) {
+					search(query);
+				}
+			});
+
+			document.addEventListener('click', function (event) {
+				if (!pip.contains(event.target)) results.hidden = true;
+			});
+			document.addEventListener('keydown', function (event) {
+				if (event.key === 'Escape') results.hidden = true;
+			});
+
+			function setMinimized(min) {
+				pip.hidden = min;
+				fab.hidden = !min;
+				save(KEYS.min, min ? '1' : null);
+				if (min) {
+					results.hidden = true;
+					send('pauseVideo');
+				} else if (!iframe && recall(KEYS.video)) {
+					loadVideo(recall(KEYS.video), false);
+				}
+			}
+			minBtn.addEventListener('click', function () { setMinimized(true); });
+			fab.addEventListener('click', function () { setMinimized(false); });
+
+			function place(x, y) {
+				var maxX = screen.clientWidth - pip.offsetWidth - 4;
+				var maxY = screen.clientHeight - pip.offsetHeight - 4;
+				pip.style.left = Math.max(4, Math.min(x, maxX)) + 'px';
+				pip.style.top = Math.max(4, Math.min(y, maxY)) + 'px';
+				pip.style.right = 'auto';
+				pip.style.bottom = 'auto';
+			}
+
+			grip.addEventListener('pointerdown', function (event) {
+				event.preventDefault();
+				grip.setPointerCapture(event.pointerId);
+				var dx = event.clientX - pip.offsetLeft;
+				var dy = event.clientY - pip.offsetTop;
+				if (iframe) iframe.style.pointerEvents = 'none';
+				function move(ev) { place(ev.clientX - dx, ev.clientY - dy); }
+				function up() {
+					grip.removeEventListener('pointermove', move);
+					grip.removeEventListener('pointerup', up);
+					if (iframe) iframe.style.pointerEvents = '';
+					save(KEYS.pos, JSON.stringify({ x: pip.offsetLeft, y: pip.offsetTop }));
+				}
+				grip.addEventListener('pointermove', move);
+				grip.addEventListener('pointerup', up);
+			});
+			grip.addEventListener('dblclick', function () {
+				pip.style.left = pip.style.top = pip.style.right = pip.style.bottom = '';
+				save(KEYS.pos, null);
+			});
+			window.addEventListener('resize', function () {
+				if (pip.style.left) place(pip.offsetLeft, pip.offsetTop);
+			});
+
+			setMinimized(recall(KEYS.min) === '1');
+			try {
+				var pos = JSON.parse(recall(KEYS.pos));
+				if (pos) place(pos.x, pos.y);
+			} catch (e) {}
+		})();
+
+		(function () {
+			var screen = document.querySelector('.improv-screen');
+			var form = document.getElementById('lab-ask');
+			var input = document.getElementById('lab-ask-q');
+			var toggle = document.getElementById('lab-ask-toggle');
+			var panel = document.getElementById('lab-answer');
+			var body = document.getElementById('lab-answer-body');
+			var actions = document.getElementById('lab-answer-actions');
+			var closeBtn = document.getElementById('lab-answer-close');
+			var keySelect = document.getElementById('lab-key');
+			if (!screen || !form) return;
+
+			var ENDPOINT = 'https://trading-assistant.brianstreckfus.workers.dev/chat';
+			// The worker's default 8B model guesses keys wrong; gpt-oss-120b got them right in testing.
+			var MODEL = '@cf/openai/gpt-oss-120b';
+			var DEFAULT_Q = 'What key and what is the chord progression of ';
+			var COLLAPSED_KEY = 'labAskCollapsed';
+			var INSTRUCTIONS =
+				'Reasoning: low\n' +
+				'You are a guitar teacher helping a student improvise over a song. ' +
+				'Reply in exactly this plain-text format, no markdown or tables:\n' +
+				'Key: <tonic> <major or minor>\n' +
+				'Progression: <chords in order> (<Roman numerals>)\n' +
+				'Scale to jam with: <scale>\n' +
+				'Tip: <one short sentence>\n' +
+				'Mention a capo if the recording uses one. If you do not know the song, say so instead of guessing.\n\n' +
+				'Question: ';
+
+			input.value = DEFAULT_Q;
+			input.placeholder = DEFAULT_Q + '…';
+			input.addEventListener('focus', function () {
+				var end = input.value.length;
+				setTimeout(function () { input.setSelectionRange(end, end); }, 0);
+			});
+
+			function setCollapsed(collapsed) {
+				form.classList.toggle('lab-ask-collapsed', collapsed);
+				toggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
+				try { if (collapsed) localStorage.setItem(COLLAPSED_KEY, '1'); else localStorage.removeItem(COLLAPSED_KEY); } catch (e) {}
+				if (collapsed) panel.hidden = true;
+				else input.focus();
+			}
+			toggle.addEventListener('click', function () {
+				setCollapsed(!form.classList.contains('lab-ask-collapsed'));
+			});
+			try { if (localStorage.getItem(COLLAPSED_KEY) === '1') setCollapsed(true); } catch (e) {}
+
+			function showPanel() {
+				var bar = form.closest('.lab-bar');
+				panel.style.top = (bar.getBoundingClientRect().bottom - screen.getBoundingClientRect().top + 6) + 'px';
+				panel.hidden = false;
+			}
+			closeBtn.addEventListener('click', function () { panel.hidden = true; });
+			document.addEventListener('keydown', function (event) {
+				if (event.key === 'Escape') panel.hidden = true;
+			});
+
+			function replyText(data) {
+				var reply = data && data.reply;
+				if (typeof reply === 'string' && reply.trim().charAt(0) === '{') {
+					try { reply = JSON.parse(reply); } catch (e) {}
+				}
+				if (reply && reply.choices && reply.choices[0] && reply.choices[0].message) {
+					return reply.choices[0].message.content || '';
+				}
+				if (reply && typeof reply.response === 'string') return reply.response;
+				if (reply && reply.answer_markdown) return reply.answer_markdown;
+				return typeof reply === 'string' ? reply : '';
+			}
+
+			var NOTES = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
+			function parseKey(text) {
+				var m = (text || '').match(/(?:^|[^A-Za-z])([A-G])([#♯b♭]?)(m)?(?:\s+([Hh]armonic [Mm]inor|[Mm]ajor|[Mm]inor|[Dd]orian|[Ll]ydian|[Mm]ixolydian|[Pp]hrygian))?(?![A-Za-z])/);
+				if (!m) return null;
+				var pc = NOTES[m[1]];
+				if (m[2] === '#' || m[2] === '♯') pc += 1;
+				if (m[2] === 'b' || m[2] === '♭') pc -= 1;
+				var mode = m[4] ? m[4].toLowerCase() : (m[3] ? 'minor' : 'major');
+				return { pc: (pc + 12) % 12, mode: mode };
+			}
+
+			function selectKey(keyText) {
+				var want = parseKey(keyText);
+				if (!want || !keySelect) return null;
+				var options = Array.prototype.slice.call(keySelect.options)
+					.map(function (o) { return { option: o, key: parseKey(o.text) }; })
+					.filter(function (o) { return o.key; });
+				function find(pc, mode) {
+					for (var i = 0; i < options.length; i++) {
+						if (options[i].key.pc === pc && options[i].key.mode === mode) return options[i].option;
+					}
+					return null;
+				}
+				var relative = want.mode === 'major' ? [(want.pc + 9) % 12, 'minor'] : [(want.pc + 3) % 12, 'major'];
+				var match = find(want.pc, want.mode) || find(relative[0], relative[1]);
+				if (!match) return null;
+				keySelect.value = match.value;
+				keySelect.dispatchEvent(new Event('change', { bubbles: true }));
+				return match.text;
+			}
+
+			function addAction(label, onClick) {
+				var button = document.createElement('button');
+				button.type = 'button';
+				button.textContent = label;
+				button.addEventListener('click', function (event) {
+					event.stopPropagation();
+					onClick();
+				});
+				actions.appendChild(button);
+			}
+
+			form.addEventListener('submit', function (event) {
+				event.preventDefault();
+				var question = input.value.trim();
+				if (!question || question === DEFAULT_Q.trim()) {
+					input.focus();
+					return;
+				}
+				var song = question.indexOf(DEFAULT_Q.trim()) === 0 ? question.slice(DEFAULT_Q.length).replace(/\?$/, '').trim() : question;
+				body.classList.remove('mp3-error');
+				body.textContent = 'Thinking…';
+				actions.innerHTML = '';
+				showPanel();
+
+				// gpt-oss sometimes spends the worker's 900-token cap on hidden reasoning and
+				// returns no text, so an empty reply gets one retry.
+				function ask(triesLeft) {
+					return fetch(ENDPOINT, {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({
+							message: INSTRUCTIONS + question,
+							sessionId: 'improv_' + Date.now(),
+							model: MODEL
+						})
+					})
+						.then(function (response) { return response.json(); })
+						.then(function (data) {
+							var text = replyText(data).replace(/\*\*/g, '').trim();
+							if (!text && triesLeft > 0) return ask(triesLeft - 1);
+							if (!text) throw new Error(data && data.error ? data.error : 'empty reply');
+							return text;
+						});
+				}
+
+				ask(1)
+					.then(function (text) {
+						body.textContent = text;
+						var keyLine = text.match(/^\s*Key:\s*(.+)$/im);
+						var chosen = keyLine && selectKey(keyLine[1]);
+						if (chosen) {
+							var note = document.createElement('span');
+							note.className = 'lab-answer-note';
+							note.textContent = 'Scale chart switched to ' + chosen;
+							actions.appendChild(note);
+						}
+						var ytForm = document.getElementById('lab-pip-search');
+						var ytInput = document.getElementById('lab-pip-q');
+						if (ytForm && ytInput && song) {
+							addAction('Find a backing track on YouTube', function () {
+								var fab = document.getElementById('lab-pip-fab');
+								if (!fab.hidden) fab.click();
+								ytInput.value = song + ' backing track';
+								ytForm.requestSubmit();
+							});
+						}
+					})
+					.catch(function () {
+						body.textContent = "Sorry, the assistant didn't answer. Try again in a moment.";
+						body.classList.add('mp3-error');
+					});
+			});
 		})();
 	</script>
 </body>
