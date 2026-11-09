@@ -488,27 +488,31 @@
 			}
 		}
 		if (maxX <= minX || maxY <= minY) return null;
-		var bleed = 4;
-		var x0 = Math.max(0, minX - bleed);
-		var y0 = Math.max(0, minY - bleed);
-		var x1 = Math.max(x0 + 1, Math.min(w, maxX + 1 + bleed));
-		var y1 = Math.max(y0 + 1, Math.min(h, maxY + 1 + bleed));
+		// Crop slightly inside the artwork so no white page edge survives.
+		var inset = 3;
+		var x0 = Math.max(0, minX + inset);
+		var y0 = Math.max(0, minY + inset);
+		var x1 = Math.max(x0 + 1, Math.min(w, maxX + 1 - inset));
+		var y1 = Math.max(y0 + 1, Math.min(h, maxY + 1 - inset));
 		return { x: x0 / w, y: y0 / h, w: (x1 - x0) / w, h: (y1 - y0) / h };
 	}
 
-	function focusFrame(box, pageW, pageH, paneW, paneH) {
+	function focusFrame(box, pageW, pageH, paneW, paneH, which) {
 		// Note names live in the middle of these charts. The script caption
 		// along the bottom goes first, then a little of the staff at the top,
 		// so the fretboard can fill a wide screen instead of sitting small.
-		var topTrim = 0.04;
-		var bottomTrim = 0.12;
+		// The hand-drawn harmonic minor pages put their title right under the
+		// low E string, so they only lose the title and never the strings.
+		var harmonic = which === 'harmonic';
+		var topTrim = harmonic ? 0 : 0.04;
+		var bottomTrim = harmonic ? 0.17 : 0.12;
 		var y = box.y + box.h * topTrim;
 		var h = box.h * (1 - topTrim - bottomTrim);
 		var bw = box.w * pageW;
 		var bh = h * pageH;
 		var paneAspect = paneW / Math.max(1, paneH);
 		var aspect = bw / Math.max(1, bh);
-		if (aspect < paneAspect) {
+		if (!harmonic && aspect < paneAspect) {
 			var keep = (bw / paneAspect) / bh;
 			if (keep < 0.79) keep = 0.79;
 			var cut = h * (1 - keep);
@@ -547,31 +551,35 @@
 			probe.height = Math.max(1, Math.floor(probeView.height));
 			return page.render({ canvasContext: probe.getContext('2d'), viewport: probeView }).promise.then(function () {
 				var box = contentBounds(probe) || { x: 0, y: 0, w: 1, h: 1 };
-				var frame = focusFrame(box, unscaled.width, unscaled.height, paneW, paneH);
+				var frame = focusFrame(box, unscaled.width, unscaled.height, paneW, paneH, which);
 				var contentW = Math.max(1, unscaled.width * frame.w);
 				var contentH = Math.max(1, unscaled.height * frame.h);
-				var displayScale = Math.min(paneW / contentW, paneH / contentH);
-				var full = page.getViewport({ scale: displayScale * dpr });
+				// Fill the pane, stretching the artwork up to MAX_STRETCH in either
+				// direction; past that the dark pane background shows instead of white.
+				var MAX_STRETCH = 1.6;
+				var sx = paneW / contentW;
+				var sy = paneH / contentH;
+				if (sx > sy * MAX_STRETCH) sx = sy * MAX_STRETCH;
+				if (sy > sx * MAX_STRETCH) sy = sx * MAX_STRETCH;
+				var full = page.getViewport({ scale: Math.max(sx, sy) * dpr });
 				var off = document.createElement('canvas');
 				off.width = Math.max(1, Math.floor(full.width));
 				off.height = Math.max(1, Math.floor(full.height));
 				return page.render({ canvasContext: off.getContext('2d'), viewport: full }).promise.then(function () {
-					// Draw the whole page at the zoom of the middle crop, then
-					// open the scroller on that crop. Wheel up for the top,
-					// wheel down for the bottom.
-					pdfCanvas.width = off.width;
-					pdfCanvas.height = off.height;
-					var cssW = Math.round(off.width / dpr);
-					var cssH = Math.round(off.height / dpr);
+					var cssW = Math.round(contentW * sx);
+					var cssH = Math.round(contentH * sy);
+					pdfCanvas.width = Math.max(1, Math.round(cssW * dpr));
+					pdfCanvas.height = Math.max(1, Math.round(cssH * dpr));
 					pdfCanvas.style.width = cssW + 'px';
 					pdfCanvas.style.height = cssH + 'px';
-					pdfCanvas.getContext('2d').drawImage(off, 0, 0);
-					var frameTop = frame.y * cssH;
-					var frameCssH = frame.h * cssH;
-					var viewH = wrap.clientHeight || paneH;
-					var scrollY = frameTop - Math.max(0, (viewH - frameCssH) / 2);
-					var maxScroll = Math.max(0, cssH - viewH);
-					wrap.scrollTop = Math.max(0, Math.min(maxScroll, scrollY));
+					pdfCanvas.getContext('2d').drawImage(off,
+						frame.x * off.width, frame.y * off.height, frame.w * off.width, frame.h * off.height,
+						0, 0, pdfCanvas.width, pdfCanvas.height);
+					wrap.scrollTop = 0;
+					// The pane may have resized while this page was drawing.
+					if (Math.abs(wrap.clientWidth - cssW) > 2 || Math.abs(wrap.clientHeight - cssH) > 2) {
+						if (sx === paneW / contentW && sy === paneH / contentH) rerenderChartSoon();
+					}
 					pdfState.page = num;
 					pdfState.rendering = false;
 					pdfLabel.textContent = 'Page ' + num + ' / ' + doc.numPages;
