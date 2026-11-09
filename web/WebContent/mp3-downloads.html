@@ -1967,7 +1967,10 @@
 					})
 						.then(function (response) { return response.json(); })
 						.then(function (data) {
-							var text = replyText(data).replace(/\*\*/g, '').trim();
+							// The worker's system prompt asks for a trading disclaimer; it doesn't belong on song answers.
+							var text = replyText(data).replace(/\*\*/g, '').split('\n')
+								.filter(function (line) { return !/not financial advice/i.test(line); })
+								.join('\n').trim();
 							if (!text && triesLeft > 0) return ask(triesLeft - 1);
 							if (!text) throw new Error(data && data.error ? data.error : 'empty reply');
 							return text;
