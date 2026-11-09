@@ -203,6 +203,17 @@
       "scale": "C# minor pentatonic (A minor pentatonic shapes with the capo)",
       "tip": "Keep a steady fingerpicking pattern; the chords barely change.",
       "source": "standard chart"
+    },
+    {
+      "title": "Candy Cane Children",
+      "artist": "The White Stripes",
+      "key": "D minor",
+      "capo": "none",
+      "progression": "D5 – C5 – G5 – A5 (power chords; roughly Dm – C – G – A)",
+      "numerals": "i – VII – IV – V",
+      "scale": "D natural minor (D minor pentatonic or D blues for a garage-rock sound)",
+      "tip": "The power chords have no 3rds, so it can sound minor or major; D minor pentatonic fits all four.",
+      "source": "Brian (rough estimate, 2026-11-09)"
     }
   ]
 }
