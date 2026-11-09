@@ -1978,6 +1978,55 @@
 				return match.text;
 			}
 
+			// song-keys.json holds checked answers; songs found there skip the AI entirely.
+			var songListPromise = null;
+			function loadSongList() {
+				if (!songListPromise) {
+					songListPromise = fetch('song-keys.json')
+						.then(function (response) { return response.json(); })
+						.then(function (data) { return data.songs || []; })
+						.catch(function () { return []; });
+				}
+				return songListPromise;
+			}
+
+			function normalize(text) {
+				return String(text || '').toLowerCase().replace(/[’']/g, '').replace(/[^a-z0-9]+/g, ' ').trim();
+			}
+
+			function findSong(songs, text) {
+				var haystack = ' ' + normalize(text) + ' ';
+				var best = null;
+				songs.forEach(function (entry) {
+					[entry.title].concat(entry.aliases || []).forEach(function (name) {
+						var needle = normalize(name);
+						if (!needle || haystack.indexOf(' ' + needle + ' ') === -1) return;
+						var artistNamed = entry.artist && haystack.indexOf(' ' + normalize(entry.artist) + ' ') !== -1;
+						var score = needle.length + (artistNamed ? 100 : 0);
+						if (!best || score > best.score) best = { entry: entry, score: score };
+					});
+				});
+				return best ? best.entry : null;
+			}
+
+			function knownAnswer(entry) {
+				return [
+					entry.title + (entry.artist ? ' — ' + entry.artist : ''),
+					'Key: ' + entry.key,
+					'Progression: ' + entry.progression + (entry.numerals ? ' (' + entry.numerals + ')' : ''),
+					'Scale to jam with: ' + entry.scale,
+					'Capo: ' + (entry.capo || 'none'),
+					entry.tip ? 'Tip: ' + entry.tip : ''
+				].filter(Boolean).join('\n');
+			}
+
+			function addNote(text) {
+				var note = document.createElement('span');
+				note.className = 'lab-answer-note';
+				note.textContent = text;
+				actions.appendChild(note);
+			}
+
 			function addAction(label, onClick) {
 				var button = document.createElement('button');
 				button.type = 'button';
@@ -2027,17 +2076,20 @@
 						});
 				}
 
-				ask(1)
+				var fromList = false;
+				loadSongList()
+					.then(function (songs) {
+						var known = findSong(songs, song || question);
+						if (!known) return ask(1);
+						fromList = true;
+						return knownAnswer(known);
+					})
 					.then(function (text) {
 						body.textContent = text;
 						var keyLine = text.match(/^\s*Key:\s*(.+)$/im);
 						var chosen = keyLine && selectKey(keyLine[1]);
-						if (chosen) {
-							var note = document.createElement('span');
-							note.className = 'lab-answer-note';
-							note.textContent = 'Scale chart switched to ' + chosen;
-							actions.appendChild(note);
-						}
+						if (fromList) addNote('✓ Checked answer');
+						if (chosen) addNote('Scale chart switched to ' + chosen);
 						var ytForm = document.getElementById('lab-pip-search');
 						var ytInput = document.getElementById('lab-pip-q');
 						if (ytForm && ytInput && song) {

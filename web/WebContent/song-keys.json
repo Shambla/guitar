@@ -1,0 +1,208 @@
+{
+  "_about": "Checked key + chord answers for the Improv Practice song box (mp3-downloads.html). Songs listed here are answered from this file before the AI is asked. 'aliases' are other ways students type the title. 'key' must read like '<tonic> <major|minor>' so the scale chart can switch to it.",
+  "songs": [
+    {
+      "title": "7 Summers",
+      "artist": "Morgan Wallen",
+      "aliases": ["seven summers"],
+      "key": "C major",
+      "capo": "none",
+      "progression": "Verse Cmaj7 – Fmaj7 | Chorus Dm7 – G – Cmaj7 – Am7",
+      "numerals": "Imaj7 – IVmaj7 | ii7 – V – Imaj7 – vi7",
+      "scale": "C major (C major pentatonic for a country feel)",
+      "tip": "The intro riff is the Cmaj7 and Fmaj7 shapes slid up the G and D strings; leave space between phrases.",
+      "source": "countrytabs.com, starakor.com, Ultimate Guitar (checked 2026-11-09)"
+    },
+    {
+      "title": "Let It Be",
+      "artist": "The Beatles",
+      "key": "C major",
+      "capo": "none",
+      "progression": "C – G – Am – F | C – G – F – C",
+      "numerals": "I – V – vi – IV | I – V – IV – I",
+      "scale": "C major (C major pentatonic)",
+      "tip": "Land phrases on the chord tones of Am and F; the melody sits mostly in the C major pentatonic.",
+      "source": "standard chart"
+    },
+    {
+      "title": "Three Little Birds",
+      "artist": "Bob Marley",
+      "key": "A major",
+      "capo": "none",
+      "progression": "A – D – A – E",
+      "numerals": "I – IV – I – V",
+      "scale": "A major pentatonic",
+      "tip": "Keep the off-beat reggae skank steady and keep fills short.",
+      "source": "standard chart"
+    },
+    {
+      "title": "Wonderwall",
+      "artist": "Oasis",
+      "key": "F# minor",
+      "capo": "2nd fret",
+      "progression": "Em7 – G – Dsus4 – A7sus4 (shapes with capo 2) | Chorus Cadd9 – Dsus4 – Em7",
+      "numerals": "i – III – VII – IV",
+      "scale": "F# minor pentatonic (A major pentatonic sounds the same)",
+      "tip": "Keep your ring and pinky fingers planted on the B and high E strings for every chord.",
+      "source": "standard chart"
+    },
+    {
+      "title": "Hotel California",
+      "artist": "Eagles",
+      "key": "B minor",
+      "capo": "none (recording uses capo 7 on 12-string)",
+      "progression": "Bm – F#7 – A – E – G – D – Em – F#7",
+      "numerals": "i – V7 – VII – IV – VI – III – iv – V7",
+      "scale": "B harmonic minor over F#7, B minor pentatonic elsewhere",
+      "tip": "Switch to B harmonic minor (A# instead of A) whenever F#7 comes around.",
+      "source": "standard chart"
+    },
+    {
+      "title": "Knockin' on Heaven's Door",
+      "artist": "Bob Dylan",
+      "aliases": ["knocking on heavens door"],
+      "key": "G major",
+      "capo": "none",
+      "progression": "G – D – Am | G – D – C",
+      "numerals": "I – V – ii | I – V – IV",
+      "scale": "G major pentatonic",
+      "tip": "Only four chords, so it is a great song for practising slow, melodic bends.",
+      "source": "standard chart"
+    },
+    {
+      "title": "Stand By Me",
+      "artist": "Ben E. King",
+      "key": "A major",
+      "capo": "none",
+      "progression": "A – F#m – D – E – A",
+      "numerals": "I – vi – IV – V – I",
+      "scale": "A major pentatonic",
+      "tip": "Copy the famous bass line on the low strings before you solo over it.",
+      "source": "standard chart"
+    },
+    {
+      "title": "Sweet Home Alabama",
+      "artist": "Lynyrd Skynyrd",
+      "key": "D major",
+      "capo": "none",
+      "progression": "D – C – G",
+      "numerals": "I – bVII – IV",
+      "scale": "D mixolydian (D major with a C natural)",
+      "tip": "The C chord means D mixolydian, not plain D major; try D major pentatonic plus C.",
+      "source": "standard chart"
+    },
+    {
+      "title": "Brown Eyed Girl",
+      "artist": "Van Morrison",
+      "key": "G major",
+      "capo": "none",
+      "progression": "G – C – G – D | Chorus C – D – G – Em – C – D",
+      "numerals": "I – IV – I – V | IV – V – I – vi – IV – V",
+      "scale": "G major pentatonic",
+      "tip": "Play the intro riff in thirds on the G and B strings.",
+      "source": "standard chart"
+    },
+    {
+      "title": "A Horse with No Name",
+      "artist": "America",
+      "aliases": ["horse with no name"],
+      "key": "E minor",
+      "capo": "none",
+      "progression": "Em – D6add9/F#",
+      "numerals": "i – VII (two-chord vamp)",
+      "scale": "E dorian",
+      "tip": "Two chords the whole song; the C# in E dorian gives it that open, dusty sound.",
+      "source": "standard chart"
+    },
+    {
+      "title": "Riptide",
+      "artist": "Vance Joy",
+      "key": "C major",
+      "capo": "none",
+      "progression": "Am – G – C | Am – G – F",
+      "numerals": "vi – V – I | vi – V – IV",
+      "scale": "C major pentatonic (A minor pentatonic)",
+      "tip": "Originally on ukulele; keep the strum light and bouncy.",
+      "source": "standard chart"
+    },
+    {
+      "title": "Hallelujah",
+      "artist": "Leonard Cohen",
+      "aliases": ["hallelujah jeff buckley"],
+      "key": "C major",
+      "capo": "none",
+      "progression": "C – Am – C – Am – F – G – C – G | Chorus F – Am – F – C – G – C",
+      "numerals": "I – vi – I – vi – IV – V – I – V",
+      "scale": "C major",
+      "tip": "It is in 12/8, so count it in slow groups of three.",
+      "source": "standard chart"
+    },
+    {
+      "title": "Take Me Home, Country Roads",
+      "artist": "John Denver",
+      "aliases": ["country roads"],
+      "key": "A major",
+      "capo": "none",
+      "progression": "Verse A – F#m – E – D | Chorus A – E – F#m – D",
+      "numerals": "I – vi – V – IV | I – V – vi – IV",
+      "scale": "A major pentatonic",
+      "tip": "Big open chords; fill the gaps with hammer-ons from the A major pentatonic.",
+      "source": "standard chart"
+    },
+    {
+      "title": "Wagon Wheel",
+      "artist": "Old Crow Medicine Show",
+      "key": "A major",
+      "capo": "none",
+      "progression": "A – E – F#m – D",
+      "numerals": "I – V – vi – IV",
+      "scale": "A major pentatonic",
+      "tip": "Same four chords the whole song, so practise switching between rhythm and short fills.",
+      "source": "standard chart"
+    },
+    {
+      "title": "No Woman, No Cry",
+      "artist": "Bob Marley",
+      "key": "C major",
+      "capo": "none",
+      "progression": "C – G – Am – F",
+      "numerals": "I – V – vi – IV",
+      "scale": "C major pentatonic",
+      "tip": "Classic I–V–vi–IV; listen for the descending bass line C – B – A – F.",
+      "source": "standard chart"
+    },
+    {
+      "title": "Stairway to Heaven",
+      "artist": "Led Zeppelin",
+      "key": "A minor",
+      "capo": "none",
+      "progression": "Am – Am/G# – C/G – D/F# – Fmaj7 – G – Am",
+      "numerals": "i – (chromatic bass) – III – IV – VI – VII – i",
+      "scale": "A minor pentatonic for the solo, A dorian for the intro",
+      "tip": "The intro is a descending bass line under a fixed top note; play it slowly and evenly.",
+      "source": "standard chart"
+    },
+    {
+      "title": "Wish You Were Here",
+      "artist": "Pink Floyd",
+      "key": "G major",
+      "capo": "none",
+      "progression": "C – D/F# – Am – G – D/F# – C – Am – G",
+      "numerals": "IV – V – ii – I – V – IV – ii – I",
+      "scale": "G major pentatonic (E minor pentatonic for the intro lick)",
+      "tip": "The intro lick is E minor pentatonic over Em7 and G.",
+      "source": "standard chart"
+    },
+    {
+      "title": "Jolene",
+      "artist": "Dolly Parton",
+      "key": "C# minor",
+      "capo": "4th fret",
+      "progression": "Am – C – G – Am (shapes with capo 4)",
+      "numerals": "i – III – VII – i",
+      "scale": "C# minor pentatonic (A minor pentatonic shapes with the capo)",
+      "tip": "Keep a steady fingerpicking pattern; the chords barely change.",
+      "source": "standard chart"
+    }
+  ]
+}
