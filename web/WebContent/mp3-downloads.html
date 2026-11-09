@@ -1002,6 +1002,104 @@
 			.improv-screen .lab-pip-fab { display: none; }
 		}
 
+		/* 2026-11-09 — "Likely chords": swaps the scale chart for the chord progression
+		   PDF (all drawn in C major / A minor and the modes of C) plus the capo fret. */
+		.improv-screen .lab-pdf-tools .lab-chords-toggle {
+			border-color: rgba(224, 177, 90, 0.5);
+			color: var(--lab-accent);
+		}
+
+		.improv-screen .lab-pdf-tools .lab-chords-toggle[aria-pressed="true"] {
+			background: var(--lab-accent);
+			color: var(--lab-ink);
+		}
+
+		.improv-screen .lab-chart-live.lab-chords-on > .lab-canvas-wrap,
+		.improv-screen .lab-chart-live.lab-chords-on #lab-pdf-prev,
+		.improv-screen .lab-chart-live.lab-chords-on #lab-pdf-next,
+		.improv-screen .lab-chart-live.lab-chords-on #lab-pdf-label,
+		.improv-screen .lab-chart-live.lab-chords-on #lab-pdf-download { display: none; }
+
+		.improv-screen .lab-chords {
+			flex: 1;
+			min-height: 0;
+			display: flex;
+			flex-direction: column;
+			gap: 4px;
+		}
+
+		.improv-screen .lab-chords[hidden] { display: none; }
+
+		.improv-screen .lab-chords-info {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: space-between;
+			gap: 4px 10px;
+		}
+
+		.improv-screen .lab-chords-capo {
+			margin: 0;
+			font-size: 0.8rem;
+			color: var(--lab-muted);
+		}
+
+		.improv-screen .lab-chords-capo strong {
+			color: var(--lab-accent);
+			font-size: 0.95rem;
+		}
+
+		.improv-screen .lab-chords-pages { display: flex; gap: 4px; }
+
+		.improv-screen .lab-chords-pages button {
+			padding: 3px 9px;
+			border-radius: 999px;
+			border: 1px solid var(--lab-line);
+			background: transparent;
+			color: var(--lab-text);
+			font: inherit;
+			font-size: 0.72rem;
+			cursor: pointer;
+		}
+
+		.improv-screen .lab-chords-pages button[aria-pressed="true"] {
+			border-color: rgba(224, 177, 90, 0.6);
+			color: var(--lab-accent);
+		}
+
+		.improv-screen .lab-chords-names {
+			display: flex;
+			gap: 6px;
+			overflow-x: auto;
+			white-space: nowrap;
+		}
+
+		.improv-screen .lab-chords-names span {
+			flex: 0 0 auto;
+			padding: 2px 8px;
+			border-radius: 8px;
+			background: rgba(255, 255, 255, 0.05);
+			font-size: 0.85rem;
+			font-weight: 700;
+			text-align: center;
+		}
+
+		.improv-screen .lab-chords-names small {
+			display: block;
+			font-size: 0.65rem;
+			font-weight: 400;
+			color: var(--lab-muted);
+		}
+
+		.improv-screen .lab-chords-wrap {
+			align-items: center;
+			overflow: hidden;
+		}
+
+		@media (max-height: 520px) {
+			.improv-screen .lab-chords-names small { display: none; }
+		}
+
 		/* 2026-11-08 — Song question box in the toolbar (same AI assistant as the home
 		   page). Answers float over the chart and close with ×; 💬 folds the box away. */
 		.improv-screen .lab-ask { flex: 1.6; }
@@ -1312,6 +1410,7 @@
 							<p id="lab-chart-note"></p>
 						</div>
 						<div class="lab-pdf-tools">
+							<button type="button" class="lab-chords-toggle" id="lab-chords-toggle" aria-pressed="false">Likely chords</button>
 							<button type="button" id="lab-pdf-prev">←</button>
 							<span id="lab-pdf-label">Page —</span>
 							<button type="button" id="lab-pdf-next">→</button>
@@ -1320,6 +1419,16 @@
 					</div>
 					<div class="lab-canvas-wrap">
 						<canvas id="lab-pdf-canvas" aria-label="Scale chart page"></canvas>
+					</div>
+					<div class="lab-chords" id="lab-chords" hidden>
+						<div class="lab-chords-info">
+							<p class="lab-chords-capo"><strong id="lab-chords-capo">Capo</strong> <span id="lab-chords-how"></span></p>
+							<div class="lab-chords-pages" id="lab-chords-pages"></div>
+						</div>
+						<div class="lab-chords-names" id="lab-chords-names"></div>
+						<div class="lab-canvas-wrap lab-chords-wrap">
+							<canvas id="lab-chords-canvas" aria-label="Chord progression chart"></canvas>
+						</div>
 					</div>
 				</div>
 			</section>
@@ -1844,6 +1953,224 @@
 				var pos = JSON.parse(recall(KEYS.pos));
 				if (pos) place(pos.x, pos.y);
 			} catch (e) {}
+		})();
+
+		(function () {
+			var toggle = document.getElementById('lab-chords-toggle');
+			var live = document.getElementById('lab-chart-live');
+			var panel = document.getElementById('lab-chords');
+			var chartTitle = document.getElementById('lab-chart-title');
+			var capoEl = document.getElementById('lab-chords-capo');
+			var howEl = document.getElementById('lab-chords-how');
+			var pagesEl = document.getElementById('lab-chords-pages');
+			var namesEl = document.getElementById('lab-chords-names');
+			var canvas = document.getElementById('lab-chords-canvas');
+			if (!toggle || !live || !panel || !canvas) return;
+
+			var PDF_URL = 'img/All_Chord_Progression_Generators_BrianStreckfus_com.pdf';
+			// Every page of the PDF is drawn from the C major family, so each mode has a
+			// fixed home note; the capo fret is the distance from that note to the student's key.
+			var CHARTS = {
+				'major': { home: 0, homeName: 'C major', start: 1, pages: [
+					{ page: 1, label: 'Open', numerals: ['I', 'ii6', 'iii', 'IVmaj7', 'V', 'vi', 'vii°'], chords: ['C', 'Dm6', 'Em', 'Fmaj7', 'G', 'Am', 'B°'] },
+					{ page: 2, label: 'Triads', numerals: ['I', 'ii', 'iii', 'IV', 'V', 'vi', 'vii°'], chords: ['C', 'Dm', 'Em', 'F', 'G', 'Am', 'B°'] },
+					{ page: 3, label: 'Jazz', numerals: ['Imaj7', 'iim7', 'iiim7', 'IVmaj7', 'V7', 'vim7', 'viim7(b5)'], chords: ['Cmaj7', 'Dm7', 'Em7', 'Fmaj7', 'G7', 'Am7', 'Bm7(b5)'] }
+				] },
+				'minor': { home: 9, homeName: 'A minor', start: 1, pages: [
+					{ page: 4, label: 'Open', numerals: ['i', 'ii°', 'III', 'iv6', 'v', 'VImaj7', 'VII'], chords: ['Am', 'B°', 'C', 'Dm6', 'Em', 'Fmaj7', 'G'] },
+					{ page: 5, label: 'Triads', numerals: ['i', 'ii°', 'III', 'iv', 'v', 'VI', 'VII'], chords: ['Am', 'B°', 'C', 'Dm', 'Em', 'F', 'G'] },
+					{ page: 6, label: 'Jazz', numerals: ['im7', 'iim7(b5)', 'IIImaj7', 'iv7', 'v7', 'VImaj7', 'VII7'], chords: ['Am7', 'Bm7(b5)', 'Cmaj7', 'Dm7', 'Em7', 'Fmaj7', 'G7'] }
+				] },
+				'harmonic minor': { home: 9, homeName: 'A harmonic minor', start: 0, pages: [
+					{ page: 7, label: 'Jazz', numerals: ['im11', 'V7/V', 'III+maj7', 'iv9', 'V7(b9)', 'vi(maj7)', 'vii7(b5)'], chords: ['Am11', 'B7(b9)', 'C+maj7', 'Dm9', 'E7(b9)', 'Fm(maj7)', 'G#m7(b5)'] }
+				] },
+				'locrian': { home: 11, homeName: 'B Locrian', start: 0, pages: [
+					{ page: 8, label: 'Locrian', numerals: ['iø7', 'IImaj7', 'iii6', 'iv', 'Vmaj7(#4)', 'VI7', 'viim7'], chords: ['Bø7', 'Cmaj7', 'Dm6', 'Em', 'Fmaj7(#4)', 'G7', 'Am7'] }
+				] },
+				'dorian': { home: 2, homeName: 'D Dorian', start: 0, pages: [
+					{ page: 9, label: 'Dorian', numerals: ['i6', 'ii', 'IIImaj7(#4)', 'IV', 'v7', 'viø7', 'VIImaj7'], chords: ['Dm6', 'Em', 'Fmaj7(#4)', 'G', 'Am7', 'Bø7', 'Cmaj7'] }
+				] },
+				'phrygian': { home: 4, homeName: 'E Phrygian', start: 0, pages: [
+					{ page: 10, label: 'Phrygian', numerals: ['i', 'IImaj7', 'III', 'ivm7', 'vø7', 'VImaj7', 'vii6'], chords: ['Em', 'Fmaj7', 'G', 'Am7', 'Bø7', 'Cmaj7', 'Dm6'] }
+				] },
+				'lydian': { home: 5, homeName: 'F Lydian', start: 0, pages: [
+					{ page: 11, label: 'Lydian', numerals: ['Imaj7(#4)', 'II', 'iiim7', 'ivø7', 'Vmaj7', 'vi6', 'vii'], chords: ['Fmaj7(#4)', 'G', 'Am7', 'Bø7', 'Cmaj7', 'Dm6', 'Em'] }
+				] },
+				'mixolydian': { home: 7, homeName: 'G Mixolydian', start: 0, pages: [
+					{ page: 12, label: 'Mixolydian', numerals: ['I7', 'iim7', 'iiiø7', 'IVmaj7', 'v6', 'vi', 'VIImaj7'], chords: ['G7', 'Am7', 'Bø7', 'Cmaj7', 'Dm6', 'Em', 'Fmaj7'] }
+				] }
+			};
+			var MODE_ALIASES = { ionian: 'major', aeolian: 'minor' };
+			var NOTE_PC = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
+			var SHARPS = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+			var FLATS = ['C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab', 'A', 'Bb', 'B'];
+			var FLAT_MAJOR_PCS = [5, 10, 3, 8, 1];
+
+			var doc = null;
+			var chosen = {};
+			var renderToken = 0;
+
+			function parseKey(text) {
+				var m = String(text || '').match(/([A-G])([#♯b♭]?)\s*(harmonic minor|major|minor|ionian|aeolian|dorian|phrygian|lydian|mixolydian|locrian)/i);
+				if (!m) return null;
+				var accidental = m[2] === '♯' ? '#' : m[2] === '♭' ? 'b' : m[2];
+				var mode = m[3].toLowerCase();
+				mode = MODE_ALIASES[mode] || mode;
+				var pc = NOTE_PC[m[1].toUpperCase()] + (accidental === '#' ? 1 : accidental === 'b' ? -1 : 0);
+				return { pc: (pc + 12) % 12, accidental: accidental, mode: mode, label: m[1].toUpperCase() + accidental + ' ' + m[3].toLowerCase() };
+			}
+
+			function transpose(chord, semitones, useFlats) {
+				var m = chord.match(/^([A-G])([#b]?)(.*)$/);
+				if (!m) return chord;
+				var pc = NOTE_PC[m[1]] + (m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0);
+				return (useFlats ? FLATS : SHARPS)[((pc + semitones) % 12 + 12) % 12] + m[3];
+			}
+
+			function currentChart() {
+				var key = parseKey(chartTitle && chartTitle.textContent);
+				var chart = CHARTS[key ? key.mode : 'major'];
+				if (!key) return { key: null, chart: chart, capo: 0, useFlats: false };
+				// Chart home notes sit on the C major scale, so the capo fret is also the parent major key.
+				var capo = (key.pc - chart.home + 12) % 12;
+				var useFlats = key.accidental === 'b' || (key.accidental !== '#' && FLAT_MAJOR_PCS.indexOf(capo) !== -1);
+				return { key: key, chart: chart, capo: capo, useFlats: useFlats };
+			}
+
+			function describe(info) {
+				if (!info.key) {
+					capoEl.textContent = 'Pick a key';
+					howEl.textContent = 'to see which capo fret turns these ' + info.chart.homeName + ' shapes into your key.';
+				} else if (info.capo === 0) {
+					capoEl.textContent = 'No capo';
+					howEl.textContent = '— this chart is already in ' + info.key.label + '.';
+				} else if (info.capo <= 7) {
+					capoEl.textContent = 'Capo ' + info.capo;
+					howEl.textContent = '— play these ' + info.chart.homeName + ' shapes with a capo on fret ' + info.capo + ' to sound in ' + info.key.label + '.';
+				} else {
+					capoEl.textContent = 'Capo ' + info.capo + ' is too high';
+					howEl.textContent = '— for ' + info.key.label + ', play the chord names below as barre chords instead.';
+				}
+
+				var index = chosen[info.key ? info.key.mode : 'major'];
+				if (index == null) index = info.chart.start;
+				var pageInfo = info.chart.pages[index];
+				pagesEl.innerHTML = '';
+				if (info.chart.pages.length > 1) {
+					info.chart.pages.forEach(function (p, i) {
+						var button = document.createElement('button');
+						button.type = 'button';
+						button.textContent = p.label;
+						button.setAttribute('aria-pressed', i === index ? 'true' : 'false');
+						button.addEventListener('click', function () {
+							chosen[info.key ? info.key.mode : 'major'] = i;
+							refresh();
+						});
+						pagesEl.appendChild(button);
+					});
+				}
+
+				namesEl.innerHTML = '';
+				pageInfo.chords.forEach(function (chord, i) {
+					var chip = document.createElement('span');
+					var numeral = document.createElement('small');
+					numeral.textContent = pageInfo.numerals[i];
+					chip.appendChild(numeral);
+					chip.appendChild(document.createTextNode(transpose(chord, info.capo, info.useFlats)));
+					namesEl.appendChild(chip);
+				});
+				return pageInfo.page;
+			}
+
+			function contentBox(probe) {
+				var ctx = probe.getContext('2d');
+				var data = ctx.getImageData(0, 0, probe.width, probe.height).data;
+				var minX = probe.width, minY = probe.height, maxX = 0, maxY = 0;
+				for (var y = 0; y < probe.height; y += 2) {
+					for (var x = 0; x < probe.width; x += 2) {
+						var i = (y * probe.width + x) * 4;
+						if (data[i] < 235 || data[i + 1] < 235 || data[i + 2] < 235) {
+							if (x < minX) minX = x;
+							if (x > maxX) maxX = x;
+							if (y < minY) minY = y;
+							if (y > maxY) maxY = y;
+						}
+					}
+				}
+				if (maxX <= minX || maxY <= minY) return { x: 0, y: 0, w: 1, h: 1 };
+				var pad = 0.01;
+				var x0 = Math.max(0, minX / probe.width - pad), y0 = Math.max(0, minY / probe.height - pad);
+				var x1 = Math.min(1, maxX / probe.width + pad), y1 = Math.min(1, maxY / probe.height + pad);
+				return { x: x0, y: y0, w: x1 - x0, h: y1 - y0 };
+			}
+
+			function draw(pageNumber) {
+				var token = ++renderToken;
+				doc.getPage(pageNumber).then(function (page) {
+					var base = page.getViewport({ scale: 1 });
+					var probeView = page.getViewport({ scale: 500 / base.width });
+					var probe = document.createElement('canvas');
+					probe.width = Math.floor(probeView.width);
+					probe.height = Math.floor(probeView.height);
+					return page.render({ canvasContext: probe.getContext('2d'), viewport: probeView }).promise.then(function () {
+						if (token !== renderToken) return;
+						var box = contentBox(probe);
+						var wrap = canvas.parentNode;
+						var paneW = Math.max(160, wrap.clientWidth);
+						var paneH = Math.max(120, wrap.clientHeight);
+						var cropW = base.width * box.w, cropH = base.height * box.h;
+						var fit = Math.min(paneW / cropW, paneH / cropH);
+						var dpr = Math.min(2, window.devicePixelRatio || 1);
+						var full = page.getViewport({ scale: fit * dpr });
+						var off = document.createElement('canvas');
+						off.width = Math.floor(full.width);
+						off.height = Math.floor(full.height);
+						return page.render({ canvasContext: off.getContext('2d'), viewport: full }).promise.then(function () {
+							if (token !== renderToken) return;
+							canvas.width = Math.floor(off.width * box.w);
+							canvas.height = Math.floor(off.height * box.h);
+							canvas.style.width = Math.round(canvas.width / dpr) + 'px';
+							canvas.style.height = Math.round(canvas.height / dpr) + 'px';
+							canvas.getContext('2d').drawImage(off, off.width * box.x, off.height * box.y,
+								canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
+						});
+					});
+				});
+			}
+
+			function refresh() {
+				if (panel.hidden) return;
+				var pageNumber = describe(currentChart());
+				if (doc) {
+					draw(pageNumber);
+				} else if (typeof pdfjsLib !== 'undefined') {
+					pdfjsLib.getDocument(PDF_URL).promise.then(function (loaded) {
+						doc = loaded;
+						refresh();
+					}).catch(function () {
+						howEl.textContent = 'The chord chart could not load.';
+					});
+				}
+			}
+
+			function setOn(on) {
+				panel.hidden = !on;
+				live.classList.toggle('lab-chords-on', on);
+				toggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+				toggle.textContent = on ? 'Back to scale' : 'Likely chords';
+				if (on) requestAnimationFrame(refresh);
+				else window.dispatchEvent(new Event('resize'));
+			}
+
+			toggle.addEventListener('click', function () { setOn(panel.hidden); });
+			if (chartTitle && 'MutationObserver' in window) {
+				new MutationObserver(function () { refresh(); }).observe(chartTitle, { childList: true, characterData: true, subtree: true });
+			}
+			var resizeTimer = null;
+			window.addEventListener('resize', function () {
+				clearTimeout(resizeTimer);
+				resizeTimer = setTimeout(refresh, 150);
+			});
 		})();
 
 		(function () {
