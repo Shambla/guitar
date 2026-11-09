@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 1e-08,
-    "price": 2123.96,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-11-09T14:42:59.449934Z",
-    "received_at": "2026-11-09T14:42:59.451356Z",
-    "id": "2026-11-09T14:42:59.451356Z-ETH/USD-sell"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 176.5,
@@ -590,9 +579,9 @@
     "source": "MAIN_stock_strat12",
     "note": "Above thresholds | buy 13/16 | sell 14/13",
     "mixed_signal": false,
-    "timestamp": "2026-11-07T00:54:05.632515Z",
-    "received_at": "2026-11-07T00:54:05.632515Z",
-    "id": "2026-11-07T00:54:05.632515Z-PCEF-info",
+    "timestamp": "2026-11-09T14:49:47.781139Z",
+    "received_at": "2026-11-09T14:49:47.781139Z",
+    "id": "2026-11-09T14:49:47.781139Z-PCEF-info",
     "threshold_met": true,
     "buy_score": 13,
     "sell_score": 14,
@@ -1586,9 +1575,9 @@
     "quantity": null,
     "source": "MAIN_stock_strat14",
     "note": "buy 13/41 | sell 14/40 | Strength=2/10 | MTF:M | Reasons: trend down, RSI extended, volume present, price not extremely extended, Bollinger squeeze, bounce, or break down, Keltner squeeze, bounce, or break down, ATR channel squeeze, bounce, or break down, SuperTrend bearish, Stochastic RSI overbought, MACD cross down, Williams %R overbought, volume profile resistance or breakdown, below VWAP or volume falling, volume rate of change negative",
-    "timestamp": "2026-11-07T00:54:05.535410Z",
-    "received_at": "2026-11-07T00:54:05.535410Z",
-    "id": "2026-11-07T00:54:05.535410Z-PCEF-sell",
+    "timestamp": "2026-11-09T14:49:47.696068Z",
+    "received_at": "2026-11-09T14:49:47.696068Z",
+    "id": "2026-11-09T14:49:47.696068Z-PCEF-sell",
     "buy_score": 13,
     "sell_score": 14,
     "total_buy_components": 41,
@@ -1994,6 +1983,17 @@
     "yield_curve_sell_vote": false,
     "yield_curve_buy_vote": false,
     "reasons": "strong trend (ADX), RSI not overbought, volume present, volume confirmation, price not extremely extended, not Friday, Bollinger squeeze, bounce, or break up, Keltner squeeze, bounce, or break up, ATR channel squeeze, bounce, or break up, OBV rising or bullish divergence, SuperTrend bullish, Parabolic SAR bullish, rate of change positive, volume profile support or breakout, above VWAP or volume rising, volume rate of change positive, Kalman moving average support"
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 1e-08,
+    "price": 2123.96,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-11-09T14:42:59.449934Z",
+    "received_at": "2026-11-09T14:42:59.451356Z",
+    "id": "2026-11-09T14:42:59.451356Z-ETH/USD-sell"
   },
   {
     "action": "buy",
