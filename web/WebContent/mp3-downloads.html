@@ -1027,6 +1027,13 @@
 			font-size: 0.85rem;
 		}
 
+		.improv-screen .lab-ask-row input.lab-ask-filled { animation: lab-ask-flash 1.6s ease-out; }
+
+		@keyframes lab-ask-flash {
+			0%, 40% { border-color: var(--lab-accent); box-shadow: 0 0 0 2px rgba(224, 177, 90, 0.35); }
+			100% { border-color: var(--lab-line); box-shadow: none; }
+		}
+
 		.improv-screen .lab-ask-toggle {
 			flex: 0 0 auto;
 			min-height: 32px;
@@ -1695,6 +1702,11 @@
 				return new DOMParser().parseFromString(html, 'text/html').documentElement.textContent;
 			}
 
+			// Lets the song question box fill itself in from the chosen video.
+			function announce(title) {
+				document.dispatchEvent(new CustomEvent('lab:youtube-video', { detail: { title: title } }));
+			}
+
 			function showResults(items, message) {
 				results.innerHTML = '';
 				if (message) {
@@ -1718,6 +1730,7 @@
 						results.hidden = true;
 						input.value = item.title;
 						loadVideo(item.id, true);
+						announce(item.title);
 					});
 					li.appendChild(button);
 					results.appendChild(li);
@@ -1762,6 +1775,11 @@
 				if (id) {
 					results.hidden = true;
 					loadVideo(id, true);
+					// oEmbed needs no API key and uses no quota.
+					fetch('https://www.youtube.com/oembed?format=json&url=' + encodeURIComponent('https://www.youtube.com/watch?v=' + id))
+						.then(function (response) { return response.json(); })
+						.then(function (data) { if (data.title) announce(data.title); })
+						.catch(function () {});
 				} else if (query) {
 					search(query);
 				}
@@ -1863,6 +1881,37 @@
 				setTimeout(function () { input.setSelectionRange(end, end); }, 0);
 			});
 
+			// "🎸 Three Little Birds - Bob Marley Guitar Backing Track with chords" -> "Three Little Birds - Bob Marley"
+			var TITLE_NOISE = /\s*\b(?:(?:electric|acoustic|classical|guitar|bass|piano|drums?|reggae|jazz|blues|rock|easy|full)\s+)*(?:backing\s*tracks?|jam\s*tracks?|play\s*-?\s*along|karaoke|instrumental|lessons?|tutorial|cover|chords|lyrics|tabs?|sheet\s+music|official\s+(?:music\s+)?video|official\s+audio|music\s+video|remaster(?:ed)?|\d+\s*bpm)\b.*$/i;
+			function songFromTitle(title) {
+				var t = String(title || '')
+					.replace(/#\S+/g, ' ')
+					.replace(/[\[(][^\])]*[\])]/g, ' ')
+					.replace(/[^\p{L}\p{N}\s'’&.,:!?\-–—|/]/gu, ' ')
+					.split(/\s+(?:\||\/\/?|•)\s+/)[0]
+					.replace(/\s+/g, ' ')
+					.replace(/^(?:how\s+to\s+play|learn(?:\s+to\s+play)?)\s+/i, '')
+					.trim();
+				var song = t.replace(TITLE_NOISE, '')
+					.replace(/\s+on\s+(?:the\s+)?(?:electric\s+|acoustic\s+)?(?:guitar|bass|piano|ukulele)\b.*$/i, '')
+					.replace(/[\s\-–—|:,.]+$/, '').trim();
+				return song.length >= 2 ? song : t;
+			}
+
+			// Don't overwrite a question the student is typing but hasn't sent yet.
+			var typedUnsent = false;
+			input.addEventListener('input', function () {
+				typedUnsent = input.value.trim() !== DEFAULT_Q.trim();
+			});
+			document.addEventListener('lab:youtube-video', function (event) {
+				var song = songFromTitle(event.detail && event.detail.title);
+				if (typedUnsent || !song) return;
+				input.value = DEFAULT_Q + song + '?';
+				input.classList.remove('lab-ask-filled');
+				void input.offsetWidth;
+				input.classList.add('lab-ask-filled');
+			});
+
 			function setCollapsed(collapsed) {
 				form.classList.toggle('lab-ask-collapsed', collapsed);
 				toggle.setAttribute('aria-expanded', collapsed ? 'false' : 'true');
@@ -1947,6 +1996,7 @@
 					input.focus();
 					return;
 				}
+				typedUnsent = false;
 				var song = question.indexOf(DEFAULT_Q.trim()) === 0 ? question.slice(DEFAULT_Q.length).replace(/\?$/, '').trim() : question;
 				body.classList.remove('mp3-error');
 				body.textContent = 'Thinking…';
