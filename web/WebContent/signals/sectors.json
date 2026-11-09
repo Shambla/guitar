@@ -1,10 +1,10 @@
 {
   "title": "Sector rotation",
-  "as_of": "2026-11-06",
+  "as_of": "2026-11-09",
   "benchmark": "SPY",
   "benchmark_return_1m_pct": -0.4,
   "benchmark_return_3m_pct": -0.6,
-  "compare_date": "2026-11-01",
+  "compare_date": "2026-11-02",
   "message": "The 11 sector funds ranked by 1-month return. Leading beats SPY over both 1 and 3 months. Improving trails over 3 months but beats it this month. Weakening is the reverse. Lagging trails on both. Not buy or sell orders.",
   "sectors": [
     {
