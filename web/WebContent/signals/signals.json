@@ -2,6 +2,17 @@
   {
     "action": "buy",
     "symbol": "CRV/USD",
+    "quantity": 385.50501156515037,
+    "price": 0.2591,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-11-10T07:08:25.063599Z",
+    "received_at": "2026-11-10T07:08:25.063642Z",
+    "id": "2026-11-10T07:08:25.063642Z-CRV/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "CRV/USD",
     "quantity": 100.0,
     "price": null,
     "source": "TradingView JSON",
@@ -3462,16 +3473,5 @@
     "timestamp": "2026-11-06T05:17:39.292904Z",
     "received_at": "2026-11-06T05:17:39.293559Z",
     "id": "2026-11-06T05:17:39.293559Z-HEX/DAI-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "TAO/USD",
-    "quantity": 0.45475216007276037,
-    "price": 219.68,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-11-06T02:07:07.231178Z",
-    "received_at": "2026-11-06T02:07:07.231204Z",
-    "id": "2026-11-06T02:07:07.231204Z-TAO/USD-buy"
   }
 ]
