@@ -7,21 +7,22 @@
   "message": "Best 3 each way. A bullish rotation climbed into the top 10 from the wider pack. A bearish rotation was a top-3 leader and has slipped. These are not buy or sell orders.",
   "bullish": [
     {
-      "symbol": "EWG",
-      "now_rank": 9,
-      "from_rank": 12,
-      "move": 3,
-      "return_1m_pct": 5.3,
-      "blurb": "Was about #12 outside the top 10, now #9. 1-month return +5.3%."
-    },
-    {
-      "symbol": "F",
+      "symbol": "JETS",
       "now_rank": 10,
-      "from_rank": 11,
-      "move": 1,
-      "return_1m_pct": 4.7,
-      "blurb": "Was about #11 outside the top 10, now #10. 1-month return +4.7%."
+      "from_rank": 17,
+      "move": 7,
+      "return_1m_pct": 2.2,
+      "blurb": "Was about #17 outside the top 10, now #10. 1-month return +2.2%."
     }
   ],
-  "bearish": []
+  "bearish": [
+    {
+      "symbol": "USO",
+      "now_rank": 9,
+      "from_rank": 1,
+      "move": 8,
+      "return_1m_pct": 2.4,
+      "blurb": "Was about #1 in the top 3, now #9. 1-month return +2.4%."
+    }
+  ]
 }
