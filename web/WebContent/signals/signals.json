@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-11-10T03:16:55.731306Z",
+    "received_at": "2026-11-10T03:16:55.731325Z",
+    "id": "2026-11-10T03:16:55.731325Z-HEX/DAI-buy"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 164.74000549316406,
@@ -3462,16 +3473,5 @@
     "timestamp": "2026-11-06T02:01:29.518390Z",
     "received_at": "2026-11-06T02:01:29.518409Z",
     "id": "2026-11-06T02:01:29.518409Z-CRV/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 682.9668078131402,
-    "price": 0.14627,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-11-06T02:01:28.830629Z",
-    "received_at": "2026-11-06T02:01:28.830652Z",
-    "id": "2026-11-06T02:01:28.830652Z-FET/USD-buy"
   }
 ]
