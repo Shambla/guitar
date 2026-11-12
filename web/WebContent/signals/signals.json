@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.04878096,
+    "price": 2045.88004,
+    "source": "MASTER_BOT_162",
+    "note": "🟡 HMM + JSON Confluence (HMM regime + JSON signal confirmed)",
+    "timestamp": "2026-11-12T01:23:56.133664Z",
+    "received_at": "2026-11-12T01:23:56.133684Z",
+    "id": "2026-11-12T01:23:56.133684Z-ETH/USD-buy"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 164.74000549316406,
@@ -3449,16 +3460,5 @@
     "timestamp": "2026-11-07T06:07:54.489047Z",
     "received_at": "2026-11-07T06:07:54.489242Z",
     "id": "2026-11-07T06:07:54.489242Z-FET/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "FET/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-11-07T06:01:34.542508Z",
-    "received_at": "2026-11-07T06:01:34.542908Z",
-    "id": "2026-11-07T06:01:34.542908Z-FET/USD-buy"
   }
 ]
