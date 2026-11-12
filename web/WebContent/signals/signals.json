@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-11-12T01:00:51.357806Z",
+    "received_at": "2026-11-12T01:00:51.357973Z",
+    "id": "2026-11-12T01:00:51.357973Z-FET/USD-buy"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 164.74000549316406,
@@ -810,30 +821,6 @@
     "yield_curve_sell_vote": false,
     "yield_curve_buy_vote": false,
     "reasons": "trend up, strong trend (ADX), volume confirmation, Donchian breakout or bullish candle, not Friday, Bollinger squeeze, bounce, or break up, Keltner squeeze, bounce, or break up, ATR channel squeeze, bounce, or break up, OBV rising or bullish divergence, SuperTrend bullish, Stochastic RSI oversold, MACD above zero or cross up, rate of change positive, above VWAP or volume rising, volume rate of change positive, Kalman moving average support"
-  },
-  {
-    "action": "buy",
-    "symbol": "USO",
-    "price": 169.52999877929688,
-    "quantity": null,
-    "source": "MAIN_stock_strat14",
-    "note": "buy 17/41 | sell 15/40 | BUY threshold met but HIGH divergences detected (RSI bearish divergence block active: 9d remaining, events≈4). Proceed with caution.",
-    "timestamp": "2026-10-28T16:24:24.671567Z",
-    "received_at": "2026-10-28T16:24:24.671567Z",
-    "id": "2026-10-28T16:24:24.671567Z-USO-buy",
-    "buy_score": 17,
-    "sell_score": 15,
-    "total_buy_components": 41,
-    "total_sell_components": 40,
-    "buy_conviction": 0.4146341463414634,
-    "buy_persistence": 0,
-    "buy_position_multiplier": 1.0,
-    "sell_conviction": 0.46499999999999997,
-    "sell_persistence": 3,
-    "sell_position_multiplier": 1.0,
-    "buy_signal_raw": true,
-    "buy_blocked_rsi_bear_div": true,
-    "rsi_bear_div_block_timer": 9
   },
   {
     "action": "buy",
