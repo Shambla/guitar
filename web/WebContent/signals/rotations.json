@@ -1,28 +1,44 @@
 {
   "title": "Recent rotations",
-  "as_of": "2026-11-12",
+  "as_of": "2026-11-13",
   "ready": true,
-  "history_scans": 9,
+  "history_scans": 10,
   "history_needed": 3,
   "message": "Best 3 each way. A bullish rotation climbed into the top 10 from the wider pack. A bearish rotation was a top-3 leader and has slipped. These are not buy or sell orders.",
   "bullish": [
     {
       "symbol": "JETS",
-      "now_rank": 10,
+      "now_rank": 8,
       "from_rank": 17,
-      "move": 7,
+      "move": 9,
       "return_1m_pct": 2.2,
-      "blurb": "Was about #17 outside the top 10, now #10. 1-month return +2.2%."
+      "blurb": "Was about #17 outside the top 10, now #8. 1-month return +2.2%."
+    },
+    {
+      "symbol": "F",
+      "now_rank": 9,
+      "from_rank": 11,
+      "move": 2,
+      "return_1m_pct": 1.3,
+      "blurb": "Was about #11 outside the top 10, now #9. 1-month return +1.3%."
+    },
+    {
+      "symbol": "EWG",
+      "now_rank": 10,
+      "from_rank": 12,
+      "move": 2,
+      "return_1m_pct": 0.2,
+      "blurb": "Was about #12 outside the top 10, now #10. 1-month return +0.2%."
     }
   ],
   "bearish": [
     {
       "symbol": "USO",
-      "now_rank": 9,
+      "now_rank": 7,
       "from_rank": 1,
-      "move": 8,
+      "move": 6,
       "return_1m_pct": 2.4,
-      "blurb": "Was about #1 in the top 3, now #9. 1-month return +2.4%."
+      "blurb": "Was about #1 in the top 3, now #7. 1-month return +2.4%."
     }
   ]
 }
