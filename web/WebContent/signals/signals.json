@@ -1,5 +1,16 @@
 [
   {
+    "action": "buy",
+    "symbol": "PLSX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-11-13T20:01:34.698560Z",
+    "received_at": "2026-11-13T20:01:34.698728Z",
+    "id": "2026-11-13T20:01:34.698728Z-PLSX/DAI-buy"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 164.74000549316406,
@@ -1100,30 +1111,6 @@
     "yield_curve_sell_vote": false,
     "yield_curve_buy_vote": false,
     "reasons": "trend up, strong trend (ADX), volume present, volume confirmation, price not extremely extended, not Friday, Keltner squeeze, bounce, or break up, ATR channel squeeze, bounce, or break up, OBV rising or bullish divergence, SuperTrend bullish, MACD above zero or cross up, Parabolic SAR bullish, rate of change positive, above VWAP or volume rising, volume rate of change positive, ADX bullish divergence, Kalman moving average support"
-  },
-  {
-    "action": "buy",
-    "symbol": "PALL",
-    "price": 18.739999771118164,
-    "quantity": null,
-    "source": "MAIN_stock_strat14",
-    "note": "buy 17/41 | sell 15/40 | Strength=1/10 | MTF:M",
-    "timestamp": "2026-10-30T15:11:27.313044Z",
-    "received_at": "2026-10-30T15:11:27.313044Z",
-    "id": "2026-10-30T15:11:27.313044Z-PALL-buy",
-    "buy_score": 17,
-    "sell_score": 15,
-    "total_buy_components": 41,
-    "total_sell_components": 40,
-    "buy_conviction": 0.4746341463414634,
-    "buy_persistence": 2,
-    "buy_position_multiplier": 1.0,
-    "sell_conviction": 0.525,
-    "sell_persistence": 5,
-    "sell_position_multiplier": 1.0,
-    "buy_signal_raw": true,
-    "buy_blocked_rsi_bear_div": false,
-    "rsi_bear_div_block_timer": 0
   },
   {
     "action": "buy",
