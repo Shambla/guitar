@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "PLSX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-11-14T08:00:54.726907Z",
+    "received_at": "2026-11-14T08:00:54.728433Z",
+    "id": "2026-11-14T08:00:54.728433Z-PLSX/DAI-sell"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 164.74000549316406,
@@ -3436,16 +3447,5 @@
     "timestamp": "2026-11-07T21:27:55.478210Z",
     "received_at": "2026-11-07T21:27:55.478343Z",
     "id": "2026-11-07T21:27:55.478343Z-ETH/USD-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "FET/USD",
-    "quantity": 684.83850812,
-    "price": 0.14361,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-11-07T21:01:00.137910Z",
-    "received_at": "2026-11-07T21:01:00.137940Z",
-    "id": "2026-11-07T21:01:00.137940Z-FET/USD-sell"
   }
 ]
