@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-11-14T14:01:27.457018Z",
+    "received_at": "2026-11-14T14:01:27.457942Z",
+    "id": "2026-11-14T14:01:27.457942Z-HEX/DAI-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "NEAR/USD",
     "quantity": 100.0,
     "price": null,
@@ -3436,16 +3447,5 @@
     "timestamp": "2026-11-08T02:00:16.957631Z",
     "received_at": "2026-11-08T02:00:16.958043Z",
     "id": "2026-11-08T02:00:16.958043Z-NEAR/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "PLSX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-11-08T00:23:43.261954Z",
-    "received_at": "2026-11-08T00:23:43.263554Z",
-    "id": "2026-11-08T00:23:43.263554Z-PLSX/DAI-buy"
   }
 ]
