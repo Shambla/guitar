@@ -1,11 +1,11 @@
 {
   "action": "buy",
-  "symbol": "HEX/DAI",
-  "quantity": 100.0,
-  "price": null,
-  "source": "PulseChain DeFi",
-  "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-  "timestamp": "2026-11-14T14:01:27.457018Z",
-  "received_at": "2026-11-14T14:01:27.457942Z",
-  "id": "2026-11-14T14:01:27.457942Z-HEX/DAI-buy"
+  "symbol": "NEAR/USD",
+  "quantity": 30.222437137330754,
+  "price": 3.3055,
+  "source": "MASTER_BOT_162",
+  "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+  "timestamp": "2026-11-14T14:06:03.087966Z",
+  "received_at": "2026-11-14T14:06:03.087993Z",
+  "id": "2026-11-14T14:06:03.087993Z-NEAR/USD-buy"
 }
