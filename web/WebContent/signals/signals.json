@@ -1,16 +1,5 @@
 [
   {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 0.0,
-    "price": 1893.24,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-11-14T03:50:09.852924Z",
-    "received_at": "2026-11-14T03:50:09.852951Z",
-    "id": "2026-11-14T03:50:09.852951Z-ETH/USD-sell"
-  },
-  {
     "action": "info",
     "symbol": "XLK",
     "price": 164.74000549316406,
@@ -460,9 +449,9 @@
     "source": "MAIN_stock_strat12",
     "note": "Below thresholds | buy 11/16 | sell 12/13",
     "mixed_signal": false,
-    "timestamp": "2026-11-13T09:50:29.962488Z",
-    "received_at": "2026-11-13T09:50:29.962488Z",
-    "id": "2026-11-13T09:50:29.962488Z-SLV-info",
+    "timestamp": "2026-11-14T03:54:12.162694Z",
+    "received_at": "2026-11-14T03:54:12.162694Z",
+    "id": "2026-11-14T03:54:12.162694Z-SLV-info",
     "threshold_met": false,
     "buy_score": 11,
     "sell_score": 12,
@@ -1995,6 +1984,17 @@
     "reasons": "strong trend (ADX), RSI extended, volume present, volume confirmation, price not extremely extended, Bollinger squeeze, bounce, or break down, Keltner squeeze, bounce, or break down, ATR channel squeeze, bounce, or break down, OBV falling or bearish divergence, MACD cross down, Parabolic SAR bearish, volume rate of change negative, Friday timing",
     "pnl_pct": 0.228,
     "entry_price": 57.029998779296875
+  },
+  {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 1893.24,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
+    "timestamp": "2026-11-14T03:50:09.852924Z",
+    "received_at": "2026-11-14T03:50:09.852951Z",
+    "id": "2026-11-14T03:50:09.852951Z-ETH/USD-sell"
   },
   {
     "action": "sell",
