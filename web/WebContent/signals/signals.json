@@ -1,6 +1,39 @@
 [
   {
     "action": "buy",
+    "symbol": "PLSX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-11-15T08:11:26.316615Z",
+    "received_at": "2026-11-15T08:11:26.316799Z",
+    "id": "2026-11-15T08:11:26.316799Z-PLSX/DAI-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "FET/USD",
+    "quantity": 761.4986293024673,
+    "price": 0.13119,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-11-15T04:06:58.501444Z",
+    "received_at": "2026-11-15T04:06:58.501464Z",
+    "id": "2026-11-15T04:06:58.501464Z-FET/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 0.5263989050902774,
+    "price": 189.78,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-11-15T04:06:58.454283Z",
+    "received_at": "2026-11-15T04:06:58.454310Z",
+    "id": "2026-11-15T04:06:58.454310Z-TAO/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "CRV/USD",
     "quantity": 479.3863854266539,
     "price": 0.2084,
