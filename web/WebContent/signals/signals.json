@@ -1,6 +1,17 @@
 [
   {
     "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 1791.4,
+    "source": "MASTER_BOT_162",
+    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+    "timestamp": "2026-11-17T11:01:54.365181Z",
+    "received_at": "2026-11-17T11:01:54.365199Z",
+    "id": "2026-11-17T11:01:54.365199Z-ETH/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "TAO/USD",
     "quantity": 0.0001,
     "price": 190.73,
@@ -3205,49 +3216,5 @@
     "timestamp": "2026-11-10T12:01:38.761789Z",
     "received_at": "2026-11-10T12:01:38.761805Z",
     "id": "2026-11-10T12:01:38.761805Z-CRV/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "NEAR/USD",
-    "quantity": 28.072539441917915,
-    "price": 3.5586,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-11-10T11:01:47.493325Z",
-    "received_at": "2026-11-10T11:01:47.493343Z",
-    "id": "2026-11-10T11:01:47.493343Z-NEAR/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "NEAR/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-11-10T11:01:26.126375Z",
-    "received_at": "2026-11-10T11:01:26.126394Z",
-    "id": "2026-11-10T11:01:26.126394Z-NEAR/USD-buy"
-  },
-  {
-    "action": "sell",
-    "symbol": "HEX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-11-10T10:08:46.531418Z",
-    "received_at": "2026-11-10T10:08:46.531438Z",
-    "id": "2026-11-10T10:08:46.531438Z-HEX/DAI-sell"
-  },
-  {
-    "action": "sell",
-    "symbol": "ETH/USD",
-    "quantity": 1e-08,
-    "price": 2097.56,
-    "source": "MASTER_BOT_162",
-    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON confirmed",
-    "timestamp": "2026-11-10T09:02:03.454832Z",
-    "received_at": "2026-11-10T09:02:03.454875Z",
-    "id": "2026-11-10T09:02:03.454875Z-ETH/USD-sell"
   }
 ]
