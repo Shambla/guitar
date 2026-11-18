@@ -1,6 +1,6 @@
 {
   "title": "Recent rotations",
-  "as_of": "2026-11-17",
+  "as_of": "2026-11-18",
   "ready": true,
   "history_scans": 12,
   "history_needed": 3,
@@ -9,20 +9,11 @@
     {
       "symbol": "JETS",
       "now_rank": 10,
-      "from_rank": 17,
-      "move": 7,
+      "from_rank": 16,
+      "move": 6,
       "return_1m_pct": 2.2,
-      "blurb": "Was about #17 outside the top 10, now #10. 1-month return +2.2%."
+      "blurb": "Was about #16 outside the top 10, now #10. 1-month return +2.2%."
     }
   ],
-  "bearish": [
-    {
-      "symbol": "USO",
-      "now_rank": 9,
-      "from_rank": 1,
-      "move": 8,
-      "return_1m_pct": 2.4,
-      "blurb": "Was about #1 in the top 3, now #9. 1-month return +2.4%."
-    }
-  ]
+  "bearish": []
 }
