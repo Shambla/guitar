@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Audio purchase — Brian Streckfus</title>
+	<link type="text/css" rel="stylesheet" href="style/montserrat.css">
+	<link type="text/css" rel="stylesheet" href="style/index.css">
+	<link rel="shortcut icon" href="img/favico.ico" type="image/x-icon">
+	<style>
+		body.audio-purchase-page {
+			background: #111;
+			color: #f2f2f2;
+			min-height: 100vh;
+			margin: 0;
+			font-family: Montserrat, system-ui, sans-serif;
+		}
+		.ap-wrap {
+			max-width: 720px;
+			margin: 0 auto;
+			padding: 100px 20px 60px;
+		}
+		.ap-card {
+			background: rgba(255,255,255,0.06);
+			border: 1px solid rgba(255,255,255,0.15);
+			border-radius: 12px;
+			padding: 28px;
+		}
+		.ap-card h1 { margin: 0 0 8px; font-size: 1.6rem; }
+		.ap-meta { opacity: 0.8; margin-bottom: 18px; }
+		.ap-price { font-size: 1.25rem; font-weight: 700; margin: 12px 0 20px; }
+		.ap-preview-label {
+			font-size: 0.85rem;
+			text-transform: uppercase;
+			letter-spacing: 0.06em;
+			opacity: 0.7;
+			margin-bottom: 8px;
+		}
+		audio {
+			width: 100%;
+			margin-bottom: 16px;
+		}
+		.ap-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+		.ap-btn {
+			display: inline-block;
+			padding: 12px 18px;
+			border-radius: 8px;
+			text-decoration: none;
+			font-weight: 700;
+			border: none;
+			cursor: pointer;
+			font-size: 15px;
+		}
+		.ap-btn-primary { background: #4caf50; color: #111; }
+		.ap-btn-secondary { background: rgba(255,255,255,0.12); color: #fff; }
+		.ap-btn-disabled {
+			background: rgba(255,255,255,0.08);
+			color: rgba(255,255,255,0.45);
+			cursor: not-allowed;
+		}
+		.ap-note {
+			margin-top: 18px;
+			font-size: 0.9rem;
+			line-height: 1.5;
+			opacity: 0.85;
+		}
+		.ap-success {
+			background: rgba(76, 175, 80, 0.15);
+			border: 1px solid rgba(76, 175, 80, 0.45);
+			border-radius: 8px;
+			padding: 14px 16px;
+			margin-bottom: 18px;
+		}
+		.ap-error { color: #ff8a80; }
+		.ap-back { margin-bottom: 20px; }
+		.ap-back a { color: #90caf9; }
+	</style>
+</head>
+<body class="audio-purchase-page">
+	<nav>
+		<div id="backing"></div>
+		<div class="content">
+			<a href="catalog.html">&#128220; CATALOG</a>
+			<a href="mp3-downloads.html">&#127911; MP3 DOWNLOADS</a>
+			<a href="index.html#contact">CONTACT</a>
+		</div>
+	</nav>
+
+	<div class="ap-wrap">
+		<div class="ap-back" id="ap-back"><a href="mp3-downloads.html">← Back to MP3 downloads</a></div>
+		<div class="ap-card" id="ap-root">
+			<p>Loading track…</p>
+		</div>
+		<p class="ap-note" id="mp3-license-note">
+			Purchases include a commercial-use license (YouTube, podcasts, client work, etc.) with proof of purchase + attribution.
+			See the <a href="catalog.html#mp3-audio-license" style="color:#90caf9;">MP3 Audio License</a> on the catalog page.
+		</p>
+	</div>
+
+	<script>
+		/**
+		 * Lightweight direct-sale page.
+		 * Preview is always public. Full download after Stripe (?paid=true) or teacher unlock (?dev=…).
+		 * Both flags are low-traffic convenience gates — not cryptographic security.
+		 * Resolves tracks from mp3-downloads-data.json first, then catalog-data.json.
+		 */
+		(function () {
+			const SUPPORT_EMAIL = 'brianstreckfus@gmail.com';
+			const MP3_DEV_SECRET = 'RichardHeartIsTheGoat';
+			const params = new URLSearchParams(window.location.search);
+			const trackId = (params.get('track') || params.get('id') || '').trim();
+			const paidStripe = params.get('paid') === 'true';
+			function mp3DevUnlocked() {
+				try {
+					if (params.get('dev') === MP3_DEV_SECRET) {
+						try {
+							sessionStorage.setItem('mp3_dev', '1');
+						} catch (e) {
+							/* ignore */
+						}
+						return true;
+					}
+					return sessionStorage.getItem('mp3_dev') === '1';
+				} catch (e) {
+					return false;
+				}
+			}
+			const teacherUnlock = mp3DevUnlocked();
+			const paid = paidStripe || teacherUnlock;
+			const fromMp3 = params.get('from') === 'mp3';
+			const root = document.getElementById('ap-root');
+			const backEl = document.getElementById('ap-back');
+
+			const ALIASES = {
+				'off-kilter-grit-120-bpm-a-minor': 'off-kiltergrit-120-bpm-a-minor',
+			};
+
+			function resolveId(id) {
+				return ALIASES[id] || id;
+			}
+
+			function escapeHtml(s) {
+				return String(s || '')
+					.replace(/&/g, '&amp;')
+					.replace(/</g, '&lt;')
+					.replace(/>/g, '&gt;')
+					.replace(/"/g, '&quot;');
+			}
+
+			function supportMailto(subject) {
+				const subj = encodeURIComponent(subject || 'MP3 download help');
+				return 'mailto:' + SUPPORT_EMAIL + '?subject=' + subj;
+			}
+
+			function supportLine(extra) {
+				const hint = extra ? ' ' + extra : '';
+				return '<p class="ap-note">Questions or paid but no download?' + hint +
+					' Email <a href="' + supportMailto('MP3 download help' + (trackId ? ' — ' + trackId : '')) +
+					'" style="color:#90caf9;">' + escapeHtml(SUPPORT_EMAIL) +
+					'</a> with your Stripe receipt and which track you bought.</p>';
+			}
+
+			function paymentLinkConfigured(url) {
+				return !!(url && !String(url).includes('YOUR_PAYMENT_LINK'));
+			}
+
+			function findItem(list, resolved, raw) {
+				return (list || []).find(function (x) {
+					if (!x) return false;
+					if (x.id === resolved || x.id === raw) return true;
+					const canon = x.direct_sale && x.direct_sale.canonical_id;
+					return canon && (canon === resolved || canon === raw);
+				}) || null;
+			}
+
+			function setBackLink(preferMp3) {
+				if (!backEl) return;
+				if (preferMp3) {
+					backEl.innerHTML = '<a href="mp3-downloads.html">← Back to MP3 downloads</a>';
+				} else {
+					backEl.innerHTML = '<a href="catalog.html">← Back to catalog</a>';
+				}
+			}
+
+			function showFail(msg) {
+				let html = '';
+				if (paid) {
+					html += '<div class="ap-success" style="background:rgba(255,138,128,0.12);border-color:rgba(255,138,128,0.45);">' +
+						'<strong>' + (teacherUnlock && !paidStripe
+							? 'Teacher unlock is on, but this download page looks wrong.'
+							: 'Payment received, but this download page looks wrong.') +
+						'</strong> ' +
+						'Don’t worry — reply with your Stripe receipt and I’ll send the file.</div>';
+				}
+				html += '<p class="ap-error">' + msg + '</p>';
+				html += supportLine();
+				root.innerHTML = html;
+			}
+
+			if (!trackId) {
+				showFail('Missing track id. Open a track from <a href="mp3-downloads.html" style="color:#90caf9;">MP3 Downloads</a>, or email me if you just paid.');
+				return;
+			}
+
+			const resolvedId = resolveId(trackId);
+
+			Promise.all([
+				fetch('mp3-downloads-data.json').then(function (r) {
+					return r.ok ? r.json() : [];
+				}).catch(function () { return []; }),
+				fetch('catalog-data.json').then(function (r) {
+					if (!r.ok) throw new Error('Could not load catalog-data.json');
+					return r.json();
+				}),
+			])
+				.then(function (results) {
+					const mp3Data = results[0];
+					const catalogData = results[1];
+					let item = findItem(mp3Data, resolvedId, trackId);
+					let fromMp3Store = !!item;
+					if (!item) {
+						item = findItem(catalogData, resolvedId, trackId);
+						fromMp3Store = false;
+					}
+
+					const preferMp3Nav = fromMp3 || fromMp3Store;
+					setBackLink(preferMp3Nav);
+
+					if (!item || !item.direct_sale) {
+						showFail('No download config for track <code>' + escapeHtml(trackId) + '</code>.');
+						return;
+					}
+
+					const ds = item.direct_sale;
+					const title = item.title || resolvedId;
+					const price = item.price || '';
+					const preview = ds.preview_audio || '';
+					const full = ds.full_audio || '';
+					const buyUrl = ds.stripe_payment_link || '';
+					const canBuy = paymentLinkConfigured(buyUrl);
+					const browseHref = preferMp3Nav ? 'mp3-downloads.html' : 'catalog.html';
+					const browseLabel = preferMp3Nav ? 'Back to MP3 downloads' : 'Back to catalog';
+
+					document.title = title + ' — Brian Streckfus';
+
+					if (paid && !full) {
+						showFail('This track is missing a full MP3 path (<code>' + escapeHtml(title) + '</code>).');
+						return;
+					}
+
+					let html = '';
+					if (paidStripe) {
+						html += '<div class="ap-success"><strong>Thank you for your purchase.</strong> Your download is below. Keep this page or your Stripe receipt as proof of purchase.</div>';
+					} else if (teacherUnlock) {
+						html += '<div class="ap-success"><strong>Teacher unlock.</strong> Full download for lesson prep — not a customer purchase.</div>';
+					}
+
+					html += '<h1>' + escapeHtml(title) + '</h1>';
+					html += '<div class="ap-meta">' + escapeHtml(item.composer || '') +
+						(item.tags && item.tags.length ? ' · ' + escapeHtml(item.tags.join(' · ')) : '') + '</div>';
+					html += '<div class="ap-price">' + escapeHtml(price) + '</div>';
+
+					html += '<div class="ap-preview-label">1-minute preview</div>';
+					if (preview) {
+						html += '<audio controls preload="metadata" src="' + escapeHtml(preview) + '">' +
+							'Your browser does not support audio.</audio>';
+					} else {
+						html += '<p class="ap-error">No preview path configured.</p>';
+					}
+
+					html += '<div class="ap-actions">';
+					if (paid && full) {
+						html += '<a class="ap-btn ap-btn-primary" id="ap-download-btn" href="' + escapeHtml(full) + '" download>Download full MP3</a>';
+					} else if (canBuy) {
+						html += '<a class="ap-btn ap-btn-primary" href="' + escapeHtml(buyUrl) + '">Buy with Stripe — ' +
+							escapeHtml(price) + '</a>';
+					} else {
+						html += '<span class="ap-btn ap-btn-disabled" title="Paste real buy.stripe.com URL into mp3-downloads-data.json (or catalog-data.json)">Buy (Stripe link not configured yet)</span>';
+					}
+					html += '<a class="ap-btn ap-btn-secondary" href="' + escapeHtml(browseHref) + '">' +
+						escapeHtml(browseLabel) + '</a>';
+					html += '</div>';
+
+					html += '<div id="ap-file-check"></div>';
+
+					if (paid) {
+						html += supportLine('If the button fails,');
+					} else {
+						html += '<p class="ap-note">After checkout, Stripe sends you back here with download access.</p>';
+						html += supportLine();
+					}
+
+					root.innerHTML = html;
+
+					/* Detect missing full file on the server (404 / bad path) after paid redirect */
+					if (paid && full) {
+						fetch(full, { method: 'HEAD', cache: 'no-store' })
+							.then(function (r) {
+								if (r.ok) return;
+								const box = document.getElementById('ap-file-check');
+								const btn = document.getElementById('ap-download-btn');
+								if (btn) {
+									btn.classList.remove('ap-btn-primary');
+									btn.classList.add('ap-btn-disabled');
+									btn.removeAttribute('href');
+									btn.removeAttribute('download');
+									btn.textContent = 'File not found on server';
+								}
+								if (box) {
+									box.innerHTML =
+										'<div class="ap-success" style="background:rgba(255,138,128,0.12);border-color:rgba(255,138,128,0.45);margin-top:16px;">' +
+										'<strong>Download file missing.</strong> The page is correct, but the MP3 isn’t on the server yet. ' +
+										'Email <a href="' + supportMailto('Missing MP3 — ' + title) +
+										'" style="color:#90caf9;">' + escapeHtml(SUPPORT_EMAIL) +
+										'</a> with your Stripe receipt — I’ll send it right away.</div>';
+								}
+							})
+							.catch(function () {
+								/* Network/CORS oddities — leave the download button; support line still visible */
+							});
+					}
+				})
+				.catch(function (err) {
+					showFail(escapeHtml(err.message || String(err)));
+				});
+		})();
+	</script>
+</body>
+</html>

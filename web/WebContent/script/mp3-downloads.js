@@ -4,7 +4,7 @@
  * Data: mp3-downloads-data.json
  * Checkout: Stripe Payment Link → audio-purchase.html?track=…&paid=true
  *
- * Teacher / lesson-prep unlock: mp3-downloads.html?dev=… (sessionStorage; convenience only).
+ * Teacher / lesson-prep unlock: improv-practice.html?dev=… (sessionStorage; convenience only).
  */
 
 (function () {

@@ -1,5 +1,5 @@
 /**
- * In-page PDF viewers for free scale charts on mp3-downloads.html.
+ * In-page PDF viewers for free scale charts on improv-practice.html.
  * Uses Mozilla PDF.js — prev/next buttons + keyboard arrows (arrows follow the last chart used).
  */
 (function () {

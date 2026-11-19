@@ -1,5 +1,5 @@
 {
-  "_about": "Checked key + chord answers for the Improv Practice song box (mp3-downloads.html). Songs listed here are answered from this file before the AI is asked. 'aliases' are other ways students type the title. 'key' must read like '<tonic> <major|minor>' so the scale chart can switch to it.",
+  "_about": "Checked key + chord answers for the Improv Practice song box (improv-practice.html). Songs listed here are answered from this file before the AI is asked. 'aliases' are other ways students type the title. 'key' must read like '<tonic> <major|minor>' so the scale chart can switch to it.",
   "songs": [
     {
       "title": "7 Summers",

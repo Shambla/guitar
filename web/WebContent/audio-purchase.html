@@ -81,13 +81,13 @@
 		<div id="backing"></div>
 		<div class="content">
 			<a href="catalog.html">&#128220; CATALOG</a>
-			<a href="mp3-downloads.html">&#127911; MP3 DOWNLOADS</a>
+			<a href="improv-practice.html">&#127911; MP3 DOWNLOADS</a>
 			<a href="index.html#contact">CONTACT</a>
 		</div>
 	</nav>
 
 	<div class="ap-wrap">
-		<div class="ap-back" id="ap-back"><a href="mp3-downloads.html">← Back to MP3 downloads</a></div>
+		<div class="ap-back" id="ap-back"><a href="improv-practice.html">← Back to MP3 downloads</a></div>
 		<div class="ap-card" id="ap-root">
 			<p>Loading track…</p>
 		</div>
@@ -176,7 +176,7 @@
 			function setBackLink(preferMp3) {
 				if (!backEl) return;
 				if (preferMp3) {
-					backEl.innerHTML = '<a href="mp3-downloads.html">← Back to MP3 downloads</a>';
+					backEl.innerHTML = '<a href="improv-practice.html">← Back to MP3 downloads</a>';
 				} else {
 					backEl.innerHTML = '<a href="catalog.html">← Back to catalog</a>';
 				}
@@ -198,7 +198,7 @@
 			}
 
 			if (!trackId) {
-				showFail('Missing track id. Open a track from <a href="mp3-downloads.html" style="color:#90caf9;">MP3 Downloads</a>, or email me if you just paid.');
+				showFail('Missing track id. Open a track from <a href="improv-practice.html" style="color:#90caf9;">MP3 Downloads</a>, or email me if you just paid.');
 				return;
 			}
 
@@ -238,7 +238,7 @@
 					const full = ds.full_audio || '';
 					const buyUrl = ds.stripe_payment_link || '';
 					const canBuy = paymentLinkConfigured(buyUrl);
-					const browseHref = preferMp3Nav ? 'mp3-downloads.html' : 'catalog.html';
+					const browseHref = preferMp3Nav ? 'improv-practice.html' : 'catalog.html';
 					const browseLabel = preferMp3Nav ? 'Back to MP3 downloads' : 'Back to catalog';
 
 					document.title = title + ' — Brian Streckfus';

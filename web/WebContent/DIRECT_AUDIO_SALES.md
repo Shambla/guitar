@@ -11,7 +11,7 @@ Industry-standard light pattern used here (Bandcamp / gumroad-style lite):
 
 Sheet music stays on `catalog.html`. Beat / MP3 buyers use:
 
-- **`mp3-downloads.html`** — browse + preview UI (loads `mp3-downloads-data.json`)
+- **`improv-practice.html`** — browse + preview UI (loads `mp3-downloads-data.json`). `mp3-downloads.html` only forwards old links here.
 - Catalog CTA / nav: **MP3 Downloads** → that page
 - Same purchase page: `audio-purchase.html` (checks `mp3-downloads-data.json` first, then `catalog-data.json`)
 

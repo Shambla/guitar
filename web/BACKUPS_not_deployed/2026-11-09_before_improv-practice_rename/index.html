@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="style/montserrat.css">
+		<link type="text/css" rel="stylesheet" href="style/font-awesome.css">
+		<link type="text/css" rel="stylesheet" href="style/index.css">
+		<link rel="shortcut icon" href="img/favico.ico" type="image/x-icon">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="script/index.js"></script>
+		<script type="text/javascript" src="script/iframetracker.js"></script>
+		<script type="text/javascript" src="https://apis.google.com/js/client.js?onload=loadYoutube"></script>
+		<title>Brian Streckfus</title>
+		<style>
+			/* Creator tools side panel - right, collapsible */
+			#creator-tools-panel {
+				position: fixed;
+				right: env(safe-area-inset-right, 0px);
+				top: 50%;
+				transform: translateY(-50%);
+				z-index: 9000;
+				display: flex;
+				flex-direction: row-reverse;
+				align-items: stretch;
+				width: 36px;
+				max-width: calc(100vw - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+				box-sizing: border-box;
+				overflow: hidden;
+				box-shadow: -4px 0 20px rgba(0,0,0,0.35);
+				transition: width 0.3s ease;
+			}
+			/* Cap width so the drawer never extends past the left edge (iPad split view, safe areas, zoom). */
+			#creator-tools-panel.open {
+				width: min(
+					316px,
+					calc(100vw - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) - 12px)
+				);
+			}
+			/* Dynamic viewport: avoids iOS Safari clipping when toolbars resize the layout */
+			@supports (width: 1dvw) {
+				#creator-tools-panel.open {
+					width: min(
+						316px,
+						calc(100dvw - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px) - 12px)
+					);
+				}
+			}
+			#creator-tools-tab {
+				width: 36px;
+				min-width: 36px;
+				flex-shrink: 0;
+				background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+				color: #fff;
+				writing-mode: vertical-rl;
+				text-orientation: mixed;
+				transform: rotate(180deg);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 16px 8px;
+				font-size: 13px;
+				font-weight: bold;
+				letter-spacing: 0.5px;
+				cursor: pointer;
+				border-radius: 8px 0 0 8px;
+				box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+				user-select: none;
+			}
+			#creator-tools-tab:hover { opacity: 0.95; }
+			#creator-tools-tab::before {
+				content: '← ';
+				font-style: normal;
+			}
+			#creator-tools-panel.open #creator-tools-tab::before {
+				content: '';
+			}
+			#creator-tools-content {
+				flex: 1 1 auto;
+				min-width: 0;
+				width: auto;
+				max-height: 85dvh;
+				max-height: 85vh;
+				overflow-y: auto;
+				-webkit-overflow-scrolling: touch;
+				background: rgba(0, 0, 0, 0.92);
+				border: 1px solid rgba(255, 255, 255, 0.2);
+				border-right: none;
+				border-radius: 12px 0 0 12px;
+				padding: 16px;
+				box-sizing: border-box;
+			}
+			#creator-tools-content h3 {
+				color: #2196f3;
+				font-size: 16px;
+				margin: 0 0 12px 0;
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+			}
+			#creator-tools-content h3 button {
+				background: transparent;
+				border: none;
+				color: rgba(255,255,255,0.8);
+				font-size: 20px;
+				cursor: pointer;
+				padding: 0 4px;
+				line-height: 1;
+			}
+			#creator-tools-content h3 button:hover { color: #fff; }
+			.creator-tool-card {
+				background: rgba(255, 255, 255, 0.06);
+				border: 1px solid rgba(255, 255, 255, 0.15);
+				border-radius: 8px;
+				padding: 12px;
+				margin-bottom: 12px;
+			}
+			.creator-tool-card:last-child { margin-bottom: 0; }
+			.creator-tool-card h4 {
+				color: rgba(255, 255, 255, 0.95);
+				font-size: 14px;
+				margin: 0 0 6px 0;
+			}
+			.creator-tool-card p {
+				color: rgba(255, 255, 255, 0.75);
+				font-size: 12px;
+				line-height: 1.45;
+				margin: 0 0 10px 0;
+			}
+			.creator-tool-card a {
+				display: inline-block;
+				background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+				color: #fff;
+				padding: 8px 14px;
+				border-radius: 6px;
+				font-size: 12px;
+				font-weight: bold;
+				text-decoration: none;
+				transition: transform 0.2s, box-shadow 0.2s;
+			}
+			.creator-tool-card a:hover {
+				transform: translateY(-1px);
+				box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
+			}
+			/* Branding logo - stamp of approval, top-right below nav */
+			#guitar-branding-logo {
+				position: fixed;
+				top: 72px;
+				right: 24px;
+				z-index: 90;
+				max-width: 90px;
+				height: auto;
+				opacity: 0.92;
+				filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+				transition: opacity 0.3s ease;
+			}
+			#guitar-branding-logo:hover {
+				opacity: 1;
+			}
+			@media (max-width: 768px) {
+				#creator-tools-panel.collapsed { left: -260px; }
+				#guitar-branding-logo {
+					max-width: 70px;
+					top: 68px;
+					right: 16px;
+				}
+			}
+			/* BAMS logo - professional stamp near lesson signup */
+			#lesson-with-bams {
+				display: inline-block;
+				vertical-align: top;
+			}
+			#bams-logo-wrap {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				margin-top: 12px;
+				opacity: 0.85;
+			}
+			#bams-logo-wrap img {
+				max-width: 100px;
+				height: auto;
+			}
+			#bams-logo-wrap span {
+				color: rgba(255, 255, 255, 0.75);
+				font-size: 12px;
+				letter-spacing: 0.5px;
+			}
+			/* Get the Freebies button - pulse animation */
+			@keyframes freebiesPulse {
+				0%, 100% { box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4); transform: translateY(0); }
+				50% { box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6); transform: translateY(-1px); }
+			}
+			.email-list-submit.get-freebies-btn {
+				animation: freebiesPulse 2s ease-in-out infinite;
+			}
+			.email-list-submit.get-freebies-btn:hover {
+				animation: none;
+			}
+			/* Consolidated books - horizontal row, center aligned */
+			#consolidated-books {
+				margin-top: 28px;
+			}
+			#consolidated-books .consolidated-books-intro {
+				color: rgba(255, 255, 255, 0.9);
+				font-size: 15px;
+				line-height: 1.5;
+				margin-bottom: 14px;
+			}
+			.consolidated-books-row {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 16px;
+				align-items: flex-start;
+				justify-content: center;
+			}
+			.consolidated-books-row .book-item {
+				flex: 0 1 auto;
+				min-width: 98px;
+				max-width: 154px;
+				text-align: center;
+			}
+			.consolidated-books-row .book-item img {
+				width: 100%;
+				height: auto;
+				max-height: 196px;
+				object-fit: contain;
+				display: block;
+				border-radius: 6px;
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+			}
+			.consolidated-books-row .book-item a.buy-link {
+				display: inline-block;
+				margin-top: 8px;
+				padding: 6px 12px;
+				background: linear-gradient(135deg, #f0c14b 0%, #e6a800 100%);
+				color: #111;
+				font-size: 12px;
+				font-weight: bold;
+				text-decoration: none;
+				border-radius: 6px;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+				transition: transform 0.2s, box-shadow 0.2s;
+			}
+			.consolidated-books-row .book-item a.buy-link:hover {
+				transform: translateY(-1px);
+				box-shadow: 0 4px 12px rgba(240, 193, 75, 0.4);
+			}
+			.consolidated-books-row .book-item .book-caption {
+				color: rgba(255, 255, 255, 0.85);
+				font-size: 12px;
+				line-height: 1.3;
+				margin-top: 5px;
+			}
+			/* 72h giveaway box */
+			@keyframes giveawayFloat {
+				0%, 100% { transform: translateY(0); }
+				50% { transform: translateY(-6px); }
+			}
+			@keyframes giveawayGlow {
+				0%, 100% { box-shadow: 0 0 20px rgba(255, 180, 100, 0.35), 0 8px 32px rgba(0, 0, 0, 0.45); }
+				50% { box-shadow: 0 0 36px rgba(255, 200, 120, 0.55), 0 12px 40px rgba(0, 0, 0, 0.5); }
+			}
+			@keyframes giveawayShimmer {
+				0% { background-position: 0% 50%; }
+				100% { background-position: 200% 50%; }
+			}
+			#gift {
+				position: relative;
+				margin: 0 0 40px 0;
+				scroll-margin-top: 5.5rem;
+				padding: 22px 24px 24px;
+				border-radius: 14px;
+				overflow: hidden;
+				background: linear-gradient(145deg, rgba(40, 28, 18, 0.95) 0%, rgba(22, 18, 28, 0.98) 100%);
+				border: 2px solid transparent;
+				background-clip: padding-box;
+				animation: giveawayFloat 4.5s ease-in-out infinite, giveawayGlow 3s ease-in-out infinite;
+			}
+			#gift::before {
+				content: '';
+				position: absolute;
+				inset: -2px;
+				border-radius: 16px;
+				padding: 2px;
+				background: linear-gradient(120deg, #c9a227, #f5e6a8, #b8860b, #f5e6a8, #c9a227);
+				background-size: 200% 200%;
+				animation: giveawayShimmer 4s linear infinite;
+				-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+				mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+				-webkit-mask-composite: xor;
+				mask-composite: exclude;
+				pointer-events: none;
+				z-index: 0;
+			}
+			#gift .giveaway-inner {
+				position: relative;
+				z-index: 1;
+			}
+			#gift h2 {
+				margin: 0 0 8px 0;
+				font-size: 24px;
+				color: #fff;
+				letter-spacing: 0.03em;
+			}
+			#gift .giveaway-sub {
+				color: rgba(255, 255, 255, 0.88);
+				font-size: 15px;
+				line-height: 1.5;
+				margin: 0 0 14px 0;
+			}
+			#giveaway-countdown {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 10px;
+				margin-bottom: 16px;
+				font-variant-numeric: tabular-nums;
+			}
+			#giveaway-countdown span {
+				display: inline-block;
+				min-width: 3.2em;
+				padding: 8px 12px;
+				background: rgba(0, 0, 0, 0.45);
+				border-radius: 8px;
+				color: #f5e6c8;
+				font-size: 18px;
+				font-weight: bold;
+				border: 1px solid rgba(255, 200, 120, 0.35);
+			}
+			#giveaway-countdown .cd-label {
+				font-size: 11px;
+				font-weight: 600;
+				color: rgba(255, 255, 255, 0.65);
+				text-transform: uppercase;
+				letter-spacing: 0.06em;
+				min-width: auto;
+				border: none;
+				background: transparent;
+				padding: 0 0 0 4px;
+				width: 100%;
+				flex-basis: 100%;
+			}
+			#gift a.giveaway-btn {
+				display: inline-block;
+				padding: 12px 22px;
+				background: linear-gradient(135deg, #d4a017 0%, #b8860b 100%);
+				color: #1a1208;
+				font-weight: bold;
+				font-size: 15px;
+				text-decoration: none;
+				border-radius: 8px;
+				box-shadow: 0 4px 14px rgba(212, 160, 23, 0.45);
+				transition: transform 0.2s, box-shadow 0.2s;
+			}
+			#gift a.giveaway-btn:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 20px rgba(212, 160, 23, 0.55);
+			}
+			#giveaway-expired-msg {
+				display: none;
+				color: rgba(255, 255, 255, 0.75);
+				font-size: 15px;
+				margin: 0;
+			}
+			#gift.giveaway-ended #giveaway-active,
+			#gift.giveaway-ended #giveaway-countdown-wrap {
+				display: none;
+			}
+			#gift.giveaway-ended #giveaway-expired-msg {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Creator tools side panel (for creators; paid tools) -->
+		<div id="creator-tools-panel" title="Creator tools">
+			<div id="creator-tools-tab" onclick="openCreatorToolsPanel()" title="Creator tools">Creator tools</div>
+			<div id="creator-tools-content">
+				<h3>Tools for creators <button type="button" onclick="toggleCreatorToolsPanel()" title="Close">×</button></h3>
+				<p style="color: rgba(255,255,255,0.7); font-size: 12px; margin-bottom: 14px;">Scripts for YouTubers and musicians. View options and get access on my site.</p>
+				<div class="creator-tool-card">
+					<h4>YouTube API Manager</h4>
+					<p>Edit descriptions, tags, thumbnails, and more across all your videos in minutes. Add one link or hashtags to hundreds of videos at once.</p>
+					<a href="creator-downloads.html#youtube-api-manager">Get it</a>
+				</div>
+				<div class="creator-tool-card">
+					<h4>XML MIDI Manipulator</h4>
+					<p>Sheet music uses MusicXML. Production uses MIDI. Same browser page: merge, quantize, clean chords, add fingerings, and shape the tempo. Unzip it and double-click to start.</p>
+					<a href="creator-downloads.html#midi-tools">Get it</a>
+				</div>
+			</div>
+		</div>
+		<script>
+			function openCreatorToolsPanel() {
+				var el = document.getElementById('creator-tools-panel');
+				el.classList.add('open');
+				try { localStorage.setItem('creator-tools-panel-open', '1'); } catch (e) {}
+			}
+			function closeCreatorToolsPanel() {
+				var el = document.getElementById('creator-tools-panel');
+				el.classList.remove('open');
+				try { localStorage.setItem('creator-tools-panel-open', '0'); } catch (e) {}
+			}
+			function toggleCreatorToolsPanel() {
+				var el = document.getElementById('creator-tools-panel');
+				if (el.classList.contains('open')) closeCreatorToolsPanel();
+				else openCreatorToolsPanel();
+			}
+			(function() {
+				try {
+					if (localStorage.getItem('creator-tools-panel-open') === '1') {
+						document.getElementById('creator-tools-panel').classList.add('open');
+					}
+				} catch (e) {}
+			})();
+		</script>
+		<img id="guitar-branding-logo" src="img/guitar_branding_logo.jpg" alt="Brian Streckfus" title="Brian Streckfus" />
+		<nav>
+			<div id="backing"></div>
+			<div class="content">
+				<a href="catalog.html" class="catalog-nav-link">&#128220; &#127925; &#128722; CATALOG &#127911; &#127925; &#127928;</a>
+				<a href="mp3-downloads.html">&#127928; Improv Practice</a>
+				<!-- TODO: Add SHOP link when Stripe is set up -->
+				<!-- <a href="shop.html">&#128722; SHOP</a> -->
+				<a href="#media">&#128247; &#9654; MEDIA</a>
+				<a href="#bio">&#128100; BIO</a>
+				<a href="#performances">&#127908; BOOK A GIG</a>
+				<a href="#contact">&#128236; CONTACT</a>
+				<div id="music-container">
+					<div id="music">
+						<div class="bar"></div>
+						<div class="bar"></div>
+						<div class="bar"></div>
+						<div class="bar"></div>
+						<div class="bar"></div>
+						<div id="paused">[paused]</div>
+					</div>
+					<span id="track">Gran Vals [Nokia Tune]</span>
+				</div>
+			</div>
+		</nav>
+		<div>
+		</div>
+		<div id="hero">
+			<div class="content">
+				<h1>Brian Streckfus</h1>
+				<div id="creds">
+					<h3 id="teacher">Teacher</h3>
+					<h3 id="arranger">Arranger</h3>
+					<h3 id="performer">Performer</h3>
+					<h3 id="content-creator">Content Creator</h3>
+				</div>
+				<!-- Add the panoramic photo here -->
+				<!-- <img id="panoramic-photo" src="img/Pano_Studio.jpg" alt="Panoramic View" style="width: 100%; height: auto;"/> -->
+			</div>
+		</div>
+		<div class="content">
+			<!-- Mailing List Offer #TODO unsubscribe reverse email list with basin (top-of-page, no popup) -->
+			<div class="fade-in-up" style="margin-top: 30px; margin-bottom: 50px; padding: 24px; background: rgba(0, 0, 0, 0.35); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.6);">
+				<h2 style="color: #fff; margin: 0 0 12px 0; font-size: 28px; display: flex; align-items: center; gap: 10px;">
+					<i class='fa fa-envelope-o' style="font-size: 22px;"></i>
+					Free $18.00 value!
+				</h2>
+				<p style="color: rgba(255, 255, 255, 0.9); font-size: 15px; margin: 0 0 10px 0; line-height: 1.6;">
+					Enter your email and you'll automatically receive:
+				</p>
+				<ul style="color: rgba(255, 255, 255, 0.9); font-size: 15px; margin: 0 0 14px 0; padding-left: 24px; line-height: 1.7;">
+					<li>The most beautiful guitar scales PDF you've ever seen</li>
+					<li>A soothing F Lydian (C major) backing track</li>
+					<li>A beginner-friendly arrangement of "The House of the Rising Sun" that will inspire you</li>
+					<li>A 7-day free trial of trading signals</li>
+				</ul>
+				<p class="freebie-slogan" style="color: rgba(255, 255, 255, 0.92); font-size: 15px; margin: 0 0 14px 0; line-height: 1.5; padding-left: 4px; border-left: 3px solid rgba(241, 207, 171, 0.6);">
+					Build Wealth. Create with Presence. Grow Daily.<br/>
+					<em style="font-style: normal; color: rgba(255, 255, 255, 0.88);">Do what you love, with confidence.</em>
+				</p>
+				<p style="color: rgba(255, 255, 255, 0.9); font-size: 15px; margin: 0 0 14px 0; line-height: 1.6;">
+					You'll receive occasional updates about discounts, new sheet music & TAB, new music resources, MP3 releases, and new YouTube uploads.
+				</p>
+				<form class="email-list-form" action="https://usebasin.com/f/7c55ae649861" method="POST" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+					<input
+						type="email"
+						name="email"
+						placeholder="Enter your email address"
+						required
+						style="flex: 1; min-width: 240px; padding: 12px 15px; border: 1px solid rgba(255, 255, 255, 0.6); border-radius: 6px; background: rgba(255, 255, 255, 0.12); color: #fff; font-size: 14px; outline: none; transition: all 0.3s ease;"
+						onfocus="this.style.borderColor='rgba(255, 255, 255, 0.8)'; this.style.background='rgba(255, 255, 255, 0.18)';"
+						onblur="this.style.borderColor='rgba(255, 255, 255, 0.6)'; this.style.background='rgba(255, 255, 255, 0.12)';"
+					/>
+					<button
+						type="submit"
+						class="email-list-submit get-freebies-btn fade-in-up animate-delay-5"
+						style="padding: 12px 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; border-radius: 6px; color: #fff; font-size: 14px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; white-space: nowrap;"
+						onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(102, 126, 234, 0.4)';"
+						onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';"
+					>
+						Get the freebies
+					</button>
+				</form>
+				<div class="email-list-message" style="margin-top: 10px; font-size: 14px; min-height: 20px;"></div>
+				<div style="margin-top: 10px; color: rgba(255, 255, 255, 0.75); font-size: 12px;">
+					No spam. Unsubscribe anytime.
+				</div>
+			</div>
+
+			<!-- 72h giveaway: set data-giveaway-start to when the offer goes live (ISO UTC). Download ends 72 hours after that moment for everyone. -->
+			<section id="gift" class="fade-in-up" data-giveaway-start="2026-04-15T18:45:00Z" aria-labelledby="giveaway-heading">
+				<div class="giveaway-inner">
+					<h2 id="giveaway-heading">&#127873; Free download</h2>
+					<p class="giveaway-sub">No sign up, no email, no credit card. My gift to you for visiting my site.</p>
+					<p class="giveaway-sub">Get <strong>All Chord Progression Generators</strong> — a PDF of progression-building tools for writing and jamming. Limited-time download below.</p>
+					<div id="giveaway-countdown-wrap">
+						<p class="giveaway-sub" style="margin-bottom: 8px; font-size: 13px; opacity: 0.9;">Time left:</p>
+						<div id="giveaway-countdown" aria-live="polite"></div>
+					</div>
+					<div id="giveaway-active">
+						<a id="giveaway-download-link" class="giveaway-btn" href="giveaway/All%20Chord%20Progression%20Generators.pdf" download="All Chord Progression Generators.pdf">Download PDF</a>
+					</div>
+					<p id="giveaway-expired-msg">This limited giveaway has ended. Thanks for visiting!</p>
+				</div>
+			</section>
+			<script>
+				(function () {
+					var box = document.getElementById('gift');
+					var el = document.getElementById('giveaway-countdown');
+					var link = document.getElementById('giveaway-download-link');
+					if (!box || !el) return;
+					var H72 = 72 * 60 * 60 * 1000;
+					var startStr = (box.getAttribute('data-giveaway-start') || '').trim();
+					var START_MS = Date.parse(startStr);
+					var END_MS = !isNaN(START_MS) ? START_MS + H72 : NaN;
+					function pad(n) { return n < 10 ? '0' + n : String(n); }
+					function endGiveaway() {
+						box.classList.add('giveaway-ended');
+						if (link) {
+							link.removeAttribute('href');
+							link.classList.remove('giveaway-btn');
+							link.style.pointerEvents = 'none';
+							link.style.opacity = '0.5';
+							link.textContent = 'Ended';
+						}
+						el.innerHTML = '';
+					}
+					function tick() {
+						if (isNaN(END_MS)) {
+							el.innerHTML = '<span style="color:#e8b4b4;font-size:12px;">Set <code style="font-size:11px;">data-giveaway-start</code> on #gift (ISO UTC).</span>';
+							if (link) {
+								link.removeAttribute('href');
+								link.style.pointerEvents = 'none';
+								link.style.opacity = '0.6';
+							}
+							return;
+						}
+						var now = Date.now();
+						var ms = Math.max(0, END_MS - now);
+						if (ms <= 0) {
+							endGiveaway();
+							return;
+						}
+						var s = Math.floor(ms / 1000);
+						var d = Math.floor(s / 86400);
+						var h = Math.floor((s % 86400) / 3600);
+						var m = Math.floor((s % 3600) / 60);
+						var sec = s % 60;
+						el.innerHTML =
+							'<span class="cd-label">Time left</span>' +
+							'<span title="Days">' + d + '<small style="display:block;font-size:10px;font-weight:600;opacity:0.75">days</small></span>' +
+							'<span title="Hours">' + pad(h) + '<small style="display:block;font-size:10px;font-weight:600;opacity:0.75">hrs</small></span>' +
+							'<span title="Minutes">' + pad(m) + '<small style="display:block;font-size:10px;font-weight:600;opacity:0.75">min</small></span>' +
+							'<span title="Seconds">' + pad(sec) + '<small style="display:block;font-size:10px;font-weight:600;opacity:0.75">sec</small></span>';
+					}
+					tick();
+					setInterval(tick, 1000);
+				})();
+			</script>
+
+			<div id="media-section">
+				<h1 id="media" class="fade-in-up">Media</h1>
+				<div class="left-half fade-in-left">
+					<p class="fade-in-up">Features of my music arrangements and method books:</p>
+					<ul style="list-style: none; padding-left: 0;">
+						<li class="fade-in-up">&#127925; Playable and intuitive music theory</li>
+						<li class="fade-in-up">&#127928; Practical library of chords & scales</li>
+						<li class="fade-in-up">&#127926; Chord names and chord diagrams</li>
+						<li class="fade-in-up">&#127928; Letter names inside noteheads to aid sight-reading</li>
+						<li class="fade-in-up">&#9995; Obvious fingerings done for you, saving countless hours</li>
+						<li class="fade-in-up">&#127930; Jazz lead sheet styling; short and practical for gigs</li>
+						<li class="fade-in-up">&#127931; Ensembles arranged for solo guitar</li>
+						<li class="fade-in-up">&#127928; Guitar tablature with rhythms &#127926;</li>
+						<li class="fade-in-up">&#127908; Clear phrasing through thoughtful engraving</li>
+						<li class="fade-in-up">&#11088; Arrangments of popular titles by The Beatles, Morgan Wallen, Taylor Swift, Fleetwood Mac, Nirvana, No Doubt, Red Hot Chili Peppers and more!</li>
+					</ul>
+					<p class="fade-in-up animate-delay-4">
+					My publications are designed for hobbyists and professionals alike to play with clarity quickly, while remaining sophisticated 
+					enough for professional analysis. This bridges the gap for millions of guitarists seeking more 
+					efficient learning materials. Reading sheet music really isn't required, but it's there for analysis if it benefits you.</p>
+					<!-- Add impressionist vague sheet music photo here-->
+					<a class="link-button fade-in-up animate-delay-5" href="chopin-Waltz-No-2.pdf">&#128220; View Sample</a>
+					<a class="link-button fade-in-up animate-delay-5" href="catalog.html">&#127925; Browse Sheet Music Catalog &#128220;</a>
+					<a class="link-button fade-in-up animate-delay-5" href="https://www.sheetmusicdirect.com/en-US/Search.aspx?query=Brian%2BStreckfus" target="_blank" style="margin-right: 15px;">Directly go to SheetMusicDirect.com</a>
+					<div id="lesson-with-bams" class="fade-in-up animate-delay-5">
+						<a class="link-button" href="https://belairmusicstudios.opus1.io/w/trial" target="_blank">&#128197; Schedule Free Online Trial Music Lesson &#127925;</a>
+						<div id="bams-logo-wrap">
+							<img src="img/bams_logo.jpg" alt="Bel Air Music Studios" />
+							<span>Lessons at Bel Air Music Studios</span>
+						</div>
+					</div>
+					<div id="consolidated-books" class="fade-in-up animate-delay-5">
+						<p class="consolidated-books-intro">Don't want to click the download button over and over again on my 200+ publications? Purchase my consolidated books.</p>
+						<div class="consolidated-books-row">
+							<div class="book-item">
+								<a href="https://a.co/d/0arsg4hD" target="_blank" rel="noopener noreferrer" title="Buy on Amazon">
+									<img src="img/Vertical w Border - The Essential Beginner`s Song Book.png" alt="The Essential Beginner's Guitar Songbook" />
+								</a>
+								<div class="book-caption">The Essential Beginner's Guitar Songbook — Amazon · 105-page paperback</div>
+								<a class="buy-link" href="https://a.co/d/0arsg4hD" target="_blank" rel="noopener noreferrer">&#128722; Buy on Amazon</a>
+								<div style="margin-top: 8px;"><a href="https://www.sheetmusicdirect.com/se/ID_No/1921418/Product.aspx" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.85); font-size: 12px; text-decoration: underline;">Prefer digital? Get the PDF at Sheet Music Direct</a></div>
+							</div>
+							<div class="book-item">
+								<a href="https://www.sheetmusicdirect.com/se/ID_No/1921901/Product.aspx" target="_blank" rel="noopener noreferrer" title="Buy at Sheet Music Direct">
+									<img src="img/Theory Book Image.png" alt="The Practical Guitarist's Guide to Music Theory" />
+								</a>
+								<div class="book-caption">The Practical Guitarist's Guide to Music Theory — Digital PDF</div>
+								<a class="buy-link" href="https://www.sheetmusicdirect.com/se/ID_No/1921901/Product.aspx" target="_blank" rel="noopener noreferrer">&#128722; Buy at Sheet Music Direct</a>
+							</div>
+							<div class="book-item">
+								<a href="https://www.sheetmusicdirect.com/se/ID_No/1940345/Product.aspx" target="_blank" rel="noopener noreferrer" title="Buy at Sheet Music Direct">
+									<img src="img/beauty_scale_sample.png" alt="Beautiful Scales" />
+								</a>
+								<div class="book-caption">Beautiful Scales — Digital PDF</div>
+								<a class="buy-link" href="https://www.sheetmusicdirect.com/se/ID_No/1940345/Product.aspx" target="_blank" rel="noopener noreferrer">&#128722; Beautiful version</a>
+								<a class="buy-link" href="https://www.sheetmusicdirect.com/se/ID_No/1273053/Product.aspx" target="_blank" rel="noopener noreferrer" style="margin-top: 8px; display: block;">&#128722; Print friendly version</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="right-half fade-in-right">
+					<img id="sheet" src="img/sheet.png" style="max-width: 100%; height: auto; margin-top: -40px; margin-left: -40px;" class="scale-in"/>
+				</div>
+				<div style="clear: both"></div>
+				<h1 id="media" class="fade-in-up">Media</h1>
+				<!-- New Youtube attempt to fix 2025-->
+				<div class="left-half fade-in-left">
+					<h3 class="fade-in-up">Music Videos (Free!)</h3>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/6TvW0k3H9Fw" frameborder="0" allowfullscreen class="scale-in animate-delay-2" style="max-width: 100%; height: auto; aspect-ratio: 16/9;"></iframe>
+				</div>
+				<div class="right-half fade-in-right">
+					<h3 class="fade-in-up">Peabody Performances (Free!)</h3>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/nYwXDXWV0KM" frameborder="0" allowfullscreen class="scale-in animate-delay-3" style="max-width: 100%; height: auto; aspect-ratio: 16/9;"></iframe>
+				</div>
+				<div style="clear: both"></div>
+				<div class="left-half fade-in-left">
+					<h3 class="fade-in-up">Intuitive HQ Backing Tracks (Free!)</h3>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/WlOBMEsUVQc" frameborder="0" allowfullscreen class="scale-in animate-delay-4" style="max-width: 100%; height: auto; aspect-ratio: 16/9;"></iframe>
+				</div>
+				<div class="right-half fade-in-right">
+					<h3 class="fade-in-up">Sheet Music & TAB Scroll Videos (Free!)</h3>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/wpZFU5QmZY8" frameborder="0" allowfullscreen class="scale-in animate-delay-5" style="max-width: 100%; height: auto; aspect-ratio: 16/9;"></iframe>
+				</div>
+				<div style="clear: both"></div>
+				<!-- TODO - Fix Youtube links DONE
+				!-- TODO - Add Bel Air Music Studios 
+				!-- TODO - Add Sheetmusicdirect link www.sheetmusicdirect.com/en-US/Search.aspx?query=Brian%2BStreckfus 
+				-->
+			
+			</div>
+			<h1 id="bio" class="fade-in-up">Bio</h1>
+			<div id="bio-section-wrapper" style="position: relative; width: 100%; display: flex; gap: 30px; align-items: flex-start; margin-bottom: 40px;">
+				<!-- Studio Comp on the left - larger, with potential text overlay -->
+				<div id="studio-comp-container" class="fade-in-left" style="position: relative; flex: 1; min-width: 0;">
+					<img id="desk-pic" src="img/Studio_Comp.png" class="scale-in" style="width: 100%; max-width: 1000px; height: auto; display: block;"/>
+					<!-- Dark overlay that can be controlled by hover -->
+					<div id="image-dark-overlay"></div>
+					<!-- Text overlay area - can be positioned over image if needed -->
+					<div id="bio-text-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: auto; z-index: 1; overflow: visible;">
+						<div style="position: relative; height: 100%; padding: 20px; padding-bottom: 120px; display: flex; flex-direction: column; justify-content: flex-start;">
+							<p class="bio-text-paragraph fade-in-up animate-delay-1">
+								Brian Streckfus holds a Bachelor's degree from Peabody Conservatory and a Master's from Towson University, 
+								where he received assistantship and scholarship awards. He has taught guitar for over a decade at 
+								Bel Air Music Studios and has over 150 publications with Hal Leonard. His former teachers include 
+								Ray Chester, the former chair of guitar at Peabody Conservatory, and other notable Maryland guitarists 
+								including James Hontz, Ph.D., Troy King, Brian Kooken, and Vincent Corson.
+							</p>
+							<p class="bio-text-paragraph fade-in-up animate-delay-2">
+								Brian has performed jazz, classical, and popular music at venues throughout Maryland, including 
+								PRISM: A Musical Collage at Kaplan Concert Hall—a fast-paced, continuous performance featuring 
+								dramatic lighting and multiple ensembles. He has participated in masterclasses with world-renowned 
+								guitarists Meng Su and Irina Kulikova, and has been a guitarist in the band Intuitive Minds United 
+								for over a decade.
+							</p>
+							<p class="bio-text-paragraph fade-in-up animate-delay-3">
+								Brian operates a home recording studio and has produced over a hundred videos with hundreds of thousands 
+								of views. His extensive formal training, combined with an undogmatic jazz-classical approach, diverse 
+								repertoire, and expertise in audio/video production make him an exceptional instructor and performer.
+							</p>
+							<div class="bio-kit-co-message fade-in-up animate-delay-4" style="margin-top: 14px; padding: 12px 16px; background: rgba(0, 0, 0, 0.5); border-radius: 8px; border-left: 4px solid rgba(241, 207, 171, 0.7);">
+								<p style="margin: 0 0 8px 0; color: rgba(255, 255, 255, 0.95); font-size: 14px; line-height: 1.5;">
+									Curious about the gear I use for recording, streaming, and teaching? <a href="https://kit.co/WoodenBoxEngineer" target="_blank" rel="noopener noreferrer" style="color: #f1cfab; text-decoration: underline;">Kit.co</a> is a great way to see my gear reviews while helping to support me, I get some commision not matter what you buy. It's a curated list of products I personally use and recommend.
+								</p>
+								<p style="margin: 0; font-size: 13px;">
+									<a href="https://kit.co/WoodenBoxEngineer" target="_blank" rel="noopener noreferrer" style="color: #f1cfab; font-weight: bold;">View my gear → kit.co/WoodenBoxEngineer</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Bio pic on the right -->
+				<div id="bio-pic-container" class="fade-in-right" style="flex: 0 0 auto; min-width: 0;">
+					<img id="bio-pic" src="img/bio.png" class="scale-in" style="width: 100%; max-width: 600px; height: auto; display: block;"/>
+				</div>
+			</div>
+			<!-- Alternative: Text below images if overlay doesn't work well -->
+			<div id="bio-text-below" class="left-half fade-in-left" style="display: none;">
+				<p class="fade-in-up animate-delay-1">
+					Brian Streckfus holds a Bachelor's degree from Peabody Conservatory and a Master's from Towson University, 
+					where he received assistantship and scholarship awards. He has taught guitar for over a decade at 
+					Bel Air Music Studios and has over 150 publications with Hal Leonard. His former teachers include 
+					Ray Chester, the former chair of guitar at Peabody Conservatory, and other notable Maryland guitarists 
+					including James Hontz, Ph.D., Troy King, Brian Kooken, and Vincent Corson.
+				</p>
+				<p class="fade-in-up animate-delay-2">
+					Brian has performed jazz, classical, and popular music at venues throughout Maryland, including 
+					PRISM: A Musical Collage at Kaplan Concert Hall—a fast-paced, continuous performance featuring 
+					dramatic lighting and multiple ensembles. He has participated in masterclasses with world-renowned 
+					guitarists Meng Su and Irina Kulikova, and has been a guitarist in the band Intuitive Minds United 
+					for over a decade.
+				</p>
+				<p class="fade-in-up animate-delay-3">
+					Brian operates a home recording studio and has produced over a hundred videos with hundreds of thousands 
+					of views. His extensive formal training, combined with an undogmatic jazz / classical / pop approach, diverse 
+					repertoire, and expertise in audio/video production make him an exceptional instructor and performer.
+				</p>
+				<div class="bio-kit-co-message fade-in-up animate-delay-4" style="margin-top: 14px; padding: 12px 16px; background: rgba(0, 0, 0, 0.5); border-radius: 8px; border-left: 4px solid rgba(241, 207, 171, 0.7);">
+					<p style="margin: 0 0 8px 0; color: rgba(255, 255, 255, 0.95); font-size: 14px; line-height: 1.5;">
+						Curious about the gear I use for recording, streaming, and teaching? <a href="https://kit.co/WoodenBoxEngineer" target="_blank" rel="noopener noreferrer" style="color: #f1cfab; text-decoration: underline;">Kit.co</a> is a great way to see my gear reviews while helping to support me—it's a curated list of products I personally use and recommend.
+					</p>
+					<p style="margin: 0; font-size: 13px;">
+						<a href="https://kit.co/WoodenBoxEngineer" target="_blank" rel="noopener noreferrer" style="color: #f1cfab; font-weight: bold;">View my gear → kit.co/WoodenBoxEngineer</a>
+					</p>
+				</div>
+			</div>
+			<div style="clear: both"></div>
+			<div class="right">
+				<h1 id="performances" class="fade-in-up">Book a Gig</h1>
+				<div style="clear: both"></div>
+				<div class="left-half fade-in-left">
+					<!-- <img id="perform" src="img/perform.png"/> -->
+					<img id="perform" src="img/perform.png" style="max-width: 100%; height: auto; margin-top: -40px; margin-left: -40px;" class="scale-in"/>
+				</div>
+				<div id="performance-details" class="right-half fade-in-right">
+					<h3 class="fade-in-up">Notable Solo Performances</h3>
+					<p class="fade-in-up animate-delay-1">Solo Guitar Recital, Fallston Hall, Bel Air, MD. 2009</p>
+					<span class="fade-in-up animate-delay-1">Works by: J.S. Bach</span>
+					<p class="fade-in-up animate-delay-2">Solo Guitar Recital, Cohen-Davison Family Theatre, Baltimore, MD. 2014</p>
+					<span class="fade-in-up animate-delay-2">Works by: Milan, J. S. Bach, Tarrega, Ponce</span>
+					<p class="fade-in-up animate-delay-3">Solo Guitar Recital, Cohen-Davison Family Theatre, Baltimore, MD. 2015</p>
+					<span class="fade-in-up animate-delay-3">Works by: Milan, J. S. Bach, Tarrega, Ponce, Villa-Lobos</span>
+					<h3 class="fade-in-up animate-delay-4">Chamber Music Performances</h3>
+					<p class="fade-in-up animate-delay-4">Classical Guitar Quartet, Kaplan Hall, Towson, MD. 2007</p>
+					<span class="fade-in-up animate-delay-4">Works by: Torroba and Tedesco</span>
+					<p class="fade-in-up animate-delay-5">Classical Guitar Duo, Andie Musik, Baltimore, MD. 2008</p>
+					<span class="fade-in-up animate-delay-5">Works by: W. A. Mozart</span>
+					<p class="fade-in-up animate-delay-5">Classical Guitar Trio, Goodwin Hall (Fret-Fest) Baltimore, MD. 2012</p>
+					<span class="fade-in-up animate-delay-5">Works by: J. F. Handel</span>
+					<h3 class="fade-in-up animate-delay-5">Large Ensemble Experience</h3>
+					<p class="fade-in-up animate-delay-5">Bass Section Singer, Peabody/Hopkins Chorus, Baltimore, MD 2011-2013</p>
+					<span class="fade-in-up animate-delay-5">Works by: Carl Orff, Leonard Bernstein, Franz Schubert, Guiseppe Verdi</span>
+					<p class="fade-in-up animate-delay-5">Guitarist, Harford Community College Jazz Big Band, Fallston Hall, Bel Air, MC 2007-2009</p>
+					<span class="fade-in-up animate-delay-5">Jazz standards such as: Autumn Leaves, Anthropology, Maiden Voyage, Lush Life</span>
+					<br/>
+					<a class="link-button fade-in-up animate-delay-5" href="https://www.gigsalad.com/intuitive_minds_united_aberdeen">Book a Gig</a>
+					<br/>
+					<a class="link-button fade-in-up animate-delay-5" href="https://www.upwork.com/freelancers/~01d5590e96852b1a13">🎥 🎛️ Audio &amp; Video Editing Service</a>
+				</div>
+				<div style="clear: both"></div>
+			</div>
+			<div id="editing-portfolio">
+				<h2>Drag</h2>
+				<p class="edit-credit">The Long Wait</p>
+				<p>An edited excerpt. Selected sections were shaped to show the original recording beside the finished master. Please support the artist.</p>
+				<div class="edit-lane edit-lane-raw">
+					<div class="edit-lane-head">
+						<span class="edit-lane-title">Drag <span class="edit-lane-artist">The Long Wait</span></span>
+						<span class="edit-lane-tag">Original</span>
+					</div>
+					<div class="edit-controls">
+						<button type="button" class="edit-play">Play</button>
+						<input type="range" class="edit-seek" min="0" max="1000" value="0" aria-label="Drag by The Long Wait, original recording">
+						<span class="edit-time">0:00</span>
+					</div>
+					<audio preload="none" src="audio/editing-portfolio/Long%20Wait%20Back%20Home%20MP3%20RAW%20SHORT.mp3"></audio>
+				</div>
+				<div class="edit-lane edit-lane-master">
+					<div class="edit-lane-head">
+						<span class="edit-lane-title">Drag <span class="edit-lane-artist">The Long Wait</span></span>
+						<span class="edit-lane-tag">Finished master</span>
+					</div>
+					<div class="edit-controls">
+						<button type="button" class="edit-play">Play</button>
+						<input type="range" class="edit-seek" min="0" max="1000" value="0" aria-label="Drag by The Long Wait, finished master">
+						<span class="edit-time">0:00</span>
+					</div>
+					<audio preload="none" src="audio/editing-portfolio/Drag%20Oct%2026%20MASTER.mp3"></audio>
+				</div>
+				<h2 class="edit-next">Bess</h2>
+				<p class="edit-credit">Maurizio Pagnutti Sextet</p>
+				<p>An edited excerpt. The original recording beside the finished master. Please support the original artist.</p>
+				<div class="edit-lane edit-lane-raw">
+					<div class="edit-lane-head">
+						<span class="edit-lane-title">Bess <span class="edit-lane-artist">Maurizio Pagnutti Sextet</span></span>
+						<span class="edit-lane-tag">Original</span>
+					</div>
+					<div class="edit-controls">
+						<button type="button" class="edit-play">Play</button>
+						<input type="range" class="edit-seek" min="0" max="1000" value="0" aria-label="Bess by Maurizio Pagnutti Sextet, original recording">
+						<span class="edit-time">0:00</span>
+					</div>
+					<audio preload="none" src="audio/editing-portfolio/Bess%20Raw%20to%2029.mp3"></audio>
+				</div>
+				<div class="edit-lane edit-lane-master">
+					<div class="edit-lane-head">
+						<span class="edit-lane-title">Bess <span class="edit-lane-artist">Maurizio Pagnutti Sextet</span></span>
+						<span class="edit-lane-tag">Finished master</span>
+					</div>
+					<div class="edit-controls">
+						<button type="button" class="edit-play">Play</button>
+						<input type="range" class="edit-seek" min="0" max="1000" value="0" aria-label="Bess by Maurizio Pagnutti Sextet, finished master">
+						<span class="edit-time">0:00</span>
+					</div>
+					<audio preload="none" src="audio/editing-portfolio/Bess%20MASTER%20to%2029.mp3"></audio>
+				</div>
+				<h2 class="edit-next">Celestial Reflection</h2>
+				<p class="edit-credit">Sami abou louh, Studio 86</p>
+				<p><strong>Audio to MIDI:</strong> Matching forty-five second excerpts: the source recording beside the same passage rebuilt from transcribed MIDI, then rendered, mixed, and mastered. It was a difficult project—microtonal bends, rubato, many exotic instruments, and a lot of MIDI CC automation the client asked for. Please support the original artist.</p>
+				<div class="edit-lane edit-lane-raw">
+					<div class="edit-lane-head">
+						<span class="edit-lane-title">Celestial Reflection <span class="edit-lane-artist">Sami abou louh, Studio 86</span></span>
+						<span class="edit-lane-tag">Original excerpt (45s)</span>
+					</div>
+					<div class="edit-controls">
+						<button type="button" class="edit-play">Play</button>
+						<input type="range" class="edit-seek" min="0" max="1000" value="0" aria-label="Celestial Reflection by Sami abou louh, Studio 86, original excerpt">
+						<span class="edit-time">0:00</span>
+					</div>
+					<audio preload="none" src="audio/editing-portfolio/Celestial%20Original%20Audio%20SHORT%2045s.mp3"></audio>
+				</div>
+				<div class="edit-lane edit-lane-master">
+					<div class="edit-lane-head">
+						<span class="edit-lane-title">Celestial Reflection <span class="edit-lane-artist">Sami abou louh, Studio 86</span></span>
+						<span class="edit-lane-tag">From MIDI · Master excerpt (45s)</span>
+					</div>
+					<div class="edit-controls">
+						<button type="button" class="edit-play">Play</button>
+						<input type="range" class="edit-seek" min="0" max="1000" value="0" aria-label="Celestial Reflection by Sami abou louh, Studio 86, from MIDI master excerpt">
+						<span class="edit-time">0:00</span>
+					</div>
+					<audio preload="none" src="audio/editing-portfolio/Celestial%20Sami%20MASTER%20V10%20SHORT%2045s.mp3"></audio>
+				</div>
+				<div class="edit-proof">
+					<p class="edit-proof-heading">Screen capture · MIDI workflow</p>
+					<p class="edit-proof-note">Screen capture of the MIDI/virtual-instrument workflow for <em>Celestial Reflection</em> (~6&nbsp;MB, ~1&nbsp;min&nbsp;35&nbsp;s; nothing downloads until you press play).</p>
+					<video controls playsinline preload="metadata" width="920" aria-label="Celestial Reflection audio-to-MIDI screen capture">
+						<source src="audio/editing-portfolio/Sami%20Oct%20MASTERMASTER%20Caputure.mp4" type="video/mp4">
+					</video>
+				</div>
+				<h2 class="edit-next">Idea 11</h2>
+				<p class="edit-credit">Sami abou louh, Studio 86</p>
+				<p><strong>Audio to MIDI:</strong> Matching forty-five second excerpts: the source recording beside the same passage rebuilt from transcribed MIDI, then rendered and mastered for film- and game-style beds. Please support the original artist.</p>
+				<div class="edit-lane edit-lane-raw">
+					<div class="edit-lane-head">
+						<span class="edit-lane-title">Idea 11 <span class="edit-lane-artist">Sami abou louh, Studio 86</span></span>
+						<span class="edit-lane-tag">Original excerpt (45s)</span>
+					</div>
+					<div class="edit-controls">
+						<button type="button" class="edit-play">Play</button>
+						<input type="range" class="edit-seek" min="0" max="1000" value="0" aria-label="Idea 11 by Sami abou louh, Studio 86, original excerpt">
+						<span class="edit-time">0:00</span>
+					</div>
+					<audio preload="none" src="audio/editing-portfolio/Idea%2011%20Original%20Audio%20SHORT%2045s.mp3"></audio>
+				</div>
+				<div class="edit-lane edit-lane-master">
+					<div class="edit-lane-head">
+						<span class="edit-lane-title">Idea 11 <span class="edit-lane-artist">Sami abou louh, Studio 86</span></span>
+						<span class="edit-lane-tag">From MIDI · Master excerpt (45s)</span>
+					</div>
+					<div class="edit-controls">
+						<button type="button" class="edit-play">Play</button>
+						<input type="range" class="edit-seek" min="0" max="1000" value="0" aria-label="Idea 11 by Sami abou louh, Studio 86, from MIDI master excerpt">
+						<span class="edit-time">0:00</span>
+					</div>
+					<audio preload="none" src="audio/editing-portfolio/Idea%2011%20-%20MASTER%204%20SHORT%2045s.mp3"></audio>
+				</div>
+			</div>
+			<div class="right" style="position: relative;">
+				<img id="contact-pic" src="img/contact.png" class="scale-in"/>
+				<div id="contact-details" class="right-half fade-in-right" style="position: relative; z-index: 2;">
+					<h1 id="contact" class="fade-in-up">Contact</h1>
+					<p class="fade-in-up animate-delay-1">Whether you're interested in online lessons, booking an event, or looking to collaborate, drop me a line! 
+					<div class="contacts">
+						<div>
+							<div class="contact fade-in-up">
+								<i class='fa fa-link'></i>
+								<h3>All Links</h3>
+								<a href="https://allmylinks.com/brianstreckfus">allmylinks.com/brianstreckfus</a>
+								<div style="clear: both"></div>				
+							</div>
+							<div class="contact fade-in-up animate-delay-1">
+								<i class='fa fa-envelope'></i>
+								<h3>Email</h3>
+								<span id="addy"></span>	
+								<div style="clear: both"></div>			
+							</div>
+							<div class="contact fade-in-up animate-delay-2">
+								<i class='fa fa-youtube'></i>
+								<h3>YouTube</h3>
+								<a href="https://www.youtube.com/user/WoodenBoxEngineer">youtube.com/user/WoodenBoxEngineer</a>
+								<div style="clear: both"></div>						
+							</div>
+							<div class="contact fade-in-up animate-delay-3">
+								<i class='fa fa-linkedin-square'></i>
+								<h3>LinkedIn</h3>
+								<a href="https://www.linkedin.com/in/brian-streckfus-9b334a92">linkedin.com/in/brian-streckfus-9b334a92</a>
+								<div style="clear: both"></div>						
+							</div>
+						</div>
+						<div>
+							<div class="contact fade-in-up animate-delay-1">
+								<i class='fa fa-twitter'></i>
+								<h3>Twitter</h3>
+								<a href="https://twitter.com/BrianStreckfus">twitter.com/BrianStreckfus</a>
+								<div style="clear: both"></div>				
+							</div>
+							<div class="contact fade-in-up animate-delay-2">
+								<i class='fa fa-facebook'></i>
+								<h3>Facebook</h3>
+								<a href="https://www.facebook.com/profile.php?id=100078682133421">facebook.com/profile.php?id=100078682133421</a>
+								<div style="clear: both"></div>			
+							</div>
+							<div class="contact fade-in-up animate-delay-3">
+								<i class='fa fa-instagram'></i>
+								<h3>Instagram</h3>
+								<a href="https://www.instagram.com/brianstreckfus/">instagram.com/brianstreckfus/</a>
+								<div style="clear: both"></div>
+												<!-- TODO - Fix Youtube links DONE
+											</div>
+							<div class="contact">
+								<i class='fa fa-soundcloud'></i>
+								<h3>Soundcloud</h3>
+								<a href="https://soundcloud.com/streckfusclassicalguitar">soundcloud.com/streckfusclassicalguitar</a>
+								<div style="clear: both"></div>		
+				!-- TODO - Add Sheetmusicdirect link www.sheetmusicdirect.com/en-US/Search.aspx?query=Brian%2BStreckfus 
+				-->						
+							</div>
+							<div class="contact fade-in-up animate-delay-4">
+								<i class='fa fa-music'></i>
+								<h3>Music Publications</h3>
+								<a href="www.sheetmusicdirect.com/en-US/Search.aspx?query=Brian%2BStreckfus"> sheetmusicdirect.com/en-US/Search.aspx?query=Brian%2BStreckfus</a>
+								<div style="clear: both"></div>						
+							</div>
+						</div>
+					</div>
+					<!-- Email List Signup -->
+					<div class="email-list-signup fade-in-up animate-delay-5" style="margin-top: 30px; padding: 20px; background: rgba(255, 255, 255, 0.05); border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.1);">
+						<h3 style="color: #fff; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+							<i class='fa fa-envelope-o' style="font-size: 20px;"></i>
+							Join Our Email List
+						</h3>
+						<p style="color: rgba(255, 255, 255, 0.8); font-size: 14px; margin-bottom: 15px;">
+							Join the mailing list and get a free guitar scales PDF, House of the Rising Sun sheet music, and a free soothing Lydian backing track as a token of my appreciation.
+							You’ll also get occasional updates about new sheet music, MP3 releases, and new YouTube uploads.
+						</p>
+						<form class="email-list-form" action="https://usebasin.com/f/7c55ae649861" method="POST" style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+							<input 
+								type="email" 
+								name="email"
+								placeholder="Enter your email address" 
+								required
+								style="flex: 1; min-width: 200px; padding: 12px 15px; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: 6px; background: rgba(255, 255, 255, 0.1); color: #fff; font-size: 14px; outline: none; transition: all 0.3s ease;"
+								onfocus="this.style.borderColor='rgba(255, 255, 255, 0.6)'; this.style.background='rgba(255, 255, 255, 0.15)';"
+								onblur="this.style.borderColor='rgba(255, 255, 255, 0.3)'; this.style.background='rgba(255, 255, 255, 0.1)';"
+							/>
+							<button 
+								type="submit" 
+								class="email-list-submit"
+								style="padding: 12px 24px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border: none; border-radius: 6px; color: #fff; font-size: 14px; font-weight: bold; cursor: pointer; transition: all 0.3s ease; white-space: nowrap;"
+								onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 12px rgba(102, 126, 234, 0.4)';"
+								onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';"
+							>
+								Subscribe
+							</button>
+						</form>
+						<div class="email-list-message" style="margin-top: 10px; font-size: 14px; min-height: 20px;"></div>
+					</div>
+					<p style="margin-top: 22px; font-size: 14px; line-height: 1.45; color: rgba(255, 255, 255, 0.72);">
+						A separate site I care about:
+						<a href="signals.html" style="color: #9ec5e8;">Trading Signals</a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<!-- 2026-11-09 — Instagram profile embed (test spot). Instagram's own embed.js keeps it showing
+		     the latest posts, so no API token is needed. -->
+		<section id="instagram-latest" style="clear: both; position: relative; z-index: 1; max-width: 560px; margin: 50px auto 0; padding: 30px 16px 0; text-align: center;">
+			<h2 style="margin-bottom: 14px;"><i class='fa fa-instagram'></i> Latest on Instagram</h2>
+			<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/brianstreckfus/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background: #fff; border: 0; border-radius: 3px; box-shadow: 0 0 1px 0 rgba(0,0,0,0.5), 0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px auto; max-width: 540px; min-width: 326px; padding: 0; width: calc(100% - 2px);">
+				<a href="https://www.instagram.com/brianstreckfus/" target="_blank" rel="noopener">View @brianstreckfus on Instagram</a>
+			</blockquote>
+			<script async src="https://www.instagram.com/embed.js"></script>
+		</section>
+		<footer class="fade-in" style="text-align: center; padding: 40px 20px; margin-top: 60px; background: #f5f5f5; border-top: 1px solid #ddd;">
+			<p>&copy; 2024 Brian Streckfus</p>
+		</footer>
+		<audio id="site-bg-audio" autoplay loop>
+			<source src="audio/audio2.mp3" type="audio/mpeg"/>
+		</audio>
+		<script>
+			(function () {
+				var root = document.getElementById('editing-portfolio');
+				if (!root) return;
+				var bg = document.getElementById('site-bg-audio');
+				function fmt(t) {
+					if (!isFinite(t) || t < 0) return '0:00';
+					var s = Math.floor(t % 60);
+					var m = Math.floor(t / 60);
+					return m + ':' + (s < 10 ? '0' : '') + s;
+				}
+				var lanes = root.querySelectorAll('.edit-lane');
+				var proofVideos = root.querySelectorAll('.edit-proof video');
+				var audios = [];
+				function pausePortfolioMedia(except) {
+					audios.forEach(function (clip) {
+						if (clip !== except) clip.pause();
+					});
+					proofVideos.forEach(function (clip) {
+						if (clip !== except) clip.pause();
+					});
+				}
+				lanes.forEach(function (lane) {
+					var audio = lane.querySelector('audio');
+					var btn = lane.querySelector('.edit-play');
+					var seek = lane.querySelector('.edit-seek');
+					var time = lane.querySelector('.edit-time');
+					var seeking = false;
+					audios.push(audio);
+					function paint() {
+						var pct = (Number(seek.value) / 1000) * 100;
+						seek.style.setProperty('--pct', pct + '%');
+					}
+					function stopBackground() {
+						if (!bg) return;
+						bg.pause();
+					}
+					btn.addEventListener('click', function () {
+						if (audio.paused) {
+							pausePortfolioMedia(audio);
+							stopBackground();
+							var playPromise = audio.play();
+							if (playPromise && playPromise.catch) playPromise.catch(function () {});
+						} else {
+							audio.pause();
+						}
+					});
+					audio.addEventListener('play', function () { btn.textContent = 'Pause'; });
+					audio.addEventListener('pause', function () { btn.textContent = 'Play'; });
+					audio.addEventListener('ended', function () {
+						btn.textContent = 'Play';
+						seek.value = '0';
+						paint();
+						time.textContent = '0:00';
+					});
+					audio.addEventListener('timeupdate', function () {
+						if (seeking || !audio.duration) return;
+						seek.value = String(Math.round((audio.currentTime / audio.duration) * 1000));
+						time.textContent = fmt(audio.currentTime);
+						paint();
+					});
+					seek.addEventListener('input', function () {
+						seeking = true;
+						if (audio.duration) {
+							audio.currentTime = (Number(seek.value) / 1000) * audio.duration;
+							time.textContent = fmt(audio.currentTime);
+						}
+						paint();
+					});
+					seek.addEventListener('change', function () { seeking = false; });
+					paint();
+				});
+				proofVideos.forEach(function (video) {
+					video.addEventListener('play', function () {
+						pausePortfolioMedia(video);
+						stopBackground();
+					});
+				});
+				if (bg) {
+					bg.addEventListener('play', function () {
+						var excerptPlaying = false;
+						audios.forEach(function (clip) {
+							if (!clip.paused) excerptPlaying = true;
+						});
+						proofVideos.forEach(function (clip) {
+							if (!clip.paused) excerptPlaying = true;
+						});
+						if (excerptPlaying) bg.pause();
+					});
+				}
+			})();
+		</script>
+		<script>
+			// Email List Signup Handler
+			(function() {
+				// API endpoint configuration
+				// - Local dev: use localhost server (run: python3 email_list_server.py --port 5007)
+				// - Production (S3/CloudFront): use a form backend service (Basin endpoint below)
+				//   Basin stores submissions privately + can email you notifications.
+				const BASIN_ENDPOINT = 'https://usebasin.com/f/7c55ae649861';
+				const API_ENDPOINT = (location.hostname === 'localhost' || location.hostname === '127.0.0.1')
+					? 'http://localhost:5007/api/subscribe'
+					: BASIN_ENDPOINT;
+				
+				// Handle form submission(s)
+				const forms = Array.from(document.querySelectorAll('form.email-list-form'));
+
+				function wireUpForm(form) {
+					if (!form) return;
+
+					const input = form.querySelector('input[name="email"]');
+					const messageDiv = form.parentElement ? form.parentElement.querySelector('.email-list-message') : null;
+					const submitButton = form.querySelector('.email-list-submit') || form.querySelector('button[type="submit"]');
+
+					if (!input) return;
+
+					form.addEventListener('submit', async function(e) {
+						e.preventDefault();
+						
+						const email = (input.value || '').trim();
+						
+						if (!email) {
+							showMessage(messageDiv, 'Please enter a valid email address.', 'error');
+							return;
+						}
+						
+						// Basic email validation
+						const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+						if (!emailRegex.test(email)) {
+							showMessage(messageDiv, 'Please enter a valid email address.', 'error');
+							return;
+						}
+						
+						// Disable button and show loading state
+						if (submitButton) {
+							submitButton.disabled = true;
+							submitButton.dataset.prevText = submitButton.textContent || '';
+							submitButton.textContent = 'Subscribing...';
+						}
+						
+						try {
+							// Local Flask server expects JSON. Basin expects a standard form POST.
+							if (API_ENDPOINT === BASIN_ENDPOINT) {
+								const fd = new FormData();
+								fd.append('email', email);
+								fd.append('source', location.href);
+								fd.append('ts', new Date().toISOString());
+
+								const response = await fetch(API_ENDPOINT, {
+									method: 'POST',
+									headers: {
+										'Accept': 'application/json'
+									},
+									body: fd
+								});
+
+								if (response.ok) {
+									showMessage(messageDiv, '✓ Thank you! Check your email for the freebies.', 'success');
+									input.value = '';
+								} else {
+									let serverText = '';
+									try { serverText = await response.text(); } catch (_) {}
+									console.error('Basin error response:', response.status, serverText);
+									showMessage(messageDiv, 'Something went wrong. Please try again.', 'error');
+								}
+							} else {
+								// Send email to local backend API (JSON)
+								const response = await fetch(API_ENDPOINT, {
+									method: 'POST',
+									headers: {
+										'Content-Type': 'application/json',
+									},
+									body: JSON.stringify({ email: email })
+								});
+
+								const data = await response.json();
+
+								if (data.success) {
+									if (data.already_subscribed) {
+										showMessage(messageDiv, 'You\'re already subscribed! Thank you.', 'info');
+									} else {
+										showMessage(messageDiv, '✓ Thank you! You\'ve been added to our email list.', 'success');
+										input.value = ''; // Clear input
+										console.log('New email subscriber:', email);
+										if (data.total_subscribers) {
+											console.log('Total subscribers:', data.total_subscribers);
+										}
+									}
+								} else {
+									showMessage(messageDiv, data.error || 'Something went wrong. Please try again.', 'error');
+								}
+							}
+						} catch (error) {
+							console.error('Error subscribing:', error);
+							console.error('API endpoint attempted:', API_ENDPOINT);
+							// More detailed error message for debugging
+							const errorMsg = error.message || 'Unable to connect to server. Please try again later.';
+							// If Basin fetch is blocked by CORS or extensions, fall back to a normal form POST
+							// (This will navigate away, but it will reliably submit.)
+							if (API_ENDPOINT === BASIN_ENDPOINT && form) {
+								try {
+									form.action = BASIN_ENDPOINT;
+									form.method = 'POST';
+									showMessage(messageDiv, 'Submitting…', 'info');
+									form.submit();
+									return;
+								} catch (_) {}
+							}
+							showMessage(messageDiv, 'Unable to connect to server. Please try again later.', 'error');
+						} finally {
+							// Re-enable button
+							if (submitButton) {
+								submitButton.disabled = false;
+								const prev = submitButton.dataset.prevText || 'Subscribe';
+								submitButton.textContent = prev;
+							}
+						}
+					});
+				}
+
+				forms.forEach(wireUpForm);
+				
+				// Show message to user
+				function showMessage(messageDiv, text, type) {
+					if (!messageDiv) return;
+					
+					messageDiv.textContent = text;
+					messageDiv.style.color = type === 'success' ? '#4caf50' : 
+					                          type === 'error' ? '#f44336' : 
+					                          'rgba(255, 255, 255, 0.8)';
+					messageDiv.style.fontWeight = type === 'success' ? 'bold' : 'normal';
+					
+					// Clear message after 5 seconds
+					setTimeout(function() {
+						if (messageDiv.textContent === text) {
+							messageDiv.textContent = '';
+						}
+					}, 5000);
+				}
+			})();
+		</script>
+
+		<!-- Trading Assistant Chat Widget -->
+		<style>
+			#chatFab {
+				position: fixed;
+				right: 20px;
+				bottom: 20px;
+				z-index: 9999;
+				width: 60px;
+				height: 60px;
+				border-radius: 50%;
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				border: none;
+				color: #fff;
+				font-size: 24px;
+				cursor: pointer;
+				box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+				transition: all 0.3s ease;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			#chatFab:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 16px rgba(102, 126, 234, 0.5);
+			}
+			#chatBox {
+				position: fixed;
+				right: 20px;
+				bottom: 90px;
+				z-index: 9998;
+				width: 380px;
+				max-width: calc(100vw - 40px);
+				height: 500px;
+				max-height: calc(100vh - 120px);
+				background: rgba(0, 0, 0, 0.95);
+				border: 1px solid rgba(255, 255, 255, 0.3);
+				border-radius: 12px;
+				display: none;
+				flex-direction: column;
+				overflow: hidden;
+				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+			}
+			#chatBox.open {
+				display: flex;
+			}
+			#chatHeader {
+				padding: 15px 18px;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				background: rgba(102, 126, 234, 0.1);
+			}
+			#chatHeader h3 {
+				margin: 0;
+				color: #fff;
+				font-size: 18px;
+				font-weight: 600;
+			}
+			#chatClose {
+				background: rgba(255, 255, 255, 0.15);
+				border: 1px solid rgba(255, 255, 255, 0.3);
+				border-radius: 6px;
+				color: #fff;
+				padding: 6px 12px;
+				cursor: pointer;
+				font-size: 14px;
+				transition: all 0.3s ease;
+			}
+			#chatClose:hover {
+				background: rgba(255, 255, 255, 0.25);
+			}
+			#chatMsgs {
+				flex: 1;
+				padding: 15px 18px;
+				overflow-y: auto;
+				overflow-x: hidden;
+				font-size: 14px;
+				line-height: 1.6;
+			}
+			#chatMsgs::-webkit-scrollbar {
+				width: 6px;
+			}
+			#chatMsgs::-webkit-scrollbar-track {
+				background: rgba(255, 255, 255, 0.05);
+			}
+			#chatMsgs::-webkit-scrollbar-thumb {
+				background: rgba(255, 255, 255, 0.2);
+				border-radius: 3px;
+			}
+			.chat-msg {
+				margin: 12px 0;
+				padding: 10px 12px;
+				border-radius: 8px;
+				word-wrap: break-word;
+				white-space: pre-wrap;
+			}
+			.chat-msg.user {
+				background: rgba(102, 126, 234, 0.2);
+				border-left: 3px solid #667eea;
+				color: rgba(255, 255, 255, 0.95);
+				margin-left: 20px;
+			}
+			.chat-msg.assistant {
+				background: rgba(255, 255, 255, 0.08);
+				border-left: 3px solid rgba(255, 255, 255, 0.4);
+				color: rgba(255, 255, 255, 0.9);
+				margin-right: 20px;
+			}
+			.chat-msg.error {
+				background: rgba(244, 67, 54, 0.2);
+				border-left: 3px solid #f44336;
+				color: rgba(255, 255, 255, 0.9);
+			}
+			.chat-msg.loading {
+				color: rgba(255, 255, 255, 0.6);
+				font-style: italic;
+			}
+			#chatForm {
+				padding: 15px 18px;
+				border-top: 1px solid rgba(255, 255, 255, 0.2);
+				display: flex;
+				gap: 10px;
+				background: rgba(0, 0, 0, 0.3);
+			}
+			#chatInput {
+				flex: 1;
+				padding: 10px 14px;
+				border: 1px solid rgba(255, 255, 255, 0.3);
+				border-radius: 6px;
+				background: rgba(255, 255, 255, 0.1);
+				color: #fff;
+				font-size: 14px;
+				outline: none;
+				transition: all 0.3s ease;
+			}
+			#chatInput:focus {
+				border-color: rgba(255, 255, 255, 0.6);
+				background: rgba(255, 255, 255, 0.15);
+			}
+			#chatInput::placeholder {
+				color: rgba(255, 255, 255, 0.5);
+			}
+			#chatSend {
+				padding: 10px 20px;
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				border: none;
+				border-radius: 6px;
+				color: #fff;
+				font-size: 14px;
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				white-space: nowrap;
+			}
+			#chatSend:hover:not(:disabled) {
+				transform: translateY(-1px);
+				box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+			}
+			#chatSend:disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+			}
+			#chatPrompts {
+				padding: 10px 18px;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+			}
+			#chatPrompts.hidden {
+				display: none;
+			}
+			.chat-prompt {
+				padding: 10px 14px;
+				background: rgba(102, 126, 234, 0.15);
+				border: 1px solid rgba(102, 126, 234, 0.3);
+				border-radius: 6px;
+				color: rgba(255, 255, 255, 0.9);
+				font-size: 13px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				text-align: left;
+			}
+			.chat-prompt:hover {
+				background: rgba(102, 126, 234, 0.25);
+				border-color: rgba(102, 126, 234, 0.5);
+				transform: translateX(4px);
+			}
+			@media (max-width: 480px) {
+				#chatBox {
+					width: calc(100vw - 20px);
+					right: 10px;
+					bottom: 80px;
+					height: calc(100vh - 100px);
+				}
+				#chatFab {
+					right: 10px;
+					bottom: 10px;
+				}
+			}
+		</style>
+
+		<button id="chatFab" type="button" aria-label="Open Assistant Chat" title="Assistant">
+			💬
+		</button>
+
+		<div id="chatBox" role="dialog" aria-label="Assistant Chat">
+			<div id="chatHeader">
+				<h3>💬 Assistant</h3>
+				<button id="chatClose" type="button">Close</button>
+			</div>
+			<div id="chatMsgs">
+				<div class="chat-msg assistant">
+					Hello, I am your assistant on this website. I am programmed to be especially good at answering finance and music questions, using context from this website.
+				</div>
+			</div>
+			<div id="chatPrompts">
+				<div class="chat-prompt">What are today's top 3 buys and sells?</div>
+				<div class="chat-prompt">Do you have an arrangement for any songs written by The Beatles?</div>
+				<div class="chat-prompt">What assets are inside the ETF XLE?</div>
+				<div class="chat-prompt">What letter names are inside A harmonic minor?</div>
+			</div>
+			<form id="chatForm">
+				<input id="chatInput" type="text" autocomplete="off" placeholder="Ask a question..." />
+				<button id="chatSend" type="submit">Send</button>
+			</form>
+		</div>
+
+		<script>
+			(function() {
+				const WORKER_ENDPOINT = 'https://trading-assistant.brianstreckfus.workers.dev/chat';
+				const fab = document.getElementById('chatFab');
+				const box = document.getElementById('chatBox');
+				const closeBtn = document.getElementById('chatClose');
+				const form = document.getElementById('chatForm');
+				const input = document.getElementById('chatInput');
+				const msgs = document.getElementById('chatMsgs');
+				const sendBtn = document.getElementById('chatSend');
+				const prompts = document.getElementById('chatPrompts');
+
+				// Generate a session ID (persists for this browser session)
+				let sessionId = sessionStorage.getItem('trading_assistant_session_id');
+				if (!sessionId) {
+					sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+					sessionStorage.setItem('trading_assistant_session_id', sessionId);
+				}
+
+				function addMsg(text, type = 'assistant') {
+					const div = document.createElement('div');
+					div.className = 'chat-msg ' + type;
+					div.textContent = text;
+					msgs.appendChild(div);
+					msgs.scrollTop = msgs.scrollHeight;
+				}
+
+				function scrollToBottom() {
+					msgs.scrollTop = msgs.scrollHeight;
+				}
+
+				fab.onclick = function() {
+					box.classList.add('open');
+					input.focus();
+					scrollToBottom();
+				};
+
+				closeBtn.onclick = function() {
+					box.classList.remove('open');
+				};
+
+				// Handle example prompt clicks
+				const promptButtons = prompts.querySelectorAll('.chat-prompt');
+				promptButtons.forEach(function(btn) {
+					btn.onclick = function() {
+						const promptText = btn.textContent.trim();
+						input.value = promptText;
+						input.focus();
+						// Auto-submit the prompt
+						form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+					};
+				});
+
+				// Helper: Fetch top 3 buys and sells from signals.json
+				async function fetchTopSignals() {
+					try {
+						const response = await fetch('signals/signals.json');
+						if (!response.ok) throw new Error('Failed to fetch signals');
+						const signals = await response.json();
+						
+						// Filter stock signals only
+						const stockSignals = signals.filter(s => {
+							const symbol = (s.symbol || '').toUpperCase();
+							return !symbol.includes('/USD') && !symbol.includes('/USDT') && symbol.length <= 5;
+						});
+						
+						// Calculate scores (same logic as signals.html)
+						const BUY_THRESHOLD = 16;
+						const SELL_THRESHOLD = 13;
+						
+						const signalsWithScores = stockSignals.map(s => {
+							let buyScore = s.buy_score || 0;
+							let sellScore = s.sell_score || 0;
+							const note = s.note || '';
+							const buyMatch = note.match(/buy\s+(\d+)\/(\d+)/i);
+							const sellMatch = note.match(/sell\s+(\d+)\/(\d+)/i);
+							if (buyMatch) buyScore = parseInt(buyMatch[1]);
+							if (sellMatch) sellScore = parseInt(sellMatch[1]);
+							
+							return {
+								...s,
+								buyScore: buyScore,
+								sellScore: sellScore,
+								totalBuy: buyMatch ? parseInt(buyMatch[2]) : 38,
+								totalSell: sellMatch ? parseInt(sellMatch[2]) : 37
+							};
+						});
+						
+						// Get top 3 buys
+						const seenBuySymbols = new Set();
+						const topBuy = signalsWithScores
+							.filter(s => s.action === 'buy' || s.buyScore >= s.sellScore)
+							.sort((a, b) => b.buyScore - a.buyScore)
+							.filter(s => {
+								if (seenBuySymbols.has(s.symbol)) return false;
+								seenBuySymbols.add(s.symbol);
+								return true;
+							})
+							.slice(0, 3);
+						
+						// Get top 3 sells
+						const seenSellSymbols = new Set();
+						const topSell = signalsWithScores
+							.filter(s => s.action === 'sell' || s.sellScore >= s.buyScore)
+							.sort((a, b) => b.sellScore - a.sellScore)
+							.filter(s => {
+								if (seenSellSymbols.has(s.symbol)) return false;
+								seenSellSymbols.add(s.symbol);
+								return true;
+							})
+							.slice(0, 3);
+						
+						return { topBuy, topSell };
+					} catch (error) {
+						console.error('Error fetching signals:', error);
+						return null;
+					}
+				}
+				
+				// Helper: Fetch catalog data
+				async function fetchCatalog() {
+					try {
+						const response = await fetch('catalog-data.json');
+						if (!response.ok) throw new Error('Failed to fetch catalog');
+						return await response.json();
+					} catch (error) {
+						console.error('Error fetching catalog:', error);
+						return null;
+					}
+				}
+
+				// Helper: Build a compact, relevant catalog context for the worker
+				function buildCatalogContext(catalog, message) {
+					if (!Array.isArray(catalog) || catalog.length === 0) return null;
+					const original = message || '';
+					const lower = original.toLowerCase();
+
+					let query = '';
+
+					// 1) Prefer text in quotes: "Californication"
+					const quoted = original.match(/"([^"]{2,80})"/);
+					if (quoted) {
+						query = quoted[1].toLowerCase();
+					}
+
+					// 2) Fallback: after "arrangement of ..."
+					if (!query) {
+						const m = original.match(/arrangement of\s+(.+?)(\?|$)/i);
+						if (m) {
+							query = m[1].toLowerCase();
+						}
+					}
+
+					// 3) Fallback: after "arrangements by ..." / "by ..."
+					if (!query) {
+						const mBy = original.match(/\bby\s+(.+?)(\?|$)/i);
+						if (mBy) query = (mBy[1] || '').toLowerCase();
+					}
+
+					// 4) Fallback: after "arrangements for ..." / "for ..."
+					if (!query) {
+						const mFor = original.match(/\bfor\s+(.+?)(\?|$)/i);
+						if (mFor) query = (mFor[1] || '').toLowerCase();
+					}
+
+					// Trim common trailing phrases and punctuation
+					query = (query || '').replace(/[.!,;:"“”]+$/g, '').trim();
+
+					// If query is something like "Dreams by Fleetwood Mac", prefer the part before " by "
+					if (query.includes(' by ')) {
+						query = query.split(' by ')[0].trim();
+					}
+
+					let filtered = [];
+
+					const stopwords = new Set([
+						'do','you','have','any','an','a','the','this','that','these','those','please',
+						'arrangement','arrangements','song','songs','catalog','for','by','about','of','to','in','on','with','what'
+					]);
+
+					// Score-based matching so we never send an arbitrary slice of the catalog.
+					const tokens = (query ? query : lower)
+						.split(/[^a-z0-9]+/i)
+						.map(t => t.trim().toLowerCase())
+						.filter(t => t.length >= 3 && !stopwords.has(t));
+
+					if (query) {
+						const q = query.toLowerCase();
+						filtered = catalog
+							.map(item => {
+								const title = (item.title || '').toLowerCase();
+								const composer = (item.composer || '').toLowerCase();
+								let score = 0;
+								if (title.includes(q)) score += 8;
+								if (composer.includes(q)) score += 6;
+								for (const tok of tokens) {
+									if (title.includes(tok)) score += 2;
+									if (composer.includes(tok)) score += 1;
+								}
+								return { item, score };
+							})
+							.filter(r => r.score > 0)
+							.sort((a, b) => b.score - a.score)
+							.map(r => r.item);
+					} else {
+						// No clear query: use token scoring from the full message, but require a minimum score.
+						filtered = catalog
+							.map(item => {
+								const title = (item.title || '').toLowerCase();
+								const composer = (item.composer || '').toLowerCase();
+								let score = 0;
+								for (const tok of tokens) {
+									if (title.includes(tok)) score += 2;
+									if (composer.includes(tok)) score += 1;
+								}
+								return { item, score };
+							})
+							.filter(r => r.score >= 2) // avoid dumping random items
+							.sort((a, b) => b.score - a.score)
+							.map(r => r.item);
+					}
+
+					// Hard cap to avoid huge prompts; keep first 40 relevant entries
+					if (filtered.length > 40) filtered = filtered.slice(0, 40);
+
+					// If we still have no meaningful matches, return null so the bot asks a clarifying question.
+					if (filtered.length === 0) return null;
+
+					return {
+						type: 'catalog',
+						songs: filtered.map(item => ({
+							title: item.title,
+							composer: item.composer,
+							difficulty: item.difficulty,
+							category: item.category,
+							price: item.price,
+							sheet_music_direct_url: item.sheet_music_direct_url || item.preview_url || null
+						}))
+					};
+				}
+				
+				// Helper: Check if message is about signals
+				function isSignalsQuery(text) {
+					const t = text.toLowerCase();
+					return t.includes('top') && (t.includes('buy') || t.includes('sell') || t.includes('signal'));
+				}
+				
+				// Helper: Check if message is about catalog/songs
+				function isCatalogQuery(text) {
+					const t = text.toLowerCase();
+					return t.includes('arrangement') || t.includes('song') || t.includes('catalog') || 
+					       t.includes('do you have') || t.includes('available');
+				}
+
+				form.onsubmit = async function(e) {
+					e.preventDefault();
+					const message = (input.value || '').trim();
+					if (!message) return;
+
+					// Hide prompts after first message
+					if (!prompts.classList.contains('hidden')) {
+						prompts.classList.add('hidden');
+					}
+
+					input.value = '';
+					sendBtn.disabled = true;
+					sendBtn.textContent = 'Sending...';
+
+					addMsg('You: ' + message, 'user');
+					scrollToBottom();
+
+					const loadingId = 'loading_' + Date.now();
+					addMsg('Thinking...', 'loading');
+					scrollToBottom();
+
+					try {
+						// Build context based on query type
+						let contextData = null;
+						const msgLower = message.toLowerCase();
+						
+						if (isSignalsQuery(message)) {
+							const signalsData = await fetchTopSignals();
+							if (signalsData) {
+								contextData = {
+									type: 'signals',
+									topBuy: signalsData.topBuy.map(s => ({
+										symbol: s.symbol,
+										buyScore: s.buyScore,
+										totalBuy: s.totalBuy,
+										price: s.price,
+										sector: s.sector,
+										timestamp: s.timestamp
+									})),
+									topSell: signalsData.topSell.map(s => ({
+										symbol: s.symbol,
+										sellScore: s.sellScore,
+										totalSell: s.totalSell,
+										price: s.price,
+										sector: s.sector,
+										timestamp: s.timestamp
+									}))
+								};
+							}
+						} else if (isCatalogQuery(message)) {
+							const catalog = await fetchCatalog();
+							if (catalog) {
+								contextData = buildCatalogContext(catalog, message);
+							}
+						}
+						
+						const requestBody = {
+							message: message,
+							sessionId: sessionId
+						};
+						
+						if (contextData) {
+							requestBody.context = contextData;
+						}
+
+						const response = await fetch(WORKER_ENDPOINT, {
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json',
+							},
+							body: JSON.stringify(requestBody)
+						});
+
+						// Remove loading message
+						const loadingMsg = msgs.querySelector('.chat-msg.loading');
+						if (loadingMsg) loadingMsg.remove();
+
+						if (!response.ok) {
+							const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+							addMsg('Error: ' + (errorData.error || 'Failed to get response. Please try again.'), 'error');
+							scrollToBottom();
+							return;
+						}
+
+						const data = await response.json();
+						let replyText = '';
+
+						if (data.reply) {
+							if (typeof data.reply === 'string') {
+								replyText = data.reply;
+							} else if (data.reply.answer_markdown) {
+								replyText = data.reply.answer_markdown;
+							} else if (data.reply.title) {
+								replyText = data.reply.title + '\n\n' + (data.reply.answer_markdown || JSON.stringify(data.reply, null, 2));
+							} else {
+								replyText = JSON.stringify(data.reply, null, 2);
+							}
+						} else {
+							replyText = 'No response received.';
+						}
+
+						addMsg(replyText, 'assistant');
+						scrollToBottom();
+
+					} catch (error) {
+						const loadingMsg = msgs.querySelector('.chat-msg.loading');
+						if (loadingMsg) loadingMsg.remove();
+
+						console.error('Chat error:', error);
+						addMsg('Error: Unable to connect to the assistant. Please check your connection and try again.', 'error');
+						scrollToBottom();
+					} finally {
+						sendBtn.disabled = false;
+						sendBtn.textContent = 'Send';
+						input.focus();
+					}
+				};
+
+				// Close on Escape key
+				document.addEventListener('keydown', function(e) {
+					if (e.key === 'Escape' && box.classList.contains('open')) {
+						box.classList.remove('open');
+					}
+				});
+			})();
+		</script>
+	</body>
+</html>

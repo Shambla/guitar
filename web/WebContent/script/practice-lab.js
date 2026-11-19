@@ -1,5 +1,5 @@
 /**
- * 2026-11-02 — Improv Practice is the first screen of mp3-downloads.html.
+ * 2026-11-02 — Improv Practice is the first screen of improv-practice.html (was mp3-downloads.html).
  * The same markup still lives on practice-lab.html. Reads mp3-downloads-data.json.
  * Scrolling past this screen reaches the old Browse MP3s list.
  *

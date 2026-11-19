@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="style/montserrat.css">
+		<link type="text/css" rel="stylesheet" href="style/font-awesome.css">
+		<link type="text/css" rel="stylesheet" href="style/index.css">
+		<link type="text/css" rel="stylesheet" href="style/catalog.css">
+		<link rel="shortcut icon" href="img/favico.ico" type="image/x-icon">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="script/catalog.js"></script>
+		<script type="text/javascript">
+			// Add scroll detection for mobile nav shrinking
+			window.addEventListener("scroll", function() {
+				var distance = window.pageYOffset || document.documentElement.scrollTop;
+				if(distance > 20) {
+					document.querySelector("nav").classList.add("scrolled");
+					document.getElementById("backing").classList.add("scrolled");
+				} else {
+					document.querySelector("nav").classList.remove("scrolled");
+					document.getElementById("backing").classList.remove("scrolled");
+				}
+			});
+		</script>
+		<title>Music Publications - Brian Streckfus</title>
+	</head>
+	<body class="catalog-page">
+		<nav>
+			<div id="backing"></div>
+			<div class="content">
+				<a href="index.html#bio">&#128100; BIO</a>
+				<a href="index.html#performances">&#127908; PERFORMANCES</a>
+				<a href="index.html#media">&#128247; &#9654; MEDIA</a>
+				<a href="index.html#contact">&#128236; CONTACT</a>
+				<a href="catalog.html" class="catalog-nav-link" style="font-weight: bold;">&#128220; &#127925; &#128722; CATALOG &#127911; &#127925; &#127928;</a>
+				<a href="mp3-downloads.html">&#127911; MP3 Downloads</a>
+			</div>
+		</nav>
+		
+		<div class="content catalog-content">
+			<h1>Music Publications</h1>
+			<div class="catalog-intro-row">
+				<div class="catalog-intro-main">
+					<p>Browse my complete collection of arrangements that span a vast amount of genres. My publications include playable, intuitive and visual music theory. My publications also include visually beautiful and efficient scales and chord diagrams. Each tile pulls a fresh snapshot directly from the live listing, so you can confirm the piece before jumping to Sheet Music Direct. <strong>MP3 purchases include a commercial-use license (YouTube, podcasts, client work, ads, etc.) with proof of purchase + attribution</strong> (details at the bottom of this page).</p>
+					<div style="margin: 8px 0 18px 0; display: flex; flex-wrap: wrap; gap: 10px; align-items: center;">
+						<a href="mp3-downloads.html" style="display: inline-block; font-size: 14px; padding: 10px 16px; border-radius: 8px; background: #111; border: 1px solid #111; color: #fff; text-decoration: none; font-weight: 700;">
+							🎧 MP3 Downloads
+						</a>
+						<a href="#mp3-audio-license" style="display: inline-block; font-size: 13px; padding: 8px 12px; border-radius: 999px; background: rgba(0, 0, 0, 0.06); border: 1px solid rgba(0, 0, 0, 0.15); color: #111; text-decoration: none;">
+							View MP3 Audio License
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Search + Sort - Embedded in prominent box for visibility #TODO last catalog entry was Movable Guitar Chords ID: movable-guitar-chords Price $1.99-->
+			<div style="background: #f9f9f9; border: 2px solid #ddd; border-radius: 8px; padding: 20px; margin: 25px 0; opacity: 1 !important; visibility: visible !important; display: block !important;">
+				<div class="catalog-controls" style="opacity: 1 !important; visibility: visible !important; display: flex !important; flex-wrap: wrap; gap: 12px; align-items: center;">
+					<div class="search-wrap" style="flex: 1; min-width: 200px;">
+						<input type="text" id="search-bar" placeholder="Search by title, composer, or keyword..." onkeyup="searchCatalog()" style="opacity: 1 !important; visibility: visible !important; display: block !important; width: 100%; padding: 12px 20px; font-size: 16px; border: 2px solid #333; border-radius: 4px; background: #fff; color: #111; box-sizing: border-box;">
+					</div>
+					<div class="sort-control" style="opacity: 1 !important; visibility: visible !important; display: inline-flex !important; flex-shrink: 0; z-index: 100; position: relative;">
+						<label for="sort-select">Sort:</label>
+						<select id="sort-select" onchange="sortCatalog()" style="opacity: 1 !important; visibility: visible !important;">
+							<option value="default" selected>Default</option>
+							<option value="title_asc">Title (A to Z)</option>
+							<option value="title_desc">Title (Z to A)</option>
+							<option value="composer_asc">Composer (A to Z)</option>
+							<option value="composer_desc">Composer (Z to A)</option>
+							<option value="difficulty_asc">Difficulty (Beginner to Advanced)</option>
+							<option value="difficulty_desc">Difficulty (Advanced to Beginner)</option>
+							<option value="price_asc">Price (Low to High)</option>
+							<option value="price_desc">Price (High to Low)</option>
+						</select>
+					</div>
+				</div>
+				<!-- Quick category highlight: MP3 Audio -->
+				<div style="margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap;">
+					<button class="filter-btn" onclick="filterBy('mp3', event)" style="font-weight: 700; display: inline-flex; align-items: center; gap: 8px;">
+						<span aria-hidden="true">🎧</span> MP3 Audio
+					</button>
+				</div>
+				
+				<!-- Filter Options - Inside the same box -->
+				<div class="filters" style="opacity: 1 !important; visibility: visible !important; display: block !important; margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+					<button class="filter-btn active" onclick="filterBy('all', event)">All Pieces</button>
+					<button class="filter-btn" onclick="filterBy('classical', event)">Classical</button>
+					<button class="filter-btn" onclick="filterBy('early', event)">Early</button>
+					<button class="filter-btn" onclick="filterBy('romantic', event)">Romantic</button>
+					<button class="filter-btn" onclick="filterBy('country', event)">Country</button>
+					<button class="filter-btn" onclick="filterBy('folk', event)">Folk</button>
+					<button class="filter-btn" onclick="filterBy('jazz', event)">Jazz</button>
+					<button class="filter-btn" onclick="filterBy('popular', event)">Popular</button>
+					<button class="filter-btn" onclick="filterBy('film-score', event)">Film Score</button>
+					<button class="filter-btn" onclick="filterBy('world', event)">World</button>
+					<button class="filter-btn" onclick="filterBy('traditional', event)">Traditional</button>
+					<button class="filter-btn" onclick="filterBy('holiday', event)">Holiday</button>
+					<button class="filter-btn" onclick="filterBy('theory', event)">Theory</button>
+					<button class="filter-btn" onclick="filterBy('technique', event)">Technique</button>
+					<button class="filter-btn" onclick="filterBy('ear training', event)">Ear Training</button>
+					<button class="filter-btn" onclick="filterBy('beginner', event)">Beginner</button>
+					<button class="filter-btn" onclick="filterBy('intermediate', event)">Intermediate</button>
+					<button class="filter-btn" onclick="filterBy('advanced', event)">Advanced</button>
+					<!--
+					Rap / Hip Hop filters — NOT LIVE yet (buttons stay commented).
+					Data model: keep category "mp3 audio", plus separate tags[] on items, e.g.
+					  "tags": ["mp3", "rap", "hip hop"]
+					Practice item tagged so far: Off Kilter (both catalog rows).
+
+					Deep links (also not public yet):
+					  - Code lives in script/catalog.js with CATALOG_DEEP_LINKS_LIVE = false
+					  - Local/preview only: catalog.html?catalog_preview=1&filter=rap
+					  - Also: ...&filter=hip-hop   or   ...&filter=mp3
+					  - When ready for YouTube: set CATALOG_DEEP_LINKS_LIVE = true, then
+					    https://brianstreckfus.com/catalog.html?filter=rap
+
+					<button class="filter-btn" onclick="filterBy('rap', event)">Rap</button>
+					<button class="filter-btn" onclick="filterBy('hip hop', event)">Hip Hop</button>
+					<button class="filter-btn" onclick="filterBy('rap', event)">Rap / Hip Hop Backing Tracks</button>
+					-->
+				</div>
+			</div>
+			
+			<!-- Catalog Grid (populated by JavaScript from catalog-data.json) -->
+			<!-- Updated: 2025-12-09 18:01:13 - Added 120 new entries from WEBSITE_SETUP.md (lines 204-338) -->
+			<div class="catalog-grid" id="catalog-grid">
+				<!-- Items will be dynamically loaded here -->
+				<p style="text-align: center; grid-column: 1 / -1;">Loading catalog...</p>
+			</div>
+		</div>
+		
+		<!-- MP3 Commercial Use License (Bottom of page) -->
+		<div id="mp3-audio-license" class="content" style="max-width: 1100px; margin: 60px auto 0 auto; padding: 28px; border-radius: 12px; scroll-margin-top: 90px;">
+			<h2 style="margin: 0 0 12px 0;">MP3 Audio License (Commercial Use)</h2>
+			<p style="margin: 0 0 14px 0; line-height: 1.6;">
+				This license applies to MP3 audio files (“Audio”) sold by Brian Streckfus (“Licensor”) through brianstreckfus.com and/or authorized storefronts. If you have proof of purchase, you may use the purchased Audio commercially as described below.
+			</p>
+
+			<div style="line-height: 1.65;">
+				<h3 style="margin: 18px 0 8px 0;">1) Grant of License</h3>
+				<p style="margin: 0 0 10px 0;">
+					Upon purchase, Licensor grants you (“Licensee”) a non-exclusive, non-transferable, worldwide license to use the purchased Audio in commercial and non-commercial projects, including <strong>monetized YouTube</strong>, other online video, film, television, soundtracks and sync placements, podcasts, livestreams, advertisements, games, teaching materials, and client work. You may synchronize the Audio with visual media and make minor edits needed for your project (trimming, looping, fades, timing, volume).
+				</p>
+
+				<h3 style="margin: 18px 0 8px 0;">2) Proof of Purchase Required</h3>
+				<p style="margin: 0 0 10px 0;">
+					This license is valid only if you can provide proof of purchase (receipt, order confirmation, or other verifiable record) for the specific Audio.
+				</p>
+
+				<h3 style="margin: 18px 0 8px 0;">3) Attribution Required (Where Reasonably Possible)</h3>
+				<p style="margin: 0 0 8px 0;">
+					Where credits are customary/available (e.g., YouTube description, podcast show notes, game credits), include:
+				</p>
+				<div class="license-attrib-block" style="font-family: monospace; padding: 10px 12px; border-radius: 8px; display: inline-block; margin: 0 0 10px 0;">
+					Music: [Track Title] — Brian Streckfus — brianstreckfus.com
+				</div>
+				<p style="margin: 0 0 10px 0;">
+					If space is limited, use: <span style="font-family: monospace;">Music: Brian Streckfus (brianstreckfus.com)</span>
+				</p>
+
+				<h3 style="margin: 18px 0 8px 0;">4) Restrictions (What You May NOT Do)</h3>
+				<ul style="margin: 0 0 10px 0; padding-left: 18px;">
+					<li>You may NOT resell, redistribute, or share the Audio files as standalone files (including sample packs or music libraries).</li>
+					<li>You may NOT claim authorship/ownership of the Audio.</li>
+					<li>You may NOT upload the Audio to rights-management/content-ID systems or stock-music platforms as your own.</li>
+				</ul>
+
+				<h3 style="margin: 18px 0 8px 0;">5) Client Work</h3>
+				<p style="margin: 0 0 10px 0;">
+					If you use the Audio in paid client work, the client may use it only as part of the delivered end product. The Audio file itself may not be transferred to the client for reuse in new projects unless the client purchases their own license.
+				</p>
+
+				<h3 style="margin: 18px 0 8px 0;">6) Termination</h3>
+				<p style="margin: 0 0 10px 0;">
+					If you breach this license, your rights end automatically and you must stop using the Audio.
+				</p>
+
+				<h3 style="margin: 18px 0 8px 0;">7) Ownership</h3>
+				<p style="margin: 0 0 10px 0;">
+					Licensor retains all ownership and copyright in the Audio. This license grants usage rights only.
+				</p>
+
+				<h3 style="margin: 18px 0 8px 0;">8) Contact</h3>
+				<p style="margin: 0;">
+					Questions and licensing requests: <a href="index.html#contact" style="text-decoration: underline;">Contact Brian</a>
+				</p>
+			</div>
+		</div>
+
+		<!-- Footer -->
+		<div style="text-align: center; padding: 40px 20px; margin-top: 60px; background: #f5f5f5;">
+			<p>&copy; 2025 Brian Streckfus. All sheet music available on <a href="https://www.sheetmusicdirect.com/en-US/Search.aspx?query=Brian%2BStreckfus" target="_blank" rel="noopener">Sheet Music Direct</a>.</p>
+			<a href="index.html">Back to Home</a>
+		</div>
+
+		<!-- Trading Assistant Chat Widget -->
+		<style>
+			#chatFab {
+				position: fixed;
+				right: 20px;
+				bottom: 20px;
+				z-index: 9999;
+				width: 60px;
+				height: 60px;
+				border-radius: 50%;
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				border: none;
+				color: #fff;
+				font-size: 24px;
+				cursor: pointer;
+				box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+				transition: all 0.3s ease;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			#chatFab:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 16px rgba(102, 126, 234, 0.5);
+			}
+			#chatBox {
+				position: fixed;
+				right: 20px;
+				bottom: 90px;
+				z-index: 9998;
+				width: 380px;
+				max-width: calc(100vw - 40px);
+				height: 500px;
+				max-height: calc(100vh - 120px);
+				background: rgba(0, 0, 0, 0.95);
+				border: 1px solid rgba(255, 255, 255, 0.3);
+				border-radius: 12px;
+				display: none;
+				flex-direction: column;
+				overflow: hidden;
+				box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+			}
+			#chatBox.open {
+				display: flex;
+			}
+			#chatHeader {
+				padding: 15px 18px;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				background: rgba(102, 126, 234, 0.1);
+			}
+			#chatHeader h3 {
+				margin: 0;
+				color: #fff;
+				font-size: 18px;
+				font-weight: 600;
+			}
+			#chatClose {
+				background: rgba(255, 255, 255, 0.15);
+				border: 1px solid rgba(255, 255, 255, 0.3);
+				border-radius: 6px;
+				color: #fff;
+				padding: 6px 12px;
+				cursor: pointer;
+				font-size: 14px;
+				transition: all 0.3s ease;
+			}
+			#chatClose:hover {
+				background: rgba(255, 255, 255, 0.25);
+			}
+			#chatMsgs {
+				flex: 1;
+				padding: 15px 18px;
+				overflow-y: auto;
+				overflow-x: hidden;
+				font-size: 14px;
+				line-height: 1.6;
+			}
+			#chatMsgs::-webkit-scrollbar {
+				width: 6px;
+			}
+			#chatMsgs::-webkit-scrollbar-track {
+				background: rgba(255, 255, 255, 0.05);
+			}
+			#chatMsgs::-webkit-scrollbar-thumb {
+				background: rgba(255, 255, 255, 0.2);
+				border-radius: 3px;
+			}
+			.chat-msg {
+				margin: 12px 0;
+				padding: 10px 12px;
+				border-radius: 8px;
+				word-wrap: break-word;
+				white-space: pre-wrap;
+			}
+			.chat-msg.user {
+				background: rgba(102, 126, 234, 0.2);
+				border-left: 3px solid #667eea;
+				color: rgba(255, 255, 255, 0.95);
+				margin-left: 20px;
+			}
+			.chat-msg.assistant {
+				background: rgba(255, 255, 255, 0.08);
+				border-left: 3px solid rgba(255, 255, 255, 0.4);
+				color: rgba(255, 255, 255, 0.9);
+				margin-right: 20px;
+			}
+			.chat-msg.error {
+				background: rgba(244, 67, 54, 0.2);
+				border-left: 3px solid #f44336;
+				color: rgba(255, 255, 255, 0.9);
+			}
+			.chat-msg.loading {
+				color: rgba(255, 255, 255, 0.6);
+				font-style: italic;
+			}
+			#chatForm {
+				padding: 15px 18px;
+				border-top: 1px solid rgba(255, 255, 255, 0.2);
+				display: flex;
+				gap: 10px;
+				background: rgba(0, 0, 0, 0.3);
+			}
+			#chatInput {
+				flex: 1;
+				padding: 10px 14px;
+				border: 1px solid rgba(255, 255, 255, 0.3);
+				border-radius: 6px;
+				background: rgba(255, 255, 255, 0.1);
+				color: #fff;
+				font-size: 14px;
+				outline: none;
+				transition: all 0.3s ease;
+			}
+			#chatInput:focus {
+				border-color: rgba(255, 255, 255, 0.6);
+				background: rgba(255, 255, 255, 0.15);
+			}
+			#chatInput::placeholder {
+				color: rgba(255, 255, 255, 0.5);
+			}
+			#chatSend {
+				padding: 10px 20px;
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				border: none;
+				border-radius: 6px;
+				color: #fff;
+				font-size: 14px;
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				white-space: nowrap;
+			}
+			#chatSend:hover:not(:disabled) {
+				transform: translateY(-1px);
+				box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+			}
+			#chatSend:disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+			}
+			#chatPrompts {
+				padding: 10px 18px;
+				border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+				display: flex;
+				flex-direction: column;
+				gap: 8px;
+			}
+			#chatPrompts.hidden {
+				display: none;
+			}
+			.chat-prompt {
+				padding: 10px 14px;
+				background: rgba(102, 126, 234, 0.15);
+				border: 1px solid rgba(102, 126, 234, 0.3);
+				border-radius: 6px;
+				color: rgba(255, 255, 255, 0.9);
+				font-size: 13px;
+				cursor: pointer;
+				transition: all 0.3s ease;
+				text-align: left;
+			}
+			.chat-prompt:hover {
+				background: rgba(102, 126, 234, 0.25);
+				border-color: rgba(102, 126, 234, 0.5);
+				transform: translateX(4px);
+			}
+			@media (max-width: 480px) {
+				#chatBox {
+					width: calc(100vw - 20px);
+					right: 10px;
+					bottom: 80px;
+					height: calc(100vh - 100px);
+				}
+				#chatFab {
+					right: 10px;
+					bottom: 10px;
+				}
+			}
+		</style>
+
+		<button id="chatFab" type="button" aria-label="Open Assistant Chat" title="Assistant">
+			💬
+		</button>
+
+		<div id="chatBox" role="dialog" aria-label="Assistant Chat">
+			<div id="chatHeader">
+				<h3>💬 Assistant</h3>
+				<button id="chatClose" type="button">Close</button>
+			</div>
+			<div id="chatMsgs">
+				<div class="chat-msg assistant">
+					Hello, I am your assistant on this website. I am programmed to be especially good at answering finance and music questions, using context from this website.
+				</div>
+			</div>
+			<div id="chatPrompts">
+				<div class="chat-prompt">What are today's top 3 buys and sells?</div>
+				<div class="chat-prompt">Do you have an arrangement for any songs written by The Beatles?</div>
+				<div class="chat-prompt">What assets are inside the ETF XLE?</div>
+				<div class="chat-prompt">What letter names are inside A harmonic minor?</div>
+			</div>
+			<form id="chatForm">
+				<input id="chatInput" type="text" autocomplete="off" placeholder="Ask a question..." />
+				<button id="chatSend" type="submit">Send</button>
+			</form>
+		</div>
+
+		<script>
+			(function() {
+				const WORKER_ENDPOINT = 'https://trading-assistant.brianstreckfus.workers.dev/chat';
+				const fab = document.getElementById('chatFab');
+				const box = document.getElementById('chatBox');
+				const closeBtn = document.getElementById('chatClose');
+				const form = document.getElementById('chatForm');
+				const input = document.getElementById('chatInput');
+				const msgs = document.getElementById('chatMsgs');
+				const sendBtn = document.getElementById('chatSend');
+				const prompts = document.getElementById('chatPrompts');
+
+				// Generate a session ID (persists for this browser session)
+				let sessionId = sessionStorage.getItem('trading_assistant_session_id');
+				if (!sessionId) {
+					sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+					sessionStorage.setItem('trading_assistant_session_id', sessionId);
+				}
+
+				function addMsg(text, type = 'assistant') {
+					const div = document.createElement('div');
+					div.className = 'chat-msg ' + type;
+					div.textContent = text;
+					msgs.appendChild(div);
+					msgs.scrollTop = msgs.scrollHeight;
+				}
+
+				function scrollToBottom() {
+					msgs.scrollTop = msgs.scrollHeight;
+				}
+
+				fab.onclick = function() {
+					box.classList.add('open');
+					input.focus();
+					scrollToBottom();
+				};
+
+				closeBtn.onclick = function() {
+					box.classList.remove('open');
+				};
+
+				// Handle example prompt clicks
+				const promptButtons = prompts.querySelectorAll('.chat-prompt');
+				promptButtons.forEach(function(btn) {
+					btn.onclick = function() {
+						const promptText = btn.textContent.trim();
+						input.value = promptText;
+						input.focus();
+						// Auto-submit the prompt
+						form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+					};
+				});
+
+				// Helper: Fetch top 3 buys and sells from signals.json
+				async function fetchTopSignals() {
+					try {
+						const response = await fetch('signals/signals.json');
+						if (!response.ok) throw new Error('Failed to fetch signals');
+						const signals = await response.json();
+						
+						// Filter stock signals only
+						const stockSignals = signals.filter(s => {
+							const symbol = (s.symbol || '').toUpperCase();
+							return !symbol.includes('/USD') && !symbol.includes('/USDT') && symbol.length <= 5;
+						});
+						
+						// Calculate scores (same logic as signals.html)
+						const BUY_THRESHOLD = 16;
+						const SELL_THRESHOLD = 13;
+						
+						const signalsWithScores = stockSignals.map(s => {
+							let buyScore = s.buy_score || 0;
+							let sellScore = s.sell_score || 0;
+							const note = s.note || '';
+							const buyMatch = note.match(/buy\s+(\d+)\/(\d+)/i);
+							const sellMatch = note.match(/sell\s+(\d+)\/(\d+)/i);
+							if (buyMatch) buyScore = parseInt(buyMatch[1]);
+							if (sellMatch) sellScore = parseInt(sellMatch[1]);
+							
+							return {
+								...s,
+								buyScore: buyScore,
+								sellScore: sellScore,
+								totalBuy: buyMatch ? parseInt(buyMatch[2]) : 38,
+								totalSell: sellMatch ? parseInt(sellMatch[2]) : 37
+							};
+						});
+						
+						// Get top 3 buys
+						const seenBuySymbols = new Set();
+						const topBuy = signalsWithScores
+							.filter(s => s.action === 'buy' || s.buyScore >= s.sellScore)
+							.sort((a, b) => b.buyScore - a.buyScore)
+							.filter(s => {
+								if (seenBuySymbols.has(s.symbol)) return false;
+								seenBuySymbols.add(s.symbol);
+								return true;
+							})
+							.slice(0, 3);
+						
+						// Get top 3 sells
+						const seenSellSymbols = new Set();
+						const topSell = signalsWithScores
+							.filter(s => s.action === 'sell' || s.sellScore >= s.buyScore)
+							.sort((a, b) => b.sellScore - a.sellScore)
+							.filter(s => {
+								if (seenSellSymbols.has(s.symbol)) return false;
+								seenSellSymbols.add(s.symbol);
+								return true;
+							})
+							.slice(0, 3);
+						
+						return { topBuy, topSell };
+					} catch (error) {
+						console.error('Error fetching signals:', error);
+						return null;
+					}
+				}
+				
+				// Helper: Fetch catalog data
+				async function fetchCatalog() {
+					try {
+						const response = await fetch('catalog-data.json');
+						if (!response.ok) throw new Error('Failed to fetch catalog');
+						return await response.json();
+					} catch (error) {
+						console.error('Error fetching catalog:', error);
+						return null;
+					}
+				}
+
+				// Helper: Build a compact, relevant catalog context for the worker
+				function buildCatalogContext(catalog, message) {
+					if (!Array.isArray(catalog) || catalog.length === 0) return null;
+					const original = message || '';
+					const lower = original.toLowerCase();
+
+					let query = '';
+
+					// 1) Prefer text in quotes: "Californication"
+					const quoted = original.match(/"([^"]{2,80})"/);
+					if (quoted) {
+						query = quoted[1].toLowerCase();
+					}
+
+					// 2) Fallback: after "arrangement of ..."
+					if (!query) {
+						const m = original.match(/arrangement of\s+(.+?)(\?|$)/i);
+						if (m) {
+							query = m[1].toLowerCase();
+						}
+					}
+
+					// 3) Fallback: after "arrangements by ..." / "by ..."
+					if (!query) {
+						const mBy = original.match(/\bby\s+(.+?)(\?|$)/i);
+						if (mBy) query = (mBy[1] || '').toLowerCase();
+					}
+
+					// 4) Fallback: after "arrangements for ..." / "for ..."
+					if (!query) {
+						const mFor = original.match(/\bfor\s+(.+?)(\?|$)/i);
+						if (mFor) query = (mFor[1] || '').toLowerCase();
+					}
+
+					// Trim common trailing phrases and punctuation
+					query = (query || '').replace(/[.!,;:"“”]+$/g, '').trim();
+
+					// If query is something like "Dreams by Fleetwood Mac", prefer the part before " by "
+					if (query.includes(' by ')) {
+						query = query.split(' by ')[0].trim();
+					}
+
+					let filtered = [];
+
+					const stopwords = new Set([
+						'do','you','have','any','an','a','the','this','that','these','those','please',
+						'arrangement','arrangements','song','songs','catalog','for','by','about','of','to','in','on','with','what'
+					]);
+
+					// Score-based matching so we never send an arbitrary slice of the catalog.
+					const tokens = (query ? query : lower)
+						.split(/[^a-z0-9]+/i)
+						.map(t => t.trim().toLowerCase())
+						.filter(t => t.length >= 3 && !stopwords.has(t));
+
+					if (query) {
+						const q = query.toLowerCase();
+						filtered = catalog
+							.map(item => {
+								const title = (item.title || '').toLowerCase();
+								const composer = (item.composer || '').toLowerCase();
+								let score = 0;
+								if (title.includes(q)) score += 8;
+								if (composer.includes(q)) score += 6;
+								for (const tok of tokens) {
+									if (title.includes(tok)) score += 2;
+									if (composer.includes(tok)) score += 1;
+								}
+								return { item, score };
+							})
+							.filter(r => r.score > 0)
+							.sort((a, b) => b.score - a.score)
+							.map(r => r.item);
+					} else {
+						// No clear query: use token scoring from the full message, but require a minimum score.
+						filtered = catalog
+							.map(item => {
+								const title = (item.title || '').toLowerCase();
+								const composer = (item.composer || '').toLowerCase();
+								let score = 0;
+								for (const tok of tokens) {
+									if (title.includes(tok)) score += 2;
+									if (composer.includes(tok)) score += 1;
+								}
+								return { item, score };
+							})
+							.filter(r => r.score >= 2) // avoid dumping random items
+							.sort((a, b) => b.score - a.score)
+							.map(r => r.item);
+					}
+
+					// Hard cap to avoid huge prompts; keep first 40 relevant entries
+					if (filtered.length > 40) filtered = filtered.slice(0, 40);
+
+					// If we still have no meaningful matches, return null so the bot asks a clarifying question.
+					if (filtered.length === 0) return null;
+
+					return {
+						type: 'catalog',
+						songs: filtered.map(item => ({
+							title: item.title,
+							composer: item.composer,
+							difficulty: item.difficulty,
+							category: item.category,
+							price: item.price,
+							sheet_music_direct_url: item.sheet_music_direct_url || item.preview_url || null
+						}))
+					};
+				}
+				
+				// Helper: Check if message is about signals
+				function isSignalsQuery(text) {
+					const t = text.toLowerCase();
+					return t.includes('top') && (t.includes('buy') || t.includes('sell') || t.includes('signal'));
+				}
+				
+				// Helper: Check if message is about catalog/songs
+				function isCatalogQuery(text) {
+					const t = text.toLowerCase();
+					return t.includes('arrangement') || t.includes('song') || t.includes('catalog') || 
+					       t.includes('do you have') || t.includes('available');
+				}
+
+				form.onsubmit = async function(e) {
+					e.preventDefault();
+					const message = (input.value || '').trim();
+					if (!message) return;
+
+					// Hide prompts after first message
+					if (!prompts.classList.contains('hidden')) {
+						prompts.classList.add('hidden');
+					}
+
+					input.value = '';
+					sendBtn.disabled = true;
+					sendBtn.textContent = 'Sending...';
+
+					addMsg('You: ' + message, 'user');
+					scrollToBottom();
+
+					const loadingId = 'loading_' + Date.now();
+					addMsg('Thinking...', 'loading');
+					scrollToBottom();
+
+					try {
+						// Build context based on query type
+						let contextData = null;
+						const msgLower = message.toLowerCase();
+						
+						if (isSignalsQuery(message)) {
+							const signalsData = await fetchTopSignals();
+							if (signalsData) {
+								contextData = {
+									type: 'signals',
+									topBuy: signalsData.topBuy.map(s => ({
+										symbol: s.symbol,
+										buyScore: s.buyScore,
+										totalBuy: s.totalBuy,
+										price: s.price,
+										sector: s.sector,
+										timestamp: s.timestamp
+									})),
+									topSell: signalsData.topSell.map(s => ({
+										symbol: s.symbol,
+										sellScore: s.sellScore,
+										totalSell: s.totalSell,
+										price: s.price,
+										sector: s.sector,
+										timestamp: s.timestamp
+									}))
+								};
+							}
+						} else if (isCatalogQuery(message)) {
+							const catalog = await fetchCatalog();
+							if (catalog) {
+								contextData = buildCatalogContext(catalog, message);
+							}
+						}
+						
+						const requestBody = {
+							message: message,
+							sessionId: sessionId
+						};
+						
+						if (contextData) {
+							requestBody.context = contextData;
+						}
+
+						const response = await fetch(WORKER_ENDPOINT, {
+							method: 'POST',
+							headers: {
+								'Content-Type': 'application/json',
+							},
+							body: JSON.stringify(requestBody)
+						});
+
+						// Remove loading message
+						const loadingMsg = msgs.querySelector('.chat-msg.loading');
+						if (loadingMsg) loadingMsg.remove();
+
+						if (!response.ok) {
+							const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+							addMsg('Error: ' + (errorData.error || 'Failed to get response. Please try again.'), 'error');
+							scrollToBottom();
+							return;
+						}
+
+						const data = await response.json();
+						let replyText = '';
+
+						if (data.reply) {
+							if (typeof data.reply === 'string') {
+								replyText = data.reply;
+							} else if (data.reply.answer_markdown) {
+								replyText = data.reply.answer_markdown;
+							} else if (data.reply.title) {
+								replyText = data.reply.title + '\n\n' + (data.reply.answer_markdown || JSON.stringify(data.reply, null, 2));
+							} else {
+								replyText = JSON.stringify(data.reply, null, 2);
+							}
+						} else {
+							replyText = 'No response received.';
+						}
+
+						addMsg(replyText, 'assistant');
+						scrollToBottom();
+
+					} catch (error) {
+						const loadingMsg = msgs.querySelector('.chat-msg.loading');
+						if (loadingMsg) loadingMsg.remove();
+
+						console.error('Chat error:', error);
+						addMsg('Error: Unable to connect to the assistant. Please check your connection and try again.', 'error');
+						scrollToBottom();
+					} finally {
+						sendBtn.disabled = false;
+						sendBtn.textContent = 'Send';
+						input.focus();
+					}
+				};
+
+				// Close on Escape key
+				document.addEventListener('keydown', function(e) {
+					if (e.key === 'Escape' && box.classList.contains('open')) {
+						box.classList.remove('open');
+					}
+				});
+			})();
+		</script>
+	</body>
+</html>
+

@@ -22,11 +22,42 @@ The other filenames with no key at all:
 **TODO:** Create Stripe Payment Links for all Reggae collection tracks and paste `buy.stripe.com` URLs into `mp3-downloads-data.json` (`collection: "reggae"`). Success URLs use `?track=<id>&from=mp3&paid=true` (see DIRECT_AUDIO_SALES.md).
 
 ## MP3 Downloads — teacher / dev unlock
-**Done (convenience gate):** `mp3-downloads.html?dev=<secret>` unlocks full MP3 download buttons for lesson prep (sessionStorage; also works on `audio-purchase.html`). Secret lives in `script/mp3-downloads.js` + `audio-purchase.html`. Not real DRM — change secret if it leaks.
+**Done (convenience gate):** `improv-practice.html?dev=<secret>` unlocks full MP3 download buttons for lesson prep (sessionStorage; also works on `audio-purchase.html`). Secret lives in `script/mp3-downloads.js` + `audio-purchase.html`. Not real DRM — change secret if it leaks.
 
-**Full MP3s:** kebab-case files under `web/WebContent/audio/fulldownloads/` (paired with `audio/previews/*-30s.mp3`). Tracked in git (private repo) so `master` deploys to S3. Teacher + Stripe both use those paths.
+**Full MP3s:** kebab-case files under `web/WebContent/audio/fulldownloads/` (paired with `audio/previews/*-60s.mp3` since 2026-11-03). Tracked in git (private repo) so `master` deploys to S3. Teacher + Stripe both use those paths.
 
 **Catalog tail (2026-09-28):** Last file in `fulldownloads` / last JSON row = **Choro 4** (`choro-4-f-minor-c-phrygian`). Next work = export next MP3 → both audio folders → new `mp3-downloads-data.json` entry → Stripe Payment Link.
+
+## Improv Practice — YouTube picture-in-picture (2026-11-05)
+**TODO:** On `mp3-downloads.html`, play a YouTube video (lesson or jam-along) in a small floating player, so it keeps playing while someone picks a key, reads the scale chart, or scrolls to Browse MP3s.
+
+- A page cannot force a YouTube embed into the browser's own picture-in-picture. The embed is a cross-origin iframe, and that call only works on a `<video>` the page owns.
+- **Works everywhere:** a fixed corner mini player (CSS `position: fixed`, drag or snap to a corner, close button) that holds the same `youtube-nocookie.com` iframe. Shrinks when the user scrolls.
+- **Chrome / Edge desktop:** Document Picture-in-Picture (`documentPictureInPicture.requestWindow()`) can move the iframe into a real always-on-top window. Feature-detect it and fall back to the corner player.
+- **iPhone Safari:** true PiP only works on native `<video>`; YouTube's own PiP needs the YouTube app (often Premium). Use the corner player there.
+- Sideways phones: the screen is already tight (menu button, chart, one-row player at the bottom). The mini player must not cover the key and genre boxes or the bottom player; hide it or keep it to one corner of the chart.
+- Pick which videos: per key or genre (for example a lesson for the selected scale), or one fixed jam video to start.
+
+**Status (2026-11-07):** Built in `mp3-downloads.html` as a draggable corner mini player with YouTube search (uses the public key in `script/index.js`; restrict that key to brianstreckfus.com in Google Cloud). Not committed or deployed yet.
+
+## Chat assistant — train it on more of the catalog (2026-11-08)
+**TODO:** The Cloudflare Worker (`Desktop/trading-assistant/worker2.js`, live as `trading-assistant.brianstreckfus.workers.dev`) now runs `@cf/openai/gpt-oss-120b`. It has no training of its own; it only knows the catalog through `catalog-data.json`, which the pages search and send with each question (up to 40 matches with Sheet Music Direct links). That list is a few months old and was made quickly, so answers are only as good as it is.
+
+- Songs inside books are invisible. "Do you have Greensleeves?" says no, but it is in *The Essential Beginner's Guitar Songbook*. Add each book's song list (title, composer, book link) to `catalog-data.json`.
+- Older entries get skipped. 9 Bach items exist, but it only listed the 3 newer ones with "Bach" in the title and a URL. Fill in missing `sheet_music_direct_url` and composer names on the old rows (e.g. "Minuet BWV 114", "Cello Suite no 3 Bourree 1").
+- Refresh the list against the current Sheet Music Direct storefront and remove dead or duplicate rows.
+- If simple keyword matching stops being enough (typos, "something sad for beginners"), look at Cloudflare Vectorize / AutoRAG for meaning-based search instead of fine-tuning. Workers AI cannot fine-tune gpt-oss.
+- The chat windows on `index.html`, `catalog.html`, and `signals.html` print plain text, so the new model's **bold** shows as `**asterisks**`. Render basic markdown there.
+- Old Worker code before the model switch: `Desktop/trading-assistant/worker_live_backup_2026-11-08.js`.
+
+## Landing page — AI chat bot (2026-11-05)
+**TODO:** A small chat box on `index.html` that answers music questions. Test question: **"What key is Metallica – Nothing Else Matters in?"** (Expected: E minor.)
+
+- The site is static S3 + CloudFront, so there is no server for this. It needs a small backend (AWS Lambda + API Gateway on the same AWS account, or a Cloudflare Worker) that holds the AI API key. **Never put the API key in page JavaScript.**
+- Ground the answers in the site's own material where it can: song key → link to Improv Practice with that key already picked (`improv-practice.html?key=E%20minor`), the free scale PDFs, sheet music in `catalog-data.json`, and the MP3 catalog in `mp3-downloads-data.json`.
+- Give keys, chord names, and scales. **Do not** paste lyrics or full tabs of copyrighted songs.
+- Rate-limit per visitor and cap monthly spend so a bot cannot run up the AI bill. Show a short "AI answers can be wrong" line.
+- Keys can be ambiguous (relative major/minor, capo, tuned-down recordings). The answer should say so when it is not clear.
 
 ## 🔄 Subscription Section (For signals.html)
 
