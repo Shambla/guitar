@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-11-20T14:10:12.914413Z",
+    "received_at": "2026-11-20T14:10:12.914517Z",
+    "id": "2026-11-20T14:10:12.914517Z-HEX/DAI-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "CRV/USD",
     "quantity": 517.5983436853002,
     "price": 0.193,
