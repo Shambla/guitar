@@ -2300,6 +2300,8 @@
 			if (!screen || !form) return;
 
 			var ENDPOINT = 'https://trading-assistant.brianstreckfus.workers.dev/chat';
+			// Miss path after song-keys.json: scrape a public Ultimate Guitar Chords chart.
+			var CHORDS_ENDPOINT = 'https://trading-assistant.brianstreckfus.workers.dev/song-chords';
 			// The worker's default 8B model guesses keys wrong; gpt-oss-120b got them right in testing.
 			var MODEL = '@cf/openai/gpt-oss-120b';
 			var DEFAULT_Q = 'What key and what is the chord progression of ';
@@ -2517,20 +2519,55 @@
 						});
 				}
 
-				var fromList = false;
+				// Ultimate Guitar miss-path (worker scrapes a public Chords chart).
+				function askUltimateGuitar(songQuery) {
+					return fetch(CHORDS_ENDPOINT, {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({ query: songQuery })
+					})
+						.then(function (response) { return response.json().catch(function () { return null; }); })
+						.then(function (data) {
+							if (!data || !data.ok || !data.reply) return null;
+							return data;
+						})
+						.catch(function () { return null; });
+				}
+
+				// Order: checked JSON → Ultimate Guitar → AI estimate. Label the source for transparency.
+				var sourceKind = 'ai';
+				var sourceUrl = null;
 				loadSongList()
 					.then(function (songs) {
 						var known = findSong(songs, song || question);
-						if (!known) return ask(1);
-						fromList = true;
-						return knownAnswer(known);
+						if (known) {
+							sourceKind = 'list';
+							return { text: knownAnswer(known) };
+						}
+						return askUltimateGuitar(song || question).then(function (ug) {
+							if (ug) {
+								sourceKind = 'ug';
+								sourceUrl = ug.url || null;
+								return { text: ug.reply };
+							}
+							sourceKind = 'ai';
+							return ask(1).then(function (text) { return { text: text }; });
+						});
 					})
-					.then(function (text) {
+					.then(function (result) {
+						var text = result && result.text ? result.text : '';
 						body.textContent = text;
 						var keyLine = text.match(/^\s*Key:\s*(.+)$/im);
 						var chosen = keyLine && selectKey(keyLine[1]);
-						if (fromList) addNote('✓ Checked answer');
+						if (sourceKind === 'list') addNote('✓ Checked answer');
+						else if (sourceKind === 'ug') addNote('Ultimate Guitar');
+						else addNote('AI estimate');
 						if (chosen) addNote('Scale chart switched to ' + chosen);
+						if (sourceKind === 'ug' && sourceUrl) {
+							addAction('Open Ultimate Guitar chart', function () {
+								window.open(sourceUrl, '_blank', 'noopener');
+							});
+						}
 						var ytForm = document.getElementById('lab-pip-search');
 						var ytInput = document.getElementById('lab-pip-q');
 						if (ytForm && ytInput && song) {
