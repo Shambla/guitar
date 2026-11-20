@@ -626,6 +626,107 @@
 			flex-wrap: nowrap;
 			gap: 8px;
 			align-items: end;
+			position: relative;
+		}
+
+		/* 2026-11-19 — First-visit / replayable coachmarks for Improv Practice. */
+		.improv-screen .lab-tour-help {
+			flex: 0 0 auto;
+			align-self: center;
+			width: 34px;
+			height: 34px;
+			border-radius: 999px;
+			border: 1px solid rgba(224, 177, 90, 0.55);
+			background: rgba(224, 177, 90, 0.12);
+			color: var(--lab-accent);
+			font: inherit;
+			font-size: 1rem;
+			font-weight: 700;
+			line-height: 1;
+			cursor: pointer;
+			z-index: 6;
+		}
+
+		.improv-screen .lab-tour-help[aria-pressed="true"] {
+			background: var(--lab-accent);
+			color: var(--lab-ink);
+			border-color: var(--lab-accent);
+		}
+
+		.improv-screen .lab-tour-help:focus-visible {
+			outline: 2px solid var(--lab-accent);
+			outline-offset: 2px;
+		}
+
+		.improv-screen .lab-tour-spot {
+			position: absolute;
+			z-index: 40;
+			pointer-events: none;
+			border-radius: 12px;
+			box-shadow:
+				0 0 0 2px rgba(224, 177, 90, 0.95),
+				0 0 0 9999px rgba(6, 8, 12, 0.62);
+			transition: top 0.18s ease, left 0.18s ease, width 0.18s ease, height 0.18s ease;
+		}
+
+		.improv-screen .lab-tour-tip {
+			position: absolute;
+			z-index: 41;
+			max-width: min(320px, calc(100% - 24px));
+			padding: 12px 14px;
+			border-radius: 12px;
+			border: 1px solid rgba(224, 177, 90, 0.45);
+			background: #161b22;
+			color: var(--lab-text);
+			box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+		}
+
+		.improv-screen .lab-tour-tip[hidden],
+		.improv-screen .lab-tour-spot[hidden] { display: none; }
+
+		.improv-screen .lab-tour-tip strong {
+			display: block;
+			margin: 0 0 6px;
+			color: var(--lab-accent);
+			font-size: 0.95rem;
+		}
+
+		.improv-screen .lab-tour-tip p {
+			margin: 0 0 10px;
+			font-size: 0.86rem;
+			line-height: 1.4;
+			color: rgba(243, 239, 230, 0.88);
+		}
+
+		.improv-screen .lab-tour-tip .lab-tour-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+			align-items: center;
+		}
+
+		.improv-screen .lab-tour-tip button {
+			padding: 6px 12px;
+			border-radius: 999px;
+			border: 1px solid var(--lab-line);
+			background: transparent;
+			color: var(--lab-text);
+			font: inherit;
+			font-size: 0.78rem;
+			cursor: pointer;
+		}
+
+		.improv-screen .lab-tour-tip button.lab-tour-next {
+			border-color: rgba(224, 177, 90, 0.65);
+			background: rgba(224, 177, 90, 0.16);
+			color: var(--lab-accent);
+			font-weight: 700;
+		}
+
+		.improv-screen .lab-tour-tip .lab-tour-step {
+			margin-left: auto;
+			font-size: 0.72rem;
+			color: var(--lab-muted);
 		}
 
 		.improv-screen .lab-field {
@@ -1381,11 +1482,11 @@
 
 		<div class="lab-app">
 			<div class="lab-bar">
-				<label class="lab-field">
+				<label class="lab-field" id="lab-tour-key">
 					<span>Key</span>
 					<select id="lab-key"></select>
 				</label>
-				<label class="lab-field">
+				<label class="lab-field" id="lab-tour-genre">
 					<span>Genre</span>
 					<select id="lab-genre"></select>
 				</label>
@@ -1396,6 +1497,7 @@
 						<button type="button" class="lab-ask-toggle" id="lab-ask-toggle" aria-expanded="true" aria-controls="lab-ask-q" title="Hide or show the song question box">&#128172;</button>
 					</div>
 				</form>
+				<button type="button" class="lab-tour-help" id="lab-tour-help" aria-pressed="false" aria-label="Show Improv Practice tour" title="Tour: what each control is for">?</button>
 				<a class="lab-store" href="#browse-mp3s">Browse MP3s</a>
 			</div>
 
@@ -1460,6 +1562,18 @@
 			<div class="lab-pip-video" id="lab-pip-video" hidden></div>
 		</div>
 		<button type="button" class="lab-pip-fab" id="lab-pip-fab" aria-label="Show YouTube player" hidden>&#9654;</button>
+
+		<!-- 2026-11-19: coachmarks live on .improv-screen so they are not clipped by .lab-app -->
+		<div class="lab-tour-spot" id="lab-tour-spot" hidden></div>
+		<div class="lab-tour-tip" id="lab-tour-tip" role="dialog" aria-modal="false" aria-labelledby="lab-tour-title" hidden>
+			<strong id="lab-tour-title"></strong>
+			<p id="lab-tour-body"></p>
+			<div class="lab-tour-actions">
+				<button type="button" id="lab-tour-skip">Skip</button>
+				<button type="button" class="lab-tour-next" id="lab-tour-next">Next</button>
+				<span class="lab-tour-step" id="lab-tour-step"></span>
+			</div>
+		</div>
 
 		<section class="lab-answer" id="lab-answer" aria-live="polite" hidden>
 			<div class="lab-answer-head">
@@ -2433,6 +2547,160 @@
 						body.classList.add('mp3-error');
 					});
 			});
+		})();
+
+		/* 2026-11-19 — Improv Practice coachmark tour (first visit + ? replay).
+		   Order puts Ask + YouTube first (main jam loop), then Key / Genre for
+		   backing-track filters. Genre is MP3-catalog only; Key also drives the chart. */
+		(function () {
+			var screen = document.querySelector('.improv-screen');
+			var helpBtn = document.getElementById('lab-tour-help');
+			var spot = document.getElementById('lab-tour-spot');
+			var tip = document.getElementById('lab-tour-tip');
+			var titleEl = document.getElementById('lab-tour-title');
+			var bodyEl = document.getElementById('lab-tour-body');
+			var stepEl = document.getElementById('lab-tour-step');
+			var nextBtn = document.getElementById('lab-tour-next');
+			var skipBtn = document.getElementById('lab-tour-skip');
+			if (!screen || !helpBtn || !spot || !tip) return;
+
+			var TOUR_KEY = 'improvPracticeTourSeen';
+			var index = -1;
+			var active = false;
+
+			var steps = [
+				{
+					pick: function () { return document.getElementById('lab-ask'); },
+					title: 'Ask about a song — start here',
+					body: 'This is the most useful box for learning a tune. Type a song title (it starts with “What key and what is the chord progression of…”) and get key, chords, and a scale tip. The chart can switch to that key for you.',
+					prepare: function () {
+						var form = document.getElementById('lab-ask');
+						var toggle = document.getElementById('lab-ask-toggle');
+						if (form && toggle && form.classList.contains('lab-ask-collapsed')) toggle.click();
+					}
+				},
+				{
+					pick: function () {
+						var pip = document.getElementById('lab-pip');
+						var fab = document.getElementById('lab-pip-fab');
+						if (window.matchMedia && window.matchMedia('(max-width: 540px) and (orientation: portrait)').matches) {
+							return helpBtn;
+						}
+						if (pip && !pip.hidden) return pip;
+						if (fab && !fab.hidden) return fab;
+						return pip || fab || helpBtn;
+					},
+					title: 'YouTube mini player — jam along',
+					body: 'Second must-have: search or paste a YouTube lesson / backing track. It floats while you read the chart. On a phone in portrait this player hides — turn sideways to use it.',
+					prepare: function () {
+						var fab = document.getElementById('lab-pip-fab');
+						if (fab && !fab.hidden) fab.click();
+					}
+				},
+				{
+					pick: function () { return document.getElementById('lab-tour-key'); },
+					title: 'Key',
+					body: 'Picks the scale chart and filters your MP3 backing tracks to that key. Useful with YouTube too: after the song box answers, the chart often jumps to the song’s key so you can jam over the video.'
+				},
+				{
+					pick: function () { return document.getElementById('lab-tour-genre'); },
+					title: 'Genre (backing tracks only)',
+					body: 'Filters the MP3 store / bottom player by style (reggae, jazz, etc.). It does not change YouTube search — that is only in the mini player. Use Genre when you want a catalog beat in a mood.'
+				}
+			];
+
+			function seen() {
+				try { return localStorage.getItem(TOUR_KEY) === '1'; } catch (e) { return false; }
+			}
+			function markSeen() {
+				try { localStorage.setItem(TOUR_KEY, '1'); } catch (e) {}
+			}
+			function clearSeen() {
+				try { localStorage.removeItem(TOUR_KEY); } catch (e) {}
+			}
+
+			function placeTip(anchor) {
+				var sRect = screen.getBoundingClientRect();
+				var aRect = anchor.getBoundingClientRect();
+				var pad = 6;
+				spot.style.top = (aRect.top - sRect.top - pad) + 'px';
+				spot.style.left = (aRect.left - sRect.left - pad) + 'px';
+				spot.style.width = (aRect.width + pad * 2) + 'px';
+				spot.style.height = (aRect.height + pad * 2) + 'px';
+				spot.hidden = false;
+
+				tip.hidden = false;
+				var tipW = Math.min(320, screen.clientWidth - 24);
+				tip.style.width = tipW + 'px';
+				var tipH = tip.offsetHeight || 140;
+				var left = aRect.left - sRect.left;
+				left = Math.max(12, Math.min(left, screen.clientWidth - tipW - 12));
+				var below = aRect.bottom - sRect.top + 10;
+				var above = aRect.top - sRect.top - tipH - 10;
+				var top = below + tipH < screen.clientHeight - 8 ? below : Math.max(8, above);
+				tip.style.left = left + 'px';
+				tip.style.top = top + 'px';
+			}
+
+			function showStep(i) {
+				index = i;
+				var step = steps[i];
+				if (!step) { stopTour(true); return; }
+				if (step.prepare) step.prepare();
+				titleEl.textContent = step.title;
+				bodyEl.textContent = step.body;
+				stepEl.textContent = (i + 1) + ' / ' + steps.length;
+				nextBtn.textContent = i === steps.length - 1 ? 'Done' : 'Next';
+				var anchor = step.pick();
+				if (!anchor) { showStep(i + 1); return; }
+				requestAnimationFrame(function () { placeTip(anchor); });
+			}
+
+			function stopTour(completed) {
+				active = false;
+				index = -1;
+				spot.hidden = true;
+				tip.hidden = true;
+				helpBtn.setAttribute('aria-pressed', 'false');
+				helpBtn.setAttribute('aria-label', 'Show Improv Practice tour');
+				helpBtn.title = 'Tour: what each control is for';
+				if (completed) markSeen();
+			}
+
+			function startTour() {
+				active = true;
+				helpBtn.setAttribute('aria-pressed', 'true');
+				helpBtn.setAttribute('aria-label', 'Hide Improv Practice tour');
+				helpBtn.title = 'Hide tour';
+				showStep(0);
+			}
+
+			helpBtn.addEventListener('click', function () {
+				if (active) stopTour(false);
+				else {
+					clearSeen();
+					startTour();
+				}
+			});
+			nextBtn.addEventListener('click', function () {
+				if (index >= steps.length - 1) stopTour(true);
+				else showStep(index + 1);
+			});
+			skipBtn.addEventListener('click', function () { stopTour(true); });
+			window.addEventListener('resize', function () {
+				if (!active || index < 0) return;
+				var step = steps[index];
+				var anchor = step && step.pick();
+				if (anchor) placeTip(anchor);
+			});
+			document.addEventListener('keydown', function (event) {
+				if (!active) return;
+				if (event.key === 'Escape') stopTour(true);
+			});
+
+			if (!seen()) {
+				setTimeout(startTour, 500);
+			}
 		})();
 	</script>
 </body>
