@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "HEX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-11-20T06:02:22.227391Z",
+    "received_at": "2026-11-20T06:02:22.227531Z",
+    "id": "2026-11-20T06:02:22.227531Z-HEX/DAI-sell"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 163.80999755859375,
