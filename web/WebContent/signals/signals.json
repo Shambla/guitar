@@ -1,6 +1,28 @@
 [
   {
     "action": "sell",
+    "symbol": "BNB/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-11-22T04:00:23.739625Z",
+    "received_at": "2026-11-22T04:00:23.739728Z",
+    "id": "2026-11-22T04:00:23.739728Z-BNB/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "TAO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-11-22T04:00:19.464972Z",
+    "received_at": "2026-11-22T04:00:19.465111Z",
+    "id": "2026-11-22T04:00:19.465111Z-TAO/USD-sell"
+  },
+  {
+    "action": "sell",
     "symbol": "FET/USD",
     "quantity": 0.03850811,
     "price": 0.10788,
