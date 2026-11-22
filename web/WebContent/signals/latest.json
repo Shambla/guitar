@@ -1,11 +1,11 @@
 {
   "action": "sell",
-  "symbol": "CRV/USD",
-  "quantity": 510.3,
-  "price": 0.177,
+  "symbol": "FET/USD",
+  "quantity": 0.03850811,
+  "price": 0.10788,
   "source": "MASTER_BOT_162",
   "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-  "timestamp": "2026-11-22T02:07:21.340114Z",
-  "received_at": "2026-11-22T02:07:21.340136Z",
-  "id": "2026-11-22T02:07:21.340136Z-CRV/USD-sell"
+  "timestamp": "2026-11-22T03:01:14.478479Z",
+  "received_at": "2026-11-22T03:01:14.478496Z",
+  "id": "2026-11-22T03:01:14.478496Z-FET/USD-sell"
 }
