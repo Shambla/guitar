@@ -1,5 +1,27 @@
 [
   {
+    "action": "buy",
+    "symbol": "TAO/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-11-22T22:00:23.120972Z",
+    "received_at": "2026-11-22T22:00:23.120990Z",
+    "id": "2026-11-22T22:00:23.120990Z-TAO/USD-buy"
+  },
+  {
+    "action": "sell",
+    "symbol": "NEAR/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-11-22T22:00:20.291446Z",
+    "received_at": "2026-11-22T22:00:20.293519Z",
+    "id": "2026-11-22T22:00:20.293519Z-NEAR/USD-sell"
+  },
+  {
     "action": "sell",
     "symbol": "TAO/USD",
     "quantity": 0.0001,
@@ -3277,38 +3299,5 @@
     "timestamp": "2026-11-15T22:06:03.303691Z",
     "received_at": "2026-11-15T22:06:03.304838Z",
     "id": "2026-11-15T22:06:03.304838Z-CRV/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "CRV/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-11-15T22:00:22.188286Z",
-    "received_at": "2026-11-15T22:00:22.188306Z",
-    "id": "2026-11-15T22:00:22.188306Z-CRV/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "TAO/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-11-15T22:00:20.729811Z",
-    "received_at": "2026-11-15T22:00:20.730005Z",
-    "id": "2026-11-15T22:00:20.730005Z-TAO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "HEX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-11-15T20:06:57.286014Z",
-    "received_at": "2026-11-15T20:06:57.286251Z",
-    "id": "2026-11-15T20:06:57.286251Z-HEX/DAI-buy"
   }
 ]
