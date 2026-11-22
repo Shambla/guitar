@@ -2522,9 +2522,9 @@
 						});
 				}
 
-				// Ultimate Guitar miss-path (worker scrapes a public Chords chart).
-				// excludeUrls skips charts already shown when the student hits "Try another chart".
-				function askUltimateGuitar(songQuery, excludeUrls) {
+				// Chart scrape miss-path (worker): Ultimate Guitar versions, then Songsterr backup.
+				// excludeUrls skips charts already shown when the student hits Regenerate.
+				function askChartLookup(songQuery, excludeUrls) {
 					return fetch(CHORDS_ENDPOINT, {
 						method: 'POST',
 						headers: { 'Content-Type': 'application/json' },
@@ -2539,6 +2539,13 @@
 							return data;
 						})
 						.catch(function () { return null; });
+				}
+
+				function chartSourceKind(data) {
+					if (!data || !data.source) return 'ug';
+					if (data.source === 'songsterr') return 'songsterr';
+					if (data.source === 'ultimate-guitar') return 'ug';
+					return data.source;
 				}
 
 				function renderAnswer(state) {
@@ -2557,68 +2564,57 @@
 						if (minorHint) chosen = selectKey(minorHint[1] + ' minor');
 					}
 					if (state.sourceKind === 'list') addNote('✓ Checked answer');
-					else if (state.sourceKind === 'ug') addNote('Ultimate Guitar');
-					else addNote('AI estimate');
+					else if (state.sourceKind === 'ug' || state.sourceKind === 'songsterr') {
+						addNote(state.sourceLabel || (state.sourceKind === 'songsterr' ? 'Songsterr' : 'Ultimate Guitar'));
+					} else addNote('AI estimate');
 					if (chosen) addNote('Scale chart switched to ' + chosen);
 					else if (ambiguous) addNote('Key unclear from power chords — chart left as-is');
-					if (state.sourceKind === 'ug' && state.sourceUrl) {
-						addAction('Open Ultimate Guitar chart', function () {
+					if ((state.sourceKind === 'ug' || state.sourceKind === 'songsterr') && state.sourceUrl) {
+						addAction(state.sourceKind === 'songsterr' ? 'Open Songsterr chart' : 'Open Ultimate Guitar chart', function () {
 							window.open(state.sourceUrl, '_blank', 'noopener');
 						});
 					}
-					if (state.sourceKind === 'ug' && state.hasMoreCharts) {
-						addAction('Try another Ultimate Guitar chart', function () {
+					function askAiFallback() {
+						body.textContent = 'Thinking…';
+						actions.innerHTML = '';
+						ask(1).then(function (aiText) {
+							renderAnswer({
+								text: aiText,
+								sourceKind: 'ai',
+								sourceLabel: 'AI estimate',
+								sourceUrl: null,
+								triedUrls: state.triedUrls || [],
+								hasMoreCharts: false
+							});
+						}).catch(function () {
+							body.textContent = "Sorry, the assistant didn't answer. Try again in a moment.";
+							body.classList.add('mp3-error');
+						});
+					}
+					if ((state.sourceKind === 'ug' || state.sourceKind === 'songsterr') && state.hasMoreCharts) {
+						addAction('Regenerate', function () {
 							body.textContent = 'Trying another chart…';
 							actions.innerHTML = '';
-							askUltimateGuitar(song || question, state.triedUrls || []).then(function (ug) {
-								if (!ug) {
-									body.textContent = 'No other Ultimate Guitar chord charts found. You can ask the AI instead.';
-									addAction('Ask AI instead', function () {
-										body.textContent = 'Thinking…';
-										actions.innerHTML = '';
-										ask(1).then(function (aiText) {
-											renderAnswer({
-												text: aiText,
-												sourceKind: 'ai',
-												sourceUrl: null,
-												triedUrls: state.triedUrls || [],
-												hasMoreCharts: false
-											});
-										}).catch(function () {
-											body.textContent = "Sorry, the assistant didn't answer. Try again in a moment.";
-											body.classList.add('mp3-error');
-										});
-									});
+							askChartLookup(song || question, state.triedUrls || []).then(function (next) {
+								if (!next) {
+									body.textContent = 'No other chord charts found. You can ask the AI instead.';
+									addAction('Ask AI instead', askAiFallback);
 									return;
 								}
-								var tried = (state.triedUrls || []).concat(ug.url ? [ug.url] : []);
+								var tried = (state.triedUrls || []).concat(next.url ? [next.url] : []);
 								renderAnswer({
-									text: ug.reply,
-									sourceKind: 'ug',
-									sourceUrl: ug.url || null,
+									text: next.reply,
+									sourceKind: chartSourceKind(next),
+									sourceLabel: next.sourceLabel || null,
+									sourceUrl: next.url || null,
 									triedUrls: tried,
-									hasMoreCharts: !!ug.hasMore
+									hasMoreCharts: !!next.hasMore
 								});
 							});
 						});
 					}
-					if (state.sourceKind === 'ug' || state.sourceKind === 'list') {
-						addAction('Ask AI instead', function () {
-							body.textContent = 'Thinking…';
-							actions.innerHTML = '';
-							ask(1).then(function (aiText) {
-								renderAnswer({
-									text: aiText,
-									sourceKind: 'ai',
-									sourceUrl: null,
-									triedUrls: state.triedUrls || [],
-									hasMoreCharts: false
-								});
-							}).catch(function () {
-								body.textContent = "Sorry, the assistant didn't answer. Try again in a moment.";
-								body.classList.add('mp3-error');
-							});
-						});
+					if (state.sourceKind === 'ug' || state.sourceKind === 'songsterr' || state.sourceKind === 'list') {
+						addAction('Ask AI instead', askAiFallback);
 					}
 					var ytForm = document.getElementById('lab-pip-search');
 					var ytInput = document.getElementById('lab-pip-q');
@@ -2632,7 +2628,7 @@
 					}
 				}
 
-				// Order: checked JSON → Ultimate Guitar → AI estimate. Label the source for transparency.
+				// Order: checked JSON → UG versions / Songsterr → AI. Label the source for transparency.
 				loadSongList()
 					.then(function (songs) {
 						var known = findSong(songs, song || question);
@@ -2640,25 +2636,28 @@
 							return {
 								text: knownAnswer(known),
 								sourceKind: 'list',
+								sourceLabel: '✓ Checked answer',
 								sourceUrl: null,
 								triedUrls: [],
 								hasMoreCharts: false
 							};
 						}
-						return askUltimateGuitar(song || question, []).then(function (ug) {
-							if (ug) {
+						return askChartLookup(song || question, []).then(function (chart) {
+							if (chart) {
 								return {
-									text: ug.reply,
-									sourceKind: 'ug',
-									sourceUrl: ug.url || null,
-									triedUrls: ug.url ? [ug.url] : [],
-									hasMoreCharts: !!ug.hasMore
+									text: chart.reply,
+									sourceKind: chartSourceKind(chart),
+									sourceLabel: chart.sourceLabel || null,
+									sourceUrl: chart.url || null,
+									triedUrls: chart.url ? [chart.url] : [],
+									hasMoreCharts: !!chart.hasMore
 								};
 							}
 							return ask(1).then(function (text) {
 								return {
 									text: text,
 									sourceKind: 'ai',
+									sourceLabel: 'AI estimate',
 									sourceUrl: null,
 									triedUrls: [],
 									hasMoreCharts: false
