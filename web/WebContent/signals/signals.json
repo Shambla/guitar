@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-11-22T02:00:11.047005Z",
+    "received_at": "2026-11-22T02:00:11.047048Z",
+    "id": "2026-11-22T02:00:11.047048Z-CRV/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "HEX/DAI",
     "quantity": 100.0,
