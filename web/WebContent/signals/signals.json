@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "PLSX/DAI",
+    "quantity": 100.0,
+    "price": null,
+    "source": "PulseChain DeFi",
+    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
+    "timestamp": "2026-11-22T12:25:36.762361Z",
+    "received_at": "2026-11-22T12:25:36.762374Z",
+    "id": "2026-11-22T12:25:36.762374Z-PLSX/DAI-sell"
+  },
+  {
     "action": "buy",
     "symbol": "ETH/USD",
     "quantity": 0.07031565,
