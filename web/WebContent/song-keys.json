@@ -214,6 +214,18 @@
       "scale": "D natural minor (D minor pentatonic or D blues for a garage-rock sound)",
       "tip": "The power chords have no 3rds, so it can sound minor or major; D minor pentatonic fits all four.",
       "source": "Brian (rough estimate, 2026-11-09)"
+    },
+    {
+      "title": "Breakdown",
+      "artist": "Tom Petty and The Heartbreakers",
+      "aliases": ["tom petty breakdown", "breakdown tom petty"],
+      "key": "A minor",
+      "capo": "none",
+      "progression": "Am – G | turnaround Fmaj7 – Fmaj7sus2 – Fmaj7",
+      "numerals": "i – VII | VI",
+      "scale": "A minor pentatonic (or A natural minor / A dorian over the Am–G vamp)",
+      "tip": "Ignore charts that only list A5–D5–E5 and call it A major — those power chords have no 3rd; the song is in A minor.",
+      "source": "standard / Ultimate Guitar top Chords chart (checked 2026-11-21)"
     }
   ]
 }

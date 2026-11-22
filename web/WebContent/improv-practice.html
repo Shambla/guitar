@@ -2314,7 +2314,10 @@
 				'Progression: <chords in order> (<Roman numerals>)\n' +
 				'Scale to jam with: <scale>\n' +
 				'Tip: <one short sentence>\n' +
-				'Mention a capo if the recording uses one. If you do not know the song, say so instead of guessing.\n\n' +
+				'Mention a capo if the recording uses one. If you do not know the song, say so instead of guessing.\n' +
+				'Power chords (A5, D5, E5, etc.) have no 3rd — they do NOT prove major vs minor. ' +
+				'If the chart is mostly power chords, write Key: ambiguous (<tonic> major or <tonic> minor — power chords have no 3rd) ' +
+				'and suggest both major and minor pentatonic rather than guessing one.\n\n' +
 				'Question: ';
 
 			input.value = DEFAULT_Q;
@@ -2520,11 +2523,15 @@
 				}
 
 				// Ultimate Guitar miss-path (worker scrapes a public Chords chart).
-				function askUltimateGuitar(songQuery) {
+				// excludeUrls skips charts already shown when the student hits "Try another chart".
+				function askUltimateGuitar(songQuery, excludeUrls) {
 					return fetch(CHORDS_ENDPOINT, {
 						method: 'POST',
 						headers: { 'Content-Type': 'application/json' },
-						body: JSON.stringify({ query: songQuery })
+						body: JSON.stringify({
+							query: songQuery,
+							excludeUrls: excludeUrls || []
+						})
 					})
 						.then(function (response) { return response.json().catch(function () { return null; }); })
 						.then(function (data) {
@@ -2534,51 +2541,132 @@
 						.catch(function () { return null; });
 				}
 
+				function renderAnswer(state) {
+					var text = state.text || '';
+					body.classList.remove('mp3-error');
+					body.textContent = text;
+					actions.innerHTML = '';
+					var keyLine = text.match(/^\s*Key:\s*(.+)$/im);
+					var keyText = keyLine && keyLine[1];
+					var ambiguous = keyText && /ambiguous|or\s+[A-G]/i.test(keyText);
+					var chosen = null;
+					if (keyText && !ambiguous) chosen = selectKey(keyText);
+					else if (ambiguous) {
+						// Prefer the minor suggestion when power chords left major/minor unclear.
+						var minorHint = keyText.match(/([A-G][#b]?)\s*minor/i);
+						if (minorHint) chosen = selectKey(minorHint[1] + ' minor');
+					}
+					if (state.sourceKind === 'list') addNote('✓ Checked answer');
+					else if (state.sourceKind === 'ug') addNote('Ultimate Guitar');
+					else addNote('AI estimate');
+					if (chosen) addNote('Scale chart switched to ' + chosen);
+					else if (ambiguous) addNote('Key unclear from power chords — chart left as-is');
+					if (state.sourceKind === 'ug' && state.sourceUrl) {
+						addAction('Open Ultimate Guitar chart', function () {
+							window.open(state.sourceUrl, '_blank', 'noopener');
+						});
+					}
+					if (state.sourceKind === 'ug' && state.hasMoreCharts) {
+						addAction('Try another Ultimate Guitar chart', function () {
+							body.textContent = 'Trying another chart…';
+							actions.innerHTML = '';
+							askUltimateGuitar(song || question, state.triedUrls || []).then(function (ug) {
+								if (!ug) {
+									body.textContent = 'No other Ultimate Guitar chord charts found. You can ask the AI instead.';
+									addAction('Ask AI instead', function () {
+										body.textContent = 'Thinking…';
+										actions.innerHTML = '';
+										ask(1).then(function (aiText) {
+											renderAnswer({
+												text: aiText,
+												sourceKind: 'ai',
+												sourceUrl: null,
+												triedUrls: state.triedUrls || [],
+												hasMoreCharts: false
+											});
+										}).catch(function () {
+											body.textContent = "Sorry, the assistant didn't answer. Try again in a moment.";
+											body.classList.add('mp3-error');
+										});
+									});
+									return;
+								}
+								var tried = (state.triedUrls || []).concat(ug.url ? [ug.url] : []);
+								renderAnswer({
+									text: ug.reply,
+									sourceKind: 'ug',
+									sourceUrl: ug.url || null,
+									triedUrls: tried,
+									hasMoreCharts: !!ug.hasMore
+								});
+							});
+						});
+					}
+					if (state.sourceKind === 'ug' || state.sourceKind === 'list') {
+						addAction('Ask AI instead', function () {
+							body.textContent = 'Thinking…';
+							actions.innerHTML = '';
+							ask(1).then(function (aiText) {
+								renderAnswer({
+									text: aiText,
+									sourceKind: 'ai',
+									sourceUrl: null,
+									triedUrls: state.triedUrls || [],
+									hasMoreCharts: false
+								});
+							}).catch(function () {
+								body.textContent = "Sorry, the assistant didn't answer. Try again in a moment.";
+								body.classList.add('mp3-error');
+							});
+						});
+					}
+					var ytForm = document.getElementById('lab-pip-search');
+					var ytInput = document.getElementById('lab-pip-q');
+					if (ytForm && ytInput && song) {
+						addAction('Find a backing track on YouTube', function () {
+							var fab = document.getElementById('lab-pip-fab');
+							if (!fab.hidden) fab.click();
+							ytInput.value = song + ' backing track';
+							ytForm.requestSubmit();
+						});
+					}
+				}
+
 				// Order: checked JSON → Ultimate Guitar → AI estimate. Label the source for transparency.
-				var sourceKind = 'ai';
-				var sourceUrl = null;
 				loadSongList()
 					.then(function (songs) {
 						var known = findSong(songs, song || question);
 						if (known) {
-							sourceKind = 'list';
-							return { text: knownAnswer(known) };
+							return {
+								text: knownAnswer(known),
+								sourceKind: 'list',
+								sourceUrl: null,
+								triedUrls: [],
+								hasMoreCharts: false
+							};
 						}
-						return askUltimateGuitar(song || question).then(function (ug) {
+						return askUltimateGuitar(song || question, []).then(function (ug) {
 							if (ug) {
-								sourceKind = 'ug';
-								sourceUrl = ug.url || null;
-								return { text: ug.reply };
+								return {
+									text: ug.reply,
+									sourceKind: 'ug',
+									sourceUrl: ug.url || null,
+									triedUrls: ug.url ? [ug.url] : [],
+									hasMoreCharts: !!ug.hasMore
+								};
 							}
-							sourceKind = 'ai';
-							return ask(1).then(function (text) { return { text: text }; });
+							return ask(1).then(function (text) {
+								return {
+									text: text,
+									sourceKind: 'ai',
+									sourceUrl: null,
+									triedUrls: [],
+									hasMoreCharts: false
+								};
+							});
 						});
 					})
-					.then(function (result) {
-						var text = result && result.text ? result.text : '';
-						body.textContent = text;
-						var keyLine = text.match(/^\s*Key:\s*(.+)$/im);
-						var chosen = keyLine && selectKey(keyLine[1]);
-						if (sourceKind === 'list') addNote('✓ Checked answer');
-						else if (sourceKind === 'ug') addNote('Ultimate Guitar');
-						else addNote('AI estimate');
-						if (chosen) addNote('Scale chart switched to ' + chosen);
-						if (sourceKind === 'ug' && sourceUrl) {
-							addAction('Open Ultimate Guitar chart', function () {
-								window.open(sourceUrl, '_blank', 'noopener');
-							});
-						}
-						var ytForm = document.getElementById('lab-pip-search');
-						var ytInput = document.getElementById('lab-pip-q');
-						if (ytForm && ytInput && song) {
-							addAction('Find a backing track on YouTube', function () {
-								var fab = document.getElementById('lab-pip-fab');
-								if (!fab.hidden) fab.click();
-								ytInput.value = song + ' backing track';
-								ytForm.requestSubmit();
-							});
-						}
-					})
+					.then(renderAnswer)
 					.catch(function () {
 						body.textContent = "Sorry, the assistant didn't answer. Try again in a moment.";
 						body.classList.add('mp3-error');
