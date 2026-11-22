@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "ETH/USD",
+    "quantity": 0.0,
+    "price": 1681.56,
+    "source": "MASTER_BOT_162",
+    "note": "🔴 HMM Extreme (regime-only, no JSON confirmation needed)",
+    "timestamp": "2026-11-22T08:40:11.104039Z",
+    "received_at": "2026-11-22T08:40:11.104136Z",
+    "id": "2026-11-22T08:40:11.104136Z-ETH/USD-sell"
+  },
+  {
     "action": "buy",
     "symbol": "CRV/USD",
     "quantity": 563.063063063063,
