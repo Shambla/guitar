@@ -1,6 +1,17 @@
 [
   {
     "action": "buy",
+    "symbol": "ETH/USD",
+    "quantity": 0.07529466,
+    "price": 1726.28,
+    "source": "MASTER_BOT_162",
+    "note": "🟠 MA+JSON (Hull(28)/EMA(34)) trend + JSON; position sized by JSON count",
+    "timestamp": "2026-11-23T06:11:51.991221Z",
+    "received_at": "2026-11-23T06:11:51.991280Z",
+    "id": "2026-11-23T06:11:51.991280Z-ETH/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "CRV/USD",
     "quantity": 545.8515283842795,
     "price": 0.183,
