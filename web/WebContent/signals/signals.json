@@ -1,6 +1,28 @@
 [
   {
     "action": "buy",
+    "symbol": "NEAR/USD",
+    "quantity": 33.57620118859752,
+    "price": 2.9753,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-11-23T01:00:54.620300Z",
+    "received_at": "2026-11-23T01:00:54.620321Z",
+    "id": "2026-11-23T01:00:54.620321Z-NEAR/USD-buy"
+  },
+  {
+    "action": "buy",
+    "symbol": "NEAR/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-11-23T01:00:47.248512Z",
+    "received_at": "2026-11-23T01:00:47.249156Z",
+    "id": "2026-11-23T01:00:47.249156Z-NEAR/USD-buy"
+  },
+  {
+    "action": "buy",
     "symbol": "TAO/USD",
     "quantity": 0.526121955069185,
     "price": 189.88,
@@ -3277,49 +3299,5 @@
     "timestamp": "2026-11-16T02:00:22.946131Z",
     "received_at": "2026-11-16T02:00:22.947108Z",
     "id": "2026-11-16T02:00:22.947108Z-NEAR/USD-sell"
-  },
-  {
-    "action": "buy",
-    "symbol": "NEAR/USD",
-    "quantity": 30.955918771669143,
-    "price": 3.2272,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-11-15T23:00:44.491394Z",
-    "received_at": "2026-11-15T23:00:44.491426Z",
-    "id": "2026-11-15T23:00:44.491426Z-NEAR/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "NEAR/USD",
-    "quantity": 100.0,
-    "price": null,
-    "source": "TradingView JSON",
-    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
-    "timestamp": "2026-11-15T23:00:18.573600Z",
-    "received_at": "2026-11-15T23:00:18.573619Z",
-    "id": "2026-11-15T23:00:18.573619Z-NEAR/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "TAO/USD",
-    "quantity": 0.5196154845414394,
-    "price": 192.26,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-11-15T22:06:03.356812Z",
-    "received_at": "2026-11-15T22:06:03.356832Z",
-    "id": "2026-11-15T22:06:03.356832Z-TAO/USD-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "CRV/USD",
-    "quantity": 492.8536224741252,
-    "price": 0.2027,
-    "source": "MASTER_BOT_162",
-    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
-    "timestamp": "2026-11-15T22:06:03.303691Z",
-    "received_at": "2026-11-15T22:06:03.304838Z",
-    "id": "2026-11-15T22:06:03.304838Z-CRV/USD-buy"
   }
 ]
