@@ -1,5 +1,27 @@
 [
   {
+    "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 0.0,
+    "price": 0.1746,
+    "source": "MASTER_BOT_162",
+    "note": "🟢 Pure JSON Trade (standalone, no confluence required)",
+    "timestamp": "2026-11-26T23:00:35.609873Z",
+    "received_at": "2026-11-26T23:00:35.609890Z",
+    "id": "2026-11-26T23:00:35.609890Z-CRV/USD-sell"
+  },
+  {
+    "action": "sell",
+    "symbol": "CRV/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-11-26T23:00:33.534514Z",
+    "received_at": "2026-11-26T23:00:33.534739Z",
+    "id": "2026-11-26T23:00:33.534739Z-CRV/USD-sell"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 157.08999633789062,
