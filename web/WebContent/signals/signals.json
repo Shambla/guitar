@@ -1,5 +1,16 @@
 [
   {
+    "action": "sell",
+    "symbol": "NEAR/USD",
+    "quantity": 100.0,
+    "price": null,
+    "source": "TradingView JSON",
+    "note": "📩 Raw JSON signal received (may trigger confluence trades)",
+    "timestamp": "2026-11-27T15:00:47.573011Z",
+    "received_at": "2026-11-27T15:00:47.573368Z",
+    "id": "2026-11-27T15:00:47.573368Z-NEAR/USD-sell"
+  },
+  {
     "action": "info",
     "symbol": "XLK",
     "price": 155.7899932861328,
@@ -2724,16 +2735,5 @@
     "timestamp": "2026-11-21T00:11:23.271682Z",
     "received_at": "2026-11-21T00:11:23.271828Z",
     "id": "2026-11-21T00:11:23.271828Z-HEX/DAI-buy"
-  },
-  {
-    "action": "buy",
-    "symbol": "HEX/DAI",
-    "quantity": 100.0,
-    "price": null,
-    "source": "PulseChain DeFi",
-    "note": "PulseChain DeFi signal (execution via pulsechain_trader)",
-    "timestamp": "2026-11-20T14:10:12.914413Z",
-    "received_at": "2026-11-20T14:10:12.914517Z",
-    "id": "2026-11-20T14:10:12.914517Z-HEX/DAI-buy"
   }
 ]
