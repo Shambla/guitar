@@ -1,36 +1,44 @@
 {
   "title": "Recent rotations",
-  "as_of": "2026-11-26",
+  "as_of": "2026-11-27",
   "ready": true,
   "history_scans": 12,
   "history_needed": 3,
   "message": "Best 3 each way. A bullish rotation climbed into the top 10 from the wider pack. A bearish rotation was a top-3 leader and has slipped. These are not buy or sell orders.",
   "bullish": [
     {
-      "symbol": "F",
-      "now_rank": 6,
-      "from_rank": 11,
-      "move": 5,
-      "return_1m_pct": 3.0,
-      "blurb": "Was about #11 outside the top 10, now #6. 1-month return +3.0%."
+      "symbol": "XLC",
+      "now_rank": 10,
+      "from_rank": 20,
+      "move": 10,
+      "return_1m_pct": -0.1,
+      "blurb": "Was about #20 outside the top 10, now #10. 1-month return -0.1%."
     },
     {
-      "symbol": "HYG",
-      "now_rank": 10,
-      "from_rank": 13,
-      "move": 3,
-      "return_1m_pct": -0.8,
-      "blurb": "Was about #13 outside the top 10, now #10. 1-month return -0.8%."
+      "symbol": "F",
+      "now_rank": 3,
+      "from_rank": 11,
+      "move": 8,
+      "return_1m_pct": 4.9,
+      "blurb": "Was about #11 outside the top 10, now #3. 1-month return +4.9%."
     }
   ],
   "bearish": [
     {
       "symbol": "XLV",
-      "now_rank": 5,
+      "now_rank": 8,
       "from_rank": 1,
-      "move": 4,
-      "return_1m_pct": 3.0,
-      "blurb": "Was about #1 in the top 3, now #5. 1-month return +3.0%."
+      "move": 7,
+      "return_1m_pct": 2.5,
+      "blurb": "Was about #1 in the top 3, now #8. 1-month return +2.5%."
+    },
+    {
+      "symbol": "XLP",
+      "now_rank": 4,
+      "from_rank": 2,
+      "move": 2,
+      "return_1m_pct": 4.6,
+      "blurb": "Was about #2 in the top 3, now #4. 1-month return +4.6%."
     }
   ]
 }
